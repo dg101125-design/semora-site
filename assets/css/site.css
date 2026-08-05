@@ -334,7 +334,7 @@ section > .wrap { position: relative; z-index: 1; }
   font-family: var(--serif); font-weight: 300;
   font-variation-settings: "opsz" 60;
   font-size: clamp(2rem, 4.5vw, 3.1rem);
-  line-height: 1; color: var(--plum);
+  line-height: 1; color: var(--moss-700);
   font-variant-numeric: tabular-nums;
 }
 .price small {
@@ -830,7 +830,7 @@ section > .wrap { position: relative; z-index: 1; }
 }
 .menu-row .mprice {
   font-family: var(--serif); font-weight: 300; font-size: 1.65rem;
-  color: var(--plum); font-variant-numeric: tabular-nums; white-space: nowrap;
+  color: var(--moss-700); font-variant-numeric: tabular-nums; white-space: nowrap;
 }
 @media (max-width: 560px) {
   .menu-row { grid-template-columns: 1fr; }

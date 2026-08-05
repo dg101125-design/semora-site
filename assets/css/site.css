@@ -450,6 +450,37 @@ section > .wrap { position: relative; z-index: 1; }
   border-top: 1px solid var(--plum-700);
 }
 
+/* ----------------------------------------- the hero mark (S/H seal) */
+.hero__mark {
+  position: absolute; z-index: 1;
+  right: clamp(4%, 8vw, 10%);
+  top: 50%; transform: translateY(-50%);
+  width: clamp(150px, 15vw, 215px); height: auto;
+}
+.hero__mark .mk-tile { fill: var(--plum); }
+.hero__mark .mk-letter {
+  font-family: var(--serif); font-weight: 320;
+  font-variation-settings: "opsz" 72;
+  fill: var(--ivory); font-size: 150px; letter-spacing: 6px;
+}
+.hero__mark .mk-slash { fill: var(--moss-300); }
+.hero__mark .mk-dot { fill: var(--moss-300); }
+.hero__mark .mk-rule { stroke: var(--plum-300); stroke-width: 3; }
+@media (max-width: 1120px) { .hero__mark { display: none; } }
+@media (prefers-reduced-motion: no-preference) {
+  .hero__mark {
+    opacity: 0;
+    animation: mark-in 0.9s var(--ease) forwards 0.6s;
+  }
+  @keyframes mark-in {
+    from { opacity: 0; transform: translateY(calc(-50% + 22px)); }
+    to   { opacity: 1; transform: translateY(-50%); }
+  }
+  .hero__mark .mk-dot { transform-origin: center; transform-box: fill-box; }
+  .hero__mark .mk-dot { animation: dot-pulse 2.8s var(--ease) infinite 1.6s; }
+  .hero__mark .mk-dot:last-of-type { animation-delay: 1.95s; }
+}
+
 /* ------------------------------------------------ hero band */
 .hero {
   padding-block: clamp(4rem, 11vw, 8rem); position: relative; overflow: hidden;
@@ -1059,3 +1090,43 @@ section > .wrap { position: relative; z-index: 1; }
   width: 12px; height: 12px; border-radius: 50%;
   background: var(--moss); border: 2px solid var(--champ-300);
 }
+
+
+/* ------------------------------------------------- the team */
+.team-grid {
+  display: grid; gap: 1.4rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+@media (max-width: 980px) { .team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .team-grid { grid-template-columns: 1fr; } }
+.tcard {
+  background: var(--white); border: 1px solid var(--champ-700);
+  transition: transform 220ms var(--ease), box-shadow 220ms var(--ease);
+  display: flex; flex-direction: column;
+}
+.tcard:hover { transform: translateY(-4px); box-shadow: 0 14px 34px rgba(46, 28, 41, 0.10); }
+.tcard img { width: 100%; aspect-ratio: 1; display: block; border-bottom: 1px solid var(--champ-700); }
+.tcard__body { padding: 1.4rem 1.5rem 1.5rem; display: flex; flex-direction: column; flex: 1; }
+.tcard h3 { font-size: 1.3rem; }
+.tcard .role { display: block; margin: 0.35rem 0 0.75rem; }
+.tcard p { font-size: 0.92rem; color: var(--graph-700); }
+.tcard .owns {
+  margin-top: auto; padding-top: 1rem;
+  font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--moss-700);
+}
+.badge {
+  display: inline-block; align-self: flex-start;
+  font-family: var(--mono); font-weight: 500; font-size: 0.6rem;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  padding: 0.4em 0.8em; margin-bottom: 0.7rem;
+  border: 1px solid var(--champ-700); color: var(--graph-400);
+}
+.badge--human { background: var(--plum); border-color: var(--plum); color: var(--ivory); }
+.founder-row {
+  display: grid; gap: 2.5rem var(--gutter);
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  align-items: center;
+}
+@media (max-width: 860px) { .founder-row { grid-template-columns: 1fr; } }
+.founder-row img { width: 100%; max-width: 340px; border: 1px solid var(--champ-700); }

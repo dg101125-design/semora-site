@@ -334,7 +334,7 @@ section > .wrap { position: relative; z-index: 1; }
   font-family: var(--serif); font-weight: 300;
   font-variation-settings: "opsz" 60;
   font-size: clamp(2rem, 4.5vw, 3.1rem);
-  line-height: 1; color: var(--moss-700);
+  line-height: 1; color: var(--plum);
   font-variant-numeric: tabular-nums;
 }
 .price small {
@@ -579,12 +579,20 @@ section > .wrap { position: relative; z-index: 1; }
   padding: 1.9rem 1.9rem 1.7rem;
 }
 .flip-front {
-  background: var(--white); border: 1px solid var(--champ-700);
+  background: linear-gradient(160deg, var(--moss-900) 30%, #2F3719 100%);
+  border: 1px solid var(--moss-900);
 }
 .flip-front::after {
   content: ""; position: absolute; top: 0; left: 0;
-  width: 34%; height: 3px; background: var(--moss);
+  width: 34%; height: 3px; background: var(--moss-300);
 }
+/* light-on-green text system for the card fronts
+   (.pcard--flip prefix outguns the later .pcard descendant rules) */
+.pcard--flip .flip-front h3 { color: var(--ivory); }
+.pcard--flip .flip-front .q { color: var(--moss-100); }
+.pcard--flip .flip-front .lab--graph { color: var(--moss-100); }
+.pcard--flip .flip-front .price { color: var(--champ); }
+.pcard--flip .flip-front .price small { color: var(--moss-100); }
 .flip-back {
   transform: rotateY(180deg);
   background: linear-gradient(160deg, var(--plum), var(--plum-900));
@@ -830,7 +838,7 @@ section > .wrap { position: relative; z-index: 1; }
 }
 .menu-row .mprice {
   font-family: var(--serif); font-weight: 300; font-size: 1.65rem;
-  color: var(--moss-700); font-variant-numeric: tabular-nums; white-space: nowrap;
+  color: var(--plum); font-variant-numeric: tabular-nums; white-space: nowrap;
 }
 @media (max-width: 560px) {
   .menu-row { grid-template-columns: 1fr; }

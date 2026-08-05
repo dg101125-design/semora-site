@@ -69,7 +69,7 @@
 
 /* ---------------------------------------------------- reset */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: clip; }
 body {
   font-family: var(--sans);
   font-size: 17px; line-height: 1.62;
@@ -81,6 +81,8 @@ img, svg { max-width: 100%; display: block; }
 a { color: inherit; }
 ::selection { background: var(--plum-100); color: var(--plum-ink); }
 :focus-visible { outline: 2px solid var(--plum); outline-offset: 3px; }
+.f-plum :focus-visible, .f-moss :focus-visible, .site-foot :focus-visible,
+.scorebar :focus-visible { outline-color: var(--champ); }
 
 /* ----------------------------------------------- typography */
 .display, h1 {
@@ -251,6 +253,7 @@ section > .wrap { position: relative; z-index: 1; }
 }
 .f-plum .entry__no { color: var(--plum-100); }
 /* the industry habit, crossed out above our answer */
+.f-plum .them { color: var(--plum-100); }
 .them {
   font-family: var(--serif); font-style: italic; font-weight: 320;
   font-size: 1.02rem; color: var(--plum-100);
@@ -278,7 +281,7 @@ section > .wrap { position: relative; z-index: 1; }
 .f-moss .sig-dots i { background: var(--moss-300); }
 /* white cards sitting on the moss field keep their light-field colours */
 .f-moss .tier h3 { color: var(--plum-900); }
-.f-moss .tier p { color: var(--graph-700); }
+.f-moss .tier p:not(.tier__flag) { color: var(--graph-700); }
 .f-moss .tier .who { color: var(--plum-700); }
 .f-moss .tier .alink { color: var(--moss-700); border-color: var(--champ-700); }
 .f-moss .tier .alink:hover { color: var(--plum); border-color: var(--plum-300); }
@@ -353,11 +356,6 @@ section > .wrap { position: relative; z-index: 1; }
 }
 .btn:hover { background: var(--plum-900); transform: translateY(-1px); }
 .btn:active { transform: translateY(0); }
-.btn--ghost {
-  background: transparent; color: var(--plum-700);
-  border-color: var(--plum-300);
-}
-.btn--ghost:hover { background: var(--plum-050); }
 .f-plum .btn { background: var(--ivory); color: var(--plum); border-color: var(--ivory); }
 .f-plum .btn:hover { background: var(--champ); border-color: var(--champ); }
 .cta-row { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
@@ -414,7 +412,7 @@ section > .wrap { position: relative; z-index: 1; }
   cursor: pointer; padding: 0.6em 0;
   -webkit-user-select: none; user-select: none;
 }
-@media (max-width: 980px) {
+@media (max-width: 1240px) {
   .nav-toggle { display: block; }
   .site-nav {
     display: none;
@@ -435,7 +433,7 @@ section > .wrap { position: relative; z-index: 1; }
   grid-template-columns: minmax(0, 5fr) minmax(0, 3fr) minmax(0, 2fr) minmax(0, 2fr);
   padding-block: 3.6rem 2.6rem;
 }
-@media (max-width: 980px) { .site-foot__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 1240px) { .site-foot__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 640px) { .site-foot__grid { grid-template-columns: 1fr; } }
 /* 59px tall → ~240px wide (descriptor lockup 4.07:1) — at the floor. */
 .site-foot__logo img { height: 59px; width: auto; }
@@ -546,11 +544,12 @@ section > .wrap { position: relative; z-index: 1; }
   background: var(--champ-300);
 }
 .mq__track {
-  display: flex; gap: 3.2rem; width: max-content;
+  display: flex; width: max-content;
   animation: mq 36s linear infinite;
 }
 .mq:hover .mq__track { animation-play-state: paused; }
 .mq__item {
+  margin-right: 3.2rem;
   font-family: var(--serif); font-weight: 300; font-style: italic;
   font-variation-settings: "opsz" 40;
   font-size: clamp(1.3rem, 2.4vw, 1.9rem);
@@ -606,7 +605,7 @@ section > .wrap { position: relative; z-index: 1; }
   margin-top: auto; align-self: flex-start; padding-bottom: 2px;
 }
 @media (prefers-reduced-motion: reduce) {
-  .flip-inner, .pcard--flip:hover .flip-inner { transition: none; transform: none; }
+  .flip-inner { transition: none; }   /* flip still works, instantly */
 }
 
 /* -------------------------------------------- product cards */
@@ -685,26 +684,6 @@ section > .wrap { position: relative; z-index: 1; }
 }
 .tier .cta-row { margin-top: auto; padding-top: 1.5rem; }
 
-/* -------------------------------------------- add-on cards */
-.agrid {
-  display: grid; gap: 1.1rem;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-@media (max-width: 980px) { .agrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 560px) { .agrid { grid-template-columns: 1fr; } }
-.addon {
-  background: var(--white); border: 1px solid var(--champ-700);
-  padding: 1.3rem 1.4rem;
-  transition: transform 200ms var(--ease), border-color 200ms var(--ease);
-}
-.addon:hover { transform: translateY(-3px); border-color: var(--plum-300); }
-.addon h3 { font-size: 1.05rem; font-family: var(--sans); font-weight: 600; color: var(--plum-900); }
-.addon .num {
-  font-family: var(--serif); font-size: 1.45rem; font-weight: 300;
-  color: var(--plum); margin-top: 0.5rem; font-variant-numeric: tabular-nums;
-}
-.addon .unit { font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.16em;
-  text-transform: uppercase; color: var(--graph-400); display: block; margin-top: 0.3rem; }
 
 /* ------------------------------------------------ score tool */
 /* editorial rows — same voice as the eleven-surfaces entries, no boxes */
@@ -791,12 +770,12 @@ section > .wrap { position: relative; z-index: 1; }
 /* ------------------------- endorsements — the moving strip */
 .tmq { overflow: hidden; margin-inline: calc(-1 * var(--gutter)); padding-inline: var(--gutter); }
 .tmq__track {
-  display: flex; gap: 1.4rem; width: max-content;
+  display: flex; width: max-content;
   animation: mq 48s linear infinite;
   padding-block: 0.6rem;   /* room for hover lift */
 }
 .tmq:hover .tmq__track { animation-play-state: paused; }
-.tmq .testi { width: clamp(280px, 30vw, 430px); flex: none; }
+.tmq .testi { width: clamp(280px, 30vw, 430px); flex: none; margin-right: 1.4rem; }
 @media (prefers-reduced-motion: reduce) {
   .tmq { overflow-x: auto; }
   .tmq__track { animation: none; }
@@ -890,7 +869,11 @@ section > .wrap { position: relative; z-index: 1; }
   background: var(--moss-300);
   transition: width 300ms var(--ease);
 }
-.scorebar .btn { padding: 0.75em 1.3em; }
+.scorebar .btn {
+  padding: 0.75em 1.3em;
+  background: var(--ivory); color: var(--plum); border-color: var(--ivory);
+}
+.scorebar .btn:hover { background: var(--champ); border-color: var(--champ); }
 .scorebar .btn[disabled] { opacity: 0.45; pointer-events: none; }
 
 #result[hidden] { display: none; }
@@ -1029,13 +1012,13 @@ section > .wrap { position: relative; z-index: 1; }
   }
   @keyframes uline-in { to { width: 96%; } }
 
-  /* scroll reveal */
-  .rv {
+  /* scroll reveal — armed only once site.js has run (html.js) */
+  html.js .rv {
     opacity: 0; transform: translateY(20px);
     transition: opacity 0.65s var(--ease), transform 0.65s var(--ease);
     transition-delay: var(--rvd, 0s);
   }
-  .rv.in { opacity: 1; transform: none; }
+  html.js .rv.in { opacity: 1; transform: none; }
 
   /* tick markers draw in when their list reveals */
   .rv .ticks li::before { transform: skewX(var(--slash-skew)) scaleY(0); transform-origin: bottom; }
@@ -1073,9 +1056,15 @@ section > .wrap { position: relative; z-index: 1; }
 }
 
 @media print {
-  .site-head, .site-foot, .btn, .hero__slash, .mq, .scorebar { display: none; }
+  .site-head, .site-foot, .btn, .hero__slash, .hero__wipe, .hero__mark,
+  .mq, .tmq, .scorebar, .ghost-no { display: none; }
   body { background: #fff; }
   .rv { opacity: 1 !important; transform: none !important; }
+  .f-plum, .f-moss, .f-plum *, .f-moss * {
+    color: #242424 !important; background: none !important;
+    border-color: #999 !important;
+  }
+  .cut, .cut--r { clip-path: none; margin-top: 0; }
 }
 
 
@@ -1124,14 +1113,6 @@ section > .wrap { position: relative; z-index: 1; }
   font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.16em;
   text-transform: uppercase; color: var(--moss-700);
 }
-.badge {
-  display: inline-block; align-self: flex-start;
-  font-family: var(--mono); font-weight: 500; font-size: 0.6rem;
-  letter-spacing: 0.2em; text-transform: uppercase;
-  padding: 0.4em 0.8em; margin-bottom: 0.7rem;
-  border: 1px solid var(--champ-700); color: var(--graph-400);
-}
-.badge--human { background: var(--plum); border-color: var(--plum); color: var(--ivory); }
 .founder-row {
   display: grid; gap: 2.5rem var(--gutter);
   grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);

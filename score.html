@@ -5,30 +5,40 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Score your practice — SIGNALHÄUS</title>
 <meta name="description" content="The Eleven Surfaces as a two-minute self-score. Scored on the page — nothing sent anywhere. Your three weakest surfaces, named.">
+<link rel="canonical" href="https://www.signalhaus.au/score">
+<meta property="og:site_name" content="SIGNALHÄUS">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Score your practice — SIGNALHÄUS">
+<meta property="og:description" content="The Eleven Surfaces as a two-minute self-score. Scored on the page — nothing sent anywhere. Your three weakest surfaces, named.">
+<meta property="og:url" content="https://www.signalhaus.au/score">
+<meta property="og:image" content="https://www.signalhaus.au/assets/img/og-signalhaus.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/favicon/favicon.ico" sizes="any">
 <link rel="icon" href="assets/favicon/favicon-slash.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon-180.png">
-<link rel="stylesheet" href="assets/css/site.css">
-<script defer src="assets/js/site.js"></script>
-<script defer src="assets/js/score.js"></script>
+<link rel="stylesheet" href="assets/css/site.css?v=0dcbd1e3">
+<script defer src="assets/js/site.js?v=4d732325"></script>
+<script defer src="assets/js/score.js?v=ec39ac4f"></script>
 </head>
 <body class="pg-score">
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-head">
   <div class="wrap">
-    <a class="site-head__logo" href="index.html" aria-label="SIGNALHÄUS — home">
+    <a class="site-head__logo" href="/" aria-label="SIGNALHÄUS — home">
       <img src="assets/logo/SIGNALHAUS_Primary_mono-plum.svg" alt="SIGNALHÄUS" width="239" height="46">
     </a>
-    <input type="checkbox" id="nav-open" class="nav-toggle-box">
+    <input type="checkbox" id="nav-open" class="nav-toggle-box" aria-label="Site menu">
     <label for="nav-open" class="nav-toggle">Menu /</label>
     <nav class="site-nav" aria-label="Primary">
-      <a href="eleven-surfaces.html">The Standard</a>
-      <a href="services.html">Services</a>
-      <a href="pricing.html">Pricing</a>
-      <a href="method.html">Method</a>
-      <a href="team.html">Team</a>
-      <a href="contact.html">Contact</a>
-      <a class="btn" href="score.html">Score your practice</a>
+      <a href="/eleven-surfaces">The Standard</a>
+      <a href="/services">Services</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/method">Method</a>
+      <a href="/team">Team</a>
+      <a href="/contact">Contact</a>
+      <a class="btn" href="/score">Score your practice</a>
     </nav>
   </div>
 </header>
@@ -51,6 +61,7 @@
 
 <section class="f-white" style="padding-top:0">
   <div class="wrap">
+    <h2 class="sr-only">Score each surface, 0 to 4</h2>
     <form id="score-form">
     <div class="qrow rv" role="group" aria-labelledby="qt1">
       <p class="qrow__no" aria-hidden="true">01</p>
@@ -58,11 +69,11 @@
         <h3 id="qt1">First screen</h3>
         <p class="q">“Do these people operate at my level?”</p>
         <div class="scale">
-          <input type="radio" id="s1v0" name="s1" value="0"><label for="s1v0">0</label>
+          <input type="radio" id="s1v0" name="s1" value="0"><label for="s1v0">0<span class="sr-only"> — absent</span></label>
           <input type="radio" id="s1v1" name="s1" value="1"><label for="s1v1">1</label>
           <input type="radio" id="s1v2" name="s1" value="2"><label for="s1v2">2</label>
           <input type="radio" id="s1v3" name="s1" value="3"><label for="s1v3">3</label>
-          <input type="radio" id="s1v4" name="s1" value="4"><label for="s1v4">4</label>
+          <input type="radio" id="s1v4" name="s1" value="4"><label for="s1v4">4<span class="sr-only"> — strong, evidenced</span></label>
         </div>
         <div class="scale-key"><span>0 — absent</span><span>4 — strong, evidenced</span></div>
       </div>
@@ -73,11 +84,11 @@
         <h3 id="qt2">The enquiry response</h3>
         <p class="q">“How fast, by whom — and did they read what I wrote?”</p>
         <div class="scale">
-          <input type="radio" id="s2v0" name="s2" value="0"><label for="s2v0">0</label>
+          <input type="radio" id="s2v0" name="s2" value="0"><label for="s2v0">0<span class="sr-only"> — absent</span></label>
           <input type="radio" id="s2v1" name="s2" value="1"><label for="s2v1">1</label>
           <input type="radio" id="s2v2" name="s2" value="2"><label for="s2v2">2</label>
           <input type="radio" id="s2v3" name="s2" value="3"><label for="s2v3">3</label>
-          <input type="radio" id="s2v4" name="s2" value="4"><label for="s2v4">4</label>
+          <input type="radio" id="s2v4" name="s2" value="4"><label for="s2v4">4<span class="sr-only"> — strong, evidenced</span></label>
         </div>
         <div class="scale-key"><span>0 — absent</span><span>4 — strong, evidenced</span></div>
       </div>
@@ -88,11 +99,11 @@
         <h3 id="qt3">The proposal</h3>
         <p class="q">“Is this a document worth keeping?”</p>
         <div class="scale">
-          <input type="radio" id="s3v0" name="s3" value="0"><label for="s3v0">0</label>
+          <input type="radio" id="s3v0" name="s3" value="0"><label for="s3v0">0<span class="sr-only"> — absent</span></label>
           <input type="radio" id="s3v1" name="s3" value="1"><label for="s3v1">1</label>
           <input type="radio" id="s3v2" name="s3" value="2"><label for="s3v2">2</label>
           <input type="radio" id="s3v3" name="s3" value="3"><label for="s3v3">3</label>
-          <input type="radio" id="s3v4" name="s3" value="4"><label for="s3v4">4</label>
+          <input type="radio" id="s3v4" name="s3" value="4"><label for="s3v4">4<span class="sr-only"> — strong, evidenced</span></label>
         </div>
         <div class="scale-key"><span>0 — absent</span><span>4 — strong, evidenced</span></div>
       </div>
@@ -103,11 +114,11 @@
         <h3 id="qt4">Named results</h3>
         <p class="q">“Has this worked for someone like me, with a number attached?”</p>
         <div class="scale">
-          <input type="radio" id="s4v0" name="s4" value="0"><label for="s4v0">0</label>
+          <input type="radio" id="s4v0" name="s4" value="0"><label for="s4v0">0<span class="sr-only"> — absent</span></label>
           <input type="radio" id="s4v1" name="s4" value="1"><label for="s4v1">1</label>
           <input type="radio" id="s4v2" name="s4" value="2"><label for="s4v2">2</label>
           <input type="radio" id="s4v3" name="s4" value="3"><label for="s4v3">3</label>
-          <input type="radio" id="s4v4" name="s4" value="4"><label for="s4v4">4</label>
+          <input type="radio" id="s4v4" name="s4" value="4"><label for="s4v4">4<span class="sr-only"> — strong, evidenced</span></label>
         </div>
         <div class="scale-key"><span>0 — absent</span><span>4 — strong, evidenced</span></div>
       </div>
@@ -118,11 +129,11 @@
         <h3 id="qt5">Third-party evidence</h3>
         <p class="q">“Does anyone outside the firm vouch for them?”</p>
         <div class="scale">
-          <input type="radio" id="s5v0" name="s5" value="0"><label for="s5v0">0</label>
+          <input type="radio" id="s5v0" name="s5" value="0"><label for="s5v0">0<span class="sr-only"> — absent</span></label>
           <input type="radio" id="s5v1" name="s5" value="1"><label for="s5v1">1</label>
           <input type="radio" id="s5v2" name="s5" value="2"><label for="s5v2">2</label>
           <input type="radio" id="s5v3" name="s5" value="3"><label for="s5v3">3</label>
-          <input type="radio" id="s5v4" name="s5" value="4"><label for="s5v4">4</label>
+          <input type="radio" id="s5v4" name="s5" value="4"><label for="s5v4">4<span class="sr-only"> — strong, evidenced</span></label>
         </div>
         <div class="scale-key"><span>0 — absent</span><span>4 — strong, evidenced</span></div>
       </div>
@@ -133,11 +144,11 @@
         <h3 id="qt6">The practitioner's track record</h3>
         <p class="q">“Has this person personally done the thing?”</p>
         <div class="scale">
-          <input type="radio" id="s6v0" name="s6" value="0"><label for="s6v0">0</label>
+          <input type="radio" id="s6v0" name="s6" value="0"><label for="s6v0">0<span class="sr-only"> — absent</span></label>
           <input type="radio" id="s6v1" name="s6" value="1"><label for="s6v1">1</label>
           <input type="radio" id="s6v2" name="s6" value="2"><label for="s6v2">2</label>
           <input type="radio" id="s6v3" name="s6" value="3"><label for="s6v3">3</label>
-          <input type="radio" id="s6v4" name="s6" value="4"><label for="s6v4">4</label>
+          <input type="radio" id="s6v4" name="s6" value="4"><label for="s6v4">4<span class="sr-only"> — strong, evidenced</span></label>
         </div>
         <div class="scale-key"><span>0 — absent</span><span>4 — strong, evidenced</span></div>
       </div>
@@ -148,11 +159,11 @@
         <h3 id="qt7">Peer proof</h3>
         <p class="q">“Who else in my world already uses them?”</p>
         <div class="scale">
-          <input type="radio" id="s7v0" name="s7" value="0"><label for="s7v0">0</label>
+          <input type="radio" id="s7v0" name="s7" value="0"><label for="s7v0">0<span class="sr-only"> — absent</span></label>
           <input type="radio" id="s7v1" name="s7" value="1"><label for="s7v1">1</label>
           <input type="radio" id="s7v2" name="s7" value="2"><label for="s7v2">2</label>
           <input type="radio" id="s7v3" name="s7" value="3"><label for="s7v3">3</label>
-          <input type="radio" id="s7v4" name="s7" value="4"><label for="s7v4">4</label>
+          <input type="radio" id="s7v4" name="s7" value="4"><label for="s7v4">4<span class="sr-only"> — strong, evidenced</span></label>
         </div>
         <div class="scale-key"><span>0 — absent</span><span>4 — strong, evidenced</span></div>
       </div>
@@ -163,11 +174,11 @@
         <h3 id="qt8">The fee explanation</h3>
         <p class="q">“Is the price reasoned, or is it a number?”</p>
         <div class="scale">
-          <input type="radio" id="s8v0" name="s8" value="0"><label for="s8v0">0</label>
+          <input type="radio" id="s8v0" name="s8" value="0"><label for="s8v0">0<span class="sr-only"> — absent</span></label>
           <input type="radio" id="s8v1" name="s8" value="1"><label for="s8v1">1</label>
           <input type="radio" id="s8v2" name="s8" value="2"><label for="s8v2">2</label>
           <input type="radio" id="s8v3" name="s8" value="3"><label for="s8v3">3</label>
-          <input type="radio" id="s8v4" name="s8" value="4"><label for="s8v4">4</label>
+          <input type="radio" id="s8v4" name="s8" value="4"><label for="s8v4">4<span class="sr-only"> — strong, evidenced</span></label>
         </div>
         <div class="scale-key"><span>0 — absent</span><span>4 — strong, evidenced</span></div>
       </div>
@@ -178,11 +189,11 @@
         <h3 id="qt9">What happens after</h3>
         <p class="q">“Do they stay, or hand over and go?”</p>
         <div class="scale">
-          <input type="radio" id="s9v0" name="s9" value="0"><label for="s9v0">0</label>
+          <input type="radio" id="s9v0" name="s9" value="0"><label for="s9v0">0<span class="sr-only"> — absent</span></label>
           <input type="radio" id="s9v1" name="s9" value="1"><label for="s9v1">1</label>
           <input type="radio" id="s9v2" name="s9" value="2"><label for="s9v2">2</label>
           <input type="radio" id="s9v3" name="s9" value="3"><label for="s9v3">3</label>
-          <input type="radio" id="s9v4" name="s9" value="4"><label for="s9v4">4</label>
+          <input type="radio" id="s9v4" name="s9" value="4"><label for="s9v4">4<span class="sr-only"> — strong, evidenced</span></label>
         </div>
         <div class="scale-key"><span>0 — absent</span><span>4 — strong, evidenced</span></div>
       </div>
@@ -193,11 +204,11 @@
         <h3 id="qt10">The physical impression</h3>
         <p class="q">“The office, the print, the room we meet in.”</p>
         <div class="scale">
-          <input type="radio" id="s10v0" name="s10" value="0"><label for="s10v0">0</label>
+          <input type="radio" id="s10v0" name="s10" value="0"><label for="s10v0">0<span class="sr-only"> — absent</span></label>
           <input type="radio" id="s10v1" name="s10" value="1"><label for="s10v1">1</label>
           <input type="radio" id="s10v2" name="s10" value="2"><label for="s10v2">2</label>
           <input type="radio" id="s10v3" name="s10" value="3"><label for="s10v3">3</label>
-          <input type="radio" id="s10v4" name="s10" value="4"><label for="s10v4">4</label>
+          <input type="radio" id="s10v4" name="s10" value="4"><label for="s10v4">4<span class="sr-only"> — strong, evidenced</span></label>
         </div>
         <div class="scale-key"><span>0 — absent</span><span>4 — strong, evidenced</span></div>
       </div>
@@ -208,25 +219,25 @@
         <h3 id="qt11">Consistency across all ten</h3>
         <p class="q">“Do I get the same firm every time I look?”</p>
         <div class="scale">
-          <input type="radio" id="s11v0" name="s11" value="0"><label for="s11v0">0</label>
+          <input type="radio" id="s11v0" name="s11" value="0"><label for="s11v0">0<span class="sr-only"> — absent</span></label>
           <input type="radio" id="s11v1" name="s11" value="1"><label for="s11v1">1</label>
           <input type="radio" id="s11v2" name="s11" value="2"><label for="s11v2">2</label>
           <input type="radio" id="s11v3" name="s11" value="3"><label for="s11v3">3</label>
-          <input type="radio" id="s11v4" name="s11" value="4"><label for="s11v4">4</label>
+          <input type="radio" id="s11v4" name="s11" value="4"><label for="s11v4">4<span class="sr-only"> — strong, evidenced</span></label>
         </div>
         <div class="scale-key"><span>0 — absent</span><span>4 — strong, evidenced</span></div>
       </div>
     </div>
     </form>
 
-    <div id="result" hidden class="mt4">
+    <div id="result" hidden tabindex="-1" class="mt4">
       <div class="slash--rule"><span class="slash slash--sm" aria-hidden="true"></span>
-        <p class="lab">Your three weakest surfaces</p></div>
+        <h2 class="lab" id="weak-heading" style="margin:0">Your three weakest surfaces</h2></div>
       <p class="pull" id="verdict"></p>
       <div id="weak-list"></div>
       <div class="cta-row mt4">
-        <a class="btn" href="contact.html">Have it scored with evidence — the Proof Audit</a>
-        <a class="alink" href="eleven-surfaces.html">Re-read the standard <span class="ar">→</span></a>
+        <a class="btn" href="/contact">Have it scored with evidence — the Proof Audit</a>
+        <a class="alink" href="/eleven-surfaces">Re-read the standard <span class="ar">→</span></a>
       </div>
     </div>
   </div>
@@ -258,13 +269,13 @@
       <nav aria-label="Footer">
         <p class="lab lab--rev">Site /</p>
         <ul class="mt2">
-          <li><a href="eleven-surfaces.html">The Eleven Surfaces</a></li>
-          <li><a href="score.html">Score your practice</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="pricing.html">Pricing</a></li>
-          <li><a href="method.html">Method</a></li>
-          <li><a href="team.html">The team</a></li>
-          <li><a href="contact.html">Start with the audit</a></li>
+          <li><a href="/eleven-surfaces">The Eleven Surfaces</a></li>
+          <li><a href="/score">Score your practice</a></li>
+          <li><a href="/services">Services</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/method">Method</a></li>
+          <li><a href="/team">The team</a></li>
+          <li><a href="/contact">Start with the audit</a></li>
         </ul>
       </nav>
       <div>
@@ -277,11 +288,13 @@
       </div>
       <div>
         <p class="lab lab--rev">Follow /</p>
-        <!-- Register the @signalhaus handles before launch; update hrefs if they differ. -->
+        <!-- QS 5 Aug 2026: @signalhaus is TAKEN on Instagram and YouTube (other
+             owners) and absent on LinkedIn. Links removed until real handles are
+             registered — a proof-standard site must not link to strangers.
+             Candidates: @signalhaus.au / @signalhaus_melbourne. -->
         <ul class="socials mt2">
-          <li><a href="https://www.linkedin.com/company/signalhaus" rel="noopener">LinkedIn</a></li>
-          <li><a href="https://www.instagram.com/signalhaus" rel="noopener">Instagram</a></li>
-          <li><a href="https://www.youtube.com/@signalhaus" rel="noopener">YouTube</a></li>
+          <li>LinkedIn · Instagram · YouTube</li>
+          <li><span class="lab lab--rev" style="letter-spacing:0.14em">Channels launching soon</span></li>
         </ul>
         <div class="qr-box">
           <img src="assets/img/qr-signalhaus.svg" alt="QR code — signalhaus.au" width="92" height="92">

@@ -10,6 +10,7 @@
   var result = document.getElementById("result");
   var weakWrap = document.getElementById("weak-list");
   var verdictEl = document.getElementById("verdict");
+  var headEl = document.getElementById("weak-heading");
 
   function read() {
     var scores = {}, answered = 0, total = 0;
@@ -22,9 +23,26 @@
 
   function verdict(total) {
     if (total >= 36) return "Strong. Consistency is now the surface to guard.";
-    if (total >= 26) return "Solid, with clear gaps — fix the three below, in order.";
+    if (total >= 26) return "Solid, with clear gaps — start with the surfaces below.";
     if (total >= 16) return "You are being chosen on fewer surfaces than you think.";
     return "The advice is likely better than every surface around it.";
+  }
+
+  function render(r) {
+    var ranked = data.map(function (s, i) {
+      return { i: i, name: s.name, why: s.why, score: r.scores[i] };
+    }).sort(function (a, b) { return a.score - b.score || a.i - b.i; }).slice(0, 3);
+    var anyWeak = ranked.some(function (s) { return s.score <= 2; });
+    headEl.textContent = anyWeak ? "Your three weakest surfaces"
+                                 : "Your three lowest surfaces — holding";
+    weakWrap.innerHTML = ranked.map(function (s) {
+      var line = s.score <= 2
+        ? s.why
+        : "Scored " + s.score + " — strong today. The risk here is drift, not absence: hold the line.";
+      return '<div class="weak"><h3>' + String(s.i + 1).padStart(2, "0") + " " +
+        s.name + " — scored " + s.score + "</h3><p>" + line + "</p></div>";
+    }).join("");
+    verdictEl.textContent = verdict(r.total);
   }
 
   function update() {
@@ -36,24 +54,16 @@
     if (r.answered === 11 && !result.hidden) render(r);
   }
 
-  function render(r) {
-    var ranked = data.map(function (s, i) {
-      return { i: i, name: s.name, why: s.why, score: r.scores[i] };
-    }).sort(function (a, b) { return a.score - b.score || a.i - b.i; }).slice(0, 3);
-    weakWrap.innerHTML = ranked.map(function (s) {
-      return '<div class="weak"><h3>' + String(s.i + 1).padStart(2, "0") + " " +
-        s.name + ' — scored ' + s.score + "</h3><p>" + s.why + "</p></div>";
-    }).join("");
-    verdictEl.textContent = verdict(r.total);
-  }
-
   form.addEventListener("change", update);
   btn.addEventListener("click", function () {
     var r = read();
     if (r.answered < 11) return;
     render(r);
     result.hidden = false;
-    result.scrollIntoView({ behavior: "smooth", block: "start" });
+    /* behavior "auto" defers to CSS scroll-behavior, which the stylesheet
+       already gates on prefers-reduced-motion */
+    result.scrollIntoView({ block: "start" });
+    result.focus({ preventScroll: true });
   });
   update();
 })();

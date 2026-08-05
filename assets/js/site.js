@@ -1,6 +1,8 @@
 /* SIGNALHÄUS — motion. Vanilla, ~1KB. Respects prefers-reduced-motion. */
 (function () {
   "use strict";
+  /* content is only hidden-for-reveal when this script actually runs */
+  document.documentElement.classList.add("js");
   var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (reduced) return;
 

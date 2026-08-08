@@ -8,9 +8,9 @@
   var CAP = 13500; /* MOMENTUM / Held — the full monthly engine */
   var BUNDLES = {
     signal: { n: 3, label: "SIGNAL / — the position", price: 14000,
-              note: "4 weeks · positioning + fees + objections, one engagement" },
+              note: "delivery 4 weeks · positioning + fees + objections, one engagement" },
     haus:   { n: 4, label: "/ HAUS — the system", price: 38000,
-              note: "8–10 weeks · brand + website + proposals + CRM, one team" }
+              note: "delivery 8–10 weeks · brand + website + proposals + CRM, one team" }
   };
 
   var root = document.getElementById("qb");
@@ -47,7 +47,7 @@
         lines.push([el.dataset.label, fmt(p) + " / mo", "monthly · 6-month minimum"]);
         moMenu += p;
       } else {
-        var note = el.dataset.t || "";
+        var note = el.dataset.t ? "delivery " + el.dataset.t : "";
         if (el.dataset.note) note += " · " + el.dataset.note;
         lines.push([el.dataset.label, fmt(p), note]);
         oneOff += p;
@@ -58,7 +58,8 @@
       var n = Math.max(0, parseInt(el.value, 10) || 0);
       if (!n) return;
       var p = (parseInt(el.dataset.p, 10) || 0) * n;
-      lines.push([el.dataset.label + " × " + n, fmt(p), el.dataset.t || ""]);
+      lines.push([el.dataset.label + " × " + n, fmt(p),
+        el.dataset.t ? "delivery " + el.dataset.t : ""]);
       oneOff += p;
     });
 

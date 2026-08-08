@@ -1243,6 +1243,11 @@ html.lr .site-head__logo::before {
   font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase;
   color: var(--moss-700); margin-top: 5px; white-space: nowrap;
 }
+/* the chip states it is a DELIVERY time — except monthly rates and
+   per-unit labels, which are not durations */
+.qb-item em i::before { content: "delivery "; color: var(--graph-400); }
+.qb-item:has(input[data-mo]) em i::before,
+.qb-item--qty em i::before { content: ""; }
 .qb-item--qty input[type="number"] {
   width: 4.2rem; font-family: var(--mono); font-size: 0.9rem;
   padding: 0.35em 0.45em; border: 2px solid var(--plum-900);

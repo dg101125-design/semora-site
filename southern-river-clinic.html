@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=820">
+<meta name="robots" content="noindex, nofollow">
+<title>Southern River Clinic — Engagement Plan · SIGNALHÄUS</title>
+<style>
+/* Web edition — served unlisted at signalhaus.au/southern-river-clinic.
+   Print master lives in 06_Sales/Southern_River_Clinic/ (static-font
+   Type3 rule applies there; the site's variable fonts are fine here). */
+@font-face { font-family: "NR"; font-weight: 200 800; font-style: normal;
+  src: url("assets/fonts/Newsreader-var.woff2") format("woff2-variations");
+  font-display: swap; }
+@font-face { font-family: "NR"; font-weight: 200 800; font-style: italic;
+  src: url("assets/fonts/Newsreader-Italic-var.woff2") format("woff2-variations");
+  font-display: swap; }
+@font-face { font-family: "IN"; font-weight: 100 900; font-style: normal;
+  src: url("assets/fonts/Inter-var.woff2") format("woff2-variations");
+  font-display: swap; }
+@font-face { font-family: "PM"; font-weight: 500;
+  src: url("assets/fonts/IBMPlexMono-Medium.woff2") format("woff2");
+  font-display: swap; }
+
+:root {
+  --plum:#5B3A52; --plum9:#3C2637; --plum7:#4A2F43; --plum3:#8B6B7E; --plum1:#D7C8D1;
+  --moss9:#3A431F; --moss7:#525E3A; --moss:#6B7B4E; --moss3:#9AA782; --moss1:#D9DFCB;
+  --champ7:#CFC0A8; --champ:#E7DCCB; --champ3:#F0E9DD; --ivory:#F8F6F2;
+  --g7:#333; --g:#424242; --g4:#6B6560;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+@page { size: A4 portrait; margin: 0; }
+body { font-family:"IN"; font-weight:400; font-size:10pt; line-height:1.6; color:var(--g); }
+.sheet { width:210mm; height:296mm; page-break-after:always; position:relative;
+  overflow:hidden; background:var(--ivory); padding:20mm 18mm; }
+.sheet:last-child { page-break-after:auto; }
+
+.mono { font-family:"PM"; font-weight:500; font-size:7pt; letter-spacing:2.2px;
+  text-transform:uppercase; color:var(--moss7); }
+.mono.rev { color:var(--moss3); }
+.mono.dim { color:var(--g4); }
+h1 { font-family:"NR"; font-weight:300; font-size:34pt; line-height:1.0;
+  letter-spacing:-0.4pt; color:var(--plum); }
+h2 { font-family:"NR"; font-weight:350; font-size:19pt; line-height:1.06;
+  color:var(--plum); margin-bottom:5mm; }
+h3 { font-family:"NR"; font-weight:500; font-size:12pt; color:var(--plum9); }
+p  { max-width:150mm; }
+.lead { font-size:11.5pt; line-height:1.5; color:var(--g7); max-width:140mm; }
+.it { font-family:"NR"; font-style:italic; font-weight:300; }
+
+.slash { display:inline-block; width:3mm; height:9mm; background:var(--moss);
+  transform:skewX(-20deg); }
+.rule-row { display:flex; align-items:center; gap:5mm; margin-bottom:8mm; }
+.rule-row .line { flex:1; height:0.35mm; background:var(--champ7); }
+
+.foot { position:absolute; bottom:11mm; left:18mm; right:18mm;
+  display:flex; justify-content:space-between; border-top:0.35mm solid var(--champ7);
+  padding-top:3mm; }
+
+table { width:100%; border-collapse:collapse; font-size:9pt; }
+th { font-family:"PM"; font-weight:500; font-size:6.5pt; letter-spacing:1.6px;
+  text-transform:uppercase; color:var(--g4); text-align:left;
+  padding:2mm 3mm 2mm 0; border-bottom:0.5mm solid var(--g4); }
+td { padding:2.4mm 3mm 2.4mm 0; border-bottom:0.3mm solid var(--champ7);
+  vertical-align:top; }
+td:first-child { color:var(--plum9); font-weight:600; }
+.num { font-variant-numeric:tabular-nums; white-space:nowrap; }
+
+.tick { list-style:none; }
+.tick li { padding:1.8mm 0 1.8mm 6mm; position:relative;
+  border-top:0.3mm solid var(--champ3); font-size:9.5pt; color:var(--g7); }
+.tick li::before { content:""; position:absolute; left:0.5mm; top:2.6mm;
+  width:1.6mm; height:4.2mm; background:var(--moss); transform:skewX(-20deg); }
+
+.box { background:#fff; border:0.35mm solid var(--champ7); padding:6mm 7mm; }
+.box.champ { background:var(--champ3); }
+.box.plum { background:var(--plum); color:var(--champ); border-color:var(--plum9); }
+.box.plum h3 { color:var(--ivory); }
+.box.moss { background:var(--moss9); color:var(--moss1); border-color:var(--moss9); }
+.box.moss h3 { color:var(--ivory); }
+.box.moss .tick li { color:var(--moss1); border-color:var(--moss7); }
+.box.moss .tick li::before { background:var(--moss3); }
+
+.price { font-family:"NR"; font-weight:300; font-size:26pt; color:var(--plum);
+  font-variant-numeric:tabular-nums; line-height:1; }
+.grid2 { display:grid; grid-template-columns:1fr 1fr; gap:6mm; }
+.mt2{margin-top:4mm}.mt3{margin-top:7mm}.mt4{margin-top:10mm}.mt5{margin-top:14mm}
+.small { font-size:8.5pt; color:var(--g4); }
+.note { font-size:8.5pt; color:var(--g4); border-left:0.6mm solid var(--champ7);
+  padding-left:4mm; max-width:150mm; }
+.wm { font-family:"NR"; font-weight:350; font-size:13pt; letter-spacing:1.2pt;
+  color:var(--plum); }
+.wm .sl { color:var(--moss); }
+.ghost { position:absolute; font-family:"NR"; font-weight:200; font-size:120pt;
+  color:var(--plum); opacity:0.05; line-height:0.8; right:8mm; top:14mm; }
+
+/* screen presentation only — printing this page still yields clean A4 */
+@media screen {
+  body { background:var(--champ); padding:8mm 0 14mm; }
+  .sheet { margin:0 auto 8mm; box-shadow:0 3px 18px rgba(60,38,55,0.14); }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================= 1 · COVER -->
+<div class="sheet" style="background:var(--plum); padding:22mm 20mm;">
+  <div style="position:absolute; top:-20mm; right:24mm; width:34mm; height:150mm;
+    background:var(--plum7); transform:skewX(-20deg);"></div>
+  <div style="position:absolute; top:60mm; right:52mm; width:9mm; height:90mm;
+    background:var(--moss3); opacity:.85; transform:skewX(-20deg);"></div>
+  <div class="mono rev">Signalhäus · Engagement plan · Prepared 5 August 2026</div>
+  <div class="mt5" style="margin-top:60mm;">
+    <div class="mono rev" style="margin-bottom:6mm;">Prepared for the principal of</div>
+    <h1 style="color:var(--ivory); font-size:42pt;">Southern River<br>Clinic.</h1>
+    <p class="lead mt3" style="color:var(--champ); max-width:120mm;">
+      What a <span class="it" style="color:var(--ivory);">$7,200-a-month</span> marketing
+      budget buys — itemised, quantified, and accountable to one number.
+    </p>
+  </div>
+  <div style="position:absolute; bottom:20mm; left:20mm; right:20mm;
+    display:flex; justify-content:space-between; align-items:flex-end;
+    border-top:0.35mm solid var(--plum7); padding-top:5mm;">
+    <div class="wm" style="color:var(--ivory);">SIGNAL<span class="sl">/</span>HÄUS</div>
+    <div class="mono rev">Health &amp; allied health edition · Melbourne / Perth</div>
+  </div>
+</div>
+
+<!-- ============================================= 2 · THE THESIS -->
+<div class="sheet">
+  <div class="ghost">01</div>
+  <div class="rule-row"><span class="slash"></span>
+    <span class="mono">01 / Why patients choose a clinic</span><span class="line"></span></div>
+  <h2>Patients decide before<br>the first appointment.</h2>
+  <p class="lead">They cannot judge clinical quality — so they judge everything
+  around it. The website's first screen. How hard it is to book. Whether every
+  practitioner presents like the same clinic. What the gap payment is, and
+  whether anyone explains it before they ask.</p>
+  <p class="mt3">Those proxies are not marketing decoration. They are the actual
+  decision criteria — for patients choosing a clinic, and for the referring GPs
+  who send them. Most clinics have never audited them, because they assume they
+  are being chosen on the care.</p>
+  <p class="mt2"><strong>They are being chosen on the surfaces around the
+  care.</strong> That is what this budget works on.</p>
+
+  <div class="box champ mt4">
+    <h3>What this document is — and is not</h3>
+    <p class="mt2" style="font-size:9.5pt;">This is an <strong>engagement plan</strong>:
+    exactly what Southern River Clinic receives each month, at published prices and
+    published quantities. It is not a case study — we do not present results we have
+    not earned, and any projection in these pages is marked
+    <span class="mono dim" style="font-size:6.5pt;">Illustrative</span>. Our first
+    obligation to you is the same standard we would demand of your clinic:
+    <span class="it">sourced, dated, baselined, attributable.</span></p>
+  </div>
+
+  <div class="foot"><span class="mono dim">Southern River Clinic · Engagement plan</span>
+    <span class="mono dim">02 / 09</span></div>
+</div>
+
+<!-- ============================================= 3 · ELEVEN SURFACES, CLINIC-TUNED -->
+<div class="sheet">
+  <div class="ghost">02</div>
+  <div class="rule-row"><span class="slash"></span>
+    <span class="mono">02 / The instrument</span><span class="line"></span></div>
+  <h2>The Eleven Surfaces —<br>tuned for a clinic.</h2>
+  <p class="small" style="max-width:150mm;">Our published diagnostic: the eleven
+  things a patient — or a referring GP — actually checks. Every deliverable in
+  this plan exists to move one of these surfaces.</p>
+  <table class="mt3">
+    <tr><th style="width:8mm;">#</th><th style="width:42mm;">Surface</th>
+        <th>What it means at Southern River Clinic</th></tr>
+    <tr><td>01</td><td>First screen</td><td>Calm, clinical credibility without coldness — and the booking path visible immediately</td></tr>
+    <tr><td>02</td><td>The enquiry response</td><td>Booking friction is the whole funnel — every extra step loses a patient</td></tr>
+    <tr><td>03</td><td>The proposal</td><td>For a clinic: the treatment-plan and new-patient documents</td></tr>
+    <tr><td>04</td><td>Named results</td><td><strong>Constrained by AHPRA</strong> — built from credentials, equipment, wait times and referral relationships, never patient outcomes</td></tr>
+    <tr><td>05</td><td>Third-party evidence</td><td>Registrations, college fellowships, hospital affiliations — surfaced where patients actually look</td></tr>
+    <tr><td>06</td><td>Track record</td><td>Each practitioner's training, and where they trained</td></tr>
+    <tr><td>07</td><td>Peer proof</td><td>Referring GPs and specialists — the highest-value channel a clinic has</td></tr>
+    <tr><td>08</td><td>The fee explanation</td><td>Gap payments, rebates, what is and is not covered — answered before it is asked</td></tr>
+    <tr><td>09</td><td>What happens after</td><td>Follow-up, recall, continuity of practitioner</td></tr>
+    <tr><td>10</td><td>Physical impression</td><td>Weighted heavily: rooms, waiting area, signage</td></tr>
+    <tr><td>11</td><td>Consistency</td><td>Across practitioners — the most common failure in multi-practitioner clinics</td></tr>
+  </table>
+  <div class="foot"><span class="mono dim">Southern River Clinic · Engagement plan</span>
+    <span class="mono dim">03 / 09</span></div>
+</div>
+
+<!-- ============================================= 4 · WHAT THE BUDGET BUYS -->
+<div class="sheet">
+  <div class="ghost">03</div>
+  <div class="rule-row"><span class="slash"></span>
+    <span class="mono">03 / The package</span><span class="line"></span></div>
+  <h2>What $7,200 a month buys.</h2>
+  <p class="small">Built on our published tier <strong>MOMENTUM / Shared</strong>
+  — we produce, you approve. Quantities are published because that is the
+  difference between a retainer and a promise.</p>
+
+  <div class="grid2 mt3">
+    <div class="box">
+      <div class="mono">Strategy &amp; accountability</div>
+      <ul class="tick mt2">
+        <li>Fortnightly strategy session, 60 min — principal or practice manager</li>
+        <li>Monthly report against the agreed number</li>
+        <li>Response inside 1 business day, by a named person</li>
+        <li>Decisions shared — we propose, you approve</li>
+      </ul>
+    </div>
+    <div class="box">
+      <div class="mono">Marketing &amp; patient communication</div>
+      <ul class="tick mt2">
+        <li>2 editorial pieces written &amp; published — practitioner-led, AHPRA-compliant</li>
+        <li>6 campaign assets designed &amp; shipped</li>
+        <li>2 patient or GP-referral documents built per month</li>
+        <li>Follow-up &amp; recall sequences run for you</li>
+        <li>2 hrs website updates</li>
+      </ul>
+    </div>
+    <div class="box">
+      <div class="mono">Systems — managed with you</div>
+      <ul class="tick mt2">
+        <li>Booking flow &amp; enquiry routing kept current</li>
+        <li>Practice CRM &amp; pipeline maintained</li>
+        <li>New-patient onboarding sequence</li>
+        <li>Marketing &amp; booking dashboard</li>
+        <li>Issues flagged — you approve fixes</li>
+      </ul>
+    </div>
+    <div class="box moss">
+      <div class="mono rev">What transfers to you</div>
+      <ul class="tick mt2" style="color:var(--moss1);">
+        <li style="border-color:var(--moss7);">Every template, sequence and source file — owned by the clinic, by contract</li>
+        <li style="border-color:var(--moss7);">The written governance model: who decides, what needs approval</li>
+        <li style="border-color:var(--moss7);">No asset held hostage to the retainer — leave with everything</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mt3" style="display:flex; align-items:baseline; gap:8mm;">
+    <span class="price">$7,400<span style="font-size:10pt; color:var(--g4);"> / month + GST</span></span>
+    <span class="small">published price · 6-month minimum, then monthly · 60 days' notice</span>
+  </div>
+  <p class="note mt2">Your stated budget is $7,200. See page 8 — we do not do
+  quiet discounts, so the $200 gets an honest conversation instead.</p>
+  <div class="foot"><span class="mono dim">Southern River Clinic · Engagement plan</span>
+    <span class="mono dim">04 / 09</span></div>
+</div>
+
+<!-- ============================================= 5 · THE FIRST 90 DAYS -->
+<div class="sheet">
+  <div class="ghost">04</div>
+  <div class="rule-row"><span class="slash"></span>
+    <span class="mono">04 / The rhythm</span><span class="line"></span></div>
+  <h2>The first ninety days.</h2>
+  <table class="mt3">
+    <tr><th style="width:30mm;">Period</th><th style="width:38mm;">Focus</th><th>What ships</th></tr>
+    <tr><td class="num">Weeks 0–2</td><td>The baseline</td>
+        <td>Eleven surfaces scored with evidence · booking-conversion and new-patient baseline · referring-GP map · the three surfaces to fix first</td></tr>
+    <tr><td class="num">Weeks 3–6</td><td>The fixes that matter</td>
+        <td>Booking flow rebuilt to remove friction · fee &amp; gap-payment page written · practitioner profiles brought to one standard</td></tr>
+    <tr><td class="num">Weeks 7–12</td><td>The engine starts</td>
+        <td>Monthly production begins (2 editorial · 6 assets · 2 documents) · recall sequences live · GP-referral pack to the first ten referrers</td></tr>
+    <tr><td class="num">Day 90</td><td>The review</td>
+        <td>Numbers against baseline, on the record — and the next quarter agreed</td></tr>
+  </table>
+
+  <div class="box champ mt4">
+    <h3>Every month after that</h3>
+    <p class="mt2" style="font-size:9.5pt;">Fortnightly session → we produce →
+    you approve → it ships → the dashboard and monthly report tell you what moved.
+    Your time: about <strong>one hour a week</strong>. The engine is designed so the
+    principal runs the clinic, not the marketing.</p>
+  </div>
+  <div class="foot"><span class="mono dim">Southern River Clinic · Engagement plan</span>
+    <span class="mono dim">05 / 09</span></div>
+</div>
+
+<!-- ============================================= 6 · AHPRA -->
+<div class="sheet">
+  <div class="ghost">05</div>
+  <div class="rule-row"><span class="slash"></span>
+    <span class="mono">05 / The rules we will not break</span><span class="line"></span></div>
+  <h2>AHPRA is not a footnote.<br>It is part of the service.</h2>
+  <p class="lead">Advertising rules for regulated health services bind your
+  clinic — and therefore bind everything we produce for it. Knowing these rules
+  is part of what you are paying for.</p>
+  <ul class="tick mt3">
+    <li><strong>No testimonials about clinical services.</strong> This is a hard
+        prohibition — we exclude review and testimonial automation for regulated
+        services entirely, and build your proof from what is allowed.</li>
+    <li><strong>No claims that create unreasonable expectation of benefit.</strong>
+        Every editorial piece and asset is checked against this before it ships.</li>
+    <li><strong>No offers that encourage indiscriminate use</strong> of a
+        regulated service.</li>
+    <li><strong>TGA rules applied</strong> to any therapeutic goods referenced.</li>
+    <li><strong>Your compliance sign-off, in writing,</strong> before anything
+        publishes — built into the approval flow, not bolted on.</li>
+  </ul>
+  <div class="box mt4">
+    <h3>Where a clinic's proof legally lives</h3>
+    <p class="mt2" style="font-size:9.5pt;">Practitioner credentials and training ·
+    facility and equipment · wait times · continuity of practitioner · referral
+    relationships. That is the evidence we build with — it is compliant, and to a
+    referring GP it is more persuasive than any review widget.</p>
+  </div>
+  <div class="foot"><span class="mono dim">Southern River Clinic · Engagement plan</span>
+    <span class="mono dim">06 / 09</span></div>
+</div>
+
+<!-- ============================================= 7 · THE NUMBER -->
+<div class="sheet">
+  <div class="ghost">06</div>
+  <div class="rule-row"><span class="slash"></span>
+    <span class="mono">06 / Accountability</span><span class="line"></span></div>
+  <h2>One number, in writing.</h2>
+  <p class="lead">At kickoff we agree a single metric drawn from your baseline —
+  and the engagement answers to it at day 90, on the record.</p>
+  <table class="mt3">
+    <tr><th style="width:52mm;">Candidate metric</th><th>What it measures</th></tr>
+    <tr><td>Enquiry → booking conversion</td><td>How many people who contact the clinic become patients — the friction number</td></tr>
+    <tr><td>New patients per month</td><td>Volume, split by source: search, GP referral, returning</td></tr>
+    <tr><td>Recall completion rate</td><td>How much of your existing book returns when it should — usually the cheapest growth available</td></tr>
+    <tr><td>GP referral volume</td><td>Referrals from the mapped referrer list, tracked monthly</td></tr>
+  </table>
+
+  <div class="box champ mt4">
+    <div class="mono dim">Illustrative only — not a projection or promise</div>
+    <p class="mt2" style="font-size:9.5pt;">As a shape of what a 90-day review can
+    look like: a clinic converting <span class="num">1 in 4</span> enquiries that
+    moves to <span class="num">1 in 3</span> has grown bookings ~33% with zero extra
+    ad spend. <strong>Your actual baseline is unknown until it is measured — that is
+    what weeks 0–2 exist for, and why we will not put your clinic's name next to a
+    number we have not earned.</strong></p>
+  </div>
+  <div class="foot"><span class="mono dim">Southern River Clinic · Engagement plan</span>
+    <span class="mono dim">07 / 09</span></div>
+</div>
+
+<!-- ============================================= 8 · THE $200 CONVERSATION -->
+<div class="sheet">
+  <div class="ghost">07</div>
+  <div class="rule-row"><span class="slash"></span>
+    <span class="mono">07 / Fee integrity</span><span class="line"></span></div>
+  <h2>The $200 conversation.</h2>
+  <p class="lead">Your budget is $7,200. Our published price is $7,400. Most
+  agencies would quietly discount and quietly recover it later. We publish our
+  prices and our quantities — so here are your three honest options:</p>
+  <table class="mt3">
+    <tr><th style="width:14mm;"></th><th style="width:44mm;">Option</th><th>Monthly</th><th>What changes</th></tr>
+    <tr><td class="num">A</td><td>Published tier as-is</td><td class="num">$7,400</td>
+        <td>Nothing. The $200 is two coffees a week.</td></tr>
+    <tr><td class="num">B</td><td>Quantity-adjusted</td><td class="num">$7,150</td>
+        <td>5 campaign assets instead of 6 — trimmed against the published quantity, not hidden</td></tr>
+    <tr><td class="num">C</td><td>Budget held at $7,200</td><td class="num">$7,200</td>
+        <td>Option B plus $50/month banked toward a quarterly case study of your own clinic, written to our proof standard once there are results to publish</td></tr>
+  </table>
+  <p class="note mt3">Why we do it this way: fee integrity is one of the three
+  outcomes we sell. A firm that discounts its own published price quietly is
+  telling you how it will treat yours.</p>
+
+  <div class="rule-row mt4"><span class="slash"></span>
+    <span class="mono">Ownership</span><span class="line"></span></div>
+  <p style="font-size:9.5pt;">Everything built under this engagement — templates,
+  sequences, documents, dashboards, source files, and the written governance
+  model — transfers to Southern River Clinic. By contract, not courtesy. If we
+  part ways, you keep the engine.</p>
+  <div class="foot"><span class="mono dim">Southern River Clinic · Engagement plan</span>
+    <span class="mono dim">08 / 09</span></div>
+</div>
+
+<!-- ============================================= 9 · NEXT STEP -->
+<div class="sheet" style="background:var(--plum); padding:22mm 20mm;">
+  <div style="position:absolute; top:-20mm; right:30mm; width:22mm; height:120mm;
+    background:var(--plum7); transform:skewX(-20deg);"></div>
+  <div class="mono rev">08 / The next step</div>
+  <h2 class="mt3" style="color:var(--ivory); font-size:24pt;">Start with the baseline.</h2>
+  <p class="lead mt2" style="color:var(--champ); max-width:130mm;">The recommended
+  first step is <strong style="color:var(--ivory);">The Proof Audit</strong> — two
+  weeks, the eleven surfaces scored with evidence, your booking and referral
+  baseline measured, and the three fixes that matter, ranked.</p>
+  <div class="mt4" style="display:flex; gap:14mm; align-items:baseline;">
+    <span class="price" style="color:var(--champ);">$3,000<span style="font-size:9pt; color:var(--plum1);"> + GST</span></span>
+    <span class="mono rev">Optional · credited in full within 90 days</span>
+  </div>
+  <p class="mt3" style="color:var(--champ); font-size:9.5pt; max-width:130mm;">
+  Start the engagement directly, and the baseline is built inside the first two
+  weeks instead. Either way: no work begins without a number.</p>
+
+  <div style="position:absolute; bottom:20mm; left:20mm; right:20mm;
+    border-top:0.35mm solid var(--plum7); padding-top:5mm;">
+    <div style="display:flex; justify-content:space-between; align-items:flex-end;">
+      <div>
+        <div class="wm" style="color:var(--ivory);">SIGNAL<span class="sl" style="color:var(--moss3);">/</span>HÄUS</div>
+        <div class="mono rev" style="margin-top:2mm;">Specialist practice growth</div>
+      </div>
+      <div style="text-align:right;">
+        <div class="mono rev">team@signalhaus.au · signalhaus.au</div>
+        <div class="mono rev" style="margin-top:2mm;">Jennifer Wong · Founder / Strategy Director</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

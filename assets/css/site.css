@@ -388,6 +388,42 @@ section > .wrap { position: relative; z-index: 1; }
 /* 46px tall → ~239px wide: at the brand's 240px screen floor,
    umlaut dots ~2.5px — above the 2px reproduction floor. */
 .site-head__logo img { height: 46px; width: auto; }
+
+/* ------------------------------- signature logo reveal ---- */
+/* Brand System v2.0 logo reveal, home page, once per session.
+   html.lr is set pre-paint by an inline gate on index only, so
+   the static lockup never shows before the slash. Slash enters
+   lower-left along its own 70° axis (0–200ms), the wordmark
+   wipes in behind a 70°-parallel clip edge the slash rides
+   (200–480ms), the slash exits the clipped box and the end
+   frame is the untouched static lockup. 70° ⇒ 46px rise runs
+   46/tan70° = 16.7px. */
+html.lr .site-head__logo { position: relative; overflow: hidden; }
+html.lr .site-head__logo img {
+  animation: lr-wipe 280ms var(--ease) 200ms both;
+}
+html.lr .site-head__logo::before {
+  content: ""; position: absolute; left: 0; top: 0;
+  width: 9px; height: 46px; background: var(--moss);
+  animation: lr-slash 480ms both;
+}
+@keyframes lr-wipe {
+  from { clip-path: polygon(0 0, 0px 0, -16.7px 100%, 0 100%); }
+  to   { clip-path: polygon(0 0, 256px 0, 239.3px 100%, 0 100%); }
+}
+@keyframes lr-slash {
+  0% { transform: translate(-9.5px, 48px) skewX(-20deg);
+       animation-timing-function: cubic-bezier(0.16, 0.84, 0.44, 1); }
+  /* phase 2 must mirror lr-wipe's curve (--ease literal — var() is
+     unreliable inside keyframes) so the slash stays on the wipe edge */
+  41.7% { transform: translate(8px, 0) skewX(-20deg);
+          animation-timing-function: cubic-bezier(0.22, 0.61, 0.21, 1); }
+  100% { transform: translate(252px, 0) skewX(-20deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html.lr .site-head__logo img { animation: none; clip-path: none; }
+  html.lr .site-head__logo::before { display: none; }
+}
 .site-nav { margin-left: auto; display: flex; align-items: center; gap: 1.9rem; }
 .site-nav a:not(.btn) {
   font-family: var(--mono); font-weight: 500;

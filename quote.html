@@ -18,9 +18,9 @@
 <link rel="icon" href="assets/favicon/favicon.ico" sizes="any">
 <link rel="icon" href="assets/favicon/favicon-slash.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon-180.png">
-<link rel="stylesheet" href="assets/css/site.css?v=36793c88">
+<link rel="stylesheet" href="assets/css/site.css?v=50f4b0a8">
 <script defer src="assets/js/site.js?v=4d732325"></script>
-<script defer src="assets/js/quote.js?v=024e9733"></script>
+<script defer src="assets/js/quote.js?v=21ede31e"></script>
 </head>
 <body class="pg-quote">
 <a class="skip" href="#main">Skip to content</a>
@@ -32,7 +32,6 @@
     <input type="checkbox" id="nav-open" class="nav-toggle-box" aria-label="Site menu">
     <label for="nav-open" class="nav-toggle">Menu /</label>
     <nav class="site-nav" aria-label="Primary">
-      <a href="/eleven-surfaces">The Standard</a>
       <a href="/services">Services</a>
       <a href="/pricing">Pricing</a>
       <a href="/quote" aria-current="page">Quote</a>
@@ -55,8 +54,9 @@
     <span class="hl"><span>Tick what you need.</span></span>
     <span class="hl"><span>The quote builds itself.</span></span>
     </h1>
-    <p class="lead rv">Every price below is published. Nothing is quoted on
-    request, and nobody gets a different number.</p>
+    <p class="lead rv">Every item below carries its own price and its own
+    delivery time. Nothing is quoted on request — nobody gets a different
+    number.</p>
   </div>
 </section>
 
@@ -66,98 +66,189 @@
       <div class="qb__col">
 
         <div class="qb-group rv">
-          <p class="lab">Your practice</p>
-          <div class="qb-radio">
-            <label><input type="radio" name="ptype" value="Commercial property professional" checked>
-              <span>Commercial property</span></label>
-            <label><input type="radio" name="ptype" value="Healthcare / allied health practice">
-              <span>Healthcare &amp; allied health</span></label>
-            <label><input type="radio" name="ptype" value="Other specialist">
-              <span>Other specialist</span></label>
+          <p class="lab"><span class="qb-no">00</span>Who you are</p>
+          <div class="qb-select">
+            <select id="qb-ptype" name="ptype" aria-label="Your field">
+              <optgroup label="Commercial property">
+                <option>Commercial / buyer&#8217;s agent</option>
+                <option>Asset &amp; property owner</option>
+                <option>Project management</option>
+                <option>Developer</option>
+                <option>Specialist consultant</option>
+              </optgroup>
+              <optgroup label="Healthcare">
+                <option>Healthcare &amp; allied health practice</option>
+              </optgroup>
+              <optgroup label="Other">
+                <option>Business operator</option>
+                <option>Other specialist</option>
+              </optgroup>
+            </select>
           </div>
         </div>
 
         <div class="qb-group rv">
-          <p class="lab">Start — the diagnostic</p>
-          <label class="qb-item"><input type="checkbox" data-g="audit" checked>
-            <span>The Proof Audit — your marketing scored, a baseline measured,
-            the three fixes ranked</span><em>$3,000 · credited in full</em></label>
+          <p class="lab"><span class="qb-no">01</span>Start — the diagnostic</p>
+          <label class="qb-item"><input type="checkbox" data-p="3000" data-t="2 weeks"
+              data-label="The Proof Audit" data-note="credited in full within 90 days" checked>
+            <span><b>The Proof Audit</b><small>Every channel scored 0–4 with evidence,
+            your baseline measured, the three highest-value fixes ranked.</small></span>
+            <em><b>$3,000</b><i>2 weeks</i></em></label>
+          <p class="qb-hint">Optional — and credited in full against any engagement
+          within 90 days. Scored marketing costs you nothing if you proceed.</p>
         </div>
 
         <div class="qb-group rv">
-          <p class="lab">Strategy — SIGNAL /</p>
-          <label class="qb-item"><input type="checkbox" data-g="strategy">
-            <span>Positioning &amp; message architecture</span><em>core</em></label>
-          <label class="qb-item"><input type="checkbox" data-g="strategy">
-            <span>Fee strategy &amp; pricing logic</span><em>core</em></label>
-          <label class="qb-item"><input type="checkbox" data-g="strategy">
-            <span>Objection playbook, in your words</span><em>core</em></label>
-          <label class="qb-item"><input type="checkbox" data-g="strategy" data-price="1800" data-label="Written personas">
-            <span>Written personas from your client base</span><em>+ $1,800</em></label>
-          <label class="qb-item"><input type="checkbox" data-g="strategy" data-price="1900" data-label="Competitive map">
-            <span>Competitive map — where you sit, where not to go</span><em>+ $1,900</em></label>
+          <p class="lab"><span class="qb-no">02</span>Strategy — SIGNAL /</p>
+          <label class="qb-item"><input type="checkbox" data-p="6500" data-t="2 weeks"
+              data-g="signal" data-label="Positioning &amp; message architecture">
+            <span><b>Positioning &amp; message architecture</b><small>What you stand for,
+            for whom, and the exact words — one message hierarchy reused in every
+            proposal, page and pitch.</small></span>
+            <em><b>$6,500</b><i>2 weeks</i></em></label>
+          <label class="qb-item"><input type="checkbox" data-p="4000" data-t="1 week"
+              data-g="signal" data-label="Fee strategy &amp; pricing logic">
+            <span><b>Fee strategy &amp; pricing logic</b><small>Your fee structured and
+            defended with reasoning a client can read.</small></span>
+            <em><b>$4,000</b><i>1 week</i></em></label>
+          <label class="qb-item"><input type="checkbox" data-p="3500" data-t="1 week"
+              data-g="signal" data-label="Objection playbook">
+            <span><b>Objection playbook</b><small>The ten hard questions you keep
+            hearing, answered in your own words.</small></span>
+            <em><b>$3,500</b><i>1 week</i></em></label>
+          <label class="qb-item"><input type="checkbox" data-p="1800" data-t="1 week"
+              data-label="Written personas">
+            <span><b>Written personas</b><small>Your three buyer types, written from
+            your real client base — not invented.</small></span>
+            <em><b>$1,800</b><i>1 week</i></em></label>
+          <label class="qb-item"><input type="checkbox" data-p="1900" data-t="1 week"
+              data-label="Competitive map">
+            <span><b>Competitive map</b><small>Where you sit, who you actually beat,
+            and where not to compete.</small></span>
+            <em><b>$1,900</b><i>1 week</i></em></label>
+          <p class="qb-hint">Take all three core items and they run as one engagement:
+          <strong>SIGNAL / — $14,000, four weeks.</strong></p>
         </div>
 
         <div class="qb-group rv">
-          <p class="lab">Build — / HAUS</p>
-          <label class="qb-item"><input type="checkbox" data-g="build">
-            <span>Brand identity &amp; brand book</span><em>in scope</em></label>
-          <label class="qb-item"><input type="checkbox" data-g="build">
-            <span>Website — up to 8 pages, built and live</span><em>in scope</em></label>
-          <label class="qb-item"><input type="checkbox" data-g="build">
-            <span>Proposal &amp; presentation system</span><em>in scope</em></label>
-          <label class="qb-item"><input type="checkbox" data-g="build">
-            <span>Enquiry response system &amp; CRM setup</span><em>in scope</em></label>
-          <label class="qb-item qb-item--qty"><span>Website pages beyond eight</span>
-            <input type="number" data-q="xpages" min="0" max="40" value="0" aria-label="Extra pages">
-            <em>$850 / page</em></label>
+          <p class="lab"><span class="qb-no">03</span>Brand &amp; build — / HAUS</p>
+          <label class="qb-item"><input type="checkbox" data-p="9500" data-t="3 weeks"
+              data-g="haus" data-label="Brand identity &amp; brand book">
+            <span><b>Brand identity &amp; brand book</b><small>Logo system, type, colour,
+            usage rules — every source file yours by contract.</small></span>
+            <em><b>$9,500</b><i>3 weeks</i></em></label>
+          <label class="qb-item"><input type="checkbox" data-p="16500" data-t="4–5 weeks"
+              data-g="haus" data-label="Website — up to 8 pages">
+            <span><b>Website — up to 8 pages</b><small>Designed, written, built and
+            launched. Fast, indexable, readable by AI search.</small></span>
+            <em><b>$16,500</b><i>4–5 weeks</i></em></label>
+          <label class="qb-item"><input type="checkbox" data-p="6500" data-t="2 weeks"
+              data-g="haus" data-label="Proposal &amp; presentation system">
+            <span><b>Proposal &amp; presentation system</b><small>Proposal, capability
+            statement and pitch templates, in your brand, ready to send.</small></span>
+            <em><b>$6,500</b><i>2 weeks</i></em></label>
+          <label class="qb-item"><input type="checkbox" data-p="5500" data-t="2 weeks"
+              data-g="haus" data-label="Enquiry response &amp; CRM setup">
+            <span><b>Enquiry response &amp; CRM setup</b><small>Same-day response
+            templates, routing, pipeline stages and follow-up — installed.</small></span>
+            <em><b>$5,500</b><i>2 weeks</i></em></label>
+          <label class="qb-item qb-item--qty">
+            <span><b>Website pages beyond eight</b><small>Each extra page, designed
+            and written to the same standard as the eight.</small></span>
+            <input type="number" data-q="xpages" data-p="850" data-t="+2 days each"
+              data-label="Website pages beyond eight" min="0" max="40" value="0" aria-label="Extra pages">
+            <em><b>$850</b><i>per page</i></em></label>
+          <p class="qb-hint">Take all four and they build as one system:
+          <strong>/ HAUS — $38,000, one team, 8–10 weeks.</strong></p>
         </div>
 
         <div class="qb-group rv">
-          <p class="lab">Monthly engine — MOMENTUM</p>
-          <p class="qb-hint">Pick what should run each month. We recommend the
-          tier; you choose it by how much of your week you want back.</p>
-          <label class="qb-item"><input type="checkbox" data-g="capture">
-            <span>SEO, local search &amp; Google Business Profile</span><em>capture</em></label>
-          <label class="qb-item"><input type="checkbox" data-g="capture" data-id="ads">
-            <span>Google Ads, managed</span><em>capture</em></label>
-          <label class="qb-item"><input type="checkbox" data-g="capture">
-            <span>AI search visibility — ChatGPT, AI Overviews</span><em>capture</em></label>
-          <label class="qb-item"><input type="checkbox" data-g="authority">
-            <span>Editorial content &amp; case studies</span><em>authority</em></label>
-          <label class="qb-item"><input type="checkbox" data-g="authority">
-            <span>Practitioner video — scripted &amp; edited</span><em>authority</em></label>
-          <label class="qb-item"><input type="checkbox" data-g="authority">
-            <span>LinkedIn &amp; key-account outreach</span><em>authority</em></label>
-          <label class="qb-item"><input type="checkbox" data-g="retain">
-            <span>Email nurture, recalls &amp; CRM, run for you</span><em>return</em></label>
-          <label class="qb-item"><input type="checkbox" data-g="retain">
-            <span>Referral partner system</span><em>return</em></label>
-          <label class="qb-item"><input type="checkbox" data-g="retain">
-            <span>Reviews &amp; reputation — compliant path for health</span><em>return</em></label>
-          <div id="qb-tier" class="qb-tiers" hidden>
-            <p class="lab">Tier</p>
-            <button type="button" data-tier="directed">Directed<b>$4,200</b></button>
-            <button type="button" data-tier="shared">Shared<b>$7,400</b></button>
-            <button type="button" data-tier="held">Held<b>$13,500</b></button>
-          </div>
+          <p class="lab"><span class="qb-no">04</span>Growth, monthly — MOMENTUM</p>
+          <p class="qb-hint">Each service runs month after month. Six-month minimum,
+          then monthly. Reporting and your monthly score are included with any
+          selection — $0.</p>
+          <label class="qb-item"><input type="checkbox" data-p="1800" data-mo="1"
+              data-label="SEO &amp; local search">
+            <span><b>SEO &amp; local search</b><small>Rankings, Google Business Profile
+            and the map pack — maintained and reported monthly.</small></span>
+            <em><b>$1,800</b><i>/ month</i></em></label>
+          <label class="qb-item"><input type="checkbox" data-p="2200" data-mo="1" data-id="ads"
+              data-label="Google Ads, managed">
+            <span><b>Google Ads, managed</b><small>Campaigns built, run and optimised
+            weekly. Ad spend billed direct to you — we never touch it.</small></span>
+            <em><b>$2,200</b><i>/ month</i></em></label>
+          <label class="qb-item"><input type="checkbox" data-p="1400" data-mo="1"
+              data-label="AI search visibility">
+            <span><b>AI search visibility</b><small>Getting you cited by ChatGPT,
+            AI Overviews and Perplexity when your buyers ask.</small></span>
+            <em><b>$1,400</b><i>/ month</i></em></label>
+          <label class="qb-item"><input type="checkbox" data-p="2600" data-mo="1"
+              data-label="Editorial content &amp; case studies">
+            <span><b>Editorial content &amp; case studies</b><small>Two pieces a month —
+            researched, written, published and distributed.</small></span>
+            <em><b>$2,600</b><i>/ month</i></em></label>
+          <label class="qb-item"><input type="checkbox" data-p="2400" data-mo="1"
+              data-label="Practitioner video">
+            <span><b>Practitioner video</b><small>One scripted, edited video a month,
+            cut for three platforms. You talk; we do the rest.</small></span>
+            <em><b>$2,400</b><i>/ month</i></em></label>
+          <label class="qb-item"><input type="checkbox" data-p="1600" data-mo="1"
+              data-label="LinkedIn &amp; key-account outreach">
+            <span><b>LinkedIn &amp; key-account outreach</b><small>Your named target
+            accounts warmed and worked, under your name.</small></span>
+            <em><b>$1,600</b><i>/ month</i></em></label>
+          <label class="qb-item"><input type="checkbox" data-p="1500" data-mo="1"
+              data-label="Email nurture &amp; CRM">
+            <span><b>Email nurture &amp; CRM</b><small>Sequences, recalls and follow-up —
+            written, sent and maintained for you.</small></span>
+            <em><b>$1,500</b><i>/ month</i></em></label>
+          <label class="qb-item"><input type="checkbox" data-p="1200" data-mo="1"
+              data-label="Referral partner system">
+            <span><b>Referral partner system</b><small>Your referrer list built,
+            briefed and kept warm — the channel most practices leave to luck.</small></span>
+            <em><b>$1,200</b><i>/ month</i></em></label>
+          <label class="qb-item"><input type="checkbox" data-p="1000" data-mo="1"
+              data-label="Reviews &amp; reputation">
+            <span><b>Reviews &amp; reputation</b><small>Reviews grown on a compliant
+            path — AHPRA-safe for health practices.</small></span>
+            <em><b>$1,000</b><i>/ month</i></em></label>
+          <p class="qb-hint">Run everything and the price stops climbing:
+          <strong>MOMENTUM / Held caps the lot at $13,500 / month.</strong></p>
         </div>
 
         <div class="qb-group rv">
-          <p class="lab">Add-ons</p>
-          <label class="qb-item qb-item--qty"><span>Case studies, proof standard</span>
-            <input type="number" data-q="cases" min="0" max="12" value="0" aria-label="Case studies">
-            <em>$1,800 each</em></label>
-          <label class="qb-item"><input type="checkbox" data-g="extras" data-price="7500" data-label="Campaign sprint — 4 weeks" data-unit="one campaign, built">
-            <span>Campaign sprint — 4 weeks, one campaign</span><em>$7,500</em></label>
-          <label class="qb-item"><input type="checkbox" data-g="extras" data-price="6500" data-label="Vertical edition, full" data-unit="language, proof, surfaces">
-            <span>Vertical edition — language, proof, surfaces</span><em>$6,500</em></label>
-          <label class="qb-item"><input type="checkbox" data-g="extras" data-price="1900" data-label="Pitch &amp; tender support" data-unit="per submission">
-            <span>Pitch &amp; tender support</span><em>$1,900</em></label>
-          <label class="qb-item"><input type="checkbox" data-g="extras" data-price="2200" data-label="Art-direction day" data-unit="photography, film, set">
-            <span>Art-direction day</span><em>$2,200</em></label>
-          <label class="qb-item"><input type="checkbox" data-g="extras" data-price="600" data-label="Standalone strategy session" data-unit="90 minutes">
-            <span>Standalone strategy session — 90 min</span><em>$600</em></label>
+          <p class="lab"><span class="qb-no">05</span>Add-ons</p>
+          <label class="qb-item qb-item--qty">
+            <span><b>Case studies</b><small>Named client, real numbers, dated and
+            caveated — the proof your buyers actually check.</small></span>
+            <input type="number" data-q="cases" data-p="1800" data-t="2 weeks each"
+              data-label="Case studies" min="0" max="12" value="0" aria-label="Case studies">
+            <em><b>$1,800</b><i>each</i></em></label>
+          <label class="qb-item"><input type="checkbox" data-p="7500" data-t="4 weeks"
+              data-label="Campaign sprint">
+            <span><b>Campaign sprint</b><small>One campaign: the offer, the assets,
+            the landing page — built and launched.</small></span>
+            <em><b>$7,500</b><i>4 weeks</i></em></label>
+          <label class="qb-item"><input type="checkbox" data-p="6500" data-t="3 weeks"
+              data-label="Vertical sales edition">
+            <span><b>Vertical sales edition</b><small>Your materials re-cut for a
+            second industry — its language, its proof, its pages.</small></span>
+            <em><b>$6,500</b><i>3 weeks</i></em></label>
+          <label class="qb-item"><input type="checkbox" data-p="1900" data-t="1 week"
+              data-label="Pitch &amp; tender support">
+            <span><b>Pitch &amp; tender support</b><small>Per submission — structure,
+            story, design and a rehearsal.</small></span>
+            <em><b>$1,900</b><i>per bid</i></em></label>
+          <label class="qb-item"><input type="checkbox" data-p="2200" data-t="1 day"
+              data-label="Art-direction day">
+            <span><b>Art-direction day</b><small>Photography and film directed to the
+            brand, on set with you.</small></span>
+            <em><b>$2,200</b><i>1 day</i></em></label>
+          <label class="qb-item"><input type="checkbox" data-p="600" data-t="90 minutes"
+              data-label="Strategy session">
+            <span><b>Strategy session</b><small>Ninety minutes, one problem,
+            straight answers.</small></span>
+            <em><b>$600</b><i>90 min</i></em></label>
         </div>
       </div>
 
@@ -170,7 +261,7 @@
           <button class="btn btn--ghost" id="qb-print" type="button">Print / PDF</button>
         </div>
         <p class="small mt2">Nothing is sent until you email it. We reply within
-        one business day — that is surface 02, and we are scored on it.</p>
+        one business day, with the same numbers.</p>
       </aside>
     </div>
   </div>
@@ -190,8 +281,8 @@
       <nav aria-label="Footer">
         <p class="lab lab--rev">Site /</p>
         <ul class="mt2">
-          <li><a href="/eleven-surfaces">The Eleven Surfaces</a></li>
           <li><a href="/score">Score your practice</a></li>
+          <li><a href="/quote">Build your quote</a></li>
           <li><a href="/services">Services</a></li>
           <li><a href="/pricing">Pricing</a></li>
           <li><a href="/method">Method</a></li>

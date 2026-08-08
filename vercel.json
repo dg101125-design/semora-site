@@ -38,6 +38,13 @@
       ]
     }
   ],
+  "redirects": [
+    {
+      "source": "/eleven-surfaces",
+      "destination": "/score",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/favicon.ico",

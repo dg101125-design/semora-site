@@ -1272,6 +1272,28 @@ html.lr .site-head__logo::before {
   text-decoration-thickness: 2px; text-decoration-color: var(--moss-300);
 }
 
+/* clients page — reserved slots for cases and testimonials */
+.cslot-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.4rem; }
+@media (max-width: 900px) { .cslot-grid { grid-template-columns: 1fr; } }
+.cslot {
+  border: 1px dashed var(--champ-700); border-top: 4px solid var(--plum-900);
+  background: var(--white); padding: 1.6rem 1.7rem 1.4rem; min-height: 11rem;
+}
+.cslot > .lab { display: flex; align-items: center; margin-bottom: 0.9rem; color: var(--plum-900); }
+.cslot p:not(.lab) { font-size: 0.9rem; line-height: 1.6; color: var(--graph-400); max-width: none; }
+.tslot-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem; }
+@media (max-width: 900px) { .tslot-grid { grid-template-columns: 1fr; } }
+.tslot {
+  position: relative; border: 1px dashed var(--champ-700);
+  padding: 2.4rem 1.8rem 1.6rem; background: var(--white);
+}
+.tslot__mark {
+  position: absolute; top: 0.4rem; left: 1.1rem;
+  font-family: var(--serif); font-weight: 300; font-size: 3.4rem;
+  line-height: 1; color: var(--moss-300); pointer-events: none;
+}
+.tslot p { font-size: 0.9rem; line-height: 1.6; color: var(--graph-400); max-width: none; }
+
 /* quote builder — motion */
 @media (prefers-reduced-motion: no-preference) {
   .qb-line { animation: qline-in 0.3s var(--ease) both; }

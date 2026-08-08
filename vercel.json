@@ -43,6 +43,11 @@
       "source": "/eleven-surfaces",
       "destination": "/score",
       "permanent": true
+    },
+    {
+      "source": "/pricing",
+      "destination": "/quote",
+      "permanent": true
     }
   ],
   "rewrites": [

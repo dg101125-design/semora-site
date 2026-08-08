@@ -92,10 +92,7 @@
   }
 
   function quoteText() {
-    var out = "SIGNALHAUS — quote request " + new Date().toLocaleDateString("en-AU") + "\n";
-    var pt = document.getElementById("qb-ptype");
-    if (pt && pt.value) out += "Field: " + pt.value + "\n";
-    out += "\n";
+    var out = "SIGNALHAUS — quote request " + new Date().toLocaleDateString("en-AU") + "\n\n";
     sumEl.querySelectorAll(".qb-line").forEach(function (l) {
       out += l.querySelector("span").textContent + " — " + l.querySelector("b").textContent +
         " (" + l.querySelector("em").textContent + ")\n";

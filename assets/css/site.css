@@ -1179,22 +1179,35 @@ html.lr .site-head__logo::before {
 .qb-group {
   border: 1px solid var(--champ-700); border-top: 4px solid var(--plum-900);
   background: var(--white);
-  padding: 1.5rem 1.7rem 1.2rem; margin-bottom: 1.4rem;
+  padding: 1.7rem 1.9rem 1.4rem; margin-bottom: 1.7rem;
 }
-.qb-group > .lab { margin-bottom: 0.8rem; color: var(--plum-900); }
+.qb-group > .lab {
+  display: flex; align-items: center; gap: 0.9em;
+  margin-bottom: 1rem; color: var(--plum-900);
+}
 .qb-no {
-  display: inline-block; margin-right: 1.1em; padding-right: 1.05em;
+  display: inline-block; padding-right: 0.95em;
   color: var(--moss-700); border-right: 2px solid var(--moss-300);
 }
+.qb-ic {
+  width: 23px; height: 23px; flex: 0 0 auto;
+  stroke: var(--plum-900); stroke-width: 1.8; fill: none;
+  stroke-linecap: square;
+}
+.qb-ic .ic-x { stroke: var(--moss-700); }
+.qb-ic .ic-dot { fill: var(--moss-700); stroke: none; }
 .qb-hint { font-size: 0.84rem; color: var(--graph-400); margin: 0.7rem 0 0.4rem; max-width: none; }
 .qb-hint strong { color: var(--plum-900); }
 .qb-item {
-  display: flex; align-items: flex-start; gap: 0.9rem;
-  padding: 0.85rem 0.7rem; margin-inline: -0.7rem;
+  display: flex; align-items: flex-start; gap: 1.05rem;
+  padding: 1rem 0.8rem; margin-inline: -0.8rem;
   border-top: 1px solid var(--champ-300); cursor: pointer;
-  transition: background 140ms var(--ease);
+  transition: background 140ms var(--ease), box-shadow 140ms var(--ease);
 }
-.qb-item:hover { background: var(--champ-300); }
+.qb-item:hover {
+  background: var(--champ-300);
+  box-shadow: inset 3px 0 0 var(--champ-700);
+}
 .qb-item:has(input:checked) {
   background: color-mix(in srgb, var(--moss-100) 45%, var(--white));
   box-shadow: inset 3px 0 0 var(--moss-700);
@@ -1212,42 +1225,37 @@ html.lr .site-head__logo::before {
 }
 .qb-item > span { flex: 1; font-size: 0.95rem; color: var(--graph-700); max-width: none; }
 .qb-item > span b {
-  display: block; font-family: var(--serif); font-weight: 460;
-  font-size: 1.04rem; line-height: 1.25; color: var(--plum-900);
+  display: block; font-family: var(--serif); font-weight: 500;
+  font-size: 1.13rem; line-height: 1.22; color: var(--plum-ink);
+  letter-spacing: -0.005em;
 }
 .qb-item > span small {
-  display: block; font-size: 0.8rem; line-height: 1.45;
-  color: var(--graph-400); margin-top: 2px; max-width: 52ch;
+  display: block; font-size: 0.78rem; line-height: 1.55;
+  color: var(--graph-400); margin-top: 0.3rem; max-width: 50ch;
 }
 .qb-item em { font-style: normal; text-align: right; flex: 0 0 auto; }
 .qb-item em b {
-  display: block; font-family: var(--serif); font-weight: 430;
-  font-size: 1.08rem; color: var(--plum-900); font-variant-numeric: tabular-nums;
+  display: block; font-family: var(--serif); font-weight: 460;
+  font-size: 1.18rem; color: var(--plum-ink); font-variant-numeric: tabular-nums;
 }
 .qb-item em i {
   display: block; font-style: normal; font-family: var(--mono); font-weight: 500;
   font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--moss-700); margin-top: 3px; white-space: nowrap;
+  color: var(--moss-700); margin-top: 5px; white-space: nowrap;
 }
 .qb-item--qty input[type="number"] {
   width: 4.2rem; font-family: var(--mono); font-size: 0.9rem;
   padding: 0.35em 0.45em; border: 2px solid var(--plum-900);
   background: var(--white); color: var(--plum-900); flex: 0 0 auto;
 }
-.qb-select select {
-  appearance: none; -webkit-appearance: none;
-  width: 100%; max-width: 30rem;
-  font-family: var(--mono); font-weight: 500; font-size: 0.78rem;
-  letter-spacing: 0.16em; text-transform: uppercase;
-  padding: 0.95em 3em 0.95em 1.1em;
-  border: 2px solid var(--plum-900); background-color: var(--white);
-  color: var(--plum-900); cursor: pointer;
-  background-image:
-    linear-gradient(45deg, transparent 50%, var(--plum-900) 50%),
-    linear-gradient(135deg, var(--plum-900) 50%, transparent 50%);
-  background-position: calc(100% - 22px) 55%, calc(100% - 16px) 55%;
-  background-size: 6px 6px; background-repeat: no-repeat;
+.qb-sum__brand {
+  display: flex; align-items: center; gap: 14px; margin-bottom: 1rem;
 }
+.qb-sum__brand img {
+  display: block; width: 86px; height: auto;
+  background: var(--champ); padding: 8px 10px;
+}
+.qb-sum__brand .lab { margin: 0; }
 .qb-cap {
   font-size: 0.78rem; line-height: 1.5; color: var(--champ);
   border: 1px solid var(--moss-300); padding: 0.55em 0.8em;
@@ -1257,6 +1265,38 @@ html.lr .site-head__logo::before {
   color: var(--plum-300); font-weight: 300; font-size: 1.15rem;
   margin-right: 0.3em;
   text-decoration-thickness: 2px; text-decoration-color: var(--moss-300);
+}
+
+/* quote builder — motion */
+@media (prefers-reduced-motion: no-preference) {
+  .qb-line { animation: qline-in 0.3s var(--ease) both; }
+  .qb-line:nth-child(2) { animation-delay: 0.03s; }
+  .qb-line:nth-child(3) { animation-delay: 0.06s; }
+  .qb-line:nth-child(4) { animation-delay: 0.09s; }
+  .qb-line:nth-child(n+5) { animation-delay: 0.12s; }
+  .qb-total b { display: inline-block; animation: qline-in 0.3s var(--ease) both; }
+  @keyframes qline-in { from { opacity: 0; transform: translateY(6px); } }
+  .qb-item input[type="checkbox"]:checked::before {
+    animation: check-pop 0.24s var(--ease);
+  }
+  @keyframes check-pop {
+    0% { transform: scale(0); }
+    65% { transform: scale(1.35); }
+    100% { transform: scale(1); }
+  }
+  html.js .rv.in .qb-item { animation: item-rise 0.5s var(--ease) backwards; }
+  html.js .rv.in .qb-item:nth-child(3) { animation-delay: 0.05s; }
+  html.js .rv.in .qb-item:nth-child(4) { animation-delay: 0.1s; }
+  html.js .rv.in .qb-item:nth-child(5) { animation-delay: 0.15s; }
+  html.js .rv.in .qb-item:nth-child(6) { animation-delay: 0.2s; }
+  html.js .rv.in .qb-item:nth-child(7) { animation-delay: 0.25s; }
+  html.js .rv.in .qb-item:nth-child(n+8) { animation-delay: 0.3s; }
+  @keyframes item-rise { from { opacity: 0; transform: translateY(12px); } }
+  .qb-ic { stroke-dasharray: 90; stroke-dashoffset: 0; }
+  html.js .rv.in .qb-ic {
+    animation: ic-draw 0.9s var(--ease) 0.15s backwards;
+  }
+  @keyframes ic-draw { from { stroke-dashoffset: 90; } }
 }
 .qb-sum {
   position: sticky; top: 1.2rem;

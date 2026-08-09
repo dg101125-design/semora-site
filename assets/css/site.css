@@ -987,6 +987,16 @@ html.lr .site-head__logo::before {
 /* hero line reveal: each line masked, rises in */
 .hl { display: block; overflow: hidden; }
 .hl > span { display: block; }
+/* home hero: the disclaimer recedes so the promise line carries the page.
+   The promise scales past the site-wide h1 because it is the one sentence
+   the homepage exists to land — checked clear of the monogram at 1400px. */
+h1:has(.hl--sub) { font-size: clamp(2.9rem, 7.5vw, 6rem); }
+.hl--sub {
+  font-size: clamp(1rem, 1.85vw, 1.42rem);
+  font-weight: 400; line-height: 1.25; letter-spacing: 0.005em;
+  color: var(--plum-100);
+  margin-bottom: 0.62em;
+}
 /* narrow phones: fixed display lines must wrap naturally */
 @media (max-width: 560px) {
   h1 br, .display br { display: none; }
@@ -1280,6 +1290,9 @@ html.lr .site-head__logo::before {
   background: var(--white); padding: 1.6rem 1.7rem 1.4rem; min-height: 11rem;
 }
 .cslot > .lab { display: flex; align-items: center; margin-bottom: 0.9rem; color: var(--plum-900); }
+/* a slot holding a real, named engagement — solid, not the dashed placeholder */
+.cslot--live { border-style: solid; border-color: var(--champ-700); background: var(--champ-300); }
+.cslot--live p:not(.lab) { color: var(--graph-700); }
 .cslot p:not(.lab) { font-size: 0.9rem; line-height: 1.6; color: var(--graph-400); max-width: none; }
 .tslot-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem; }
 @media (max-width: 900px) { .tslot-grid { grid-template-columns: 1fr; } }

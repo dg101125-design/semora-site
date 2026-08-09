@@ -1,5 +1,5 @@
-/* SIGNALHÄUS — quote builder. Vanilla, deterministic: every figure comes
-   from the published fee schedule. No AI, no variables, no "it depends".
+/* SIGNALHÄUS — quote builder. Vanilla, deterministic: every figure is
+   published on the page itself. No AI, no variables, no "it depends".
    Every item carries its own price and delivery time; totals are sums.
    One rule: the monthly menu never exceeds MOMENTUM / Held. */
 (function () {
@@ -88,7 +88,7 @@
           "never costs more than " + fmt(CAP) + " a month.</p>";
       }
     }
-    t += '<p class="qb-fine">All + GST. The audit credits in full against any engagement within 90 days. Every price is from the published fee schedule — identical for every client.</p>';
+    t += '<p class="qb-fine">All + GST. The audit credits in full against any engagement within 90 days. Every price on this page is published — identical for every client.</p>';
     totEl.innerHTML = t;
   }
 

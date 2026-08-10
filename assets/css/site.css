@@ -496,7 +496,7 @@ html.lr .site-head__logo::before {
   .site-foot__legal { letter-spacing: 0.12em !important; }
 }
 
-/* ----------------------------------------- the hero mark (S/H seal) */
+/* ------------------------------------------- the hero mark (Ö seal) */
 .hero__mark {
   position: absolute; z-index: 1;
   right: clamp(4%, 8vw, 10%);
@@ -504,14 +504,8 @@ html.lr .site-head__logo::before {
   width: clamp(150px, 15vw, 215px); height: auto;
 }
 .hero__mark .mk-tile { fill: var(--champ); }
-.hero__mark .mk-letter {
-  font-family: var(--serif); font-weight: 320;
-  font-variation-settings: "opsz" 72;
-  fill: var(--plum-ink); font-size: 150px; letter-spacing: 6px;
-}
-.hero__mark .mk-slash { fill: var(--moss-700); }
+.hero__mark .mk-letter { fill: var(--plum-ink); }
 .hero__mark .mk-dot { fill: var(--moss-700); }
-.hero__mark .mk-rule { stroke: var(--champ-700); stroke-width: 3; }
 @media (max-width: 1120px) { .hero__mark { display: none; } }
 @media (prefers-reduced-motion: no-preference) {
   .hero__mark {

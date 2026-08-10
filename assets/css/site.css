@@ -575,6 +575,14 @@ html.lr .site-head__word::before {
 /* the word verdict — new / more / right */
 .wcycle { display: inline-grid; }
 .wcycle .w { grid-area: 1 / 1; position: relative; white-space: nowrap; }
+/* The two struck-through words are drawn here rather than written into the
+   markup. In the markup they were read by every crawler — aria-hidden hides
+   them from screen readers, not from text extraction — so the headline
+   extracted as "We bring you the new more right clients", which an answer
+   engine reported back to us as a typo on 10 Aug 2026. CSS content is not
+   part of the text, so the H1 now extracts as the schema slogan exactly. */
+.wcycle .w1::before { content: "new"; }
+.wcycle .w2::before { content: "more"; }
 /* static + reduced-motion default: only the verdict shows */
 .wcycle .w1, .wcycle .w2 { display: none; }
 .hero > .wrap { position: relative; z-index: 1; }

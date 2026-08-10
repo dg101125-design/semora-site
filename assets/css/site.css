@@ -387,10 +387,19 @@ section > .wrap { position: relative; z-index: 1; }
   display: flex; align-items: center; gap: 2rem;
   min-height: 74px;
 }
-.site-head__logo { flex: 0 0 auto; }
+.site-head__logo { flex: 0 0 auto; display: flex; align-items: center; }
 /* 46px tall → ~239px wide: at the brand's 240px screen floor,
    umlaut dots ~2.5px — above the 2px reproduction floor. */
 .site-head__logo img { height: 46px; width: auto; }
+
+/* The seal sits OUTSIDE the animated wordmark, not inside it. The reveal
+   below is calibrated in hard pixels to the wordmark's 249px width, so
+   anything sharing that box shifts the wipe off its own slash. */
+.site-head__mark { height: 52px; width: 52px; margin-right: 18px; }
+/* Below the nav collapse the header carries the wordmark and the menu
+   toggle; a third element makes it wrap on a 390px phone. The wordmark
+   stays, not the seal — the name still has to do the work of being known. */
+@media (max-width: 640px) { .site-head__mark { display: none; } }
 
 /* ------------------------------- signature logo reveal ---- */
 /* Brand System v2.0 logo reveal, home page, once per session.
@@ -401,11 +410,11 @@ section > .wrap { position: relative; z-index: 1; }
    (200–480ms), the slash exits the clipped box and the end
    frame is the untouched static lockup. 70° ⇒ 46px rise runs
    46/tan70° = 16.7px. */
-html.lr .site-head__logo { position: relative; overflow: hidden; }
-html.lr .site-head__logo img {
+html.lr .site-head__word { position: relative; overflow: hidden; display: block; }
+html.lr .site-head__word img {
   animation: lr-wipe 280ms var(--ease) 200ms both;
 }
-html.lr .site-head__logo::before {
+html.lr .site-head__word::before {
   content: ""; position: absolute; left: 0; top: 0;
   width: 9px; height: 46px; background: var(--moss);
   animation: lr-slash 480ms both;
@@ -424,8 +433,8 @@ html.lr .site-head__logo::before {
   100% { transform: translate(252px, 0) skewX(-20deg); }
 }
 @media (prefers-reduced-motion: reduce) {
-  html.lr .site-head__logo img { animation: none; clip-path: none; }
-  html.lr .site-head__logo::before { display: none; }
+  html.lr .site-head__word img { animation: none; clip-path: none; }
+  html.lr .site-head__word::before { display: none; }
 }
 .site-nav { margin-left: auto; display: flex; align-items: center; gap: 1.9rem; }
 .site-nav a:not(.btn) {

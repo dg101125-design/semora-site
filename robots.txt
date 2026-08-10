@@ -42,6 +42,18 @@ Disallow: /
 User-agent: Bytespider
 Disallow: /
 
+# SEO auditing tools we run ourselves. These already match the wildcard
+# below, but Semrush and Ahrefs both check for their own named block before
+# crawling, and naming them protects the audit if the wildcard ever tightens.
+User-agent: SiteAuditBot
+Disallow:
+
+User-agent: SemrushBot
+Disallow:
+
+User-agent: AhrefsSiteAudit
+Disallow:
+
 # Everyone else, including Googlebot and Bingbot
 User-agent: *
 Allow: /

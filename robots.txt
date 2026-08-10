@@ -46,4 +46,4 @@ Disallow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://www.signalhaus.au/sitemap.xml
+Sitemap: https://www.semora.com.au/sitemap.xml

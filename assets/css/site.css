@@ -486,6 +486,15 @@ html.lr .site-head__logo::before {
   padding-block: 1.4rem;
   border-top: 1px solid var(--plum-700);
 }
+/* The legal line carries the ABN, so it must never break mid-number or run
+   off a narrow viewport. Each segment is atomic; the line breaks only at the
+   separators between them. min-width:0 lets the flex item shrink at all —
+   without it the item keeps its min-content width and overflows the page. */
+.site-foot__legal { min-width: 0; }
+.site-foot__legal .nb { white-space: nowrap; }
+@media (max-width: 520px) {
+  .site-foot__legal { letter-spacing: 0.12em !important; }
+}
 
 /* ----------------------------------------- the hero mark (S/H seal) */
 .hero__mark {

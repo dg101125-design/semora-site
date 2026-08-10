@@ -19,8 +19,8 @@
 <link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/favicon/favicon-32x32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon-180.png">
-<link rel="stylesheet" href="assets/css/site.css?v=4d4b810d">
-<script defer src="assets/js/site.js?v=4d732325"></script>
+<link rel="stylesheet" href="assets/css/site.css?v=30b28fb6">
+<script defer src="assets/js/site.js?v=3163ede2"></script>
 </head>
 <body class="pg-contact">
 <a class="skip" href="#main">Skip to content</a>
@@ -80,13 +80,27 @@
       operators · healthcare and allied health practices.
       <a class="alink" href="/method#our-own-score">Our own score <span class="ar">→</span></a></p>
     </div>
-    <!-- Form posts via mailto until an endpoint is wired.
-         No budget dropdown — the prices are published. -->
-    <form class="form-grid" method="post" action="mailto:team@semora.com.au" enctype="text/plain">
+    <!-- Posts to Web3Forms, which forwards to team@semora.com.au. No budget dropdown —
+         the prices are published. Works without JS: a plain POST lands on the
+         service's own thank-you page. With JS it stays on the page and
+         reports inline, which is the path essentially every visitor takes. -->
+    <form class="form-grid" id="contact-form" method="post" action="https://api.web3forms.com/submit">
+      <input type="hidden" name="access_key" value="REPLACE_WITH_WEB3FORMS_ACCESS_KEY">
+      <input type="hidden" name="subject" value="New enquiry — semora.com.au/contact">
+      <input type="hidden" name="from_name" value="SEMORA website">
+      <!-- honeypot: hidden from people, irresistible to bots -->
+      <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
       <div class="field rv"><label for="f-name">Your name</label>
         <input id="f-name" name="name" required autocomplete="name"></div>
       <div class="field rv"><label for="f-practice">Your practice</label>
         <input id="f-practice" name="practice" required autocomplete="organization"></div>
+      <!-- The old form collected no reply address at all. It only appeared to
+           work because mailto: sent from the visitor's own mail client. -->
+      <div class="field rv"><label for="f-email">Your email</label>
+        <input id="f-email" name="email" type="email" required autocomplete="email"
+               inputmode="email" placeholder="you@practice.com.au"></div>
+      <div class="field rv"><label for="f-phone">Your phone <span class="opt">optional</span></label>
+        <input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel"></div>
       <div class="field rv"><label for="f-vertical">Your field</label>
         <select id="f-vertical" name="vertical" required>
           <option value="">Choose one</option>
@@ -119,7 +133,10 @@
         </select></div>
       <div class="field rv"><label for="f-prompt">What prompted this?</label>
         <textarea id="f-prompt" name="prompt" rows="5" required></textarea></div>
-      <div class="rv"><button class="btn" type="submit">Send this</button></div>
+      <div class="rv form-send">
+        <button class="btn" type="submit">Send this</button>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      </div>
     </form>
   </div>
 </section>

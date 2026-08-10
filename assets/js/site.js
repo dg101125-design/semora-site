@@ -70,3 +70,56 @@
     counters.forEach(function (el) { cio.observe(el); });
   }
 })();
+
+/* ---------------------------------------------- contact form
+   Posts to Web3Forms via fetch so the visitor stays on the page.
+   The form still works with JS off — a plain POST lands on the
+   service's thank-you page — but nobody should be sent away from
+   an enquiry they just completed. On success the form is replaced
+   rather than reset: leaving the filled fields on screen is an
+   invitation to send the same enquiry twice. */
+(function () {
+  var form = document.getElementById("contact-form");
+  if (!form || !window.fetch) return;
+  var status = document.getElementById("form-status");
+  var btn = form.querySelector("button[type=submit]");
+
+  function say(state, msg) {
+    if (!status) return;
+    status.setAttribute("data-state", state);
+    status.textContent = msg;
+  }
+
+  form.addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    if (!form.reportValidity()) return;
+    btn.disabled = true;
+    say("sending", "Sending…");
+
+    fetch(form.action, {
+      method: "POST",
+      body: new FormData(form),
+      headers: { Accept: "application/json" }
+    })
+      .then(function (r) { return r.json().catch(function () { return {}; }); })
+      .then(function (data) {
+        if (!data || data.success !== true) throw new Error("rejected");
+        var done = document.createElement("div");
+        done.className = "form-done";
+        done.setAttribute("role", "status");
+        done.innerHTML =
+          "<h3>Thank you — that’s with us.</h3>" +
+          "<p>A named person replies within one business day. " +
+          "If it’s urgent, email " +
+          "<a class=\"alink\" href=\"mailto:team@semora.com.au\">" +
+          "team@semora.com.au</a> directly.</p>";
+        form.parentNode.replaceChild(done, form);
+        done.scrollIntoView({ behavior: "smooth", block: "center" });
+      })
+      .catch(function () {
+        btn.disabled = false;
+        say("error",
+          "That didn’t send. Please email team@semora.com.au directly.");
+      });
+  });
+})();

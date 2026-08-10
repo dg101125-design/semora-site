@@ -994,6 +994,33 @@ html.lr .site-head__word::before {
 .field input:focus, .field select:focus, .field textarea:focus {
   outline: 2px solid var(--plum); outline-offset: 1px;
 }
+.field label .opt {
+  font-weight: 400; letter-spacing: 0.12em; color: var(--plum-300);
+  text-transform: none;
+}
+/* Honeypot. Off-screen rather than display:none — some bots skip fields they
+   can see are hidden, and a real user never reaches it (tabindex -1). */
+.hp {
+  position: absolute; left: -9999px; width: 1px; height: 1px;
+  opacity: 0; pointer-events: none;
+}
+.form-send { display: flex; align-items: center; gap: 1.1rem; flex-wrap: wrap; }
+.form-status {
+  margin: 0; font-family: var(--mono); font-weight: 500;
+  font-size: 0.72rem; letter-spacing: 0.1em;
+}
+.form-status[data-state="sending"] { color: var(--graph-400); }
+.form-status[data-state="ok"]      { color: var(--moss-700); }
+.form-status[data-state="error"]   { color: #9B2C2C; }
+.btn[disabled] { opacity: 0.55; cursor: progress; }
+/* The success state replaces the form outright — leaving the filled fields on
+   screen invites a second, duplicate submission. */
+.form-done {
+  border-left: 3px solid var(--moss); padding: 1.4rem 0 1.4rem 1.5rem;
+  max-width: 560px;
+}
+.form-done h3 { margin: 0 0 0.5rem; }
+.form-done p { margin: 0; color: var(--graph); }
 
 /* --------------------------------------------------- motion */
 /* hero line reveal: each line masked, rises in */

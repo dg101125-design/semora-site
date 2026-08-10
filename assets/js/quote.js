@@ -93,7 +93,7 @@
   }
 
   function quoteText() {
-    var out = "SIGNALHAUS — quote request " + new Date().toLocaleDateString("en-AU") + "\n\n";
+    var out = "SEMORA STUDIO — quote request " + new Date().toLocaleDateString("en-AU") + "\n\n";
     sumEl.querySelectorAll(".qb-line").forEach(function (l) {
       out += l.querySelector("span").textContent + " — " + l.querySelector("b").textContent +
         " (" + l.querySelector("em").textContent + ")\n";
@@ -109,8 +109,8 @@
   qtys.forEach(function (q) { q.addEventListener("input", build); });
   var mail = document.getElementById("qb-mail");
   if (mail) mail.addEventListener("click", function () {
-    mail.href = "mailto:team@signalhaus.au?subject=" +
-      encodeURIComponent("Quote request — via signalhaus.au/quote") +
+    mail.href = "mailto:team@semora.com.au?subject=" +
+      encodeURIComponent("Quote request — via semora.com.au/quote") +
       "&body=" + encodeURIComponent(quoteText() + "\nMy details:\nName:\nPractice:\nPhone:\n");
   });
   var pr = document.getElementById("qb-print");

@@ -1,4 +1,4 @@
-/* SIGNALHÄUS — quote builder. Vanilla, deterministic: every figure is
+/* SEMÖRA — quote builder. Vanilla, deterministic: every figure is
    published on the page itself. No AI, no variables, no "it depends".
    Every item carries its own price and delivery time; totals are sums.
    One rule: the monthly menu never exceeds MOMENTUM / Held. */

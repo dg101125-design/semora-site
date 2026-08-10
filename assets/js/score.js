@@ -1,4 +1,4 @@
-/* SIGNALHÄUS — the self-scoring tool. Vanilla, no data leaves the page. */
+/* SEMÖRA — the self-scoring tool. Vanilla, no data leaves the page. */
 (function () {
   "use strict";
   var data = JSON.parse(document.getElementById("surface-data").textContent);

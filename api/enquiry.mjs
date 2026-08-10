@@ -25,6 +25,69 @@ const RESEND = "https://api.resend.com/emails";
 
 const FIELDS = ["name", "practice", "email", "phone", "vertical", "want", "prompt"];
 
+/* Read the enquiry out of the request whatever shape it arrives in.
+ *
+ * Three transports have to work, because all three genuinely occur:
+ *   multipart/form-data   — what fetch() sends for a FormData body, i.e. what
+ *                           the site's own contact form posts
+ *   x-www-form-urlencoded — what the browser sends on a native <form> POST,
+ *                           the no-JS fallback
+ *   application/json      — anything posting the API directly
+ *
+ * Vercel's helper parses the last two into an object but does not understand
+ * multipart, so those bytes arrive raw and every field would read empty.
+ * Parsing it here means the client never has to be changed in step with the
+ * endpoint — switching the form's action is a one-line change with no
+ * matching client release.
+ *
+ * The raw body is taken from req.body when the helper leaves it there and
+ * read off the stream when it does not, because which of the two happens is a
+ * property of the platform rather than of this code. */
+async function rawBody(req) {
+  const body = req.body;
+  if (Buffer.isBuffer(body)) return body.toString("utf8");
+  if (typeof body === "string") return body;
+  try {
+    const chunks = [];
+    for await (const chunk of req) chunks.push(chunk);
+    return Buffer.concat(chunks).toString("utf8");
+  } catch {
+    return "";
+  }
+}
+
+async function readFields(req) {
+  const body = req.body;
+  if (body && typeof body === "object" && !Buffer.isBuffer(body)
+      && Object.keys(body).length) return body;
+
+  const raw = await rawBody(req);
+  if (!raw) return {};
+
+  const type = String(req.headers["content-type"] || "");
+
+  if (type.includes("multipart/form-data")) {
+    const boundary = /boundary=(?:"([^"]+)"|([^;]+))/.exec(type);
+    if (!boundary) return {};
+    const marker = "--" + (boundary[1] || boundary[2]).trim();
+    const out = {};
+    for (const part of raw.split(marker)) {
+      const split = part.indexOf("\r\n\r\n");
+      if (split === -1) continue;
+      const name = /name="([^"]*)"/.exec(part.slice(0, split));
+      if (!name) continue;
+      out[name[1]] = part.slice(split + 4).replace(/\r\n$/, "");
+    }
+    return out;
+  }
+
+  if (type.includes("application/json")) {
+    try { return JSON.parse(raw); } catch { return {}; }
+  }
+
+  return Object.fromEntries(new URLSearchParams(raw));
+}
+
 function send(payload) {
   return fetch(RESEND, {
     method: "POST",
@@ -62,12 +125,7 @@ export default async function handler(req, res) {
     res.setHeader("Allow", "POST");
     return res.status(405).json({ success: false, message: "Use POST." });
   }
-  if (!process.env.RESEND_API_KEY) {
-    console.error("RESEND_API_KEY is not set");
-    return res.status(500).json({ success: false, message: "Not configured." });
-  }
-
-  const body = typeof req.body === "string" ? Object.fromEntries(new URLSearchParams(req.body)) : req.body || {};
+  const body = await readFields(req);
 
   // Honeypot. Bots tick it; a person never sees it.
   if (body.botcheck) return res.status(200).json({ success: true });
@@ -80,6 +138,16 @@ export default async function handler(req, res) {
   }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)) {
     return res.status(400).json({ success: false, message: "That email address does not look right." });
+  }
+
+  /* Checked after validation, not before, so that a well-formed enquiry posted
+   * against an unconfigured deployment answers "Not configured" while a
+   * malformed one still answers 400. The two are then distinguishable from
+   * outside, which is the only way to test that the body actually parsed
+   * without sending real mail. */
+  if (!process.env.RESEND_API_KEY) {
+    console.error("RESEND_API_KEY is not set");
+    return res.status(500).json({ success: false, message: "Not configured." });
   }
 
   try {

@@ -19,6 +19,21 @@
  */
 import { autoReplyHtml, escapeHtml } from "./_templates.mjs";
 
+/* Vercel's body parser is turned off so this function always owns the request
+ * stream. It has to be, because leaving it on loses enquiries.
+ *
+ * Observed on production 11 Aug 2026: the FIRST request after a cold start
+ * returned 400 "Please complete the required fields", and every request after
+ * it parsed correctly. Twice, in two separate test runs. On a cold start the
+ * platform consumes the stream trying to parse a content type it does not
+ * understand, leaves req.body as an empty object, and the stream is then spent
+ * — so reading it back yields nothing and every field looks blank.
+ *
+ * A warm function is not the case that matters. The enquiry that arrives after
+ * a quiet hour is the one that was hardest to earn, and it is exactly the one
+ * that was being dropped. */
+export const config = { api: { bodyParser: false } };
+
 const TO = "team@semora.com.au";
 const FROM = "SEMORA STUDIO <team@semora.com.au>";
 const RESEND = "https://api.resend.com/emails";
@@ -44,6 +59,8 @@ const FIELDS = ["name", "practice", "email", "phone", "vertical", "want", "promp
  * read off the stream when it does not, because which of the two happens is a
  * property of the platform rather than of this code. */
 async function rawBody(req) {
+  // With bodyParser off this is the normal path; the req.body branches remain
+  // so the handler still works if the config export is ever not honoured.
   const body = req.body;
   if (Buffer.isBuffer(body)) return body.toString("utf8");
   if (typeof body === "string") return body;

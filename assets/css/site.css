@@ -87,7 +87,14 @@ a { color: inherit; }
 /* ----------------------------------------------- typography */
 .display, h1 {
   font-family: var(--serif);
-  font-weight: 320;
+  /* Weight raised 320 → 560 on the founder's call, 11 Aug 2026. Newsreader at
+     320 is a book weight: correct on a page someone has already decided to
+     read, and too quiet on a home page sitting beside agencies setting
+     everything at 700. 560 is heavy enough to hold the page and still leaves
+     the variable axis short of its 800 maximum, so the letterforms keep their
+     modulation instead of going slab. opsz stays at 72 — the optical size is
+     what stops a heavy serif looking clotted at display scale. */
+  font-weight: 560;
   font-variation-settings: "opsz" 72;
   font-size: clamp(2.7rem, 6.4vw, 4.7rem);
   line-height: 0.97;
@@ -97,7 +104,7 @@ a { color: inherit; }
 }
 h2 {
   font-family: var(--serif);
-  font-weight: 400;
+  font-weight: 520;
   font-variation-settings: "opsz" 44;
   font-size: clamp(1.95rem, 4.1vw, 3.05rem);
   line-height: 1.02;
@@ -107,7 +114,7 @@ h2 {
 }
 h3 {
   font-family: var(--serif);
-  font-weight: 420;
+  font-weight: 500;
   font-variation-settings: "opsz" 28;
   font-size: 1.35rem;
   line-height: 1.18;
@@ -472,7 +479,7 @@ html.lr .site-head__word::before {
 .mega {
   position: absolute; top: calc(100% + 1.15rem); left: 50%;
   transform: translateX(-50%) translateY(-6px);
-  width: min(1120px, calc(100vw - 2.5rem));
+  width: min(1400px, calc(100vw - 2.5rem));
   background: var(--ivory);
   border: 1px solid var(--champ-700);
   box-shadow: 0 24px 60px -28px rgb(46 28 41 / 0.34);
@@ -492,15 +499,20 @@ html.lr .site-head__word::before {
   content: ""; position: absolute; left: 0; right: 0; top: -1.15rem; height: 1.15rem;
 }
 .mega__inner {
-  display: grid; grid-template-columns: repeat(4, 1fr);
-  gap: 0 2.6rem; padding: 2.3rem 2.5rem 1.7rem;
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 2rem 2.2rem; padding: 2.2rem 2.4rem 1.6rem;
+}
+@media (min-width: 1500px) {
+  .mega__inner { grid-template-columns: repeat(6, 1fr); gap: 0 1.9rem; }
 }
 /* A hairline between columns rather than white space alone — four lists of
    plain text with only a gap between them read as one long column on a wide
    screen. */
-.mega__col + .mega__col {
-  border-left: 1px solid var(--champ-700);
-  padding-left: 2.6rem; margin-left: -1.3rem;
+@media (min-width: 1500px) {
+  .mega__col + .mega__col {
+    border-left: 1px solid var(--champ-700);
+    padding-left: 1.9rem; margin-left: -0.95rem;
+  }
 }
 /* Three type registers, one per level, so the hierarchy is carried by the
    typeface and not only by size: mono for the category label, serif italic for
@@ -512,10 +524,10 @@ html.lr .site-head__word::before {
 }
 .mega__sub {
   font-family: var(--serif); font-style: italic; font-weight: 300;
-  font-size: 1rem; line-height: 1.32; color: var(--ink);
-  margin: 0 0 0.95rem; padding-bottom: 0.85rem;
+  font-size: 0.94rem; line-height: 1.3; color: var(--ink);
+  margin: 0 0 0.8rem; padding-bottom: 0.72rem;
   border-bottom: 1px solid var(--champ-700);
-  min-height: 3.1em;
+  min-height: 2.6em;
 }
 .mega__col ul { list-style: none; margin: 0; padding: 0; }
 .mega__col li + li { margin-top: 0.1rem; }
@@ -524,9 +536,9 @@ html.lr .site-head__word::before {
    it reads as a commitment rather than as clutter. */
 .mega__col a {
   display: flex; align-items: center; gap: 0.62em;
-  padding: 0.44em 0.6em 0.44em 0.55em;
+  padding: 0.36em 0.5em 0.36em 0.5em;
   margin-left: -0.55em;
-  font-family: var(--sans) !important; font-size: 0.88rem !important;
+  font-family: var(--sans) !important; font-size: 0.82rem !important;
   letter-spacing: 0 !important; text-transform: none !important;
   font-weight: 400 !important; line-height: 1.4;
   color: var(--ink) !important; border-bottom: 0 !important;
@@ -540,7 +552,7 @@ html.lr .site-head__word::before {
 /* The icon carries the hover, not the row — a whole tinted band on hover reads
    as a button, and these are links in a list. */
 .mega-ic {
-  flex: 0 0 auto; width: 17px; height: 17px;
+  flex: 0 0 auto; width: 15px; height: 15px;
   color: var(--moss-700); opacity: 0.75;
   transition: color 140ms var(--ease), opacity 140ms var(--ease),
               transform 140ms var(--ease);
@@ -660,8 +672,12 @@ html.lr .site-head__word::before {
 }
 .statband .lab--rev { color: var(--moss-300); }
 .statband .sig-dots i { background: var(--moss-300); }
+/* Bold, on the founder's call 11 Aug. The display faces ran at 200 — an
+   editorial weight that reads as restraint on a book page and as timidity on a
+   home page next to agencies setting everything at 700. 500 keeps Newsreader's
+   character and stops the headline apologising for itself. */
 .statband__h {
-  font-family: var(--serif); font-weight: 200;
+  font-family: var(--serif); font-weight: 500;
   font-size: clamp(1.7rem, 4.4vw, 3.1rem); line-height: 1.12;
   letter-spacing: -0.015em; color: var(--ivory);
   margin: 1.1rem 0 clamp(2.4rem, 5vw, 3.4rem); max-width: 20ch;

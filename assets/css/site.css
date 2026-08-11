@@ -33,18 +33,19 @@
 
 /* --------------------------------------------------- tokens */
 :root {
-  --plum-ink:  #2E1C29;
-  --plum-900:  #3C2637;
-  --plum-700:  #4A2F43;
-  --plum:      #5B3A52;
-  --plum-300:  #8B6B7E;
-  --plum-100:  #D7C8D1;
-  --plum-050:  #F0E8EC;
-  --moss-900:  #3A431F;
-  --moss-700:  #525E3A;   /* the only moss for text on light fields */
-  --moss:      #6B7B4E;   /* graphics only on light fields */
-  --moss-300:  #9AA782;   /* accent on plum — graphics only */
-  --moss-100:  #D9DFCB;
+  --plum-ink:  #1B0D16;   /* EXPRESSIVE ink — 17.44:1 on ivory */
+  --plum-900:  #2B1122;   /* 16.13:1 on ivory */
+  --plum-700:  #6E2455;   /*  9.51:1 on ivory */
+  --plum:      #8E2F6F;   /* Electric Plum — 6.98:1 on ivory, AA body */
+  --plum-300:  #C77FB0;
+  --plum-100:  #E8CFE0;   /* 12.94:1 on ink */
+  --plum-050:  #F7EDF4;
+  --moss-900:  #3F4A0C;
+  --moss-700:  #5D6B12;   /* the only moss for text on light fields — 5.44:1 */
+  --moss:      #7E8F1C;   /* graphics only on light fields — 3.34:1 */
+  --moss-300:  #B4CC2E;   /* Acid Moss. DARK GROUNDS ONLY — 1.67:1 on ivory,
+                             10.41:1 on ink. Every use is scoped .f-plum/.f-moss. */
+  --moss-100:  #E4EDB8;
   --champ-700: #CFC0A8;
   --champ:     #E7DCCB;
   --champ-300: #F0E9DD;
@@ -54,6 +55,11 @@
   --graph-700: #333333;
   --graph:     #424242;
   --graph-400: #6B6560;
+  /* EXPRESSIVE signal — replaced vermilion #F04E23 on 11 Aug 2026, which sat
+     at ΔE 4.9 from our own client AXIS's --rust #E8531E. Leans into the one
+     hue AXIS has nothing near. */
+  --signal:     #F0417F;   /* 5.17:1 on ink. Large display only on ivory. */
+  --signal-ink: #A81B4E;   /* 6.64:1 on ivory — the light-field version. */
 
   --serif: "Newsreader", Georgia, serif;
   --sans:  "Inter", -apple-system, "Helvetica Neue", Arial, sans-serif;
@@ -173,37 +179,12 @@ section > .wrap { position: relative; z-index: 1; }
 .f-ivory { background: var(--ivory); }
 
 /* ---- the slashed page: sections join along rising diagonal seams ---- */
-.cut {
-  margin-top: -3.2vw;
-  clip-path: polygon(0 3.2vw, 100% 0, 100% 100%, 0 100%);
-  padding-top: calc(clamp(3.2rem, 8vw, 6.5rem) + 3.2vw);
-}
-.cut--r {
-  clip-path: polygon(0 0, 100% 3.2vw, 100% 100%, 0 100%);
-}
-.site-foot {
-  margin-top: -3.2vw;
-  clip-path: polygon(0 3.2vw, 100% 0, 100% 100%, 0 100%);
-  padding-top: 3.2vw;
-}
+ /* The diagonal section cuts are gone (founder, 11 Aug 2026). They tilted the
+   marquee's baseline, sliced triangular voids out of the band edges, and
+   collided with the folio numerals. The class names stay so the generator's
+   markup keeps working — they are now inert, and sections simply stack. */
+.cut, .cut--r, .no-cut { margin-top: 0; clip-path: none; }
 
-/* ---- ghost folio numerals behind numbered sections ---- */
-.ghost-no {
-  position: absolute; top: -0.04em;
-  font-family: var(--serif); font-weight: 200;
-  font-size: clamp(11rem, 26vw, 24rem); line-height: 0.8;
-  color: var(--plum); opacity: 0.08;
-  pointer-events: none; user-select: none; z-index: 0;
-  font-variant-numeric: tabular-nums;
-}
-/* Flush, not bled off the edge. At 24rem the -0.03em hang was about 11px of a
-   decorative numeral sitting outside the viewport, and it made every page
-   scroll sideways by exactly that much — measured at 12px on desktop, 9px on
-   laptop. Nobody would ever see the numeral; everybody feels the page drift
-   under a thumb. */
-.ghost-no--l { left: 0; }
-.ghost-no--r { right: 0; }
-.f-plum .ghost-no, .f-moss .ghost-no { color: var(--ivory); opacity: 0.05; }
 
 /* ---- typographic interludes ---- */
 .interlude {
@@ -362,14 +343,24 @@ section > .wrap { position: relative; z-index: 1; }
   font-size: 0.78rem; letter-spacing: 0.22em; text-transform: uppercase;
   text-decoration: none; cursor: pointer;
   padding: 1.15em 2.2em;
-  background: var(--plum-900); color: var(--ivory);
-  border: 1px solid var(--plum-900);
+  /* The primary call to action carries the EXPRESSIVE signal. Its whole job in
+     the pack is to interrupt, and before this the site had nothing that did —
+     every button was a tone of the ground it sat on. Light fields take the
+     darkened signal (6.64:1 on ivory, and 6.64:1 for the ivory type on it);
+     dark fields take the bright one below. */
+  background: var(--signal-ink); color: var(--ivory);
+  border: 1px solid var(--signal-ink);
   transition: background 180ms var(--ease), transform 180ms var(--ease);
 }
 .btn:hover { background: var(--plum-ink); transform: translateY(-2px); }
+/* Dark grounds take the bright signal with ink type — 5.17:1 both ways. */
+.hero .btn, .f-plum .btn, .statband .btn {
+  background: var(--signal); color: var(--plum-ink); border-color: var(--signal);
+}
+.hero .btn:hover, .f-plum .btn:hover, .statband .btn:hover {
+  background: var(--signal-ink); color: var(--ivory); border-color: var(--signal-ink);
+}
 .btn:active { transform: translateY(0); }
-.f-plum .btn { background: var(--ivory); color: var(--plum); border-color: var(--ivory); }
-.f-plum .btn:hover { background: var(--champ); border-color: var(--champ); }
 .cta-row { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
 
 /* arrow-link: arrow nudges on hover */
@@ -711,6 +702,13 @@ html.lr .site-head__word::before {
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
   grid-template-rows: auto auto;
 }
+/* The rule above each caption has to sit on ONE line across all three columns,
+   or the band reads as three unrelated blocks. Subgrid does that without
+   forcing a height — the same fix the services menu needed, for the same
+   reason: alignment by shared rows, never by truncation. */
+@supports (grid-template-rows: subgrid) {
+  .statband__grid .stat { display: grid; grid-row: span 2; grid-template-rows: subgrid; }
+}
 @supports (grid-template-rows: subgrid) {
   .stat { display: grid; grid-row: span 2; grid-template-rows: subgrid; }
 }
@@ -718,7 +716,7 @@ html.lr .site-head__word::before {
   display: flex; align-items: flex-start; gap: 0.3em;
   font-family: var(--serif); font-weight: 200;
   font-size: clamp(3.4rem, 8vw, 5.6rem); line-height: 0.92;
-  letter-spacing: -0.03em; color: var(--ivory); margin: 0 0 0.7rem;
+  letter-spacing: -0.03em; color: var(--ivory); margin: 0 0 0.25rem;
 }
 .stat__v i {
   font-style: normal; font-size: 0.4em; font-weight: 300;
@@ -734,7 +732,8 @@ html.lr .site-head__word::before {
 .stat__c {
   font-size: 0.86rem; line-height: 1.55; color: var(--plum-100);
   margin: 0; max-width: 30ch;
-  padding-top: 0.9rem; border-top: 1px solid rgb(255 255 255 / 0.14);
+  padding-top: 0.85rem; margin-top: 0.85rem;
+  border-top: 1px solid rgb(255 255 255 / 0.14);
 }
 .stat__c strong { color: var(--champ); font-weight: 500; }
 .statband__foot {
@@ -795,11 +794,16 @@ html.lr .site-head__word::before {
 }
 
 /* ------------------------------------------- the hero mark (Ö seal) */
+/* Anchored to the content column, not floated in the void. It used to sit at
+   `right: 8vw; top: 50%` — related to the viewport and to nothing on the page,
+   which is why it read as a sticker. It now hangs off the right edge of the
+   same max-width wrap the type uses, so there is one vertical line the eye can
+   find, and it sits on the headline's optical centre rather than the section's. */
 .hero__mark {
   position: absolute; z-index: 1;
-  right: clamp(4%, 8vw, 10%);
-  top: 50%; transform: translateY(-50%);
-  width: clamp(150px, 15vw, 215px); height: auto;
+  right: max(var(--gutter), calc((100% - var(--maxw)) / 2 + var(--gutter)));
+  top: 46%; transform: translateY(-50%);
+  width: clamp(150px, 14vw, 200px); height: auto;
 }
 .hero__mark .mk-tile { fill: var(--champ); }
 .hero__mark .mk-letter { fill: var(--plum-ink); }
@@ -831,39 +835,23 @@ html.lr .site-head__word::before {
 .hero .sig-dots i { background: var(--moss-300); }
 .hero .price { color: var(--champ-300); }
 .hero .price small { color: var(--plum-100); }
-.hero .btn { background: var(--champ); color: var(--plum-ink); border-color: var(--champ); }
-.hero .btn:hover { background: var(--ivory); border-color: var(--ivory); }
 .hero .alink { color: var(--champ); border-color: var(--plum-700); }
 .hero .alink:hover { color: var(--ivory); border-color: var(--plum-300); }
 .hero .uline::after { background: var(--moss-300); }
 .hero .lead { margin-top: 1.8rem; }
 .hero .cta-row { margin-top: 2.6rem; }
-.hero__slash {
-  position: absolute; top: -12%; right: 6%;
-  width: clamp(56px, 9vw, 130px); height: 130%;
-  background: var(--moss-700);
-  transform: skewX(var(--slash-skew));
-  z-index: 0; will-change: transform;
-}
-.hero__slash--b {
-  width: clamp(18px, 3vw, 44px);
-  right: calc(6% + clamp(80px, 12vw, 175px));
-  background: var(--moss-300);
-  opacity: 0.9;
-}
-/* the 70° wipe — a slash-angled sheet that sweeps the hero on load,
-   revealing the headline in its wake */
-.hero__wipe {
-  position: absolute; top: -12%; bottom: -12%; left: -30%;
-  width: 55%;
-  background: var(--moss-100);
-  transform: skewX(var(--slash-skew)) translateX(-140%);
-  z-index: 2; pointer-events: none; opacity: 0;
-}
 
 /* the word verdict — new / more / right */
-.wcycle { display: inline-grid; }
+/* The slot is sized by the VERDICT only. All three words used to share one grid
+   cell, so the column took the width of the widest — "more" — and left a gap of
+   about 40px between "right" and "clients." that never closed. The founder read
+   that gap as the animation being misaligned, and it was: not a timing fault, a
+   sizing one. The two struck words are taken out of flow so they contribute no
+   width; mid-animation they overhang the slot, which is invisible because they
+   are struck through and leaving at that moment. */
+.wcycle { display: inline-grid; position: relative; }
 .wcycle .w { grid-area: 1 / 1; position: relative; white-space: nowrap; }
+.wcycle .w1, .wcycle .w2 { position: absolute; left: 0; top: 0; }
 /* The two struck-through words are drawn here rather than written into the
    markup. In the markup they were read by every crawler — aria-hidden hides
    them from screen readers, not from text extraction — so the headline
@@ -875,26 +863,11 @@ html.lr .site-head__word::before {
 /* static + reduced-motion default: only the verdict shows */
 .wcycle .w1, .wcycle .w2 { display: none; }
 .hero > .wrap { position: relative; z-index: 1; }
-/* faint editorial column grid behind the hero */
-.hero::after {
-  content: ""; position: absolute; inset: 0; z-index: 0;
-  background: repeating-linear-gradient(90deg,
-    transparent 0 calc(100% / 6 - 1px),
-    rgba(231, 220, 203, 0.08) calc(100% / 6 - 1px) calc(100% / 6));
-  pointer-events: none;
-}
-/* rotated spine marker */
-.spine {
-  position: absolute; z-index: 1;
-  left: max(8px, calc((100vw - var(--maxw)) / 2 - 3.2rem));
-  top: 50%; transform: translateY(-50%);
-  writing-mode: vertical-rl;
-  font-family: var(--mono); font-weight: 500;
-  font-size: 0.58rem; letter-spacing: 0.34em; text-transform: uppercase;
-  color: var(--plum-100); opacity: 0.55;
-}
-@media (max-width: 1120px) { .spine { display: none; } }
-@media (max-width: 640px) { .hero__slash { right: -10%; opacity: 0.6; } }
+/* The six-column rule overlay is gone (11 Aug 2026). It was designed to sit
+   under the slashes; with those removed it became the loudest thing in the
+   hero, and its verticals ran either side of the secondary CTA so that the
+   link's own underline closed a box around it that nobody drew. A grid is
+   something you align to, not something you print. */
 
 /* ------------------------------------------------- marquee */
 .mq {
@@ -1353,22 +1326,7 @@ h1:has(.hl--sub) { font-size: clamp(2.9rem, 7.5vw, 6rem); }
   @keyframes hl-up { to { transform: translateY(0); } }
 
   /* ------ hero choreography ------ */
-  /* 1 · the 70° wipe sweeps across while the lines rise */
-  .hero__wipe {
-    opacity: 1;
-    animation: wipe-sweep 1.25s cubic-bezier(0.6, 0, 0.3, 1) forwards;
-  }
-  @keyframes wipe-sweep {
-    0%   { transform: skewX(var(--slash-skew)) translateX(-140%); opacity: 1; }
-    88%  { opacity: 1; }
-    100% { transform: skewX(var(--slash-skew)) translateX(340%); opacity: 0; }
-  }
 
-  /* 2 · background slashes slide into position */
-  .hero__slash { animation: slash-in 1s var(--ease) backwards; }
-  .hero__slash--b { animation-delay: 0.12s; }
-  @keyframes slash-in {
-    from { opacity: 0; transform: skewX(var(--slash-skew)) translateX(22%); }
   }
 
   /* 3 · kicker: tracking settles from loose to set */
@@ -1454,15 +1412,14 @@ h1:has(.hl--sub) { font-size: clamp(2.9rem, 7.5vw, 6rem); }
 }
 
 @media print {
-  .site-head, .site-foot, .btn, .hero__slash, .hero__wipe, .hero__mark,
-  .mq, .tmq, .scorebar, .ghost-no { display: none; }
+  .site-head, .site-foot, .btn, .hero__mark,
+  .mq, .tmq, .scorebar { display: none; }
   body { background: #fff; }
   .rv { opacity: 1 !important; transform: none !important; }
   .f-plum, .f-moss, .f-plum *, .f-moss * {
     color: #242424 !important; background: none !important;
     border-color: #999 !important;
   }
-  .cut, .cut--r { clip-path: none; margin-top: 0; }
 }
 
 
@@ -1713,7 +1670,7 @@ h1:has(.hl--sub) { font-size: clamp(2.9rem, 7.5vw, 6rem); }
 
 /* quote print sheet — site chrome hidden, summary becomes the document */
 @media print {
-  .site-head, .site-foot, .qb__col, .hero__wipe, .hero__slash, .spine,
+  .site-head, .site-foot, .qb__col,
   .mq, .qb-sum .cta-row, .qb-sum .small { display: none !important; }
   .qb { display: block; }
   .qb-sum { position: static; background: none; color: #000; border-top: 4px solid #6B7B4E; }

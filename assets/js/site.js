@@ -26,23 +26,9 @@
     els.forEach(function (el) { el.classList.add("in"); });
   }
 
-  /* hero slashes: two-speed parallax drift */
-  var slashes = document.querySelectorAll(".hero__slash");
-  if (slashes.length) {
-    var rates = [0.12, 0.05];
-    var ticking = false;
-    window.addEventListener("scroll", function () {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(function () {
-        slashes.forEach(function (s, i) {
-          s.style.transform =
-            "skewX(-20deg) translateY(" + (window.scrollY * (rates[i] || 0.05)) + "px)";
-        });
-        ticking = false;
-      });
-    }, { passive: true });
-  }
+  /* The hero parallax went with the slashes it moved (11 Aug 2026). Nothing
+     else on the page is scroll-driven, and a scroll listener that exists to
+     translate elements that no longer exist is a cost with no effect. */
 
   /* price count-up on reveal */
   var counters = document.querySelectorAll("[data-count]");

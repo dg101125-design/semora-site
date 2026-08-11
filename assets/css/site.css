@@ -518,16 +518,32 @@ html.lr .site-head__word::before {
    typeface and not only by size: mono for the category label, serif italic for
    the promise under it, sans for the things you can buy. The site already sets
    all three — this is the same system the page headings use, not a new one. */
+/* The column heading was mono, all-caps and widely letterspaced — which is
+   what pushed half of them onto two lines and left every subtitle starting at
+   a different height. It is a display heading, so it is now set in the
+   display face at a display weight, in sentence case. */
 .mega__col .lab {
-  color: var(--moss-700); margin-bottom: 0.45rem;
-  font-size: 0.62rem; letter-spacing: 0.22em;
+  font-family: var(--serif) !important; font-weight: 560 !important;
+  font-size: 1.06rem !important; line-height: 1.2 !important;
+  letter-spacing: -0.01em !important; text-transform: none !important;
+  color: var(--plum-900); margin: 0 0 0.28rem;
+  /* Two lines fixed, for the same reason the promise below is fixed: one
+     heading wrapping and five not is what threw the whole row out of
+     alignment. */
+  height: 2.4em; display: flex; align-items: flex-end;
 }
 .mega__sub {
-  font-family: var(--serif); font-style: italic; font-weight: 300;
-  font-size: 0.94rem; line-height: 1.3; color: var(--ink);
-  margin: 0 0 0.8rem; padding-bottom: 0.72rem;
+  font-family: var(--sans); font-style: normal; font-weight: 400;
+  font-size: 0.78rem; line-height: 1.45; color: var(--graph);
+  margin: 0; padding-bottom: 0.8rem;
   border-bottom: 1px solid var(--champ-700);
-  min-height: 2.6em;
+  /* Fixed block height, not min-height: the headings and promises are
+     different lengths, and without it every column's list started at a
+     different point and the rule under each one sat at a different height.
+     Two lines of promise is the ceiling — a third means the promise is too
+     long, not that the box is too short. */
+  height: 2.9em; overflow: hidden;
+  margin-bottom: 0.95rem;
 }
 .mega__col ul { list-style: none; margin: 0; padding: 0; }
 .mega__col li + li { margin-top: 0.1rem; }
@@ -1283,7 +1299,11 @@ h1:has(.hl--sub) { font-size: clamp(2.9rem, 7.5vw, 6rem); }
 .hl--sub {
   font-size: clamp(1rem, 1.85vw, 1.42rem);
   font-weight: 400; line-height: 1.25; letter-spacing: 0.005em;
-  color: var(--plum-100);
+  /* Moss, not plum. It is the line that separates us from the category, and
+     in the brand's own palette moss is the colour that carries a distinction
+     — the rules, the ticks, the mark's counter. Plum-100 read as a faded
+     version of the promise beneath it rather than as a different thought. */
+  color: var(--moss-700);
   margin-bottom: 0.62em;
 }
 /* narrow phones: fixed display lines must wrap naturally */

@@ -503,25 +503,22 @@ html.lr .site-head__word::before {
 }
 .mega__col ul { list-style: none; margin: 0; padding: 0; }
 .mega__col li + li { margin-top: 0.1rem; }
+/* Names only — the menu answers "do you do X", and a rate card cannot do
+   that at a glance. The published-price claim moved to the footer line, where
+   it reads as a commitment rather than as clutter. */
 .mega__col a {
-  display: flex; align-items: baseline; justify-content: space-between;
-  gap: 0.8rem; padding: 0.5em 0.55em 0.5em 0;
-  font-family: var(--sans) !important; font-size: 0.84rem !important;
+  display: block; padding: 0.46em 0.6em 0.46em 0.55em;
+  margin-left: -0.55em;
+  font-family: var(--sans) !important; font-size: 0.88rem !important;
   letter-spacing: 0 !important; text-transform: none !important;
-  font-weight: 400 !important; line-height: 1.35;
+  font-weight: 400 !important; line-height: 1.4;
   color: var(--ink) !important; border-bottom: 0 !important;
   border-radius: 2px;
+  transition: color 140ms var(--ease), background 140ms var(--ease);
 }
-.mega__col a:hover { color: var(--plum) !important; background: var(--champ-300); }
-.mega__col a span { flex: 1 1 auto; }
-.mega__col a em {
-  flex: 0 0 auto; font-style: normal; text-align: right;
-  font-family: var(--mono); font-size: 0.7rem; font-weight: 500;
-  color: var(--plum); white-space: nowrap;
-}
-.mega__col a em i {
-  display: block; font-style: normal; font-size: 0.62rem;
-  letter-spacing: 0.06em; color: var(--graph); margin-top: 0.1em;
+.mega__col a:hover,
+.mega__col a:focus-visible {
+  color: var(--plum) !important; background: var(--champ-300);
 }
 .mega__foot {
   grid-column: 1 / -1; margin: 0.9rem 0 0; padding-top: 1rem;

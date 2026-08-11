@@ -150,6 +150,37 @@ export default async function handler(req, res) {
   const d = {};
   for (const f of FIELDS) d[f] = String(body[f] ?? "").trim().slice(0, 4000);
 
+  /* Tell a lost body apart from an empty form, and never blame the visitor for
+   * ours.
+   *
+   * Reproduced on production across three separate deployments: the FIRST
+   * request against a new deployment parses to nothing, and every request
+   * after it is fine. Turning Vercel's body parser off did not stop it, so the
+   * body is being lost somewhere in the platform's request path on the very
+   * first invocation, not in this code.
+   *
+   * The tell is unambiguous — bytes arrived and no field survived. A person
+   * submitting a blank form sends almost nothing; a lost body sends hundreds
+   * of bytes and yields zero fields. That case answers 503, which is
+   * retryable, and the client retries once. A genuinely incomplete form still
+   * answers 400.
+   *
+   * Getting this backwards is expensive in a way that never shows up in
+   * logs: the enquiry after a quiet period is the hardest one to earn, and it
+   * would have been told to go back and fill in fields it had already filled
+   * in. */
+  const declared = Number(req.headers["content-length"] || 0);
+  if (!Object.keys(body).length && declared > 100) {
+    console.error("Body arrived but parsed to nothing — content-length", declared,
+                  "type", req.headers["content-type"]);
+    res.setHeader("Retry-After", "1");
+    return res.status(503).json({
+      success: false,
+      message: "That didn\u2019t go through. Please try once more.",
+      retryable: true,
+    });
+  }
+
   if (!d.name || !d.email || !d.prompt) {
     return res.status(400).json({ success: false, message: "Please complete the required fields." });
   }

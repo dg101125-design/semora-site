@@ -72,12 +72,12 @@
 })();
 
 /* ---------------------------------------------- contact form
-   Posts to Web3Forms via fetch so the visitor stays on the page.
-   The form still works with JS off — a plain POST lands on the
-   service's thank-you page — but nobody should be sent away from
-   an enquiry they just completed. On success the form is replaced
-   rather than reset: leaving the filled fields on screen is an
-   invitation to send the same enquiry twice. */
+   Posts to /api/enquiry via fetch so the visitor stays on the page.
+   Works with JS off too — a native POST reaches the same handler,
+   which answers either transport — but nobody should be sent away
+   from an enquiry they just completed. On success the form is
+   replaced rather than reset: leaving the filled fields on screen
+   is an invitation to send the same enquiry twice. */
 (function () {
   var form = document.getElementById("contact-form");
   if (!form || !window.fetch) return;
@@ -96,12 +96,31 @@
     btn.disabled = true;
     say("sending", "Sending…");
 
-    fetch(form.action, {
-      method: "POST",
-      body: new FormData(form),
-      headers: { Accept: "application/json" }
-    })
-      .then(function (r) { return r.json().catch(function () { return {}; }); })
+    /* One retry, and only on 503.
+
+       The handler answers 503 when bytes arrived but no field survived — a
+       body lost in the platform's request path, which reproduces on the first
+       request against a fresh deployment. That is our failure, not the
+       visitor's, so they should never see it: the second attempt lands on a
+       warm function and succeeds. Any other failure is reported straight
+       away rather than retried, because retrying a real rejection just makes
+       the visitor wait twice. */
+    function post(attempt) {
+      return fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" }
+      }).then(function (r) {
+        if (r.status === 503 && attempt === 1) {
+          return new Promise(function (resolve) {
+            setTimeout(function () { resolve(post(2)); }, 900);
+          });
+        }
+        return r.json().catch(function () { return {}; });
+      });
+    }
+
+    post(1)
       .then(function (data) {
         if (!data || data.success !== true) throw new Error("rejected");
         var done = document.createElement("div");

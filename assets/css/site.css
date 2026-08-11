@@ -563,6 +563,59 @@ html.lr .site-head__word::before {
   .nav-toggle-box:checked ~ .site-nav { display: flex; }
 }
 
+
+/* ------------------------------------------------ case studies
+   The three big numbers, but each one written from its starting point.
+   A percentage on its own is the industry habit and it is unreadable as
+   evidence — 198% of what, from where? The FROM value is set at the same
+   weight as the TO so the eye cannot skip it. */
+.cs-nums {
+  display: grid; gap: 1.6rem var(--gutter);
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  padding: 2rem 0 0;
+}
+.cs-num { border-top: 3px solid var(--moss); padding-top: 1rem; }
+.cs-num .lab { color: var(--plum); margin-bottom: 0.55rem; }
+.cs-num__v {
+  font-family: var(--serif); font-weight: 300;
+  font-size: clamp(1.5rem, 3vw, 2.1rem); line-height: 1.1;
+  color: var(--ink); margin: 0 0 0.5rem;
+}
+.cs-num__v strong { font-weight: 500; }
+.cs-arrow { color: var(--moss-700); padding: 0 0.15em; }
+.cs-delta {
+  display: inline-block; margin-left: 0.35em;
+  font-family: var(--mono); font-size: 0.62em; font-weight: 500;
+  letter-spacing: 0.04em; color: var(--moss-700);
+  vertical-align: 0.28em;
+}
+.cs-num__m {
+  font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.06em;
+  line-height: 1.5; color: var(--graph); margin: 0;
+}
+/* A required section that is empty prints the gap. It never disappears
+   quietly — a case study that hides its own missing evidence is the thing
+   this template exists to prevent. */
+.cs-missing {
+  display: block; padding: 0.7em 0.9em;
+  border-left: 3px solid var(--plum);
+  background: color-mix(in srgb, var(--plum) 7%, transparent);
+  font-family: var(--mono); font-size: 0.72rem; line-height: 1.6;
+  color: var(--plum);
+}
+.cs-quote {
+  margin: 1.6rem 0 0; padding-left: 1.2rem;
+  border-left: 3px solid var(--moss-300);
+}
+.cs-quote blockquote {
+  font-family: var(--serif); font-size: 1.12rem; line-height: 1.5;
+  margin: 0 0 0.5rem;
+}
+.cs-quote figcaption {
+  font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.08em;
+  color: var(--graph);
+}
+
 /* --------------------------------------------------- footer */
 .site-foot { background: var(--plum-ink); color: var(--champ); }
 .site-foot .sig-dots i { background: var(--moss-300); }

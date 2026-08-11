@@ -33,22 +33,30 @@
 
 /* --------------------------------------------------- tokens */
 :root {
-  --plum-ink:  #1B0D16;   /* EXPRESSIVE ink — 17.44:1 on ivory */
-  --plum-900:  #2B1122;   /* 16.13:1 on ivory */
-  --plum-700:  #6E2455;   /*  9.51:1 on ivory */
-  --plum:      #8E2F6F;   /* Electric Plum — 6.98:1 on ivory, AA body */
-  --plum-300:  #C77FB0;
-  --plum-100:  #E8CFE0;   /* 12.94:1 on ink */
-  --plum-050:  #F7EDF4;
-  --moss-900:  #3F4A0C;
-  --moss-700:  #5D6B12;   /* the only moss for text on light fields — 5.44:1 */
-  --moss:      #7E8F1C;   /* graphics only on light fields — 3.34:1 */
+  /* THREE HUES, PLUS ONE (founder, 11 Aug 2026).
+     Ink · Ivory · Acid — the AXIS structure — plus Electric Plum, which is
+     the one hue AXIS has nothing near and therefore the thing that keeps this
+     ours. No red, no crimson: the signal pink is withdrawn.
+     The champagne family is folded into ivory. Three competing light grounds
+     were the real source of 'too many colours' — measured at 16% champagne,
+     5% ivory and 2% champ-300 of the rendered homepage. */
+  --plum-ink:  #1B0D16;   /* INK — the dark ground */
+  --plum-900:  #1B0D16;   /* collapsed into ink — flat fields, no gradient */
+  --plum-700:  #6E2455;   /* PLUM, darkened for text on ivory — 9.51:1 */
+  --plum:      #8E2F6F;   /* PLUM — 6.98:1 on ivory */
+  --plum-300:  #C77FB0;   /* PLUM, lightened for use on ink — 5.18:1 */
+  --plum-100:  #CFC4C9;   /* neutral warm grey — secondary type on ink */   /* 12.94:1 on ink */
+  --plum-050:  #F8F6F2;   /* folded into ivory */
+  --moss-900:  #3A431F;   /* restored 11 Aug — the founder preferred the earlier,
+                             calmer green over the more acidic #3F4A0C */
+  --moss-700:  #5D6B12;   /* ACID, darkened for text on ivory — 5.44:1 */
+  --moss:      #5D6B12;   /* folded — one acid for light fields, not two */
   --moss-300:  #B4CC2E;   /* Acid Moss. DARK GROUNDS ONLY — 1.67:1 on ivory,
                              10.41:1 on ink. Every use is scoped .f-plum/.f-moss. */
-  --moss-100:  #E4EDB8;
-  --champ-700: #CFC0A8;
-  --champ:     #E7DCCB;
-  --champ-300: #F0E9DD;
+  --moss-100:  #F8F6F2;   /* folded into ivory */
+  --champ-700: #DCD7CE;   /* rules and hairlines only — no longer a field */
+  --champ:     #F8F6F2;   /* folded into ivory */
+  --champ-300: #F8F6F2;   /* folded into ivory */
   --ivory:     #F8F6F2;
   --white:     #FFFFFF;
   --graph-900: #242424;
@@ -58,8 +66,9 @@
   /* EXPRESSIVE signal — replaced vermilion #F04E23 on 11 Aug 2026, which sat
      at ΔE 4.9 from our own client AXIS's --rust #E8531E. Leans into the one
      hue AXIS has nothing near. */
-  --signal:     #F0417F;   /* 5.17:1 on ink. Large display only on ivory. */
-  --signal-ink: #A81B4E;   /* 6.64:1 on ivory — the light-field version. */
+  --signal:     #B4CC2E;   /* WITHDRAWN 11 Aug — founder: no red, no crimson.
+                              The CTA now carries acid, the only accent left. */
+  --signal-ink: #3F4A0C;   /* acid darkened — ivory type on it reads 8.9:1 */
 
   --serif: "Newsreader", Georgia, serif;
   --sans:  "Inter", -apple-system, "Helvetica Neue", Arial, sans-serif;
@@ -196,10 +205,10 @@ section > .wrap { position: relative; z-index: 1; }
   font-variation-settings: "opsz" 72;
   font-size: clamp(2.8rem, 8.6vw, 8rem);
   line-height: 0.96; letter-spacing: -0.02em;
-  color: var(--champ); max-width: none;
+  color: var(--ivory); max-width: none;
 }
 .interlude p em {
-  font-style: italic; font-weight: 300; color: var(--champ-700);
+  font-style: italic; font-weight: 300; color: var(--moss-300);
   display: block; margin-left: 12vw;
 }
 .rule { border: 0; border-top: 1px solid var(--champ-700); }
@@ -255,12 +264,12 @@ section > .wrap { position: relative; z-index: 1; }
 .f-champ  { background: var(--champ); }
 .f-champ3 { background: var(--champ-300); }
 .f-white  { background: var(--white); }
-.f-plum   { background: linear-gradient(160deg, var(--plum) 20%, var(--plum-900) 100%); color: var(--champ); }
+.f-plum   { background: var(--plum-ink); color: var(--ivory); }
 .f-plum h2, .f-plum .display { color: var(--ivory); }
 .f-plum p { color: var(--champ); }
 .f-plum .rule { border-color: var(--plum-700); }
 /* deep moss field — ivory/moss-100 text only (both ≥7.9:1 on moss-900) */
-.f-moss { background: linear-gradient(160deg, #333B1A 0%, #222910 100%); color: var(--moss-100); }
+.f-moss { background: var(--moss-900); color: var(--ivory); }
 .f-moss h2, .f-moss h3, .f-moss .display { color: var(--ivory); }
 .f-moss p { color: var(--moss-100); }
 .f-moss .lab { color: var(--moss-100); }
@@ -563,8 +572,10 @@ html.lr .site-head__word::before {
 /* The icon carries the hover, not the row — a whole tinted band on hover reads
    as a button, and these are links in a list. */
 .mega-ic {
-  flex: 0 0 auto; width: 15px; height: 15px;
-  color: var(--moss-700); opacity: 0.75;
+  /* Icons carry the accent at full strength. At 0.75 opacity they read as grey
+     smudges next to the type they are meant to lead. 5.44:1 on ivory. */
+  flex: 0 0 auto; width: 16px; height: 16px;
+  color: var(--moss-700); opacity: 1;
   transition: color 140ms var(--ease), opacity 140ms var(--ease),
               transform 140ms var(--ease);
 }
@@ -826,7 +837,7 @@ html.lr .site-head__word::before {
 /* ------------------------------------------------ hero band */
 .hero {
   padding-block: clamp(4rem, 11vw, 8rem); position: relative; overflow: hidden;
-  background: linear-gradient(168deg, var(--plum-ink) 0%, var(--plum-900) 62%, #241521 100%);
+  background: var(--plum-ink);
 }
 /* dark-field hero: reverse type per brand rule 4 (champagne/ivory on plum) */
 .hero h1, .hero .display { color: var(--champ-300); }
@@ -912,8 +923,8 @@ html.lr .site-head__word::before {
   padding: 1.9rem 1.9rem 1.7rem;
 }
 .flip-front {
-  background: linear-gradient(160deg, #333B1A 0%, #222910 100%);
-  border: 1px solid #222910;
+  background: var(--moss-900);
+  border: 1px solid var(--moss-900);
 }
 .flip-front::after {
   content: ""; position: absolute; top: 0; left: 0;
@@ -928,7 +939,7 @@ html.lr .site-head__word::before {
 .pcard--flip .flip-front .price small { color: var(--moss-100); }
 .flip-back {
   transform: rotateY(180deg);
-  background: linear-gradient(160deg, var(--plum), var(--plum-900));
+  background: var(--plum-ink);
   border: 1px solid var(--plum-900);
   color: var(--champ);
   display: flex; flex-direction: column;
@@ -1133,7 +1144,7 @@ html.lr .site-head__word::before {
 }
 .testi .lab--graph { display: block; margin-top: 0.4rem; }
 /* named engagement card — plum, distinct from quote cards */
-.testi--case { background: linear-gradient(160deg, var(--plum), var(--plum-900)); border-color: var(--plum-900); }
+.testi--case { background: var(--plum-ink); border-color: var(--plum-300); }
 .testi--case blockquote { color: var(--ivory); font-style: normal; }
 .testi--case cite { color: var(--champ); }
 .testi--case .lab { color: var(--champ); }
@@ -1281,7 +1292,11 @@ html.lr .site-head__word::before {
 }
 .form-status[data-state="sending"] { color: var(--graph-400); }
 .form-status[data-state="ok"]      { color: var(--moss-700); }
-.form-status[data-state="error"]   { color: #9B2C2C; }
+/* Error state in plum, not red — the founder removed red from the palette on
+   11 Aug 2026, and an error colour is not a good reason to reintroduce a hue
+   the brand does not have. 9.51:1 on ivory, and the message never relies on
+   colour alone. */
+.form-status[data-state="error"]   { color: var(--plum-700); }
 .btn[disabled] { opacity: 0.55; cursor: progress; }
 /* The success state replaces the form outright — leaving the filled fields on
    screen invites a second, duplicate submission. */
@@ -1327,9 +1342,7 @@ h1:has(.hl--sub) { font-size: clamp(2.9rem, 7.5vw, 6rem); }
 
   /* ------ hero choreography ------ */
 
-  }
-
-  /* 3 · kicker: tracking settles from loose to set */
+  /* 1 · the kicker's tracking settles from loose to set */
   .hero .lab {
     animation: lab-in 0.9s var(--ease) backwards 0.1s;
   }
@@ -1337,7 +1350,7 @@ h1:has(.hl--sub) { font-size: clamp(2.9rem, 7.5vw, 6rem); }
     from { opacity: 0; letter-spacing: 0.5em; }
   }
 
-  /* 4 · the word verdict: new → struck → more → struck → right */
+  /* 2 · the word verdict: new → struck → more → struck → right */
   .wcycle .w1, .wcycle .w2 { display: inline-block; }
   .wcycle .w1 { animation: w-exit 0.35s var(--ease) forwards 1.75s; }
   .wcycle .w2 {
@@ -1360,7 +1373,7 @@ h1:has(.hl--sub) { font-size: clamp(2.9rem, 7.5vw, 6rem); }
   @keyframes w-exit  { to { opacity: 0; transform: translateY(-52%); } }
   @keyframes strike-in { to { width: 104%; } }
 
-  /* 5 · the verdict earns its underline last */
+  /* 3 · the verdict earns its underline last */
   .uline::after {
     width: 0;
     animation: uline-in 0.55s var(--ease) forwards;
@@ -1633,7 +1646,7 @@ h1:has(.hl--sub) { font-size: clamp(2.9rem, 7.5vw, 6rem); }
 }
 .qb-sum {
   position: sticky; top: 1.2rem;
-  background: linear-gradient(160deg, var(--plum-900), var(--plum-ink));
+  background: var(--plum-ink);
   color: var(--champ); padding: 1.7rem 1.8rem 1.6rem;
   border-top: 6px solid var(--moss-300);
 }
@@ -1673,9 +1686,34 @@ h1:has(.hl--sub) { font-size: clamp(2.9rem, 7.5vw, 6rem); }
   .site-head, .site-foot, .qb__col,
   .mq, .qb-sum .cta-row, .qb-sum .small { display: none !important; }
   .qb { display: block; }
-  .qb-sum { position: static; background: none; color: #000; border-top: 4px solid #6B7B4E; }
-  .qb-sum > .lab, .qb-total span { color: #525E3A; }
+  .qb-sum { position: static; background: none; color: #000;
+            border-top: 4px solid var(--moss-700); }
+  .qb-sum > .lab, .qb-total span { color: var(--moss-700); }
   .qb-line span, .qb-total b { color: #000; }
   .qb-line em, .qb-fine { color: #444; }
   .qb-line { border-color: #ccc; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* "More signal. Less noise." — the two halves rise on their own beats, the
+     second late enough that you read the first before it lands. Same curve and
+     the same 0.75s as the hero headline, so the page speaks one motion
+     language rather than two.
+
+     Built on the existing .rv mechanism and gated on html.js exactly like every
+     other reveal: the first version of this used visibility:hidden with no such
+     guard, which would have deleted the line entirely for anyone whose
+     JavaScript failed to run. */
+  html.js .interlude p        { overflow: hidden; }
+  html.js .interlude p > em   { overflow: hidden; }
+  html.js .interlude p.rv     { opacity: 1; transform: none; }
+  html.js .interlude p.rv     > :not(em) { display: inline-block; }
+  html.js .interlude p.rv:not(.in)      { opacity: 0; transform: translateY(64%); }
+  html.js .interlude p.rv.in            { animation: intl-up 0.8s var(--ease) backwards; }
+  html.js .interlude em.rv:not(.in)     { opacity: 0; transform: translateY(64%); }
+  html.js .interlude em.rv.in           { animation: intl-up 0.8s var(--ease) backwards 0.24s; }
+  @keyframes intl-up {
+    from { opacity: 0; transform: translateY(64%); }
+    to   { opacity: 1; transform: none; }
+  }
 }

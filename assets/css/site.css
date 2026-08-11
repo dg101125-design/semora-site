@@ -87,14 +87,7 @@ a { color: inherit; }
 /* ----------------------------------------------- typography */
 .display, h1 {
   font-family: var(--serif);
-  /* Weight raised 320 → 560 on the founder's call, 11 Aug 2026. Newsreader at
-     320 is a book weight: correct on a page someone has already decided to
-     read, and too quiet on a home page sitting beside agencies setting
-     everything at 700. 560 is heavy enough to hold the page and still leaves
-     the variable axis short of its 800 maximum, so the letterforms keep their
-     modulation instead of going slab. opsz stays at 72 — the optical size is
-     what stops a heavy serif looking clotted at display scale. */
-  font-weight: 560;
+  font-weight: 320;
   font-variation-settings: "opsz" 72;
   font-size: clamp(2.7rem, 6.4vw, 4.7rem);
   line-height: 0.97;
@@ -104,7 +97,7 @@ a { color: inherit; }
 }
 h2 {
   font-family: var(--serif);
-  font-weight: 520;
+  font-weight: 400;
   font-variation-settings: "opsz" 44;
   font-size: clamp(1.95rem, 4.1vw, 3.05rem);
   line-height: 1.02;
@@ -114,7 +107,7 @@ h2 {
 }
 h3 {
   font-family: var(--serif);
-  font-weight: 500;
+  font-weight: 420;
   font-variation-settings: "opsz" 28;
   font-size: 1.35rem;
   line-height: 1.18;
@@ -203,8 +196,13 @@ section > .wrap { position: relative; z-index: 1; }
   pointer-events: none; user-select: none; z-index: 0;
   font-variant-numeric: tabular-nums;
 }
-.ghost-no--l { left: -0.05em; }
-.ghost-no--r { right: -0.03em; }
+/* Flush, not bled off the edge. At 24rem the -0.03em hang was about 11px of a
+   decorative numeral sitting outside the viewport, and it made every page
+   scroll sideways by exactly that much — measured at 12px on desktop, 9px on
+   laptop. Nobody would ever see the numeral; everybody feels the page drift
+   under a thumb. */
+.ghost-no--l { left: 0; }
+.ghost-no--r { right: 0; }
 .f-plum .ghost-no, .f-moss .ghost-no { color: var(--ivory); opacity: 0.05; }
 
 /* ---- typographic interludes ---- */
@@ -336,7 +334,11 @@ section > .wrap { position: relative; z-index: 1; }
 }
 .tbl td:first-child { color: var(--plum-900); font-weight: 600; }
 .tbl .num { font-variant-numeric: tabular-nums; white-space: nowrap; }
-.tbl-scroll { overflow-x: auto; }
+/* min-width:0 is what makes overflow-x actually contain the table. A grid or
+   flex child defaults to min-width:auto, which refuses to shrink below its
+   content — so the scroller was sized by the 560px table instead of by the
+   column, and a 390px phone scrolled the whole page by 5px. */
+.tbl-scroll { overflow-x: auto; min-width: 0; max-width: 100%; }
 .tbl-scroll .tbl { min-width: 560px; }
 
 /* price figure */
@@ -498,12 +500,22 @@ html.lr .site-head__word::before {
 .mega::before {
   content: ""; position: absolute; left: 0; right: 0; top: -1.15rem; height: 1.15rem;
 }
+/* Rows are declared on the container and each column spans them with subgrid,
+   so the heading, the promise and the list line up across all six columns
+   because they share the same rows — not because each was forced to a height.
+   The fixed heights this replaces were clipping four of the six promises: the
+   geometry audit measured 49px of text in a 35px box. Alignment by truncation
+   is not alignment. */
 .mega__inner {
   display: grid; grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto auto;
   gap: 2rem 2.2rem; padding: 2.2rem 2.4rem 1.6rem;
 }
 @media (min-width: 1500px) {
   .mega__inner { grid-template-columns: repeat(6, 1fr); gap: 0 1.9rem; }
+}
+@supports (grid-template-rows: subgrid) {
+  .mega__col { display: grid; grid-row: span 3; grid-template-rows: subgrid; }
 }
 /* A hairline between columns rather than white space alone — four lists of
    plain text with only a gap between them read as one long column on a wide
@@ -527,22 +539,14 @@ html.lr .site-head__word::before {
   font-size: 1.06rem !important; line-height: 1.2 !important;
   letter-spacing: -0.01em !important; text-transform: none !important;
   color: var(--plum-900); margin: 0 0 0.28rem;
-  /* Two lines fixed, for the same reason the promise below is fixed: one
-     heading wrapping and five not is what threw the whole row out of
-     alignment. */
-  height: 2.4em; display: flex; align-items: flex-end;
+  align-self: end;
 }
 .mega__sub {
   font-family: var(--sans); font-style: normal; font-weight: 400;
   font-size: 0.78rem; line-height: 1.45; color: var(--graph);
   margin: 0; padding-bottom: 0.8rem;
   border-bottom: 1px solid var(--champ-700);
-  /* Fixed block height, not min-height: the headings and promises are
-     different lengths, and without it every column's list started at a
-     different point and the rule under each one sat at a different height.
-     Two lines of promise is the ceiling — a third means the promise is too
-     long, not that the box is too short. */
-  height: 2.9em; overflow: hidden;
+  align-self: stretch;
   margin-bottom: 0.95rem;
 }
 .mega__col ul { list-style: none; margin: 0; padding: 0; }
@@ -698,9 +702,17 @@ html.lr .site-head__word::before {
   letter-spacing: -0.015em; color: var(--ivory);
   margin: 1.1rem 0 clamp(2.4rem, 5vw, 3.4rem); max-width: 20ch;
 }
+/* Subgrid here for the same reason as the services menu: the figures are
+   different widths and the captions were starting up to 3.9px apart, which
+   reads as a wobble along the rule above them. Sharing rows aligns them
+   because they are on the same rows, not because anything was forced. */
 .statband__grid {
   display: grid; gap: 2.6rem var(--gutter);
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-template-rows: auto auto;
+}
+@supports (grid-template-rows: subgrid) {
+  .stat { display: grid; grid-row: span 2; grid-template-rows: subgrid; }
 }
 .stat__v {
   display: flex; align-items: flex-start; gap: 0.3em;
@@ -730,6 +742,25 @@ html.lr .site-head__word::before {
   font-size: 0.86rem; line-height: 1.6; color: var(--plum-100);
 }
 .statband__foot .alink { color: var(--champ); }
+
+/* Footer links get a real tap area on touch. Measured at 21px tall on a
+   390px viewport — a line of text with no padding, against the 44px both
+   platforms publish as the minimum. It is the part of the page reached with a
+   thumb, one-handed, at the end of a scroll, and it held the phone number.
+   Padding rather than a taller line-height, so the list keeps its rhythm. */
+@media (hover: none), (max-width: 700px) {
+  .site-foot nav a,
+  .site-foot ul a { min-height: 44px; display: flex; align-items: center; }
+  /* Standalone controls only. min-height does nothing to a non-replaced
+     inline element, so a link inside a sentence is untouched by this and
+     keeps its paragraph intact — which is the whole reason these are named
+     one by one rather than styled as .alink wholesale. */
+  .nav-toggle,
+  .cta-row .alink,
+  p > .alink:only-child {
+    min-height: 44px; display: inline-flex; align-items: center;
+  }
+}
 
 /* --------------------------------------------------- footer */
 .site-foot { background: var(--plum-ink); color: var(--champ); }
@@ -1299,11 +1330,7 @@ h1:has(.hl--sub) { font-size: clamp(2.9rem, 7.5vw, 6rem); }
 .hl--sub {
   font-size: clamp(1rem, 1.85vw, 1.42rem);
   font-weight: 400; line-height: 1.25; letter-spacing: 0.005em;
-  /* Moss, not plum. It is the line that separates us from the category, and
-     in the brand's own palette moss is the colour that carries a distinction
-     — the rules, the ticks, the mark's counter. Plum-100 read as a faded
-     version of the promise beneath it rather than as a different thought. */
-  color: var(--moss-700);
+  color: var(--plum-100);
   margin-bottom: 0.62em;
 }
 /* narrow phones: fixed display lines must wrap naturally */

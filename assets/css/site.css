@@ -449,6 +449,96 @@ html.lr .site-head__word::before {
 .site-nav a[aria-current="page"] { color: var(--plum); border-bottom-color: var(--moss); }
 .site-nav .btn { padding: 0.85em 1.4em; }
 
+
+/* --------------------------------------------- services mega-menu
+   Their format, our content. The large agencies run a menu like this listing
+   twenty or thirty capabilities and not one number, which is precisely what
+   leaves a buyer having to ask. Every row here carries its price and its
+   delivery time — the same information, turned from a menu into an argument.
+
+   CSS only: hover for a mouse, :focus-within for a keyboard, and it collapses
+   out entirely below the mega breakpoint where the checkbox nav takes over.
+   No JavaScript, so it cannot fail to open. */
+.has-mega { position: relative; display: flex; align-items: center; }
+.mega-caret {
+  display: inline-block; width: 0.42em; height: 0.42em; margin-left: 0.55em;
+  border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor;
+  transform: translateY(-0.15em) rotate(45deg);
+  transition: transform 180ms var(--ease);
+}
+.has-mega:hover .mega-caret,
+.has-mega:focus-within .mega-caret { transform: translateY(0.05em) rotate(225deg); }
+
+.mega {
+  position: absolute; top: calc(100% + 1.15rem); left: 50%;
+  transform: translateX(-50%) translateY(-6px);
+  width: min(1120px, calc(100vw - 2.5rem));
+  background: var(--ivory);
+  border: 1px solid var(--champ-700);
+  box-shadow: 0 24px 60px -28px rgb(46 28 41 / 0.34);
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transition: opacity 170ms var(--ease), transform 170ms var(--ease),
+              visibility 0s linear 170ms;
+  z-index: 60;
+}
+.has-mega:hover .mega,
+.has-mega:focus-within .mega {
+  opacity: 1; visibility: visible; pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+  transition-delay: 0s;
+}
+/* the gap between the link and the panel stays hoverable */
+.mega::before {
+  content: ""; position: absolute; left: 0; right: 0; top: -1.15rem; height: 1.15rem;
+}
+.mega__inner {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 0 2.1rem; padding: 2rem 2.2rem 1.5rem;
+}
+.mega__col .lab { color: var(--plum); margin-bottom: 0.3rem; }
+.mega__sub {
+  font-size: 0.78rem; line-height: 1.4; color: var(--graph);
+  margin: 0 0 1rem; padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--champ-700);
+}
+.mega__col ul { list-style: none; margin: 0; padding: 0; }
+.mega__col li + li { margin-top: 0.1rem; }
+.mega__col a {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 0.8rem; padding: 0.5em 0.55em 0.5em 0;
+  font-family: var(--sans) !important; font-size: 0.84rem !important;
+  letter-spacing: 0 !important; text-transform: none !important;
+  font-weight: 400 !important; line-height: 1.35;
+  color: var(--ink) !important; border-bottom: 0 !important;
+  border-radius: 2px;
+}
+.mega__col a:hover { color: var(--plum) !important; background: var(--champ-300); }
+.mega__col a span { flex: 1 1 auto; }
+.mega__col a em {
+  flex: 0 0 auto; font-style: normal; text-align: right;
+  font-family: var(--mono); font-size: 0.7rem; font-weight: 500;
+  color: var(--plum); white-space: nowrap;
+}
+.mega__col a em i {
+  display: block; font-style: normal; font-size: 0.62rem;
+  letter-spacing: 0.06em; color: var(--graph); margin-top: 0.1em;
+}
+.mega__foot {
+  grid-column: 1 / -1; margin: 0.9rem 0 0; padding-top: 1rem;
+  border-top: 1px solid var(--champ-700);
+  font-size: 0.78rem; line-height: 1.5; color: var(--graph);
+}
+@media (prefers-reduced-motion: reduce) {
+  .mega, .mega-caret { transition: none; }
+}
+/* Below the desktop nav breakpoint the checkbox menu takes over and the panel
+   is removed rather than restyled — a four-column price table inside a phone
+   drawer is worse than the plain link it replaces. */
+@media (max-width: 1240px) {
+  .has-mega { display: contents; }
+  .mega, .mega-caret { display: none; }
+}
+
 /* mobile nav — checkbox hack; checkbox stays focusable */
 .nav-toggle-box { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; }
 .nav-toggle-box:focus-visible + .nav-toggle { outline: 2px solid var(--plum); outline-offset: 3px; }

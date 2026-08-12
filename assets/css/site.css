@@ -1870,3 +1870,14 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 72px); }
    against a published 44px minimum. Padding grows the touch target; the
    negative margin gives the space back, so the legal line does not move. */
 .site-foot__legal a { padding-block: 16px; margin-block: -16px; }
+
+/* The scale snap grew two nowrap runs — the serif price to 19px, the mono
+   delivery chip to 11px at 0.24em — and together they pushed a quote row's
+   min-content past a phone viewport. The sizes are correct scale members, so
+   the fix is containment: on a phone the price block drops under the label,
+   aligned to the text column, and the row can never out-grow the page again. */
+.qb__col { min-width: 0; }
+@media (max-width: 560px) {
+  .qb-item { flex-wrap: wrap; }
+  .qb-item em { text-align: left; flex-basis: 100%; margin-left: calc(1.25rem + 16px); }
+}

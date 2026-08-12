@@ -875,7 +875,14 @@ html.lr .site-head__word::before {
    sizing one. The two struck words are taken out of flow so they contribute no
    width; mid-animation they overhang the slot, which is invisible because they
    are struck through and leaving at that moment. */
-.wcycle { display: inline-grid; position: relative; }
+/* Italic correction + animation breathing room (founder, 12 Aug: the space
+   before "clients." reads squeezed). Two causes, one margin: the italic
+   final 't' of "right" leans into the following word — measured ink gap
+   15.5px against 21.5px for the upright pairs — and mid-cycle "more"
+   (82px) overhangs the 71px slot by 11px, eating the same gap while the
+   animation plays. 0.1em restores the gap at rest and absorbs the
+   overhang in motion. */
+.wcycle { display: inline-grid; position: relative; margin-right: 0.1em; }
 .wcycle .w { grid-area: 1 / 1; position: relative; white-space: nowrap; }
 .wcycle .w1, .wcycle .w2 { position: absolute; left: 0; top: 0; }
 /* The two struck-through words are drawn here rather than written into the

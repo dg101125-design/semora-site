@@ -2044,15 +2044,31 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 96px); }
 /* ── hero figure: the founder's own mark composition (0001) ───────────────
    Anchored to the content column's right edge like the tile it replaces,
    rising on the same beat as the headline. Width in proportion to the
-   viewport, capped where it would crowd the statement. */
+   viewport, capped where it would crowd the statement.
+   Top-aligned with the content block (same clamp as the hero's own
+   padding), not centred on the band: centring hung it 189px below the
+   headline's top and 93px past the CTA into the bottom padding — level
+   with nothing. Sharing the label's top edge, its bottom lands on the
+   lead paragraph's zone at every width instead of in empty ground. */
 .hero__figure {
   position: absolute; z-index: 1;
   right: max(var(--gutter), calc((100% - var(--maxw)) / 2 + var(--gutter)));
-  top: 50%; transform: translateY(-50%);
+  top: clamp(64px, 11vw, 128px);
   width: clamp(180px, 20vw, 300px); height: auto;
   border: 1px solid rgb(255 255 255 / 0.12);
 }
 @media (max-width: 1120px) { .hero__figure { display: none; } }
+
+/* Short viewports — a half-height window or a zoomed browser. The fixed
+   128px paddings were sized for a 900px fold; on an effective fold of
+   600–780px they swallow the screen and push the lead and CTA under it
+   (reported by the founder, 12 Aug: the hero clipped mid-paragraph).
+   Trim the band, keep the rhythm. */
+@media (max-height: 780px) {
+  .hero { padding-block: 48px 64px; }
+  .hero .lead { margin-top: 24px; }
+  .hero .cta-row { margin-top: 32px; }
+}
 
 /* ── the editorial journey index — rows, hairlines, a magazine contents ── */
 .wwd-index { margin-top: 48px; border-top: 1px solid rgb(255 255 255 / 0.16); }

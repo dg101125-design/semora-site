@@ -1419,6 +1419,34 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 96px); }
   }
   @keyframes uline-in { to { width: 96%; } }
 
+  /* 4 · the mark falls onto its floor (founder, 12 Aug: 自然掉落).
+     The floor draws first — something to land on — then the O drops under
+     gravity and settles in two diminishing bounces; the dots land after,
+     the grammar of the accepted icon animation. SVG user units, not %,
+     so the travel cannot change meaning if the bounding box does. */
+  .hm-floor {
+    stroke-dasharray: 690; stroke-dashoffset: 690;
+    animation: hm-floor-in 0.5s var(--ease) forwards 0.1s;
+  }
+  .hm-drop { transform: translateY(-1050px); animation: hm-fall 1.05s forwards 0.25s; }
+  .hm-d { transform: translateY(-460px); opacity: 0; }
+  .hm-d1 { animation: hm-dot 0.6s cubic-bezier(.34,1.45,.64,1) forwards 1.42s; }
+  .hm-d2 { animation: hm-dot 0.6s cubic-bezier(.34,1.45,.64,1) forwards 1.62s; }
+  @keyframes hm-floor-in { to { stroke-dashoffset: 0; } }
+  @keyframes hm-fall {
+    0%   { transform: translateY(-1050px);
+           animation-timing-function: cubic-bezier(.55,0,.85,.36); }
+    58%  { transform: translateY(0);
+           animation-timing-function: cubic-bezier(.17,.67,.35,1); }
+    74%  { transform: translateY(-34px);
+           animation-timing-function: cubic-bezier(.55,0,.85,.36); }
+    86%  { transform: translateY(0);
+           animation-timing-function: cubic-bezier(.17,.67,.35,1); }
+    94%  { transform: translateY(-9px); }
+    100% { transform: translateY(0); }
+  }
+  @keyframes hm-dot { 55% { opacity: 1; } to { transform: translateY(0); opacity: 1; } }
+
   /* scroll reveal — armed only once site.js has run (html.js) */
   html.js .rv {
     opacity: 0; transform: translateY(20px);
@@ -2064,22 +2092,24 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 96px); }
 }
 .logo-dot img { width: 100%; height: 100%; object-fit: contain; padding: 16px; }
 
-/* ── hero figure: the founder's own mark composition (0001) ───────────────
-   Anchored to the content column's right edge like the tile it replaces,
-   rising on the same beat as the headline. Width in proportion to the
-   viewport, capped where it would crowd the statement.
-   Top-aligned with the content block (same clamp as the hero's own
-   padding), not centred on the band: centring hung it 189px below the
-   headline's top and 93px past the CTA into the bottom padding — level
-   with nothing. Sharing the label's top edge, its bottom lands on the
-   lead paragraph's zone at every width instead of in empty ground. */
+/* ── hero figure: the bare mark, dropped onto the page ────────────────────
+   Founder, 12 Aug evening: no box. Ivory O, acid dots, straight on the
+   hero ink, standing on a white floor line — the same ink/ivory/acid
+   grammar as the accepted icon animation. Anchored to the content column's
+   right edge, top-aligned with the content block (same clamp as the hero's
+   own padding). overflow stays visible so the falling pieces exist above
+   the viewBox; the .hero band's own overflow:hidden crops them until they
+   enter, which is what makes the drop read as falling INTO the page. */
 .hero__figure {
   position: absolute; z-index: 1;
   right: max(var(--gutter), calc((100% - var(--maxw)) / 2 + var(--gutter)));
   top: clamp(64px, 11vw, 128px);
   width: clamp(180px, 20vw, 300px); height: auto;
-  border: 1px solid rgb(255 255 255 / 0.12);
+  overflow: visible;
 }
+.hm-o { fill: var(--ivory); }
+.hm-d { fill: var(--moss-300); }   /* acid — dark grounds only, and this is one */
+.hm-floor { stroke: var(--ivory); stroke-width: 5; stroke-linecap: round; }
 @media (max-width: 1120px) { .hero__figure { display: none; } }
 
 /* Short viewports — a half-height window or a zoomed browser. The fixed

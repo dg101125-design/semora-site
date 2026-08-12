@@ -59,3 +59,7 @@ User-agent: *
 Allow: /
 
 Sitemap: https://www.semora.com.au/sitemap.xml
+
+# Machine-readable summaries of this site, for answer engines.
+# https://www.semora.com.au/llms.txt       — entity, products, published prices, Q&A
+# https://www.semora.com.au/llms-full.txt  — the full rendered text of every page

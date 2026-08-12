@@ -1833,3 +1833,40 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 72px); }
   html.js .rv.in .stat__mk { animation: slash-draw 0.5s var(--ease) forwards; }
   html.js .stat__v [data-count] { font-variant-numeric: tabular-nums; }
 }
+
+/* ── the team grid + the report form (12 Aug 2026) ─────────────────────────
+   Every value on the published scales — check 14 enforces it now. The tframe
+   tile is an INITIALS PLACEHOLDER, deliberately typographic: a fake face on
+   a page whose job is proving people exist would be worse than an empty frame.
+   Portraits replace the tiles as the founder supplies them. */
+.tgrid {
+  display: grid; gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  margin-top: 24px;
+}
+.tgrid--dir { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; }
+.tframe {
+  display: flex; align-items: center; justify-content: center;
+  position: relative; aspect-ratio: 4 / 5;
+  background: var(--plum-ink); border: 1px solid var(--champ-700);
+  margin-bottom: 16px; overflow: hidden;
+}
+.tframe .slash { position: absolute; left: 16px; top: 16px; height: 1.4em; }
+.tframe b {
+  font-family: var(--serif); font-weight: 300;
+  font-size: clamp(40px, 6vw, 72px); line-height: 0.94;
+  letter-spacing: 0; color: var(--ivory);
+}
+.tcard h3 { margin: 0 0 4px; }
+.tcard .lab { margin-bottom: 8px; }
+.tbio { font-size: 15px; line-height: 1.55; color: var(--graph-700); max-width: 34ch; }
+@media (prefers-reduced-motion: no-preference) {
+  /* the frames sweep in on the same row-stagger the other grids use */
+  html.js .tgrid > .rv { transition-delay: calc(var(--rvd, 0s) * 0.6); }
+}
+
+/* The ABN links to the ABR register — added for entity verification, which is
+   right — but a text link inside the legal line is 15px tall on a phone
+   against a published 44px minimum. Padding grows the touch target; the
+   negative margin gives the space back, so the legal line does not move. */
+.site-foot__legal a { padding-block: 16px; margin-block: -16px; }

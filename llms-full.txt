@@ -28,9 +28,9 @@ What you can check right now
 
 Services with a published price and a published delivery time. Same numbers for you as for anyone else. Nothing is quoted on request.
 
-65
+41
 
-Melbourne firms we reviewed in August 2026. None published all four of the commitments we publish.
+Melbourne and Australian marketing firms we scored in August 2026, against four published-commitment criteria fixed before we looked. None published all four. None published three.
 
 11
 
@@ -74,7 +74,7 @@ What matters, in what order, and why — decided, not drifted. One agreed number
 
 ### AI-assisted research
 
-65 Melbourne firms reviewed in August 2026, salaries cited to source, sectors mapped. Every figure is attributable and dated — you can check it.
+41 Melbourne and Australian firms scored in August 2026, salaries cited to source, sectors mapped. Every figure is attributable and dated — you can check it.
 
 03
 
@@ -178,7 +178,7 @@ More signal.Less noise.
 
 You can't check our references yet, so check everything else. SEMORA STUDIO began operating in 2026 and we say so. Most agencies ask you to trust them and keep the terms for the proposal. Ours are on the site — every price, the published quantities, the one agreed number reviewed at 90 days, and the handover clause. Check them before you write to us.
 
-Beside each of ours is standard practice across the 65 Melbourne firms we reviewed in August 2026.
+Beside each of ours is standard practice across the 41 Melbourne and Australian firms we scored in August 2026.
 
 1
 
@@ -264,7 +264,7 @@ Pricing · Frequently proposal-based · Products, prices, scope and delivery tim
 
 Ownership · Varies by agency · Source files and systems transfer at completion, by contract ·
 
-Who does the work · Varies significantly by size and specialisation · One accountable person on every engagement — Jennifer Wong, who signs off every deliverable before it ships. Research and production are AI-assisted, and we say so ·
+Who does the work · Varies significantly by size and specialisation · A named team of six, listed on the team page. Research and production are AI-assisted, and we say so. Nothing ships until a person has signed it off ·
 
 Measurement · Campaign or channel metrics · Tied to one agreed commercial number, reviewed at 90 days ·
 
@@ -320,7 +320,7 @@ What we actually run
 
 ### What services does SEMORA STUDIO provide?
 
-Three streams — attracting the right clients, the managed marketing engine, and scaling with profit — delivered through four products: the Proof Audit at $3,000, SIGNAL / from $14,000, / HAUS from $38,000 and MOMENTUM from $4,200 a month, all + GST. Every capability below sits inside one of them with a published price and a published delivery time. Nothing here is quoted on request.
+SEMORA STUDIO runs three streams. Attracting the right clients, the managed marketing engine, and scaling with profit. They are delivered through four products, and each one carries its price on the page: the Proof Audit at $3,000, SIGNAL / from $14,000, / HAUS from $38,000, and MOMENTUM from $4,200 a month, all + GST. Every capability below sits inside one of them, with a published delivery time as well as a published price. Nothing is quoted on request.
 
 Stream 01
 
@@ -654,7 +654,7 @@ The handover clause
 
 ### What do you own at the end of / HAUS?
 
-All of it, as a clause rather than a courtesy. Every source file, token and the governance model transfer at completion, by contract. Fonts are SIL OFL — no seat licences. No asset held hostage to a retainer. In our August 2026 review of 65 Melbourne firms we did not find another publishing all four commitments together — comparison criteria and review date available on request.
+All of it, as a clause rather than a courtesy. Every source file, token and the governance model transfer at completion, by contract. Fonts are SIL OFL — no seat licences. No asset held hostage to a retainer. In our August 2026 review of 41 Melbourne and Australian firms we did not find another publishing all four commitments together — comparison criteria and review date available on request.
 
 Start with the audit Next: MOMENTUM →
 
@@ -890,7 +890,7 @@ Who we are not for: retail, e-commerce, startups pre-revenue, and anyone competi
 
 ### Four commitments, in writing.
 
-Across 65 Melbourne firms reviewed in August 2026, we found none publishing all four. These are the terms, not the marketing.
+Across 41 Melbourne and Australian firms scored in August 2026, we found none publishing all four. These are the terms, not the marketing.
 
 ### Every price and delivery time is published
 
@@ -914,7 +914,7 @@ The eleven surfaces, free and ungated — score yourself before you speak to us
 
 Yes — new, and we say so. SEMORA STUDIO works from Central House Toorak, Level 3, 489 Toorak Road, Toorak VIC 3142, Melbourne, with Australian practices. The company began operating in 2026. There is no decade of case studies here and we will not pretend there is. What we publish instead is the thinking, the prices and our own score, zeros included.
 
-How the work gets done: Jennifer Wong is accountable for every engagement. She signs off every piece of work before it leaves. Every one. Her name is on it when it is wrong. Research and production are AI-assisted, and we say so rather than let you picture a floor of staff who are not there. You are paying for the judgement, and for the name that goes on it.
+How the work gets done: six named people, listed on the team page, with the work split by function. Research and production are AI-assisted, and we say so rather than let you picture a floor of staff who are not there. Nothing leaves until a person has read it and signed it off.
 
 How we handle claims: named, dated, sourced and caveated. A client quote is published with their name on it and their written yes, or labelled as a sample until a real one replaces it. A claim without a source, a date or a starting number does not ship.
 
@@ -1143,6 +1143,104 @@ The standard we hold
 Every claim passes all four tests, and every case study names what else changed in the period — the caveat is what separates evidence from advertising.
 
 Start with the audit
+
+---
+
+# The team — SEMORA STUDIO Melbourne
+URL: https://www.semora.com.au/team
+Summary: Two directors and four leads, split by function. Research and production are AI-assisted, and we say so.
+
+The team
+
+## Six people. Split by function, not by title .
+
+Two directors and four leads, each holding one function the way a practice holds a discipline — which is the whole design, because marketing run as a side job is the reason most of it fails. Research and production are AI-assisted. We say so. Nothing leaves until a person has read it and signed it off.
+
+01 / Directors
+
+JW
+
+### Jennifer Wong
+
+Founder & Strategy Director
+
+Strategy, positioning and the client relationship — what the engagement is for, and whether the work answers it.
+
+BM
+
+### Brent Matthys
+
+Director
+
+02 / Leads
+
+RW
+
+### Rachel Wilson
+
+SEO Lead
+
+Search, end to end — technical health, local visibility, and how the firm surfaces when an AI answers the question.
+
+MH
+
+### Melody Hudson
+
+Performance Lead
+
+Paid media and measurement — Google, Meta and LinkedIn, reported against the revenue chain, never against impressions.
+
+RD
+
+### Ray Daniel
+
+Production Lead
+
+Everything that ships — brand assets, pages, campaigns and video, produced on the monthly calendar.
+
+HL
+
+### Hannah Liu
+
+Customer Relationships
+
+The enquiry, the onboarding and the follow-through — nothing a client sends goes unanswered past the published standard.
+
+03 / How the work moves
+
+### One brief. Four hands.
+
+Strategy sets the position and the one number the engagement answers to, search and performance carry that position out to the people who actually buy, and production makes every asset those people will ever see from it. Client relationships holds the thread. Nothing you send waits past the published standard, because chasing an agency for an answer is its own quiet reason to leave one. The split is deliberate. When one person does all four jobs, all four are done at half attention.
+
+The method behind the split →
+
+Portraits and profiles are being added as each person confirms what may be published about them. A name appears here the day it is real, and not a day before.
+
+---
+
+# Free AI visibility report — SEMORA STUDIO Melbourne
+URL: https://www.semora.com.au/ai-visibility-report
+Summary: Does AI mention you, cite you or recommend you when a buyer asks? We run the check on ChatGPT and Perplexity and send you what we find. Free, no obligation.
+
+Free / no obligation
+
+## Does AI know you exist ?
+
+Ask ChatGPT who does what you do. If the answer names your competitors and not you, that is where your next client just went. We will run the check properly and send you what we find.
+
+01 / What you get
+
+### A real report. Not a widget.
+
+We take the questions a buyer in your field actually asks, run them on ChatGPT and Perplexity in clean sessions with the wording fixed in advance, and write down exactly what came back — the same instrument we score ourselves with every month, results published, zeros included. No demo screen. No canned insights.
+
+The report shows whether AI mentions you, cites you or recommends you, names the competitors appearing in the answers where you should be, and ends with the three fixes we would make first, in order. It arrives by email. A document you keep, whether or not we ever speak again.
+
+One thing it will not contain is a guarantee of placement. Nobody controls what these systems answer, and anyone who promises a position in them is selling you weather.
+
+02 / How we run it
+
+Every question is asked in a fresh session with no account signed in, because a logged-in run measures what the platform knows about the asker, not what a stranger would be told. The wording is fixed before we start and never adjusted to flatter the result. Each answer is scored on three rungs. Mentioned means your name appears. Cited means the answer links to you. Recommended means you are the suggestion, which is the only rung that wins work.
 
 ---
 

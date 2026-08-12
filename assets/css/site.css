@@ -1965,6 +1965,15 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 96px); }
 /* ── what-we-do v2: statement + product accordion (13 Aug 2026).
    Structure from the founder's reference (002); skin entirely ours. */
 .wwd2 { display: grid; gap: 48px; margin-top: 24px; position: relative; z-index: 1; }
+/* one typeface through the whole section (founder, 13 Aug round 3):
+   the reference sets left statement and right rows in a single sans.
+   The serif remains the site's display voice elsewhere; here the
+   statement speaks the rows' language, only larger. */
+.wwd2 .statband__h {
+  font-family: var(--sans); font-size-adjust: 0.546; font-weight: 600;
+  font-size: clamp( 28px, 3.6vw, 56px); line-height: 1.14;
+  letter-spacing: -0.006em; text-transform: uppercase;
+}
 @media (min-width: 900px) {
   .wwd2 { grid-template-columns: 5fr 6fr; gap: 64px; }
   .wwd2__lead { position: sticky; top: 96px; align-self: start; }
@@ -2228,6 +2237,72 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 96px); }
 .imgslot figcaption { padding: 12px 16px; opacity: 0.6; }
 .imgslot > img { position: absolute; inset: 0; width: 100%; height: 100%;
                  object-fit: cover; }
+
+/* the feature plate (founder, 13 Aug: 不要方方正正 — 圆弧、要动):
+   a deep arc frame, a slow breath, a drift tied to scroll where the
+   platform supports scroll timelines, and the accepted aperture
+   animation looping in the corner. */
+.imgslot--feature {
+  border: 0; border-radius: 64px; overflow: hidden;
+  border-top-left-radius: 160px;
+}
+.imgslot--feature > img { will-change: transform; }
+@media (prefers-reduced-motion: no-preference) {
+  .imgslot--feature > img {
+    animation: plate-breathe 26s ease-in-out infinite;
+  }
+  @keyframes plate-breathe {
+    0%, 100% { transform: scale(1.02) translate(0, 0); }
+    50% { transform: scale(1.1) translate(-1.4%, 1.2%); }
+  }
+  @supports (animation-timeline: view()) {
+    .imgslot--feature > img {
+      animation: plate-breathe 26s ease-in-out infinite,
+                 plate-drift linear both;
+      animation-timeline: auto, view();
+      animation-range: normal, entry 0% exit 100%;
+    }
+    @keyframes plate-drift {
+      from { object-position: 50% 28%; }
+      to { object-position: 50% 72%; }
+    }
+  }
+}
+.imgslot__sting {
+  /* bottom-left — the floating strategy pill owns the bottom-right */
+  position: absolute; left: 32px; bottom: 32px;
+  width: clamp(96px, 12vw, 160px); aspect-ratio: 1;
+  background: var(--plum-ink); border-radius: 32px;
+  box-shadow: 0 12px 32px rgb(0 0 0 / 0.35);
+}
+.imgslot__sting svg { width: 100%; height: 100%; display: block; }
+.sting__arc path { fill: var(--ivory); }
+.sting__arc--3 path { fill: var(--plum-300); }
+.sting__dot { fill: var(--moss-300); }
+@media (prefers-reduced-motion: no-preference) {
+  .sting__cycle { animation: sting-cycle 7s var(--ease) infinite; }
+  .sting__arc { transform-box: view-box; transform-origin: 500px 540px;
+    animation: sting-sweep 7s var(--ease) infinite; }
+  .sting__arc--2 { animation-delay: 0.25s; }
+  .sting__arc--3 { animation-delay: 0.5s; }
+  .sting__dot { transform-box: fill-box; transform-origin: center;
+    animation: sting-pop 7s cubic-bezier(.34,1.56,.64,1) infinite; }
+  @keyframes sting-cycle {
+    0%, 92% { opacity: 1; } 97%, 100% { opacity: 0; }
+  }
+  @keyframes sting-sweep {
+    0% { transform: rotate(-42deg); opacity: 0; }
+    10%, 100% { transform: rotate(0deg); opacity: 1; }
+  }
+  @keyframes sting-pop {
+    0%, 16% { transform: scale(0); opacity: 0; }
+    24%, 100% { transform: scale(1); opacity: 1; }
+  }
+}
+@media (max-width: 640px) {
+  .imgslot--feature { border-radius: 32px; border-top-left-radius: 64px; }
+  .imgslot__sting { left: 16px; bottom: 16px; border-radius: 16px; }
+}
 /* logo-ring / logo-dot retired with the circles section, 13 Aug 2026 */
 
 /* the hero figure is gone — the living aperture sits in the site header */

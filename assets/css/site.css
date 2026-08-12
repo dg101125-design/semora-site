@@ -5,32 +5,33 @@
    ============================================================ */
 
 /* ---------------------------------------------------- fonts */
+/* Replaced 12 Aug 2026 at the founder's instruction: Newsreader, Inter and
+   IBM Plex Mono are the default faces of a thousand AI-generated sites, and a
+   design firm cannot wear them. The replacements carry actual opinion:
+   Fraunces — a wonky old-style display serif with optical sizing, soft and
+   sharp on demand; Instrument Sans — a grotesque with drawn character, not a
+   neutral system face; Fragment Mono — a Grilli-flavoured mono for the data
+   voice. All OFL, all self-hosted, all variable where it matters. */
 @font-face {
-  font-family: "Newsreader";
-  src: url("../fonts/Newsreader-var.woff2") format("woff2-variations");
-  font-weight: 200 800; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: "Newsreader";
-  src: url("../fonts/Newsreader-Italic-var.woff2") format("woff2-variations");
-  font-weight: 200 800; font-style: italic; font-display: swap;
-}
-@font-face {
-  font-family: "Inter";
-  src: url("../fonts/Inter-var.woff2") format("woff2-variations");
+  font-family: "Fraunces";
+  src: url("../fonts/Fraunces-var.woff2") format("woff2-variations");
   font-weight: 100 900; font-style: normal; font-display: swap;
 }
 @font-face {
-  font-family: "IBM Plex Mono";
-  src: url("../fonts/IBMPlexMono-Regular.woff2") format("woff2");
-  font-weight: 400; font-style: normal; font-display: swap;
+  font-family: "Fraunces";
+  src: url("../fonts/Fraunces-Italic-var.woff2") format("woff2-variations");
+  font-weight: 100 900; font-style: italic; font-display: swap;
 }
 @font-face {
-  font-family: "IBM Plex Mono";
-  src: url("../fonts/IBMPlexMono-Medium.woff2") format("woff2");
-  font-weight: 500; font-style: normal; font-display: swap;
+  font-family: "Instrument Sans";
+  src: url("../fonts/InstrumentSans-var.woff2") format("woff2-variations");
+  font-weight: 400 700; font-style: normal; font-display: swap;
 }
-
+@font-face {
+  font-family: "Fragment Mono";
+  src: url("../fonts/FragmentMono-Regular.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
 /* --------------------------------------------------- tokens */
 /* ── BRAND SCALES, published as tokens 12 Aug 2026 ───────────────────────
    The audit of 11 Aug found the specified system had been abandoned in
@@ -105,9 +106,9 @@
                               The CTA now carries acid, the only accent left. */
   --signal-ink: #3F4A0C;   /* acid darkened — ivory type on it reads 8.9:1 */
 
-  --serif: "Newsreader", Georgia, serif;
-  --sans:  "Inter", -apple-system, "Helvetica Neue", Arial, sans-serif;
-  --mono:  "IBM Plex Mono", "Courier New", monospace;
+  --serif: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --sans:  "Instrument Sans", -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --mono:  "Fragment Mono", "Courier New", monospace;
 
   --measure: 62ch;
   --gutter: clamp(20px, 5vw, 72px);
@@ -180,8 +181,8 @@ p  { max-width: var(--measure); }
 
 /* mono label — the system voice */
 .lab {
-  font-family: var(--mono); font-weight: 500;
-  font-size: 11px; letter-spacing: 0.24em;
+  font-family: var(--mono); font-weight: 400;
+  font-size: 11px; letter-spacing: 0.012em;
   text-transform: uppercase;
   color: var(--moss-700);
 }
@@ -346,8 +347,8 @@ section > .wrap { position: relative; z-index: 1; }
 /* ---------------------------------------------------- table */
 .tbl { width: 100%; border-collapse: collapse; font-size: 15px; }
 .tbl th {
-  font-family: var(--mono); font-weight: 500;
-  font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
+  font-family: var(--mono); font-weight: 400;
+  font-size: 11px; letter-spacing: 0.012em; text-transform: uppercase;
   color: var(--graph-400);
   text-align: left; padding: 12px 16px 12px 0;
   border-bottom: 1px solid var(--graph-400);
@@ -376,15 +377,15 @@ section > .wrap { position: relative; z-index: 1; }
 }
 .price small {
   font-family: var(--mono); font-size: 11px;
-  letter-spacing: 0.24em; color: var(--graph-400);
+  letter-spacing: 0.012em; color: var(--graph-400);
   display: block; margin-top: 8px; text-transform: uppercase;
 }
 
 /* -------------------------------------------------- buttons */
 .btn {
   display: inline-block; position: relative; overflow: hidden;
-  font-family: var(--mono); font-weight: 500;
-  font-size: 13px; letter-spacing: 0.24em; text-transform: uppercase;
+  font-family: var(--mono); font-weight: 400;
+  font-size: 13px; letter-spacing: 0.012em; text-transform: uppercase;
   text-decoration: none; cursor: pointer;
   padding: 1.15em 2.2em;
   /* The primary call to action carries the EXPRESSIVE signal. Its whole job in
@@ -409,8 +410,8 @@ section > .wrap { position: relative; z-index: 1; }
 
 /* arrow-link: arrow nudges on hover */
 .alink {
-  font-family: var(--mono); font-weight: 500;
-  font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
+  font-family: var(--mono); font-weight: 400;
+  font-size: 11px; letter-spacing: 0.012em; text-transform: uppercase;
   color: var(--moss-700); text-decoration: none;
   border-bottom: 1px solid var(--champ-700);
   padding-bottom: 4px;
@@ -482,8 +483,8 @@ html.lr .site-head__word::before {
 }
 .site-nav { margin-left: auto; display: flex; align-items: center; gap: 32px; }
 .site-nav a:not(.btn) {
-  font-family: var(--mono); font-weight: 500;
-  font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
+  font-family: var(--mono); font-weight: 400;
+  font-size: 11px; letter-spacing: 0.012em; text-transform: uppercase;
   color: var(--graph); text-decoration: none;
   padding-block: 0.4em;
   border-bottom: 2px solid transparent;
@@ -641,7 +642,7 @@ html.lr .site-head__word::before {
 @media (min-width: 981px) { .nav-toggle-box { display: none; } }
 .nav-toggle {
   display: none; margin-left: auto;
-  font-family: var(--mono); font-size: 11px; letter-spacing: 0.24em;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.012em;
   text-transform: uppercase; color: var(--plum);
   cursor: pointer; padding: 0.6em 0;
   -webkit-user-select: none; user-select: none;
@@ -1006,8 +1007,8 @@ html.lr .site-head__word::before {
 .tier:hover { transform: translateY(-4px); box-shadow: 0 14px 34px rgba(46, 28, 41, 0.10); }
 .tier__flag {
   align-self: stretch; text-align: center;
-  font-family: var(--mono); font-weight: 500; font-size: 11px;
-  letter-spacing: 0.24em; text-transform: uppercase;
+  font-family: var(--mono); font-weight: 400; font-size: 11px;
+  letter-spacing: 0.012em; text-transform: uppercase;
   margin: 0 0 24px; padding: 0.7em 0;
   background: var(--plum-900); color: var(--champ);
 }
@@ -1021,8 +1022,8 @@ html.lr .site-head__word::before {
 }
 /* grouped scope inside tier cards */
 .tgroup {
-  font-family: var(--mono); font-weight: 500;
-  font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
+  font-family: var(--mono); font-weight: 400;
+  font-size: 11px; letter-spacing: 0.012em; text-transform: uppercase;
   color: var(--moss-700);
   margin-top: 24px; padding-bottom: 8px;
   border-bottom: 1px solid var(--champ-700);
@@ -1085,7 +1086,7 @@ html.lr .site-head__word::before {
 }
 .scale input:focus-visible + label { outline: 2px solid var(--plum); outline-offset: 2px; }
 .scale-key { display: flex; justify-content: space-between; max-width: 300px;
-  font-family: var(--mono); font-size: 11px; letter-spacing: 0.24em;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.012em;
   text-transform: uppercase; color: var(--graph-400); margin-top: 8px; }
 
 /* --------------------------------------------- audience grid */
@@ -1118,8 +1119,8 @@ html.lr .site-head__word::before {
 }
 .case:last-of-type { border-bottom: 1px solid var(--champ-700); }
 .case__tag {
-  font-family: var(--mono); font-weight: 500; font-size: 11px;
-  letter-spacing: 0.24em; text-transform: uppercase;
+  font-family: var(--mono); font-weight: 400; font-size: 11px;
+  letter-spacing: 0.012em; text-transform: uppercase;
   color: var(--moss-700); padding-top: 8px; line-height: 1.62;
 }
 .case h3 { margin-bottom: 4px; }
@@ -1177,7 +1178,7 @@ html.lr .site-head__word::before {
 .menu-row:hover::before { transform: skewX(var(--slash-skew)) scaleY(1); }
 .menu-row h3 { font-family: var(--sans); font-weight: 600; font-size: 17px; color: var(--plum-900); }
 .menu-row .unit {
-  font-family: var(--mono); font-size: 11px; letter-spacing: 0.24em;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.012em;
   text-transform: uppercase; color: var(--graph-400); display: block; margin-top: 4px;
 }
 .menu-row .mprice {
@@ -1259,7 +1260,7 @@ html.lr .site-head__word::before {
   position: absolute; left: -9999px; top: 0;
   background: var(--plum); color: var(--ivory);
   padding: 0.8em 1.2em; z-index: 100;
-  font-family: var(--mono); font-size: 13px; letter-spacing: 0.24em;
+  font-family: var(--mono); font-size: 13px; letter-spacing: 0.012em;
 }
 .skip:focus { left: 0; }
 
@@ -1267,8 +1268,8 @@ html.lr .site-head__word::before {
 .form-grid { display: grid; gap: 24px; max-width: 560px; }
 .field label {
   display: block;
-  font-family: var(--mono); font-weight: 500;
-  font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
+  font-family: var(--mono); font-weight: 400;
+  font-size: 11px; letter-spacing: 0.012em; text-transform: uppercase;
   color: var(--graph-400); margin-bottom: 8px;
 }
 .field input, .field select, .field textarea {
@@ -1294,7 +1295,7 @@ html.lr .site-head__word::before {
 }
 .form-send { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
 .form-status {
-  margin: 0; font-family: var(--mono); font-weight: 500;
+  margin: 0; font-family: var(--mono); font-weight: 400;
   font-size: 11px; letter-spacing: 0.012em;
 }
 .form-status[data-state="sending"] { color: var(--graph-400); }
@@ -1354,7 +1355,7 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 96px); }
     animation: lab-in 0.9s var(--ease) backwards 0.1s;
   }
   @keyframes lab-in {
-    from { opacity: 0; letter-spacing: 0.24em; }
+    from { opacity: 0; letter-spacing: 0.012em; }
   }
 
   /* 2 · the word verdict: new → struck → more → struck → right */
@@ -1485,7 +1486,7 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 96px); }
 .tcard p { font-size: 15px; color: var(--graph-700); }
 .tcard .owns {
   margin-top: auto; padding-top: 16px;
-  font-family: var(--mono); font-size: 11px; letter-spacing: 0.24em;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.012em;
   text-transform: uppercase; color: var(--moss-700);
 }
 .founder-row {
@@ -1562,8 +1563,8 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 96px); }
   font-size: 19px; color: var(--plum-ink); font-variant-numeric: tabular-nums;
 }
 .qb-item em i {
-  display: block; font-style: normal; font-family: var(--mono); font-weight: 500;
-  font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
+  display: block; font-style: normal; font-family: var(--mono); font-weight: 400;
+  font-size: 11px; letter-spacing: 0.012em; text-transform: uppercase;
   color: var(--moss-700); margin-top: 4px; white-space: nowrap;
 }
 /* the chip states it is a DELIVERY time — except monthly rates and
@@ -1669,8 +1670,8 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 96px); }
 .qb-line b { font-variant-numeric: tabular-nums; white-space: nowrap; font-weight: 600; color: var(--champ); }
 .qb-total { display: flex; justify-content: space-between; align-items: baseline; margin-top: 16px; }
 .qb-total span {
-  font-family: var(--mono); font-weight: 500; font-size: 11px;
-  letter-spacing: 0.24em; text-transform: uppercase; color: var(--moss-300);
+  font-family: var(--mono); font-weight: 400; font-size: 11px;
+  letter-spacing: 0.012em; text-transform: uppercase; color: var(--moss-300);
 }
 .qb-total b {
   font-family: var(--serif); font-weight: 300; font-size: 28px;
@@ -1683,8 +1684,8 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 96px); }
 .qb-sum .btn--ghost:hover { background: var(--plum-700); }
 .qb-sum .small { color: var(--plum-100); }
 .pcard-inc {
-  font-family: var(--mono); font-weight: 500; font-size: 11px;
-  letter-spacing: 0.24em; text-transform: uppercase;
+  font-family: var(--mono); font-weight: 400; font-size: 11px;
+  letter-spacing: 0.012em; text-transform: uppercase;
   color: var(--moss-300); margin: 0 0 16px; max-width: none;
 }
 
@@ -1992,8 +1993,8 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 96px); }
 }
 .wwd-stage:hover { border-color: var(--moss-300); transform: translateY(-3px); }
 .wwd-stage i {
-  font-style: normal; font-family: var(--mono); font-weight: 500;
-  font-size: 11px; letter-spacing: 0.24em; color: var(--moss-300);
+  font-style: normal; font-family: var(--mono); font-weight: 400;
+  font-size: 11px; letter-spacing: 0.012em; color: var(--moss-300);
   display: block; margin-bottom: 8px;
 }
 .wwd-stage b {
@@ -2028,7 +2029,58 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 96px); }
   overflow: hidden;
 }
 .logo-dot span {
-  font-family: var(--mono); font-weight: 500; font-size: 11px;
-  letter-spacing: 0.24em; color: var(--graph-400); opacity: 0.5;
+  font-family: var(--mono); font-weight: 400; font-size: 11px;
+  letter-spacing: 0.012em; color: var(--graph-400); opacity: 0.5;
 }
 .logo-dot img { width: 100%; height: 100%; object-fit: contain; padding: 16px; }
+
+/* ── hero figure: the founder's own mark composition (0001) ───────────────
+   Anchored to the content column's right edge like the tile it replaces,
+   rising on the same beat as the headline. Width in proportion to the
+   viewport, capped where it would crowd the statement. */
+.hero__figure {
+  position: absolute; z-index: 1;
+  right: max(var(--gutter), calc((100% - var(--maxw)) / 2 + var(--gutter)));
+  top: 50%; transform: translateY(-50%);
+  width: clamp(180px, 20vw, 300px); height: auto;
+  border: 1px solid rgb(255 255 255 / 0.12);
+}
+@media (max-width: 1120px) { .hero__figure { display: none; } }
+
+/* ── the editorial journey index — rows, hairlines, a magazine contents ── */
+.wwd-index { margin-top: 48px; border-top: 1px solid rgb(255 255 255 / 0.16); }
+.wwd-row {
+  display: grid; align-items: baseline;
+  grid-template-columns: 4ch 1fr auto auto; gap: 16px;
+  padding: 16px 0; text-decoration: none;
+  border-bottom: 1px solid rgb(255 255 255 / 0.16);
+  transition: padding-left 200ms var(--ease), border-color 200ms var(--ease);
+}
+.wwd-row:hover { padding-left: 16px; border-bottom-color: var(--moss-300); }
+.wwd-row i {
+  font-style: normal; font-family: var(--mono); font-size: 13px;
+  letter-spacing: 0.012em; color: var(--moss-300);
+}
+.wwd-row b {
+  font-family: var(--serif); font-weight: 500;
+  font-size: clamp(28px, 4vw, 56px); line-height: 1.04;
+  letter-spacing: -0.006em; color: var(--ivory);
+}
+.wwd-row span { font-size: 15px; color: var(--plum-100); }
+.wwd-row .ar {
+  font-style: normal; color: var(--moss-300);
+  transition: transform 200ms var(--ease);
+}
+.wwd-row:hover .ar { transform: translateX(6px); }
+@media (max-width: 640px) {
+  .wwd-row { grid-template-columns: 4ch 1fr auto; }
+  .wwd-row span { display: none; }
+}
+
+/* Fragment Mono is a wider face than the Plex it replaced, and at the old
+   0.24em tracking two menu labels wrapped while four did not — the wrapped
+   pair rode 20px above the rest because the shared row bottom-aligned them.
+   Tracking is now 0.012em everywhere the label token appears (the mono
+   carries its own character without being letterspaced), and labels pin to
+   the top of their shared row so a future wrap can never stagger the line. */
+.mega__col > .lab { align-self: start; }

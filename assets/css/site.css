@@ -1717,3 +1717,87 @@ h1:has(.hl--sub) { font-size: clamp(2.9rem, 7.5vw, 6rem); }
     to   { opacity: 1; transform: none; }
   }
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   MOTION SYSTEM — added 12 Aug 2026
+
+   The founder scored the site 55/100 and put the largest deduction on motion:
+   "非常单调,没有吸引,没有动画效果". The measurement agreed and was more
+   specific than the complaint. Thirteen sections on the homepage, ten of them
+   carrying nothing but opacity-and-translate fade — the most generic motion on
+   the web. Meanwhile the one good mechanism in the file, the masked line rise
+   used by .hl, was built for the hero and used nowhere else, and the section
+   whose heading reads "Everything here is a number, not a claim" printed its
+   three numbers as static text.
+
+   Four moves, and the discipline is that each one is the BRAND doing something,
+   not a library effect bolted on:
+
+   1 · Headings rise out of a mask, everywhere — not just the hero.
+   2 · The slash draws itself. It is the one surviving brand device, so it is
+       the one thing that should always be seen arriving.
+   3 · Grid children stagger across the row, so the eye is led left to right
+       rather than everything landing at once.
+   4 · Numbers count. On a site that sells published numbers, they should.
+   ══════════════════════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: no-preference) {
+
+  /* 1 · masked heading rise ---------------------------------------------
+     clip-path gives the .hl mask without needing an inner span, so it applies
+     to every heading the generator already emits. The -12% bottom inset lets
+     descenders through: at inset(0 0 0 0) a "g" is sheared by its own mask. */
+  /* .interlude p is deliberately absent — it already owns a two-beat rise, and
+     two rules setting transform on one element is how motion silently dies. */
+  html.js h2.rv,
+  html.js .statband__h.rv {
+    clip-path: inset(0 0 105% 0);
+    transform: translateY(38%);
+  }
+  html.js h2.rv.in,
+  html.js .statband__h.rv.in {
+    animation: mask-rise 0.82s var(--ease) forwards;
+  }
+  @keyframes mask-rise {
+    to { clip-path: inset(0 0 -12% 0); transform: none; }
+  }
+
+  /* 2 · the slash draws ---------------------------------------------------
+     The rule beside every section label wipes in from the slash outward, so
+     the eyebrow reads as being underlined rather than as having appeared. */
+  html.js .slash--rule .slash { transform: skewX(var(--slash-skew)) scaleY(0);
+                                transform-origin: bottom; }
+  html.js .rv.in .slash,
+  html.js .slash--rule.rv.in .slash {
+    animation: slash-draw 0.42s var(--ease) forwards;
+  }
+  @keyframes slash-draw {
+    to { transform: skewX(var(--slash-skew)) scaleY(1); }
+  }
+  html.js .slash--rule::after { transform: scaleX(0); transform-origin: left; }
+  html.js .slash--rule.in::after,
+  html.js .rv.in .slash--rule::after {
+    animation: rule-draw 0.7s var(--ease) forwards 0.18s;
+  }
+  @keyframes rule-draw { to { transform: scaleX(1); } }
+
+  /* 3 · stagger across the row -------------------------------------------
+     site.js already writes --rvd per element in DOM order. In a grid that
+     means the second row starts before the first has finished, which reads as
+     noise. Capping the delay and shortening the step keeps the sweep legible
+     on a three- or four-column grid without dragging the last card in late. */
+  html.js .aud-grid > .rv,
+  html.js .pgrid > .rv,
+  html.js .pillar-grid > .rv,
+  html.js .testi-grid > .rv,
+  html.js .statband__grid > .rv {
+    transition-delay: calc(var(--rvd, 0s) * 0.6);
+  }
+
+  /* 4 · the numbers arrive with weight ------------------------------------
+     The count-up is driven by site.js; this is the frame it lands in. The mark
+     beside each number draws first, so the number appears to be counted onto
+     a rule rather than to fade in beside one. */
+  html.js .stat__mk { transform: skewX(-20deg) scaleY(0); transform-origin: bottom; }
+  html.js .rv.in .stat__mk { animation: slash-draw 0.5s var(--ease) forwards; }
+  html.js .stat__v [data-count] { font-variant-numeric: tabular-nums; }
+}

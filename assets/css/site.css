@@ -1429,6 +1429,13 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 96px); }
     animation: hm-floor-in 0.5s var(--ease) forwards 0.1s;
   }
   .hm-drop { transform: translateY(-1050px); animation: hm-fall 1.05s forwards 0.25s; }
+  /* the aperture scans: slow infinite rotation around the fixed signal.
+     Lives on its own inner group so it never fights hm-fall's translate. */
+  .hm-spin {
+    transform-box: view-box; transform-origin: 500px 540px;
+    animation: hm-spin 22s linear infinite;
+  }
+  @keyframes hm-spin { to { transform: rotate(360deg); } }
   .hm-sig {
     transform: scale(0); transform-origin: center; transform-box: fill-box;
     opacity: 0;

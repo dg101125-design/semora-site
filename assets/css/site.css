@@ -1429,9 +1429,12 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 96px); }
     animation: hm-floor-in 0.5s var(--ease) forwards 0.1s;
   }
   .hm-drop { transform: translateY(-1050px); animation: hm-fall 1.05s forwards 0.25s; }
-  .hm-d { transform: translateY(-460px); opacity: 0; }
-  .hm-d1 { animation: hm-dot 0.6s cubic-bezier(.34,1.45,.64,1) forwards 1.42s; }
-  .hm-d2 { animation: hm-dot 0.6s cubic-bezier(.34,1.45,.64,1) forwards 1.62s; }
+  .hm-sig {
+    transform: scale(0); transform-origin: center; transform-box: fill-box;
+    opacity: 0;
+    animation: hm-sig-pop 0.5s cubic-bezier(.34,1.56,.64,1) forwards 1.45s;
+  }
+  @keyframes hm-sig-pop { to { transform: scale(1); opacity: 1; } }
   @keyframes hm-floor-in { to { stroke-dashoffset: 0; } }
   @keyframes hm-fall {
     0%   { transform: translateY(-1050px);
@@ -1445,7 +1448,7 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 96px); }
     94%  { transform: translateY(-9px); }
     100% { transform: translateY(0); }
   }
-  @keyframes hm-dot { 55% { opacity: 1; } to { transform: translateY(0); opacity: 1; } }
+
 
   /* scroll reveal — armed only once site.js has run (html.js) */
   html.js .rv {
@@ -1953,6 +1956,9 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 96px); }
 .statband__mark .mk-tile { fill: none; }
 .statband__mark .mk-letter { fill: var(--ivory); }
 .statband__mark .mk-dot { fill: var(--moss-300); }
+.statband__mark .ap-arc { fill: var(--ivory); }
+.statband__mark .ap-arc--weak { fill: var(--plum-300); }
+.statband__mark .ap-dot { fill: var(--moss-300); }
 
 /* the loud version of the band's voice */
 .statband__h { font-weight: 500; font-size: clamp(40px, 7vw, 72px); }
@@ -2107,8 +2113,9 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 96px); }
   width: clamp(180px, 20vw, 300px); height: auto;
   overflow: visible;
 }
-.hm-o { fill: var(--ivory); }
-.hm-d { fill: var(--moss-300); }   /* acid — dark grounds only, and this is one */
+.hero__figure .ap-arc { fill: var(--ivory); }
+.hero__figure .ap-arc--weak { fill: var(--plum-300); }
+.hero__figure .ap-dot { fill: var(--moss-300); }   /* acid — dark grounds only */
 .hm-floor { stroke: var(--ivory); stroke-width: 5; stroke-linecap: round; }
 @media (max-width: 1120px) { .hero__figure { display: none; } }
 

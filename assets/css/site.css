@@ -1980,13 +1980,12 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 96px); }
 }
 .wwd2__rows { border-top: 1px solid rgb(255 255 255 / 0.16); }
 .wrow { border-bottom: 1px solid rgb(255 255 255 / 0.16); }
-.wrow summary {
+.wrow {
   display: grid; grid-template-columns: 48px 1fr 48px;
-  align-items: center; gap: 24px; padding: 24px 0;
-  cursor: pointer; list-style: none;
+  align-items: start; gap: 24px; padding: 24px 0;
 }
-.wrow summary::-webkit-details-marker { display: none; }
-.wrow summary:focus-visible { outline: 2px solid var(--moss-300); outline-offset: 4px; }
+.wrow__ico { margin-top: 4px; }
+.wrow__cta:focus-visible { outline: 2px solid var(--moss-300); outline-offset: 4px; }
 .wrow__ico { width: 48px; height: 48px; }
 .wico-ring, .wico-tick, .wico-bar, .wico-axis {
   stroke: var(--ivory); stroke-width: 2.5; fill: none; stroke-linecap: round;
@@ -2000,14 +1999,14 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 96px); }
    the signal steps up. All transform/opacity — cheap, GPU-friendly. */
 @media (prefers-reduced-motion: no-preference) {
   .wico-tick { transform-box: view-box; transform-origin: 24px 26px; }
-  .wrow:hover .wico-tick, .wrow[open] .wico-tick {
+  .wrow:hover .wico-tick {
     animation: wico-sweep 1.6s var(--ease) infinite;
   }
   @keyframes wico-sweep {
     0%, 100% { transform: rotate(0deg); }
     50% { transform: rotate(-38deg); }
   }
-  .wrow:hover .wico-dot--slide, .wrow[open] .wico-dot--slide {
+  .wrow:hover .wico-dot--slide {
     animation: wico-ride 1.6s var(--ease) infinite;
   }
   @keyframes wico-ride {
@@ -2015,34 +2014,25 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 96px); }
     50% { transform: translate(9px, -10px); }
   }
   .wico-bar { transform-box: fill-box; transform-origin: left center; }
-  .wrow:hover .wico-bar, .wrow[open] .wico-bar {
+  .wrow:hover .wico-bar {
     animation: wico-build 1.6s var(--ease) infinite;
   }
-  .wrow:hover .wico-bar--2, .wrow[open] .wico-bar--2 { animation-delay: 0.12s; }
-  .wrow:hover .wico-bar--3, .wrow[open] .wico-bar--3 { animation-delay: 0.24s; }
+  .wrow:hover .wico-bar--2 { animation-delay: 0.12s; }
+  .wrow:hover .wico-bar--3 { animation-delay: 0.24s; }
   @keyframes wico-build {
     0%, 100% { transform: scaleX(1); }
     50% { transform: scaleX(0.55); }
   }
-  .wrow:hover .wico-p1, .wrow[open] .wico-p1,
-  .wrow:hover .wico-p2, .wrow[open] .wico-p2,
-  .wrow:hover .wico-p3, .wrow[open] .wico-p3 {
+  .wrow:hover .wico-p1,
+  .wrow:hover .wico-p2,
+  .wrow:hover .wico-p3 {
     animation: wico-step 1.6s var(--ease) infinite;
   }
-  .wrow:hover .wico-p2, .wrow[open] .wico-p2 { animation-delay: 0.18s; }
-  .wrow:hover .wico-p3, .wrow[open] .wico-p3 { animation-delay: 0.36s; }
+  .wrow:hover .wico-p2 { animation-delay: 0.18s; }
+  .wrow:hover .wico-p3 { animation-delay: 0.36s; }
   @keyframes wico-step {
     0%, 100% { opacity: 0.35; transform: translateY(0); }
     50% { opacity: 1; transform: translateY(-4px); }
-  }
-  /* the expanded body cascades in */
-  .wrow[open] .wrow__body > * {
-    animation: wbody-up 0.5s var(--ease) backwards;
-  }
-  .wrow[open] .wrow__body > :nth-child(2) { animation-delay: 0.08s; }
-  .wrow[open] .wrow__body > :nth-child(3) { animation-delay: 0.16s; }
-  @keyframes wbody-up {
-    from { opacity: 0; transform: translateY(12px); }
   }
 }
 .wrow__name {
@@ -2063,26 +2053,17 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 96px); }
               transform 0.3s var(--ease), border-color 0.3s var(--ease);
 }
 .wrow__cta svg { width: 16px; height: 16px; }
-.wrow summary:hover .wrow__name { color: var(--ivory); transform: translateX(8px); }
-.wrow summary:hover .wrow__cta { background: var(--moss-300);
-  border-color: var(--moss-300); color: var(--plum-ink); }
-.wrow[open] .wrow__cta { transform: rotate(90deg); }
-.wrow__body { padding: 0 0 24px 64px; }
-.wrow__body p { color: var(--plum-100); max-width: 54ch; }
-.wrow__kick {
-  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
-  font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
-  color: var(--moss-300); margin-bottom: 8px;
-}
-.wrow__body .alink { margin-top: 16px; display: inline-block;
-  padding: 12px 0; color: var(--champ); border-color: var(--plum-700); }
-.wrow__body .alink:hover { color: var(--ivory); border-color: var(--plum-300); }
+.wrow:hover .wrow__name { color: var(--ivory); transform: translateX(8px); }
+.wrow:hover .wrow__cta { background: var(--moss-300);
+  border-color: var(--moss-300); color: var(--plum-ink);
+  transform: translateX(4px); }
+.wrow__txt p { color: var(--plum-100); max-width: 54ch; margin-top: 8px; }
 @media (max-width: 560px) {
-  .wrow summary { grid-template-columns: 32px 1fr 32px; gap: 16px; }
+  .wrow { grid-template-columns: 32px 1fr 32px; gap: 16px; }
   .wrow__ico { width: 32px; height: 32px; }
   .wrow__cta { width: 32px; height: 32px; }
   .wrow__name { font-size: 17px; }
-  .wrow__body { padding-left: 48px; }
+
 }
 
 /* the floating strategy pill — the page's one persistent ask */
@@ -2104,16 +2085,7 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 96px); }
 @media (max-width: 640px) { .float-cta { right: 12px; bottom: 12px;
   padding: 12px 16px; } }
 
-@media (prefers-reduced-motion: no-preference) {
-  /* accordion height eases where the platform can interpolate to auto;
-     everywhere else it opens instantly — enhancement, not dependency */
-  :root { interpolate-size: allow-keywords; }
-  .wrow::details-content {
-    transition: height 0.35s var(--ease), content-visibility 0.35s allow-discrete;
-    height: 0; overflow: clip;
-  }
-  .wrow[open]::details-content { height: auto; }
-}
+/* (accordion mechanics retired 13 Aug v4 — all four rows always speak) */
 
 /* the loud version of the band's voice */
 .statband__h { font-weight: 500; font-size: clamp(40px, 7vw, 72px); }

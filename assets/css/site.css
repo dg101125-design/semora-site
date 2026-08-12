@@ -868,23 +868,25 @@ html.lr .site-head__word::before {
 .hero .cta-row { margin-top: 48px; }
 
 /* the word verdict — new / more / right */
-/* The slot is sized by the VERDICT only. All three words used to share one grid
-   cell, so the column took the width of the widest — "more" — and left a gap of
-   about 40px between "right" and "clients." that never closed. The founder read
-   that gap as the animation being misaligned, and it was: not a timing fault, a
-   sizing one. The two struck words are taken out of flow so they contribute no
-   width; mid-animation they overhang the slot, which is invisible because they
-   are struck through and leaving at that moment. */
-/* Italic correction + animation breathing room (founder, 12 Aug: the space
-   before "clients." reads squeezed). Two causes, one margin: the italic
-   final 't' of "right" leans into the following word — measured ink gap
-   15.5px against 21.5px for the upright pairs — and mid-cycle "more"
-   (82px) overhangs the 71px slot by 11px, eating the same gap while the
-   animation plays. 0.1em restores the gap at rest and absorbs the
-   overhang in motion. */
-.wcycle { display: inline-grid; position: relative; margin-right: 0.1em; }
+/* One grid cell, every word CENTRED in it (founder, 12 Aug — third round on
+   this space; each earlier fix bought the next defect). v1 sized the column
+   by the widest word, left-aligned: a ~40px hole after "right" that never
+   closed. v2 pulled the struck words out of flow so the slot hugged the
+   verdict — but then mid-cycle "more" (82px) overhung the 71px slot straight
+   into "clients." and the line read squeezed while the animation played.
+   v3, this: with motion enabled the struck words stay IN flow, so the slot
+   holds the widest word's width from first paint to rest — it never changes,
+   so the line never shifts — and justify-items:center splits any surplus
+   evenly. "more" fills the slot exactly, a normal word space each side;
+   "right" lands with its 11px surplus split 5.5/5.5, balanced air around
+   the underlined word rather than a hole after it.
+   The margin is an italic correction for the MOTIONLESS state only: the
+   italic final 't' of "right" leans into the following word — measured ink
+   gap 15.5px against 21.5px for the upright pairs. With motion the centred
+   slot already gives the word its air, so the motion block zeroes it. */
+.wcycle { display: inline-grid; justify-items: center; position: relative;
+          margin-right: 0.1em; }
 .wcycle .w { grid-area: 1 / 1; position: relative; white-space: nowrap; }
-.wcycle .w1, .wcycle .w2 { position: absolute; left: 0; top: 0; }
 /* The two struck-through words are drawn here rather than written into the
    markup. In the markup they were read by every crawler — aria-hidden hides
    them from screen readers, not from text extraction — so the headline
@@ -1330,8 +1332,14 @@ html.lr .site-head__word::before {
 .form-done p { margin: 0; color: var(--graph); }
 
 /* --------------------------------------------------- motion */
-/* hero line reveal: each line masked, rises in */
-.hl { display: block; overflow: hidden; }
+/* hero line reveal: each line masked, rises in.
+   The mask needs more room than the line box: at line-height 0.94 the
+   descenders of "bring" and "you" hang below it and the overflow clip cut
+   them flat (founder, 12 Aug — same defect the interlude hit at 128px).
+   Same cure: em padding extends the clip window under the descenders, the
+   negative margin hands the space back so the leading does not change. */
+.hl { display: block; overflow: hidden;
+      padding-bottom: 0.14em; margin-bottom: -0.14em; }
 .hl > span { display: block; }
 /* home hero: the disclaimer recedes so the promise line carries the page.
    The promise scales past the site-wide h1 because it is the one sentence
@@ -1353,8 +1361,11 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 96px); }
 
 @media (prefers-reduced-motion: no-preference) {
   @media (min-width: 561px) {
+    /* 118%, not 112%: the mask window is 0.14em deeper than the line box
+       (descender room, above), so the parked line needs the extra travel to
+       stay fully behind the clip before its cue. */
     .hl > span {
-      transform: translateY(112%);
+      transform: translateY(118%);
       animation: hl-up 0.75s var(--ease) forwards;
     }
     .hl:nth-child(2) > span { animation-delay: 0.09s; }
@@ -1372,7 +1383,12 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 96px); }
     from { opacity: 0; letter-spacing: 0.012em; }
   }
 
-  /* 2 · the word verdict: new → struck → more → struck → right */
+  /* 2 · the word verdict: new → struck → more → struck → right.
+     In flow, so the slot holds the widest word's width for the whole play —
+     constant slot, centred words, no line shift (see the .wcycle block).
+     The static italic-correction margin is zeroed: the centred surplus
+     already carries the air after "right". */
+  .wcycle { margin-right: 0; }
   .wcycle .w1, .wcycle .w2 { display: inline-block; }
   .wcycle .w1 { animation: w-exit 0.35s var(--ease) forwards 1.75s; }
   .wcycle .w2 {

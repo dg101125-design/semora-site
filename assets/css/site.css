@@ -772,37 +772,15 @@ html.lr .site-head__word::before {
    or the band reads as three unrelated blocks. Subgrid does that without
    forcing a height — the same fix the services menu needed, for the same
    reason: alignment by shared rows, never by truncation. */
-@supports (grid-template-rows: subgrid) {
-  .statband__grid .stat { display: grid; grid-row: span 2; grid-template-rows: subgrid; }
-}
+@supports (grid-template-rows: subgrid) {}
 @supports (grid-template-rows: subgrid) {
   .stat { display: grid; grid-row: span 2; grid-template-rows: subgrid; }
-}
-.stat__v {
-  display: flex; align-items: flex-start; gap: 0.3em;
-  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 300;
-  font-size: clamp( 56px, 8vw, 72px); line-height: 0.94;
-  letter-spacing: -0.018em; color: var(--ivory); margin: 0 0 4px;
-}
-.stat__v i {
-  font-style: normal; font-size: 0.4em; font-weight: 300;
-  color: var(--plum-100); align-self: flex-end; padding-bottom: 0.35em;
-  margin-left: -0.12em;
-}
-/* the mark is the site's own slash, at the scale of the figure it sits beside */
+}/* the mark is the site's own slash, at the scale of the figure it sits beside */
 .stat__mk {
   flex: 0 0 auto; width: 0.16em; height: 0.62em;
   background: var(--moss); transform: skewX(-20deg);
   margin-top: 0.16em;
-}
-.stat__c {
-  font-size: 13px; line-height: 1.55; color: var(--plum-100);
-  margin: 0; max-width: 30ch;
-  padding-top: 12px; margin-top: 12px;
-  border-top: 1px solid rgb(255 255 255 / 0.14);
-}
-.stat__c strong { color: var(--champ); font-weight: 500; }
-.statband__foot {
+}.statband__foot {
   margin: clamp( 32px, 5vw, 48px) 0 0; max-width: 62ch;
   font-size: 13px; line-height: 1.62; color: var(--plum-100);
 }
@@ -1839,9 +1817,16 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 96px); }
      descenders through: at inset(0 0 0 0) a "g" is sheared by its own mask. */
   /* .interlude p is deliberately absent — it already owns a two-beat rise, and
      two rules setting transform on one element is how motion silently dies. */
+  /* Hidden state is opacity+transform, NEVER clip: Chrome computes
+     IntersectionObserver's intersectionRect AFTER the element's own
+     clip-path, so a fully-clipped element reports 0×0 forever and the
+     reveal deadlocks — hidden until .in, .in until seen, seen never.
+     Found empirically 13 Aug 2026 (bounding 487×165 in-viewport,
+     intersection 0×0). The mask lives only inside the keyframes now;
+     the visual is identical. */
   html.js h2.rv,
   html.js .statband__h.rv {
-    clip-path: inset(0 0 105% 0);
+    opacity: 0;
     transform: translateY(38%);
   }
   html.js h2.rv.in,
@@ -1849,7 +1834,8 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 96px); }
     animation: mask-rise 0.82s var(--ease) forwards;
   }
   @keyframes mask-rise {
-    to { clip-path: inset(0 0 -12% 0); transform: none; }
+    from { opacity: 1; clip-path: inset(0 0 105% 0); transform: translateY(38%); }
+    to { opacity: 1; clip-path: inset(0 0 -12% 0); transform: none; }
   }
 
   /* 2 · the slash draws ---------------------------------------------------
@@ -1975,6 +1961,92 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 96px); }
 .statband__mark .ap-arc { fill: var(--ivory); }
 .statband__mark .ap-arc--weak { fill: var(--plum-300); }
 .statband__mark .ap-dot { fill: var(--moss-300); }
+
+/* ── what-we-do v2: statement + product accordion (13 Aug 2026).
+   Structure from the founder's reference (002); skin entirely ours. */
+.wwd2 { display: grid; gap: 48px; margin-top: 24px; position: relative; z-index: 1; }
+@media (min-width: 900px) {
+  .wwd2 { grid-template-columns: 5fr 6fr; gap: 64px; }
+  .wwd2__lead { position: sticky; top: 96px; align-self: start; }
+}
+.wwd2__rows { border-top: 1px solid rgb(255 255 255 / 0.16); }
+.wrow { border-bottom: 1px solid rgb(255 255 255 / 0.16); }
+.wrow summary {
+  display: grid; grid-template-columns: 48px auto 1fr 24px;
+  align-items: center; gap: 16px; padding: 24px 0;
+  cursor: pointer; list-style: none;
+}
+.wrow summary::-webkit-details-marker { display: none; }
+.wrow summary:focus-visible { outline: 2px solid var(--moss-300); outline-offset: 4px; }
+.wrow__ico { width: 48px; height: 48px; }
+.wico-ring, .wico-tick, .wico-bar, .wico-axis {
+  stroke: var(--ivory); stroke-width: 2.5; fill: none; stroke-linecap: round;
+}
+.wico-dot { fill: var(--moss-300); }
+.wico-dot--dim { opacity: 0.35; }
+.wico-dot--mid { opacity: 0.65; }
+.wrow__stage {
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
+  font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--plum-100);
+}
+.wrow__name {
+  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 350;
+  font-size: 28px; letter-spacing: -0.006em; color: var(--champ-300);
+  transition: color 0.3s var(--ease);
+}
+.wrow__arrow { color: var(--moss-300); justify-self: end;
+  transition: transform 0.3s var(--ease); }
+.wrow summary:hover .wrow__name { color: var(--ivory); }
+.wrow summary:hover .wrow__arrow { transform: translateX(4px); }
+.wrow[open] .wrow__arrow { transform: rotate(90deg); }
+.wrow[open] summary:hover .wrow__arrow { transform: rotate(90deg); }
+.wrow__body { padding: 0 0 24px 64px; }
+.wrow__body p { color: var(--plum-100); max-width: 54ch; }
+.wrow__meta {
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
+  font-size: 13px; letter-spacing: 0.012em; color: var(--champ);
+  margin-top: 8px;
+}
+.wrow__body .alink { margin-top: 16px; display: inline-block;
+  padding: 12px 0; color: var(--champ); border-color: var(--plum-700); }
+.wrow__body .alink:hover { color: var(--ivory); border-color: var(--plum-300); }
+@media (max-width: 560px) {
+  .wrow summary { grid-template-columns: 32px auto 1fr 24px; }
+  .wrow__ico { width: 32px; height: 32px; }
+  .wrow__name { font-size: 19px; }
+  .wrow__body { padding-left: 48px; }
+}
+
+/* the floating strategy pill — the page's one persistent ask */
+.float-cta {
+  position: fixed; right: 24px; bottom: 24px; z-index: 60;
+  display: inline-flex; align-items: center; gap: 12px;
+  background: var(--moss-300); color: var(--plum-ink);
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
+  font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
+  padding: 16px 24px; border-radius: 999px; text-decoration: none;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.35);
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+.float-cta:hover { transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgb(0 0 0 / 0.4); }
+.float-cta__dot { width: 8px; height: 8px; border-radius: 50%;
+  background: var(--plum-ink); }
+.float-cta .ar { letter-spacing: 0; }
+@media (max-width: 640px) { .float-cta { right: 12px; bottom: 12px;
+  padding: 12px 16px; } }
+
+@media (prefers-reduced-motion: no-preference) {
+  /* accordion height eases where the platform can interpolate to auto;
+     everywhere else it opens instantly — enhancement, not dependency */
+  :root { interpolate-size: allow-keywords; }
+  .wrow::details-content {
+    transition: height 0.35s var(--ease), content-visibility 0.35s allow-discrete;
+    height: 0; overflow: clip;
+  }
+  .wrow[open]::details-content { height: auto; }
+}
 
 /* the loud version of the band's voice */
 .statband__h { font-weight: 500; font-size: clamp(40px, 7vw, 72px); }
@@ -2113,35 +2185,7 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 96px); }
   .hero .cta-row { margin-top: 32px; }
 }
 
-/* ── the editorial journey index — rows, hairlines, a magazine contents ── */
-.wwd-index { margin-top: 48px; border-top: 1px solid rgb(255 255 255 / 0.16); }
-.wwd-row {
-  display: grid; align-items: baseline;
-  grid-template-columns: 4ch 1fr auto auto; gap: 16px;
-  padding: 16px 0; text-decoration: none;
-  border-bottom: 1px solid rgb(255 255 255 / 0.16);
-  transition: padding-left 200ms var(--ease), border-color 200ms var(--ease);
-}
-.wwd-row:hover { padding-left: 16px; border-bottom-color: var(--moss-300); }
-.wwd-row i {
-  font-style: normal; font-family: var(--mono); font-size-adjust: 0.516; font-size: 13px;
-  letter-spacing: 0.012em; color: var(--moss-300);
-}
-.wwd-row b {
-  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 500;
-  font-size: clamp(28px, 4vw, 56px); line-height: 1.04;
-  letter-spacing: -0.006em; color: var(--ivory);
-}
-.wwd-row span { font-size: 15px; color: var(--plum-100); }
-.wwd-row .ar {
-  font-style: normal; color: var(--moss-300);
-  transition: transform 200ms var(--ease);
-}
-.wwd-row:hover .ar { transform: translateX(6px); }
-@media (max-width: 640px) {
-  .wwd-row { grid-template-columns: 4ch 1fr auto; }
-  .wwd-row span { display: none; }
-}
+/* ── the editorial journey index — rows, hairlines, a magazine contents ── */@media (max-width: 640px) {}
 
 /* Fragment Mono is a wider face than the Plex it replaced, and at the old
    0.24em tracking two menu labels wrapped while four did not — the wrapped

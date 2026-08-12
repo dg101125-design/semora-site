@@ -1881,3 +1881,43 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 72px); }
   .qb-item { flex-wrap: wrap; }
   .qb-item em { text-align: left; flex-basis: 100%; margin-left: calc(1.25rem + 16px); }
 }
+
+/* ── background depth (founder, 12 Aug 2026: "背景 40/100 — 深度/协调/原创") ──
+   Three layers, all inside the ink hue so the three-colour discipline holds:
+   1 · a radial lift — one lightness step of the same plum, placed high-left
+       where the headline sits, so the dark grounds stop reading as flat fills;
+   2 · film grain — an inline SVG turbulence tile at 4%, which is texture, not
+       colour: it survives the palette counter because it moves luminance only;
+   3 · the Ö itself, oversized and 6% visible, on the statement band — the one
+       watermark that is ours and nobody else's. */
+:root { --ink-lift: #2B1122; /* the single approved lightness step above ink,
+                                 exists only for these washes */ }
+.hero, .statband, .f-plum {
+  background:
+    radial-gradient(120% 90% at 16% 4%, var(--ink-lift) 0%, var(--plum-ink) 62%);
+}
+.hero::before, .statband::before, .f-plum::before, .f-moss::before {
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");
+}
+.statband, .f-plum, .f-moss { position: relative; }
+.statband > .wrap, .f-plum > .wrap, .f-moss > .wrap { position: relative; z-index: 1; }
+
+.statband__mark {
+  position: absolute; z-index: 0; pointer-events: none;
+  right: -4%; bottom: -16%;
+  width: clamp(280px, 30vw, 520px); height: auto;
+  opacity: 0.06;
+}
+.statband__mark .mk-tile { fill: none; }
+.statband__mark .mk-letter { fill: var(--ivory); }
+.statband__mark .mk-dot { fill: var(--moss-300); }
+
+/* the loud version of the band's voice */
+.statband__h { font-weight: 500; font-size: clamp(40px, 7vw, 72px); }
+.statband__sub {
+  margin: 16px 0 0; max-width: 44ch;
+  font-size: 19px; line-height: 1.55; color: var(--plum-100);
+}
+.statband__sub + .statband__grid { margin-top: 48px; }

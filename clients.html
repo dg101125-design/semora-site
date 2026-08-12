@@ -23,7 +23,7 @@
 <link rel="alternate" type="text/plain" href="/llms.txt" title="SEMORA STUDIO — llms.txt">
 <link rel="preload" href="/assets/fonts/Newsreader-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/Inter-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/site.css?v=ced8a228">
+<link rel="stylesheet" href="assets/css/site.css?v=78cc1d20">
 <script defer src="assets/js/site.js?v=5d004d3e"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Organization","ProfessionalService"],"@id":"https://www.semora.com.au/#organization","name":"SEMORA STUDIO","url":"https://www.semora.com.au/"},{"@type":"WebSite","@id":"https://www.semora.com.au/#website","url":"https://www.semora.com.au/","name":"SEMORA STUDIO","publisher":{"@id":"https://www.semora.com.au/#organization"}},{"@type":"WebPage","@id":"https://www.semora.com.au/clients#webpage","url":"https://www.semora.com.au/clients","name":"Our clients — SEMORA STUDIO Melbourne","description":"Who we act for, and the standard every published result must meet: named, dated, verified. One named engagement, AXIS. No verified reviews yet, and we say so.","isPartOf":{"@id":"https://www.semora.com.au/#website"},"about":{"@id":"https://www.semora.com.au/#organization"},"publisher":{"@id":"https://www.semora.com.au/#organization"},"inLanguage":"en-AU","dateModified":"2026-08-12","primaryImageOfPage":{"@type":"ImageObject","url":"https://www.semora.com.au/assets/img/og-semora.png","width":1200,"height":630},"breadcrumb":{"@id":"https://www.semora.com.au/clients#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://www.semora.com.au/clients#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.semora.com.au/"},{"@type":"ListItem","position":2,"name":"Clients","item":"https://www.semora.com.au/clients"}]},{"@type":"FAQPage","@id":"https://www.semora.com.au/clients#faq","url":"https://www.semora.com.au/clients","name":"Our clients — SEMORA STUDIO Melbourne","isPartOf":{"@id":"https://www.semora.com.au/clients#webpage"},"inLanguage":"en-AU","mainEntity":[{"@type":"Question","name":"Are there verified SEMORA STUDIO client reviews?","acceptedAnswer":{"@type":"Answer","text":"None yet, and we will say so. A verified review, to SEMORA STUDIO, means one thing. A real client, in their own words, with a name, a role, a date and written permission to print it. We have none. Not one. And we will not dress up something weaker to fill the gap, so you will not find praise here from a client we decline to name, or a tidy line we wrote that a client nodded at, or five stars signed with a single initial. We ask at the 90-day review. Client words land on this page, or they land nowhere. Regulated health services are the harder case. The National Law prohibits clinical testimonials in advertising, so we will not publish one at all, and that binds us exactly as it binds the clinic."}},{"@type":"Question","name":"How does SEMORA STUDIO publish a client result?","acceptedAnswer":{"@type":"Answer","text":"To a six-part template, published early and listed below: the baseline, the intervention, the result, the period, the caveats and the client's written permission. A result publishes only when it has all six. Miss one and Jennifer Wong holds it back. That rule is the reason this section is still empty today, and we would rather you saw an empty section than a number with no baseline underneath it. It is the same proof standard the rest of the method runs on."}},{"@type":"Question","name":"Which clients has SEMORA STUDIO worked with?","acceptedAnswer":{"@type":"Answer","text":"One, named: AXIS, which advises on commercial property. That is work we are signed to deliver, named because the client agreed to be named. Being signed is not the same as being measured. The measured result publishes at the 90-day review on 8 November 2026."}}]}]}</script>
 </head>
@@ -32,8 +32,18 @@
 <header class="site-head">
   <div class="wrap">
     <a class="site-head__logo" href="/" aria-label="SEMORA — home">
-      <img class="site-head__mark" src="assets/logo/SEMORA_Icon_plum-ivory.svg"
-           alt="" aria-hidden="true" width="52" height="52">
+      <!-- The living mark (founder, 12 Aug night): the animated aperture
+           replaces the static tile beside the wordmark — the scan loop
+           lives HERE now, not in the hero. Inline so page CSS can drive
+           the rotation; an <img> cannot be animated from outside. -->
+      <svg class="site-head__mark" viewBox="69 109 862 862" width="52"
+           height="52" aria-hidden="true">
+        <rect class="shm-tile" x="69" y="109" width="862" height="862"/>
+        <g class="shm-spin">
+          <path class="ap-arc" d="M691.47 294.93 A311.00 311.00 0 0 1 510.85 850.81 L567.60 694.89 A169.00 169.00 0 0 0 637.85 442.24 Z"/><path class="ap-arc" d="M446.17 845.29 A310.00 310.00 0 0 1 208.70 433.97 L348.68 388.68 A214.00 214.00 0 0 0 479.75 753.04 Z"/><path class="ap-arc ap-arc--weak" d="M237.11 375.73 A310.00 310.00 0 0 1 510.82 230.19 L488.96 290.24 A250.00 250.00 0 0 0 363.84 330.33 Z"/>
+        </g>
+        <circle class="ap-dot" cx="500" cy="540" r="98"/>
+      </svg>
       <span class="site-head__word"><img
            src="assets/logo/SEMORA_Primary_mono-plum.svg" alt="SEMORA"
            width="249" height="46"></span>

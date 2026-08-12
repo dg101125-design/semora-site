@@ -448,6 +448,18 @@ section > .wrap { position: relative; z-index: 1; }
    below is calibrated in hard pixels to the wordmark's 249px width, so
    anything sharing that box shifts the wipe off its own slash. */
 .site-head__mark { height: 52px; width: 52px; margin-right: 18px; }
+.site-head__mark .shm-tile { fill: var(--plum); }
+.site-head__mark .ap-arc { fill: var(--ivory); }
+.site-head__mark .ap-arc--weak { fill: var(--plum-300); }
+.site-head__mark .ap-dot { fill: var(--moss-300); }
+@media (prefers-reduced-motion: no-preference) {
+  /* the aperture scans beside the name — the site's one perpetual motion */
+  .site-head__mark .shm-spin {
+    transform-box: view-box; transform-origin: 500px 540px;
+    animation: hm-spin 22s linear infinite;
+  }
+  @keyframes hm-spin { to { transform: rotate(360deg); } }
+}
 /* Below the nav collapse the header carries the wordmark and the menu
    toggle; a third element makes it wrap on a 390px phone. The wordmark
    stays, not the seal — the name still has to do the work of being known. */
@@ -1383,65 +1395,62 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 96px); }
     from { opacity: 0; letter-spacing: 0.012em; }
   }
 
-  /* 2 · the word verdict: new → struck → more → struck → right.
-     In flow, so the slot holds the widest word's width for the whole play —
-     constant slot, centred words, no line shift (see the .wcycle block).
-     The static italic-correction margin is zeroed: the centred surplus
-     already carries the air after "right". */
+  /* 2 · the word verdict, now a LOOP (founder, 12 Aug night: 循环播放
+     包括 more/right 的跳动). One 6s cycle, the original beats mapped to
+     percentages, infinite; the cycle resets with a clean cut back to
+     "new". Same constant centred slot — the line never shifts. */
   .wcycle { margin-right: 0; }
   .wcycle .w1, .wcycle .w2 { display: inline-block; }
-  .wcycle .w1 { animation: w-exit 0.35s var(--ease) forwards 1.75s; }
-  .wcycle .w2 {
-    opacity: 0; transform: translateY(58%);
-    animation: w-enter 0.35s var(--ease) forwards 1.82s,
-               w-exit  0.35s var(--ease) forwards 2.95s;
-  }
-  .wcycle .w3 {
-    opacity: 0; transform: translateY(58%);
-    animation: w-enter 0.45s var(--ease) forwards 3.05s;
-  }
+  .wcycle .w1 { animation: w1-loop 6s linear infinite; }
+  .wcycle .w2 { opacity: 0; transform: translateY(58%);
+                animation: w2-loop 6s linear infinite; }
+  .wcycle .w3 { opacity: 0; transform: translateY(58%);
+                animation: w3-loop 6s linear infinite; }
   .wcycle .w1::after, .wcycle .w2::after {
     content: ""; position: absolute; left: -2%; top: 0.5em;
     height: 0.07em; width: 0; background: var(--moss-700);
     transform: rotate(-3.5deg);
   }
-  .wcycle .w1::after { animation: strike-in 0.28s var(--ease) forwards 1.25s; }
-  .wcycle .w2::after { animation: strike-in 0.28s var(--ease) forwards 2.42s; }
-  @keyframes w-enter { to { opacity: 1; transform: none; } }
-  @keyframes w-exit  { to { opacity: 0; transform: translateY(-52%); } }
-  @keyframes strike-in { to { width: 104%; } }
+  .wcycle .w1::after { animation: s1-loop 6s linear infinite; }
+  .wcycle .w2::after { animation: s2-loop 6s linear infinite; }
+  @keyframes w1-loop {
+    0%, 29.2% { opacity: 1; transform: none;
+                animation-timing-function: var(--ease); }
+    35%, 100% { opacity: 0; transform: translateY(-52%); }
+  }
+  @keyframes s1-loop { 0%, 20.8% { width: 0;
+                animation-timing-function: var(--ease); }
+                24.5%, 100% { width: 104%; } }
+  @keyframes w2-loop {
+    0%, 30.3% { opacity: 0; transform: translateY(58%);
+                animation-timing-function: var(--ease); }
+    36.2%, 49.2% { opacity: 1; transform: none;
+                animation-timing-function: var(--ease); }
+    55%, 100% { opacity: 0; transform: translateY(-52%); }
+  }
+  @keyframes s2-loop { 0%, 40.3% { width: 0;
+                animation-timing-function: var(--ease); }
+                45%, 100% { width: 104%; } }
+  @keyframes w3-loop {
+    0%, 50.8% { opacity: 0; transform: translateY(58%);
+                animation-timing-function: var(--ease); }
+    58.3%, 100% { opacity: 1; transform: none; }
+  }
 
-  /* 3 · the verdict earns its underline last */
+  /* 3 · the verdict earns its underline last. Other pages keep the
+     one-shot draw; the homepage wcycle's underline rides the 6s loop. */
   .uline::after {
     width: 0;
     animation: uline-in 0.55s var(--ease) forwards;
     animation-delay: 3.6s;
   }
   @keyframes uline-in { to { width: 96%; } }
+  .wcycle .uline::after { animation: uline-loop 6s linear infinite; }
+  @keyframes uline-loop { 0%, 60% { width: 0;
+                animation-timing-function: var(--ease); }
+                69.2%, 100% { width: 96%; } }
 
-  /* 4 · the mark falls onto its floor (founder, 12 Aug: 自然掉落).
-     The floor draws first — something to land on — then the O drops under
-     gravity and settles in two diminishing bounces; the dots land after,
-     the grammar of the accepted icon animation. SVG user units, not %,
-     so the travel cannot change meaning if the bounding box does. */
-  .hm-floor {
-    stroke-dasharray: 690; stroke-dashoffset: 690;
-    animation: hm-floor-in 0.5s var(--ease) forwards 0.1s;
-  }
-  .hm-drop { transform: translateY(-1050px); animation: hm-fall 1.05s forwards 0.25s; }
-  /* the aperture scans: slow infinite rotation around the fixed signal.
-     Lives on its own inner group so it never fights hm-fall's translate. */
-  .hm-spin {
-    transform-box: view-box; transform-origin: 500px 540px;
-    animation: hm-spin 22s linear infinite;
-  }
-  @keyframes hm-spin { to { transform: rotate(360deg); } }
-  .hm-sig {
-    transform: scale(0); transform-origin: center; transform-box: fill-box;
-    opacity: 0;
-    animation: hm-sig-pop 0.5s cubic-bezier(.34,1.56,.64,1) forwards 1.45s;
-  }
-  @keyframes hm-sig-pop { to { transform: scale(1); opacity: 1; } }
+  /* (the hero mark choreography retired 12 Aug night — see header) */
   @keyframes hm-floor-in { to { stroke-dashoffset: 0; } }
   @keyframes hm-fall {
     0%   { transform: translateY(-1050px);
@@ -2105,26 +2114,7 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 96px); }
 }
 .logo-dot img { width: 100%; height: 100%; object-fit: contain; padding: 16px; }
 
-/* ── hero figure: the bare mark, dropped onto the page ────────────────────
-   Founder, 12 Aug evening: no box. Ivory O, acid dots, straight on the
-   hero ink, standing on a white floor line — the same ink/ivory/acid
-   grammar as the accepted icon animation. Anchored to the content column's
-   right edge, top-aligned with the content block (same clamp as the hero's
-   own padding). overflow stays visible so the falling pieces exist above
-   the viewBox; the .hero band's own overflow:hidden crops them until they
-   enter, which is what makes the drop read as falling INTO the page. */
-.hero__figure {
-  position: absolute; z-index: 1;
-  right: max(var(--gutter), calc((100% - var(--maxw)) / 2 + var(--gutter)));
-  top: clamp(64px, 11vw, 128px);
-  width: clamp(180px, 20vw, 300px); height: auto;
-  overflow: visible;
-}
-.hero__figure .ap-arc { fill: var(--ivory); }
-.hero__figure .ap-arc--weak { fill: var(--plum-300); }
-.hero__figure .ap-dot { fill: var(--moss-300); }   /* acid — dark grounds only */
-.hm-floor { stroke: var(--ivory); stroke-width: 5; stroke-linecap: round; }
-@media (max-width: 1120px) { .hero__figure { display: none; } }
+/* the hero figure is gone — the living aperture sits in the site header */
 
 /* Short viewports — a half-height window or a zoomed browser. The fixed
    128px paddings were sized for a 900px fold; on an effective fold of

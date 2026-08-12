@@ -109,6 +109,13 @@
   --serif: "Fraunces", "Iowan Old Style", Georgia, serif;
   --sans:  "Instrument Sans", -apple-system, "Helvetica Neue", Arial, sans-serif;
   --mono:  "Fragment Mono", "Courier New", monospace;
+  /* Every spacing and line-height in this file was tuned around the RETIRED
+     faces' glyph metrics. The replacements render at different apparent sizes
+     — Fraunces +13.1% (x-height 0.482 vs Newsreader 0.426, measured from the
+     files), Instrument Sans −6.6% against Inter. font-size-adjust pins each
+     new face to the OLD face's x-height aspect at every binding site, so the
+     entire typographic geometry the founder signed off renders as designed.
+     The property inherits, which is why all three sites set it explicitly. */
 
   --measure: 62ch;
   --gutter: clamp(20px, 5vw, 72px);
@@ -122,7 +129,7 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; overflow-x: clip; }
 body {
-  font-family: var(--sans);
+  font-family: var(--sans); font-size-adjust: 0.546;
   font-size: 17px; line-height: 1.62;
   color: var(--graph);
   background: var(--ivory);
@@ -137,7 +144,7 @@ a { color: inherit; }
 
 /* ----------------------------------------------- typography */
 .display, h1 {
-  font-family: var(--serif);
+  font-family: var(--serif); font-size-adjust: 0.426;
   font-weight: 350;
   font-variation-settings: "opsz" 72;
   font-size: clamp( 40px, 6.4vw, 72px);
@@ -147,7 +154,7 @@ a { color: inherit; }
   text-wrap: balance;
 }
 h2 {
-  font-family: var(--serif);
+  font-family: var(--serif); font-size-adjust: 0.426;
   font-weight: 400;
   font-variation-settings: "opsz" 44;
   font-size: clamp( 34px, 4.1vw, 56px);
@@ -157,7 +164,7 @@ h2 {
   text-wrap: balance;
 }
 h3 {
-  font-family: var(--serif);
+  font-family: var(--serif); font-size-adjust: 0.426;
   font-weight: 400;
   font-variation-settings: "opsz" 28;
   font-size: 19px;
@@ -170,7 +177,7 @@ p  { max-width: var(--measure); }
   color: var(--graph-700);
   max-width: 54ch;
 }
-.serif-em { font-family: var(--serif); font-style: italic; font-weight: 350; }
+.serif-em { font-family: var(--serif); font-size-adjust: 0.426; font-style: italic; font-weight: 350; }
 /* slash-angled emphasis underline (static by default; animated when motion allowed) */
 .uline { position: relative; }
 .uline::after {
@@ -181,7 +188,7 @@ p  { max-width: var(--measure); }
 
 /* mono label — the system voice */
 .lab {
-  font-family: var(--mono); font-weight: 400;
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
   font-size: 11px; letter-spacing: 0.012em;
   text-transform: uppercase;
   color: var(--moss-700);
@@ -237,7 +244,7 @@ section > .wrap { position: relative; z-index: 1; }
   background: var(--plum-ink);
 }
 .interlude p {
-  font-family: var(--serif); font-weight: 300;
+  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 300;
   font-variation-settings: "opsz" 72;
   font-size: clamp( 40px, 8.6vw, 128px);
   line-height: 0.94; letter-spacing: -0.018em;
@@ -269,7 +276,7 @@ section > .wrap { position: relative; z-index: 1; }
 .entry:hover { background: color-mix(in srgb, var(--champ-300) 55%, transparent); }
 .f-plum .entry:hover { background: color-mix(in srgb, var(--plum-700) 55%, transparent); }
 .entry__no {
-  font-family: var(--serif); font-weight: 300;
+  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 300;
   font-size: 40px; line-height: 0.98;
   color: var(--plum-300);
   font-variant-numeric: tabular-nums;
@@ -277,7 +284,7 @@ section > .wrap { position: relative; z-index: 1; }
 .entry h3 { margin-bottom: 4px; }
 .entry p  { color: var(--graph-700); }
 .entry .q {
-  font-family: var(--serif); font-style: italic; font-weight: 350;
+  font-family: var(--serif); font-size-adjust: 0.426; font-style: italic; font-weight: 350;
   font-size: 18px; color: var(--moss-700);
   margin-bottom: 8px;
 }
@@ -289,7 +296,7 @@ section > .wrap { position: relative; z-index: 1; }
 /* the industry habit, crossed out above our answer */
 .f-plum .them { color: var(--plum-100); }
 .them {
-  font-family: var(--serif); font-style: italic; font-weight: 350;
+  font-family: var(--serif); font-size-adjust: 0.426; font-style: italic; font-weight: 350;
   font-size: 17px; color: var(--plum-100);
   text-decoration: line-through;
   text-decoration-color: var(--moss-300); text-decoration-thickness: 1.5px;
@@ -334,7 +341,7 @@ section > .wrap { position: relative; z-index: 1; }
 }
 .pillar:hover { border-color: var(--moss-300); transform: translateY(-3px); }
 .pillar .pno {
-  font-family: var(--serif); font-weight: 300; font-size: 34px;
+  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 300; font-size: 34px;
   color: var(--moss-300); font-variant-numeric: tabular-nums;
 }
 .pillar h3 { margin: 8px 0 0; font-size: 19px; }
@@ -347,7 +354,7 @@ section > .wrap { position: relative; z-index: 1; }
 /* ---------------------------------------------------- table */
 .tbl { width: 100%; border-collapse: collapse; font-size: 15px; }
 .tbl th {
-  font-family: var(--mono); font-weight: 400;
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
   font-size: 11px; letter-spacing: 0.012em; text-transform: uppercase;
   color: var(--graph-400);
   text-align: left; padding: 12px 16px 12px 0;
@@ -369,14 +376,14 @@ section > .wrap { position: relative; z-index: 1; }
 
 /* price figure */
 .price {
-  font-family: var(--serif); font-weight: 350;
+  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 350;
   font-variation-settings: "opsz" 60;
   font-size: clamp( 34px, 5.2vw, 56px);
   line-height: 0.98; color: var(--plum-900);
   font-variant-numeric: tabular-nums;
 }
 .price small {
-  font-family: var(--mono); font-size: 11px;
+  font-family: var(--mono); font-size-adjust: 0.516; font-size: 11px;
   letter-spacing: 0.012em; color: var(--graph-400);
   display: block; margin-top: 8px; text-transform: uppercase;
 }
@@ -384,7 +391,7 @@ section > .wrap { position: relative; z-index: 1; }
 /* -------------------------------------------------- buttons */
 .btn {
   display: inline-block; position: relative; overflow: hidden;
-  font-family: var(--mono); font-weight: 400;
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
   font-size: 13px; letter-spacing: 0.012em; text-transform: uppercase;
   text-decoration: none; cursor: pointer;
   padding: 1.15em 2.2em;
@@ -410,7 +417,7 @@ section > .wrap { position: relative; z-index: 1; }
 
 /* arrow-link: arrow nudges on hover */
 .alink {
-  font-family: var(--mono); font-weight: 400;
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
   font-size: 11px; letter-spacing: 0.012em; text-transform: uppercase;
   color: var(--moss-700); text-decoration: none;
   border-bottom: 1px solid var(--champ-700);
@@ -483,7 +490,7 @@ html.lr .site-head__word::before {
 }
 .site-nav { margin-left: auto; display: flex; align-items: center; gap: 32px; }
 .site-nav a:not(.btn) {
-  font-family: var(--mono); font-weight: 400;
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
   font-size: 11px; letter-spacing: 0.012em; text-transform: uppercase;
   color: var(--graph); text-decoration: none;
   padding-block: 0.4em;
@@ -578,7 +585,7 @@ html.lr .site-head__word::before {
   align-self: end;
 }
 .mega__sub {
-  font-family: var(--sans); font-style: normal; font-weight: 400;
+  font-family: var(--sans); font-size-adjust: 0.546; font-style: normal; font-weight: 400;
   font-size: 13px; line-height: 1.45; color: var(--graph);
   margin: 0; padding-bottom: 12px;
   border-bottom: 1px solid var(--champ-700);
@@ -642,7 +649,7 @@ html.lr .site-head__word::before {
 @media (min-width: 981px) { .nav-toggle-box { display: none; } }
 .nav-toggle {
   display: none; margin-left: auto;
-  font-family: var(--mono); font-size: 11px; letter-spacing: 0.012em;
+  font-family: var(--mono); font-size-adjust: 0.516; font-size: 11px; letter-spacing: 0.012em;
   text-transform: uppercase; color: var(--plum);
   cursor: pointer; padding: 0.6em 0;
   -webkit-user-select: none; user-select: none;
@@ -674,7 +681,7 @@ html.lr .site-head__word::before {
 .cs-num { border-top: 3px solid var(--moss); padding-top: 16px; }
 .cs-num .lab { color: var(--plum); margin-bottom: 8px; }
 .cs-num__v {
-  font-family: var(--serif); font-weight: 300;
+  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 300;
   font-size: clamp( 28px, 3vw, 34px); line-height: 1.14;
   color: var(--ink); margin: 0 0 8px;
 }
@@ -682,12 +689,12 @@ html.lr .site-head__word::before {
 .cs-arrow { color: var(--moss-700); padding: 0 0.15em; }
 .cs-delta {
   display: inline-block; margin-left: 0.35em;
-  font-family: var(--mono); font-size: 0.62em; font-weight: 500;
+  font-family: var(--mono); font-size-adjust: 0.516; font-size: 0.62em; font-weight: 500;
   letter-spacing: 0.012em; color: var(--moss-700);
   vertical-align: 0.28em;
 }
 .cs-num__m {
-  font-family: var(--mono); font-size: 11px; letter-spacing: 0.012em;
+  font-family: var(--mono); font-size-adjust: 0.516; font-size: 11px; letter-spacing: 0.012em;
   line-height: 1.45; color: var(--graph); margin: 0;
 }
 /* A required section that is empty prints the gap. It never disappears
@@ -697,7 +704,7 @@ html.lr .site-head__word::before {
   display: block; padding: 0.7em 0.9em;
   border-left: 3px solid var(--plum);
   background: color-mix(in srgb, var(--plum) 7%, transparent);
-  font-family: var(--mono); font-size: 11px; line-height: 1.62;
+  font-family: var(--mono); font-size-adjust: 0.516; font-size: 11px; line-height: 1.62;
   color: var(--plum);
 }
 .cs-quote {
@@ -705,11 +712,11 @@ html.lr .site-head__word::before {
   border-left: 3px solid var(--moss-300);
 }
 .cs-quote blockquote {
-  font-family: var(--serif); font-size: 18px; line-height: 1.45;
+  font-family: var(--serif); font-size-adjust: 0.426; font-size: 18px; line-height: 1.45;
   margin: 0 0 8px;
 }
 .cs-quote figcaption {
-  font-family: var(--mono); font-size: 11px; letter-spacing: 0.012em;
+  font-family: var(--mono); font-size-adjust: 0.516; font-size: 11px; letter-spacing: 0.012em;
   color: var(--graph);
 }
 
@@ -735,7 +742,7 @@ html.lr .site-head__word::before {
    home page next to agencies setting everything at 700. 500 keeps Newsreader's
    character and stops the headline apologising for itself. */
 .statband__h {
-  font-family: var(--serif); font-weight: 500;
+  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 500;
   font-size: clamp( 28px, 4.4vw, 56px); line-height: 1.14;
   letter-spacing: -0.014em; color: var(--ivory);
   margin: 1.1rem 0 clamp( 32px, 5vw, 48px); max-width: 20ch;
@@ -761,7 +768,7 @@ html.lr .site-head__word::before {
 }
 .stat__v {
   display: flex; align-items: flex-start; gap: 0.3em;
-  font-family: var(--serif); font-weight: 300;
+  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 300;
   font-size: clamp( 56px, 8vw, 72px); line-height: 0.94;
   letter-spacing: -0.018em; color: var(--ivory); margin: 0 0 4px;
 }
@@ -902,7 +909,7 @@ html.lr .site-head__word::before {
 .mq:hover .mq__track { animation-play-state: paused; }
 .mq__item {
   margin-right: 3.2rem;
-  font-family: var(--serif); font-weight: 300; font-style: italic;
+  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 300; font-style: italic;
   font-variation-settings: "opsz" 40;
   font-size: clamp( 19px, 2.4vw, 28px);
   color: var(--plum-700); white-space: nowrap;
@@ -988,7 +995,7 @@ html.lr .site-head__word::before {
 .pcard:hover { transform: translateY(-5px); box-shadow: 0 18px 44px rgba(46, 28, 41, 0.18); }
 .pcard:hover::before { width: 100%; }
 .pcard h3 { margin-bottom: 4px; }
-.pcard .q { font-family: var(--serif); font-style: italic; color: var(--plum-700); margin-bottom: 16px; }
+.pcard .q { font-family: var(--serif); font-size-adjust: 0.426; font-style: italic; color: var(--plum-700); margin-bottom: 16px; }
 .pcard .price { font-size: 28px; }
 .pcard .lab--graph { position: absolute; top: 1.9rem; right: 1.9rem; }
 
@@ -1007,7 +1014,7 @@ html.lr .site-head__word::before {
 .tier:hover { transform: translateY(-4px); box-shadow: 0 14px 34px rgba(46, 28, 41, 0.10); }
 .tier__flag {
   align-self: stretch; text-align: center;
-  font-family: var(--mono); font-weight: 400; font-size: 11px;
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 11px;
   letter-spacing: 0.012em; text-transform: uppercase;
   margin: 0 0 24px; padding: 0.7em 0;
   background: var(--plum-900); color: var(--champ);
@@ -1017,12 +1024,12 @@ html.lr .site-head__word::before {
 .tier h3 { font-size: 28px; }
 .tier .price { font-size: 28px; margin-top: 12px; }
 .tier .who {
-  font-family: var(--serif); font-style: italic; color: var(--plum-700);
+  font-family: var(--serif); font-size-adjust: 0.426; font-style: italic; color: var(--plum-700);
   margin: 16px 0 8px;
 }
 /* grouped scope inside tier cards */
 .tgroup {
-  font-family: var(--mono); font-weight: 400;
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
   font-size: 11px; letter-spacing: 0.012em; text-transform: uppercase;
   color: var(--moss-700);
   margin-top: 24px; padding-bottom: 8px;
@@ -1057,13 +1064,13 @@ html.lr .site-head__word::before {
 .qrow:last-of-type { border-bottom: 1px solid var(--champ-700); }
 .qrow:hover { background: color-mix(in srgb, var(--champ-300) 55%, transparent); }
 .qrow__no {
-  font-family: var(--serif); font-weight: 300;
+  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 300;
   font-size: 40px; line-height: 0.98;
   color: var(--plum-300); font-variant-numeric: tabular-nums;
 }
 .qrow h3 { margin-bottom: 4px; }
 .qrow .q {
-  font-family: var(--serif); font-style: italic; font-weight: 350;
+  font-family: var(--serif); font-size-adjust: 0.426; font-style: italic; font-weight: 350;
   font-size: 18px; color: var(--moss-700); margin-bottom: 16px;
 }
 @media (max-width: 640px) {
@@ -1073,7 +1080,7 @@ html.lr .site-head__word::before {
 .scale { display: flex; gap: 24px; flex-wrap: wrap; align-items: baseline; }
 .scale input { position: absolute; width: 1px; height: 1px; opacity: 0; }
 .scale label {
-  font-family: var(--serif); font-weight: 300; font-size: 19px;
+  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 300; font-size: 19px;
   color: var(--graph-400); cursor: pointer;
   padding: 0.1em 0.35em 0.25em;
   border-bottom: 2px solid var(--champ-700);
@@ -1086,7 +1093,7 @@ html.lr .site-head__word::before {
 }
 .scale input:focus-visible + label { outline: 2px solid var(--plum); outline-offset: 2px; }
 .scale-key { display: flex; justify-content: space-between; max-width: 300px;
-  font-family: var(--mono); font-size: 11px; letter-spacing: 0.012em;
+  font-family: var(--mono); font-size-adjust: 0.516; font-size: 11px; letter-spacing: 0.012em;
   text-transform: uppercase; color: var(--graph-400); margin-top: 8px; }
 
 /* --------------------------------------------- audience grid */
@@ -1119,7 +1126,7 @@ html.lr .site-head__word::before {
 }
 .case:last-of-type { border-bottom: 1px solid var(--champ-700); }
 .case__tag {
-  font-family: var(--mono); font-weight: 400; font-size: 11px;
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 11px;
   letter-spacing: 0.012em; text-transform: uppercase;
   color: var(--moss-700); padding-top: 8px; line-height: 1.62;
 }
@@ -1141,7 +1148,7 @@ html.lr .site-head__word::before {
 }
 .testi:hover { transform: translateY(-4px); box-shadow: 0 14px 34px rgba(46, 28, 41, 0.10); }
 .testi blockquote {
-  font-family: var(--serif); font-weight: 300; font-style: italic;
+  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 300; font-style: italic;
   font-variation-settings: "opsz" 32;
   font-size: 19px; line-height: 1.3; color: var(--plum-700);
 }
@@ -1176,13 +1183,13 @@ html.lr .site-head__word::before {
 }
 .menu-row:hover { background: color-mix(in srgb, var(--champ-300) 60%, transparent); padding-left: 1.5rem; }
 .menu-row:hover::before { transform: skewX(var(--slash-skew)) scaleY(1); }
-.menu-row h3 { font-family: var(--sans); font-weight: 600; font-size: 17px; color: var(--plum-900); }
+.menu-row h3 { font-family: var(--sans); font-size-adjust: 0.546; font-weight: 600; font-size: 17px; color: var(--plum-900); }
 .menu-row .unit {
-  font-family: var(--mono); font-size: 11px; letter-spacing: 0.012em;
+  font-family: var(--mono); font-size-adjust: 0.516; font-size: 11px; letter-spacing: 0.012em;
   text-transform: uppercase; color: var(--graph-400); display: block; margin-top: 4px;
 }
 .menu-row .mprice {
-  font-family: var(--serif); font-weight: 300; font-size: 28px;
+  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 300; font-size: 28px;
   color: var(--plum); font-variant-numeric: tabular-nums; white-space: nowrap;
 }
 @media (max-width: 560px) {
@@ -1210,7 +1217,7 @@ html.lr .site-head__word::before {
   padding-block: 12px; flex-wrap: wrap;
 }
 .scorebar .total {
-  font-family: var(--serif); font-size: 28px; color: var(--ivory);
+  font-family: var(--serif); font-size-adjust: 0.426; font-size: 28px; color: var(--ivory);
   font-variant-numeric: tabular-nums;
 }
 .scorebar .meter {
@@ -1247,7 +1254,7 @@ html.lr .site-head__word::before {
   padding-left: 1.1rem; max-width: 58ch;
 }
 .pull {
-  font-family: var(--serif); font-weight: 300; font-style: italic;
+  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 300; font-style: italic;
   font-variation-settings: "opsz" 40;
   font-size: clamp( 28px, 3vw, 34px); line-height: 1.24;
   color: var(--plum-700); max-width: 30ch;
@@ -1260,7 +1267,7 @@ html.lr .site-head__word::before {
   position: absolute; left: -9999px; top: 0;
   background: var(--plum); color: var(--ivory);
   padding: 0.8em 1.2em; z-index: 100;
-  font-family: var(--mono); font-size: 13px; letter-spacing: 0.012em;
+  font-family: var(--mono); font-size-adjust: 0.516; font-size: 13px; letter-spacing: 0.012em;
 }
 .skip:focus { left: 0; }
 
@@ -1268,12 +1275,12 @@ html.lr .site-head__word::before {
 .form-grid { display: grid; gap: 24px; max-width: 560px; }
 .field label {
   display: block;
-  font-family: var(--mono); font-weight: 400;
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
   font-size: 11px; letter-spacing: 0.012em; text-transform: uppercase;
   color: var(--graph-400); margin-bottom: 8px;
 }
 .field input, .field select, .field textarea {
-  width: 100%; font-family: var(--sans); font-size: 17px;
+  width: 100%; font-family: var(--sans); font-size-adjust: 0.546; font-size: 17px;
   color: var(--graph); background: var(--white);
   border: 1px solid var(--champ-700); padding: 0.85em 1em;
   border-radius: 0;
@@ -1295,7 +1302,7 @@ html.lr .site-head__word::before {
 }
 .form-send { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
 .form-status {
-  margin: 0; font-family: var(--mono); font-weight: 400;
+  margin: 0; font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
   font-size: 11px; letter-spacing: 0.012em;
 }
 .form-status[data-state="sending"] { color: var(--graph-400); }
@@ -1486,7 +1493,7 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 96px); }
 .tcard p { font-size: 15px; color: var(--graph-700); }
 .tcard .owns {
   margin-top: auto; padding-top: 16px;
-  font-family: var(--mono); font-size: 11px; letter-spacing: 0.012em;
+  font-family: var(--mono); font-size-adjust: 0.516; font-size: 11px; letter-spacing: 0.012em;
   text-transform: uppercase; color: var(--moss-700);
 }
 .founder-row {
@@ -1549,7 +1556,7 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 96px); }
 }
 .qb-item > span { flex: 1; font-size: 15px; color: var(--graph-700); max-width: none; }
 .qb-item > span b {
-  display: block; font-family: var(--serif); font-weight: 500;
+  display: block; font-family: var(--serif); font-size-adjust: 0.426; font-weight: 500;
   font-size: 18px; line-height: 1.2; color: var(--plum-ink);
   letter-spacing: -0.006em;
 }
@@ -1559,11 +1566,11 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 96px); }
 }
 .qb-item em { font-style: normal; text-align: right; flex: 0 0 auto; }
 .qb-item em b {
-  display: block; font-family: var(--serif); font-weight: 400;
+  display: block; font-family: var(--serif); font-size-adjust: 0.426; font-weight: 400;
   font-size: 19px; color: var(--plum-ink); font-variant-numeric: tabular-nums;
 }
 .qb-item em i {
-  display: block; font-style: normal; font-family: var(--mono); font-weight: 400;
+  display: block; font-style: normal; font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
   font-size: 11px; letter-spacing: 0.012em; text-transform: uppercase;
   color: var(--moss-700); margin-top: 4px; white-space: nowrap;
 }
@@ -1573,7 +1580,7 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 96px); }
 .qb-item:has(input[data-mo]) em i::before,
 .qb-item--qty em i::before { content: ""; }
 .qb-item--qty input[type="number"] {
-  width: 4.2rem; font-family: var(--mono); font-size: 15px;
+  width: 4.2rem; font-family: var(--mono); font-size-adjust: 0.516; font-size: 15px;
   padding: 0.35em 0.45em; border: 2px solid var(--plum-900);
   background: var(--white); color: var(--plum-900); flex: 0 0 auto;
 }
@@ -1616,7 +1623,7 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 96px); }
 }
 .tslot__mark {
   position: absolute; top: 0.4rem; left: 1.1rem;
-  font-family: var(--serif); font-weight: 300; font-size: 56px;
+  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 300; font-size: 56px;
   line-height: 0.98; color: var(--moss-300); pointer-events: none;
 }
 .tslot p { font-size: 15px; line-height: 1.62; color: var(--graph-400); max-width: none; }
@@ -1663,18 +1670,18 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 96px); }
 .qb-line { display: flex; justify-content: space-between; gap: 16px; padding: 8px 0; border-bottom: 1px solid var(--plum-700); }
 .qb-line span { display: block; font-size: 15px; color: var(--ivory); max-width: none; }
 .qb-line em {
-  display: block; font-family: var(--mono); font-style: normal;
+  display: block; font-family: var(--mono); font-size-adjust: 0.516; font-style: normal;
   font-size: 11px; letter-spacing: 0.012em; text-transform: uppercase;
   color: var(--plum-100); margin-top: 4px;
 }
 .qb-line b { font-variant-numeric: tabular-nums; white-space: nowrap; font-weight: 600; color: var(--champ); }
 .qb-total { display: flex; justify-content: space-between; align-items: baseline; margin-top: 16px; }
 .qb-total span {
-  font-family: var(--mono); font-weight: 400; font-size: 11px;
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 11px;
   letter-spacing: 0.012em; text-transform: uppercase; color: var(--moss-300);
 }
 .qb-total b {
-  font-family: var(--serif); font-weight: 300; font-size: 28px;
+  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 300; font-size: 28px;
   color: var(--ivory); font-variant-numeric: tabular-nums;
 }
 .qb-fine { font-size: 13px; line-height: 1.45; color: var(--plum-100); margin-top: 16px; max-width: none; }
@@ -1684,7 +1691,7 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 96px); }
 .qb-sum .btn--ghost:hover { background: var(--plum-700); }
 .qb-sum .small { color: var(--plum-100); }
 .pcard-inc {
-  font-family: var(--mono); font-weight: 400; font-size: 11px;
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 11px;
   letter-spacing: 0.012em; text-transform: uppercase;
   color: var(--moss-300); margin: 0 0 16px; max-width: none;
 }
@@ -1835,7 +1842,7 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 96px); }
 }
 .tframe .slash { position: absolute; left: 16px; top: 16px; height: 1.4em; }
 .tframe b {
-  font-family: var(--serif); font-weight: 300;
+  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 300;
   font-size: clamp(40px, 6vw, 72px); line-height: 0.94;
   letter-spacing: 0; color: var(--ivory);
 }
@@ -1923,10 +1930,10 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 96px); }
    loudest AI-adjacent visual tic the brand audit named. The mono stays where
    it earns its seat: prices, delivery chips, folio numbers, data labels. */
 .site-nav a:not(.btn) {
-  font-family: var(--sans); font-weight: 500;
+  font-family: var(--sans); font-size-adjust: 0.546; font-weight: 500;
   font-size: 15px; letter-spacing: 0; text-transform: none;
 }
-.mega__col ul a span { font-family: var(--sans); letter-spacing: 0; }
+.mega__col ul a span { font-family: var(--sans); font-size-adjust: 0.546; letter-spacing: 0; }
 
 /* ── the loud interlude (founder, 12 Aug: "非常明显的动画效果") ────────────
    "More signal. Less noise." is a flagship marketing statement and now moves
@@ -1993,12 +2000,12 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 96px); }
 }
 .wwd-stage:hover { border-color: var(--moss-300); transform: translateY(-3px); }
 .wwd-stage i {
-  font-style: normal; font-family: var(--mono); font-weight: 400;
+  font-style: normal; font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
   font-size: 11px; letter-spacing: 0.012em; color: var(--moss-300);
   display: block; margin-bottom: 8px;
 }
 .wwd-stage b {
-  display: block; font-family: var(--serif); font-weight: 500;
+  display: block; font-family: var(--serif); font-size-adjust: 0.426; font-weight: 500;
   font-size: 28px; line-height: 1.14; color: var(--ivory);
 }
 .wwd-stage span {
@@ -2029,7 +2036,7 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 96px); }
   overflow: hidden;
 }
 .logo-dot span {
-  font-family: var(--mono); font-weight: 400; font-size: 11px;
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 11px;
   letter-spacing: 0.012em; color: var(--graph-400); opacity: 0.5;
 }
 .logo-dot img { width: 100%; height: 100%; object-fit: contain; padding: 16px; }
@@ -2058,11 +2065,11 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 96px); }
 }
 .wwd-row:hover { padding-left: 16px; border-bottom-color: var(--moss-300); }
 .wwd-row i {
-  font-style: normal; font-family: var(--mono); font-size: 13px;
+  font-style: normal; font-family: var(--mono); font-size-adjust: 0.516; font-size: 13px;
   letter-spacing: 0.012em; color: var(--moss-300);
 }
 .wwd-row b {
-  font-family: var(--serif); font-weight: 500;
+  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 500;
   font-size: clamp(28px, 4vw, 56px); line-height: 1.04;
   letter-spacing: -0.006em; color: var(--ivory);
 }

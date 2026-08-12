@@ -62,6 +62,9 @@
   --sp-0: 0px; --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-5: 24px; --sp-6: 32px; --sp-7: 48px; --sp-8: 64px; --sp-9: 96px; --sp-10: 128px; --sp-11: 160px;
   /* measure: 45–62ch, baseline grid 8pt */
   --measure-min: 45ch;  --measure-max: 62ch;  --baseline: 8px;
+  /* display-hero sizes, approved 12 Aug 2026 — the founder's brief is bold
+     and loud, and a scale that cannot shout cannot serve it */
+  --t-display-h1: 96px;  --t-display-hero: 128px;
 }
 
 :root {
@@ -235,7 +238,7 @@ section > .wrap { position: relative; z-index: 1; }
 .interlude p {
   font-family: var(--serif); font-weight: 300;
   font-variation-settings: "opsz" 72;
-  font-size: clamp( 40px, 8.6vw, 72px);
+  font-size: clamp( 40px, 8.6vw, 128px);
   line-height: 0.94; letter-spacing: -0.018em;
   color: var(--ivory); max-width: none;
 }
@@ -837,34 +840,6 @@ html.lr .site-head__word::before {
 }
 
 /* ------------------------------------------- the hero mark (Ö seal) */
-/* Anchored to the content column, not floated in the void. It used to sit at
-   `right: 8vw; top: 50%` — related to the viewport and to nothing on the page,
-   which is why it read as a sticker. It now hangs off the right edge of the
-   same max-width wrap the type uses, so there is one vertical line the eye can
-   find, and it sits on the headline's optical centre rather than the section's. */
-.hero__mark {
-  position: absolute; z-index: 1;
-  right: max(var(--gutter), calc((100% - var(--maxw)) / 2 + var(--gutter)));
-  top: 46%; transform: translateY(-50%);
-  width: clamp(150px, 14vw, 200px); height: auto;
-}
-.hero__mark .mk-tile { fill: var(--champ); }
-.hero__mark .mk-letter { fill: var(--plum-ink); }
-.hero__mark .mk-dot { fill: var(--moss-700); }
-@media (max-width: 1120px) { .hero__mark { display: none; } }
-@media (prefers-reduced-motion: no-preference) {
-  .hero__mark {
-    opacity: 0;
-    animation: mark-in 0.9s var(--ease) forwards 0.6s;
-  }
-  @keyframes mark-in {
-    from { opacity: 0; transform: translateY(calc(-50% + 22px)); }
-    to   { opacity: 1; transform: translateY(-50%); }
-  }
-  .hero__mark .mk-dot { transform-origin: center; transform-box: fill-box; }
-  .hero__mark .mk-dot { animation: dot-pulse 2.8s var(--ease) infinite 1.6s; }
-  .hero__mark .mk-dot:last-of-type { animation-delay: 1.95s; }
-}
 
 /* ------------------------------------------------ hero band */
 .hero {
@@ -1346,7 +1321,7 @@ html.lr .site-head__word::before {
 /* home hero: the disclaimer recedes so the promise line carries the page.
    The promise scales past the site-wide h1 because it is the one sentence
    the homepage exists to land — checked clear of the monogram at 1400px. */
-h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 72px); }
+h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 96px); }
 .hl--sub {
   font-size: clamp( 17px, 1.85vw, 19px);
   font-weight: 400; line-height: 1.24; letter-spacing: 0.004em;
@@ -1457,7 +1432,7 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 72px); }
 }
 
 @media print {
-  .site-head, .site-foot, .btn, .hero__mark,
+  .site-head, .site-foot, .btn,
   .mq, .tmq, .scorebar { display: none; }
   body { background: #fff; }
   .rv { opacity: 1 !important; transform: none !important; }
@@ -1736,8 +1711,14 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 72px); }
      other reveal: the first version of this used visibility:hidden with no such
      guard, which would have deleted the line entirely for anyone whose
      JavaScript failed to run. */
-  html.js .interlude p        { overflow: hidden; }
-  html.js .interlude p > em   { overflow: hidden; }
+  /* The rise mask. At 72px the italic descenders squeaked under its edge; at
+     the restored 128px they need 4px more than the line box gives, and the
+     mask was cutting them — caught by the geometry gate on three pages. The
+     em padding keeps the descenders inside the clip; em units scale with the
+     type, so this cannot re-break at another size. */
+  html.js .interlude p        { overflow: hidden; padding-bottom: 0.14em; }
+  html.js .interlude p > em   { overflow: hidden; padding-bottom: 0.14em;
+                                margin-bottom: -0.14em; }
   html.js .interlude p.rv     { opacity: 1; transform: none; }
   html.js .interlude p.rv     > :not(em) { display: inline-block; }
   html.js .interlude p.rv:not(.in)      { opacity: 0; transform: translateY(64%); }
@@ -1945,3 +1926,109 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 72px); }
   font-size: 15px; letter-spacing: 0; text-transform: none;
 }
 .mega__col ul a span { font-family: var(--sans); letter-spacing: 0; }
+
+/* ── the loud interlude (founder, 12 Aug: "非常明显的动画效果") ────────────
+   "More signal. Less noise." is a flagship marketing statement and now moves
+   like one. Three layers: the line lands with an overshoot instead of a fade;
+   the italic half draws a thick acid underline as it settles; and an ambient
+   slash sweeps the band on a slow loop, so the section is never still even
+   after the entrance has played. All of it sits behind html.js and the
+   reduced-motion query like every other animation on the site. */
+.interlude { position: relative; overflow: hidden; }
+.interlude .wrap { position: relative; z-index: 1; }
+.interlude .islash {
+  position: absolute; top: -12%; height: 124%; width: clamp(48px, 7vw, 128px);
+  background: var(--moss-300); opacity: 0.10;
+  transform: skewX(var(--slash-skew));
+  left: -10%; z-index: 0; pointer-events: none;
+}
+.interlude p em { position: relative; }
+.interlude p em::after {
+  content: ""; position: absolute; left: 0; bottom: 0.04em;
+  height: 0.09em; width: 100%; background: var(--moss-300);
+  transform: scaleX(0); transform-origin: left;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html.js .interlude p.rv.in {
+    animation: intl-slam 0.82s var(--ease) backwards;
+  }
+  html.js .interlude em.rv.in {
+    animation: intl-slam 0.82s var(--ease) backwards 0.26s;
+  }
+  @keyframes intl-slam {
+    0%   { opacity: 0; transform: translateY(64%) scale(0.97); }
+    72%  { opacity: 1; transform: translateY(-3%) scale(1.01); }
+    100% { opacity: 1; transform: none; }
+  }
+  html.js .interlude p.rv.in em::after {
+    animation: intl-underline 0.6s var(--ease) forwards 1.05s,
+               intl-breathe 3.2s ease-in-out infinite 1.7s;
+  }
+  @keyframes intl-underline { to { transform: scaleX(1); } }
+  @keyframes intl-breathe {
+    0%, 100% { opacity: 1; } 50% { opacity: 0.45; }
+  }
+  html.js .interlude .islash {
+    animation: islash-sweep 12s ease-in-out infinite;
+  }
+  @keyframes islash-sweep {
+    0%, 100% { left: -10%; } 50% { left: 96%; }
+  }
+}
+
+/* ── the what-we-do journey + image frames + client circles ───────────────
+   Values on the published scales throughout. The imgslot renders as a
+   composed void with a hairline and a folio label — a reserved position, not
+   a broken image — until the founder's high-resolution files arrive. */
+.wwd-stages {
+  display: grid; gap: 16px; margin-top: 48px;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+}
+.wwd-stage {
+  display: block; text-decoration: none;
+  border: 1px solid rgb(255 255 255 / 0.14);
+  padding: 16px; transition: border-color 180ms var(--ease),
+                             transform 180ms var(--ease);
+}
+.wwd-stage:hover { border-color: var(--moss-300); transform: translateY(-3px); }
+.wwd-stage i {
+  font-style: normal; font-family: var(--mono); font-weight: 500;
+  font-size: 11px; letter-spacing: 0.24em; color: var(--moss-300);
+  display: block; margin-bottom: 8px;
+}
+.wwd-stage b {
+  display: block; font-family: var(--serif); font-weight: 500;
+  font-size: 28px; line-height: 1.14; color: var(--ivory);
+}
+.wwd-stage span {
+  display: block; margin-top: 4px; font-size: 13px; line-height: 1.45;
+  color: var(--plum-100);
+}
+.imgslots {
+  display: grid; gap: 16px; margin-top: 32px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+.imgslot {
+  margin: 0; aspect-ratio: 16 / 9; position: relative;
+  border: 1px solid rgb(255 255 255 / 0.18);
+  background: rgb(255 255 255 / 0.03);
+  display: flex; align-items: flex-end;
+}
+.imgslot figcaption { padding: 12px 16px; opacity: 0.6; }
+.imgslot > img { position: absolute; inset: 0; width: 100%; height: 100%;
+                 object-fit: cover; }
+.logo-ring {
+  list-style: none; margin: 24px 0 0; padding: 0;
+  display: flex; flex-wrap: wrap; gap: 24px;
+}
+.logo-dot {
+  width: 96px; height: 96px; border-radius: 50%;
+  border: 1px solid var(--champ-700); background: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.logo-dot span {
+  font-family: var(--mono); font-weight: 500; font-size: 11px;
+  letter-spacing: 0.24em; color: var(--graph-400); opacity: 0.5;
+}
+.logo-dot img { width: 100%; height: 100%; object-fit: contain; padding: 16px; }

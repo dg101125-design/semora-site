@@ -1972,8 +1972,8 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 96px); }
 .wwd2__rows { border-top: 1px solid rgb(255 255 255 / 0.16); }
 .wrow { border-bottom: 1px solid rgb(255 255 255 / 0.16); }
 .wrow summary {
-  display: grid; grid-template-columns: 48px auto 1fr 24px;
-  align-items: center; gap: 16px; padding: 24px 0;
+  display: grid; grid-template-columns: 48px 1fr 48px;
+  align-items: center; gap: 24px; padding: 24px 0;
   cursor: pointer; list-style: none;
 }
 .wrow summary::-webkit-details-marker { display: none; }
@@ -1985,36 +1985,94 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 96px); }
 .wico-dot { fill: var(--moss-300); }
 .wico-dot--dim { opacity: 0.35; }
 .wico-dot--mid { opacity: 0.65; }
-.wrow__stage {
-  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
-  font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
-  color: var(--plum-100);
+
+/* the glyphs are alive: each animates on hover and while its row is open.
+   Gauge sweeps, the position dot rides the 70° axis, the structure builds,
+   the signal steps up. All transform/opacity — cheap, GPU-friendly. */
+@media (prefers-reduced-motion: no-preference) {
+  .wico-tick { transform-box: view-box; transform-origin: 24px 26px; }
+  .wrow:hover .wico-tick, .wrow[open] .wico-tick {
+    animation: wico-sweep 1.6s var(--ease) infinite;
+  }
+  @keyframes wico-sweep {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(-38deg); }
+  }
+  .wrow:hover .wico-dot--slide, .wrow[open] .wico-dot--slide {
+    animation: wico-ride 1.6s var(--ease) infinite;
+  }
+  @keyframes wico-ride {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(9px, -10px); }
+  }
+  .wico-bar { transform-box: fill-box; transform-origin: left center; }
+  .wrow:hover .wico-bar, .wrow[open] .wico-bar {
+    animation: wico-build 1.6s var(--ease) infinite;
+  }
+  .wrow:hover .wico-bar--2, .wrow[open] .wico-bar--2 { animation-delay: 0.12s; }
+  .wrow:hover .wico-bar--3, .wrow[open] .wico-bar--3 { animation-delay: 0.24s; }
+  @keyframes wico-build {
+    0%, 100% { transform: scaleX(1); }
+    50% { transform: scaleX(0.55); }
+  }
+  .wrow:hover .wico-p1, .wrow[open] .wico-p1,
+  .wrow:hover .wico-p2, .wrow[open] .wico-p2,
+  .wrow:hover .wico-p3, .wrow[open] .wico-p3 {
+    animation: wico-step 1.6s var(--ease) infinite;
+  }
+  .wrow:hover .wico-p2, .wrow[open] .wico-p2 { animation-delay: 0.18s; }
+  .wrow:hover .wico-p3, .wrow[open] .wico-p3 { animation-delay: 0.36s; }
+  @keyframes wico-step {
+    0%, 100% { opacity: 0.35; transform: translateY(0); }
+    50% { opacity: 1; transform: translateY(-4px); }
+  }
+  /* the expanded body cascades in */
+  .wrow[open] .wrow__body > * {
+    animation: wbody-up 0.5s var(--ease) backwards;
+  }
+  .wrow[open] .wrow__body > :nth-child(2) { animation-delay: 0.08s; }
+  .wrow[open] .wrow__body > :nth-child(3) { animation-delay: 0.16s; }
+  @keyframes wbody-up {
+    from { opacity: 0; transform: translateY(12px); }
+  }
 }
 .wrow__name {
-  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 350;
-  font-size: 28px; letter-spacing: -0.006em; color: var(--champ-300);
-  transition: color 0.3s var(--ease);
+  /* one voice per row (founder, 13 Aug: 左右字体要统一) — the body face,
+     loud, set like a statement. The serif stays the display voice of the
+     column headline; the mono stays a label voice inside the body. */
+  font-family: var(--sans); font-size-adjust: 0.546; font-weight: 600;
+  font-size: 28px; line-height: 1.14; letter-spacing: 0.012em;
+  text-transform: uppercase; color: var(--champ-300);
+  transition: color 0.3s var(--ease), transform 0.3s var(--ease);
 }
-.wrow__arrow { color: var(--moss-300); justify-self: end;
-  transition: transform 0.3s var(--ease); }
-.wrow summary:hover .wrow__name { color: var(--ivory); }
-.wrow summary:hover .wrow__arrow { transform: translateX(4px); }
-.wrow[open] .wrow__arrow { transform: rotate(90deg); }
-.wrow[open] summary:hover .wrow__arrow { transform: rotate(90deg); }
+.wrow__cta {
+  width: 48px; height: 48px; border-radius: 50%; justify-self: end;
+  border: 1px solid rgb(255 255 255 / 0.25);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--moss-300);
+  transition: background 0.3s var(--ease), color 0.3s var(--ease),
+              transform 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+.wrow__cta svg { width: 16px; height: 16px; }
+.wrow summary:hover .wrow__name { color: var(--ivory); transform: translateX(8px); }
+.wrow summary:hover .wrow__cta { background: var(--moss-300);
+  border-color: var(--moss-300); color: var(--plum-ink); }
+.wrow[open] .wrow__cta { transform: rotate(90deg); }
 .wrow__body { padding: 0 0 24px 64px; }
 .wrow__body p { color: var(--plum-100); max-width: 54ch; }
-.wrow__meta {
+.wrow__kick {
   font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
-  font-size: 13px; letter-spacing: 0.012em; color: var(--champ);
-  margin-top: 8px;
+  font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--moss-300); margin-bottom: 8px;
 }
 .wrow__body .alink { margin-top: 16px; display: inline-block;
   padding: 12px 0; color: var(--champ); border-color: var(--plum-700); }
 .wrow__body .alink:hover { color: var(--ivory); border-color: var(--plum-300); }
 @media (max-width: 560px) {
-  .wrow summary { grid-template-columns: 32px auto 1fr 24px; }
+  .wrow summary { grid-template-columns: 32px 1fr 32px; gap: 16px; }
   .wrow__ico { width: 32px; height: 32px; }
-  .wrow__name { font-size: 19px; }
+  .wrow__cta { width: 32px; height: 32px; }
+  .wrow__name { font-size: 17px; }
   .wrow__body { padding-left: 48px; }
 }
 

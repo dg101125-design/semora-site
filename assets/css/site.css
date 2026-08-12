@@ -1921,3 +1921,27 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 72px); }
   font-size: 19px; line-height: 1.55; color: var(--plum-100);
 }
 .statband__sub + .statband__grid { margin-top: 48px; }
+
+/* ── 12 Aug, second pass: the two faults the probe found ──────────────────
+   The Ö watermark poked 39-114px below the statement band and the next
+   section painted over it mid-letter — a chopped glyph that read as a bug,
+   because it was one. The band now clips its own watermark.
+   The hero CTA's new label wraps on a phone; a wrapped inline button reads
+   as an accident, so on small screens it becomes a full-width block and
+   wraps centred, which reads as a design. */
+.statband { overflow: hidden; }
+@media (max-width: 560px) {
+  .cta-row .btn { display: block; width: 100%; text-align: center;
+                  white-space: normal; line-height: 1.45; }
+}
+
+/* ── nav typography (founder, 12 Aug: match the second reference strip) ────
+   The navigation drops the mono-uppercase voice for the text face in normal
+   case — the register every mainstream agency nav uses, and the single
+   loudest AI-adjacent visual tic the brand audit named. The mono stays where
+   it earns its seat: prices, delivery chips, folio numbers, data labels. */
+.site-nav a:not(.btn) {
+  font-family: var(--sans); font-weight: 500;
+  font-size: 15px; letter-spacing: 0; text-transform: none;
+}
+.mega__col ul a span { font-family: var(--sans); letter-spacing: 0; }

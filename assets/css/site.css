@@ -1335,6 +1335,21 @@ html.lr .site-head__word::before {
    The promise scales past the site-wide h1 because it is the one sentence
    the homepage exists to land — checked clear of the monogram at 1400px. */
 h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 96px); }
+/* B won (founder, 13 Aug: "hero 也统一用 b") — the homepage hero speaks
+   the same sans as what-we-do. The serif remains the wordmark's world and
+   the other pages' display voice until the founder extends the ruling.
+   The verdict word carries acid instead of an underline; the word-cycle
+   grammar is untouched. */
+h1:has(.hl--sub) {
+  font-family: var(--sans); font-size-adjust: 0.546; font-weight: 600;
+  text-transform: uppercase; letter-spacing: -0.006em; line-height: 1.04;
+}
+h1:has(.hl--sub) .hl--sub { text-transform: none; }
+h1:has(.hl--sub) .serif-em {
+  font-family: var(--sans); font-size-adjust: 0.546; font-style: normal;
+  font-weight: 600; color: var(--moss-300);
+}
+h1:has(.hl--sub) .uline::after { display: none; }
 .hl--sub {
   font-size: clamp( 17px, 1.85vw, 19px);
   font-weight: 400; line-height: 1.24; letter-spacing: 0.004em;

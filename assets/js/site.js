@@ -1,4 +1,4 @@
-/* SEMÖRA — motion. Vanilla, ~1KB. Respects prefers-reduced-motion. */
+/* SEMORA — motion. Vanilla, ~1KB. Respects prefers-reduced-motion. */
 (function () {
   "use strict";
   /* content is only hidden-for-reveal when this script actually runs */

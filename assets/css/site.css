@@ -1,5 +1,5 @@
 /* ============================================================
-   SEMÖRA — semora.com.au
+   SEMORA — semora.com.au
    Editorial design system, built on Brand System v2.1.
    No frameworks. ~5KB of vanilla JS for motion + the score tool.
    ============================================================ */
@@ -494,7 +494,10 @@ html.lr .site-head__word::before {
      unreliable inside keyframes) so the slash stays on the wipe edge */
   41.7% { transform: translate(8px, 0) skewX(-20deg);
           animation-timing-function: cubic-bezier(0.22, 0.61, 0.21, 1); }
-  100% { transform: translate(252px, 0) skewX(-20deg); }
+  90% { opacity: 1; }
+  /* exit: parked at 252px it sat against the wordmark's own slash and
+     read as a double slash at rest (Codex-role review, 13 Aug) */
+  100% { transform: translate(252px, 0) skewX(-20deg); opacity: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   html.lr .site-head__word img { animation: none; clip-path: none; }
@@ -772,7 +775,6 @@ html.lr .site-head__word::before {
    or the band reads as three unrelated blocks. Subgrid does that without
    forcing a height — the same fix the services menu needed, for the same
    reason: alignment by shared rows, never by truncation. */
-@supports (grid-template-rows: subgrid) {}
 @supports (grid-template-rows: subgrid) {
   .stat { display: grid; grid-row: span 2; grid-template-rows: subgrid; }
 }/* the mark is the site's own slash, at the scale of the figure it sits beside */
@@ -1445,19 +1447,7 @@ h1:has(.hl--sub) .uline::after { display: none; }
 
   /* (the hero mark choreography retired 12 Aug night — see header) */
   @keyframes hm-floor-in { to { stroke-dashoffset: 0; } }
-  @keyframes hm-fall {
-    0%   { transform: translateY(-1050px);
-           animation-timing-function: cubic-bezier(.55,0,.85,.36); }
-    58%  { transform: translateY(0);
-           animation-timing-function: cubic-bezier(.17,.67,.35,1); }
-    74%  { transform: translateY(-34px);
-           animation-timing-function: cubic-bezier(.55,0,.85,.36); }
-    86%  { transform: translateY(0);
-           animation-timing-function: cubic-bezier(.17,.67,.35,1); }
-    94%  { transform: translateY(-9px); }
-    100% { transform: translateY(0); }
-  }
-
+  
 
   /* scroll reveal — armed only once site.js has run (html.js) */
   html.js .rv {
@@ -2305,8 +2295,7 @@ h1:has(.hl--sub) .uline::after { display: none; }
   .hero .cta-row { margin-top: 32px; }
 }
 
-/* ── the editorial journey index — rows, hairlines, a magazine contents ── */@media (max-width: 640px) {}
-
+/* ── the editorial journey index — rows, hairlines, a magazine contents ── */
 /* Fragment Mono is a wider face than the Plex it replaced, and at the old
    0.24em tracking two menu labels wrapped while four did not — the wrapped
    pair rode 20px above the rest because the shared row bottom-aligned them.

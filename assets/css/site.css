@@ -1128,26 +1128,191 @@ html.lr .site-head__word::before {
   font-family: var(--mono); font-size-adjust: 0.516; font-size: 11px; letter-spacing: 0.012em;
   text-transform: uppercase; color: var(--graph-400); margin-top: 8px; }
 
-/* --------------------------------------------- audience grid */
-.aud-grid {
-  display: grid; gap: 16px;
-  grid-template-columns: 1fr;
+/* ----------------------------------------- the three audiences */
+/* v3 (founder, 13 Aug 2026 — v2 scored 45: mono chips read as "AI font
+   in boxes", serif statement broke the unified voice, no design). The
+   statement speaks the hero's sans; the three audiences are three dark
+   expanding panels, one lit at a time. site.js advances the light every
+   5s and hands it to hover/click/focus; no JS, reduced motion or a
+   phone = all three open. Dark panels: ivory strokes, acid dots —
+   statband grammar, no mono anywhere inside. */
+.who-lead { margin-bottom: 48px; }
+.who-h {
+  font-family: var(--sans); font-size-adjust: 0.546; font-weight: 600;
+  font-size: clamp( 28px, 3.6vw, 56px); line-height: 1.14;
+  letter-spacing: -0.006em; text-transform: uppercase;
+  /* ink again (founder, 13 Aug: "change back to black color but add
+     animation on it") — the motion carries the emphasis now: lines rise
+     from behind their masks, then the brand-green rule draws itself
+     under SPECIALIST. */
 }
-@media (max-width: 640px) { .aud-grid { grid-template-columns: 1fr; } }
-.aud {
-  position: relative; background: var(--ivory);
-  border: 1px solid var(--champ-700);
-  padding: 16px 24px 16px 24px;
-  transition: transform 200ms var(--ease), border-color 200ms var(--ease);
+.whl { display: block; overflow: hidden;
+       padding-bottom: 0.08em; margin-bottom: -0.08em; }
+.whl > span { display: block; }
+.who-em { font-style: normal; position: relative; }
+.who-em::after {
+  content: ""; position: absolute; left: 0; bottom: 0.02em;
+  height: 0.085em; width: 96%; background: var(--moss);
+  transform: skewX(var(--slash-skew));
 }
-.aud::before {
-  content: ""; position: absolute; left: 0; top: 0; bottom: 0;
-  width: 5px; background: var(--moss);
-  transform: skewX(var(--slash-skew)); transform-origin: top;
+@media (prefers-reduced-motion: no-preference) {
+  html.js .who-h .whl > span { transform: translateY(118%); }
+  html.js .who-h.rv.in .whl > span {
+    animation: whl-rise 0.7s var(--ease) forwards;
+  }
+  html.js .who-h.rv.in .whl:nth-child(2) > span { animation-delay: 0.12s; }
+  html.js .who-h.rv.in .whl:nth-child(3) > span { animation-delay: 0.24s; }
+  @keyframes whl-rise { to { transform: translateY(0); } }
+  html.js .who-h .who-em::after { width: 0; }
+  html.js .who-h.rv.in .who-em::after {
+    animation: who-em-in 0.6s var(--ease) 1s forwards;
+  }
+  @keyframes who-em-in { to { width: 96%; } }
 }
-.aud:hover { transform: translateY(-3px); border-color: var(--plum-300); }
-.aud h3 { font-size: 19px; margin-bottom: 4px; }
-.aud p { font-size: 15px; color: var(--graph-400); }
+.wpanels { display: flex; gap: 12px; align-items: stretch; }
+.wpan {
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column;
+  min-height: 520px;
+  /* founder, 13 Aug at 70: the ink ground read too deep — lifted to the
+     plum-700 wash; then "加深 10%": the wash starts a tenth back toward
+     ink and the ink floor arrives sooner. */
+  background: radial-gradient(140% 120% at 16% 4%,
+    color-mix(in srgb, var(--plum-700) 90%, var(--plum-ink)) 0%,
+    var(--plum-ink) 76%);
+  border: 1px solid var(--plum-700);
+}
+.wpan::after {  /* the lit panel's signal rule */
+  content: ""; position: absolute; top: 0; left: 0; right: 0;
+  height: 4px; background: var(--moss-300);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 500ms var(--ease);
+}
+.wpan.is-act::after { transform: scaleX(1); }
+.wpan__head {
+  display: flex; align-items: flex-start; gap: 16px;
+  padding: 32px; border: 0; background: none; cursor: pointer;
+  text-align: left; width: 100%;
+}
+.wpan__head:focus-visible { outline: 2px solid var(--moss-300); outline-offset: -8px; }
+.wpan__no {
+  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 300;
+  font-size: 19px; color: var(--plum-300); padding-top: 4px;
+}
+.wpan__name {
+  font-family: var(--sans); font-size-adjust: 0.546; font-weight: 600;
+  font-size: clamp( 19px, 2.2vw, 28px); line-height: 1.14;
+  letter-spacing: -0.006em; text-transform: uppercase;
+  color: var(--champ-300);
+}
+.wpan__body { padding: 0 32px 32px; position: relative; z-index: 1; }
+.wpan__sub { font-size: 15px; line-height: 1.55; color: var(--plum-100); max-width: 34ch; }
+.wpan__list { list-style: none; padding: 0; margin: 24px 0 0; }
+.wpan__list li {
+  font-size: 17px; line-height: 1.55; color: var(--ivory);
+  padding: 4px 0 4px 24px; position: relative;
+}
+.wpan__list li::before {
+  content: ""; position: absolute; left: 0; top: 0.62em;
+  width: 6px; height: 15px; background: var(--moss-300);
+  transform: skewX(var(--slash-skew));
+}
+.wpan__scene {
+  position: absolute; right: 24px; bottom: 24px;
+  width: clamp(96px, 11vw, 160px); height: auto;
+  pointer-events: none;
+}
+.ws-stroke { stroke: var(--ivory); stroke-width: 3; fill: none; stroke-linecap: round; }
+.ws-dot { fill: var(--moss-300); transform-box: fill-box; transform-origin: center; }
+/* collapsed state (JS-driven; without JS all three stand open).
+   Fixed height, not min — hidden bodies keep their layout box, and
+   without the cap they quietly stretched every panel to ~985px and
+   pushed the scene below the fold. overflow:hidden clips them. */
+html.js .wpan { flex: 1 1 0; height: 520px; transition: flex 650ms var(--ease); }
+html.js .wpan.is-act { flex: 4.2 1 0; }
+html.js .wpan:not(.is-act) { cursor: pointer; }
+html.js .wpan:not(.is-act) .wpan__head { flex-direction: column; }
+html.js .wpan:not(.is-act) .wpan__name {
+  writing-mode: vertical-rl; transform: rotate(180deg);
+  font-size: 19px; white-space: nowrap;
+}
+html.js .wpan:not(.is-act) .wpan__body,
+html.js .wpan:not(.is-act) .wpan__scene { opacity: 0; visibility: hidden; }
+html.js .wpan__body, html.js .wpan__scene {
+  transition: opacity 450ms var(--ease) 250ms, visibility 0s 250ms;
+}
+html.js .wpan.is-act .wpan__body, html.js .wpan.is-act .wpan__scene {
+  opacity: 1; visibility: visible;
+}
+/* the body column must not wrap while the panel is still growing */
+html.js .wpan__body, html.js .wpan__head { min-width: 0; }
+html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
+@media (max-width: 860px) {
+  .wpanels { flex-direction: column; }
+  html.js .wpan, html.js .wpan.is-act { flex: none; height: auto; }
+  .wpan { min-height: 0; }
+  html.js .wpan:not(.is-act) .wpan__head { flex-direction: row; }
+  html.js .wpan:not(.is-act) .wpan__name {
+    writing-mode: horizontal-tb; transform: none;
+  }
+  html.js .wpan:not(.is-act) .wpan__body,
+  html.js .wpan:not(.is-act) .wpan__scene {
+    opacity: 1; visibility: visible;
+  }
+  .wpan__scene { position: static; margin: 0 32px 32px; }
+}
+/* the lit panel's scene replays on every activation */
+@media (prefers-reduced-motion: no-preference) {
+  .ws-bar { transform-box: view-box; }
+  .ws-bar--1 { transform-origin: 36px 132px; }
+  .ws-bar--2 { transform-origin: 58px 132px; }
+  .ws-bar--3 { transform-origin: 80px 132px; }
+  .ws-bar--4 { transform-origin: 102px 132px; }
+  .ws-bar--5 { transform-origin: 124px 132px; }
+  .wpan.is-act .ws-bar { animation: ws-build 0.7s var(--ease) both; }
+  .wpan.is-act .ws-bar--2 { animation-delay: 0.08s; }
+  .wpan.is-act .ws-bar--3 { animation-delay: 0.16s; }
+  .wpan.is-act .ws-bar--4 { animation-delay: 0.24s; }
+  .wpan.is-act .ws-bar--5 { animation-delay: 0.32s; }
+  @keyframes ws-build { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+  .wpan.is-act .ws-pop {
+    animation: ws-pop 0.5s var(--ease) 0.9s both,
+               ws-pulse 2.8s var(--ease) 2s infinite;
+  }
+  @keyframes ws-pop {
+    from { opacity: 0; transform: scale(0.4); }
+    60% { opacity: 1; transform: scale(1.25); }
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes ws-pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    12% { transform: scale(1.4); opacity: 0.75; }
+    24% { transform: scale(1); opacity: 1; }
+  }
+  .ws-slash, .ws-arc { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  .wpan.is-act .ws-slash, .wpan.is-act .ws-arc {
+    animation: ws-draw 0.7s var(--ease) 0.15s both;
+  }
+  @keyframes ws-draw { to { stroke-dashoffset: 0; } }
+  .wpan.is-act .ws-ride {
+    animation: ws-ride 0.7s var(--ease) 0.5s both,
+               ws-pulse 2.8s var(--ease) 2s infinite;
+  }
+  @keyframes ws-ride {
+    from { opacity: 0; transform: translate(-40px, 102px); }
+    30% { opacity: 1; }
+    to { opacity: 1; transform: none; }
+  }
+  .wpan.is-act .ws-rise {
+    animation: ws-rise 0.7s var(--ease) 0.5s both,
+               ws-pulse 2.8s var(--ease) 2s infinite;
+  }
+  @keyframes ws-rise {
+    from { opacity: 0; transform: translateY(32px); }
+    40% { opacity: 1; }
+    to { opacity: 1; transform: none; }
+  }
+}
 
 /* ------------------------------------------- worked example */
 .case {
@@ -1866,7 +2031,6 @@ h1:has(.hl--sub) .uline::after { display: none; }
      means the second row starts before the first has finished, which reads as
      noise. Capping the delay and shortening the step keeps the sweep legible
      on a three- or four-column grid without dragging the last card in late. */
-  html.js .aud-grid > .rv,
   html.js .pgrid > .rv,
   html.js .pillar-grid > .rv,
   html.js .testi-grid > .rv,
@@ -2086,6 +2250,23 @@ h1:has(.hl--sub) .uline::after { display: none; }
 .float-cta__dot { width: 8px; height: 8px; border-radius: 50%;
   background: var(--plum-ink); }
 .float-cta .ar { letter-spacing: 0; }
+/* the pill hops and its dot flashes every few seconds (founder, 13 Aug:
+   "需要跳动和闪烁效果") — two quick bounces, dot blinking on the beat */
+@media (prefers-reduced-motion: no-preference) {
+  .float-cta { animation: cta-hop 4.5s var(--ease) 2s infinite; }
+  @keyframes cta-hop {
+    0%, 16%, 100% { transform: translateY(0); }
+    4%  { transform: translateY(-10px); }
+    8%  { transform: translateY(0); }
+    12% { transform: translateY(-5px); }
+  }
+  .float-cta__dot { animation: cta-flash 4.5s linear 2s infinite; }
+  @keyframes cta-flash {
+    0%, 16%, 100% { opacity: 1; transform: scale(1); }
+    3%, 9%  { opacity: 0.15; transform: scale(0.6); }
+    6%, 12% { opacity: 1; transform: scale(1.3); }
+  }
+}
 @media (max-width: 640px) { .float-cta { right: 12px; bottom: 12px;
   padding: 12px 16px; } }
 

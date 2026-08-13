@@ -128,3 +128,35 @@
       });
   });
 })();
+
+/* The three audiences (homepage): one panel lit at a time. The light
+   advances every 5s; hover, click or keyboard focus takes it, and the
+   timer restarts so a chosen panel is not snatched away. Phones and
+   reduced-motion get all three open — CSS handles both; this loop just
+   declines to run. */
+(function () {
+  var grid = document.querySelector(".wpanels");
+  if (!grid) return;
+  var pans = [].slice.call(grid.querySelectorAll(".wpan"));
+  if (pans.length < 2) return;
+  var i = 0, timer = null;
+  var still = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var phone = window.matchMedia("(max-width: 860px)");
+  function act(n) {
+    i = n;
+    pans.forEach(function (p, j) { p.classList.toggle("is-act", j === n); });
+  }
+  function arm() {
+    if (timer) { clearInterval(timer); timer = null; }
+    if (still.matches || phone.matches) return;
+    timer = setInterval(function () { act((i + 1) % pans.length); }, 5000);
+  }
+  pans.forEach(function (p, j) {
+    p.addEventListener("mouseenter", function () { act(j); arm(); });
+    p.addEventListener("focusin", function () { act(j); arm(); });
+    p.querySelector(".wpan__head").addEventListener("click", function () {
+      act(j); arm();
+    });
+  });
+  arm();
+})();

@@ -328,27 +328,192 @@ section > .wrap { position: relative; z-index: 1; }
 .f-moss .tier .alink:hover { color: var(--plum); border-color: var(--plum-300); }
 
 /* advantage pillars on the moss field */
-.pillar-grid {
-  display: grid; gap: 16px;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+/* ------------------------------------------- the method walk */
+/* v2 (founder, 13 Aug 2026 — the flat cards scored 40): the four steps
+   are stations on one track. The acid signal dot — the aperture's own
+   centre dot — walks 01→04 and home, 16s a lap; the station it holds
+   lights its card's top rule, the same walking-light rhythm as the
+   audience panels. Station ticks speak the slash. The cycle lights
+   ::before; hover owns ::after — separate layers, so the two never
+   fight over one property. */
+.meth-h {
+  font-family: var(--sans); font-size-adjust: 0.546; font-weight: 600;
+  /* 40 cap, not 56 (founder, 13 Aug: 排版变成两行) — at 56 the second
+     line broke into three on every desktop width */
+  font-size: clamp( 28px, 3vw, 40px); line-height: 1.14;
+  letter-spacing: -0.006em; text-transform: uppercase;
 }
-@media (max-width: 980px) { .pillar-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 560px) { .pillar-grid { grid-template-columns: 1fr; } }
-.pillar {
-  border: 1px solid rgba(217, 223, 203, 0.28);
-  padding: 24px 24px 24px;
-  transition: border-color 200ms var(--ease), transform 200ms var(--ease);
+@media (min-width: 561px) { .meth-h { white-space: nowrap; } }
+/* v4 — the ring (founder, 13 Aug at 65: a circle to match the icon,
+   each step inside it). Default layout is the stacked grid; from
+   1101px the four steps take the ring's corners, the REAL aperture
+   stands static at the centre, and the signal dot orbits station to
+   station, painting the walked arc acid. */
+.meth-band { overflow: hidden; }
+.meth-band .alink { display: inline-block; margin-top: 48px; }
+/* the display-cut watermark signs the band's corner (founder, 13 Aug:
+   背景加 watermark) — statband grammar, clipped by the band */
+.meth__wm {
+  position: absolute; z-index: 0; pointer-events: none;
+  right: -5%; bottom: -14%;
+  width: clamp(280px, 30vw, 520px); height: auto;
+  opacity: 0.05;
 }
-.pillar:hover { border-color: var(--moss-300); transform: translateY(-3px); }
-.pillar .pno {
+.meth__wm .ap-arc { fill: var(--ivory); }
+.meth__wm .ap-arc--weak { fill: var(--moss-100); }
+.meth__wm .ap-dot { fill: var(--moss-300); }
+.morbit {
+  position: relative;
+  display: grid; gap: 32px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+@media (max-width: 560px) { .morbit { grid-template-columns: 1fr; } }
+.morbit__ring, .morbit__mark, .morbit__arm, .mo-tickarm,
+.morbit__ripple, .morbit__word { display: none; }
+/* open columns, no boxes (founder, 13 Aug at 55: 减少方框) */
+.mstep { position: relative; transition: transform 200ms var(--ease); }
+.mstep:hover { transform: translateY(-3px); }
+.mstep .pno {
   font-family: var(--serif); font-size-adjust: 0.426; font-weight: 300; font-size: 34px;
   color: var(--moss-300); font-variant-numeric: tabular-nums;
+  transform-origin: left bottom;
 }
-.pillar h3 { margin: 8px 0 0; font-size: 19px; }
-.pillar p {
-  font-size: 15px; color: var(--moss-100);
-  border-top: 1px solid rgba(217, 223, 203, 0.28);
-  margin-top: 12px; padding-top: 12px;
+.mstep h3 {
+  margin: 16px 0 0;
+  font-family: var(--sans); font-size-adjust: 0.546; font-weight: 600;
+  font-size: 19px; letter-spacing: 0.004em; text-transform: uppercase;
+}
+.mstep p { font-size: 15px; color: var(--moss-100); margin-top: 16px; }
+.mstep:hover h3 { color: var(--moss-300); }
+@media (min-width: 1101px) {
+  .morbit { display: block; height: 640px; }
+  .morbit__ring {
+    display: block; position: absolute; left: 50%; top: 50%;
+    width: 528px; height: 528px;
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+  .mo-base { fill: none; stroke: rgba(217, 223, 203, 0.28); stroke-width: 1; }
+  .mo-ghost { fill: none; stroke: rgba(217, 223, 203, 0.28); stroke-width: 1;
+    opacity: 0.45; }
+  /* every four seconds a ripple leaves the mark for the ring — the
+     signal radiating from SEMORA to whichever step just lit */
+  .morbit__ripple {
+    display: block; position: absolute; left: 50%; top: 50%;
+    width: 528px; height: 528px; border-radius: 50%;
+    border: 1px solid var(--moss-300);
+    transform: translate(-50%, -50%) scale(0.34); opacity: 0;
+    pointer-events: none;
+  }
+  .mo-fill {
+    fill: none; stroke: var(--moss-300); stroke-width: 2;
+    stroke-dasharray: 1; stroke-dashoffset: 1; stroke-linecap: round;
+  }
+  .morbit__mark {
+    display: block; position: absolute; left: 50%; top: 50%;
+    width: 176px; height: 176px; transform: translate(-50%, -50%);
+  }
+  .morbit__mark .ap-arc { fill: var(--ivory); }
+  .morbit__mark .ap-arc--weak { fill: var(--moss-100); }
+  .morbit__mark .ap-dot { fill: var(--moss-300); }
+  /* the name under the mark (founder, 13 Aug at 75, then "斜杠去掉，
+     添加点颜色"): letters ivory, the Ö's two dots acid, no slash */
+  .morbit__word {
+    display: block; position: absolute; left: 50%; top: 50%;
+    width: 152px; height: 32px;
+    transform: translate(-50%, 104px);
+  }
+  .morbit__word .wm-letter { fill: var(--ivory); }
+  .morbit__word .wm-dot { fill: var(--moss-300); }
+  .morbit__arm { display: block; position: absolute; inset: 0;
+    pointer-events: none; transform: rotate(45deg); }
+  .morbit__dot {
+    position: absolute; left: 50%; top: 50%;
+    width: 12px; height: 12px; border-radius: 50%;
+    background: var(--moss-300);
+    transform: translate(-50%, -50%) translateY(-264px);
+  }
+  .mo-tickarm { display: block; position: absolute; inset: 0; pointer-events: none; }
+  .mo-tickarm--1 { transform: rotate(45deg); }
+  .mo-tickarm--2 { transform: rotate(135deg); }
+  .mo-tickarm--3 { transform: rotate(225deg); }
+  .mo-tickarm--4 { transform: rotate(315deg); }
+  .mo-tick {
+    position: absolute; left: 50%; top: 50%;
+    width: 6px; height: 15px; background: var(--moss-300); opacity: 0.35;
+    transform: translate(-50%, -50%) translateY(-264px) skewX(var(--slash-skew));
+  }
+  .mstep { position: absolute; width: 300px; }
+  .mo--ne { top: 0; right: 0; }
+  .mo--se { bottom: 0; right: 0; }
+  .mo--sw { bottom: 0; left: 0; }
+  .mo--nw { top: 0; left: 0; }
+  .mo--sw, .mo--nw { text-align: right; }
+  .mo--sw .pno, .mo--nw .pno { transform-origin: right bottom; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .morbit__arm { animation: mo-orbit 16s var(--ease) infinite; }
+  @keyframes mo-orbit {
+    0%, 19%   { transform: rotate(45deg); }
+    25%, 44%  { transform: rotate(135deg); }
+    50%, 69%  { transform: rotate(225deg); }
+    75%, 87%  { transform: rotate(315deg); }
+    100%      { transform: rotate(405deg); }
+  }
+  .mo-fill { animation: mo-fillup 16s var(--ease) infinite; }
+  @keyframes mo-fillup {
+    0%, 19%   { stroke-dashoffset: 1; }
+    25%, 44%  { stroke-dashoffset: 0.75; }
+    50%, 69%  { stroke-dashoffset: 0.5; }
+    75%, 87%  { stroke-dashoffset: 0.25; }
+    93%, 100% { stroke-dashoffset: 0; }
+  }
+  .mstep--1 { --md: 0s; }  .mstep--2 { --md: 4s; }
+  .mstep--3 { --md: 8s; }  .mstep--4 { --md: 12s; }
+  .mstep .pno { animation: mno-lit 16s var(--ease) infinite var(--md); }
+  @keyframes mno-lit {
+    0%, 19%   { transform: scale(1.15); }
+    25%, 100% { transform: scale(1); }
+  }
+  .mstep h3 { animation: mtitle-lit 16s var(--ease) infinite var(--md); }
+  @keyframes mtitle-lit {
+    0%, 19%   { color: var(--moss-300); }
+    25%, 100% { color: var(--ivory); }
+  }
+  .mstep p { animation: mbody-lit 16s var(--ease) infinite var(--md); }
+  @keyframes mbody-lit {
+    0%, 19%   { color: var(--ivory); }
+    25%, 100% { color: var(--moss-100); }
+  }
+  /* the dot flares on every arrival; the four-second beat IS the lap
+     quarter, so the flare always lands on a station */
+  .morbit__dot { animation: mo-dotpop 4s var(--ease) infinite; }
+  @keyframes mo-dotpop {
+    0%        { transform: translate(-50%, -50%) translateY(-264px) scale(1.6); }
+    12%, 100% { transform: translate(-50%, -50%) translateY(-264px) scale(1); }
+  }
+  .morbit__ripple { animation: mo-ripple 4s linear infinite 0.2s; }
+  @keyframes mo-ripple {
+    0%   { transform: translate(-50%, -50%) scale(0.34); opacity: 0.5; }
+    70%  { opacity: 0.12; }
+    100% { transform: translate(-50%, -50%) scale(1.02); opacity: 0; }
+  }
+  .mo-tickarm--2 .mo-tick { --md: 4s; }
+  .mo-tickarm--3 .mo-tick { --md: 8s; }
+  .mo-tickarm--4 .mo-tick { --md: 12s; }
+  .mo-tick { animation: mtick-lit 16s var(--ease) infinite var(--md, 0s); }
+  @keyframes mtick-lit {
+    0%, 19%   { opacity: 1; }
+    25%, 100% { opacity: 0.35; }
+  }
+  /* the centre answers EVERY arrival, a beat after the dot lands —
+     each step reports its signal home */
+  .morbit__mark .ap-dot { transform-box: fill-box; transform-origin: center;
+    animation: map-pulse 4s var(--ease) 0.35s infinite; }
+  @keyframes map-pulse {
+    0%        { transform: scale(1); }
+    8%        { transform: scale(1.4); }
+    20%, 100% { transform: scale(1); }
+  }
 }
 
 /* ---------------------------------------------------- table */
@@ -2032,7 +2197,7 @@ h1:has(.hl--sub) .uline::after { display: none; }
      noise. Capping the delay and shortening the step keeps the sweep legible
      on a three- or four-column grid without dragging the last card in late. */
   html.js .pgrid > .rv,
-  html.js .pillar-grid > .rv,
+  html.js .meth-grid > .rv,
   html.js .testi-grid > .rv,
   html.js .statband__grid > .rv {
     transition-delay: calc(var(--rvd, 0s) * 0.6);

@@ -1188,15 +1188,8 @@ html.lr .site-head__word::before {
 .menu-row .unit {
   font-family: var(--mono); font-size-adjust: 0.516; font-size: 11px; letter-spacing: 0.012em;
   text-transform: uppercase; color: var(--graph-400); display: block; margin-top: 4px;
-}
-.menu-row .mprice {
-  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 300; font-size: 28px;
-  color: var(--plum); font-variant-numeric: tabular-nums; white-space: nowrap;
-}
-@media (max-width: 560px) {
-  .menu-row { grid-template-columns: 1fr; }
-  .menu-row .mprice { justify-self: start; }
-}
+}@media (max-width: 560px) {
+  .menu-row { grid-template-columns: 1fr; }}
 
 /* --------------------------------------------- footer extras */
 .qr-box { display: flex; gap: 16px; align-items: center; margin-top: 24px; }
@@ -1243,11 +1236,7 @@ html.lr .site-head__word::before {
 
 /* ------------------------------------------------ utilities */
 .mt1 { margin-top: 8px; }  .mt2 { margin-top: 16px; }
-.mt3 { margin-top: 24px; }  .mt4 { margin-top: 32px; }
-.mt5 { margin-top: 48px; }
-.stack > * + * { margin-top: 16px; }
-.grid2 { display: grid; gap: 24px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-@media (max-width: 640px) { .grid2 { grid-template-columns: 1fr; } }
+.mt3 { margin-top: 24px; }  .mt4 { margin-top: 32px; }.stack > * + * { margin-top: 16px; }@media (max-width: 640px) { }
 .small { font-size: 13px; color: var(--graph-400); }
 .foot-note {
   font-size: 13px; color: var(--graph-400);
@@ -1492,10 +1481,7 @@ h1:has(.hl--sub) .uline::after { display: none; }
   html { scroll-behavior: auto; }
 }
 
-@media print {
-  .site-head, .site-foot, .btn,
-  .mq, .tmq, .scorebar { display: none; }
-  body { background: #fff; }
+@media print {  body { background: #fff; }
   .rv { opacity: 1 !important; transform: none !important; }
   .f-plum, .f-moss, .f-plum *, .f-moss * {
     color: #242424 !important; background: none !important;
@@ -1505,16 +1491,7 @@ h1:has(.hl--sub) .uline::after { display: none; }
 
 
 /* --------------------------------------- per-page signatures */
-/* The Standard: poster-scale index numerals */
-.pg-eleven-surfaces .entry__no {
-  font-size: clamp( 56px, 6vw, 72px);
-  color: var(--plum-100); margin-top: -0.1em;
-}
-.pg-eleven-surfaces .entry { grid-template-columns: 150px minmax(0, 1fr); }
-@media (max-width: 640px) {
-  .pg-eleven-surfaces .entry { grid-template-columns: 1fr; }
-  .pg-eleven-surfaces .entry__no { font-size: 40px; }
-}
+/* The Standard: poster-scale index numerals */@media (max-width: 640px) {}
 /* Services: the worked example becomes a noded timeline */
 .case { border-left: 2px solid var(--champ-700); padding-left: 2rem; margin-left: 0.3rem; }
 .case:last-of-type { border-bottom: none; }
@@ -1526,13 +1503,8 @@ h1:has(.hl--sub) .uline::after { display: none; }
 }
 
 
-/* ------------------------------------------------- the team */
-.team-grid {
-  display: grid; gap: 24px;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-@media (max-width: 980px) { .team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 600px) { .team-grid { grid-template-columns: 1fr; } }
+/* ------------------------------------------------- the team */@media (max-width: 980px) { }
+@media (max-width: 600px) { }
 .tcard {
   background: var(--white); border: 1px solid var(--champ-700);
   transition: transform 220ms var(--ease), box-shadow 220ms var(--ease);
@@ -1548,16 +1520,7 @@ h1:has(.hl--sub) .uline::after { display: none; }
   margin-top: auto; padding-top: 16px;
   font-family: var(--mono); font-size-adjust: 0.516; font-size: 11px; letter-spacing: 0.012em;
   text-transform: uppercase; color: var(--moss-700);
-}
-.founder-row {
-  display: grid; gap: 2.5rem var(--gutter);
-  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
-  align-items: center;
-}
-@media (max-width: 860px) { .founder-row { grid-template-columns: 1fr; } }
-.founder-row img { width: 100%; max-width: 340px; border: 1px solid var(--champ-700); }
-
-/* --------------------------------------------- quote builder */
+}@media (max-width: 860px) { }/* --------------------------------------------- quote builder */
 .qb { display: grid; grid-template-columns: 1.25fr 1fr; gap: 32px; align-items: start; }
 @media (max-width: 900px) { .qb { grid-template-columns: 1fr; } }
 .qb-group {
@@ -2176,32 +2139,7 @@ h1:has(.hl--sub) .uline::after { display: none; }
 /* ── the what-we-do journey + image frames + client circles ───────────────
    Values on the published scales throughout. The imgslot renders as a
    composed void with a hairline and a folio label — a reserved position, not
-   a broken image — until the founder's high-resolution files arrive. */
-.wwd-stages {
-  display: grid; gap: 16px; margin-top: 48px;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-}
-.wwd-stage {
-  display: block; text-decoration: none;
-  border: 1px solid rgb(255 255 255 / 0.14);
-  padding: 16px; transition: border-color 180ms var(--ease),
-                             transform 180ms var(--ease);
-}
-.wwd-stage:hover { border-color: var(--moss-300); transform: translateY(-3px); }
-.wwd-stage i {
-  font-style: normal; font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
-  font-size: 11px; letter-spacing: 0.012em; color: var(--moss-300);
-  display: block; margin-bottom: 8px;
-}
-.wwd-stage b {
-  display: block; font-family: var(--serif); font-size-adjust: 0.426; font-weight: 500;
-  font-size: 28px; line-height: 1.14; color: var(--ivory);
-}
-.wwd-stage span {
-  display: block; margin-top: 4px; font-size: 13px; line-height: 1.45;
-  color: var(--plum-100);
-}
-.imgslots {
+   a broken image — until the founder's high-resolution files arrive. */.imgslots {
   display: grid; gap: 16px; margin-top: 32px;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }

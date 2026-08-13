@@ -391,8 +391,10 @@ section > .wrap { position: relative; z-index: 1; }
 /* -------------------------------------------------- buttons */
 .btn {
   display: inline-block; position: relative; overflow: hidden;
-  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
-  font-size: 13px; letter-spacing: 0.012em; text-transform: uppercase;
+  /* founder, 13 Aug: buttons still spoke mono after the hero went sans (B) —
+     the call to action now speaks the headline's own voice, one size up */
+  font-family: var(--sans); font-size-adjust: 0.546; font-weight: 600;
+  font-size: 15px; letter-spacing: 0.012em; text-transform: uppercase;
   text-decoration: none; cursor: pointer;
   padding: 1.15em 2.2em;
   /* The primary call to action carries the EXPRESSIVE signal. Its whole job in
@@ -859,6 +861,35 @@ html.lr .site-head__word::before {
 .hero .lead { margin-top: 32px; }
 .hero .cta-row { margin-top: 48px; }
 
+/* hero v4 (founder, 13 Aug — the band scored 50/100: identity invisible at
+   11px, the right field dead plum). Two instruments, both STATIC per R10.3 —
+   the scan animation is the header's alone, and static placements never
+   rotate, gap up the 70° axis. */
+/* the identity lockup — mark at icon size beside the full name */
+.hero-id { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
+.hero-id__mark { width: 44px; height: 44px; flex: none; }
+.hero-id__mark .ap-arc { fill: var(--ivory); }
+.hero-id__mark .ap-arc--weak { fill: var(--plum-300); }
+.hero-id__mark .ap-dot { fill: var(--moss-300); }
+.hero-id__word { display: block; height: 40px; width: auto; }
+/* the right field: the display-cut aperture as the hero's one image —
+   arcs as a quiet ivory ghost, the acid dot at full strength, the signal
+   point that balances the acid CTA in the lower left */
+.hero__ap {
+  position: absolute; z-index: 0; pointer-events: none;
+  top: 54%; right: clamp(-240px, -15vw, -96px);
+  width: clamp(420px, 43vw, 640px); height: auto;
+  transform: translateY(-46%);
+}
+.hero__ap .ap-arc { fill: var(--ivory); opacity: 0.12; }
+.hero__ap .ap-arc--weak { fill: var(--plum-300); opacity: 0.38; }
+.hero__ap .ap-dot { fill: var(--moss-300); }
+@media (max-width: 860px) { .hero__ap { display: none; } }
+@media (prefers-reduced-motion: no-preference) {
+  .hero__ap { opacity: 0; animation: heroap-in 1100ms var(--ease) 200ms forwards; }
+  @keyframes heroap-in { to { opacity: 1; } }
+}
+
 /* the word verdict — new / more / right */
 /* One grid cell, every word CENTRED in it (founder, 12 Aug — third round on
    this space; each earlier fix bought the next defect). v1 sized the column
@@ -1324,8 +1355,10 @@ html.lr .site-head__word::before {
 .hl > span { display: block; }
 /* home hero: the disclaimer recedes so the promise line carries the page.
    The promise scales past the site-wide h1 because it is the one sentence
-   the homepage exists to land — checked clear of the monogram at 1400px. */
-h1:has(.hl--sub) { font-size: clamp( 40px, 7.5vw, 96px); }
+   the homepage exists to land — checked clear of the monogram at 1400px.
+   76px cap, founder-set 13 Aug 2026 (96 → −10% → "reduce to 76");
+   recorded as its own scale step in audit_site check 14. */
+h1:has(.hl--sub) { font-size: clamp( 40px, 5.95vw, 76px); }
 /* B won (founder, 13 Aug: "hero 也统一用 b") — the homepage hero speaks
    the same sans as what-we-do. The serif remains the wordmark's world and
    the other pages' display voice until the founder extends the ruling.
@@ -1342,7 +1375,10 @@ h1:has(.hl--sub) .serif-em {
 }
 h1:has(.hl--sub) .uline::after { display: none; }
 .hl--sub {
-  font-size: clamp( 17px, 1.85vw, 19px);
+  /* founder, 13 Aug: the positioning sentence read as a footnote at 19px —
+     it is the one differentiating line the page has; give it deck size.
+     Trimmed 28 → 25 the same day (founder: "font size reduce 10%"). */
+  font-size: clamp( 17px, 2.05vw, 25px);
   font-weight: 400; line-height: 1.24; letter-spacing: 0.004em;
   color: var(--plum-100);
   margin-bottom: 0.62em;

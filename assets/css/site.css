@@ -327,7 +327,6 @@ section > .wrap { position: relative; z-index: 1; }
 .f-moss .tier .alink { color: var(--moss-700); border-color: var(--champ-700); }
 .f-moss .tier .alink:hover { color: var(--plum); border-color: var(--plum-300); }
 
-/* advantage pillars on the moss field */
 /* ------------------------------------------- the method walk */
 /* v2 (founder, 13 Aug 2026 — the flat cards scored 40): the four steps
    are stations on one track. The acid signal dot — the aperture's own
@@ -929,32 +928,6 @@ html.lr .site-head__word::before {
   letter-spacing: -0.014em; color: var(--ivory);
   margin: 1.1rem 0 clamp( 32px, 5vw, 48px); max-width: 20ch;
 }
-/* Subgrid here for the same reason as the services menu: the figures are
-   different widths and the captions were starting up to 3.9px apart, which
-   reads as a wobble along the rule above them. Sharing rows aligns them
-   because they are on the same rows, not because anything was forced. */
-.statband__grid {
-  display: grid; gap: 2.6rem var(--gutter);
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-  grid-template-rows: auto auto;
-}
-/* The rule above each caption has to sit on ONE line across all three columns,
-   or the band reads as three unrelated blocks. Subgrid does that without
-   forcing a height — the same fix the services menu needed, for the same
-   reason: alignment by shared rows, never by truncation. */
-@supports (grid-template-rows: subgrid) {
-  .stat { display: grid; grid-row: span 2; grid-template-rows: subgrid; }
-}/* the mark is the site's own slash, at the scale of the figure it sits beside */
-.stat__mk {
-  flex: 0 0 auto; width: 0.16em; height: 0.62em;
-  background: var(--moss); transform: skewX(-20deg);
-  margin-top: 0.16em;
-}.statband__foot {
-  margin: clamp( 32px, 5vw, 48px) 0 0; max-width: 62ch;
-  font-size: 13px; line-height: 1.62; color: var(--plum-100);
-}
-.statband__foot .alink { color: var(--champ); }
-
 /* Footer links get a real tap area on touch. Measured at 21px tall on a
    390px viewport — a line of text with no padding, against the 44px both
    platforms publish as the minimum. It is the part of the page reached with a
@@ -1220,6 +1193,11 @@ html.lr .site-head__word::before {
 .tier--hi .tier__flag { background: var(--moss-700); color: var(--ivory); }
 .tier h3 { font-size: 28px; }
 .tier .price { font-size: 28px; margin-top: 12px; }
+/* Every tier card reserves two small-lines under its figure, whether its
+   terms need one or two: MOMENTUM's longer terms line wrapped and pushed
+   its first group rule 10.7px below its neighbours' — the probe's exact
+   sibling-alignment defect. Reserved space, never truncation. */
+.tier .price small { min-height: 2lh; }
 .tier .who {
   font-family: var(--serif); font-size-adjust: 0.426; font-style: italic; color: var(--plum-700);
   margin: 16px 0 8px;
@@ -1425,6 +1403,28 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
     opacity: 1; visibility: visible;
   }
   .wpan__scene { position: static; margin: 0 32px 32px; }
+}
+/* Reduced motion, desktop: the accordion IS motion, so hand the section its
+   designed no-JS presentation — all three panels open, names horizontal,
+   nothing hidden. Until 14 Aug 2026 no reduce rule reopened the bodies, so a
+   desktop reduced-motion visitor got panels 02/03 with invisible content and
+   no auto-advance to ever reveal them. (Phones get this from the block
+   above.) */
+@media (prefers-reduced-motion: reduce) and (min-width: 861px) {
+  html.js .wpan, html.js .wpan.is-act { flex: 1 1 0; height: auto; transition: none; }
+  html.js .wpan:not(.is-act) { cursor: default; }
+  html.js .wpan:not(.is-act) .wpan__head { flex-direction: row; }
+  html.js .wpan:not(.is-act) .wpan__name {
+    writing-mode: horizontal-tb; transform: none;
+    font-size: clamp( 19px, 2.2vw, 28px); white-space: normal;
+  }
+  html.js .wpan:not(.is-act) .wpan__body,
+  html.js .wpan:not(.is-act) .wpan__scene {
+    opacity: 1; visibility: visible;
+  }
+  html.js .wpan__body, html.js .wpan__scene { transition: none; }
+  html.js .wpan.is-act .wpan__body { min-width: 0; }
+  .wpan::after { transition: none; }
 }
 /* the lit panel's scene replays on every activation */
 @media (prefers-reduced-motion: no-preference) {
@@ -1878,7 +1878,6 @@ h1:has(.hl--sub) .uline::after { display: none; }
 }
 .tcard:hover { transform: translateY(-4px); box-shadow: 0 14px 34px rgba(46, 28, 41, 0.10); }
 .tcard img { width: 100%; aspect-ratio: 1; display: block; border-bottom: 1px solid var(--champ-700); }
-.tcard__body { padding: 24px 24px 24px; display: flex; flex-direction: column; flex: 1; }
 .tcard h3 { font-size: 19px; }
 .tcard .role { display: block; margin: 4px 0 12px; }
 .tcard p { font-size: 15px; color: var(--graph-700); }
@@ -2197,19 +2196,9 @@ h1:has(.hl--sub) .uline::after { display: none; }
      noise. Capping the delay and shortening the step keeps the sweep legible
      on a three- or four-column grid without dragging the last card in late. */
   html.js .pgrid > .rv,
-  html.js .meth-grid > .rv,
-  html.js .testi-grid > .rv,
-  html.js .statband__grid > .rv {
+  html.js .testi-grid > .rv {
     transition-delay: calc(var(--rvd, 0s) * 0.6);
   }
-
-  /* 4 · the numbers arrive with weight ------------------------------------
-     The count-up is driven by site.js; this is the frame it lands in. The mark
-     beside each number draws first, so the number appears to be counted onto
-     a rule rather than to fade in beside one. */
-  html.js .stat__mk { transform: skewX(-20deg) scaleY(0); transform-origin: bottom; }
-  html.js .rv.in .stat__mk { animation: slash-draw 0.5s var(--ease) forwards; }
-  html.js .stat__v [data-count] { font-variant-numeric: tabular-nums; }
 }
 
 /* ── the team grid + the report form (12 Aug 2026) ─────────────────────────
@@ -2289,8 +2278,6 @@ h1:has(.hl--sub) .uline::after { display: none; }
   opacity: 0.06;
 }
 .statband__mark .mk-tile { fill: none; }
-.statband__mark .mk-letter { fill: var(--ivory); }
-.statband__mark .mk-dot { fill: var(--moss-300); }
 .statband__mark .ap-arc { fill: var(--ivory); }
 .statband__mark .ap-arc--weak { fill: var(--plum-300); }
 .statband__mark .ap-dot { fill: var(--moss-300); }
@@ -2443,7 +2430,6 @@ h1:has(.hl--sub) .uline::after { display: none; }
   margin: 16px 0 0; max-width: 44ch;
   font-size: 19px; line-height: 1.55; color: var(--plum-100);
 }
-.statband__sub + .statband__grid { margin-top: 48px; }
 
 /* ── 12 Aug, second pass: the two faults the probe found ──────────────────
    The Ö watermark poked 39-114px below the statement band and the next

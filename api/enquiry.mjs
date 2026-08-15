@@ -38,7 +38,10 @@ const TO = "team@semora.com.au";
 const FROM = "SEMORA STUDIO <team@semora.com.au>";
 const RESEND = "https://api.resend.com/emails";
 
-const FIELDS = ["name", "practice", "email", "phone", "vertical", "want", "prompt"];
+/* "website" is posted by the FREE AI VISIBILITY REPORT form — it is the URL
+ * the 24-hour report is ABOUT. Dropping it (as this list once did) meant the
+ * notification arrived without the one datum the promise depends on. */
+const FIELDS = ["name", "practice", "email", "phone", "website", "vertical", "want", "prompt"];
 
 /* Read the enquiry out of the request whatever shape it arrives in.
  *
@@ -128,6 +131,7 @@ function notificationHtml(d) {
     <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
       ${row("Email", d.email)}
       ${row("Phone", d.phone)}
+      ${row("Website", d.website)}
       ${row("Field", d.vertical)}
       ${row("Wants", d.want)}
     </table>

@@ -133,13 +133,16 @@
    advances every 5s; hover, click or keyboard focus takes it, and the
    timer restarts so a chosen panel is not snatched away. Phones and
    reduced-motion get all three open — CSS handles both; this loop just
-   declines to run. */
+   declines to run. Both media states are re-checked on change (a tablet
+   rotating out of the 860px state used to arrive with no timer armed and
+   two panels' content hidden for good), and the timer only runs while
+   the grid is actually on screen. */
 (function () {
   var grid = document.querySelector(".wpanels");
   if (!grid) return;
   var pans = [].slice.call(grid.querySelectorAll(".wpan"));
   if (pans.length < 2) return;
-  var i = 0, timer = null;
+  var i = 0, timer = null, seen = true;
   var still = window.matchMedia("(prefers-reduced-motion: reduce)");
   var phone = window.matchMedia("(max-width: 860px)");
   function act(n) {
@@ -148,7 +151,7 @@
   }
   function arm() {
     if (timer) { clearInterval(timer); timer = null; }
-    if (still.matches || phone.matches) return;
+    if (!seen || still.matches || phone.matches) return;
     timer = setInterval(function () { act((i + 1) % pans.length); }, 5000);
   }
   pans.forEach(function (p, j) {
@@ -158,5 +161,16 @@
       act(j); arm();
     });
   });
+  if (still.addEventListener) {
+    still.addEventListener("change", arm);
+    phone.addEventListener("change", arm);
+  }
+  if ("IntersectionObserver" in window) {
+    seen = false;
+    new IntersectionObserver(function (entries) {
+      seen = entries[0].isIntersecting;
+      arm();
+    }, { threshold: 0.2 }).observe(grid);
+  }
   arm();
 })();

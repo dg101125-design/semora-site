@@ -80,7 +80,7 @@
   /* the FIELD every dark band stands on — the founder's 16 Aug pick
      (#281521-family): ink lifted one fifth toward plum. Bands reference
      this, never their own mix, so the grounds can never drift apart. */
-  --plum-field: color-mix(in srgb, var(--plum-700) 20%, var(--plum-ink));
+  --plum-field: color-mix(in srgb, var(--plum-700) 40%, var(--plum-ink));
   --plum-900:  #1B0D16;   /* collapsed into ink — flat fields, no gradient */
   --plum-700:  #6E2455;   /* PLUM, darkened for text on ivory — 9.51:1 */
   --plum:      #8E2F6F;   /* PLUM — 6.98:1 on ivory */
@@ -1139,6 +1139,55 @@ html.lr .site-head__word::before {
 
 
 
+
+/* ── the campaign strip — the brand line answered in pictures. Full
+   bleed, seamless, wordless (the mark rides inside each frame). The
+   images roam perpetually, offset so the row never rests. */
+.adstrip {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 0; padding: 0;
+}
+.adstrip__it { margin: 0; overflow: hidden; position: relative; }
+/* corner dressing (founder, 16 Aug): viewfinder crop-marks in acid —
+   a small catch at top-left, a large one bottom-right that nests the
+   composited mark inside its arm. The frame says "captured". */
+.adstrip__it::before, .adstrip__it::after {
+  content: ""; position: absolute; z-index: 2; pointer-events: none;
+  border: 0 solid var(--moss-300);
+  filter: drop-shadow(0 1px 2px rgba(27, 13, 22, 0.55));
+}
+.adstrip__it::before {
+  top: 12px; left: 12px; width: 28px; height: 28px;
+  border-top-width: 3px; border-left-width: 3px;
+}
+.adstrip__it::after {
+  bottom: 12px; right: 12px; width: 44px; height: 44px;
+  border-bottom-width: 3px; border-right-width: 3px;
+}
+.adstrip__it img {
+  width: 100%; height: 100%; aspect-ratio: 3 / 2;
+  object-fit: cover; display: block;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .adstrip__it img {
+    animation: adroam 18s ease-in-out infinite alternate;
+    transition: filter 300ms var(--ease);
+  }
+  .adstrip__it:nth-child(2) img { animation-delay: -6s; }
+  .adstrip__it:nth-child(3) img { animation-delay: -12s; }
+  @keyframes adroam {
+    0%   { transform: scale(1.05) translate(1.5%, 1%); }
+    100% { transform: scale(1.14) translate(-1.5%, -1.5%); }
+  }
+  .adstrip__it:hover img { filter: saturate(1.15) brightness(1.05); }
+  .adstrip__it::before, .adstrip__it::after {
+    transition: transform 300ms var(--ease);
+  }
+  .adstrip__it:hover::before { transform: translate(4px, 4px); }
+  .adstrip__it:hover::after { transform: translate(-4px, -4px); }
+}
+@media (max-width: 780px) { .adstrip { grid-template-columns: 1fr; } }
+
 /* ── the four values — v4 (founder, 16 Aug 2026: type UNIFIED — every
    word on one baseline BELOW its shape, one size, one alignment. The
    shapes hold pure artwork now; the reader's scroll swims it. */
@@ -1275,7 +1324,7 @@ html.lr .site-head__word::before {
      they preferred (#281521 measured). 20% plum-700 over ink IS that code:
      one quiet lift at the corner, then the same ink as every dark band. */
   background: radial-gradient(150% 130% at 18% 0%,
-    color-mix(in srgb, var(--plum-700) 36%, var(--plum-ink)) 0%,
+    color-mix(in srgb, var(--plum-700) 56%, var(--plum-ink)) 0%,
     var(--plum-field) 70%);
   color: var(--champ);
 }

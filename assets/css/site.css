@@ -239,20 +239,65 @@ section > .wrap { position: relative; z-index: 1; }
 
 
 /* ---- typographic interludes ---- */
+/* ── the signal band — v2 (founder, 15 Aug 2026: the ink version scored
+   3/10 — two voices fighting, an underline decorating nothing, a ghost
+   slash on a 12s loop nobody caught). This is the brand's punctuation
+   mark, so it speaks the CTA's own language at section scale: the ACID
+   band. One serif voice, ink on acid; the two phrases converge under the
+   reader's scroll and the slash draws itself between them. */
 .interlude {
-  padding-block: clamp( 48px, 9vw, 128px); overflow: hidden;
-  background: var(--plum-ink);
+  position: relative;
+  padding-block: clamp( 48px, 7vw, 96px); overflow: hidden;
+  background: var(--moss-300);
 }
+/* the mark answers the line: arcs assemble, the centre dot fires, and
+   the letters launch from it (founder, 15 Aug — icon + message as one
+   animation). Ink monochrome colourway on the acid field. */
+.intl-ap {
+  position: absolute; right: 3%; top: 50%; translate: 0 -50%;
+  width: clamp(112px, 12vw, 192px);
+  z-index: 0; pointer-events: none;
+  display: flex; flex-direction: column; align-items: center;
+}
+.intl-ap svg { width: 100%; height: auto; display: block; }
+.intl-ap .ap-arc, .intl-ap .ap-arc--weak, .intl-ap .ap-dot { fill: var(--plum-ink); }
+/* the wordmark beneath the mark — the ring's lockup, in band ink */
+.intl-wm { display: block; width: 100%; margin-top: 8px; }
+.intl-wm svg { width: 100%; height: auto; display: block; }
+.intl-ap .intl-wm .wm-letter,
+.intl-ap .intl-wm .wm-dot { fill: var(--plum-ink); }  /* outguns morbit's ivory */
+@media (prefers-reduced-motion: no-preference) {
+  /* the header's own perpetual scan, on the band's mark — same 22s beat */
+  html.js .interlude .intl-spin {
+    transform-box: view-box; transform-origin: 500px 540px;
+    animation: hm-spin 22s linear infinite;
+  }
+}
+@media (max-width: 700px) {
+  .intl-ap { width: 84px; right: 16px; top: auto; bottom: 16px; translate: none; }
+}
+/* one voice, both lines — the page's own display caps (founder, 15 Aug:
+   the serif fought the sections above and below). The two phrases differ
+   by position, slash and animation, never by face. */
 .interlude p {
-  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 300;
-  font-variation-settings: "opsz" 72;
-  font-size: clamp( 40px, 8.6vw, 128px);
-  line-height: 0.94; letter-spacing: -0.018em;
-  color: var(--ivory); max-width: none;
+  font-family: var(--sans); font-size-adjust: 0.546; font-weight: 600;
+  font-size: clamp( 28px, 5vw, 72px);
+  line-height: 1.04; letter-spacing: -0.006em; text-transform: uppercase;
+  color: var(--plum-ink); max-width: none;
 }
 .interlude p em {
-  font-style: italic; font-weight: 300; color: var(--moss-300);
-  display: block; margin-left: 12vw;
+  font-style: normal; font-weight: 600; color: var(--plum-ink);
+  display: block; margin-left: clamp(48px, 10vw, 160px); margin-top: 0;
+  position: relative;
+}
+/* the slash leads the answering phrase — inline, so it holds for every
+   text pair this band carries */
+.interlude p em::before {
+  content: ""; display: inline-block; vertical-align: baseline;
+  width: 0.14em; height: 0.66em; margin-right: 0.22em;
+  background: var(--plum-ink);
+  transform: skewX(var(--slash-skew));
+  transform-origin: bottom;
 }
 .rule { border: 0; border-top: 1px solid var(--champ-700); }
 
@@ -1088,86 +1133,300 @@ html.lr .site-head__word::before {
 .mq__item .slash { height: 0.9em; }
 @keyframes mq { to { transform: translateX(-50%); } }
 
-/* ------------------------------------------------ flip cards */
-.pcard.pcard--flip {
-  background: transparent; border: none; padding: 0;
-  perspective: 1400px;
+
+/* ── the industries as campaigns — v4 (founder, 16 Aug 2026: one shape,
+   both ARCHES, symmetric). A colonnade pair: two equal arches on one
+   baseline, arriving as waves from their own sides. The alt text carries
+   the concept-campaign disclosure. */
+.wgal {
+  --gh: clamp(400px, 40vw, 620px);
+  display: grid; gap: 24px var(--gutter);
+  grid-template-columns: 1fr 1fr;
+  align-items: end; margin-top: 96px;
 }
-.pcard.pcard--flip::before { display: none; }
-.pcard.pcard--flip:hover { transform: none; box-shadow: none; }
-.flip-inner {
-  position: relative; display: block; min-height: 335px; height: 100%;
-  transform-style: preserve-3d;
-  transition: transform 0.65s var(--ease);
+.wgal__it { margin: 0; }
+.wgal__it img { display: block; object-fit: cover; }
+@media (prefers-reduced-motion: no-preference) {
+  .wgal__it img { transition: transform 600ms var(--ease); }
+  /* the frames arrive as a wave from their own side — a swell, a
+     counter-swell, then land */
+  html.js .wgal__it.rv { transition: none; }
+  html.js .wgal__it--l.rv.in { animation: wgal-wave-l 0.9s var(--ease) both; }
+  html.js .wgal__it--r.rv.in { animation: wgal-wave-r 0.9s var(--ease) both 120ms; }
+  @keyframes wgal-wave-l {
+    0%   { opacity: 0; transform: translate(-9vw, 0) rotate(-1.2deg); }
+    35%  { opacity: 1; transform: translate(-4vw, 14px) rotate(0.8deg); }
+    70%  { transform: translate(-1vw, -8px) rotate(-0.3deg); }
+    100% { opacity: 1; transform: none; }
+  }
+  @keyframes wgal-wave-r {
+    0%   { opacity: 0; transform: translate(9vw, 0) rotate(1.2deg); }
+    35%  { opacity: 1; transform: translate(4vw, 14px) rotate(-0.8deg); }
+    70%  { transform: translate(1vw, -8px) rotate(0.3deg); }
+    100% { opacity: 1; transform: none; }
+  }
 }
-.pcard--flip:hover .flip-inner,
-.pcard--flip:focus-visible .flip-inner { transform: rotateY(180deg); }
-.flip-face {
-  position: absolute; inset: 0; display: block;
-  backface-visibility: hidden; -webkit-backface-visibility: hidden;
-  padding: 32px 32px 24px;
+.wgal__it--arch { overflow: hidden; border-radius: 999px 999px 0 0; }
+.wgal__it--arch img {
+  width: 100%; height: calc(var(--gh) * 1.1);
+  border-radius: 999px 999px 0 0;
 }
-.flip-front {
-  background: var(--moss-900);
-  border: 1px solid var(--moss-900);
-}
-.flip-front::after {
-  content: ""; position: absolute; top: 0; left: 0;
-  width: 48%; height: 6px; background: var(--moss-300);
-}
-/* light-on-green text system for the card fronts
-   (.pcard--flip prefix outguns the later .pcard descendant rules) */
-.pcard--flip .flip-front h3 { color: var(--ivory); }
-.pcard--flip .flip-front .q { color: var(--moss-100); }
-.pcard--flip .flip-front .lab--graph { color: var(--moss-100); }
-.pcard--flip .flip-front .price { color: var(--champ); }
-.pcard--flip .flip-front .price small { color: var(--moss-100); }
-.flip-back {
-  transform: rotateY(180deg);
-  background: var(--plum-ink);
-  border: 1px solid var(--plum-900);
-  color: var(--champ);
-  display: flex; flex-direction: column;
-  padding: 24px 24px 24px;
-  overflow: hidden;
-}
-.flip-back .ticks { color: var(--champ); font-size: 15px; margin-top: 8px; }
-.flip-back .ticks li {
-  border-color: var(--plum-700);
-  padding: 4px 0 4px 16px;
-}
-.flip-back .ticks li::before { background: var(--moss-300); top: 0.62em; height: 12px; }
-.flip-back .alink {
-  color: var(--champ); border-color: var(--plum-300);
-  margin-top: auto; align-self: flex-start; padding-bottom: 0;
-}
-@media (prefers-reduced-motion: reduce) {
-  .flip-inner { transition: none; }   /* flip still works, instantly */
+.wgal__it--arch:hover img { transform: scale(1.05); }
+/* per-image windows: each poster's clean zone, people centred */
+.wgal__it--l img { object-position: 48% 55%; }
+.wgal__it--r img { object-position: 42% 30%; transform: scale(1.3); }
+.wgal__it--r:hover img { transform: scale(1.34); }
+@media (max-width: 860px) {
+  .wgal { grid-template-columns: 1fr; gap: 48px; margin-top: 48px;
+          --gh: clamp(280px, 64vw, 400px); }
+  .wgal__it--arch { max-width: 480px; width: 100%; justify-self: center; }
 }
 
-/* -------------------------------------------- product cards */
-.pgrid {
-  display: grid; gap: 24px;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+/* --------------------------------------------- the playbook ledger
+   v4 (founder, 15 Aug 2026 — v3 scored 60: type a size too loud, rows too
+   tall, more motion asked for). Names sit on the wpan__name scale, figures
+   one step down, rows tightened. Motion added: the rail track lives on the
+   ledger, each row's acid fill is scroll-driven, an ivory signal comet
+   patrols the track, row rules draw themselves in, the scope steps in item
+   by item, the figure leans in under the pointer. Display figures are the
+   founder's 15 Aug entry prices; the quote system reconciles after. */
+.pl-band {
+  position: relative; overflow: hidden;
+  /* founder, 15 Aug: the 88% wash read too deep against the calmer band
+     they preferred (#281521 measured). 20% plum-700 over ink IS that code:
+     one quiet lift at the corner, then the same ink as every dark band. */
+  background: radial-gradient(150% 130% at 18% 0%,
+    color-mix(in srgb, var(--plum-700) 36%, var(--plum-ink)) 0%,
+    color-mix(in srgb, var(--plum-700) 20%, var(--plum-ink)) 70%);
+  color: var(--champ);
 }
-@media (max-width: 780px) { .pgrid { grid-template-columns: 1fr; } }
-.pcard {
-  position: relative; display: block; text-decoration: none;
-  background: var(--white); border: 1px solid var(--champ-700);
-  padding: 32px 32px 24px;
-  transition: transform 220ms var(--ease), box-shadow 220ms var(--ease);
+.pl-wm {
+  position: absolute; right: -6vw; bottom: -10vw;
+  width: clamp(360px, 38vw, 640px); height: auto;
+  opacity: 0.07; pointer-events: none;
 }
-.pcard::before {
-  content: ""; position: absolute; top: 0; left: 0;
-  width: 0; height: 3px; background: var(--moss);
-  transition: width 260ms var(--ease);
+.pl-wm .ap-arc { fill: var(--ivory); }
+.pl-wm .ap-arc--weak { fill: var(--plum-300); }
+.pl-wm .ap-dot { fill: var(--moss-300); }
+.pl-band .slash--rule .lab { color: var(--moss-300); }
+.pl-band .who-h.pl-h { color: var(--ivory); font-size: clamp( 28px, 3vw, 40px); }
+.pl-band .who-lead p { color: var(--plum-100); }
+.pl-band .who-lead .small { color: var(--plum-300); }
+.pledger { position: relative; border-top: 1px solid var(--plum-700); margin-top: 8px; }
+/* the signal line: one continuous track down the ledger's left edge */
+.pledger::before {
+  content: ""; position: absolute; left: -32px; top: 0; bottom: 0;
+  width: 4px; background: var(--plum-700);
 }
-.pcard:hover { transform: translateY(-5px); box-shadow: 0 18px 44px rgba(46, 28, 41, 0.18); }
-.pcard:hover::before { width: 100%; }
-.pcard h3 { margin-bottom: 4px; }
-.pcard .q { font-family: var(--serif); font-size-adjust: 0.426; font-style: italic; color: var(--plum-700); margin-bottom: 16px; }
-.pcard .price { font-size: 28px; }
-.pcard .lab--graph { position: absolute; top: 1.9rem; right: 1.9rem; }
+/* …and the ivory comet that patrols it — the signal moving down the line */
+@media (prefers-reduced-motion: no-preference) {
+  .pledger::after {
+    content: ""; position: absolute; left: -32px; top: -96px;
+    width: 4px; height: 96px;
+    background: linear-gradient(180deg, transparent, var(--ivory), transparent);
+    opacity: 0.85;
+    animation: pl-comet 7s linear infinite;
+  }
+  @keyframes pl-comet { to { top: 100%; } }
+}
+.prow {
+  --plf: var(--ivory); --plm: var(--plum-100); --pla: var(--plum-300);
+  position: relative; display: grid;
+  grid-template-columns: 64px 1.05fr 1.4fr minmax(180px, 0.7fr) 48px;
+  gap: 0 24px; align-items: start;
+  padding: 28px 24px 24px 32px;
+  margin-inline: -32px -24px;
+  text-decoration: none;
+  transition: background 300ms var(--ease);
+}
+/* each row's stretch of the track fills acid as the reader scrolls it in */
+.prow::after {
+  content: ""; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 4px; background: var(--moss-300);
+  transform-origin: top;
+}
+@supports (animation-timeline: view()) {
+  .prow::after {
+    animation: plfill linear both;
+    animation-timeline: view();
+    animation-range: entry 15% cover 55%;
+  }
+  @keyframes plfill { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+}
+/* the bottom rule draws itself as the row arrives */
+.prow::before {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0;
+  height: 1px; background: var(--plum-700);
+  transform-origin: left;
+  transition: transform 800ms var(--ease) 250ms;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html.js .prow:not(.in)::before { transform: scaleX(0); }
+}
+/* the lit row floods ivory — the acid rail reads against it from the side */
+.prow:hover, .prow:focus-visible {
+  background: var(--ivory);
+  --plf: var(--plum-900); --plm: var(--graph-400); --pla: var(--moss-700);
+}
+.prow:focus-visible { outline: 2px solid var(--moss-300); outline-offset: -2px; }
+.prow__ix {
+  display: flex; align-items: flex-start; gap: 12px;
+  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 300;
+  font-size: 19px; line-height: 0.98; color: var(--pla);
+  padding-top: 8px;
+  transition: color 300ms var(--ease);
+}
+.prow__tick {
+  width: 5px; height: 20px; margin-top: 0;
+  background: var(--plum-700); transform: skewX(var(--slash-skew));
+  transition: background 300ms var(--ease), transform 300ms var(--ease);
+}
+html.js .prow.in .prow__tick { background: var(--moss-300); }
+.prow:hover .prow__tick, .prow:focus-visible .prow__tick {
+  background: var(--moss-700); transform: skewX(var(--slash-skew)) scaleY(1.3);
+}
+.prow__id { display: block; }
+/* sans caps on the wpan__name scale — the page's one component voice */
+.prow__h {
+  display: block;
+  font-family: var(--sans); font-size-adjust: 0.546; font-weight: 600;
+  font-size: clamp( 19px, 2.2vw, 28px); line-height: 1.14;
+  letter-spacing: -0.006em; text-transform: uppercase;
+  color: var(--plf);
+  transition: color 300ms var(--ease);
+}
+.prow__cap {
+  display: block; margin-top: 12px;
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
+  font-size: 11px; letter-spacing: 0.012em; text-transform: uppercase;
+  color: var(--pla);
+  transition: color 300ms var(--ease);
+}
+.prow__vd { display: block; padding-top: 4px; }
+.prow__q {
+  display: block; font-size: 15px; line-height: 1.55;
+  color: var(--plm); max-width: 44ch;
+  transition: color 300ms var(--ease);
+}
+/* the scope expands IN the row — nothing lives behind a flip */
+.prow__more {
+  display: grid; grid-template-rows: 0fr;
+  transition: grid-template-rows 420ms var(--ease);
+}
+.prow__list { display: block; overflow: hidden; }
+.prow:hover .prow__more, .prow:focus-visible .prow__more,
+.prow:focus-within .prow__more { grid-template-rows: 1fr; }
+.prow__list span {
+  display: block; position: relative;
+  font-size: 13px; line-height: 1.55; color: var(--plm);
+  padding: 3px 0 3px 16px;
+  transition: color 300ms var(--ease);
+}
+.prow__list span:first-child { margin-top: 12px; }
+.prow__list span::before {
+  content: ""; position: absolute; left: 2px; top: 0.62em;
+  width: 4px; height: 11px; background: var(--pla);
+  transform: skewX(var(--slash-skew));
+  transition: background 300ms var(--ease);
+}
+/* on a pointer, the scope steps in item by item */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .prow .prow__list span {
+    opacity: 0; transform: translateX(-8px);
+    transition: opacity 300ms var(--ease), transform 300ms var(--ease),
+                color 300ms var(--ease);
+  }
+  .prow .prow__list span:nth-child(2) { transition-delay: 60ms; }
+  .prow .prow__list span:nth-child(3) { transition-delay: 120ms; }
+  .prow .prow__list span:nth-child(4) { transition-delay: 180ms; }
+  .prow:hover .prow__list span, .prow:focus-visible .prow__list span,
+  .prow:focus-within .prow__list span { opacity: 1; transform: none; }
+}
+.prow__pr {
+  display: flex; flex-direction: column; align-items: flex-end;
+  justify-self: end; text-align: right; gap: 4px;
+  padding-top: 8px;
+}
+.prow__tag, .prow__meta {
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
+  font-size: 11px; letter-spacing: 0.012em; text-transform: uppercase;
+  transition: color 300ms var(--ease);
+}
+.prow__tag { color: var(--moss-300); min-height: 1lh; }
+.prow:hover .prow__tag, .prow:focus-visible .prow__tag { color: var(--moss-700); }
+.prow__fig {
+  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 350;
+  font-size: clamp( 28px, 2.6vw, 40px); line-height: 0.98;
+  letter-spacing: -0.014em; font-variant-numeric: tabular-nums;
+  color: var(--plf);
+  transform-origin: right top;
+  transition: color 300ms var(--ease), transform 300ms var(--ease);
+}
+/* the figure leans in under the pointer */
+.prow:hover .prow__fig, .prow:focus-visible .prow__fig { transform: scale(1.05); }
+.prow__meta { color: var(--plm); max-width: 30ch; }
+.prow__ar {
+  align-self: start; justify-self: end; padding-top: 8px;
+  font-size: 19px; line-height: 0.98; color: var(--pla);
+  transition: transform 300ms var(--ease), color 300ms var(--ease);
+}
+.prow:hover .prow__ar, .prow:focus-visible .prow__ar { transform: translateX(8px); }
+/* second-stage cascade: the row arrives, then its name, verdict and figure
+   step in — scroll-linked depth on top of the reveal system */
+@media (prefers-reduced-motion: no-preference) {
+  html.js .prow .prow__h, html.js .prow .prow__q, html.js .prow .prow__pr {
+    opacity: 0; transform: translateY(14px);
+    transition: opacity 500ms var(--ease), transform 500ms var(--ease),
+                color 300ms var(--ease);
+  }
+  html.js .prow .prow__q { transition-delay: 80ms; }
+  html.js .prow .prow__pr { transition-delay: 160ms; }
+  html.js .prow.in .prow__h, html.js .prow.in .prow__q, html.js .prow.in .prow__pr {
+    opacity: 1; transform: none;
+  }
+}
+@media (max-width: 980px) {
+  .prow {
+    grid-template-columns: 44px 1fr minmax(140px, auto);
+    grid-template-areas: "ix id pr" "ix vd pr";
+    gap: 0 16px; padding: 24px 16px 24px 24px; margin-inline: -24px -16px;
+  }
+  .prow__ix { grid-area: ix; font-size: 15px; gap: 8px; }
+  .prow__tick { width: 4px; height: 16px; }
+  .prow__id { grid-area: id; }
+  .prow__vd { grid-area: vd; padding-top: 12px; }
+  .prow__pr { grid-area: pr; }
+  .prow__ar { display: none; }
+  .pledger::before, .pledger::after { left: -24px; }
+  /* below the desktop widths there is no hover to preview with —
+     the scope stands open */
+  .prow__more { grid-template-rows: 1fr; }
+}
+@media (max-width: 700px) {
+  .prow { display: block; padding: 24px 16px 24px 24px; }
+  .prow__ix { padding-top: 0; }
+  .prow__id { margin-top: 8px; }
+  .prow__vd { padding-top: 12px; }
+  .prow__q { max-width: none; }
+  /* justify-self now applies to block-level boxes in Chrome 132+ — the
+     desktop 'end' would shrink and right-shift this block in block flow */
+  .prow__pr { align-items: flex-start; text-align: left; margin-top: 16px;
+              justify-self: auto; }
+  .prow__meta { max-width: none; }
+}
+/* Touch has no hover and reduced motion gets no reveal choreography:
+   in both worlds the scope stands open — content is never gated on a
+   pointer state (the wpanels lesson, 14 Aug 2026). */
+@media (hover: none), (prefers-reduced-motion: reduce) {
+  .prow__more { grid-template-rows: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .prow, .prow__more, .prow__tick, .prow__ar, .prow__ix, .prow__h,
+  .prow__cap, .prow__q, .prow__fig, .prow__tag, .prow__meta,
+  .prow__list span, .prow__list span::before, .prow::before { transition: none; }
+  .prow::after { animation: none; }
+  .prow:hover .prow__fig, .prow:focus-visible .prow__fig { transform: none; }
+}
 
 /* ----------------------------------------------- tier cards */
 .tgrid {
@@ -2105,19 +2364,67 @@ h1:has(.hl--sub) .uline::after { display: none; }
      mask was cutting them — caught by the geometry gate on three pages. The
      em padding keeps the descenders inside the clip; em units scale with the
      type, so this cannot re-break at another size. */
-  html.js .interlude p        { overflow: hidden; padding-bottom: 0.14em; }
-  html.js .interlude p > em   { overflow: hidden; padding-bottom: 0.14em;
-                                margin-bottom: -0.14em; }
-  html.js .interlude p.rv     { opacity: 1; transform: none; }
-  html.js .interlude p.rv     > :not(em) { display: inline-block; }
-  html.js .interlude p.rv:not(.in)      { opacity: 0; transform: translateY(64%); }
-  html.js .interlude p.rv.in            { animation: intl-up 0.8s var(--ease) backwards; }
-  html.js .interlude em.rv:not(.in)     { opacity: 0; transform: translateY(64%); }
-  html.js .interlude em.rv.in           { animation: intl-up 0.8s var(--ease) backwards 0.24s; }
-  @keyframes intl-up {
-    from { opacity: 0; transform: translateY(64%); }
+  /* v3 (founder, 15 Aug 2026): the words JUMP OUT one letter at a time.
+     The statement arrives as clean staccato pops; the answer arrives AS
+     NOISE — each letter leaning its own way mid-flight — and settles
+     straight on landing. The thesis, performed: noise resolving into
+     signal. Letter delays ride --i set by the build; the slash draws on
+     --sd just before the answer begins. */
+  html.js .interlude .il {
+    display: inline-block; opacity: 0;
+    transform: translateY(0.35em) scale(0.4);
+  }
+  html.js .interlude p.rv.in ~ .intl-ap .ap-arc,
+  html.js .interlude p.rv.in ~ .intl-ap .ap-arc--weak {
+    animation: intl-ap-in 0.45s var(--ease) both;
+    transform-box: view-box; transform-origin: 50% 57%;
+  }
+  html.js .interlude .intl-ap .ap-arc,
+  html.js .interlude .intl-ap .ap-arc--weak { opacity: 0; }
+  html.js .interlude p.rv.in ~ .intl-ap .ap-arc--weak { animation-delay: 90ms; }
+  html.js .interlude p.rv.in ~ .intl-ap .ap-arc:nth-of-type(2) { animation-delay: 180ms; }
+  @keyframes intl-ap-in {
+    from { opacity: 0; transform: scale(0.72); }
     to   { opacity: 1; transform: none; }
   }
+  html.js .interlude .intl-ap .ap-dot { opacity: 0; }
+  html.js .interlude p.rv.in ~ .intl-ap .ap-dot {
+    transform-box: fill-box; transform-origin: center;
+    animation: intl-ap-fire 0.5s var(--ease) both 300ms,
+               ws-pulse 2.8s ease-in-out 2.2s infinite;
+  }
+  @keyframes intl-ap-fire {
+    0%   { opacity: 0; transform: scale(0); }
+    62%  { opacity: 1; transform: scale(1.35); }
+    100% { opacity: 1; transform: none; }
+  }
+  html.js .interlude p.rv.in .il {
+    animation: il-pop 0.5s var(--ease) both;
+    animation-delay: calc(var(--i) * 55ms + 450ms);
+  }
+  @keyframes il-pop {
+    0%   { opacity: 0; transform: translateY(0.35em) scale(0.4); }
+    62%  { opacity: 1; transform: translateY(-0.06em) scale(1.12); }
+    100% { opacity: 1; transform: none; }
+  }
+  html.js .interlude em .il:nth-of-type(odd)  { --tilt: 10deg; }
+  html.js .interlude em .il:nth-of-type(even) { --tilt: -9deg; }
+  html.js .interlude p.rv.in em .il {
+    animation: il-noise 0.62s var(--ease) both;
+    animation-delay: calc(var(--i) * 55ms + 590ms);
+  }
+  @keyframes il-noise {
+    0%   { opacity: 0; transform: translateY(0.5em) rotate(var(--tilt, 9deg)) scale(0.4); }
+    55%  { opacity: 1; transform: translateY(-0.08em) rotate(calc(var(--tilt, 9deg) * -0.45)) scale(1.14); }
+    78%  { transform: translateY(0.02em) rotate(calc(var(--tilt, 9deg) * 0.18)) scale(0.99); }
+    100% { opacity: 1; transform: none; }
+  }
+  html.js .interlude em::before { transform: skewX(var(--slash-skew)) scaleY(0); }
+  html.js .interlude p.rv.in em::before {
+    animation: il-slash 0.45s var(--ease) both;
+    animation-delay: calc(var(--sd, 600ms) + 450ms);
+  }
+  @keyframes il-slash { to { transform: skewX(var(--slash-skew)) scaleY(1); } }
 }
 
 /* ══════════════════════════════════════════════════════════════════════════
@@ -2195,7 +2502,7 @@ h1:has(.hl--sub) .uline::after { display: none; }
      means the second row starts before the first has finished, which reads as
      noise. Capping the delay and shortening the step keeps the sweep legible
      on a three- or four-column grid without dragging the last card in late. */
-  html.js .pgrid > .rv,
+  html.js .pledger > .rv,
   html.js .testi-grid > .rv {
     transition-delay: calc(var(--rvd, 0s) * 0.6);
   }
@@ -2462,46 +2769,14 @@ h1:has(.hl--sub) .uline::after { display: none; }
    slash sweeps the band on a slow loop, so the section is never still even
    after the entrance has played. All of it sits behind html.js and the
    reduced-motion query like every other animation on the site. */
-.interlude { position: relative; overflow: hidden; }
 .interlude .wrap { position: relative; z-index: 1; }
+/* ground texture: one deep-moss slash parked off the right edge — the
+   band has a weather, not a flat fill */
 .interlude .islash {
   position: absolute; top: -12%; height: 124%; width: clamp(48px, 7vw, 128px);
-  background: var(--moss-300); opacity: 0.10;
+  background: var(--moss-700); opacity: 0.14;
   transform: skewX(var(--slash-skew));
-  left: -10%; z-index: 0; pointer-events: none;
-}
-.interlude p em { position: relative; }
-.interlude p em::after {
-  content: ""; position: absolute; left: 0; bottom: 0.04em;
-  height: 0.09em; width: 100%; background: var(--moss-300);
-  transform: scaleX(0); transform-origin: left;
-}
-@media (prefers-reduced-motion: no-preference) {
-  html.js .interlude p.rv.in {
-    animation: intl-slam 0.82s var(--ease) backwards;
-  }
-  html.js .interlude em.rv.in {
-    animation: intl-slam 0.82s var(--ease) backwards 0.26s;
-  }
-  @keyframes intl-slam {
-    0%   { opacity: 0; transform: translateY(64%) scale(0.97); }
-    72%  { opacity: 1; transform: translateY(-3%) scale(1.01); }
-    100% { opacity: 1; transform: none; }
-  }
-  html.js .interlude p.rv.in em::after {
-    animation: intl-underline 0.6s var(--ease) forwards 1.05s,
-               intl-breathe 3.2s ease-in-out infinite 1.7s;
-  }
-  @keyframes intl-underline { to { transform: scaleX(1); } }
-  @keyframes intl-breathe {
-    0%, 100% { opacity: 1; } 50% { opacity: 0.45; }
-  }
-  html.js .interlude .islash {
-    animation: islash-sweep 12s ease-in-out infinite;
-  }
-  @keyframes islash-sweep {
-    0%, 100% { left: -10%; } 50% { left: 96%; }
-  }
+  right: 6%; z-index: 0; pointer-events: none;
 }
 
 /* ── the what-we-do journey + image frames + client circles ───────────────

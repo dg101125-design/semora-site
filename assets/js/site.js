@@ -129,6 +129,82 @@
   });
 })();
 
+/* ------------------------------------------- keep us: save the card
+   Founder, 17 Aug 2026: "save the scan barcode to phone, for future
+   access". On a phone that means the share sheet, not a download —
+   iOS offers "Save Image" from navigator.share and puts the card in
+   the camera roll, which is the only place a visitor will find it
+   again six weeks later. Desktop has no share sheet worth using, so
+   it falls through to a normal download.
+
+   The button is inert until this runs, and the page ships without a
+   plain <a download> alternative on purpose: the viewer sandbox and
+   several in-app browsers silently swallow anchor downloads, and a
+   button that appears to work and does nothing is worse than one
+   that is honestly unavailable. If every path fails the card opens
+   in a new tab, where long-press still saves it. */
+(function () {
+  var btn = document.querySelector(".qr-save");
+  if (!btn || !window.fetch || !window.URL) return;
+  var src = btn.getAttribute("data-card");
+  var label = btn.querySelector(".qr-save__t");
+  var name = "semora-studio.png";
+  var idle = label.textContent;
+
+  function say(t) { label.textContent = t; }
+  function reset() { btn.disabled = false; say(idle); }
+  function done() { btn.disabled = false; say("Saved"); }
+
+  function download(blob) {
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = name;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 10000);
+    done();
+  }
+
+  btn.addEventListener("click", function () {
+    if (btn.disabled) return;
+    btn.disabled = true;
+    say("Preparing…");
+
+    fetch(src).then(function (r) {
+      if (!r.ok) throw new Error("card " + r.status);
+      return r.blob();
+    }).then(function (blob) {
+      var file = null;
+      try {
+        file = new File([blob], name, { type: "image/png" });
+      } catch (e) { /* no File constructor — download path handles it */ }
+
+      if (file && navigator.canShare && navigator.canShare({ files: [file] })) {
+        return navigator.share({
+          files: [file],
+          title: "SEMORA STUDIO",
+          text: "SEMORA STUDIO — Melbourne. semora.com.au"
+        }).then(done, function (err) {
+          /* AbortError and ONLY AbortError is the visitor closing the sheet
+             — a decision, so put the button back and say nothing. Everything
+             else, NotAllowedError included, is the browser declining: it is
+             also what a share with no user activation behind it raises, and
+             answering that with silence is how a button ends up doing
+             nothing at all. Fall through to the download. */
+          if (err && err.name === "AbortError") { reset(); return; }
+          download(blob);
+        });
+      }
+      download(blob);
+    }).catch(function () {
+      window.open(src, "_blank", "noopener");
+      reset();
+    });
+  });
+})();
+
 /* The three audiences (homepage): one panel lit at a time. The light
    advances every 5s; hover, click or keyboard focus takes it, and the
    timer restarts so a chosen panel is not snatched away. Phones and

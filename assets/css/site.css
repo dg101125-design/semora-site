@@ -78,8 +78,19 @@
      5% ivory and 2% champ-300 of the rendered homepage. */
   --plum-ink:  #1B0D16;   /* INK — the dark ground */
   /* the FIELD every dark band stands on — the founder's 16 Aug pick
-     (#281521-family): ink lifted one fifth toward plum. Bands reference
-     this, never their own mix, so the grounds can never drift apart. */
+     (#281521-family): ink lifted one fifth toward plum.
+
+     Bands reference this, never their own mix, so the grounds can never
+     drift apart.
+
+     Lifted to plum @72% on 17 Aug and CANCELLED the same hour at the
+     founder's instruction ("取消 background colour change"). Restored to the
+     value above, and the homepage renders pixel-identical to before.
+     READ THIS BEFORE THE NEXT ATTEMPT: lifting this token alone does NOT
+     lift the homepage. See the background-depth block near the end of this
+     file — its wash outranks .hero, .statband and .f-plum, so those three
+     stay at ink no matter what happens here. That is why the last two lifts
+     appeared to do nothing to the hero. */
   --plum-field: color-mix(in srgb, var(--plum-700) 52%, var(--plum-ink));
   --plum-900:  #1B0D16;   /* collapsed into ink — flat fields, no gradient */
   --plum-700:  #6E2455;   /* PLUM, darkened for text on ivory — 9.51:1 */
@@ -143,7 +154,9 @@ img, svg { max-width: 100%; display: block; }
 a { color: inherit; }
 ::selection { background: var(--plum-900); color: var(--champ); }
 :focus-visible { outline: 2px solid var(--plum); outline-offset: 3px; }
-.f-plum :focus-visible, .f-moss :focus-visible, .site-foot :focus-visible,
+/* .site-foot left this list on 17 Aug 2026 with the ground it was named for:
+   a champagne focus ring on the new ivory plate is a ring nobody can see. */
+.f-plum :focus-visible, .f-moss :focus-visible,
 .scorebar :focus-visible { outline-color: var(--champ); }
 
 /* ----------------------------------------------- typography */
@@ -806,7 +819,9 @@ html.lr .site-head__word::before {
 /* The column heading was mono, all-caps and widely letterspaced — which is
    what pushed half of them onto two lines and left every subtitle starting at
    a different height. It is a display heading, so it is now set in the
-   display face at a display weight, in sentence case. */
+   display face at a display weight. Title case from 17 Aug 2026 (founder):
+   six headings in a row read as one row of names when every word is capped —
+   sentence case made the second word look like a description of the first. */
 .mega__col .lab {
   font-family: var(--serif) !important; font-weight: 600 !important;
   font-size: 1.06rem !important; line-height: 1.2 !important;
@@ -983,8 +998,14 @@ html.lr .site-head__word::before {
    thumb, one-handed, at the end of a scroll, and it held the phone number.
    Padding rather than a taller line-height, so the list keeps its rhythm. */
 @media (hover: none), (max-width: 700px) {
-  .site-foot nav a,
-  .site-foot ul a { min-height: 44px; display: flex; align-items: center; }
+  /* Named one by one, not .site-foot a wholesale: the social tiles are
+     already 44×44 and the mark is an image — a min-height on either just
+     fights a box that is correct. */
+  /* .site-foot prefix on purpose: the footer's own rules are declared
+     ~200 lines below this block, so a bare .foot-med here loses the
+     cascade to the .foot-med that sets its display. */
+  .site-foot .foot-nav a,
+  .site-foot .foot-med { min-height: 44px; display: flex; align-items: center; }
   /* Standalone controls only. min-height does nothing to a non-replaced
      inline element, so a link inside a sentence is untouched by this and
      keeps its paragraph intact — which is the whole reason these are named
@@ -997,36 +1018,153 @@ html.lr .site-head__word::before {
 }
 
 /* --------------------------------------------------- footer */
-.site-foot { background: var(--plum-ink); color: var(--champ); }
-.site-foot .sig-dots i { background: var(--moss-300); }
-.site-foot__grid {
-  display: grid; gap: 2.5rem var(--gutter);
-  grid-template-columns: minmax(0, 5fr) minmax(0, 3fr) minmax(0, 2fr) minmax(0, 2fr);
-  padding-block: 64px 48px;
+/* LIGHT GROUND, 17 Aug 2026 (founder: "background color, change to light
+   colour · don't show too many information"). The footer had been ink — on
+   most templates the third or fourth dark field the reader passed in a row,
+   and the one surface they arrive at on purpose, looking for a phone number.
+   It is now a warm ivory plate carrying four things in the order a footer is
+   actually asked for: call, find, follow, keep.
+
+   The field is champagne mixed INTO ivory rather than a fifth colour: the
+   footer has to separate from whatever section ends above it, including an
+   ivory one, and a plate that is nearly the page ground plus a marked seam
+   does that without adding a light ground to the three the 11 Aug audit
+   already found competing. */
+.site-foot {
+  position: relative;
+  background: color-mix(in srgb, var(--champ-700) 30%, var(--ivory));
+  color: var(--graph);
+  border-top: 3px solid var(--plum-700);
 }
-@media (max-width: 1240px) { .site-foot__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 640px) { .site-foot__grid { grid-template-columns: 1fr; } }
-/* 59px tall → ~240px wide (descriptor lockup 4.07:1) — at the floor. */
-.site-foot__logo img { height: 59px; width: auto; }
-.site-foot a { color: var(--champ); text-decoration: none; border-bottom: 1px solid var(--plum-300); }
-.site-foot a:hover { color: var(--ivory); }
-.site-foot ul { list-style: none; }
-.site-foot li { margin-bottom: 8px; }
+/* the seam is marked, not merely coloured: plum edge, acid catch at the text
+   margin — the same two-signal punctuation the campaign frames wear */
+.site-foot > .wrap { position: relative; }
+.site-foot > .wrap::before {
+  content: ""; position: absolute; top: -3px; left: var(--gutter);
+  width: 96px; height: 3px; background: var(--moss-700);
+}
+.site-foot a { color: inherit; text-decoration: none; }
+
+/* ---- the sign-off: mark against the line the whole site is built to earn */
+.foot-top {
+  display: flex; flex-wrap: wrap; align-items: flex-end;
+  justify-content: space-between; gap: 32px var(--gutter);
+  padding-block: 64px 32px;
+}
+/* 64px tall → ~240px wide (descriptor lockup 3.74:1) */
+.foot-mark img { height: 64px; width: auto; }
+.foot-say {
+  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 300;
+  font-size: clamp( 28px, 3.4vw, 40px); line-height: 1.04;
+  letter-spacing: -0.014em; color: var(--plum-900);
+  text-align: right; max-width: none; margin: 0;
+}
+@media (max-width: 700px) { .foot-say { text-align: left; } }
+
+/* ---- the four columns */
+/* The column gap is 48px, not the page gutter: at 1280 the gutter left the
+   Follow column 190px for a row of four 44px tiles and 8px gaps — 200px of
+   content — so the fourth tile wrapped to a second line and the row stopped
+   reading as a set. */
+.foot-grid {
+  display: grid; gap: 32px 48px;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 4fr) minmax(0, 4fr) minmax(0, 6fr);
+  padding-block: 48px;
+  border-top: 1px solid var(--champ-700);
+}
+@media (max-width: 1100px) { .foot-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px)  { .foot-grid { grid-template-columns: 1fr; } }
+.foot-col .lab { margin-bottom: 16px; }
+/* the phone number is the footer's headline — it is what the column is for */
+/* block, shrink-wrapped: each takes its own line, and the email's underline
+   stops at the end of the address instead of ruling the whole column */
+.foot-big {
+  display: block; width: fit-content;
+  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 350;
+  font-size: 28px; line-height: 1.2; letter-spacing: -0.006em;
+  color: var(--plum-900);
+}
+.foot-med {
+  display: block; width: fit-content; margin-top: 8px;
+  font-size: 17px; color: var(--plum-700);
+  border-bottom: 1px solid var(--champ-700);
+}
+.foot-big:hover, .foot-med:hover { color: var(--plum); border-color: var(--plum); }
+.foot-addr {
+  font-style: normal; font-size: 15px; line-height: 1.55;
+  color: var(--graph); max-width: 24ch;
+}
+
+/* ---- the four channels.
+   A tile, not a bare glyph: the four marks are drawn at four different
+   optical weights by four different companies, and only a common plate makes
+   them read as one row. DASHED means the handle is not registered yet, so the
+   tile is deliberately not a link (R6) — filling in a URL in SOCIALS turns it
+   solid and clickable with no other change. */
+.foot-soc { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+.soc {
+  display: grid; place-items: center; width: 44px; height: 44px;
+  border: 1px solid var(--champ-700); color: var(--plum-700);
+  transition: background 180ms var(--ease), color 180ms var(--ease),
+              border-color 180ms var(--ease), transform 180ms var(--ease);
+}
+.soc__ic { width: 20px; height: 20px; }
+a.soc:hover { background: var(--plum-700); border-color: var(--plum-700); color: var(--ivory); transform: translateY(-2px); }
+.soc--soon { border-style: dashed; color: var(--graph-400); }
+.foot-soon { margin-top: 12px; color: var(--graph-400); }
+
+/* ---- keep us: the code, and the card it hands over */
+.qr-box { display: flex; align-items: flex-start; gap: 16px; }
+.qr-plate { position: relative; flex: none; display: block; }
+.qr-box__code {
+  width: 96px; height: 96px; display: block;
+  background: var(--white); border: 1px solid var(--champ-700);
+}
+/* the same acid viewfinder catch the saved card wears in its corners, so the
+   code on the page and the image in the camera roll read as one object */
+.qr-plate::before, .qr-plate::after {
+  content: ""; position: absolute; width: 12px; height: 12px;
+  border: 0 solid var(--moss-700);
+}
+.qr-plate::before { top: -4px; left: -4px; border-top-width: 2px; border-left-width: 2px; }
+.qr-plate::after { bottom: -4px; right: -4px; border-bottom-width: 2px; border-right-width: 2px; }
+/* Save is a scripted action — with JS off there is nothing behind the button,
+   and a control that cannot do what it says is worse than no control. The
+   code itself still scans. */
+.qr-box__act { display: none; flex-direction: column; gap: 12px; align-items: flex-start; }
+html.js .qr-box__act { display: flex; }
+.qr-save {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
+  font-size: 11px; letter-spacing: 0.012em; text-transform: uppercase;
+  color: var(--plum-900); background: transparent; cursor: pointer;
+  border: 1px solid var(--plum-700); padding: 12px 16px;
+  transition: background 180ms var(--ease), color 180ms var(--ease);
+}
+.qr-save:hover { background: var(--plum-700); color: var(--ivory); }
+.qr-save[disabled] { cursor: default; color: var(--graph-400); border-color: var(--champ-700); background: transparent; }
+.qr-save__ic { width: 16px; height: 16px; flex: none; }
+.qr-box__note {
+  font-size: 15px; line-height: 1.55; color: var(--graph); max-width: 22ch;
+}
+@media (max-width: 400px) { .qr-box { flex-wrap: wrap; } }
+
+/* ---- the base line */
 .site-foot__base {
   display: flex; flex-wrap: wrap; gap: 16px 32px;
   justify-content: space-between; align-items: center;
   padding-block: 24px;
-  border-top: 1px solid var(--plum-700);
+  border-top: 1px solid var(--champ-700);
 }
+.foot-nav { display: flex; flex-wrap: wrap; gap: 0 24px; }
+.foot-nav a { font-size: 13px; color: var(--graph-700); border-bottom: 1px solid transparent; }
+.foot-nav a:hover { color: var(--plum); border-color: var(--plum); }
 /* The legal line carries the ABN, so it must never break mid-number or run
    off a narrow viewport. Each segment is atomic; the line breaks only at the
    separators between them. min-width:0 lets the flex item shrink at all —
    without it the item keeps its min-content width and overflows the page. */
-.site-foot__legal { min-width: 0; }
+.site-foot__legal { min-width: 0; color: var(--graph-400); }
 .site-foot__legal .nb { white-space: nowrap; }
-@media (max-width: 520px) {
-  .site-foot__legal { letter-spacing: 0.012em !important; }
-}
 
 /* ------------------------------------------- the hero mark (Ö seal) */
 
@@ -1957,12 +2095,15 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
    Both values are MEASURED off the client's own assets, not eyeballed:
    Axis_Enquiries_Design/axis_icon_blue.png (3619×3619 RGBA) reads (0,43,236)
    for the tile and (232,232,232) for the mark.
-   --axis-blue-lt is that same hue lifted 40% toward white. The founder asked
-   for the sector line in "their blue"; the brand blue itself scores 2.15:1 on
-   our plum field, and that line is 11px, which needs 4.5:1. This tint is the
-   first step on the ramp that clears AA, at 5.00:1 — still unmistakably AXIS,
-   and actually readable. The true brand blue stays reserved for their own
-   ground, where it belongs. */
+   --axis-blue-lt is that same hue lifted toward white. The founder asked for
+   the sector line in "their blue"; the brand blue itself scores 2.15:1 on our
+   plum field, and that line is 11px, which needs 4.5:1. The tint is whatever
+   step on that ramp first clears AA against the ground it actually sits on.
+   Lifted 40% → 5.00:1. Measured against INK, which is what .f-plum is really
+   painted with (see the background-depth block) — not against --plum-field,
+   whose name it wears. If that wash is ever lifted, re-measure this: on a
+   plum @72% field the same tint falls to 2.6:1 and needs 70% to clear AA.
+   The true brand blue stays reserved for their own ground, where it belongs. */
 .res-grid { --axis-blue: #002BEC; --axis-blue-lt: #6680F4; --axis-mark: #E8E8E8; }
 
 /* PANEL MATS — founder, 17 Aug 2026: #1B0D16 for all three.
@@ -2120,15 +2261,9 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
 }@media (max-width: 560px) {
   .menu-row { grid-template-columns: 1fr; }}
 
-/* --------------------------------------------- footer extras */
-.qr-box { display: flex; gap: 16px; align-items: center; margin-top: 24px; }
-.qr-box img {
-  width: 92px; height: 92px; background: var(--ivory);
-  padding: 8px; flex: none;
-}
-.qr-box .lab--rev { font-size: 11px; line-height: 1.62; }
-.socials { list-style: none; }
-.socials li { margin-bottom: 8px; }
+/* The footer's QR and social rules moved into the footer block itself on
+   17 Aug 2026, with the redesign. They were the only two components whose
+   styling lived 1,100 lines away from the markup that used them. */
 
 .scorebar {
   position: sticky; bottom: 0; z-index: 30;
@@ -2324,6 +2459,11 @@ h1:has(.hl--sub) .uline::after { display: none; }
                 animation: w2-loop 6s linear infinite; }
   .wcycle .w3 { opacity: 0; transform: translateY(58%);
                 animation: w3-loop 6s linear infinite; }
+  /* NOTE (17 Aug 2026, not applied — founder's call): these two strokes use
+     the LIGHT-field acid while the third state's underline, .hero
+     .uline::after, uses --moss-300. Same element, three states, two greens:
+     "new" and "more" draw at 2.4:1 on the hero, "right" at 10:1. Changing
+     --moss-700 to --moss-300 here is the one-line fix. */
   .wcycle .w1::after, .wcycle .w2::after {
     content: ""; position: absolute; left: -2%; top: 0.5em;
     height: 0.07em; width: 0; background: var(--moss-700);
@@ -2872,12 +3012,27 @@ h1:has(.hl--sub) .uline::after { display: none; }
    2 · film grain — an inline SVG turbulence tile at 4%, which is texture, not
        colour: it survives the palette counter because it moves luminance only;
    3 · the Ö itself, oversized and 6% visible, on the statement band — the one
-       watermark that is ours and nobody else's. */
-:root { --ink-lift: #2B1122; /* the single approved lightness step above ink,
-                                 exists only for these washes */ }
+       watermark that is ours and nobody else's.
+
+   ── 17 Aug 2026, WHERE THE HOMEPAGE'S DARKNESS ACTUALLY LIVES ──
+   This block is declared ~1,800 lines below .hero, .statband and .f-plum, and
+   it sets `background` on all three. It therefore OUTRANKS each of their own
+   backgrounds: the hero's token-derived gradient up at .hero has been dead
+   since 12 August, and .f-plum's `background: var(--plum-field)` never paints
+   anything either. Lifting --plum-field moves the playbook band and the
+   audience panels and leaves the hero, the stat band and every .f-plum
+   section exactly where they were. Two rounds of "still too dark" came from
+   here, not from the palette.
+   --ink-lift was a hard-coded #2B1122 — a fourth dark ground nobody chose.
+   It is now written as what it always was, 19% of plum-700 over ink, so a
+   future lift has one number to move rather than a hex to discover. The
+   brightness change of 17 Aug was cancelled by the founder; these are the
+   original values and the page renders pixel-identical to before. */
 .hero, .statband, .f-plum {
   background:
-    radial-gradient(120% 90% at 16% 4%, var(--ink-lift) 0%, var(--plum-ink) 62%);
+    radial-gradient(120% 90% at 16% 4%,
+      color-mix(in srgb, var(--plum-700) 19%, var(--plum-ink)) 0%,
+      var(--plum-ink) 62%);
 }
 .hero::before, .statband::before, .f-plum::before, .f-moss::before {
   content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;

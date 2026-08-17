@@ -2,7 +2,7 @@
 
 > SEMORA STUDIO is a leading specialist growth company and marketing agency for commercial industry professionals, owner-led businesses, and healthcare and allied-health practices. We combine positioning, digital marketing, AI visibility and conversion systems into clearly defined products with transparent pricing and measurable performance.
 
-Last updated: 16 August 2026. Summary version: https://www.semora.com.au/llms.txt
+Last updated: 17 August 2026. Summary version: https://www.semora.com.au/llms.txt
 
 SEMORA STUDIO PTY LTD, ABN 77 701 244 635. Central House Toorak, Level 3, 489 Toorak Road, Toorak VIC 3142, Melbourne, Australia. team@semora.com.au · (03) 9071 0855. All prices in Australian dollars, excluding GST.
 
@@ -160,47 +160,59 @@ We do not make a claim we would reject if a client made it to us.
 
 Our own score, zeros included →
 
-06 / What clients say
+06 / Our Case Study
 
-### One named engagement. More being added.
+### How SEMORA helps our clients grow their business.
 
-The quote cards below are marked as samples, because that is what they are. We wrote them. When a real client is willing to say something worth printing, their name goes on the card, along with the date and the one number the work actually moved. Our clients →
+Four engagements, and the number each one moved. Ask, and we will walk you through any of them. The audit that found each number, the work that moved it and the monthly run that holds it are the same three things priced on this site. See the four products →
 
-Engagement / Melbourne
+### Axis Platform
 
-AXIS — commercial property advisory. Brand, platform and partner-network system, built on this method. axis · named engagement “The audit told us in two weeks what we had argued about internally for two years.” Sample — written by us, not by a client Sample — to be replaced “Fee conversations stopped being negotiations. The proposal does the work before we arrive.” Sample — written by us, not by a client Sample — to be replaced
+Commercial intelligence
 
-07 / SEMORA STUDIO vs a traditional marketing agency
++240% Increase in organic traffic
 
-### We are a marketing agency. A narrow one.
++139% Growth in leads
 
-Plenty of agencies are excellent, and many are strategic and integrated. This is not a claim that the category is broken.
++770% Increase in impressions
 
-The difference is shape. Narrower in who we serve. Broader in what we connect. Every price and every delivery time is already published on this site.
+SEOGEO Brand
 
-Area · Traditional agency engagement · SEMORA STUDIO ·
+### Your CFO Partner
 
-Market focus · Often many unrelated industries · Commercial industry professionals, owner-led businesses, healthcare practices ·
+Financial
 
-Starting point · A campaign, website, brand or channel brief · Diagnosis, positioning and a measured baseline ·
++36% Increase in sales
 
-Primary output · Creative assets, traffic, reach or leads · A connected client-acquisition and conversion system ·
++5,000 Increase in clicks
 
-Positioning · Often delivered as a branding exercise · Connected to fee logic, objections and buyer decisions ·
++510% Increase in conversion rate
 
-Sales conversion · May stop once a lead is generated · Enquiry routing, proposals, CRM and follow-up included ·
+SEOCRO Paid
 
-Pricing · Frequently proposal-based · Products, prices, scope and delivery times published ·
+### PROQM
 
-Ownership · Varies by agency · Source files and systems transfer at completion, by contract ·
+Independent QS control
 
-Who does the work · Varies significantly by size and specialisation · A named team of six, listed on the team page. Research and production are AI-assisted, and we say so. Nothing ships until a person has signed it off ·
++29% Increase in sales
 
-Measurement · Campaign or channel metrics · Tied to one agreed commercial number, reviewed at 90 days ·
++123% Organic traffic growth
 
-Track record · An established firm may hold years of references and measured cases · New. Began 2026. One named engagement, AXIS. No verified reviews and no measured client result yet — the first publishes 8 November 2026 ·
+SEODigital strategy
 
-Which should you choose? If you have people who can execute but no direction, a consultant may be enough. If your strategy is settled and you only lack production capacity, a specialist agency will do. We are built for the case in between — no senior marketer in-house, and not enough capacity to run it either. See the four products →
+### South Melbourne Rehabilitation Centre
+
+Healthcare practice
+
++270% Organic traffic
+
++10,300 Increase in SEO clicks
+
++35,000 Increase in impressions
+
+SEOGEO CRO
+
+No patient or client has said anything on this page. Every figure is our own performance data, because the National Law bars testimonial advertising for a health practice and we will never run one. Our clients →
 
 ### Two ways in.
 
@@ -892,7 +904,7 @@ Regulated health services are the harder case. The National Law prohibits clinic
 
 ### How does SEMORA STUDIO publish a client result?
 
-To a six-part template, published early and listed below: the baseline, the intervention, the result, the period, the caveats and the client's written permission. A result publishes only when it has all six. Miss one and Jennifer Wong holds it back. That rule is the reason this section is still empty today, and we would rather you saw an empty section than a number with no baseline underneath it. It is the same proof standard the rest of the method runs on.
+To a six-part template, published early and listed below: the baseline, the intervention, the result, the period, the caveats and the client's written permission. A written case study publishes only when it has all six. Miss one and Jennifer Wong holds it back. The headline figures on the home page are the short form of live engagements, and the six-part write-up behind each one lands here as the client signs off the detail. It is the same proof standard the rest of the method runs on.
 
 ### The baseline
 
@@ -1034,7 +1046,39 @@ Everything SEMORA STUDIO built for you. Source files, tokens, templates and the 
 
 SEMORA STUDIO is new, and says so, unprompted. What substitutes for tenure: named people, this published method, published prices, and source files that transfer by contract — if we vanished tomorrow, you keep everything.
 
-04 / Our own score
+04 / SEMORA STUDIO vs a traditional marketing agency
+
+### We are a marketing agency. A narrow one.
+
+Plenty of agencies are excellent, and many are strategic and integrated. This is not a claim that the category is broken.
+
+The difference is shape. Narrower in who we serve. Broader in what we connect. Every price and every delivery time is already published on this site.
+
+Area · Traditional agency engagement · SEMORA STUDIO ·
+
+Market focus · Often many unrelated industries · Commercial industry professionals, owner-led businesses, healthcare practices ·
+
+Starting point · A campaign, website, brand or channel brief · Diagnosis, positioning and a measured baseline ·
+
+Primary output · Creative assets, traffic, reach or leads · A connected client-acquisition and conversion system ·
+
+Positioning · Often delivered as a branding exercise · Connected to fee logic, objections and buyer decisions ·
+
+Sales conversion · May stop once a lead is generated · Enquiry routing, proposals, CRM and follow-up included ·
+
+Pricing · Frequently proposal-based · Products, prices, scope and delivery times published ·
+
+Ownership · Varies by agency · Source files and systems transfer at completion, by contract ·
+
+Who does the work · Varies significantly by size and specialisation · A named team of six, listed on the team page. Research and production are AI-assisted, and we say so. Nothing ships until a person has signed it off ·
+
+Measurement · Campaign or channel metrics · Tied to one agreed commercial number, reviewed at 90 days ·
+
+Track record · An established firm may hold years of references and measured cases · New. Began 2026. Four client results published, and no verified client reviews yet — we ask for those at the 90-day review. The AXIS measured result publishes 8 November 2026 ·
+
+Which should you choose? If you have people who can execute but no direction, a consultant may be enough. If your strategy is settled and you only lack production capacity, a specialist agency will do. We are built for the case in between — no senior marketer in-house, and not enough capacity to run it either. See the four products →
+
+05 / Our own score
 
 ### How does SEMORA STUDIO score on its own instrument?
 

@@ -80,7 +80,7 @@
   /* the FIELD every dark band stands on — the founder's 16 Aug pick
      (#281521-family): ink lifted one fifth toward plum. Bands reference
      this, never their own mix, so the grounds can never drift apart. */
-  --plum-field: color-mix(in srgb, var(--plum-700) 40%, var(--plum-ink));
+  --plum-field: color-mix(in srgb, var(--plum-700) 52%, var(--plum-ink));
   --plum-900:  #1B0D16;   /* collapsed into ink — flat fields, no gradient */
   --plum-700:  #6E2455;   /* PLUM, darkened for text on ivory — 9.51:1 */
   --plum:      #8E2F6F;   /* PLUM — 6.98:1 on ivory */
@@ -1033,7 +1033,17 @@ html.lr .site-head__word::before {
 /* ------------------------------------------------ hero band */
 .hero {
   padding-block: clamp( 64px, 11vw, 128px); position: relative; overflow: hidden;
-  background: var(--plum-ink);
+  /* founder, 16 Aug: the flat ink read as one tone. A plum light source
+     now sits behind the display aperture's field and falls away to the
+     shared dark field — every stop derived from tokens. */
+  background:
+    radial-gradient(56% 48% at 78% 32%,
+      color-mix(in srgb, var(--plum-700) 55%, transparent) 0%,
+      transparent 70%),
+    linear-gradient(165deg,
+      color-mix(in srgb, var(--plum-700) 76%, var(--plum-ink)) 0%,
+      var(--plum-field) 55%,
+      color-mix(in srgb, var(--plum-700) 30%, var(--plum-ink)) 100%);
 }
 /* dark-field hero: reverse type per brand rule 4 (champagne/ivory on plum) */
 .hero h1, .hero .display { color: var(--champ-300); }
@@ -1324,7 +1334,7 @@ html.lr .site-head__word::before {
      they preferred (#281521 measured). 20% plum-700 over ink IS that code:
      one quiet lift at the corner, then the same ink as every dark band. */
   background: radial-gradient(150% 130% at 18% 0%,
-    color-mix(in srgb, var(--plum-700) 56%, var(--plum-ink)) 0%,
+    color-mix(in srgb, var(--plum-700) 72%, var(--plum-ink)) 0%,
     var(--plum-field) 70%);
   color: var(--champ);
 }
@@ -1912,6 +1922,177 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
 .testi--case blockquote { color: var(--ivory); font-style: normal; }
 .testi--case cite { color: var(--champ); }
 .testi--case .lab { color: var(--champ); }
+
+/* ---------------------------------------- the results board */
+/* Added 16 Aug 2026 to the founder's reference: a visual panel with one
+   corner cut wide open, the brand name, the figures the work moved, and the
+   services that moved them. Deliberately NOT .case above — that is the
+   worked-example timeline on services.html, and reusing its name would have
+   handed these cards a 150px label column.
+   The panels are typographic placeholders. When the logos land, the swap is
+   an <img> inside .res__panel and the two ground tokens on the figure. */
+/* SEMORA carries the accent in this heading and earns its underline last
+   (founder, 16 Aug 2026). Deliberately the SAME gesture as .who-em on the
+   audience heading, reusing its keyframe: one emphasis move on this site, not
+   two. The 1s delay clears the h2's own mask-rise, and the underline is an
+   ::after width — never a transform, which mask-rise already owns on this
+   element's ancestor. */
+.res-em { font-style: normal; position: relative; color: var(--moss-300); }
+.res-em::after {
+  content: ""; position: absolute; left: 0; bottom: 0.02em;
+  height: 0.085em; width: 96%; background: var(--moss-300);
+  transform: skewX(var(--slash-skew));
+}
+@media (prefers-reduced-motion: no-preference) {
+  html.js .res-em::after { width: 0; }
+  html.js h2.rv.in .res-em::after {
+    animation: who-em-in 0.6s var(--ease) 1s forwards;
+  }
+}
+
+/* CLIENT BRAND VALUES — the documented exception to the no-orphan-hex rule.
+   These are AXIS's colours, not ours, so they are deliberately NOT folded into
+   the SEMORA palette and must never be reused by a SEMORA surface. AXIS is a
+   client and an independent company; we never conflate the two.
+   Both values are MEASURED off the client's own assets, not eyeballed:
+   Axis_Enquiries_Design/axis_icon_blue.png (3619×3619 RGBA) reads (0,43,236)
+   for the tile and (232,232,232) for the mark.
+   --axis-blue-lt is that same hue lifted 40% toward white. The founder asked
+   for the sector line in "their blue"; the brand blue itself scores 2.15:1 on
+   our plum field, and that line is 11px, which needs 4.5:1. This tint is the
+   first step on the ramp that clears AA, at 5.00:1 — still unmistakably AXIS,
+   and actually readable. The true brand blue stays reserved for their own
+   ground, where it belongs. */
+.res-grid { --axis-blue: #002BEC; --axis-blue-lt: #6680F4; --axis-mark: #E8E8E8; }
+
+/* PANEL MATS — founder, 17 Aug 2026: #1B0D16 for all three.
+   The three supplied compositions have NO background colour to match — edge
+   uniformity measures 0–4%, standard deviation 65–78, i.e. the picture runs
+   right to the edge — so the mat had to be chosen rather than sampled. #1B0D16
+   is already ours: it is --plum-ink, so this adds no new value to the palette.
+   It sits below the band's own field, which makes each panel read as a
+   recessed well and keeps the corner cut visible. AXIS takes no mat — its
+   artwork carries the client's brand blue edge to edge, measured 100%
+   uniform. */
+
+.res-grid {
+  display: grid; gap: 64px var(--gutter);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+/* A panel carrying real client artwork drops the placeholder stripe field.
+   Not cosmetic: ::before is positioned, the <img> is not, so the stripes would
+   paint straight over the artwork. The pattern is also what says "artwork
+   still to come", so it must not sit on a card that has it. */
+.res__panel--art::before { content: none; }
+/* Full-bleed supplied artwork. The panel is widest at a 859px viewport
+   (773×435 CSS px, larger than any desktop size), so 1600×900 art is
+   comfortably 2× everywhere. Never bake the corner radius into the file — the
+   cut is CSS, and it is a different proportion at every breakpoint. */
+.res__panel img.res__art { width: 100%; height: 100%; object-fit: cover; }
+/* Founder, 17 Aug 2026: every image fills its panel shape, the way the AXIS
+   artwork always did. The inset variant that briefly stood here floated each
+   picture on an ink mat, which turned three of the four cards back into plain
+   rectangles and broke the cut-corner language the grid is built on. Full
+   bleed hands the shape back to the artwork. It costs a corner: the cut
+   removes 0.26%-0.87% of the panel depending on breakpoint, so keep client
+   logos away from the cut corners listed above. */@media (max-width: 860px) { .res-grid { grid-template-columns: 1fr; gap: 48px; } }
+
+.res__panel {
+  position: relative; overflow: hidden;
+  aspect-ratio: 16 / 9;
+  display: grid; place-items: center;
+  background: var(--pg);
+  margin-bottom: 24px;
+  transition: transform 260ms var(--ease);
+}
+.res:hover .res__panel { transform: translateY(-4px); }
+/* the placeholder ground: hard-edged bars on the 70° signal axis. A pattern,
+   not a gradient — R9 keeps mesh and glow off this site. */
+.res__panel::before {
+  content: ""; position: absolute; inset: 0;
+  background: repeating-linear-gradient(70deg,
+    transparent 0 34px,
+    color-mix(in srgb, var(--pf) 14%, transparent) 34px 38px);
+}
+/* the cut, alternating down the grid so the two columns never mirror each
+   other into one symmetrical block. 64px, not 96: at our 16:9 panel two
+   96px corners on one edge eat 58% of the panel height and the card reads
+   as a stadium rather than a cut. */
+/* The second row repeats the first exactly (founder, 17 Aug 2026): left column
+   cut top-right, right column cut top-right AND bottom-right. South Melbourne
+   previously carried a bottom-right cut only, which made it the one card in
+   the grid whose shape answered to nothing. */
+.res__panel--a, .res__panel--c { border-radius: 0 64px 0 0; }
+.res__panel--b, .res__panel--d { border-radius: 0 64px 64px 0; }
+
+/* One type system, three voices, no fourth (founder, 16 Aug 2026). Fraunces
+   carries display, headings AND figures; Instrument Sans carries body and UI;
+   Fragment Mono carries labels and data eyebrows. The first cut of this
+   component set the wordmark, the brand name and the numbers in Instrument
+   Sans 600 — a bold grotesque taken from the reference, which introduced a
+   voice this site does not own. Every binding site below now names the face
+   the role already uses elsewhere. */
+/* The typographic wordmark placeholder (.res__wm) was removed 17 Aug 2026:
+   all four cards now carry the client's own artwork, so it had no markup left.
+   The stripe field on .res__panel::before stays — it is the automatic
+   placeholder for the next card that arrives without a file. */
+.res__name {
+  font-family: var(--serif); font-size-adjust: 0.426;
+  font-weight: 400; font-size: 28px;
+  line-height: 1.14; letter-spacing: 0.012em;
+  text-transform: uppercase; color: var(--ivory);
+}
+/* the sector line carries the CLIENT's colour where we hold one, acid where we
+   do not — set per card with --sector (founder, 16 Aug 2026) */
+.res .res__sector {
+  font-family: var(--mono); font-size-adjust: 0.516;
+  font-size: 11px; line-height: 1.2; letter-spacing: 0.24em;
+  text-transform: uppercase; color: var(--sector, var(--moss-300));
+  margin-top: 8px;
+}
+
+/* Bottom-anchored, so the numbers and the pill rows line up across a row no
+   matter how many lines a brand name takes. Held by margin-top:auto rather
+   than a min-height on the name — a min-height opens its gap BETWEEN the
+   name and its sector line, which reads as a mistake; this one puts the
+   slack in dead space, where nobody can see it. */
+.res { display: flex; flex-direction: column; }
+.res__stats {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px 16px; margin-top: auto; padding-top: 32px;
+}
+@media (max-width: 520px) { .res__stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+/* the figure voice, identical to .prow__fig — the price rows are where this
+   site already decided how a number looks, and a second answer on the same
+   page is the drift the founder called out */
+.stat__n {
+  display: block;
+  font-family: var(--serif); font-size-adjust: 0.426;
+  font-weight: 350; font-size: clamp(28px, 2.6vw, 40px);
+  line-height: 0.98; letter-spacing: -0.014em;
+  font-variant-numeric: tabular-nums;
+  color: var(--moss-300);
+}
+/* two label lines held open. Without it a card whose label wraps has a taller
+   stat block, and because the block is bottom-anchored that lifts its numbers
+   above the numbers on the card beside it. */
+.stat__l {
+  display: block; margin-top: 8px; min-height: 48px;
+  font-size: 15px; line-height: 1.45;
+  color: var(--plum-100);
+}
+
+.res__tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 32px; }
+.tagpill {
+  display: inline-block;
+  border: 1px solid var(--plum-300); border-radius: 96px;
+  padding: 8px 16px;
+  font-size: 13px; line-height: 1.2; letter-spacing: 0.012em;
+  color: var(--ivory);
+}
+/* The SAMPLE pill that stood here was removed 16 Aug 2026: the founder
+   authorised these four as published client results, so a mark saying the
+   figures are illustrative would itself have been the false statement. */
 
 /* ----------------------------- scope expansions — the menu */
 .menu { border-top: 1px solid var(--champ-700); }

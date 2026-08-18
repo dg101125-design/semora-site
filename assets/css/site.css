@@ -2265,6 +2265,124 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
    17 Aug 2026, with the redesign. They were the only two components whose
    styling lived 1,100 lines away from the markup that used them. */
 
+/* ------------------------------------- 05 / the outcome statement
+   Founder, 18 Aug 2026: the core message is "Bold IDEAS, Real Growth".
+   Round 1 scored 35/100. Three corrections, and what each one changed:
+
+   "font 要做到上下统一, consistent" — round 1 ran Fraunces 96, Instrument
+   Sans 28 and Instrument Sans 17 in one short block: three typographic
+   worlds stacked, none of them clearly subordinate. Now two faces with one
+   job and ONE size each. Fraunces states the message at two weights;
+   Instrument Sans carries every supporting line at 19px. The 28px lead is
+   gone — it was competing with the headline, not supporting it.
+
+   "颜色也要协调, 不要黑色" — round 1 set the headline and the lead in
+   --plum-900 (#1B0D16) and the support in --graph-700 (#333333), i.e. black
+   and near-black on white. The section is now entirely plum family: the
+   nouns in --plum-700, the adjectives in --plum, the plate a 7% plum wash of
+   ivory, the rule and label in acid, the support in --graph-400, which is a
+   warm grey rather than a grey-black. Nothing in this section is black.
+
+   "间距减少 35% 以上" — taken as ~50% across the board, because the real
+   defect was not the number of pixels but that the air had nothing in it.
+   Padding 128 → 64, headline margins 48/96 → 24/32, the second line's step
+   96 → 48, the support gaps 32/24 → 16/12. Every value stays on the 12-step
+   spacing scale.
+
+   And the reason it was empty: this section sits between a full-bleed
+   campaign strip and the results grid, with nothing but type of its own. It
+   now carries the aperture out through the right edge (the playbook band's
+   device) and the 64px corner cut the results grid below uses, so it reads
+   as part of the same page rather than as the gap between two better ones. */
+.ocm {
+  position: relative; overflow: hidden;
+  padding-block: clamp( 32px, 5vw, 64px);
+  background: color-mix(in srgb, var(--plum) 7%, var(--ivory));
+  border-radius: 0 64px 0 0;
+}
+/* the mark rides out through the right edge, as on the playbook band */
+.ocm__ap {
+  position: absolute; right: -7vw; top: 50%; translate: 0 -50%;
+  width: clamp(300px, 34vw, 560px); height: auto;
+  pointer-events: none; opacity: 0.09;
+}
+/* Below 1024px the mark and the text column start sharing space. At 9% on a
+   plum wash that measures as no contrast change at all — the sweep finds
+   nothing behind .ocm text at any width — but a mark half-under a paragraph
+   is a composition accident even when it is invisible. It shrinks and steps
+   further off the edge instead. */
+@media (max-width: 1024px) {
+  .ocm__ap { width: clamp(180px, 30vw, 300px); right: -14vw; opacity: 0.07; }
+}
+.ocm__ap .ap-arc { fill: var(--plum-700); }
+.ocm__ap .ap-arc--weak { fill: var(--plum); }
+.ocm__ap .ap-dot { fill: var(--moss-700); }
+
+.ocm__h {
+  font-family: var(--serif); font-size-adjust: 0.426;
+  font-size: clamp( 40px, 7.6vw, 96px);
+  line-height: 0.94; letter-spacing: -0.018em;
+  max-width: none;
+  margin-top: 24px; margin-bottom: 32px;
+  /* Founder: "bold idea 这两个 word 中间间距太近". Measured at 0.179em — the
+     line's own -0.018em tracking is subtracted from the space character too,
+     so the display line was set tighter than body copy. 0.14em of word
+     spacing brings the gap to 0.32em, which is where a two-word display line
+     wants to sit, and it applies to both lines from one declaration. */
+  word-spacing: 0.14em;
+  /* the comma and the full stop are direct children of the line, not of
+     either span — without this they inherit h2's --plum-900 and two black
+     marks of punctuation sit in an otherwise all-plum headline. Measured,
+     not noticed: they are four pixels wide. */
+  color: var(--plum-700);
+}
+.ocm__ln { display: block; }
+.ocm__ln--b { margin-left: clamp( 16px, 3vw, 48px); }
+/* the adjectives qualify, the nouns carry — the sentence's own grammar,
+   made visible with weight and two steps of one hue rather than two faces */
+.ocm__a { font-weight: 300; font-variation-settings: "opsz" 96; color: var(--plum); }
+.ocm__n {
+  font-weight: 500; font-variation-settings: "opsz" 96;
+  color: var(--plum-700);
+  /* Both nouns in capitals (founder, round 3): the brief was typed "Bold
+     IDEAS, Real Growth" and the mixed casing was carried across verbatim
+     instead of being resolved. Capitals live here rather than in the copy so
+     the extracted string stays "Bold Ideas, Real Growth."
+     Tracking goes from -0.01em to 0.004em with them: negative tracking is
+     drawn for lowercase and closes capital letterforms up too far. */
+  text-transform: uppercase; letter-spacing: 0.004em;
+}
+/* the payoff word takes the slash, at the slash's own 70 degrees */
+.ocm__n--mark { position: relative; }
+.ocm__n--mark::after {
+  content: ""; position: absolute; left: 0.03em; bottom: 0.02em;
+  height: 0.085em; width: 98%; background: var(--moss);
+  transform: skewX(var(--slash-skew));
+  transform-origin: left bottom;
+}
+.ocm__foot {
+  display: grid; gap: 16px var(--gutter);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  padding-top: 16px;
+  border-top: 1px solid color-mix(in srgb, var(--plum) 22%, transparent);
+  max-width: 62ch;
+}
+@media (max-width: 700px) { .ocm__foot { grid-template-columns: 1fr; } }
+.ocm__lead {
+  font-size: 19px; line-height: 1.45; font-weight: 400;
+  color: var(--graph-400); max-width: 30ch; margin: 0;
+}
+.ocm__cta { grid-column: 1 / -1; margin-top: 12px; color: var(--plum-700); }
+@media (prefers-reduced-motion: no-preference) {
+  html.js .ocm__ln--b .ocm__n--mark::after {
+    transform: skewX(var(--slash-skew)) scaleX(0);
+    transition: transform 620ms var(--ease) 240ms;
+  }
+  html.js .ocm__ln--b.in .ocm__n--mark::after {
+    transform: skewX(var(--slash-skew)) scaleX(1);
+  }
+}
+
 .scorebar {
   position: sticky; bottom: 0; z-index: 30;
   background: var(--plum); color: var(--champ);

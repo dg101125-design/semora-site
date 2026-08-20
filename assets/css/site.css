@@ -731,7 +731,11 @@ html.lr .site-head__word::before {
   html.lr .site-head__word img { animation: none; clip-path: none; }
   html.lr .site-head__word::before { display: none; }
 }
-.site-nav { margin-left: auto; display: flex; align-items: center; gap: 32px; }
+/* align-self: stretch so the nav — and the Services cell inside it — fills the
+   header's full height. That is what closes the dead band between the trigger
+   and the mega panel; see .has-mega. Children stay centred, so nothing moves. */
+.site-nav { margin-left: auto; display: flex; align-items: center; gap: 32px;
+            align-self: stretch; }
 .site-nav a:not(.btn) {
   font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
   font-size: 11px; letter-spacing: 0.012em; text-transform: uppercase;
@@ -754,7 +758,21 @@ html.lr .site-head__word::before {
    CSS only: hover for a mouse, :focus-within for a keyboard, and it collapses
    out entirely below the mega breakpoint where the checkbox nav takes over.
    No JavaScript, so it cannot fail to open. */
-.has-mega { display: flex; align-items: center; }
+.has-mega {
+  /* Stretched to the header's full height, so the hoverable trigger reaches
+     down to where the panel's bridge begins.
+     MEASURED 20 Aug 2026 in the HOVERED state — which matters, because the
+     panel rests 6px higher and drops to translateY(0) on hover, so the resting
+     position under-reports the gap by 6px. Trigger bottom was 56.1 against a
+     panel top of 92.4: a 36px gap behind an 18px bridge, whose top ~4px
+     hit-tested to nav.site-nav, outside .has-mega. The menu therefore closed
+     the instant the pointer left the word "Services", which is exactly what
+     the founder reported.
+     Stretching rather than padding + a negative margin: the negative margin is
+     off the 12-step spacing scale, and stretching says the true thing anyway —
+     the whole header cell under Services is the trigger. */
+  display: flex; align-items: center; align-self: stretch;
+}
 .mega-caret {
   display: inline-block; width: 0.42em; height: 0.42em; margin-left: 0.55em;
   border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor;
@@ -772,8 +790,12 @@ html.lr .site-head__word::before {
   border: 1px solid var(--champ-700);
   box-shadow: 0 24px 60px -28px rgb(46 28 41 / 0.34);
   opacity: 0; visibility: hidden; pointer-events: none;
-  transition: opacity 170ms var(--ease), transform 170ms var(--ease),
-              visibility 0s linear 170ms;
+  /* Closing is delayed, opening is not (.has-mega:hover sets delay 0). A menu
+     that vanishes the instant the pointer clips a corner is unusable with a
+     trackpad; 120ms of grace before the fade costs nothing and forgives the
+     diagonal. */
+  transition: opacity 170ms var(--ease) 120ms, transform 170ms var(--ease) 120ms,
+              visibility 0s linear 290ms;
   z-index: 60;
 }
 .has-mega:hover .mega,
@@ -782,9 +804,22 @@ html.lr .site-head__word::before {
   transform: translateX(-50%) translateY(0);
   transition-delay: 0s;
 }
-/* the gap between the link and the panel stays hoverable */
+/* The gap between the link and the panel stays hoverable.
+   MEASURED 20 Aug 2026, after the panel was re-anchored to .site-head so it
+   could centre on the page: trigger bottom 56.1px, panel top 86.4px — a 30.3px
+   gap against an 18.4px bridge. That left a ~12px dead band where the pointer
+   was over neither the link nor the panel, and the menu closed the moment you
+   moved toward it. The bridge must span the WHOLE gap, and it is full panel
+   width, so it also covers the diagonal run out to a far column.
+   Sized to the gap and NO further: the bridge is full panel width, so an
+   over-long one sits across the bottom edge of the logo and the CTA button and
+   steals their clicks. 32px did exactly that — measured, both blocked. 28px
+   clears them (bridge top 64.4 against their bottom edge at 63.0) and is tall
+   enough to catch a FAST rightward diagonal, which leaves the trigger's
+   x-range about 1.2px above where a 20px bridge started.
+   If the header height or the panel offset changes, re-measure this. */
 .mega::before {
-  content: ""; position: absolute; left: 0; right: 0; top: -1.15rem; height: 1.15rem;
+  content: ""; position: absolute; left: 0; right: 0; top: -28px; height: 28px;
 }
 /* Rows are declared on the container and each column spans them with subgrid,
    so the heading, the promise and the list line up across all five columns
@@ -1034,6 +1069,7 @@ html.lr .site-head__word::before {
      ~200 lines below this block, so a bare .foot-med here loses the
      cascade to the .foot-med that sets its display. */
   .site-foot .foot-nav a,
+  .site-foot .foot-mailto,
   .site-foot .foot-med { min-height: 44px; display: flex; align-items: center; }
   /* Standalone controls only. min-height does nothing to a non-replaced
      inline element, so a link inside a sentence is untouched by this and
@@ -1077,11 +1113,18 @@ html.lr .site-head__word::before {
 /* ---- the sign-off: mark against the line the whole site is built to earn */
 .foot-top {
   display: flex; flex-wrap: wrap; align-items: flex-end;
-  justify-content: space-between; gap: 32px var(--gutter);
-  padding-block: 64px 32px;
+  justify-content: space-between; gap: 24px var(--gutter);
+  padding-block: 48px 24px;
 }
+/* The footer sign-off carries mark AND wordmark AND descriptor — a superset of
+   the header, which is right for the place the identity signs off. The mark is
+   optically aligned to the WORDMARK rather than centred on the whole block,
+   because the descriptor line hangs below the wordmark's baseline and centring
+   against it drops the mark visibly low. */
+.foot-mark { display: inline-flex; align-items: flex-start; gap: 16px; }
+.foot-mark__ap { height: 52px; width: auto; margin-top: 4px; }
 /* 64px tall → ~240px wide (descriptor lockup 3.74:1) */
-.foot-mark img { height: 64px; width: auto; }
+.foot-mark__word { height: 64px; width: auto; }
 .foot-say {
   font-family: var(--serif); font-size-adjust: 0.426; font-weight: 300;
   font-size: clamp( 28px, 3.4vw, 40px); line-height: 1.04;
@@ -1096,32 +1139,80 @@ html.lr .site-head__word::before {
    content — so the fourth tile wrapped to a second line and the row stopped
    reading as a set. */
 .foot-grid {
-  display: grid; gap: 32px 48px;
-  grid-template-columns: minmax(0, 4fr) minmax(0, 4fr) minmax(0, 4fr) minmax(0, 6fr);
-  padding-block: 48px;
+  display: grid; gap: 24px 48px;
+  /* 5 / 4 / 3.5 / 5.5. The email is set at 28px and needs room the talk column
+     never had; Follow is four discs and needs the least of anything here; and
+     Keep-us keeps enough that "Scan it, or keep the card." stays on one line
+     instead of orphaning the last word. Follow keeps 4fr: at 3.5 the fourth
+     disc wrapped to a second row and the set stopped reading as a set — the
+     same failure the 48px column gap was introduced to fix. */
+  grid-template-columns: minmax(0, 4.5fr) minmax(0, 4fr) minmax(0, 3.5fr) minmax(0, 6fr);
+  padding-block: 32px;
   border-top: 1px solid var(--champ-700);
 }
-@media (max-width: 1100px) { .foot-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+/* Two columns below 1360, not 1100. Four columns need ~1140px of content
+   between them once the email control, the address and its pin, and the four
+   badges are all measured — at 1200 the address broke "Toorak / Road" and the
+   email ran under its own arrow. Four cramped columns are worse than two
+   comfortable ones. */
+@media (max-width: 1360px) { .foot-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 560px)  { .foot-grid { grid-template-columns: 1fr; } }
-.foot-col .lab { margin-bottom: 16px; }
-/* the phone number is the footer's headline — it is what the column is for */
-/* block, shrink-wrapped: each takes its own line, and the email's underline
-   stops at the end of the address instead of ruling the whole column */
-.foot-big {
-  display: block; width: fit-content;
-  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 350;
-  font-size: 28px; line-height: 1.2; letter-spacing: -0.006em;
-  color: var(--plum-900);
+.foot-col .lab { margin-bottom: 12px; }
+/* A hairline between columns, centred in the 48px gap. Four blocks of small
+   text separated by air alone read as one drifting field — the same reason
+   the services menu carries rules between its columns. Below 1361px the grid
+   drops to two columns and the rules would fall in the wrong places. */
+@media (min-width: 1361px) {
+  .foot-col + .foot-col {
+    border-left: 1px solid var(--champ-700);
+    padding-left: 24px; margin-left: -24px;
+  }
 }
+/* The contact control. Founder, 20 Aug 2026: the address does not need to be
+   large, it needs to be obviously clickable — a 28px address is a louder
+   address, not a clearer invitation. So this is a control at reading size:
+   glyph, address, arrow, a plum rule around it, filling solid on hover. Same
+   language as .qr-save two columns over, which is the footer's other action. */
+.foot-mailto {
+  /* Full column width, not shrink-to-fit: at inline size the address had
+     ~158px to sit in and broke as "team@semora.co / m.au". A control that
+     splits an email address across two lines is worse than no control. */
+  display: flex; align-items: center; gap: 12px;
+  width: 100%; padding: 12px;
+  border: 1px solid var(--plum-700);
+  color: var(--plum-900); font-size: 15px; line-height: 1.45;
+  transition: background 180ms var(--ease), color 180ms var(--ease);
+}
+/* No anywhere-break: an address breaks at no point that reads correctly. */
+.foot-mailto__t { min-width: 0; }
+/* The email control had the only icon in the row, which read as a stray rather
+   than a system. Phone and address now carry theirs at the same stroke weight,
+   each nudged to the optical centre of its FIRST line so a three-line address
+   does not float its pin into the middle of the block. */
+.foot-row { display: flex; align-items: flex-start; gap: 12px; }
+.foot-ic {
+  width: 16px; height: 16px; flex: none; color: var(--graph-400);
+  margin-top: calc((1.45em - 16px) / 2);
+}
+.foot-ic--addr { margin-top: calc((1.55em - 16px) / 2); }
+.foot-mailto__ic { width: 18px; height: 18px; flex: none; }
+.foot-mailto .ar { flex: none; margin-left: auto; transition: transform 180ms var(--ease); }
+.foot-mailto:hover { background: var(--plum-700); color: var(--ivory); }
+.foot-mailto:hover .ar { transform: translateX(3px); }
+/* The phone stays findable and stops instructing. Mono because it is data —
+   the same face the address block, the labels and the legal line already use
+   for anything a visitor copies rather than reads. */
 .foot-med {
-  display: block; width: fit-content; margin-top: 8px;
-  font-size: 17px; color: var(--plum-700);
-  border-bottom: 1px solid var(--champ-700);
+  display: inline-flex; align-items: flex-start; gap: 12px;
+  width: fit-content; margin-top: 12px;
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
+  font-size: 13px; line-height: 1.45; letter-spacing: 0.012em;
+  color: var(--graph-400);
 }
-.foot-big:hover, .foot-med:hover { color: var(--plum); border-color: var(--plum); }
+.foot-med:hover, .foot-med:hover .foot-ic { color: var(--plum); }
 .foot-addr {
   font-style: normal; font-size: 15px; line-height: 1.55;
-  color: var(--graph); max-width: 24ch;
+  color: var(--graph); max-width: 26ch; margin: 0;
 }
 
 /* ---- the four channels.
@@ -1130,17 +1221,26 @@ html.lr .site-head__word::before {
    them read as one row. DASHED means the handle is not registered yet, so the
    tile is deliberately not a link (R6) — filling in a URL in SOCIALS turns it
    solid and clickable with no other change. */
-.foot-soc { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+/* No plate. The plate existed because four monochrome glyphs drawn by four
+   companies would not read as a set without one — in their own brand colours
+   they group themselves, and a plate under a badge that already has its own
+   shape and ground just boxes it twice.
+   The box stays 40px (44 under a thumb) as the hit area, so registering a
+   handle in SOCIALS still turns a mark into a link with no other change. */
+.foot-soc { list-style: none; display: flex; flex-wrap: nowrap; gap: 8px; }
 .soc {
-  display: grid; place-items: center; width: 44px; height: 44px;
-  border: 1px solid var(--champ-700); color: var(--plum-700);
-  transition: background 180ms var(--ease), color 180ms var(--ease),
-              border-color 180ms var(--ease), transform 180ms var(--ease);
+  display: grid; place-items: center; width: 40px; height: 40px;
+  border: 0; background: none;
+  transition: transform 180ms var(--ease);
 }
-.soc__ic { width: 20px; height: 20px; }
-a.soc:hover { background: var(--plum-700); border-color: var(--plum-700); color: var(--ivory); transform: translateY(-2px); }
-.soc--soon { border-style: dashed; color: var(--graph-400); }
-.foot-soon { margin-top: 12px; color: var(--graph-400); }
+.soc__ic { width: 28px; height: 28px; display: block; }
+a.soc:hover { transform: translateY(-2px); }
+.soc--soon { cursor: default; }
+/* 40px is the right optical size against a 13px label; 44px is the right TAP
+   size. Where a thumb is the pointer, the tap size wins. */
+@media (hover: none), (max-width: 700px) { .soc { width: 44px; height: 44px; } }
+/* "launching soon" rides the label now, so it costs a word rather than a line */
+.lab-soft { color: var(--graph-400); }
 
 /* ---- keep us: the code, and the card it hands over */
 .qr-box { display: flex; align-items: flex-start; gap: 16px; }
@@ -1174,7 +1274,11 @@ html.js .qr-box__act { display: flex; }
 .qr-save[disabled] { cursor: default; color: var(--graph-400); border-color: var(--champ-700); background: transparent; }
 .qr-save__ic { width: 16px; height: 16px; flex: none; }
 .qr-box__note {
-  font-size: 15px; line-height: 1.55; color: var(--graph); max-width: 22ch;
+  font-size: 15px; line-height: 1.55; color: var(--graph); max-width: 26ch;
+  /* Between 1100 and 1280 the column is narrow enough that this breaks to two
+     lines. Balanced, it breaks as "Scan it, or keep / the card." rather than
+     leaving "card." alone on the second line. */
+  text-wrap: balance;
 }
 @media (max-width: 400px) { .qr-box { flex-wrap: wrap; } }
 

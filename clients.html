@@ -25,7 +25,7 @@
 <link rel="preload" href="/assets/fonts/Fraunces-Italic-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/InstrumentSans-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/FragmentMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/site.css?v=5ffbe0ae">
+<link rel="stylesheet" href="assets/css/site.css?v=cc847703">
 <script defer src="assets/js/site.js?v=ccb77e77"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Organization","ProfessionalService"],"@id":"https://www.semora.com.au/#organization","name":"SEMORA STUDIO","url":"https://www.semora.com.au/"},{"@type":"WebSite","@id":"https://www.semora.com.au/#website","url":"https://www.semora.com.au/","name":"SEMORA STUDIO","publisher":{"@id":"https://www.semora.com.au/#organization"}},{"@type":"WebPage","@id":"https://www.semora.com.au/clients#webpage","url":"https://www.semora.com.au/clients","name":"Our clients — SEMORA STUDIO Melbourne","description":"Who we act for, and the standard every published result must meet: named, dated, verified. One named engagement, AXIS. No verified reviews yet, and we say so.","isPartOf":{"@id":"https://www.semora.com.au/#website"},"about":{"@id":"https://www.semora.com.au/#organization"},"publisher":{"@id":"https://www.semora.com.au/#organization"},"inLanguage":"en-AU","dateModified":"2026-08-20","primaryImageOfPage":{"@type":"ImageObject","url":"https://www.semora.com.au/assets/img/og-semora.png","width":1200,"height":630},"breadcrumb":{"@id":"https://www.semora.com.au/clients#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://www.semora.com.au/clients#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.semora.com.au/"},{"@type":"ListItem","position":2,"name":"Clients","item":"https://www.semora.com.au/clients"}]},{"@type":"FAQPage","@id":"https://www.semora.com.au/clients#faq","url":"https://www.semora.com.au/clients","name":"Our clients — SEMORA STUDIO Melbourne","isPartOf":{"@id":"https://www.semora.com.au/clients#webpage"},"inLanguage":"en-AU","mainEntity":[{"@type":"Question","name":"Are there verified SEMORA STUDIO client reviews?","acceptedAnswer":{"@type":"Answer","text":"None yet, and we will say so. A verified review, to SEMORA STUDIO, means one thing. A real client, in their own words, with a name, a role, a date and written permission to print it. We have none. Not one. And we will not dress up something weaker to fill the gap, so you will not find praise here from a client we decline to name, or a tidy line we wrote that a client nodded at, or five stars signed with a single initial. We ask at the 90-day review. Client words land on this page, or they land nowhere. Regulated health services are the harder case. The National Law prohibits clinical testimonials in advertising, so we will not publish one at all, and that binds us exactly as it binds the clinic."}},{"@type":"Question","name":"How does SEMORA STUDIO publish a client result?","acceptedAnswer":{"@type":"Answer","text":"To a six-part template, published early and listed below: the baseline, the intervention, the result, the period, the caveats and the client's written permission. A written case study publishes only when it has all six. Miss one and Jennifer Wong holds it back. The headline figures on the home page are the short form of live engagements, and the six-part write-up behind each one lands here as the client signs off the detail. It is the same proof standard the rest of the method runs on."}},{"@type":"Question","name":"Which clients has SEMORA STUDIO worked with?","acceptedAnswer":{"@type":"Answer","text":"One, named: AXIS, which advises on commercial property. That is work we are signed to deliver, named because the client agreed to be named. Being signed is not the same as being measured. The measured result publishes at the 90-day review on 8 November 2026."}}]}]}</script>
 </head>
@@ -255,7 +255,9 @@
   <div class="wrap">
     <div class="foot-top">
       <a class="foot-mark" href="/" aria-label="SEMORA STUDIO — home">
-        <img src="assets/logo/SEMORA_Descriptor_mono-plum.svg"
+        <img class="foot-mark__ap" src="assets/logo/SEMORA_Monogram_primary-plum-moss.svg"
+             alt="" width="64" height="64">
+        <img class="foot-mark__word" src="assets/logo/SEMORA_Descriptor_mono-plum.svg"
              alt="SEMORA — Specialist Practice Growth" width="240" height="64">
       </a>
       <p class="foot-say">Turn attention<br>into action.</p>
@@ -264,25 +266,48 @@
     <div class="foot-grid">
       <div class="foot-col">
         <p class="lab">Talk to us /</p>
-        <a class="foot-big" href="tel:+61390710855">(03) 9071 0855</a>
-        <a class="foot-med" href="mailto:team@semora.com.au">team@semora.com.au</a>
+        <a class="foot-mailto" href="mailto:team@semora.com.au">
+          <svg class="foot-mailto__ic" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+               stroke-linejoin="round" aria-hidden="true">
+            <rect x="2.6" y="5" width="18.8" height="14" rx="2.2"/>
+            <path d="m3.4 6.6 8.6 6 8.6-6"/>
+          </svg><span class="foot-mailto__t">team@semora.com.au</span><span class="ar"
+               aria-hidden="true">&#8594;</span>
+        </a>
+        <a class="foot-med" href="tel:+61390710855">
+          <svg class="foot-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"
+               aria-hidden="true">
+            <path d="M6.4 3.4h3.1l1.5 3.8-1.9 1.4a11.2 11.2 0 0 0 5.3 5.3l1.4-1.9
+                     3.8 1.5v3.1a1.6 1.6 0 0 1-1.8 1.6A15.8 15.8 0 0 1 4.8 5.2a1.6
+                     1.6 0 0 1 1.6-1.8Z"/>
+          </svg><span>(03) 9071 0855</span>
+        </a>
       </div>
 
       <div class="foot-col">
         <p class="lab">Find us /</p>
-        <address class="foot-addr">Central House Toorak<br>Level 3, 489 Toorak
-        Road<br>Toorak VIC 3142</address>
+        <div class="foot-row">
+          <svg class="foot-ic foot-ic--addr" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+               stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 21.2s6.3-5.4 6.3-10.1a6.3 6.3 0 1 0-12.6 0c0 4.7 6.3 10.1 6.3 10.1Z"/>
+            <circle cx="12" cy="10.9" r="2.4"/>
+          </svg>
+          <address class="foot-addr">Central House Toorak<br>Level 3, 489 Toorak
+          Road<br>Toorak VIC 3142</address>
+        </div>
       </div>
 
       <div class="foot-col">
-        <p class="lab">Follow /</p>
+        <p class="lab">Follow / <span class="lab-soft">launching soon</span></p>
         <ul class="foot-soc">
-          <li><span class="soc soc--soon" role="img" aria-label="YouTube — channel launching"><svg class="soc__ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M4.6 5.2h14.8a2.6 2.6 0 0 1 2.6 2.6v8.4a2.6 2.6 0 0 1-2.6 2.6H4.6A2.6 2.6 0 0 1 2 16.2V7.8a2.6 2.6 0 0 1 2.6-2.6Zm5.5 3.4v6.8L16 12z"/></svg></span></li>
-          <li><span class="soc soc--soon" role="img" aria-label="Instagram — channel launching"><svg class="soc__ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M7.6 3h8.8A4.6 4.6 0 0 1 21 7.6v8.8a4.6 4.6 0 0 1-4.6 4.6H7.6A4.6 4.6 0 0 1 3 16.4V7.6A4.6 4.6 0 0 1 7.6 3Zm0 1.9A2.7 2.7 0 0 0 4.9 7.6v8.8a2.7 2.7 0 0 0 2.7 2.7h8.8a2.7 2.7 0 0 0 2.7-2.7V7.6a2.7 2.7 0 0 0-2.7-2.7Z"/><path fill-rule="evenodd" d="M12 7.4a4.6 4.6 0 1 1 0 9.2 4.6 4.6 0 0 1 0-9.2Zm0 1.9a2.7 2.7 0 1 0 0 5.4 2.7 2.7 0 0 0 0-5.4Z"/><circle cx="17.2" cy="6.8" r="1.15"/></svg></span></li>
-          <li><span class="soc soc--soon" role="img" aria-label="X — channel launching"><svg class="soc__ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2.9 2.6h4.3l13.9 18.8h-4.3z"/><path d="M18.6 2.6h2.8l-7.1 8.6-1.6-2.2z"/><path d="M2.6 21.4h2.8l6.1-7.4-1.6-2.2z"/></svg></span></li>
-          <li><span class="soc soc--soon" role="img" aria-label="Facebook — channel launching"><svg class="soc__ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.4 21.9V13h3l.6-3.5h-3.6V7.2c0-1 .3-1.7 1.8-1.7h1.9V2.4a25 25 0 0 0-2.8-.1c-2.8 0-4.7 1.7-4.7 4.8v2.4H6.5V13h3.1v8.9z"/></svg></span></li>
+          <li><span class="soc soc--soon" role="img" aria-label="YouTube — channel launching"><svg class="soc__ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="0.4" y="4.1" width="23.2" height="15.8" rx="4.4" fill="#FF0000"/><path d="M9.8 8.2v7.6L16.4 12z" fill="#FFFFFF"/></svg></span></li>
+          <li><span class="soc soc--soon" role="img" aria-label="Instagram — channel launching"><svg class="soc__ic" viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="ig-grad" cx="0.28" cy="1.05" r="1.25"><stop offset="0" stop-color="#FFD776"/><stop offset="0.22" stop-color="#F9A33C"/><stop offset="0.44" stop-color="#EA5B5B"/><stop offset="0.68" stop-color="#C6379B"/><stop offset="1" stop-color="#6A48D7"/></radialGradient></defs><rect x="0.6" y="0.6" width="22.8" height="22.8" rx="6.6" fill="url(#ig-grad)"/><rect x="5.7" y="5.7" width="12.6" height="12.6" rx="3.9" fill="none" stroke="#FFFFFF" stroke-width="1.7"/><circle cx="12" cy="12" r="3.15" fill="none" stroke="#FFFFFF" stroke-width="1.7"/><circle cx="16.9" cy="7.1" r="1.15" fill="#FFFFFF"/></svg></span></li>
+          <li><span class="soc soc--soon" role="img" aria-label="X — channel launching"><svg class="soc__ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="0.6" y="0.6" width="22.8" height="22.8" rx="5.4" fill="#000000"/><g transform="translate(12 12) scale(0.62) translate(-12 -12)" fill="#FFFFFF"><path d="M2.9 2.6h4.3l13.9 18.8h-4.3z"/><path d="M18.6 2.6h2.8l-7.1 8.6-1.6-2.2z"/><path d="M2.6 21.4h2.8l6.1-7.4-1.6-2.2z"/></g></svg></span></li>
+          <li><span class="soc soc--soon" role="img" aria-label="Facebook — channel launching"><svg class="soc__ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11.4" fill="#1877F2"/><path d="M15.9 15.1l.5-3.1h-3v-2c0-.86.42-1.7 1.77-1.7H16.5V5.66S15.28 5.45 14.12 5.45c-2.43 0-4.01 1.47-4.01 4.13V12H7.36v3.1h2.75v7.2a10.9 10.9 0 0 0 3.37 0v-7.2z" fill="#FFFFFF"/></svg></span></li>
         </ul>
-        <p class="lab foot-soon">Launching soon</p>
       </div>
 
       <div class="foot-col foot-col--keep">

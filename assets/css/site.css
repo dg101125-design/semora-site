@@ -754,7 +754,7 @@ html.lr .site-head__word::before {
    CSS only: hover for a mouse, :focus-within for a keyboard, and it collapses
    out entirely below the mega breakpoint where the checkbox nav takes over.
    No JavaScript, so it cannot fail to open. */
-.has-mega { position: relative; display: flex; align-items: center; }
+.has-mega { display: flex; align-items: center; }
 .mega-caret {
   display: inline-block; width: 0.42em; height: 0.42em; margin-left: 0.55em;
   border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor;
@@ -787,18 +787,36 @@ html.lr .site-head__word::before {
   content: ""; position: absolute; left: 0; right: 0; top: -1.15rem; height: 1.15rem;
 }
 /* Rows are declared on the container and each column spans them with subgrid,
-   so the heading, the promise and the list line up across all six columns
+   so the heading, the promise and the list line up across all five columns
    because they share the same rows — not because each was forced to a height.
    The fixed heights this replaces were clipping four of the six promises: the
    geometry audit measured 49px of text in a 35px box. Alignment by truncation
-   is not alignment. */
+   is not alignment.
+
+   Five columns since 19 Aug 2026, not six. The narrow layout stacks them three
+   and two, so it declares SIX row tracks — three for each band. It previously
+   declared three, which left the second band's headings, promises and lists
+   aligning to nothing and reading as a second, unrelated menu. */
 .mega__inner {
   display: grid; grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: auto auto auto;
-  gap: 32px 32px; padding: 32px 32px 24px;
+  grid-template-rows: repeat(6, auto);
+  /* Row gap must be ZERO. Each column is a subgrid over these rows, so a row
+     gap is inherited INSIDE every column — it pushes heading off promise off
+     list, and the 32px that was meant to separate the two bands appeared
+     three times in each column instead. The bands are separated below. */
+  gap: 0 32px; padding: 32px 32px 24px;
+}
+/* Below the five-across breakpoint the columns stack three and two. The second
+   band needs air above it; the row gap cannot provide it (see above). */
+@media (max-width: 1499px) {
+  .mega__col:nth-child(n + 4) { margin-top: 32px; }
 }
 @media (min-width: 1500px) {
-  .mega__inner { grid-template-columns: repeat(6, 1fr); gap: 0 32px; }
+  .mega__inner {
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, auto);
+    gap: 0 32px;
+  }
 }
 @supports (grid-template-rows: subgrid) {
   .mega__col { display: grid; grid-row: span 3; grid-template-rows: subgrid; }
@@ -826,29 +844,32 @@ html.lr .site-head__word::before {
   font-family: var(--serif) !important; font-weight: 600 !important;
   font-size: 1.06rem !important; line-height: 1.2 !important;
   letter-spacing: -0.01em !important; text-transform: none !important;
-  color: var(--plum-900); margin: 0 0 4px;
+  color: var(--plum-900); margin: 0 0 8px;
   align-self: end;
 }
 .mega__sub {
   font-family: var(--sans); font-size-adjust: 0.546; font-style: normal; font-weight: 400;
-  font-size: 13px; line-height: 1.45; color: var(--graph);
-  margin: 0; padding-bottom: 12px;
+  font-size: 13px; line-height: 1.55; color: var(--graph);
+  margin: 0; padding-bottom: 16px;
   border-bottom: 1px solid var(--champ-700);
   align-self: stretch;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
 }
 .mega__col ul { list-style: none; margin: 0; padding: 0; }
-.mega__col li + li { margin-top: 0; }
+.mega__col li + li { margin-top: 4px; }
 /* Names only — the menu answers "do you do X", and a rate card cannot do
    that at a glance. The published-price claim moved to the footer line, where
    it reads as a commitment rather than as clutter. */
 .mega__col a {
-  display: flex; align-items: center; gap: 0.62em;
-  padding: 0.36em 0.5em 0.36em 0.5em;
+  /* flex-start, not center: a wrapped two-line name would otherwise float its
+     dot to the middle of the block, where it marks neither line. The dot is
+     nudged down to sit on the optical centre of the FIRST line instead. */
+  display: flex; align-items: flex-start; gap: 0.7em;
+  padding: 0.4em 0.5em;
   margin-left: -0.55em;
   font-family: var(--sans) !important; font-size: 0.82rem !important;
-  letter-spacing: 0 !important; text-transform: none !important;
-  font-weight: 400 !important; line-height: 1.45;
+  letter-spacing: 0.004em !important; text-transform: none !important;
+  font-weight: 400 !important; line-height: 1.55;
   color: var(--ink) !important; border-bottom: 0 !important;
   border-radius: 2px;
   transition: color 140ms var(--ease), background 140ms var(--ease);
@@ -857,19 +878,27 @@ html.lr .site-head__word::before {
 .mega__col a:focus-visible {
   color: var(--plum) !important; background: var(--champ-300);
 }
-/* The icon carries the hover, not the row — a whole tinted band on hover reads
-   as a button, and these are links in a list. */
-.mega-ic {
-  /* Icons carry the accent at full strength. At 0.75 opacity they read as grey
-     smudges next to the type they are meant to lead. 5.44:1 on ivory. */
-  flex: 0 0 auto; width: 16px; height: 16px;
-  color: var(--moss-700); opacity: 1;
-  transition: color 140ms var(--ease), opacity 140ms var(--ease),
-              transform 140ms var(--ease);
+/* Founder, 19 Aug 2026: the eighteen line icons become one repeated dot.
+   Eighteen different pictograms at 16px asked the eye to identify a picture
+   before it could read the word beside it — and at that size several of them
+   were not identifiable anyway, so the cost was paid for nothing. A single
+   dot is a bullet: it marks the line, holds the indent, and gets out of the
+   way. It is also the one element of the aperture that never moves.
+   Kept in moss rather than acid: 5.44:1 on ivory, where acid is not. */
+.mega__col a .mega-dot {
+  /* Specificity, deliberately: `.mega__col a span` sets flex:1 1 auto for the
+     label, and the dot is a span too. At the lower specificity the dot grew to
+     fill the row and rendered as a 40px dash. */
+  flex: 0 0 auto;
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--moss-700);
+  /* centre the dot on the first line, whatever the name wraps to */
+  margin-top: calc((1.55em - 5px) / 2);
+  transition: background 140ms var(--ease), transform 140ms var(--ease);
 }
-.mega__col a:hover .mega-ic,
-.mega__col a:focus-visible .mega-ic {
-  color: var(--plum); opacity: 1; transform: translateX(1px);
+.mega__col a:hover .mega-dot,
+.mega__col a:focus-visible .mega-dot {
+  background: var(--plum); transform: scale(1.4);
 }
 .mega__col a span { flex: 1 1 auto; }
 .mega__foot {

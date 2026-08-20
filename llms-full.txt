@@ -426,9 +426,9 @@ Search & AI Visibility
 
 ## Be the source, not the result .
 
-A ranked list rewards the page that wins. A generated answer rewards the source it trusts. Most sites are built for the first and invisible to the second. We work both. One audit, one keyword map, and a single commercial number that you agree with us at the start.
+A ranked list rewards the page that wins. An AI answer rewards the source it trusts, and names it. We work both.
 
-Get the free visibility report Or score yourself first →
+Get the free visibility report Score yourself first →
 
 What being cited looks like Qwho does marketing for commercial property firms in melbourne?
 
@@ -436,107 +436,145 @@ A
 
 SEMORA STUDIO
 
-01 / The shift
+who is the best buyers agent in melbourne/ physio near me open saturday/ how do i show up in chatgpt answers/ commercial property advisory melbourne/ seo agency that reports revenue not rankings/ who is the best buyers agent in melbourne/ physio near me open saturday/ how do i show up in chatgpt answers/ commercial property advisory melbourne/ seo agency that reports revenue not rankings/
+
+01 The shift
 
 ### Search has two doors now.
 
-Your buyer still types into Google. More and more, what comes back is an answer rather than a list, and that answer names a handful of sources. Two competitions. Won two different ways. A site built only for the first is not ranked low in the second. It is absent.
+Your buyer still types into Google. What comes back, more and more, is an answer that names its sources.
 
 The ranked list
 
-You compete to be picked.
+Competes for placement
 
-What the buyer doesTypes a phrase, scans the page What comes backAn ordered list of pages What decides itRelevance, authority, technical health Winning looks likeYour page in the top handful What it producesClicks, which you can count
+The buyerTypes a phrase Comes backA list of pages Decided byRelevance · authority · speed Winning isYour page near the top
 
 The generated answer
 
-You compete to be trusted.
+Competes for trust
 
-What the buyer doesAsks a question in full sentences What comes backA written answer citing a few sources What decides itEntity clarity, first-party evidence, corroboration Winning looks likeYour firm named inside the answer What it producesEnquiries that arrive half-convinced
+The buyerAsks a full question Comes backAn answer citing sources Decided byEntity clarity · evidence Winning isYour firm, named
 
-02 / The method
+Most sites are built for the first door and absent from the second. Not ranked low. Absent.
 
-### Five steps, in this order.
+02 The method
 
-Nothing starts until there is a baseline, and nothing counts until it reaches the number you agreed. In between sit the five steps below, in the order they run, each one producing a document you can read and keep. No mystery, and no proprietary black box with a trademark on it.
+### Five steps, one order .
 
-Before step one: no work without a baseline. If it cannot be measured, we write that down before we start, not after.
+No baseline, no work. If it cannot be measured, we write that down before we start.
 
 01
 
 ### Technical audit
 
-What the site is built on, how fast it loads, what Google has actually indexed, and whether the architecture can rank at all. We crawl it and measure it. Then we rank what is broken by what it is costing you. Easy is not a ranking.
+Platform, speed, what Google has indexed, whether the architecture can rank. Ranked by what it costs you.
 
 02
 
 ### Keyword research
 
-What your buyers type, not what your industry calls itself. B2B and B2C behave differently and get researched differently. We mine the queries you already receive, read the live results by hand, and hand back a map with one owner page per term.
+What buyers type, not what the industry calls itself. One term, one owner page.
 
 03
 
 ### Technical fixes
 
-The audit produces a list. We work it in order. Indexability first, because optimising a page Google cannot index is unpaid work that you are still paying for. Every fix is closed by re-measuring it, never by someone saying it is done.
+Worked in order, indexability first. Every fix closed by re-measurement.
 
 04
 
-### On-page optimisation
+### On-page
 
-Each page is built for the one term it owns: title, headings, the first hundred words, the body, internal links, image alt text, structured data. One page, one primary term. Six pages competing for one phrase is a problem you paid to create.
+Title, headings, first hundred words, links, alt text, schema. Each page built for the term it owns.
 
 05
 
-### Content & authority
+### Content and authority
 
-Two kinds. Evergreen pages that convert the demand already there, and editorial that earns citations. Authority comes from original research, digital PR and real partnerships. Never bought links. The penalty for those lands on your domain, not ours.
+Evergreen converts. Editorial earns citations. Original research and digital PR, never bought links.
 
-After step five: reported against one commercial number, monthly. Rankings explain the number. They never get to be the number.
+After step five: one commercial number, monthly. Rankings explain it. They never get to be it.
 
-03 / Step one, in detail
+03 Step one, opened
 
-### What does the technical audit actually check?
+### The audit checks four things .
 
-Platform · What it is built on, who can deploy a change, and how long that takes. This decides what is fixable at all. It also sets your timeline. ·
+1.1
 
-Speed · Core Web Vitals, mobile first, with lab and real-user data kept separate. Where a site has too little traffic for real-user data we say so, rather than quoting a lab score as what your buyers feel. ·
+### Platform
 
-Indexation · What Google has actually indexed, and the reason it gives for everything it has not. Read from Search Console, never a site: count, which is an estimate and does not belong in a report. ·
+What it runs on, who can deploy, how fast a change lands.
 
-Architecture · Crawl depth, internal linking, orphan pages, duplicate URLs, redirect chains, mobile parity, structured data, and whether your content exists before JavaScript runs. ·
+1.2
 
-04 / The surfaces
+### Speed
 
-### Where the work has to land.
+Core Web Vitals, mobile first. Lab and field kept honest.
 
-Same evidence, five different front doors. They are not five projects. Entity clarity and first-party proof feed all of them, which is why the audit and the keyword map are done once.
+1.3
 
-GoogleRanked results, and the local map pack where the category has one.
+### Indexation
 
-AI Overviews & AI ModeGoogle's own generated answers, drawn from the index you already sit in.
+What Google holds, and its stated reason for what it skipped.
 
-ChatGPTWhere a buyer now asks the question they used to type in fragments.
+1.4
 
-PerplexityAnswer-first, citation-heavy — the clearest read on whether you are a trusted source.
+### Architecture
 
-CopilotMicrosoft's answer layer, reported through Bing Webmaster Tools.
+Depth, links, duplicates, redirects. Content before JavaScript.
 
-No platform sells a place in an AI answer. Anyone offering you one is selling something else.
+04 The surfaces
 
-Eligibility, entity clarity and evidence can all be worked, then measured against a fixed set of buyer questions asked in clean sessions with the wording written down in advance so the next run stays comparable with the last. It is the same instrument we run on ourselves every month.
+### One body of proof, five surfaces .
 
-05 / The number
+G
 
-### How is any of this reported?
+### Google
 
-The first line of your report is a commercial number. Qualified enquiries, pipeline, new customers: whichever one you agreed at the start. That is the thing you actually bought. Positions, impressions and clicks sit underneath it, as the explanation.
+Ranked results and the local map pack.
 
-A client who ranked first for forty terms and booked no more work had a bad quarter, whatever the ranking report says, and a report built to make a quarter like that look healthy is part of the reason this industry carries the reputation it does. We would say so. First line, plain words, then what we were changing next month and what it should show up as, so you can hold us to it at ninety days. On the record.
+AI
 
-Every result we publish carries its starting figure, its finishing figure, the dates and the method. Where there is no result yet, the page says so rather than implying one. That rule holds here too. See what is published →
+### AI Overviews
 
-Get the free visibility report Or tell us what you need built →
+Google’s generated answers, same index.
+
+C
+
+### ChatGPT
+
+The question, asked in full sentences.
+
+P
+
+### Perplexity
+
+Answer-first, citation-heavy. The trust read.
+
+Co
+
+### Copilot
+
+Microsoft’s answer layer, read via Bing.
+
+No platform sells a place in an AI answer. Anyone offering one is selling something else.
+
+Eligibility, entity clarity and evidence can all be worked, and we measure all three each month against a fixed set of buyer questions, asked in clean sessions with the wording set down in advance so that this month can be held against the last. We run the same test on our own name. Results published. Zeros left in.
+
+05 The number
+
+### Reported against one number .
+
+The first line of your report is the number you chose: enquiries, pipeline, new clients. Clicks and rankings sit under it, as the reason why. No result yet? Then the page says so.
+
+Get the free visibility report See what is published →
+
+Your monthly report / The number ↗
+
+Diagnostics
+
+Start figure, finish figure, dates, method — on every result we publish.
 
 ---
 

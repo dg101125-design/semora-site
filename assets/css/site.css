@@ -3602,25 +3602,37 @@ h1:has(.hl--sub) .uline::after { display: none; }
 
 
 /* =================================================== SEO & AI SEARCH page
-   Built 20 Aug 2026. The reference the founder supplied (impressive.com.au)
-   is a near-black page with hot-pink glowing pills and sparkle icons — the
-   precise house style R9 forbids us, in a hue that is also the banned crimson.
-   So its CONTENT SPINE is what was learned (the shift, the method, the
-   engines) and none of its surface. Everything here is ivory, ink, plum and
-   acid, in the three faces the site already owns, and every motion is DRAWN
-   or WIPED rather than glowed. Nothing pulses for decoration. */
+   Rebuilt 20 Aug 2026 after the founder scored v1 at 40/100 — "只显示了文字编辑".
+   v1 was typography arranged in sections; this is components. Every section now
+   owns a drawn OBJECT: the cited-answer card, a rolling strip of real buyer
+   queries, ghost section numerals, the two doors with a slash medallion, a
+   horizontal five-node timeline that draws itself, four icon cards, five
+   platform plates, and the report rendered as an object. The reference
+   (impressive.com.au) supplied the componentry idea; its surface — black
+   ground, hot pink, glow — is what R9 forbids, so everything here is ivory,
+   ink, plum, acid, and motion that is drawn rather than glowed. */
 
-/* ---- the hero figure. It is the page's argument, not an ornament: a
-   question resolves into a generated answer, and the answer names its
-   sources — one of which is the client. Type and rules only, no illustration. */
+/* ---- acid viewfinder corners: the same device the QR plate and saved card
+   wear, promoted to a utility. Marks an object as "captured". */
+.tickbox { position: relative; }
+.tickbox::before, .tickbox::after {
+  content: ""; position: absolute; width: 16px; height: 16px;
+  border: 0 solid var(--moss-700); z-index: 1;
+}
+.tickbox::before { top: -5px; left: -5px; border-top-width: 2px; border-left-width: 2px; }
+.tickbox::after { bottom: -5px; right: -5px; border-bottom-width: 2px; border-right-width: 2px; }
+
+/* the hero on this page closes ~100px tighter: the citation card and the CTA
+   should share a bottom line instead of floating apart */
+.hero--seo .wrap { padding-bottom: 24px; }
+
+/* ---- the cited-answer card */
 .qa {
   margin: 0; align-self: center; width: 100%; max-width: 460px;
   border: 1px solid var(--champ-700); background: var(--white);
   padding: 24px;
+  box-shadow: 0 18px 44px -30px rgb(46 28 41 / 0.5);
 }
-/* Two classes, deliberately: the card sits inside .hero, and `.hero .lab`
-   paints labels ivory for the dark ground — which on this WHITE card rendered
-   the caption invisible. Measured, not guessed. */
 .qa .qa__cap { margin: 0 0 16px; color: var(--moss-700); }
 .qa__q, .qa__a { display: flex; gap: 12px; align-items: flex-start; }
 .qa__q { padding-bottom: 16px; border-bottom: 1px solid var(--champ-700); }
@@ -3633,8 +3645,6 @@ h1:has(.hl--sub) .uline::after { display: none; }
 }
 .qa__tag--a { border-color: var(--plum-700); color: var(--plum-700); }
 .qa__q p { margin: 0; font-size: 15px; line-height: 1.45; color: var(--ink); }
-/* The answer is deliberately UNREADABLE — bars, not words. Putting fake
-   sentences in an AI answer on our own site would be inventing a quotation. */
 .qa__a p { margin: 0; flex: 1 1 auto; display: flex; flex-direction: column; gap: 8px; }
 .qa__ln {
   display: block; height: 9px; transform-origin: left;
@@ -3648,95 +3658,266 @@ h1:has(.hl--sub) .uline::after { display: none; }
   font-family: var(--mono); font-size-adjust: 0.516; font-size: 11px;
   letter-spacing: 0.012em; color: var(--graph-400);
 }
-.qa__chip:empty { width: 88px; }
+.qa__chip:empty { width: 96px; }
 .qa__chip--n:empty { width: 64px; }
-.qa__chip--us { border-color: var(--plum-700); color: var(--plum-900); }
+/* the unnamed sources carry a redaction bar, not blank space — a bare outlined
+   box beside a named chip read as UI that failed to load */
+.qa__chip:empty::before {
+  content: ""; width: 56px; height: 8px;
+  background: color-mix(in srgb, var(--champ-700) 72%, var(--ivory));
+}
+.qa__chip--n:empty::before { width: 32px; }
+.qa__chip--us { border-color: var(--plum-700); color: var(--plum-900); background: var(--ivory); }
 .qa__dot { flex: none; width: 6px; height: 6px; border-radius: 50%; background: var(--moss-700); }
 
-/* ---- the two doors. Same five questions, two different answers — the
-   comparison only works if the rows line up, so both panels share one grid. */
-.doors { display: grid; gap: 24px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-@media (max-width: 800px) { .doors { grid-template-columns: 1fr; } }
-.door { border: 1px solid var(--champ-700); background: var(--white); padding: 32px 24px; }
+/* ---- the query marquee: the questions this page exists to answer, rolling
+   on an ink band directly under the hero. Examples, not claims. */
+.qmq { overflow: hidden; background: var(--plum-900); border-top: 1px solid var(--plum-700); }
+.qmq__track {
+  display: inline-flex; align-items: center; gap: 32px;
+  padding: 12px 0; white-space: nowrap; width: max-content;
+}
+.qmq__track span {
+  font-family: var(--mono); font-size-adjust: 0.516; font-size: 13px;
+  letter-spacing: 0.012em; color: var(--plum-100);
+}
+.qmq__track i {
+  font-style: normal; color: var(--moss-300);
+  transform: skewX(-20deg); display: inline-block;
+}
+
+/* ---- section headers with ghost numerals */
+.shead {
+  display: grid; grid-template-columns: auto minmax(0, 1fr) minmax(0, 38%);
+  gap: 16px 32px; align-items: end; margin-bottom: 48px;
+}
+.shead--tight { grid-template-columns: auto minmax(0, 1fr); margin-bottom: 24px; }
+.shead__no {
+  font-family: var(--serif); font-weight: 300; font-size: 96px; line-height: 0.94;
+  letter-spacing: -0.018em; color: transparent;
+  -webkit-text-stroke: 1.5px var(--champ-700);
+  transform: translateY(0.06em);
+}
+.shead h2 { margin-bottom: 0; }
+.shead .serif-em { color: var(--plum); font-style: italic; }
+.shead__note {
+  margin: 0; font-size: 15px; line-height: 1.55; color: var(--graph);
+  padding-left: 16px; border-left: 3px solid var(--moss-700);
+  align-self: end;
+}
+@media (max-width: 900px) {
+  .shead { grid-template-columns: auto minmax(0, 1fr); }
+  .shead__note { grid-column: 1 / -1; }
+}
+@media (max-width: 560px) {
+  .shead { grid-template-columns: 1fr; gap: 8px; }
+  /* line-height up at the stacked size: at 0.94 the numeral's descender
+     overflowed its row and sat on the eyebrow beneath it */
+  .shead__no { font-size: 72px; line-height: 1.04; transform: none; }
+}
+
+/* ---- the two doors, with the slash medallion between them */
+.doors {
+  display: grid; gap: 24px; align-items: stretch;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+}
+.door { border: 1px solid var(--champ-700); background: var(--white); }
 .door--ai { border-color: var(--plum-700); }
 .door__h {
-  margin: 0; font-family: var(--serif); font-size-adjust: 0.426;
-  font-weight: 350; font-size: 25px; line-height: 1.2;
-  letter-spacing: -0.01em; color: var(--plum-900);
+  max-width: none;
+  margin: 0; padding: 24px 24px 4px;
+  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 350;
+  font-size: 25px; line-height: 1.2; letter-spacing: -0.01em; color: var(--plum-900);
 }
 .door__sub {
-  margin: 8px 0 24px; font-family: var(--mono); font-size-adjust: 0.516;
-  font-size: 11px; letter-spacing: 0.012em; text-transform: uppercase;
-  color: var(--graph-400);
+  /* the site caps bare <p> measure globally; on the plum header that cap
+     painted as a white notch at the right edge. These two carry a ground. */
+  max-width: none;
+  margin: 0; padding: 0 24px 16px;
+  font-family: var(--mono); font-size-adjust: 0.516; font-size: 11px;
+  letter-spacing: 0.012em; text-transform: uppercase; color: var(--graph-400);
+  border-bottom: 1px solid var(--champ-700);
 }
-.door--ai .door__sub { color: var(--plum-700); }
-.door__dl { margin: 0; }
+.door--ai .door__h { background: var(--plum-900); color: var(--ivory); padding-top: 24px; }
+.door--ai .door__sub { background: var(--plum-900); color: var(--moss-300); border-bottom: 0; }
+.door__dl { margin: 0; padding: 8px 24px 24px; }
 .door__dl dt {
   font-family: var(--mono); font-size-adjust: 0.516; font-size: 11px;
   letter-spacing: 0.012em; text-transform: uppercase; color: var(--graph-400);
-  border-top: 1px solid var(--champ-700); padding-top: 12px;
+  padding-top: 12px;
 }
-.door__dl dd { margin: 0 0 12px; font-size: 15px; line-height: 1.45; color: var(--ink); }
-
-/* ---- the five-step spine. The rule is the method: it draws top to bottom,
-   and each step's number only takes the plum once its own row has arrived. */
-.spine { list-style: none; margin: 32px 0 0; padding: 0; position: relative; }
-.spine::before {
-  content: ""; position: absolute; left: 20px; top: 20px; bottom: 20px;
-  width: 1px; background: var(--champ-700);
-  transform: scaleY(0); transform-origin: top;
+.door__dl dd {
+  margin: 0; padding-bottom: 12px; font-size: 17px; line-height: 1.45;
+  color: var(--ink); border-bottom: 1px solid var(--champ-700);
 }
-.spine__it { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 24px; padding-bottom: 32px; }
-.spine__it:last-child { padding-bottom: 0; }
-.spine__no {
-  position: relative; z-index: 1;
-  width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center;
-  background: var(--ivory); border: 1px solid var(--champ-700);
-  font-family: var(--mono); font-size-adjust: 0.516; font-size: 13px;
-  letter-spacing: 0.012em; color: var(--graph-400);
-  transition: border-color 320ms var(--ease), color 320ms var(--ease);
+.door__dl dd:last-of-type { border-bottom: 0; padding-bottom: 0; }
+.door--ai .door__dl dd strong { color: var(--plum); }
+.door__vs { align-self: center; display: grid; place-items: center; width: 48px; height: 48px;
+  border: 1px solid var(--champ-700); border-radius: 50%; background: var(--ivory); }
+.door__slash {
+  width: 3px; height: 20px; background: var(--plum-700);
+  transform: skewX(-20deg); display: block;
 }
-.spine__it.in .spine__no { border-color: var(--plum-700); color: var(--plum-900); }
-.spine__body h3 {
-  margin: 4px 0 8px; font-family: var(--serif); font-size-adjust: 0.426;
-  font-weight: 350; font-size: 25px; line-height: 1.2; letter-spacing: -0.01em;
+.doors__foot {
+  margin: 32px 0 0; max-width: none;
+  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 350;
+  font-size: 25px; line-height: 1.3; letter-spacing: -0.006em;
   color: var(--plum-900);
 }
-.spine__body p { margin: 0; max-width: 64ch; }
-/* the two statements that bracket the method */
-.spine__band {
-  margin: 0 0 32px; padding: 12px 0 12px 16px; max-width: 64ch;
-  border-left: 3px solid var(--moss-700); font-size: 17px; line-height: 1.55;
+.doors__foot em { font-style: italic; color: var(--plum); }
+@media (max-width: 800px) {
+  .doors { grid-template-columns: 1fr; }
+  .door__vs { justify-self: center; }
 }
-.spine__band--end { margin: 32px 0 0; border-left-color: var(--plum-700); }
 
-/* ---- the engines. A list, ruled, because five of them in cards would be
-   five boxes saying nothing the words do not already say. */
-.engines { list-style: none; margin: 0 0 32px; padding: 0; }
-.engine {
-  display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 24px;
-  padding: 16px 0; border-top: 1px solid var(--champ-700);
+/* ---- the five-node timeline. Horizontal: the line IS the order. */
+.tl {
+  list-style: none; margin: 0; padding: 0; position: relative;
+  display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0 24px;
 }
-.engine:last-child { border-bottom: 1px solid var(--champ-700); }
-@media (max-width: 700px) { .engine { grid-template-columns: 1fr; gap: 4px; } }
-.engine__k {
+.tl::before {
+  content: ""; position: absolute; left: 24px; right: calc(20% - 43px); top: 24px;
+  height: 1px; background: var(--champ-700);
+  transform: scaleX(0); transform-origin: left;
+}
+.tl__it { position: relative; padding-top: 0; }
+.tl__node {
+  position: relative; z-index: 1;
+  width: 48px; height: 48px; border-radius: 50%;
+  display: grid; place-items: center; margin-bottom: 16px;
+  background: var(--white); border: 1px solid var(--champ-700);
+  transition: border-color 320ms var(--ease), background 320ms var(--ease);
+}
+.tl__node b {
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
+  font-size: 13px; letter-spacing: 0.012em; color: var(--graph-400);
+  transition: color 320ms var(--ease);
+}
+.tl__it.lit .tl__node { border-color: var(--plum-700); }
+.tl__it.lit .tl__node b { color: var(--plum-900); }
+.tl__it:last-child.lit .tl__node { background: var(--plum-900); border-color: var(--plum-900); }
+.tl__it:last-child.lit .tl__node b { color: var(--moss-300); }
+.tl h3 {
+  margin: 0 0 8px; font-family: var(--serif); font-size-adjust: 0.426;
+  font-weight: 350; font-size: 19px; line-height: 1.2; letter-spacing: -0.006em;
+  color: var(--plum-900);
+}
+.tl p { margin: 0; font-size: 15px; line-height: 1.45; color: var(--graph); }
+.tl__foot {
+  margin: 48px 0 0; padding: 12px 0 12px 16px; max-width: 56ch;
+  border-left: 3px solid var(--plum-700); font-size: 17px; line-height: 1.55;
+}
+@media (max-width: 900px) {
+  .tl { grid-template-columns: 1fr; gap: 24px 0; }
+  .tl::before {
+    left: 24px; right: auto; top: 24px; bottom: 24px; width: 1px; height: auto;
+    transform: scaleY(0); transform-origin: top;
+  }
+  .tl__it { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 4px 16px; }
+  .tl__node { margin-bottom: 0; grid-row: span 2; }
+}
+
+/* ---- audit cards */
+.agrid { display: grid; gap: 24px; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 1000px) { .agrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .agrid { grid-template-columns: 1fr; } }
+.acard {
+  border: 1px solid var(--champ-700); background: var(--white); padding: 24px;
+  transition: border-color 200ms var(--ease), transform 200ms var(--ease);
+}
+.acard:hover { border-color: var(--plum-700); transform: translateY(-3px); }
+.acard__ix {
+  display: block; margin-bottom: 16px;
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
+  font-size: 28px; letter-spacing: 0.004em; line-height: 0.98;
+  color: var(--moss-700);
+}
+.acard h3 {
+  margin: 0 0 8px; font-family: var(--serif); font-size-adjust: 0.426;
+  font-weight: 350; font-size: 19px; line-height: 1.2; letter-spacing: -0.006em;
+  color: var(--plum-900);
+}
+.acard p { margin: 0; font-size: 15px; line-height: 1.45; color: var(--graph); }
+
+/* ---- platform plates */
+.pgrid {
+  list-style: none; margin: 0 0 48px; padding: 0;
+  display: grid; gap: 24px; grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+@media (max-width: 1100px) { .pgrid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 640px) {
+  .pgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  /* five into two columns strands the fifth beside a hole; it closes the set
+     full-width instead */
+  .pcard:nth-child(5) { grid-column: 1 / -1; }
+}
+.pcard {
+  border: 1px solid var(--champ-700); background: var(--ivory); padding: 24px 16px 16px;
+  transition: border-color 200ms var(--ease), transform 200ms var(--ease);
+}
+.pcard:hover { border-color: var(--plum-700); transform: translateY(-3px); }
+.pcard__no {
+  display: inline-grid; place-items: center; min-width: 32px; height: 32px;
+  padding: 0 8px; margin-bottom: 16px; border-radius: 50%;
+  background: var(--plum-900); color: var(--moss-300);
   font-family: var(--mono); font-size-adjust: 0.516; font-size: 13px;
-  letter-spacing: 0.012em; text-transform: uppercase; color: var(--plum-900);
+  letter-spacing: 0.012em;
 }
-.engine__d { font-size: 15px; line-height: 1.55; color: var(--graph); }
-/* .pull carries no margin of its own — it relies on a flow parent that supplies
-   one. Here it sits directly in .wrap, where its last line landed on top of the
-   paragraph beneath it. */
-.engines + .pull { margin: 0 0 24px; }
+.pcard h3 {
+  margin: 0 0 4px; font-family: var(--serif); font-size-adjust: 0.426;
+  font-weight: 350; font-size: 19px; line-height: 1.2; letter-spacing: -0.006em;
+  color: var(--plum-900);
+}
+.pcard p { margin: 0; font-size: 13px; line-height: 1.45; color: var(--graph); }
 
+/* ---- the report as an object */
+.report {
+  margin: 0; align-self: center; width: 100%; max-width: 420px; justify-self: end;
+  border: 1px solid var(--plum-700); background: var(--white); padding: 24px;
+  box-shadow: 0 18px 44px -30px rgb(46 28 41 / 0.5);
+}
+.report__cap { color: var(--plum-700); margin-bottom: 16px; }
+.report__row { display: grid; grid-template-columns: 128px minmax(0, 1fr) auto;
+  gap: 12px; align-items: center; padding: 8px 0; }
+.report__row--one { border-bottom: 1px solid var(--champ-700); padding-bottom: 16px; margin-bottom: 8px; }
+.report__lab {
+  font-family: var(--mono); font-size-adjust: 0.516; font-size: 11px;
+  letter-spacing: 0.012em; text-transform: uppercase; color: var(--graph-400);
+}
+.report__row--one .report__lab { color: var(--plum-900); }
+.report__bar {
+  display: block; height: 9px; transform-origin: left;
+  background: color-mix(in srgb, var(--champ-700) 72%, var(--ivory));
+}
+.report__bar--big { height: 16px; background: var(--plum-700); }
+.report__bar--sh { width: 72%; }
+.report__bar--sh2 { width: 48%; }
+.report__delta {
+  font-size: 17px; color: var(--moss-700); font-weight: 600; line-height: 0.98;
+}
+.report__note { margin: 16px 0 0; font-size: 13px; line-height: 1.45; color: var(--graph-400); }
+@media (max-width: 800px) { .report { justify-self: start; } }
+
+/* =============================== motion. Drawn, sequenced, never glowed. */
 @media (prefers-reduced-motion: no-preference) {
-  /* THE HERO SEQUENCE — question wipes in, the answer builds line by line,
-     then the citations land and ours is the one that is named. The order is
-     the whole point, so the delays are a script, not a stagger. */
+  /* marquee */
+  .qmq__track { animation: qmq 36s linear infinite; }
+  @keyframes qmq { to { transform: translateX(-50%); } }
+
+  /* viewfinder corners draw on arrival */
+  html.js .tickbox::before, html.js .tickbox::after { opacity: 0; transform: scale(0.4); }
+  html.js .tickbox::before { transform-origin: top left; }
+  html.js .tickbox::after { transform-origin: bottom right; }
+  html.js .tickbox.in::before, html.js .tickbox.in::after {
+    animation: tick-corner 0.5s var(--ease) 0.35s forwards;
+  }
+  @keyframes tick-corner { to { opacity: 1; transform: scale(1); } }
+
+  /* the hero sequence: question wipes in, the answer builds, the citations
+     land, and ours is the one that is named */
   html.js .qa__q p { clip-path: inset(0 100% 0 0); }
   html.js .qa.in .qa__q p { animation: qa-wipe 0.75s var(--ease) 0.2s forwards; }
   @keyframes qa-wipe { to { clip-path: inset(0 0 0 0); } }
-
   html.js .qa__tag--a, html.js .qa__ln, html.js .qa__chip { opacity: 0; }
   html.js .qa.in .qa__tag--a { animation: qa-fade 0.4s var(--ease) 1s forwards; }
   html.js .qa.in .qa__ln { animation: qa-line 0.5s var(--ease) forwards; }
@@ -3752,44 +3933,69 @@ h1:has(.hl--sub) .uline::after { display: none; }
   @keyframes qa-line { from { opacity: 0; transform: scaleX(0); } to { opacity: 1; transform: scaleX(1); } }
   @keyframes qa-pop  { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: none; } }
 
-  /* THE DOORS — rows arrive in PAIRS, left and right together, so the eye
-     compares one question at a time instead of reading two lists. */
+  /* ghost numerals rise */
+  html.js .shead .shead__no { opacity: 0; transform: translateY(24px); }
+  html.js .shead.in .shead__no { animation: ghost-rise 0.7s var(--ease) 0.1s forwards; }
+  @keyframes ghost-rise { to { opacity: 1; transform: translateY(0.06em); } }
+  /* stacked header: the 0.06em optical nudge belongs beside the h2, not above
+     it — with fill:forwards it would re-introduce the overlap the 560px
+     media fix removed */
+  @media (max-width: 560px) {
+    html.js .shead.in .shead__no { animation-name: ghost-rise-m; }
+  }
+  @keyframes ghost-rise-m { to { opacity: 1; transform: none; } }
+
+  /* the doors: rows arrive in PAIRS so the eye compares one question at a
+     time; the slash medallion cuts in once both panels stand */
   html.js .doors .door__dl dt, html.js .doors .door__dl dd { opacity: 0; }
-  html.js .doors.in .door__dl dt { animation: door-in 0.5s var(--ease) both; }
-  html.js .doors.in .door__dl dd { animation: door-in 0.5s var(--ease) both; }
-  html.js .doors.in .door__dl dt:nth-of-type(1), html.js .doors.in .door__dl dd:nth-of-type(1) { animation-delay: 0.15s; }
-  html.js .doors.in .door__dl dt:nth-of-type(2), html.js .doors.in .door__dl dd:nth-of-type(2) { animation-delay: 0.29s; }
-  html.js .doors.in .door__dl dt:nth-of-type(3), html.js .doors.in .door__dl dd:nth-of-type(3) { animation-delay: 0.43s; }
-  html.js .doors.in .door__dl dt:nth-of-type(4), html.js .doors.in .door__dl dd:nth-of-type(4) { animation-delay: 0.57s; }
-  html.js .doors.in .door__dl dt:nth-of-type(5), html.js .doors.in .door__dl dd:nth-of-type(5) { animation-delay: 0.71s; }
-  @keyframes door-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  html.js .doors.in .door__dl dt, html.js .doors.in .door__dl dd { animation: rise-in 0.5s var(--ease) both; }
+  html.js .doors.in .door__dl dt:nth-of-type(1), html.js .doors.in .door__dl dd:nth-of-type(1) { animation-delay: 0.2s; }
+  html.js .doors.in .door__dl dt:nth-of-type(2), html.js .doors.in .door__dl dd:nth-of-type(2) { animation-delay: 0.36s; }
+  html.js .doors.in .door__dl dt:nth-of-type(3), html.js .doors.in .door__dl dd:nth-of-type(3) { animation-delay: 0.52s; }
+  html.js .doors.in .door__dl dt:nth-of-type(4), html.js .doors.in .door__dl dd:nth-of-type(4) { animation-delay: 0.68s; }
+  html.js .door__slash { transform: skewX(-20deg) scaleY(0); }
+  html.js .doors.in .door__slash { animation: slash-cut 0.4s var(--ease) 0.9s forwards; }
+  @keyframes slash-cut { to { transform: skewX(-20deg) scaleY(1); } }
+  @keyframes rise-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 
-  /* THE SPINE — the rule draws the length of the method as you arrive at it. */
-  html.js .spine.in::before { animation: spine-draw 1.5s var(--ease) 0.15s forwards; }
-  @keyframes spine-draw { to { transform: scaleY(1); } }
+  /* the timeline draws itself, then each node lights in order */
+  html.js .tl.in::before { animation: tl-draw 1.2s var(--ease) 0.1s forwards; }
+  @keyframes tl-draw { to { transform: scaleX(1); } }
+  @media (max-width: 900px) {
+    html.js .tl.in::before { animation-name: tl-draw-v; }
+    @keyframes tl-draw-v { to { transform: scaleY(1); } }
+  }
+  html.js .tl .tl__it { opacity: 0; transform: translateY(12px); }
+  html.js .tl.in .tl__it { animation: rise-in 0.55s var(--ease) both; }
+  html.js .tl.in .tl__it:nth-child(1) { animation-delay: 0.2s; }
+  html.js .tl.in .tl__it:nth-child(2) { animation-delay: 0.42s; }
+  html.js .tl.in .tl__it:nth-child(3) { animation-delay: 0.64s; }
+  html.js .tl.in .tl__it:nth-child(4) { animation-delay: 0.86s; }
+  html.js .tl.in .tl__it:nth-child(5) { animation-delay: 1.08s; }
 
-  /* THE ENGINES — ruled rows wipe their own rule in, left to right. */
-  html.js .engines .engine { position: relative; }
-  html.js .engines .engine::after {
-    content: ""; position: absolute; left: 0; right: 0; top: -1px; height: 1px;
-    background: var(--plum-700); transform: scaleX(0); transform-origin: left;
-  }
-  html.js .engines.in .engine::after { animation: eng-rule 0.6s var(--ease) both; }
-  html.js .engines.in .engine:nth-child(2)::after { animation-delay: 0.1s; }
-  html.js .engines.in .engine:nth-child(3)::after { animation-delay: 0.2s; }
-  html.js .engines.in .engine:nth-child(4)::after { animation-delay: 0.3s; }
-  html.js .engines.in .engine:nth-child(5)::after { animation-delay: 0.4s; }
-  @keyframes eng-rule {
-    0%   { transform: scaleX(0); opacity: 1; }
-    55%  { transform: scaleX(1); opacity: 1; }
-    100% { transform: scaleX(1); opacity: 0; }
-  }
+  /* cards rise in sequence */
+  html.js .agrid .acard, html.js .pgrid .pcard { opacity: 0; transform: translateY(12px); }
+  html.js .agrid.in .acard, html.js .pgrid.in .pcard { animation: rise-in 0.55s var(--ease) both; }
+  html.js .agrid.in .acard:nth-child(1), html.js .pgrid.in .pcard:nth-child(1) { animation-delay: 0.1s; }
+  html.js .agrid.in .acard:nth-child(2), html.js .pgrid.in .pcard:nth-child(2) { animation-delay: 0.22s; }
+  html.js .agrid.in .acard:nth-child(3), html.js .pgrid.in .pcard:nth-child(3) { animation-delay: 0.34s; }
+  html.js .agrid.in .acard:nth-child(4), html.js .pgrid.in .pcard:nth-child(4) { animation-delay: 0.46s; }
+  html.js .pgrid.in .pcard:nth-child(5) { animation-delay: 0.58s; }
+
+  /* the report: line one lands first, hard; the diagnostics follow under it */
+  html.js .report .report__bar, html.js .report .report__delta { opacity: 0; }
+  html.js .report.in .report__bar { animation: qa-line 0.55s var(--ease) forwards; }
+  html.js .report.in .report__bar--big { animation-delay: 0.25s; }
+  html.js .report.in .report__row:nth-child(3) .report__bar { animation-delay: 0.6s; }
+  html.js .report.in .report__row:nth-child(4) .report__bar { animation-delay: 0.72s; }
+  html.js .report.in .report__row:nth-child(5) .report__bar { animation-delay: 0.84s; }
+  html.js .report.in .report__delta { animation: qa-pop 0.4s var(--ease) 0.9s forwards; }
 }
-/* Reduced motion: every sequence above resolves to its END STATE, so the
-   figure still reads as a cited answer rather than an empty card. */
+/* Reduced motion: every sequence resolves to its end state. */
 @media (prefers-reduced-motion: reduce) {
+  .qmq__track { animation: none; }
   .qa__q p { clip-path: none; }
-  .qa__tag--a, .qa__ln, .qa__chip { opacity: 1; }
-  .spine::before { transform: scaleY(1); }
-  .spine__no { border-color: var(--plum-700); color: var(--plum-900); }
+  .qa__tag--a, .qa__ln, .qa__chip, .report__bar, .report__delta { opacity: 1; }
+  .tl::before { transform: none; }
+  .door__slash { transform: skewX(-20deg); }
 }

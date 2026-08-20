@@ -3599,3 +3599,197 @@ h1:has(.hl--sub) .uline::after { display: none; }
    carries its own character without being letterspaced), and labels pin to
    the top of their shared row so a future wrap can never stagger the line. */
 .mega__col > .lab { align-self: start; }
+
+
+/* =================================================== SEO & AI SEARCH page
+   Built 20 Aug 2026. The reference the founder supplied (impressive.com.au)
+   is a near-black page with hot-pink glowing pills and sparkle icons — the
+   precise house style R9 forbids us, in a hue that is also the banned crimson.
+   So its CONTENT SPINE is what was learned (the shift, the method, the
+   engines) and none of its surface. Everything here is ivory, ink, plum and
+   acid, in the three faces the site already owns, and every motion is DRAWN
+   or WIPED rather than glowed. Nothing pulses for decoration. */
+
+/* ---- the hero figure. It is the page's argument, not an ornament: a
+   question resolves into a generated answer, and the answer names its
+   sources — one of which is the client. Type and rules only, no illustration. */
+.qa {
+  margin: 0; align-self: center; width: 100%; max-width: 460px;
+  border: 1px solid var(--champ-700); background: var(--white);
+  padding: 24px;
+}
+/* Two classes, deliberately: the card sits inside .hero, and `.hero .lab`
+   paints labels ivory for the dark ground — which on this WHITE card rendered
+   the caption invisible. Measured, not guessed. */
+.qa .qa__cap { margin: 0 0 16px; color: var(--moss-700); }
+.qa__q, .qa__a { display: flex; gap: 12px; align-items: flex-start; }
+.qa__q { padding-bottom: 16px; border-bottom: 1px solid var(--champ-700); }
+.qa__a { padding-top: 16px; }
+.qa__tag {
+  flex: none; width: 24px; height: 24px; display: grid; place-items: center;
+  font-family: var(--mono); font-size-adjust: 0.516; font-size: 11px;
+  letter-spacing: 0.012em; border: 1px solid var(--champ-700);
+  color: var(--graph-400);
+}
+.qa__tag--a { border-color: var(--plum-700); color: var(--plum-700); }
+.qa__q p { margin: 0; font-size: 15px; line-height: 1.45; color: var(--ink); }
+/* The answer is deliberately UNREADABLE — bars, not words. Putting fake
+   sentences in an AI answer on our own site would be inventing a quotation. */
+.qa__a p { margin: 0; flex: 1 1 auto; display: flex; flex-direction: column; gap: 8px; }
+.qa__ln {
+  display: block; height: 9px; transform-origin: left;
+  background: color-mix(in srgb, var(--champ-700) 72%, var(--ivory));
+}
+.qa__ln--sh { width: 58%; }
+.qa__cites { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+.qa__chip {
+  display: inline-flex; align-items: center; gap: 8px;
+  height: 28px; padding: 0 12px; border: 1px solid var(--champ-700);
+  font-family: var(--mono); font-size-adjust: 0.516; font-size: 11px;
+  letter-spacing: 0.012em; color: var(--graph-400);
+}
+.qa__chip:empty { width: 88px; }
+.qa__chip--n:empty { width: 64px; }
+.qa__chip--us { border-color: var(--plum-700); color: var(--plum-900); }
+.qa__dot { flex: none; width: 6px; height: 6px; border-radius: 50%; background: var(--moss-700); }
+
+/* ---- the two doors. Same five questions, two different answers — the
+   comparison only works if the rows line up, so both panels share one grid. */
+.doors { display: grid; gap: 24px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 800px) { .doors { grid-template-columns: 1fr; } }
+.door { border: 1px solid var(--champ-700); background: var(--white); padding: 32px 24px; }
+.door--ai { border-color: var(--plum-700); }
+.door__h {
+  margin: 0; font-family: var(--serif); font-size-adjust: 0.426;
+  font-weight: 350; font-size: 25px; line-height: 1.2;
+  letter-spacing: -0.01em; color: var(--plum-900);
+}
+.door__sub {
+  margin: 8px 0 24px; font-family: var(--mono); font-size-adjust: 0.516;
+  font-size: 11px; letter-spacing: 0.012em; text-transform: uppercase;
+  color: var(--graph-400);
+}
+.door--ai .door__sub { color: var(--plum-700); }
+.door__dl { margin: 0; }
+.door__dl dt {
+  font-family: var(--mono); font-size-adjust: 0.516; font-size: 11px;
+  letter-spacing: 0.012em; text-transform: uppercase; color: var(--graph-400);
+  border-top: 1px solid var(--champ-700); padding-top: 12px;
+}
+.door__dl dd { margin: 0 0 12px; font-size: 15px; line-height: 1.45; color: var(--ink); }
+
+/* ---- the five-step spine. The rule is the method: it draws top to bottom,
+   and each step's number only takes the plum once its own row has arrived. */
+.spine { list-style: none; margin: 32px 0 0; padding: 0; position: relative; }
+.spine::before {
+  content: ""; position: absolute; left: 20px; top: 20px; bottom: 20px;
+  width: 1px; background: var(--champ-700);
+  transform: scaleY(0); transform-origin: top;
+}
+.spine__it { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 24px; padding-bottom: 32px; }
+.spine__it:last-child { padding-bottom: 0; }
+.spine__no {
+  position: relative; z-index: 1;
+  width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--ivory); border: 1px solid var(--champ-700);
+  font-family: var(--mono); font-size-adjust: 0.516; font-size: 13px;
+  letter-spacing: 0.012em; color: var(--graph-400);
+  transition: border-color 320ms var(--ease), color 320ms var(--ease);
+}
+.spine__it.in .spine__no { border-color: var(--plum-700); color: var(--plum-900); }
+.spine__body h3 {
+  margin: 4px 0 8px; font-family: var(--serif); font-size-adjust: 0.426;
+  font-weight: 350; font-size: 25px; line-height: 1.2; letter-spacing: -0.01em;
+  color: var(--plum-900);
+}
+.spine__body p { margin: 0; max-width: 64ch; }
+/* the two statements that bracket the method */
+.spine__band {
+  margin: 0 0 32px; padding: 12px 0 12px 16px; max-width: 64ch;
+  border-left: 3px solid var(--moss-700); font-size: 17px; line-height: 1.55;
+}
+.spine__band--end { margin: 32px 0 0; border-left-color: var(--plum-700); }
+
+/* ---- the engines. A list, ruled, because five of them in cards would be
+   five boxes saying nothing the words do not already say. */
+.engines { list-style: none; margin: 0 0 32px; padding: 0; }
+.engine {
+  display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 24px;
+  padding: 16px 0; border-top: 1px solid var(--champ-700);
+}
+.engine:last-child { border-bottom: 1px solid var(--champ-700); }
+@media (max-width: 700px) { .engine { grid-template-columns: 1fr; gap: 4px; } }
+.engine__k {
+  font-family: var(--mono); font-size-adjust: 0.516; font-size: 13px;
+  letter-spacing: 0.012em; text-transform: uppercase; color: var(--plum-900);
+}
+.engine__d { font-size: 15px; line-height: 1.55; color: var(--graph); }
+/* .pull carries no margin of its own — it relies on a flow parent that supplies
+   one. Here it sits directly in .wrap, where its last line landed on top of the
+   paragraph beneath it. */
+.engines + .pull { margin: 0 0 24px; }
+
+@media (prefers-reduced-motion: no-preference) {
+  /* THE HERO SEQUENCE — question wipes in, the answer builds line by line,
+     then the citations land and ours is the one that is named. The order is
+     the whole point, so the delays are a script, not a stagger. */
+  html.js .qa__q p { clip-path: inset(0 100% 0 0); }
+  html.js .qa.in .qa__q p { animation: qa-wipe 0.75s var(--ease) 0.2s forwards; }
+  @keyframes qa-wipe { to { clip-path: inset(0 0 0 0); } }
+
+  html.js .qa__tag--a, html.js .qa__ln, html.js .qa__chip { opacity: 0; }
+  html.js .qa.in .qa__tag--a { animation: qa-fade 0.4s var(--ease) 1s forwards; }
+  html.js .qa.in .qa__ln { animation: qa-line 0.5s var(--ease) forwards; }
+  html.js .qa.in .qa__ln:nth-child(1) { animation-delay: 1.15s; }
+  html.js .qa.in .qa__ln:nth-child(2) { animation-delay: 1.28s; }
+  html.js .qa.in .qa__ln:nth-child(3) { animation-delay: 1.41s; }
+  html.js .qa.in .qa__ln:nth-child(4) { animation-delay: 1.54s; }
+  html.js .qa.in .qa__chip { animation: qa-pop 0.45s var(--ease) forwards; }
+  html.js .qa.in .qa__chip--us { animation-delay: 1.95s; }
+  html.js .qa.in .qa__chip:nth-child(2) { animation-delay: 2.12s; }
+  html.js .qa.in .qa__chip:nth-child(3) { animation-delay: 2.24s; }
+  @keyframes qa-fade { to { opacity: 1; } }
+  @keyframes qa-line { from { opacity: 0; transform: scaleX(0); } to { opacity: 1; transform: scaleX(1); } }
+  @keyframes qa-pop  { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: none; } }
+
+  /* THE DOORS — rows arrive in PAIRS, left and right together, so the eye
+     compares one question at a time instead of reading two lists. */
+  html.js .doors .door__dl dt, html.js .doors .door__dl dd { opacity: 0; }
+  html.js .doors.in .door__dl dt { animation: door-in 0.5s var(--ease) both; }
+  html.js .doors.in .door__dl dd { animation: door-in 0.5s var(--ease) both; }
+  html.js .doors.in .door__dl dt:nth-of-type(1), html.js .doors.in .door__dl dd:nth-of-type(1) { animation-delay: 0.15s; }
+  html.js .doors.in .door__dl dt:nth-of-type(2), html.js .doors.in .door__dl dd:nth-of-type(2) { animation-delay: 0.29s; }
+  html.js .doors.in .door__dl dt:nth-of-type(3), html.js .doors.in .door__dl dd:nth-of-type(3) { animation-delay: 0.43s; }
+  html.js .doors.in .door__dl dt:nth-of-type(4), html.js .doors.in .door__dl dd:nth-of-type(4) { animation-delay: 0.57s; }
+  html.js .doors.in .door__dl dt:nth-of-type(5), html.js .doors.in .door__dl dd:nth-of-type(5) { animation-delay: 0.71s; }
+  @keyframes door-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+  /* THE SPINE — the rule draws the length of the method as you arrive at it. */
+  html.js .spine.in::before { animation: spine-draw 1.5s var(--ease) 0.15s forwards; }
+  @keyframes spine-draw { to { transform: scaleY(1); } }
+
+  /* THE ENGINES — ruled rows wipe their own rule in, left to right. */
+  html.js .engines .engine { position: relative; }
+  html.js .engines .engine::after {
+    content: ""; position: absolute; left: 0; right: 0; top: -1px; height: 1px;
+    background: var(--plum-700); transform: scaleX(0); transform-origin: left;
+  }
+  html.js .engines.in .engine::after { animation: eng-rule 0.6s var(--ease) both; }
+  html.js .engines.in .engine:nth-child(2)::after { animation-delay: 0.1s; }
+  html.js .engines.in .engine:nth-child(3)::after { animation-delay: 0.2s; }
+  html.js .engines.in .engine:nth-child(4)::after { animation-delay: 0.3s; }
+  html.js .engines.in .engine:nth-child(5)::after { animation-delay: 0.4s; }
+  @keyframes eng-rule {
+    0%   { transform: scaleX(0); opacity: 1; }
+    55%  { transform: scaleX(1); opacity: 1; }
+    100% { transform: scaleX(1); opacity: 0; }
+  }
+}
+/* Reduced motion: every sequence above resolves to its END STATE, so the
+   figure still reads as a cited answer rather than an empty card. */
+@media (prefers-reduced-motion: reduce) {
+  .qa__q p { clip-path: none; }
+  .qa__tag--a, .qa__ln, .qa__chip { opacity: 1; }
+  .spine::before { transform: scaleY(1); }
+  .spine__no { border-color: var(--plum-700); color: var(--plum-900); }
+}

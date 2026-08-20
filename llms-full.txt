@@ -418,6 +418,128 @@ Book the Proof Audit
 
 ---
 
+# SEO &amp; AI Search — SEMORA STUDIO Melbourne
+URL: https://www.semora.com.au/seo-ai-search
+Summary: Be the source, not the result. Technical audit, keyword research, fixes, on-page work and content — five steps, reported against one commercial number.
+
+Search & AI Visibility
+
+## Be the source, not the result .
+
+A ranked list rewards the page that wins. A generated answer rewards the source it trusts. Most sites are built for the first and invisible to the second. We work both. One audit, one keyword map, and a single commercial number that you agree with us at the start.
+
+Get the free visibility report Or score yourself first →
+
+What being cited looks like Qwho does marketing for commercial property firms in melbourne?
+
+A
+
+SEMORA STUDIO
+
+01 / The shift
+
+### Search has two doors now.
+
+Your buyer still types into Google. More and more, what comes back is an answer rather than a list, and that answer names a handful of sources. Two competitions. Won two different ways. A site built only for the first is not ranked low in the second. It is absent.
+
+The ranked list
+
+You compete to be picked.
+
+What the buyer doesTypes a phrase, scans the page What comes backAn ordered list of pages What decides itRelevance, authority, technical health Winning looks likeYour page in the top handful What it producesClicks, which you can count
+
+The generated answer
+
+You compete to be trusted.
+
+What the buyer doesAsks a question in full sentences What comes backA written answer citing a few sources What decides itEntity clarity, first-party evidence, corroboration Winning looks likeYour firm named inside the answer What it producesEnquiries that arrive half-convinced
+
+02 / The method
+
+### Five steps, in this order.
+
+Nothing starts until there is a baseline, and nothing counts until it reaches the number you agreed. In between sit the five steps below, in the order they run, each one producing a document you can read and keep. No mystery, and no proprietary black box with a trademark on it.
+
+Before step one: no work without a baseline. If it cannot be measured, we write that down before we start, not after.
+
+01
+
+### Technical audit
+
+What the site is built on, how fast it loads, what Google has actually indexed, and whether the architecture can rank at all. We crawl it and measure it. Then we rank what is broken by what it is costing you. Easy is not a ranking.
+
+02
+
+### Keyword research
+
+What your buyers type, not what your industry calls itself. B2B and B2C behave differently and get researched differently. We mine the queries you already receive, read the live results by hand, and hand back a map with one owner page per term.
+
+03
+
+### Technical fixes
+
+The audit produces a list. We work it in order. Indexability first, because optimising a page Google cannot index is unpaid work that you are still paying for. Every fix is closed by re-measuring it, never by someone saying it is done.
+
+04
+
+### On-page optimisation
+
+Each page is built for the one term it owns: title, headings, the first hundred words, the body, internal links, image alt text, structured data. One page, one primary term. Six pages competing for one phrase is a problem you paid to create.
+
+05
+
+### Content & authority
+
+Two kinds. Evergreen pages that convert the demand already there, and editorial that earns citations. Authority comes from original research, digital PR and real partnerships. Never bought links. The penalty for those lands on your domain, not ours.
+
+After step five: reported against one commercial number, monthly. Rankings explain the number. They never get to be the number.
+
+03 / Step one, in detail
+
+### What does the technical audit actually check?
+
+Platform · What it is built on, who can deploy a change, and how long that takes. This decides what is fixable at all. It also sets your timeline. ·
+
+Speed · Core Web Vitals, mobile first, with lab and real-user data kept separate. Where a site has too little traffic for real-user data we say so, rather than quoting a lab score as what your buyers feel. ·
+
+Indexation · What Google has actually indexed, and the reason it gives for everything it has not. Read from Search Console, never a site: count, which is an estimate and does not belong in a report. ·
+
+Architecture · Crawl depth, internal linking, orphan pages, duplicate URLs, redirect chains, mobile parity, structured data, and whether your content exists before JavaScript runs. ·
+
+04 / The surfaces
+
+### Where the work has to land.
+
+Same evidence, five different front doors. They are not five projects. Entity clarity and first-party proof feed all of them, which is why the audit and the keyword map are done once.
+
+GoogleRanked results, and the local map pack where the category has one.
+
+AI Overviews & AI ModeGoogle's own generated answers, drawn from the index you already sit in.
+
+ChatGPTWhere a buyer now asks the question they used to type in fragments.
+
+PerplexityAnswer-first, citation-heavy — the clearest read on whether you are a trusted source.
+
+CopilotMicrosoft's answer layer, reported through Bing Webmaster Tools.
+
+No platform sells a place in an AI answer. Anyone offering you one is selling something else.
+
+Eligibility, entity clarity and evidence can all be worked, then measured against a fixed set of buyer questions asked in clean sessions with the wording written down in advance so the next run stays comparable with the last. It is the same instrument we run on ourselves every month.
+
+05 / The number
+
+### How is any of this reported?
+
+The first line of your report is a commercial number. Qualified enquiries, pipeline, new customers: whichever one you agreed at the start. That is the thing you actually bought. Positions, impressions and clicks sit underneath it, as the explanation.
+
+A client who ranked first for forty terms and booked no more work had a bad quarter, whatever the ranking report says, and a report built to make a quarter like that look healthy is part of the reason this industry carries the reputation it does. We would say so. First line, plain words, then what we were changing next month and what it should show up as, so you can hold us to it at ninety days. On the record.
+
+Every result we publish carries its starting figure, its finishing figure, the dates and the method. Where there is no result yet, the page says so rather than implying one. That rule holds here too. See what is published →
+
+Get the free visibility report Or tell us what you need built →
+
+---
+
 # The Proof Audit — SEMORA STUDIO Melbourne
 URL: https://www.semora.com.au/proof-audit
 Summary: The paid diagnostic and the recommended first step. Two weeks, $3,000 + GST, optional, credited in full.

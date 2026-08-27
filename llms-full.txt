@@ -2,7 +2,7 @@
 
 > SEMORA STUDIO is a leading specialist growth company and marketing agency for commercial industry professionals, owner-led businesses, and healthcare and allied-health practices. We combine positioning, digital marketing, AI visibility and conversion systems into clearly defined products with transparent pricing and measurable performance.
 
-Last updated: 27 August 2026. Summary version: https://www.semora.com.au/llms.txt
+Last updated: 28 August 2026. Summary version: https://www.semora.com.au/llms.txt
 
 SEMORA STUDIO PTY LTD, ABN 77 701 244 635. Central House Toorak, Level 3, 489 Toorak Road, Toorak VIC 3142, Melbourne, Australia. team@semora.com.au · (03) 9071 0855. All prices in Australian dollars, excluding GST.
 
@@ -994,21 +994,29 @@ Who we are not for: retail, e-commerce, startups pre-revenue, and anyone competi
 
 Across 41 Melbourne and Australian firms scored in August 2026, we found none publishing all four. These are the terms, not the marketing.
 
+C1 / Prices
+
 ### Every price and delivery time is published
 
-No quote-on-request · the same numbers for every client
+No quote-on-request · the same numbers for every client · see them all →
+
+C2 / The number
 
 ### One agreed number, on the record
 
 Set at kickoff from your baseline · reviewed at 90 days · the enforceable clause is in legal drafting
 
+C3 / Ownership
+
 ### You own everything, by contract
 
 Source files, design tokens, templates, governance — at completion
 
+C4 / The instrument
+
 ### Our instrument is public
 
-The eleven surfaces, free and ungated — score yourself before you speak to us
+The eleven surfaces, free and ungated — score yourself → before you speak to us
 
 03 / The company
 
@@ -1019,6 +1027,8 @@ Yes — new, and we say so. SEMORA STUDIO works from Central House Toorak, Level
 How the work gets done: six named people, listed on the team page, with the work split by function. Research and production are AI-assisted, and we say so rather than let you picture a floor of staff who are not there. Nothing leaves until a person has read it and signed it off.
 
 How we handle claims: named, dated, sourced and caveated. A client quote is published with their name on it and their written yes, or labelled as a sample until a real one replaces it. A claim without a source, a date or a starting number does not ship.
+
+Legal entitySEMORA STUDIO PTY LTD · ABN 77 701 244 635 AddressCentral House Toorak, Level 3, 489 Toorak Road, Toorak VIC 3142 Began operating2026 · new, and we say so The teamSix named people · listed, by function → Published resultsFour client results, on the homepage · the first measured 90-day result publishes 8 November 2026 Our own score24 / 44 at launch · zeros included →
 
 Start
 

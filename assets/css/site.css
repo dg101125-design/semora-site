@@ -2628,6 +2628,28 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
 .form-done p { margin: 0; color: var(--graph); }
 
 
+
+/* ---------------------------------------------- about: the commitments */
+/* The four published commitments as cards. The acid corner tick is drawn
+   geometry (a notch, not an icon); indexes are mono; claims unchanged. */
+.cmt { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-5); }
+.cmt__card { position: relative; background: var(--ivory);
+             border: 1px solid var(--champ-700);
+             padding: var(--sp-6) var(--sp-6) var(--sp-5); }
+.cmt__card::before { content: ""; position: absolute; top: 0; left: 0;
+             width: 14px; height: 14px; background: var(--moss-300);
+             clip-path: polygon(0 0, 100% 0, 0 100%); }
+.cmt__ix { font-family: var(--mono); font-size-adjust: 0.516;
+           font-size: var(--t-label); letter-spacing: var(--tr-label);
+           color: var(--graph-400); display: block;
+           margin-bottom: var(--sp-4); }
+.cmt__card h3 { margin: 0 0 var(--sp-2);
+                font-family: var(--serif); font-size-adjust: 0.426;
+                font-size: var(--t-h2); line-height: var(--lh-h2);
+                font-weight: var(--w-h2); letter-spacing: var(--tr-h2); }
+.cmt__card .unit { display: block; }
+@media (max-width: 760px) { .cmt { grid-template-columns: 1fr; } }
+
 /* ---------------------------------------------- method: the vs ledger */
 /* The 10-area comparison, drawn as a ledger instead of a default table:
    mono area rail, muted "them" column, the "us" column carried on a plum

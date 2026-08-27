@@ -905,7 +905,7 @@ html.lr .site-head__word::before {
   font-family: var(--sans) !important; font-size: 0.82rem !important;
   letter-spacing: 0.004em !important; text-transform: none !important;
   font-weight: 400 !important; line-height: 1.55;
-  color: var(--ink) !important; border-bottom: 0 !important;
+  color: var(--plum-ink) !important; border-bottom: 0 !important;
   border-radius: 2px;
   transition: color 140ms var(--ease), background 140ms var(--ease);
 }
@@ -992,7 +992,7 @@ html.lr .site-head__word::before {
 .cs-num__v {
   font-family: var(--serif); font-size-adjust: 0.426; font-weight: 300;
   font-size: clamp( 28px, 3vw, 34px); line-height: 1.14;
-  color: var(--ink); margin: 0 0 8px;
+  color: var(--plum-ink); margin: 0 0 8px;
 }
 .cs-num__v strong { font-weight: 500; }
 .cs-arrow { color: var(--moss-700); padding: 0 0.15em; }
@@ -3713,7 +3713,7 @@ h1:has(.hl--sub) .uline::after { display: none; }
   color: var(--graph-400);
 }
 .qa__tag--a { border-color: var(--plum-700); color: var(--plum-700); }
-.qa__q p { margin: 0; font-size: 15px; line-height: 1.45; color: var(--ink); }
+.qa__q p { margin: 0; font-size: 15px; line-height: 1.45; color: var(--plum-ink); }
 .qa__a p { margin: 0; flex: 1 1 auto; display: flex; flex-direction: column; gap: 8px; }
 .qa__ln {
   display: block; height: 9px; transform-origin: left;
@@ -3817,7 +3817,7 @@ h1:has(.hl--sub) .uline::after { display: none; }
 }
 .door__dl dd {
   margin: 0; padding-bottom: 12px; font-size: 17px; line-height: 1.45;
-  color: var(--ink); border-bottom: 1px solid var(--champ-700);
+  color: var(--plum-ink); border-bottom: 1px solid var(--champ-700);
 }
 .door__dl dd:last-of-type { border-bottom: 0; padding-bottom: 0; }
 .door--ai .door__dl dd strong { color: var(--plum); }

@@ -39,6 +39,11 @@
       "source": "/pricing",
       "destination": "/quote",
       "permanent": true
+    },
+    {
+      "source": "/clients",
+      "destination": "/",
+      "permanent": true
     }
   ],
   "rewrites": [

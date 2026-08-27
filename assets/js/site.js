@@ -26,35 +26,23 @@
     els.forEach(function (el) { el.classList.add("in"); });
   }
 
+  /* Fallback: any render that never scrolls (print pipelines, reader modes,
+     engine visual renderers, previews) must still see the whole page. If a
+     reveal has not fired by 2.6s, fire it. Idempotent — scrolled-in elements
+     already carry .in. (Diagnosis S3, 27 Aug 2026: 2 of 61 reveals visible
+     in a scroll-less mobile render.) */
+  window.setTimeout(function () {
+    els.forEach(function (el) { el.classList.add("in"); });
+  }, 2600);
+
   /* The hero parallax went with the slashes it moved (11 Aug 2026). Nothing
      else on the page is scroll-driven, and a scroll listener that exists to
      translate elements that no longer exist is a cost with no effect. */
 
-  /* price count-up on reveal */
-  var counters = document.querySelectorAll("[data-count]");
-  if ("IntersectionObserver" in window && counters.length) {
-    var cio = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (!e.isIntersecting) return;
-        cio.unobserve(e.target);
-        var el = e.target;
-        var target = parseInt(el.getAttribute("data-count"), 10);
-        var prefix = el.getAttribute("data-prefix") || "";
-        var suffix = el.getAttribute("data-suffix") || "";
-        var t0 = null;
-        function step(t) {
-          if (!t0) t0 = t;
-          var k = Math.min((t - t0) / 900, 1);
-          k = 1 - Math.pow(1 - k, 3);   /* ease-out cubic */
-          el.textContent = prefix +
-            Math.round(target * k).toLocaleString("en-AU") + suffix;
-          if (k < 1) requestAnimationFrame(step);
-        }
-        requestAnimationFrame(step);
-      });
-    }, { threshold: 0.4 });
-    counters.forEach(function (el) { cio.observe(el); });
-  }
+  /* The price count-up was removed 27 Aug 2026 (diagnosis S1): an animated
+     figure displays false intermediate values — a $3,000 price photographed
+     mid-count reads $974, and a screenshot is exactly how an answer engine
+     or a buyer may capture the page. Figures render at their true value. */
 })();
 
 /* ---------------------------------------------- contact form

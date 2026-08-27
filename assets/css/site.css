@@ -2628,6 +2628,13 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
 .form-done p { margin: 0; color: var(--graph); }
 
 /* --------------------------------------------------- motion */
+/* Print and any motionless pipeline get the resting page, whole. */
+@media print {
+  .rv, .rv * { opacity: 1 !important; transform: none !important;
+               animation: none !important; transition: none !important; }
+  .hl { overflow: visible; }
+}
+
 /* hero line reveal: each line masked, rises in.
    The mask needs more room than the line box: at line-height 0.94 the
    descenders of "bring" and "you" hang below it and the overflow clip cut

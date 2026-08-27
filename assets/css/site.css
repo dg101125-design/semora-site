@@ -2632,11 +2632,11 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
 /* The 10-area comparison, drawn as a ledger instead of a default table:
    mono area rail, muted "them" column, the "us" column carried on a plum
    edge. One page uses this; the shared .tbl stays untouched. */
-.vs { border-top: 1px solid var(--ink); }
+.vs { border-top: 1px solid var(--plum-ink); }
 .vs__row { display: grid; grid-template-columns: 172px 1fr 1.15fr;
            gap: 0 40px; padding: 20px 0 22px;
            border-bottom: 1px solid var(--champ-700); }
-.vs__row:last-child { border-bottom: 1px solid var(--ink); }
+.vs__row:last-child { border-bottom: 1px solid var(--plum-ink); }
 .vs__area { font-family: var(--mono); font-size-adjust: 0.516;
             font-size: var(--t-label); letter-spacing: var(--tr-label);
             text-transform: uppercase; color: var(--graph-400);
@@ -2645,7 +2645,7 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
 .vs__us { position: relative; padding-left: 20px; font-size: 15.5px; }
 .vs__us::before { content: ""; position: absolute; left: 0; top: 3px;
                   bottom: 3px; width: 3px; background: var(--plum); }
-.vs__us strong { color: var(--ink); }
+.vs__us strong { color: var(--plum-ink); }
 .vs__head { display: grid; grid-template-columns: 172px 1fr 1.15fr;
             gap: 0 40px; padding-bottom: var(--sp-3); }
 .vs__head .lab { margin: 0; }

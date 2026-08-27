@@ -2629,6 +2629,12 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
 
 
 
+/* Inline links inside the facts ledger: full touch height on phone,
+   no visual change (padding reclaimed by negative margin). */
+@media (max-width: 720px) {
+  .door__dl .alink { display: inline-block; padding: 13px 0; margin: -13px 0; }
+}
+
 /* ---------------------------------------------- about: the commitments */
 /* The four published commitments as cards. The acid corner tick is drawn
    geometry (a notch, not an icon); indexes are mono; claims unchanged. */

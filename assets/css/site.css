@@ -2286,7 +2286,7 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
   content: ""; position: absolute; inset: 0;
   background: repeating-linear-gradient(70deg,
     transparent 0 34px,
-    color-mix(in srgb, var(--pf) 14%, transparent) 34px 38px);
+    color-mix(in srgb, var(--pf, transparent) 14%, transparent) 34px 38px);
 }
 /* the cut, alternating down the grid so the two columns never mirror each
    other into one symmetrical block. 64px, not 96: at our 16:9 panel two

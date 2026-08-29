@@ -3479,7 +3479,9 @@ h1:has(.hl--sub) .uline::after { display: none; }
      loud, set like a statement. The serif stays the display voice of the
      column headline; the mono stays a label voice inside the body. */
   font-family: var(--sans); font-size-adjust: 0.546; font-weight: 600;
-  font-size: 28px; line-height: 1.14; letter-spacing: 0.012em;
+  /* founder, 29 Aug: −20% from the original 28px. 1.56vw ≈ 22.5px at 1440;
+     endpoints are scale members so the fluid form stays in-system. */
+  font-size: clamp( 19px, 1.56vw, 25px); line-height: 1.14; letter-spacing: 0.012em;
   text-transform: uppercase; color: var(--champ-300);
   transition: color 0.3s var(--ease), transform 0.3s var(--ease);
 }
@@ -3501,8 +3503,7 @@ h1:has(.hl--sub) .uline::after { display: none; }
   .wrow { grid-template-columns: 32px 1fr 32px; gap: 16px; }
   .wrow__ico { width: 32px; height: 32px; }
   .wrow__cta { width: 32px; height: 32px; }
-  .wrow__name { font-size: 17px; }
-
+  .wrow__name { font-size: 13px; }
 }
 
 /* the floating strategy pill — the page's one persistent ask */

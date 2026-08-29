@@ -22,10 +22,10 @@ One shared condition: the buyer must need to see real clients and real outcomes 
 
 Every price and delivery time below is published. Nothing is quoted on request and no client gets a different number.
 
-- The Proof Audit — $3,000, 2 weeks. Optional; credited in full within 90 days. Marketing scored 0-4 with evidence, baseline measured, three fixes ranked.
-- SIGNAL / the position — $14,000, 4 weeks. Positioning and message architecture $6,500 · fee strategy $4,000 · objection playbook $3,500. Options: written personas $1,800, competitive map $1,900.
-- / HAUS the system — from $38,000, 8-10 weeks. Brand identity and brand book $9,500 · website to 8 pages $16,500 (extra pages $850 each) · proposal and presentation system $6,500 · enquiry response and CRM setup $5,500.
-- MOMENTUM the monthly engine — Directed $4,200/mo · Shared $7,400/mo · Held $13,500/mo. Six-month minimum, then monthly.
+- The Proof Audit — $1,000, 2 weeks. Optional; credited in full within 90 days. Marketing scored 0-4 with evidence, baseline measured, three fixes ranked.
+- SIGNAL / the position — core scope $4,000, 4 weeks: position, message architecture, fee logic and the objection playbook. Options: written personas $1,800, competitive map $1,900 — ceiling $7,700.
+- / HAUS the system — priced by composition, 8-10 weeks. Brand identity and brand book $9,500 · website to 8 pages $16,500 (extra pages $850 each) · proposal and presentation system $6,500 · enquiry response and CRM setup $5,500. All four together $38,000.
+- MOMENTUM the monthly engine — Directed $3,000/mo · Shared $7,400/mo · Held $13,500/mo. Six-month minimum, then monthly.
 - Monthly services a la carte — SEO and local search $1,800 · Google and Meta ads managed $2,200 (to $15k/mo of client spend, billed direct) · AI search visibility $1,400 · editorial content and case studies $2,600 · practitioner video $2,400 · LinkedIn and key-account outreach $1,600 · email nurture and CRM $1,500 · referral partner system $1,200 · reviews and reputation $1,000. The menu is capped at MOMENTUM / Held, $13,500/mo.
 - Add-ons — case study $1,800 · campaign sprint $7,500 · vertical sales edition $6,500 · pitch and tender support $1,900 · art-direction day $2,200 · strategy session $600.
 
@@ -35,16 +35,16 @@ Every price and delivery time below is published. Nothing is quoted on request a
 - [Score your practice — SEMORA STUDIO Melbourne](https://www.semora.com.au/score): The eleven surfaces a buyer of expert advice actually checks, as a two-minute self-score. Free, ungated, scored in your browser. Your three weakest, named.
 - [Services — SEMORA STUDIO Melbourne](https://www.semora.com.au/services): Four products, published prices, published scope. Audit, position, system, momentum.
 - [SEO &amp; AI Search — SEMORA STUDIO Melbourne](https://www.semora.com.au/seo-ai-search): Be the source, not the result. Technical audit, keyword research, fixes, on-page work and content — five steps, reported against one commercial number.
-- [The Proof Audit — SEMORA STUDIO Melbourne](https://www.semora.com.au/proof-audit): The paid diagnostic and the recommended first step. Two weeks, $3,000 + GST, optional, credited in full.
-- [SIGNAL / the position — SEMORA STUDIO Melbourne](https://www.semora.com.au/signal): What you stand for, to whom, and why it is worth your fee. Four weeks, from $14,000 + GST — core scope plus optional modules.
-- [/ HAUS the system — SEMORA STUDIO Melbourne](https://www.semora.com.au/haus): Brand, website, proposals and CRM — built and handed over. From $38,000 + GST, 8–10 weeks, every component priced. Every source file transfers by contract.
-- [MOMENTUM — the engine — SEMORA STUDIO Melbourne](https://www.semora.com.au/momentum): Retained and priced on your time. Directed $4,200, Shared $7,400, Held $13,500 per month — responsibilities and quantities published.
+- [The Proof Audit — SEMORA STUDIO Melbourne](https://www.semora.com.au/proof-audit): The paid diagnostic and the recommended first step. Two weeks, $1,000 + GST, optional, credited in full.
+- [SIGNAL / the position — SEMORA STUDIO Melbourne](https://www.semora.com.au/signal): What you stand for, to whom, and why it is worth your fee. Four weeks, from $4,000 + GST — core scope plus optional modules.
+- [/ HAUS the system — SEMORA STUDIO Melbourne](https://www.semora.com.au/haus): Brand, website, proposals and CRM — built and handed over. 8–10 weeks, every component priced, take one part or all four. Every source file transfers by contract.
+- [MOMENTUM — the engine — SEMORA STUDIO Melbourne](https://www.semora.com.au/momentum): Retained and priced on your time. Directed $3,000, Shared $7,400, Held $13,500 per month — responsibilities and quantities published.
 - [About SEMORA STUDIO — Melbourne marketing agency](https://www.semora.com.au/about): SEMORA STUDIO is a Melbourne specialist growth company and marketing agency for commercial industry, owner-led and healthcare practices. Published prices.
 - [Build your quote — SEMORA STUDIO Melbourne](https://www.semora.com.au/quote): Tick the services you need — positioning, brand, website, SEO, ads, content, CRM. Every item carries its price and delivery time. Same prices for everyone.
 - [Method — SEMORA STUDIO Melbourne](https://www.semora.com.au/method): One agreed number reviewed at 90 days, everything handed over, and our own eleven-surface score published — zeros included.
 - [The team — SEMORA STUDIO Melbourne](https://www.semora.com.au/team): Two directors and four leads, split by function. Research and production are AI-assisted, and we say so.
 - [Free AI visibility report — SEMORA STUDIO Melbourne](https://www.semora.com.au/ai-visibility-report): Does AI mention you, cite you or recommend you when a buyer asks? We run the check on ChatGPT and Perplexity and email you what we find within 24 hours. Free.
-- [Tell us what you need built — SEMORA STUDIO Melbourne](https://www.semora.com.au/contact): Start with the website, the monthly marketing or the CRM — or measure the gap first with the Proof Audit: $3,000 + GST, credited in full within 90 days.
+- [Tell us what you need built — SEMORA STUDIO Melbourne](https://www.semora.com.au/contact): Start with the website, the monthly marketing or the CRM — or measure the gap first with the Proof Audit: $1,000 + GST, credited in full within 90 days.
 
 ## How we work
 
@@ -129,7 +129,7 @@ Source: https://www.semora.com.au/proof-audit
 
 ### Why does SEMORA STUDIO charge for an audit when others give one away?
 
-Because a free audit is a sales call in a costume, and specialists can tell. Charging makes it an engagement rather than a pitch, and an engagement is the version whose findings you can actually use, because nothing is held back for a proposal at the end. That is the trade. It also filters for people who are actually going to act on them. You keep the report whether or not you hire us. The $3,000 is credited in full against any engagement you start within 90 days. Hire us and the audit costs nothing. Walk away and you still hold a scored baseline, and a ranked list of what to fix in what order, which is more than you had on the Monday morning you first picked up the phone to us. That is the deal.
+Because a free audit is a sales call in a costume, and specialists can tell. Charging makes it an engagement rather than a pitch, and an engagement is the version whose findings you can actually use, because nothing is held back for a proposal at the end. That is the trade. It also filters for people who are actually going to act on them. You keep the report whether or not you hire us. The $1,000 is credited in full against any engagement you start within 90 days. Hire us and the audit costs nothing. Walk away and you still hold a scored baseline, and a ranked list of what to fix in what order, which is more than you had on the Monday morning you first picked up the phone to us. That is the deal.
 
 Source: https://www.semora.com.au/proof-audit
 
@@ -141,7 +141,7 @@ Source: https://www.semora.com.au/proof-audit
 
 ### What services does SEMORA STUDIO provide?
 
-SEMORA STUDIO runs three streams. Attracting the right clients, the managed marketing engine, and scaling with profit. They are delivered through four products, and each one carries its price on the page: the Proof Audit at $3,000, SIGNAL / from $14,000, / HAUS from $38,000, and MOMENTUM from $4,200 a month, all + GST. Every capability below sits inside one of them, with a published delivery time as well as a published price. Nothing is quoted on request.
+SEMORA STUDIO runs three streams. Attracting the right clients, the managed marketing engine, and scaling with profit. They are delivered through four products, and each one carries its price on the page: the Proof Audit at $1,000, SIGNAL / from $4,000, / HAUS priced per part, and MOMENTUM from $3,000 a month, all + GST. Every capability below sits inside one of them, with a published delivery time as well as a published price. Nothing is quoted on request.
 
 Source: https://www.semora.com.au/services
 
@@ -151,8 +151,8 @@ In order: the Proof Audit in weeks 0–2 sets the baseline, SIGNAL / in weeks 3�
 
 Source: https://www.semora.com.au/services
 
-### Why does SIGNAL / cost $14,000?
+### Why does SIGNAL / cost $4,000?
 
-Because a position is fee infrastructure, and the $14,000 is measured against what an undefended position costs you in a year. Open last year's client list. Beside each name, write the fee you first quoted and the fee you actually took to win the work. Add up the gap. That is what one undefended year costs you, and the same gap opens again this year, and the year after that, because nothing about the conversation that produced those discounts has changed since the last time you had it. Nobody enjoys that sum. For most practices it is a multiple of this fee. Run it in your own books before you talk to us. Six objections come up on a first call, and you answer them a different way each time, because nobody ever wrote down the best version. That is the leak. The position, the fee logic and the objection playbook exist to end that discount. Check the arithmetic against your own books. That is the only claim we make for it.
+Because a position is fee infrastructure, and the $4,000 is measured against what an undefended position costs you in a year. Open last year's client list. Beside each name, write the fee you first quoted and the fee you actually took to win the work. Add up the gap. That is what one undefended year costs you, and the same gap opens again this year, and the year after that, because nothing about the conversation that produced those discounts has changed since the last time you had it. Nobody enjoys that sum. For most practices it is a multiple of this fee. Run it in your own books before you talk to us. Six objections come up on a first call, and you answer them a different way each time, because nobody ever wrote down the best version. That is the leak. The position, the fee logic and the objection playbook exist to end that discount. Check the arithmetic against your own books. That is the only claim we make for it.
 
 Source: https://www.semora.com.au/signal

@@ -146,7 +146,7 @@ The most efficient path we run for a client — audit to engine, in the order th
 
 Start where your gap is. Each step stands on its own.
 
-01 The Proof Audit Diagnostic · baseline · strategy package Your marketing scored, measured, and handed back as a strategy package. Eleven surfaces scored, with evidence Baseline: win rate, fee, founder-hours Three competitors, same instrument The marketing strategy package, ranked One-off $3,000 2 weeks · optional · credited in full · + GST → 02 SIGNAL / Position · messages · pricing · the KPI Positioning, messaging and fee strategy — decided. Position + the argument that defends it Fee logic that ends the discount Objection playbook, in your words The contract number, baselined From $14,000 4 weeks · core scope + optional modules · + GST → 03 / HAUS Identity · website · proposals · CRM Brand, website and sales system — built, live, owned by you. Identity, website, proposals, deck Enquiry system + response standard Brand book + governance model Every source file — by contract From $38,000 8–10 weeks · every part priced · + GST → 04 MOMENTUM Content · ads · email & CRM · reporting Your marketing run for you, every month. Directed — we direct, you execute Shared — we produce, you approve Held — we hold the engine From $4,200 per month · 6-month minimum · + GST →
+01 The Proof Audit Diagnostic · baseline · strategy package Your marketing scored, measured, and handed back as a strategy package. Eleven surfaces scored, with evidence Baseline: win rate, fee, founder-hours Three competitors, same instrument The marketing strategy package, ranked One-off $1,000 2 weeks · optional · credited in full · + GST → 02 SIGNAL / Position · messages · pricing · the KPI Positioning, messaging and fee strategy — decided. Position + the argument that defends it Fee logic that ends the discount Objection playbook, in your words The contract number, baselined From $4,000 4 weeks · core scope + optional modules · + GST → 03 / HAUS Identity · website · proposals · CRM Brand, website and sales system — built, live, owned by you. Identity, website, proposals, deck Enquiry system + response standard Brand book + governance model Every source file — by contract Custom 8–10 weeks · every part priced · + GST → 04 MOMENTUM Content · ads · email & CRM · reporting Your marketing run for you, every month. Directed — we direct, you execute Shared — we produce, you approve Held — we hold the engine From $3,000 per month · 6-month minimum · + GST →
 
 More signal.Less noise.
 
@@ -254,7 +254,7 @@ Services
 
 ## Four products. Published prices. Published scope.
 
-You should not have to book a call to find out what this costs. So we published it. Fixed price, fixed duration, and scope you can read before we ever speak. Owner-led businesses, healthcare practices, commercial industry professionals.
+You should not have to book a call to find out what this costs. So we published it. Every part and tier priced, durations stated, and scope you can read before we ever speak. Owner-led businesses, healthcare practices, commercial industry professionals.
 
 See every price — the quote builder
 
@@ -262,7 +262,7 @@ What we actually run
 
 ### What services does SEMORA STUDIO provide?
 
-SEMORA STUDIO runs three streams. Attracting the right clients, the managed marketing engine, and scaling with profit. They are delivered through four products, and each one carries its price on the page: the Proof Audit at $3,000, SIGNAL / from $14,000, / HAUS from $38,000, and MOMENTUM from $4,200 a month, all + GST. Every capability below sits inside one of them, with a published delivery time as well as a published price. Nothing is quoted on request.
+SEMORA STUDIO runs three streams. Attracting the right clients, the managed marketing engine, and scaling with profit. They are delivered through four products, and each one carries its price on the page: the Proof Audit at $1,000, SIGNAL / from $4,000, / HAUS priced per part, and MOMENTUM from $3,000 a month, all + GST. Every capability below sits inside one of them, with a published delivery time as well as a published price. Nothing is quoted on request.
 
 Stream 01
 
@@ -358,7 +358,7 @@ Everything the surfaces need, built and handed over.
 
 Identity, website, proposals, presentations, stationery, enquiry system, brand book, governance — every source file transfers by contract.
 
-The published minimum →
+Every part priced →
 
 8–10 weeks · every part priced
 
@@ -388,7 +388,7 @@ Weeks 0–2 The Proof Audit
 
 ### The baseline, on the record
 
-The practice scores 21/44. Weakest surfaces: named results (0), fee explanation (1), first screen (1). Baseline: one win in four qualified enquiries, the founder in every first call. Fee: $3,000, credited.
+The practice scores 21/44. Weakest surfaces: named results (0), fee explanation (1), first screen (1). Baseline: one win in four qualified enquiries, the founder in every first call. Fee: $1,000, credited.
 
 Weeks 3–6 SIGNAL /
 
@@ -580,7 +580,7 @@ Start figure, finish figure, dates, method — on every result we publish.
 
 # The Proof Audit — SEMORA STUDIO Melbourne
 URL: https://www.semora.com.au/proof-audit
-Summary: The paid diagnostic and the recommended first step. Two weeks, $3,000 + GST, optional, credited in full.
+Summary: The paid diagnostic and the recommended first step. Two weeks, $1,000 + GST, optional, credited in full.
 
 Product 01 / The diagnostic
 
@@ -588,11 +588,11 @@ Product 01 / The diagnostic
 
 You pay for this one, and we recommend starting here. Two sessions of your time: 90 minutes working, then 60 more for the findings, and a written report you own. It is optional. Skip it, and we set your baseline inside SIGNAL /.
 
-$3,0002 weeks · optional · credited in full · + GST
+$1,0002 weeks · optional · credited in full · + GST
 
 Scope / what you receive
 
-### What do you get for $3,000?
+### What do you get for $1,000?
 
 The instrument · All eleven buyer-facing surfaces scored 0–4, with evidence — the same instrument you can run free ·
 
@@ -654,7 +654,7 @@ Because a free audit is a sales call in a costume, and specialists can tell. Cha
 
 You keep the report whether or not you hire us.
 
-The $3,000 is credited in full against any engagement you start within 90 days. Hire us and the audit costs nothing. Walk away and you still hold a scored baseline, and a ranked list of what to fix in what order, which is more than you had on the Monday morning you first picked up the phone to us. That is the deal.
+The $1,000 is credited in full against any engagement you start within 90 days. Hire us and the audit costs nothing. Walk away and you still hold a scored baseline, and a ranked list of what to fix in what order, which is more than you had on the Monday morning you first picked up the phone to us. That is the deal.
 
 What it is not
 
@@ -670,7 +670,7 @@ Book the Proof Audit Next: SIGNAL / →
 
 # SIGNAL / the position — SEMORA STUDIO Melbourne
 URL: https://www.semora.com.au/signal
-Summary: What you stand for, to whom, and why it is worth your fee. Four weeks, from $14,000 + GST — core scope plus optional modules.
+Summary: What you stand for, to whom, and why it is worth your fee. Four weeks, from $4,000 + GST — core scope plus optional modules.
 
 Product 02 / The position
 
@@ -678,7 +678,7 @@ Product 02 / The position
 
 What you stand for, who it is for, and why it is worth your fee. Two half-days and two reviews of your time. Best entered from the audit. Otherwise we set the baseline in week one.
 
-from $14,0004 weeks · core scope + optional modules · + GST
+from $4,0004 weeks · core scope + optional modules · + GST
 
 Scope / what you receive
 
@@ -702,13 +702,13 @@ The number · One agreed metric, set from your baseline · What all following wo
 
 The handover · The written document + a 90-minute team session · Repeatable by a new hire without you in the room ·
 
-Core scope is $14,000 fixed. The two optional modules take the ceiling to $17,700 — chosen at kickoff, not mid-engagement.
+Core scope is $4,000 fixed. The two optional modules take the ceiling to $7,700 — chosen at kickoff, not mid-engagement.
 
 Why it is priced like this
 
-### Why does SIGNAL / cost $14,000?
+### Why does SIGNAL / cost $4,000?
 
-Because a position is fee infrastructure, and the $14,000 is measured against what an undefended position costs you in a year. Open last year's client list. Beside each name, write the fee you first quoted and the fee you actually took to win the work. Add up the gap. That is what one undefended year costs you, and the same gap opens again this year, and the year after that, because nothing about the conversation that produced those discounts has changed since the last time you had it. Nobody enjoys that sum. For most practices it is a multiple of this fee. Run it in your own books before you talk to us.
+Because a position is fee infrastructure, and the $4,000 is measured against what an undefended position costs you in a year. Open last year's client list. Beside each name, write the fee you first quoted and the fee you actually took to win the work. Add up the gap. That is what one undefended year costs you, and the same gap opens again this year, and the year after that, because nothing about the conversation that produced those discounts has changed since the last time you had it. Nobody enjoys that sum. For most practices it is a multiple of this fee. Run it in your own books before you talk to us.
 
 Six objections come up on a first call, and you answer them a different way each time, because nobody ever wrote down the best version. That is the leak. The position, the fee logic and the objection playbook exist to end that discount. Check the arithmetic against your own books. That is the only claim we make for it.
 
@@ -724,7 +724,7 @@ Start with the audit Next: / HAUS →
 
 # / HAUS the system — SEMORA STUDIO Melbourne
 URL: https://www.semora.com.au/haus
-Summary: Brand, website, proposals and CRM — built and handed over. From $38,000 + GST, 8–10 weeks, every component priced. Every source file transfers by contract.
+Summary: Brand, website, proposals and CRM — built and handed over. 8–10 weeks, every component priced, take one part or all four. Every source file transfers by contract.
 
 Product 03 / The system
 
@@ -732,11 +732,11 @@ Product 03 / The system
 
 Buyers judge you on your brand, your website, your proposals and your CRM. We build them and hand them over. One 45-minute review a week. Take one component or all four.
 
-from $38,0008–10 weeks · every part priced · + GST
+Custom8–10 weeks · every part priced · + GST
 
 Scope / every part priced
 
-### What is included in / HAUS for $38,000?
+### What is included in / HAUS, and what does each part cost?
 
 Component · What is inside · Delivery · Price + GST ·
 
@@ -764,7 +764,7 @@ Start with the audit Next: MOMENTUM →
 
 # MOMENTUM — the engine — SEMORA STUDIO Melbourne
 URL: https://www.semora.com.au/momentum
-Summary: Retained and priced on your time. Directed $4,200, Shared $7,400, Held $13,500 per month — responsibilities and quantities published.
+Summary: Retained and priced on your time. Directed $3,000, Shared $7,400, Held $13,500 per month — responsibilities and quantities published.
 
 Product 04 / The engine
 
@@ -772,13 +772,13 @@ Product 04 / The engine
 
 Retained, and priced on your time, not ours. The tier is not about scope. It is about who carries the month, and how much of your week comes back.
 
-$4,200+per month · 6-month minimum · + GST
+$3,000+per month · 6-month minimum · + GST
 
 Tiers differ by responsibility, not just deliverables
 
 ### What is the difference between the three MOMENTUM tiers?
 
-· Directed — $4,200/mo · Shared — $7,400/mo · Held — $13,500/mo ·
+· Directed — $3,000/mo · Shared — $7,400/mo · Held — $13,500/mo ·
 
 Primary focus · Direction you execute · Managed growth with you · The engine without you ·
 
@@ -800,7 +800,7 @@ Directed
 
 ### We direct. You execute.
 
-$4,200per month · + GST · ~3 hrs of you / week
+$3,000per month · + GST · ~3 hrs of you / week
 
 Strategy & accountability
 
@@ -1034,7 +1034,7 @@ Start
 
 ### Two ways in.
 
-Price it yourself. Each service is listed with its fee and how long it takes. Or have the gap measured first with the Proof Audit: $3,000 + GST, optional, credited in full within 90 days.
+Price it yourself. Each service is listed with its fee and how long it takes. Or have the gap measured first with the Proof Audit: $1,000 + GST, optional, credited in full within 90 days.
 
 Build your quote Tell us what you need built →
 
@@ -1054,11 +1054,11 @@ Every item below carries its own price and its own delivery time. Nothing is quo
 
 01Start — the diagnostic
 
-The Proof AuditOptional. Every channel scored 0–4 with evidence, your baseline measured, the three highest-value fixes ranked. $3,0002 weeks This one is optional. Most clients skip it and start straight at the website, the monthly marketing or the CRM they came in for. Take it when you and your business partner keep arguing about which part of the marketing is broken, and neither of you has ever put a score against any of it. Two weeks later you have one. The $3,000 is credited in full within 90 days. Walk away instead and you have paid for a scored baseline you keep.
+The Proof AuditOptional. Every channel scored 0–4 with evidence, your baseline measured, the three highest-value fixes ranked. $1,0002 weeks This one is optional. Most clients skip it and start straight at the website, the monthly marketing or the CRM they came in for. Take it when you and your business partner keep arguing about which part of the marketing is broken, and neither of you has ever put a score against any of it. Two weeks later you have one. The $1,000 is credited in full within 90 days. Walk away instead and you have paid for a scored baseline you keep.
 
 02Strategy — SIGNAL /
 
-Positioning & message architectureWhat you stand for, for whom, and the exact words — one message hierarchy reused in every proposal, page and pitch. $6,5002 weeks Fee strategy & pricing logicYour fee structured and defended with reasoning a client can read. $4,0001 week Objection playbookThe six objections you keep hearing, answered in your own words. $3,5001 week Written personasTwo buyer personas, written from your real client base — not invented. $1,8001 week Competitive mapWhere you sit, who you actually beat, and where not to compete. $1,9001 week Take all three core items and they run as one engagement: SIGNAL / — $14,000, four weeks.
+SIGNAL / — core scopePosition, message architecture, fee logic and the objection playbook — decided, written down and handed over as one engagement. $4,0004 weeks Written personasTwo buyer personas, written from your real client base — not invented. $1,8001 week Competitive mapWhere you sit, who you actually beat, and where not to compete. $1,9001 week Add both modules and the ceiling is $7,700 — chosen at kickoff, not mid-engagement.
 
 03Brand & build — / HAUS
 
@@ -1332,13 +1332,13 @@ Every question is asked in a fresh session with no account signed in, because a 
 
 # Tell us what you need built — SEMORA STUDIO Melbourne
 URL: https://www.semora.com.au/contact
-Summary: Start with the website, the monthly marketing or the CRM — or measure the gap first with the Proof Audit: $3,000 + GST, credited in full within 90 days.
+Summary: Start with the website, the monthly marketing or the CRM — or measure the gap first with the Proof Audit: $1,000 + GST, credited in full within 90 days.
 
 Contact
 
 ## Tell us what you need built.
 
-Most of the time you already know what you want built. A website. The marketing run handled for you each month. Or a CRM that stops dropping enquiries between the call and the follow-up nobody made. Say which one below. If you would rather have the gap measured first, that is the Proof Audit: eleven surfaces scored with evidence, then the three to fix in order and the reason each sits where it does. It is optional and costs $3,000 + GST, credited in full within 90 days.
+Most of the time you already know what you want built. A website. The marketing run handled for you each month. Or a CRM that stops dropping enquiries between the call and the follow-up nobody made. Say which one below. If you would rather have the gap measured first, that is the Proof Audit: eleven surfaces scored with evidence, then the three to fix in order and the reason each sits where it does. It is optional and costs $1,000 + GST, credited in full within 90 days.
 
 Price it yourself first, in the quote builder
 

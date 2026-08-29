@@ -7,8 +7,8 @@
 
   var CAP = 13500; /* MOMENTUM / Held — the full monthly engine */
   var BUNDLES = {
-    signal: { n: 3, label: "SIGNAL / — the position", price: 14000,
-              note: "delivery 4 weeks · positioning + fees + objections, one engagement" },
+    /* SIGNAL / collapsed to a single $4,000 core item in the 29 Aug 2026
+       repricing — no bundle detection needed for a one-item group. */
     haus:   { n: 4, label: "/ HAUS — the system", price: 38000,
               note: "delivery 8–10 weeks · brand + website + proposals + CRM, one team" }
   };

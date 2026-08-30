@@ -1961,7 +1961,13 @@ html.js .prow.in .prow__tick { background: var(--moss-300); }
   /* founder, 13 Aug at 70: the ink ground read too deep — lifted to the
      plum-700 wash; then "加深 10%": the wash starts a tenth back toward
      ink and the ink floor arrives sooner. */
-  background: radial-gradient(140% 120% at 16% 4%,
+  /* Solid floor UNDER the gradient (30 Aug 2026): the founder's browser
+     dropped the gradient paint mid flex-transition and the panel went
+     white with pale type on it. If the gradient ever fails to paint —
+     parse, GPU, repaint — the panel is still plum and the type still
+     reads. Zero visual change when the gradient works. */
+  background-color: var(--plum-ink);
+  background-image: radial-gradient(140% 120% at 16% 4%,
     color-mix(in srgb, var(--plum-700) 90%, var(--plum-ink)) 0%,
     var(--plum-ink) 76%);
   border: 1px solid var(--plum-700);
@@ -3488,9 +3494,9 @@ h1:has(.hl--sub) .uline::after { display: none; }
      loud, set like a statement. The serif stays the display voice of the
      column headline; the mono stays a label voice inside the body. */
   font-family: var(--sans); font-size-adjust: 0.546; font-weight: 600;
-  /* founder, 29 Aug: −20% from the original 28px. 1.56vw ≈ 22.5px at 1440;
-     endpoints are scale members so the fluid form stays in-system. */
-  font-size: clamp( 19px, 1.56vw, 25px); line-height: 1.14; letter-spacing: 0.012em;
+  /* founder, 29 Aug: −20% from 28px; 30 Aug: −15% again. 1.33vw ≈ 19.1px
+     at 1440; endpoints are scale members so the fluid form stays legal. */
+  font-size: clamp( 17px, 1.33vw, 19px); line-height: 1.14; letter-spacing: 0.012em;
   text-transform: uppercase; color: var(--champ-300);
   transition: color 0.3s var(--ease), transform 0.3s var(--ease);
 }
@@ -3507,12 +3513,14 @@ h1:has(.hl--sub) .uline::after { display: none; }
 .wrow:hover .wrow__cta { background: var(--moss-300);
   border-color: var(--moss-300); color: var(--plum-ink);
   transform: translateX(4px); }
-.wrow__txt p { color: var(--plum-100); max-width: 54ch; margin-top: 8px; }
+.wrow__txt p { color: var(--plum-100); max-width: 54ch; margin-top: 8px;
+  /* −15% with the names (founder, 30 Aug) — nearest scale member */
+  font-size: 15px; }
 @media (max-width: 560px) {
   .wrow { grid-template-columns: 32px 1fr 32px; gap: 16px; }
   .wrow__ico { width: 32px; height: 32px; }
   .wrow__cta { width: 32px; height: 32px; }
-  .wrow__name { font-size: 13px; }
+  .wrow__name { font-size: 11px; }
 }
 
 /* the floating strategy pill — the page's one persistent ask. Sans since

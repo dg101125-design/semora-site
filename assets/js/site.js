@@ -165,3 +165,41 @@
   }
   arm();
 })();
+
+/* The case-study figures jump to their value (founder, 30 Aug 2026 — the
+   board asked for the jump back). Guardrails: the markup ships the TRUE
+   figure, so no-JS, print, reduced-motion and engine fetches always read
+   the real number; the jump runs once, only in view, and fast (700ms), so
+   the window in which a capture could photograph an intermediate value is
+   as small as the effect allows. Delays match the stat-land stagger. */
+(function () {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var ns = document.querySelectorAll(".res .stat__n[data-count]");
+  if (!ns.length || !("IntersectionObserver" in window)) return;
+  function run(el) {
+    var target = parseFloat(el.getAttribute("data-count"));
+    var prefix = el.getAttribute("data-prefix") || "";
+    var suffix = el.getAttribute("data-suffix") || "";
+    var t0 = null, D = 700;
+    function frame(ts) {
+      if (t0 === null) t0 = ts;
+      var p = Math.min(1, (ts - t0) / D);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = prefix +
+        Math.round(target * eased).toLocaleString("en-AU") + suffix;
+      if (p < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      io.unobserve(e.target);
+      var row = e.target.closest(".res__stats");
+      var i = row ? Array.prototype.indexOf.call(
+        row.querySelectorAll(".stat__n"), e.target) : 0;
+      window.setTimeout(function () { run(e.target); }, 340 + 160 * i);
+    });
+  }, { threshold: 0.4 });
+  ns.forEach(function (el) { io.observe(el); });
+})();

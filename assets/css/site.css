@@ -1171,6 +1171,9 @@ html.lr .site-head__word::before {
 .foot-links a {
   font-family: var(--sans); font-size-adjust: 0.546; font-weight: 500;
   font-size: 15px; line-height: 1.55; color: var(--ivory);
+  /* caps are a CSS decision (founder, 30 Aug: 大小写统一) — the source
+     strings stay prose for machines and screen readers */
+  text-transform: uppercase; letter-spacing: 0.012em;
   display: inline-block; padding-block: 4px;
   transition: color 180ms var(--ease);
 }

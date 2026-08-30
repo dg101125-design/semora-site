@@ -1108,8 +1108,10 @@ html.lr .site-head__word::before {
    already found competing. */
 .site-foot {
   position: relative;
-  background: color-mix(in srgb, var(--champ-700) 30%, var(--ivory));
-  color: var(--graph);
+  /* Footer v3, founder 30 Aug 2026 (reference: dark link-architecture
+     footer): the page signs off on the dark field it opened on. */
+  background: var(--plum-ink);
+  color: var(--plum-100);
   border-top: 3px solid var(--plum-700);
 }
 /* the seam is marked, not merely coloured: plum edge, acid catch at the text
@@ -1122,13 +1124,8 @@ html.lr .site-head__word::before {
 .site-foot a { color: inherit; text-decoration: none; }
 
 /* ---- the sign-off: mark against the line the whole site is built to earn */
-.foot-top {
-  display: flex; flex-wrap: wrap; align-items: flex-end;
-  justify-content: space-between; gap: 16px var(--gutter);
-  /* −30% pass, founder 30 Aug 2026 (页脚: 减少30%间距) — every block here
-     stepped one spacing-scale notch down */
-  padding-block: 32px 16px;
-}
+/* .foot-top retired 30 Aug 2026 (v3): the identity block moved into the
+   grid's first column. */
 /* The footer sign-off carries mark AND wordmark AND descriptor — a superset of
    the header, which is right for the place the identity signs off. The mark is
    optically aligned to the WORDMARK rather than centred on the whole block,
@@ -1156,22 +1153,40 @@ html.lr .site-head__word::before {
   /* Three columns since 30 Aug 2026 — the QR column is gone by founder
      order, and the grid rebalances: the email control needs the most room,
      the address next, the four discs the least. */
-  grid-template-columns: minmax(0, 5fr) minmax(0, 4fr) minmax(0, 3fr);
-  padding-block: 24px;
+  grid-template-columns: minmax(0, 4.5fr) minmax(0, 2.5fr) minmax(0, 3fr) minmax(0, 4fr);
+  padding-block: 32px;
   border-top: 1px solid var(--champ-700);
 }
-/* Three columns need ~860px of content between them (email control, address
-   with its pin, four badges). Below that, two comfortable columns. */
-@media (max-width: 1000px) { .foot-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+/* Four columns need ~1060px between them. Below that, two comfortable
+   columns; phones get one. */
+@media (max-width: 1160px) { .foot-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 560px)  { .foot-grid { grid-template-columns: 1fr; } }
-.foot-col .lab { margin-bottom: 8px; }
+.foot-col .lab { margin-bottom: 8px; color: var(--moss-300); }
+.site-foot .lab-soft { color: var(--plum-100); }
+.foot-id__line { margin-top: 16px; font-size: 15px; line-height: 1.55;
+  color: var(--plum-100); max-width: 30ch; }
+.foot-follow { margin-top: 24px; }
+.foot-links { list-style: none; padding: 0; margin: 0; }
+.foot-links li + li { margin-top: 4px; }
+.foot-links a {
+  font-family: var(--sans); font-size-adjust: 0.546; font-weight: 500;
+  font-size: 15px; line-height: 1.55; color: var(--ivory);
+  display: inline-block; padding-block: 4px;
+  transition: color 180ms var(--ease);
+}
+.foot-links a:hover { color: var(--moss-300); }
+@media (max-width: 560px) {
+  /* phone touch targets: 23px line + 2×12px = 47px ≥ 44 */
+  .foot-links li + li { margin-top: 0; }
+  .foot-links a { padding-block: 12px; }
+}
 /* A hairline between columns, centred in the 48px gap. Four blocks of small
    text separated by air alone read as one drifting field — the same reason
    the services menu carries rules between its columns. Below 1361px the grid
    drops to two columns and the rules would fall in the wrong places. */
-@media (min-width: 1001px) {
+@media (min-width: 1161px) {
   .foot-col + .foot-col {
-    border-left: 1px solid var(--champ-700);
+    border-left: 1px solid rgb(248 246 242 / 0.14);
     padding-left: 16px; margin-left: -16px;
   }
 }
@@ -1186,8 +1201,8 @@ html.lr .site-head__word::before {
      splits an email address across two lines is worse than no control. */
   display: flex; align-items: center; gap: 12px;
   width: 100%; padding: 12px;
-  border: 1px solid var(--plum-700);
-  color: var(--plum-900); font-size: 15px; line-height: 1.45;
+  border: 1px solid var(--plum-300);
+  color: var(--ivory); font-size: 15px; line-height: 1.45;
   transition: background 180ms var(--ease), color 180ms var(--ease);
 }
 /* No anywhere-break: an address breaks at no point that reads correctly. */
@@ -1198,7 +1213,7 @@ html.lr .site-head__word::before {
    does not float its pin into the middle of the block. */
 .foot-row { display: flex; align-items: flex-start; gap: 12px; }
 .foot-ic {
-  width: 16px; height: 16px; flex: none; color: var(--graph-400);
+  width: 16px; height: 16px; flex: none; color: var(--plum-100);
   margin-top: calc((1.45em - 16px) / 2);
 }
 .foot-ic--addr { margin-top: calc((1.55em - 16px) / 2); }
@@ -1216,14 +1231,14 @@ html.lr .site-head__word::before {
   width: fit-content; margin-top: 12px;
   font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
   font-size: 13px; line-height: 1.45; letter-spacing: 0.012em;
-  color: var(--graph-400);
+  color: var(--plum-100);
 }
-.foot-med:hover, .foot-med:hover .foot-ic { color: var(--plum); }
+.foot-med:hover, .foot-med:hover .foot-ic { color: var(--moss-300); }
 .foot-addr {
   font-style: normal;
   font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
   font-size: 13px; line-height: 1.55; letter-spacing: 0.012em;
-  color: var(--graph); max-width: 26ch; margin: 0;
+  color: var(--plum-100); max-width: 26ch; margin: 0;
 }
 .foot-mailto__t {
   font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
@@ -1263,16 +1278,16 @@ a.soc:hover { transform: translateY(-2px); }
   display: flex; flex-wrap: wrap; gap: 12px 24px;
   justify-content: space-between; align-items: center;
   padding-block: 16px;
-  border-top: 1px solid var(--champ-700);
+  border-top: 1px solid rgb(248 246 242 / 0.16);
 }
 .foot-nav { display: flex; flex-wrap: wrap; gap: 0 24px; }
-.foot-nav a { font-size: 13px; color: var(--graph-700); border-bottom: 1px solid transparent; }
-.foot-nav a:hover { color: var(--plum); border-color: var(--plum); }
+.foot-nav a { font-size: 13px; color: var(--plum-100); border-bottom: 1px solid transparent; }
+.foot-nav a:hover { color: var(--moss-300); border-color: var(--moss-300); }
 /* The legal line carries the ABN, so it must never break mid-number or run
    off a narrow viewport. Each segment is atomic; the line breaks only at the
    separators between them. min-width:0 lets the flex item shrink at all —
    without it the item keeps its min-content width and overflows the page. */
-.site-foot__legal { min-width: 0; color: var(--graph-400); }
+.site-foot__legal { min-width: 0; color: var(--plum-100); }
 .site-foot__legal .nb { white-space: nowrap; }
 
 /* ------------------------------------------- the hero mark (Ö seal) */

@@ -1050,7 +1050,9 @@ html.lr .site-head__word::before {
    A plus would imply growth, and only one of these is a gain. */
 .statband {
   position: relative; overflow: hidden;
-  background: var(--plum-field); color: var(--champ);
+  /* Ground painted in the DARKNESS block far below (it outranks this rule
+     — see the hero's note). Only type colour and rhythm live here. */
+  color: var(--champ);
   padding: clamp( 48px, 7vw, 96px) 0 clamp( 48px, 6vw, 64px);
 }
 .statband .lab--rev { color: var(--moss-300); }
@@ -1281,14 +1283,11 @@ a.soc:hover { transform: translateY(-2px); }
   /* founder, 16 Aug: the flat ink read as one tone. A plum light source
      now sits behind the display aperture's field and falls away to the
      shared dark field — every stop derived from tokens. */
-  background:
-    radial-gradient(56% 48% at 78% 32%,
-      color-mix(in srgb, var(--plum-700) 55%, transparent) 0%,
-      transparent 70%),
-    linear-gradient(165deg,
-      color-mix(in srgb, var(--plum-700) 76%, var(--plum-ink)) 0%,
-      var(--plum-field) 55%,
-      color-mix(in srgb, var(--plum-700) 30%, var(--plum-ink)) 100%);
+  /* No background here — the hero's ground is painted ONCE, in the
+     "WHERE THE HOMEPAGE'S DARKNESS ACTUALLY LIVES" block ~2,000 lines
+     down, which outranks this rule. A background written here is dead
+     code that lies to the next reader (it cost this file two rounds of
+     "still too dark" once already). */
 }
 /* dark-field hero: reverse type per brand rule 4 (champagne/ivory on plum) */
 .hero h1, .hero .display { color: var(--champ-300); }
@@ -2706,6 +2705,7 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
 /* Print and any motionless pipeline get the resting page, whole. */
 @media print {
   .rv, .rv * { opacity: 1 !important; transform: none !important;
+               translate: none !important; scale: none !important;
                animation: none !important; transition: none !important; }
   .hl { overflow: visible; }
 }
@@ -2847,8 +2847,10 @@ h1:has(.hl--sub) .uline::after { display: none; }
 
   /* scroll reveal — armed only once site.js has run (html.js) */
   html.js .rv {
-    opacity: 0; transform: translateY(20px);
-    transition: opacity 0.65s var(--ease), transform 0.65s var(--ease);
+    /* +30% presence (founder, 30 Aug 2026): a longer rise on a longer
+       clock, so the sweep is felt rather than glimpsed */
+    opacity: 0; transform: translateY(28px);
+    transition: opacity 0.85s var(--ease), transform 0.85s var(--ease);
     transition-delay: var(--rvd, 0s);
   }
   html.js .rv.in { opacity: 1; transform: none; }
@@ -3249,14 +3251,14 @@ h1:has(.hl--sub) .uline::after { display: none; }
   html.js h2.rv,
   html.js .statband__h.rv {
     opacity: 0;
-    transform: translateY(38%);
+    transform: translateY(48%);
   }
   html.js h2.rv.in,
   html.js .statband__h.rv.in {
-    animation: mask-rise 0.82s var(--ease) forwards;
+    animation: mask-rise 0.95s var(--ease) forwards;
   }
   @keyframes mask-rise {
-    from { opacity: 1; clip-path: inset(0 0 105% 0); transform: translateY(38%); }
+    from { opacity: 1; clip-path: inset(0 0 105% 0); transform: translateY(48%); }
     to { opacity: 1; clip-path: inset(0 0 -12% 0); transform: none; }
   }
 
@@ -3267,7 +3269,7 @@ h1:has(.hl--sub) .uline::after { display: none; }
                                 transform-origin: bottom; }
   html.js .rv.in .slash,
   html.js .slash--rule.rv.in .slash {
-    animation: slash-draw 0.42s var(--ease) forwards;
+    animation: slash-draw 0.55s var(--ease) forwards;
   }
   @keyframes slash-draw {
     to { transform: skewX(var(--slash-skew)) scaleY(1); }
@@ -3275,7 +3277,7 @@ h1:has(.hl--sub) .uline::after { display: none; }
   html.js .slash--rule::after { transform: scaleX(0); transform-origin: left; }
   html.js .slash--rule.in::after,
   html.js .rv.in .slash--rule::after {
-    animation: rule-draw 0.7s var(--ease) forwards 0.18s;
+    animation: rule-draw 0.9s var(--ease) forwards 0.18s;
   }
   @keyframes rule-draw { to { transform: scaleX(1); } }
 
@@ -3361,11 +3363,33 @@ h1:has(.hl--sub) .uline::after { display: none; }
    future lift has one number to move rather than a hex to discover. The
    brightness change of 17 Aug was cancelled by the founder; these are the
    original values and the page renders pixel-identical to before. */
-.hero, .statband, .f-plum {
+/* 30 Aug 2026, founder: the hero lifts 25% and the gradient spans HALF the
+   band (50% 渐变), and what-we-do carries the same light system down.
+   The shared three-section rule is split so each band owns its ground;
+   .f-plum keeps the original values — the case-study round asked for
+   animation, not brightness. This block remains the ONLY place these
+   grounds are painted (see the 17 Aug note above). */
+.f-plum {
   background:
     radial-gradient(120% 90% at 16% 4%,
       color-mix(in srgb, var(--plum-700) 19%, var(--plum-ink)) 0%,
       var(--plum-ink) 62%);
+}
+.hero {
+  background:
+    radial-gradient(90% 70% at 20% 6%,
+      color-mix(in srgb, var(--plum-700) 52%, var(--plum-ink)) 0%,
+      transparent 60%),
+    linear-gradient(165deg,
+      color-mix(in srgb, var(--plum-700) 60%, var(--plum-ink)) 0%,
+      color-mix(in srgb, var(--plum-700) 34%, var(--plum-ink)) 50%,
+      color-mix(in srgb, var(--plum-700) 16%, var(--plum-ink)) 100%);
+}
+.statband {
+  background: linear-gradient(180deg,
+    color-mix(in srgb, var(--plum-700) 46%, var(--plum-ink)) 0%,
+    color-mix(in srgb, var(--plum-700) 26%, var(--plum-ink)) 50%,
+    color-mix(in srgb, var(--plum-700) 34%, var(--plum-ink)) 100%);
 }
 .hero::before, .statband::before, .f-plum::before, .f-moss::before {
   content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
@@ -4148,6 +4172,35 @@ h1:has(.hl--sub) .uline::after { display: none; }
   .hwh-card--4 { animation-delay: 5.2s; }
   @keyframes hwh-drift {
     0%, 100% { translate: 0 0; }
-    50% { translate: 0 -8px; }
+    50% { translate: 0 -11px; }
+  }
+}
+
+/* ── the case-study finish (founder, 30 Aug 2026: 最后呈现 +30%) ──────────
+   The card settles, the artwork eases from a slight zoom to rest, and the
+   three figures land LAST, one beat apart — the number is the finale. The
+   digits are static text throughout: every frame of the animation shows the
+   true value (the S1 rule — nothing counts up, nothing photographs false). */
+@media (prefers-reduced-motion: no-preference) {
+  html.js .res.rv { transition: none; }
+  html.js .res.rv.in { animation: res-settle 0.85s var(--ease) both;
+    animation-delay: var(--rvd, 0s); }
+  @keyframes res-settle {
+    0%   { opacity: 0; transform: translateY(36px) scale(0.965); }
+    70%  { opacity: 1; transform: translateY(-5px) scale(1.008); }
+    100% { opacity: 1; transform: none; }
+  }
+  html.js .res.rv .res__art { scale: 1.07;
+    transition: scale 1.2s var(--ease) 0.15s; }
+  html.js .res.rv.in .res__art { scale: 1; }
+  html.js .res.rv .stat { opacity: 0; }
+  html.js .res.rv.in .stat { animation: stat-land 0.7s var(--ease) both; }
+  html.js .res.rv.in .stat:nth-child(1) { animation-delay: 0.34s; }
+  html.js .res.rv.in .stat:nth-child(2) { animation-delay: 0.5s; }
+  html.js .res.rv.in .stat:nth-child(3) { animation-delay: 0.66s; }
+  @keyframes stat-land {
+    0%   { opacity: 0; translate: 0 16px; scale: 0.92; }
+    70%  { opacity: 1; translate: 0 -2px; scale: 1.03; }
+    100% { opacity: 1; translate: 0 0; scale: 1; }
   }
 }

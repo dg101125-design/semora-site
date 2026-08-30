@@ -13,7 +13,7 @@
     els.forEach(function (el) {
       var section = el.closest("section") || document.body;
       var i = groups.get(section) || 0;
-      el.style.setProperty("--rvd", (Math.min(i, 6) * 0.07) + "s");
+      el.style.setProperty("--rvd", (Math.min(i, 6) * 0.09) + "s");
       groups.set(section, i + 1);
     });
     var io = new IntersectionObserver(function (entries) {

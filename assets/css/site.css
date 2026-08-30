@@ -636,10 +636,10 @@ section > .wrap { position: relative; z-index: 1; }
 }
 .btn:hover { background: var(--plum-ink); transform: translateY(-2px); }
 /* Dark grounds take the bright signal with ink type — 5.17:1 both ways. */
-.hero .btn, .f-plum .btn, .statband .btn {
+.hero .btn, .f-plum .btn, .statband .btn, .hwh .btn {
   background: var(--signal); color: var(--plum-ink); border-color: var(--signal);
 }
-.hero .btn:hover, .f-plum .btn:hover, .statband .btn:hover {
+.hero .btn:hover, .f-plum .btn:hover, .statband .btn:hover, .hwh .btn:hover {
   background: var(--signal-ink); color: var(--ivory); border-color: var(--signal-ink);
 }
 .btn:active { transform: translateY(0); }
@@ -658,6 +658,9 @@ section > .wrap { position: relative; z-index: 1; }
 .alink:hover .ar { animation: none; transform: translateX(5px); }
 .f-plum .alink { color: var(--champ); border-color: var(--plum-700); }
 .f-plum .alink:hover { color: var(--ivory); border-color: var(--plum-300); }
+.hwh .alink { color: var(--champ); border-color: var(--plum-700); }
+.hwh .alink:hover { color: var(--ivory); border-color: var(--plum-300); }
+.hwh .lab--rev { color: var(--moss-300); }
 
 /* --------------------------------------------------- header */
 .site-head {
@@ -4086,24 +4089,24 @@ h1:has(.hl--sub) .uline::after { display: none; }
    30 Aug 2026): device left, floating channel cards, one paragraph, one
    ask. The phone is drawn in the house line; card names are the quote
    builder's à-la-carte names verbatim; no invented counts (R6). ---- */
-/* Light ground since 30 Aug 2026 (founder: "change how we help background
-   to light") — the drawn phone flips to ink line, cards sit up on border +
-   shadow, the disc takes the acid-for-light token. Same day, second pass
-   (founder: 不要完全白色, 用这个background): the ground is the outcome
-   band's warm plum plate, not bare ivory, so the ivory cards lift off it. */
-.hwh { background: color-mix(in srgb, var(--plum) 7%, var(--ivory));
-  color: var(--plum-900); padding: var(--sp-9) 0; }
+/* Ground history, all founder-directed on 30 Aug 2026: ink → light ivory →
+   the outcome band's warm plate → THIRD pass ("change the color the semora
+   purple color"): the band now stands on Electric Plum itself. Ivory type
+   and cards on plum (6.98:1); the phone draws in ivory line; the disc and
+   CTA return to the dark-ground acid tokens. */
+.hwh { background: var(--plum); color: var(--ivory); padding: var(--sp-9) 0; }
+.hwh h2 { color: var(--ivory); }
 .hwh__grid { display: grid; gap: var(--sp-7); align-items: center;
   margin-top: var(--sp-6); }
-.hwh__txt > p { max-width: 54ch; margin-top: var(--sp-5); }
+.hwh__txt > p { color: var(--ivory); max-width: 54ch; margin-top: var(--sp-5); }
 .hwh__stage { position: relative; }
 .hwh__phone { display: block; width: min(72%, 300px); height: auto; margin: 0 auto; }
-.hp-shell { fill: none; stroke: var(--plum-ink); stroke-width: 2.5; }
-.hp-screen { fill: none; stroke: var(--plum-ink); stroke-width: 1; opacity: 0.4; }
-.hp-notch { stroke: var(--plum-ink); stroke-width: 2.5; stroke-linecap: round; }
-.hp-blk { fill: rgb(27 13 22 / 0.10); }
-.hp-blk--hero { fill: rgb(27 13 22 / 0.16); }
-.hp-blk--cta { fill: var(--moss-700); }
+.hp-shell { fill: none; stroke: var(--ivory); stroke-width: 2.5; }
+.hp-screen { fill: none; stroke: var(--ivory); stroke-width: 1; opacity: 0.5; }
+.hp-notch { stroke: var(--ivory); stroke-width: 2.5; stroke-linecap: round; }
+.hp-blk { fill: rgb(248 246 242 / 0.16); }
+.hp-blk--hero { fill: rgb(248 246 242 / 0.24); }
+.hp-blk--cta { fill: var(--moss-300); }
 .hwh-card { display: flex; align-items: center; gap: var(--sp-4);
   background: var(--ivory); color: var(--plum-ink);
   border: 1px solid var(--champ-700);

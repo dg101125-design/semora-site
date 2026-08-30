@@ -401,7 +401,9 @@ section > .wrap { position: relative; z-index: 1; }
   font-family: var(--sans); font-size-adjust: 0.546; font-weight: 600;
   /* 40 cap, not 56 (founder, 13 Aug: 排版变成两行) — at 56 the second
      line broke into three on every desktop width */
-  font-size: clamp( 28px, 3vw, 40px); line-height: 1.14;
+  /* 1.04, the display line-height (founder, 31 Aug: pay attention to the
+     line space) — 1.14 read loose on a two-line caps display heading */
+  font-size: clamp( 28px, 3vw, 40px); line-height: 1.04;
   letter-spacing: -0.006em; text-transform: uppercase;
 }
 @media (min-width: 561px) { .meth-h { white-space: nowrap; } }

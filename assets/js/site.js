@@ -16,12 +16,38 @@
       el.style.setProperty("--rvd", (Math.min(i, 6) * 0.09) + "s");
       groups.set(section, i + 1);
     });
+    var seen = new WeakSet();
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+        if (e.isIntersecting) {
+          e.target.classList.add("in"); seen.add(e.target); io.unobserve(e.target);
+        }
       });
     }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
     els.forEach(function (el) { io.observe(el); });
+
+    /* The 2.6s fallback below reveals EVERYTHING for renders that never
+       scroll — which also meant every below-fold animation played while off
+       screen, and a real visitor scrolled into a page of finished motion
+       (founder, 31 Aug 2026: "you lost animation design" — nothing was
+       lost; it had all already played, invisibly, at t=2.6s). The fix: the
+       first genuine interaction — which print pipelines, reader modes and
+       engine renderers never produce, so the S3 guarantee stands — re-arms
+       whatever the fallback revealed that the visitor has not actually
+       seen. The observer never stopped watching those elements, so each
+       one animates on real entry. */
+    function rearm() {
+      var vh = window.innerHeight;
+      els.forEach(function (el) {
+        if (seen.has(el)) return;
+        var r = el.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > vh) el.classList.remove("in");
+        else seen.add(el);
+      });
+    }
+    ["scroll", "wheel", "touchstart"].forEach(function (ev) {
+      window.addEventListener(ev, rearm, { once: true, passive: true });
+    });
   } else {
     els.forEach(function (el) { el.classList.add("in"); });
   }
@@ -30,7 +56,8 @@
      engine visual renderers, previews) must still see the whole page. If a
      reveal has not fired by 2.6s, fire it. Idempotent — scrolled-in elements
      already carry .in. (Diagnosis S3, 27 Aug 2026: 2 of 61 reveals visible
-     in a scroll-less mobile render.) */
+     in a scroll-less mobile render. The re-arm above hands real visitors
+     their motion back on first interaction.) */
   window.setTimeout(function () {
     els.forEach(function (el) { el.classList.add("in"); });
   }, 2600);

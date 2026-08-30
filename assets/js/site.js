@@ -225,7 +225,13 @@
       var row = e.target.closest(".res__stats");
       var i = row ? Array.prototype.indexOf.call(
         row.querySelectorAll(".stat__n"), e.target) : 0;
-      window.setTimeout(function () { run(e.target); }, 340 + 160 * i);
+      /* ride the wave: each card enters 140ms behind the last (css --wd),
+         and its figures land 550ms after that — the count starts as the
+         stat lands, so the jump IS the landing */
+      var card = e.target.closest(".res");
+      var ci = card && card.parentNode
+        ? Array.prototype.indexOf.call(card.parentNode.children, card) : 0;
+      window.setTimeout(function () { run(e.target); }, 550 + 160 * i + ci * 140);
     });
   }, { threshold: 0.4 });
   ns.forEach(function (el) { io.observe(el); });

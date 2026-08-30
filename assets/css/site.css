@@ -277,12 +277,15 @@ section > .wrap { position: relative; z-index: 1; }
   display: flex; flex-direction: column; align-items: center;
 }
 .intl-ap svg { width: 100%; height: auto; display: block; }
-.intl-ap .ap-arc, .intl-ap .ap-arc--weak, .intl-ap .ap-dot { fill: var(--plum-ink); }
+/* the hero aperture's exact colour code (founder, 31 Aug) */
+.intl-ap .ap-arc { fill: var(--ivory); opacity: 0.12; }
+.intl-ap .ap-arc--weak { fill: var(--plum-300); opacity: 0.38; }
+.intl-ap .ap-dot { fill: var(--moss-300); }
 /* the wordmark beneath the mark — the ring's lockup, in band ink */
 .intl-wm { display: block; width: 100%; margin-top: 8px; }
 .intl-wm svg { width: 100%; height: auto; display: block; }
-.intl-ap .intl-wm .wm-letter,
-.intl-ap .intl-wm .wm-dot { fill: var(--plum-ink); }  /* outguns morbit's ivory */
+.intl-ap .intl-wm .wm-letter { fill: var(--plum); }   /* outguns morbit's ivory */
+.intl-ap .intl-wm .wm-dot { fill: var(--moss-300); }
 @media (prefers-reduced-motion: no-preference) {
   /* the header's own perpetual scan, on the band's mark — same 22s beat */
   html.js .interlude .intl-spin {
@@ -300,10 +303,11 @@ section > .wrap { position: relative; z-index: 1; }
   font-family: var(--sans); font-size-adjust: 0.546; font-weight: 600;
   font-size: clamp( 28px, 5vw, 72px);
   line-height: 1.04; letter-spacing: -0.006em; text-transform: uppercase;
-  color: var(--plum-ink); max-width: none;
+  /* Electric Plum (founder, 31 Aug: use the SEMORA purple) — 6.98:1 on ivory */
+  color: var(--plum); max-width: none;
 }
 .interlude p em {
-  font-style: normal; font-weight: 600; color: var(--plum-ink);
+  font-style: normal; font-weight: 600; color: var(--plum);
   display: block; margin-left: clamp(48px, 10vw, 160px); margin-top: 0;
   position: relative;
 }
@@ -3208,8 +3212,11 @@ h1:has(.hl--sub) .uline::after { display: none; }
     62%  { opacity: 1; transform: scale(1.35); }
     100% { opacity: 1; transform: none; }
   }
+  /* 循环播放 (founder, 31 Aug): the letter performance replays every 7s —
+     entry keeps the approved pop/noise profiles, the exit lifts away in
+     the same stagger, the seal stays lit with its pulsing dot. */
   html.js .interlude p.rv.in .il {
-    animation: il-pop 0.5s var(--ease) both;
+    animation: il-cycle 7s var(--ease) infinite;
     animation-delay: calc(var(--i) * 55ms + 450ms);
   }
   @keyframes il-pop {
@@ -3220,7 +3227,7 @@ h1:has(.hl--sub) .uline::after { display: none; }
   html.js .interlude em .il:nth-of-type(odd)  { --tilt: 10deg; }
   html.js .interlude em .il:nth-of-type(even) { --tilt: -9deg; }
   html.js .interlude p.rv.in em .il {
-    animation: il-noise 0.62s var(--ease) both;
+    animation: il-noise-cycle 7s var(--ease) infinite;
     animation-delay: calc(var(--i) * 55ms + 590ms);
   }
   @keyframes il-noise {
@@ -3231,10 +3238,34 @@ h1:has(.hl--sub) .uline::after { display: none; }
   }
   html.js .interlude em::before { transform: skewX(var(--slash-skew)) scaleY(0); }
   html.js .interlude p.rv.in em::before {
-    animation: il-slash 0.45s var(--ease) both;
+    animation: il-slash-cycle 7s var(--ease) infinite;
     animation-delay: calc(var(--sd, 600ms) + 450ms);
   }
   @keyframes il-slash { to { transform: skewX(var(--slash-skew)) scaleY(1); } }
+  @keyframes il-cycle {
+    0%    { opacity: 0; transform: translateY(0.35em) scale(0.4); }
+    4.4%  { opacity: 1; transform: translateY(-0.06em) scale(1.12); }
+    7.1%  { opacity: 1; transform: none; }
+    76%   { opacity: 1; transform: none; }
+    83%   { opacity: 0; transform: translateY(-0.3em) scale(0.85); }
+    100%  { opacity: 0; transform: translateY(0.35em) scale(0.4); }
+  }
+  @keyframes il-noise-cycle {
+    0%    { opacity: 0; transform: translateY(0.5em) rotate(var(--tilt, 9deg)) scale(0.4); }
+    4.9%  { opacity: 1; transform: translateY(-0.08em) rotate(calc(var(--tilt, 9deg) * -0.45)) scale(1.14); }
+    6.9%  { transform: translateY(0.02em) rotate(calc(var(--tilt, 9deg) * 0.18)) scale(0.99); }
+    8.9%  { opacity: 1; transform: none; }
+    76%   { opacity: 1; transform: none; }
+    83%   { opacity: 0; transform: translateY(-0.3em) rotate(var(--tilt, 9deg)) scale(0.85); }
+    100%  { opacity: 0; transform: translateY(0.5em) rotate(var(--tilt, 9deg)) scale(0.4); }
+  }
+  @keyframes il-slash-cycle {
+    0%   { transform: skewX(var(--slash-skew)) scaleY(0); }
+    6.4% { transform: skewX(var(--slash-skew)) scaleY(1); }
+    76%  { transform: skewX(var(--slash-skew)) scaleY(1); }
+    83%  { transform: skewX(var(--slash-skew)) scaleY(0); }
+    100% { transform: skewX(var(--slash-skew)) scaleY(0); }
+  }
 }
 
 /* ══════════════════════════════════════════════════════════════════════════
@@ -4211,21 +4242,37 @@ h1:has(.hl--sub) .uline::after { display: none; }
    true value (the S1 rule — nothing counts up, nothing photographs false). */
 @media (prefers-reduced-motion: no-preference) {
   html.js .res.rv { transition: none; }
-  html.js .res.rv.in { animation: res-settle 0.85s var(--ease) both;
-    animation-delay: var(--rvd, 0s); }
-  @keyframes res-settle {
-    0%   { opacity: 0; transform: translateY(36px) scale(0.965); }
-    70%  { opacity: 1; transform: translateY(-5px) scale(1.008); }
+  /* 波浪式 (founder, 31 Aug): the six cards ROLL in as a wave — the left
+     column sweeps in from the left, the right from the right, each a beat
+     behind the last, with the house wgal-wave sway. The artwork zoom and
+     the stat landing still finish each card. */
+  html.js .res.rv.in { animation: res-wave-l 0.9s var(--ease) both; }
+  html.js .res.rv.in:nth-child(even) { animation-name: res-wave-r; }
+  html.js .res.rv.in:nth-child(1) { --wd: 0s; }
+  html.js .res.rv.in:nth-child(2) { --wd: 0.14s; }
+  html.js .res.rv.in:nth-child(3) { --wd: 0.28s; }
+  html.js .res.rv.in:nth-child(4) { --wd: 0.42s; }
+  html.js .res.rv.in:nth-child(5) { --wd: 0.56s; }
+  html.js .res.rv.in:nth-child(6) { --wd: 0.7s; }
+  html.js .res.rv.in { animation-delay: var(--wd, 0s); }
+  @keyframes res-wave-l {
+    0%   { opacity: 0; transform: translate(-6vw, 24px) rotate(-1.1deg); }
+    45%  { opacity: 1; transform: translate(1vw, -6px) rotate(0.5deg); }
+    100% { opacity: 1; transform: none; }
+  }
+  @keyframes res-wave-r {
+    0%   { opacity: 0; transform: translate(6vw, 24px) rotate(1.1deg); }
+    45%  { opacity: 1; transform: translate(-1vw, -6px) rotate(-0.5deg); }
     100% { opacity: 1; transform: none; }
   }
   html.js .res.rv .res__art { scale: 1.07;
-    transition: scale 1.2s var(--ease) 0.15s; }
+    transition: scale 1.2s var(--ease) calc(var(--wd, 0s) + 0.2s); }
   html.js .res.rv.in .res__art { scale: 1; }
   html.js .res.rv .stat { opacity: 0; }
   html.js .res.rv.in .stat { animation: stat-land 0.7s var(--ease) both; }
-  html.js .res.rv.in .stat:nth-child(1) { animation-delay: 0.34s; }
-  html.js .res.rv.in .stat:nth-child(2) { animation-delay: 0.5s; }
-  html.js .res.rv.in .stat:nth-child(3) { animation-delay: 0.66s; }
+  html.js .res.rv.in .stat:nth-child(1) { animation-delay: calc(var(--wd, 0s) + 0.55s); }
+  html.js .res.rv.in .stat:nth-child(2) { animation-delay: calc(var(--wd, 0s) + 0.71s); }
+  html.js .res.rv.in .stat:nth-child(3) { animation-delay: calc(var(--wd, 0s) + 0.87s); }
   @keyframes stat-land {
     0%   { opacity: 0; translate: 0 16px; scale: 0.92; }
     70%  { opacity: 1; translate: 0 -2px; scale: 1.03; }

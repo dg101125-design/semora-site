@@ -451,7 +451,9 @@ section > .wrap { position: relative; z-index: 1; }
   .morbit__ring {
     display: block; position: absolute; left: 50%; top: 50%;
     width: 528px; height: 528px;
-    transform: translate(-50%, -50%) rotate(-45deg);
+    /* dash origin at NW since 30 Aug 2026 — station 01 moved to the top-left
+       corner so the corners read 01→04 clockwise (diagnosis fix) */
+    transform: translate(-50%, -50%) rotate(-135deg);
   }
   .mo-base { fill: none; stroke: rgba(217, 223, 203, 0.28); stroke-width: 1; }
   .mo-ghost { fill: none; stroke: rgba(217, 223, 203, 0.28); stroke-width: 1;
@@ -486,7 +488,7 @@ section > .wrap { position: relative; z-index: 1; }
   .morbit__word .wm-letter { fill: var(--ivory); }
   .morbit__word .wm-dot { fill: var(--moss-300); }
   .morbit__arm { display: block; position: absolute; inset: 0;
-    pointer-events: none; transform: rotate(45deg); }
+    pointer-events: none; transform: rotate(315deg); }
   .morbit__dot {
     position: absolute; left: 50%; top: 50%;
     width: 12px; height: 12px; border-radius: 50%;
@@ -514,11 +516,11 @@ section > .wrap { position: relative; z-index: 1; }
 @media (prefers-reduced-motion: no-preference) {
   .morbit__arm { animation: mo-orbit 16s var(--ease) infinite; }
   @keyframes mo-orbit {
-    0%, 19%   { transform: rotate(45deg); }
-    25%, 44%  { transform: rotate(135deg); }
-    50%, 69%  { transform: rotate(225deg); }
-    75%, 87%  { transform: rotate(315deg); }
-    100%      { transform: rotate(405deg); }
+    0%, 19%   { transform: rotate(315deg); }
+    25%, 44%  { transform: rotate(405deg); }
+    50%, 69%  { transform: rotate(495deg); }
+    75%, 87%  { transform: rotate(585deg); }
+    100%      { transform: rotate(675deg); }
   }
   .mo-fill { animation: mo-fillup 16s var(--ease) infinite; }
   @keyframes mo-fillup {
@@ -634,10 +636,10 @@ section > .wrap { position: relative; z-index: 1; }
 }
 .btn:hover { background: var(--plum-ink); transform: translateY(-2px); }
 /* Dark grounds take the bright signal with ink type — 5.17:1 both ways. */
-.hero .btn, .f-plum .btn, .statband .btn {
+.hero .btn, .f-plum .btn, .statband .btn, .hwh .btn {
   background: var(--signal); color: var(--plum-ink); border-color: var(--signal);
 }
-.hero .btn:hover, .f-plum .btn:hover, .statband .btn:hover {
+.hero .btn:hover, .f-plum .btn:hover, .statband .btn:hover, .hwh .btn:hover {
   background: var(--signal-ink); color: var(--ivory); border-color: var(--signal-ink);
 }
 .btn:active { transform: translateY(0); }
@@ -866,9 +868,10 @@ html.lr .site-head__word::before {
   }
 }
 /* Three type registers, one per level, so the hierarchy is carried by the
-   typeface and not only by size: mono for the category label, serif italic for
-   the promise under it, sans for the things you can buy. The site already sets
-   all three — this is the same system the page headings use, not a new one. */
+   typeface and not only by size: the display face for the category heading,
+   sans for the promise under it and for the things you can buy. (Corrected
+   30 Aug 2026 — this comment previously described a retired mono-label /
+   serif-promise system the code no longer delivers.) */
 /* The column heading was mono, all-caps and widely letterspaced — which is
    what pushed half of them onto two lines and left every subtitle starting at
    a different height. It is a display heading, so it is now set in the
@@ -876,7 +879,8 @@ html.lr .site-head__word::before {
    six headings in a row read as one row of names when every word is capped —
    sentence case made the second word look like a description of the first. */
 .mega__col .lab {
-  font-family: var(--serif) !important; font-weight: 600 !important;
+  /* 500, not 600 — the serif's weight range on this site runs 300–500 */
+  font-family: var(--serif) !important; font-weight: 500 !important;
   font-size: 1.06rem !important; line-height: 1.2 !important;
   letter-spacing: -0.01em !important; text-transform: none !important;
   color: var(--plum-900); margin: 0 0 8px;
@@ -958,8 +962,10 @@ html.lr .site-head__word::before {
 @media (min-width: 981px) { .nav-toggle-box { display: none; } }
 .nav-toggle {
   display: none; margin-left: auto;
-  font-family: var(--mono); font-size-adjust: 0.516; font-size: 11px; letter-spacing: 0.012em;
-  text-transform: uppercase; color: var(--plum);
+  /* sans since 30 Aug 2026 — the nav itself went sans on 12 Aug and the
+     control that opens it had been left behind in the mono caps voice */
+  font-family: var(--sans); font-size-adjust: 0.546; font-weight: 500;
+  font-size: 15px; letter-spacing: 0.012em; color: var(--plum);
   cursor: pointer; padding: 0.6em 0;
   -webkit-user-select: none; user-select: none;
 }
@@ -1200,8 +1206,10 @@ html.lr .site-head__word::before {
 .foot-mailto:hover { background: var(--plum-700); color: var(--ivory); }
 .foot-mailto:hover .ar { transform: translateX(3px); }
 /* The phone stays findable and stops instructing. Mono because it is data —
-   the same face the address block, the labels and the legal line already use
-   for anything a visitor copies rather than reads. */
+   and since 30 Aug 2026 the email string and the postal address speak the
+   same data voice, so everything a visitor copies rather than reads is one
+   face. (This comment previously claimed the address was already mono; it
+   was not — that inconsistency is the one this change closes.) */
 .foot-med {
   display: inline-flex; align-items: flex-start; gap: 12px;
   width: fit-content; margin-top: 12px;
@@ -1211,8 +1219,14 @@ html.lr .site-head__word::before {
 }
 .foot-med:hover, .foot-med:hover .foot-ic { color: var(--plum); }
 .foot-addr {
-  font-style: normal; font-size: 15px; line-height: 1.55;
+  font-style: normal;
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
+  font-size: 13px; line-height: 1.55; letter-spacing: 0.012em;
   color: var(--graph); max-width: 26ch; margin: 0;
+}
+.foot-mailto__t {
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
+  font-size: 13px; letter-spacing: 0.012em;
 }
 
 /* ---- the four channels.
@@ -1264,7 +1278,8 @@ a.soc:hover { transform: translateY(-2px); }
 html.js .qr-box__act { display: flex; }
 .qr-save {
   display: inline-flex; align-items: center; gap: 8px;
-  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
+  /* a button speaks the CTA voice (13 Aug ruling) — sans since 30 Aug 2026 */
+  font-family: var(--sans); font-size-adjust: 0.546; font-weight: 600;
   font-size: 11px; letter-spacing: 0.012em; text-transform: uppercase;
   color: var(--plum-900); background: transparent; cursor: pointer;
   border: 1px solid var(--plum-700); padding: 12px 16px;
@@ -2361,7 +2376,11 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
   display: inline-block;
   border: 1px solid var(--plum-300); border-radius: 96px;
   padding: 8px 16px;
-  font-size: 13px; line-height: 1.2; letter-spacing: 0.012em;
+  /* the chip voice is mono (matching .prow__tag) — aligned 30 Aug 2026;
+     these fell through to body sans because no face was ever named */
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
+  font-size: 11px; line-height: 1.2; letter-spacing: 0.012em;
+  text-transform: uppercase;
   color: var(--ivory);
 }
 /* The SAMPLE pill that stood here was removed 16 Aug 2026: the founder
@@ -2572,7 +2591,8 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
   position: absolute; left: -9999px; top: 0;
   background: var(--plum); color: var(--ivory);
   padding: 0.8em 1.2em; z-index: 100;
-  font-family: var(--mono); font-size-adjust: 0.516; font-size: 13px; letter-spacing: 0.012em;
+  font-family: var(--sans); font-size-adjust: 0.546; font-weight: 500;
+  font-size: 13px; letter-spacing: 0.012em;
 }
 .skip:focus { left: 0; }
 
@@ -3506,13 +3526,15 @@ h1:has(.hl--sub) .uline::after { display: none; }
   .wrow__name { font-size: 13px; }
 }
 
-/* the floating strategy pill — the page's one persistent ask */
+/* the floating strategy pill — the page's one persistent ask. Sans since
+   30 Aug 2026: calls to action speak the headline's voice (the 13 Aug .btn
+   ruling); this pill was the last mono CTA on the page. */
 .float-cta {
   position: fixed; right: 24px; bottom: 24px; z-index: 60;
   display: inline-flex; align-items: center; gap: 12px;
   background: var(--moss-300); color: var(--plum-ink);
-  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
-  font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
+  font-family: var(--sans); font-size-adjust: 0.546; font-weight: 600;
+  font-size: 13px; letter-spacing: 0.012em; text-transform: uppercase;
   padding: 16px 24px; border-radius: 999px; text-decoration: none;
   box-shadow: 0 8px 24px rgb(0 0 0 / 0.35);
   transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
@@ -4096,4 +4118,65 @@ h1:has(.hl--sub) .uline::after { display: none; }
   .qa__tag--a, .qa__ln, .qa__chip, .report__bar, .report__delta { opacity: 1; }
   .tl::before { transform: none; }
   .door__slash { transform: skewX(-20deg); }
+}
+
+/* ---- 07 / How we help — the closing argument (founder reference,
+   30 Aug 2026): device left, floating channel cards, one paragraph, one
+   ask. The phone is drawn in the house line; card names are the quote
+   builder's à-la-carte names verbatim; no invented counts (R6). ---- */
+.hwh { background: var(--plum-ink); color: var(--ivory); padding: var(--sp-9) 0; }
+.hwh h2 { color: var(--ivory); }
+.hwh__grid { display: grid; gap: var(--sp-7); align-items: center;
+  margin-top: var(--sp-6); }
+.hwh__txt > p { color: var(--plum-100); max-width: 54ch; margin-top: var(--sp-5); }
+.hwh__stage { position: relative; }
+.hwh__phone { display: block; width: min(72%, 300px); height: auto; margin: 0 auto; }
+.hp-shell { fill: none; stroke: var(--ivory); stroke-width: 2.5; }
+.hp-screen { fill: none; stroke: var(--ivory); stroke-width: 1; opacity: 0.4; }
+.hp-notch { stroke: var(--ivory); stroke-width: 2.5; stroke-linecap: round; }
+.hp-blk { fill: rgb(248 246 242 / 0.14); }
+.hp-blk--hero { fill: rgb(248 246 242 / 0.22); }
+.hp-blk--cta { fill: var(--moss-300); }
+.hwh-card { display: flex; align-items: center; gap: var(--sp-4);
+  background: var(--ivory); color: var(--plum-ink);
+  border-radius: 14px; padding: var(--sp-4) var(--sp-5);
+  margin-top: var(--sp-4);
+  box-shadow: 0 24px 48px rgb(27 13 22 / 0.45); }
+.hwh-card__disc { flex: none; width: 44px; height: 44px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--moss-300); color: var(--plum-ink); }
+.hwh-card__disc svg { width: 16px; height: 16px; }
+.hwh-card__t b { display: block; font-family: var(--sans);
+  font-size-adjust: 0.546; font-weight: 600; font-size: var(--t-body-sm);
+  line-height: 1.3; letter-spacing: 0.012em; }
+.hwh-card__t small { display: block; margin-top: var(--sp-1);
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
+  font-size: var(--t-label); letter-spacing: 0.012em;
+  text-transform: uppercase; color: var(--plum-700); }
+.hwh .cta-row { margin-top: var(--sp-6); }
+@media (min-width: 900px) {
+  .hwh__grid { grid-template-columns: 6fr 5fr; gap: var(--sp-8); }
+  .hwh__stage { min-height: 640px; }
+  .hwh__phone { width: 300px; }
+  .hwh-card { position: absolute; margin-top: 0; max-width: 300px; }
+  .hwh-card--1 { top: 6%; left: 0; }
+  .hwh-card--2 { top: 30%; right: 0; }
+  .hwh-card--3 { top: 56%; left: 2%; }
+  .hwh-card--4 { bottom: 4%; right: 6%; }
+}
+@media (max-width: 560px) {
+  /* the method band's one link was a 23px touch target on phones */
+  .meth-band .alink { display: inline-block; padding-block: var(--sp-3); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  /* the drift uses the translate property so it composes with .rv's
+     transform reveal instead of fighting it */
+  .hwh-card { animation: hwh-drift 7s var(--ease) infinite; }
+  .hwh-card--2 { animation-delay: 1.8s; }
+  .hwh-card--3 { animation-delay: 3.5s; }
+  .hwh-card--4 { animation-delay: 5.2s; }
+  @keyframes hwh-drift {
+    0%, 100% { translate: 0 0; }
+    50% { translate: 0 -8px; }
+  }
 }

@@ -4088,8 +4088,11 @@ h1:has(.hl--sub) .uline::after { display: none; }
    builder's à-la-carte names verbatim; no invented counts (R6). ---- */
 /* Light ground since 30 Aug 2026 (founder: "change how we help background
    to light") — the drawn phone flips to ink line, cards sit up on border +
-   shadow, the disc takes the acid-for-light token. */
-.hwh { background: var(--ivory); color: var(--plum-900); padding: var(--sp-9) 0; }
+   shadow, the disc takes the acid-for-light token. Same day, second pass
+   (founder: 不要完全白色, 用这个background): the ground is the outcome
+   band's warm plum plate, not bare ivory, so the ivory cards lift off it. */
+.hwh { background: color-mix(in srgb, var(--plum) 7%, var(--ivory));
+  color: var(--plum-900); padding: var(--sp-9) 0; }
 .hwh__grid { display: grid; gap: var(--sp-7); align-items: center;
   margin-top: var(--sp-6); }
 .hwh__txt > p { max-width: 54ch; margin-top: var(--sp-5); }

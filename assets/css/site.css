@@ -277,15 +277,22 @@ section > .wrap { position: relative; z-index: 1; }
   display: flex; flex-direction: column; align-items: center;
 }
 .intl-ap svg { width: 100%; height: auto; display: block; }
-/* the hero aperture's exact colour code (founder, 31 Aug) */
-.intl-ap .ap-arc { fill: var(--ivory); opacity: 0.12; }
-.intl-ap .ap-arc--weak { fill: var(--plum-300); opacity: 0.38; }
+/* One icon, one treatment (founder, 31 Aug: 两个icon不统一) — the
+   interlude seal is now the HEADER monogram enlarged: plum tile, solid
+   ivory arcs, plum-300 weak arc, acid dot. On the acid band the tile is
+   what keeps the dot legible. */
+.intl-ap > svg:first-of-type {
+  background: var(--plum); border-radius: 18px; padding: 12px;
+  box-sizing: border-box;
+}
+.intl-ap .ap-arc { fill: var(--ivory); }
+.intl-ap .ap-arc--weak { fill: var(--plum-300); }
 .intl-ap .ap-dot { fill: var(--moss-300); }
 /* the wordmark beneath the mark — the ring's lockup, in band ink */
 .intl-wm { display: block; width: 100%; margin-top: 8px; }
 .intl-wm svg { width: 100%; height: auto; display: block; }
 .intl-ap .intl-wm .wm-letter { fill: var(--plum); }   /* outguns morbit's ivory */
-.intl-ap .intl-wm .wm-dot { fill: var(--moss-300); }
+.intl-ap .intl-wm .wm-dot { fill: var(--plum-700); }  /* acid dies on the acid band */
 @media (prefers-reduced-motion: no-preference) {
   /* the header's own perpetual scan, on the band's mark — same 22s beat */
   html.js .interlude .intl-spin {

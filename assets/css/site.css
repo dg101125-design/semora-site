@@ -1878,6 +1878,11 @@ html.js .prow.in .prow__tick { background: var(--moss-300); }
 .tier {
   background: var(--white); border: 1px solid var(--champ-700);
   padding: 0 24px 24px; display: flex; flex-direction: column;
+}
+/* the renamed products run one to two lines in the "Delivered by" note —
+   reserve two so the three columns' lists stay level (1 Sep 2026) */
+.tier .who { min-height: calc(2 * 1.62em); }
+.tier {
   transition: transform 220ms var(--ease), box-shadow 220ms var(--ease);
 }
 .tier:hover { transform: translateY(-4px); box-shadow: 0 14px 34px rgba(46, 28, 41, 0.10); }

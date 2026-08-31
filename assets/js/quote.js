@@ -1,15 +1,15 @@
 /* SEMORA — quote builder. Vanilla, deterministic: every figure is
    published on the page itself. No AI, no variables, no "it depends".
    Every item carries its own price and delivery time; totals are sums.
-   One rule: the monthly menu never exceeds MOMENTUM / Held. */
+   One rule: the monthly menu never exceeds Managed Growth Pod / Held. */
 (function () {
   "use strict";
 
-  var CAP = 13500; /* MOMENTUM / Held — the full monthly engine */
+  var CAP = 13500; /* Managed Growth Pod / Held — the full monthly engine */
   var BUNDLES = {
-    /* SIGNAL / collapsed to a single $4,000 core item in the 29 Aug 2026
+    /* Commercial Growth Signal collapsed to a single $4,000 core item in the 29 Aug 2026
        repricing — no bundle detection needed for a one-item group. */
-    haus:   { n: 4, label: "/ HAUS — the system", price: 38000,
+    haus:   { n: 4, label: "Growth Foundation Build — the system", price: 38000,
               note: "delivery 8–10 weeks · brand + website + proposals + CRM, one team" }
   };
 
@@ -84,7 +84,7 @@
       t += '<div class="qb-total"><span>Monthly</span><b>' +
         (capped ? "<s>" + fmt(moMenu) + "</s> " : "") + fmt(monthly) + " / mo</b></div>";
       if (capped) {
-        t += '<p class="qb-cap">MOMENTUM / Held cap applied — the full engine ' +
+        t += '<p class="qb-cap">Managed Growth Pod / Held cap applied — the full engine ' +
           "never costs more than " + fmt(CAP) + " a month.</p>";
       }
     }

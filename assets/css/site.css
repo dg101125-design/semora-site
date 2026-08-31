@@ -179,7 +179,10 @@ h2 {
   font-size: clamp( 34px, 4.1vw, 56px);
   line-height: 1.04;
   letter-spacing: -0.014em;
-  color: var(--plum-900);
+  /* plum-700 site-wide (founder, confirmed 1 Sep 2026) — the homepage
+     serif hue on every light ground, 9.51:1 on ivory; dark bands keep
+     their ivory overrides, who-h keeps its founder-ordered ink */
+  color: var(--plum-700);
   text-wrap: balance;
 }
 h3 {
@@ -761,7 +764,9 @@ html.lr .site-head__word::before {
 /* align-self: stretch so the nav — and the Services cell inside it — fills the
    header's full height. That is what closes the dead band between the trigger
    and the mega panel; see .has-mega. Children stay centred, so nothing moves. */
-.site-nav { margin-left: auto; display: flex; align-items: center; gap: 32px;
+/* gap 32→24, 1 Sep 2026: six labels + the CTA overran the right gutter
+   at 1440 without tripping the scroll gate */
+.site-nav { margin-left: auto; display: flex; align-items: center; gap: 24px;
             align-self: stretch; }
 .site-nav a:not(.btn) {
   font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
@@ -3327,11 +3332,9 @@ h1:has(.hl--sub) .uline::after { display: none; }
 /* The one-round display-size override (40-72) left 31 Aug 2026 — the
    founder's standing order is exact font parity with the homepage, and
    the homepage h2 is clamp(34, 4.1vw, 56). */
-/* 紫色标题 (founder, 31 Aug 2026: "应该是紫色的字体, 和homepage 字体统一"):
-   the page's light-ground headings take the homepage serif hue — the ocm
-   band's carrying step, plum-700 (9.51:1 on ivory) — instead of the
-   ink-black plum-900 the base h2 wears */
-.pg-quote .f-ivory h2, .pg-quote .f-white h2 { color: var(--plum-700); }
+/* The .pg-quote purple-heading scope of 31 Aug retired 1 Sep 2026 —
+   the founder confirmed plum-700 for every light-ground h2, so the hue
+   now lives on the base h2 rule. */
 .cos__wm {
   position: absolute; z-index: 0; pointer-events: none;
   right: -7%; bottom: -8%;

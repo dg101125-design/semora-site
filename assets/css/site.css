@@ -3041,7 +3041,9 @@ h1:has(.hl--sub) .uline::after { display: none; }
 .qb-hint strong { color: var(--plum-900); }
 .qb-item {
   display: flex; align-items: flex-start; gap: 16px;
-  padding: 16px 12px; margin-inline: -0.8rem;
+  /* the -0.8rem bleed lived off the group card's 32px padding; with the
+     cards gone it overflowed the phone viewport by 17px (layout gate) */
+  padding: 16px 12px; margin-inline: 0;
   border-top: 1px solid var(--champ-300); cursor: pointer;
   transition: background 140ms var(--ease), box-shadow 140ms var(--ease);
 }
@@ -3813,7 +3815,18 @@ h1:has(.hl--sub) .uline::after { display: none; }
 .qb__col { min-width: 0; }
 @media (max-width: 560px) {
   .qb-item { flex-wrap: wrap; }
-  .qb-item em { text-align: left; flex-basis: 100%; margin-left: calc(1.25rem + 16px); }
+  /* the ceiling rows stack on phones — as flex items their ems kept a
+     407px box and pushed the page 17px wide (layout gate, 31 Aug 2026) */
+  .qb-cap-line { display: block; }
+  .qb-cap-line em { display: block; text-align: left; margin-top: 8px; }
+  .qb-cap-line em i { white-space: normal; }
+  .qb-item--qty > span { margin-left: 0; }
+  /* basis must give back what the margin takes — at 100% the price row's
+     right edge left the viewport once the group cards stopped absorbing
+     it (probe-verified 394px vs 390, 31 Aug 2026) */
+  .qb-item em { text-align: left;
+    flex-basis: calc(100% - 1.25rem - 16px);
+    margin-left: calc(1.25rem + 16px); }
 }
 
 /* ── background depth (founder, 12 Aug 2026: "背景 40/100 — 深度/协调/原创") ──

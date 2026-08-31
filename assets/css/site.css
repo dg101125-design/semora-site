@@ -3267,6 +3267,11 @@ h1:has(.hl--sub) .uline::after { display: none; }
   font-size: clamp( 40px, 6.4vw, 72px);
   line-height: 0.98; letter-spacing: -0.018em;
 }
+/* 紫色标题 (founder, 31 Aug 2026: "应该是紫色的字体, 和homepage 字体统一"):
+   the page's light-ground headings take the homepage serif hue — the ocm
+   band's carrying step, plum-700 (9.51:1 on ivory) — instead of the
+   ink-black plum-900 the base h2 wears */
+.pg-quote .f-ivory h2, .pg-quote .f-white h2 { color: var(--plum-700); }
 .cos__wm {
   position: absolute; z-index: 0; pointer-events: none;
   right: -7%; bottom: -8%;

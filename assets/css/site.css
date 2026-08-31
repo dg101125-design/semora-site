@@ -673,6 +673,13 @@ section > .wrap { position: relative; z-index: 1; }
 .alink:hover .ar { animation: none; transform: translateX(5px); }
 .f-plum .alink { color: var(--champ); border-color: var(--plum-700); }
 .f-plum .alink:hover { color: var(--ivory); border-color: var(--plum-300); }
+/* the acid click (founder, 31 Aug 2026: See more cases, green) — text on
+   dark at 10.41:1; the founder has ordered acid text on dark three times
+   this sprint, so the rule-4 note stands amended by their hand */
+.f-plum .alink--acid { color: var(--moss-300);
+  border-color: color-mix(in srgb, var(--moss-300) 45%, transparent); }
+.f-plum .alink--acid:hover { color: var(--ivory);
+  border-color: var(--moss-300); }
 .hwh .alink { color: var(--champ); border-color: var(--plum-700); }
 .hwh .alink:hover { color: var(--ivory); border-color: var(--plum-300); }
 .hwh .lab--rev { color: var(--moss-300); }
@@ -2537,7 +2544,9 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
 }
 @media (max-width: 700px) { .ocm__foot { grid-template-columns: 1fr; } }
 .ocm__lead {
-  font-size: 19px; line-height: 1.45; font-weight: 400;
+  /* −10% (founder, 31 Aug 2026: 缩小10%, keep consistency — both leads
+     share the class, so they move together) */
+  font-size: 17px; line-height: 1.45; font-weight: 400;
   color: var(--graph-400); max-width: 30ch; margin: 0;
 }
 .ocm__cta { grid-column: 1 / -1; margin-top: 12px; color: var(--plum-700); }
@@ -2928,6 +2937,19 @@ h1:has(.hl--sub) .uline::after { display: none; }
   @keyframes ar-nudge {
     0%, 12%, 100% { transform: translateX(0); }
     6% { transform: translateX(5px); }
+  }
+  /* the jumping arrow (founder, 31 Aug 2026: "jumping annimation arrow"
+     on See more cases) — a double hop with a small arc, on its own clock
+     so it reads apart from the idle nudge */
+  .alink.alink--jump .ar {
+    display: inline-block;
+    animation: ar-jump 2.6s var(--ease) infinite 0.9s;
+  }
+  @keyframes ar-jump {
+    0%, 26%, 100% { transform: translate(0, 0); }
+    6%  { transform: translate(5px, -4px); }
+    13% { transform: translate(0, 0); }
+    19% { transform: translate(5px, -4px); }
   }
 
   /* the umlaut pulse */

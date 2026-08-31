@@ -3005,20 +3005,30 @@ h1:has(.hl--sub) .uline::after { display: none; }
   font-family: var(--mono); font-size-adjust: 0.516; font-size: 11px; letter-spacing: 0.012em;
   text-transform: uppercase; color: var(--moss-700);
 }@media (max-width: 860px) { }/* --------------------------------------------- quote builder */
-.qb { display: grid; grid-template-columns: 1.25fr 1fr; gap: 32px; align-items: start; }
+.qb { display: grid; grid-template-columns: 1.25fr 1fr; gap: 48px; align-items: start; }
 @media (max-width: 900px) { .qb { grid-template-columns: 1fr; } }
 .qb-group {
-  border: 1px solid var(--champ-700); border-top: 4px solid var(--plum-900);
-  background: var(--white);
-  padding: 24px 32px 24px; margin-bottom: 24px;
+  /* 50→90 round (founder, 31 Aug 2026): the card boxes leave — open
+     groups on the page, each opened by one strong rule, the rate-card
+     grammar without the frames */
+  border: 0; border-top: 2px solid var(--plum-ink);
+  background: transparent;
+  padding: 24px 0 0; margin-bottom: 48px;
 }
 .qb-group > .lab {
   display: flex; align-items: center; gap: 0.9em;
-  margin-bottom: 16px; color: var(--plum-900);
+  margin-bottom: 16px; color: var(--plum-ink);
+  /* the header leaves the 11px mono whisper for the component sans —
+     same voice as the homepage card names, at group scale */
+  font-family: var(--sans); font-size-adjust: 0.546; font-weight: 600;
+  font-size: 19px; letter-spacing: 0; text-transform: none;
+  line-height: 1.3;
 }
 .qb-no {
-  display: inline-block; padding-right: 0.95em;
-  color: var(--moss-700); border-right: 2px solid var(--moss-300);
+  display: inline-block; padding-right: 0.7em;
+  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 350;
+  font-size: 25px; color: var(--plum-300);
+  border-right: 2px solid var(--moss-300);
 }
 .qb-ic {
   width: 23px; height: 23px; flex: 0 0 auto;
@@ -3027,7 +3037,7 @@ h1:has(.hl--sub) .uline::after { display: none; }
 }
 .qb-ic .ic-x { stroke: var(--moss-700); }
 .qb-ic .ic-dot { fill: var(--moss-700); stroke: none; }
-.qb-hint { font-size: 13px; color: var(--graph-400); margin: 12px 0 8px; max-width: none; }
+.qb-hint { font-size: 13px; color: var(--graph-400); margin: 12px 0 8px; max-width: 62ch; }
 .qb-hint strong { color: var(--plum-900); }
 .qb-item {
   display: flex; align-items: flex-start; gap: 16px;
@@ -3071,6 +3081,8 @@ h1:has(.hl--sub) .uline::after { display: none; }
 .qb-item em b {
   display: block; font-family: var(--serif); font-size-adjust: 0.426; font-weight: 400;
   font-size: 19px; color: var(--plum-ink); font-variant-numeric: tabular-nums;
+  /* pin the price's first baseline to the 15px name's first-line box */
+  line-height: 1.04;
 }
 .qb-item em i {
   display: block; font-style: normal; font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
@@ -3082,6 +3094,8 @@ h1:has(.hl--sub) .uline::after { display: none; }
 .qb-item em i::before { content: "delivery "; color: var(--graph-400); }
 .qb-item:has(input[data-mo]) em i::before,
 .qb-item--qty em i::before { content: ""; }
+/* checkbox-less rows keep the name column's left axis */
+.qb-item--qty > span { margin-left: calc(1.25rem + 16px); }
 .qb-item--qty input[type="number"] {
   width: 4.2rem; font-family: var(--mono); font-size-adjust: 0.516; font-size: 15px;
   padding: 0.35em 0.45em; border: 2px solid var(--plum-900);
@@ -3437,6 +3451,30 @@ h1:has(.hl--sub) .uline::after { display: none; }
   .cos-du li:hover { color: var(--moss-700); }
   .cos-du li:hover::before { background: var(--moss-700); }
 }
+
+
+/* the group ceilings, spoken in the ledger's own grammar — sentence left,
+   Fraunces figure right, mono term beneath (50→90 round, 31 Aug 2026) */
+.qb-cap-line {
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: 16px; margin-top: 16px; padding: 12px 12px 0;
+  border-top: 1px solid var(--champ-300);
+}
+.qb-cap-line span { font-size: 15px; color: var(--graph-700); max-width: 40ch; }
+.qb-cap-line em { font-style: normal; text-align: right; flex: 0 0 auto; }
+.qb-cap-line em b {
+  display: block; font-family: var(--serif); font-size-adjust: 0.426;
+  font-weight: 400; font-size: 19px; color: var(--plum-ink);
+  font-variant-numeric: tabular-nums;
+}
+.qb-cap-line em i {
+  display: block; font-style: normal; font-family: var(--mono);
+  font-size-adjust: 0.516; font-weight: 400; font-size: 11px;
+  letter-spacing: 0.012em; text-transform: uppercase;
+  color: var(--moss-700); margin-top: 4px; white-space: nowrap;
+}
+/* the quotation hero closes on its CTA instead of trailing off */
+.pg-quotation .hero { padding-block: clamp( 48px, 8vw, 96px); }
 
 /* clients page — reserved slots for cases and testimonials */
 .cslot-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }

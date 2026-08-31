@@ -3080,33 +3080,33 @@ h1:has(.hl--sub) .uline::after { display: none; }
    consistency round); animation +50%: the map keeps score with an acid
    trail behind the travelling signal, the spine draws itself phase by
    phase, each node stamps, titles rise through the site mask, duties file
-   in with their slashes drawing after them. Acid is graphics-only on plum
-   (brand rule 4): dot, trail, ticks, nodes, slashes — never text. The
-   band's GROUND is painted in the darkness block near the end of this
-   file (id-scoped, beside the other grounds) — see the 17 Aug note there
-   before touching backgrounds here. */
+   in with their slashes drawing after them. Round 6 (founder: 上面的hero
+   page 和下面的页面设计 需要有区分): the band flips to the IVORY ground so
+   the dark hero and the flow read as two designs — every green moves to
+   the light-ground acid (moss-700 text / moss graphics), which also
+   returns the green titles INSIDE brand rule 4. */
 /* the rail starts on the spine's axis (left 12), so the loop above
    visibly feeds the six phases below */
 .cos-map { position: relative; height: 72px; margin: 24px 32px 8px 12px; }
 .cos-map::before {
   content: ""; position: absolute; left: 0; right: 0; top: 12px;
-  height: 2px; background: var(--plum-700);
+  height: 2px; background: var(--champ-700);
 }
 /* the walked track: acid fills behind the signal, like the meth band's
    walked arc */
 .cos-map__trail {
   position: absolute; left: 0; top: 12px; height: 2px; width: 100%;
-  background: var(--moss-300);
+  background: var(--moss);
   transform: scaleX(0); transform-origin: left;
 }
 .cos-map__st {
   position: absolute; top: 0; left: calc(var(--n) * 20%);
   transform: translateX(-50%);
   display: flex; flex-direction: column; align-items: center; gap: 8px;
-  color: var(--plum-100);
+  color: var(--graph-400);
 }
 .cos-map__st i {
-  width: 8px; height: 26px; background: var(--plum-300);
+  width: 8px; height: 26px; background: var(--plum);
   transform: skewX(var(--slash-skew));
 }
 .cos-map__st b {
@@ -3121,7 +3121,7 @@ h1:has(.hl--sub) .uline::after { display: none; }
 .cos-map__dot {
   position: absolute; top: 13px; left: 0%;
   width: 12px; height: 12px; border-radius: 50%;
-  background: var(--moss-300);
+  background: var(--moss);
   translate: -50% -50%;
   /* above the ticks — without this the dot spends ~72% of the loop
      hidden behind the tick it is visiting (review, 31 Aug 2026) */
@@ -3148,7 +3148,7 @@ h1:has(.hl--sub) .uline::after { display: none; }
 }
 .cos-ph::after { /* the node: a sheared acid tick standing on the spine */
   content: ""; position: absolute; left: 7px; top: 64px;
-  width: 12px; height: 26px; background: var(--moss-300);
+  width: 12px; height: 26px; background: var(--moss);
   transform: skewX(var(--slash-skew));
 }
 .cos-ph__no {
@@ -3161,13 +3161,12 @@ h1:has(.hl--sub) .uline::after { display: none; }
   font-family: var(--serif); font-size-adjust: 0.426; font-weight: 400;
   font-variation-settings: "opsz" 44;
   font-size: 34px; line-height: 1.14; letter-spacing: -0.006em;
-  /* acid as TEXT — founder order 31 Aug 2026 ("把title 换成绿色"), a
-     recorded exception to brand rule 4, scoped to this band; 10.41:1 on
-     ink so the reading is sound, the rule was discipline not contrast */
-  color: var(--moss-300);
+  /* the founder's green ("把title 换成绿色"), spoken in the light-ground
+     acid — 5.44:1 on ivory, inside brand rule 4 */
+  color: var(--moss-700);
 }
 .cos-ph__lead {
-  font-size: 15px; line-height: 1.55; color: var(--champ);
+  font-size: 15px; line-height: 1.55; color: var(--graph-700);
   margin: 8px 0 16px; max-width: none;
 }
 .cos-du {
@@ -3179,9 +3178,9 @@ h1:has(.hl--sub) .uline::after { display: none; }
   display: flex; align-items: center; gap: 12px;
   font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
   font-size: 13px; letter-spacing: 0.012em; line-height: 1.2;
-  /* one luminance step under the lead (12.94:1 on ink) — title, lead and
-     manifest each hold their own level, and the acid hover means it */
-  text-transform: uppercase; color: var(--plum-100);
+  /* one luminance step under the lead — title, lead and manifest each
+     hold their own level, and the acid hover means it */
+  text-transform: uppercase; color: var(--graph-400);
 }
 .cos-du li::before { /* each line leads with its own slash */
   content: ""; flex: 0 0 auto; width: 6px; height: 14px;
@@ -3192,7 +3191,7 @@ h1:has(.hl--sub) .uline::after { display: none; }
 .cos-end {
   display: block; position: relative;
   width: 12px; height: 12px; border-radius: 50%;
-  background: var(--moss-300); margin-left: 7px;
+  background: var(--moss); margin-left: 7px;
 }
 .cos-end::after { /* the hand-off, drawn: the signal exits toward the
   quotation system instead of stopping at the dot */
@@ -3213,9 +3212,9 @@ h1:has(.hl--sub) .uline::after { display: none; }
   width: clamp(280px, 34vw, 560px); height: auto;
   opacity: 0.05;
 }
-.cos__wm .ap-arc { fill: var(--ivory); }
+.cos__wm .ap-arc { fill: var(--plum); }
 .cos__wm .ap-arc--weak { fill: var(--plum-300); }
-.cos__wm .ap-dot { fill: var(--moss-300); }
+.cos__wm .ap-dot { fill: var(--moss-700); }
 @media (max-width: 640px) {
   .cos-map { margin-inline: 12px 8px; }
   .cos-map__st small { display: none; }
@@ -3259,17 +3258,17 @@ h1:has(.hl--sub) .uline::after { display: none; }
     animation: cos-tick 14s var(--ease) calc(var(--n) * 1.96s) infinite;
   }
   @keyframes cos-tick {
-    0%, 3%    { background: var(--moss-300);
+    0%, 3%    { background: var(--moss);
                 transform: skewX(var(--slash-skew)) scaleY(1.3); }
-    10%, 100% { background: var(--plum-300);
+    10%, 100% { background: var(--plum);
                 transform: skewX(var(--slash-skew)) scaleY(1); }
   }
   .cos-map__st {
     animation: cos-lit 14s var(--ease) calc(var(--n) * 1.96s) infinite;
   }
   @keyframes cos-lit {
-    0%, 4%    { color: var(--ivory); }
-    12%, 100% { color: var(--plum-100); }
+    0%, 4%    { color: var(--plum-900); }
+    12%, 100% { color: var(--graph-400); }
   }
   /* each phase: roll in on the case board's wave, draw your stretch of
      spine, stamp your node, raise your title through the site mask, then
@@ -3324,8 +3323,8 @@ h1:has(.hl--sub) .uline::after { display: none; }
   .cos-du li { transition: color 160ms var(--ease); }
   .cos-du li::before { transition: background 160ms var(--ease); }
   /* 鼠标停在哪儿，哪儿就变成绿色 (founder, 31 Aug 2026) */
-  .cos-du li:hover { color: var(--moss-300); }
-  .cos-du li:hover::before { background: var(--moss-300); }
+  .cos-du li:hover { color: var(--moss-700); }
+  .cos-du li:hover::before { background: var(--moss-700); }
 }
 
 /* clients page — reserved slots for cases and testimonials */
@@ -3703,21 +3702,9 @@ h1:has(.hl--sub) .uline::after { display: none; }
       color-mix(in srgb, var(--plum-700) 19%, var(--plum-ink)) 0%,
       var(--plum-ink) 62%);
 }
-/* 31 Aug 2026, founder: the onboarding band's flat field scored 30/100.
-   The hero's luminance system, turned to tell the flow's progression:
-   brightest behind the headline and the map, settling through the six
-   phases, lifting again at the handover to the quotation system.
-   Id-scoped and declared HERE so the one-block rule above stays true. */
-#onboarding.f-plum {
-  background:
-    radial-gradient(85% 40% at 24% 6%,
-      color-mix(in srgb, var(--plum-700) 46%, var(--plum-ink)) 0%,
-      transparent 62%),
-    linear-gradient(172deg,
-      color-mix(in srgb, var(--plum-700) 34%, var(--plum-ink)) 0%,
-      color-mix(in srgb, var(--plum-700) 14%, var(--plum-ink)) 55%,
-      color-mix(in srgb, var(--plum-700) 30%, var(--plum-ink)) 100%);
-}
+/* The 31 Aug #onboarding dark ground lived here for one evening; the
+   band flipped to ivory the same night (founder: hero 和下面 需要有区分)
+   and the override retired with it. */
 .hero {
   background:
     radial-gradient(90% 70% at 20% 6%,

@@ -1718,6 +1718,11 @@ html.js .prow.in .prow__tick { background: var(--moss-300); }
   color: var(--plf);
   transition: color 300ms var(--ease);
 }
+/* the four product names, −10% and in the animation's own green
+   (founder, 31 Aug 2026: 缩小10% 改成绿色 对应动画的绿色 — the same
+   --moss-300 the row tick flips to; 10.41:1 on ink, text-on-dark
+   exception by founder order, register #15 trail) */
+.pl-band .prow__h { font-size: clamp( 17px, 2vw, 25px); color: var(--moss-300); }
 .prow__cap {
   display: block; margin-top: 12px;
   font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;

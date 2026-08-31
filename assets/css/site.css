@@ -766,7 +766,12 @@ html.lr .site-head__word::before {
 }
 .site-nav a:not(.btn):hover { color: var(--plum); }
 .site-nav a[aria-current="page"] { color: var(--plum); border-bottom-color: var(--moss); }
-.site-nav .btn { padding: 0.85em 1.4em; }
+.site-nav .btn { padding: 0.85em 1.4em; white-space: nowrap; }
+/* five labels share the row now — a top-level label must never fold.
+   Scoped to the nav's own children: the mega menu's row links live in
+   the same nav and MUST keep wrapping (nowrap there blew the columns
+   to 1604px — 31 Aug 2026, caught by the layout gate). */
+.site-nav > a, .has-mega > a { white-space: nowrap; }
 
 
 /* --------------------------------------------- services mega-menu
@@ -3128,7 +3133,8 @@ h1:has(.hl--sub) .uline::after { display: none; }
   z-index: 1;
 }
 /* the flow: one spine, six phases, no boxes */
-.cos { list-style: none; margin-top: 64px; position: relative; }
+.cos { list-style: none; margin-top: 64px; position: relative;
+       counter-reset: cosph; }
 .cos::before { /* the spine reaches up toward the rail it descends from */
   content: ""; position: absolute; left: 12px; top: -64px; height: 64px;
   width: 2px;
@@ -3140,6 +3146,17 @@ h1:has(.hl--sub) .uline::after { display: none; }
   display: grid; grid-template-columns: 128px 1fr;
   column-gap: 32px; align-items: start;
   padding: 48px 0 64px 48px;
+  counter-increment: cosph;
+}
+.cos-ph > div { position: relative; z-index: 1; }
+.cos-ph__no::after { /* the phase's own watermark, drawn by counter */
+  content: counter(cosph, decimal-leading-zero);
+  position: absolute; right: 0; top: 8px; z-index: 0;
+  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 300;
+  font-variation-settings: "opsz" 72;
+  font-size: clamp( 96px, 16vw, 128px); line-height: 0.94;
+  letter-spacing: -0.018em;
+  color: color-mix(in srgb, var(--plum) 10%, transparent);
 }
 .cos-ph::before { /* the spine segment this phase draws */
   content: ""; position: absolute; left: 12px; top: 0; bottom: 0;
@@ -3158,11 +3175,12 @@ h1:has(.hl--sub) .uline::after { display: none; }
   color: var(--plum-300); font-variant-numeric: tabular-nums;
 }
 .cos-ph h3 {
-  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 400;
-  font-variation-settings: "opsz" 44;
-  font-size: 34px; line-height: 1.14; letter-spacing: -0.006em;
-  /* the founder's green ("把title 换成绿色"), spoken in the light-ground
-     acid — 5.44:1 on ivory, inside brand rule 4 */
+  /* 字体协调 (founder, 31 Aug round 7): one voice per layer — the serif
+     keeps the display h2 and the numerals; phase titles speak the
+     component sans (the wwd2 one-typeface precedent, founder 13 Aug).
+     The green stays ("把title 换成绿色") — moss-700, 5.44:1 on ivory. */
+  font-family: var(--sans); font-size-adjust: 0.546; font-weight: 600;
+  font-size: 25px; line-height: 1.3; letter-spacing: 0.012em;
   color: var(--moss-700);
 }
 .cos-ph__lead {
@@ -3200,7 +3218,20 @@ h1:has(.hl--sub) .uline::after { display: none; }
   background: linear-gradient(180deg,
     color-mix(in srgb, var(--plum-300) 45%, transparent), transparent);
 }
-/* the aperture signs the band's corner — statband/meth-band grammar */
+/* the band's ground carries its watermarks (founder, 31 Aug round 7:
+   BACKGROUND NEED add some watermark): a plum-tinted wash behind the
+   header corner, an acid-tinted lift where the flow hands off, the
+   aperture large enough to be seen, and a ghost numeral watermarking
+   each phase — luminance and brand geometry only, nothing glows. */
+#onboarding.f-ivory {
+  background:
+    radial-gradient(70% 46% at 82% 4%,
+      color-mix(in srgb, var(--plum-300) 14%, var(--ivory)) 0%,
+      var(--ivory) 60%),
+    radial-gradient(60% 30% at 8% 96%,
+      color-mix(in srgb, var(--moss-300) 12%, var(--ivory)) 0%,
+      var(--ivory) 55%);
+}
 #onboarding { overflow: hidden; }
 #onboarding .split h2 {
   font-size: clamp( 40px, 6.4vw, 72px);
@@ -3208,9 +3239,9 @@ h1:has(.hl--sub) .uline::after { display: none; }
 }
 .cos__wm {
   position: absolute; z-index: 0; pointer-events: none;
-  right: -6%; bottom: -10%;
-  width: clamp(280px, 34vw, 560px); height: auto;
-  opacity: 0.05;
+  right: -7%; bottom: -8%;
+  width: clamp(320px, 42vw, 700px); height: auto;
+  opacity: 0.07;
 }
 .cos__wm .ap-arc { fill: var(--plum); }
 .cos__wm .ap-arc--weak { fill: var(--plum-300); }
@@ -3220,6 +3251,7 @@ h1:has(.hl--sub) .uline::after { display: none; }
   .cos-map__st small { display: none; }
   .cos-ph { grid-template-columns: 1fr; row-gap: 8px;
             padding: 24px 0 32px 32px; }
+  .cos-ph__no::after { display: none; }
   .cos-ph::after { top: 28px; }
   .cos-ph__no { font-size: 40px; }
   .cos-ph h3 { font-size: 25px; }

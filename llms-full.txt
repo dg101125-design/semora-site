@@ -1066,15 +1066,15 @@ Build your quote Tell us what you need built →
 
 # Clients Onboard — SEMORA STUDIO Melbourne
 URL: https://www.semora.com.au/quote
-Summary: The SEMORA Operating System: six phases from governance to the 120-day decision. Every price published — the quotation system prices the pack you tick.
+Summary: The SEMORA Operating System: six phases run every client engagement, from governance and access to the 120-day decision. Every price published, one page over.
 
 Clients onboard
 
-## Build up what you need. We quote the package for you.
+## Six phases. One system.
 
-Every item below carries its own price and its own delivery time. Nothing is quoted on request — nobody gets a different number.
+How SEMORA STUDIO takes a new client from signed contract to the decision at day 120.
 
-Straight to every price →
+See every price →
 
 Clients onboard / six phases
 
@@ -1084,7 +1084,7 @@ We focus on providing growth opportunities for ambitious brands — making you l
 
 As a proudly independent digital marketing agency from Melbourne, we do things our way.
 
-We turn the old-school agency model on its head, in all sorts of ways, so you can be confident we’ll deliver the results we promise.
+We turn the old-school agency model on its head, in all sorts of ways. You can be confident we’ll deliver the results we promise.
 
 01Setup02Access03Model04Quick wins05Launch06Decision
 
@@ -1234,13 +1234,31 @@ calculate next-quarter capacity
 
 present the following 120-day plan
 
-Published pricing / one business day
+The next step
 
-### The Quotation System
+### Priced by the same system.
 
-The system prices itself the same way. Every item below is published, every price identical for every client, and the pack you tick becomes the proposal we send back within one business day. Same numbers, always.
+Prices live one page over. Every item shows its price and its time, the pack you tick becomes the quote we send back, and nobody gets a different number. One business day, in writing.
+
+Open the Quotation System
+
+---
+
+# Quotation System — SEMORA STUDIO Melbourne
+URL: https://www.semora.com.au/quotation
+Summary: Tick what you need — every item carries its published price and delivery time, and the pack you build becomes the proposal we send back. Same numbers for everyone.
+
+The quotation system
+
+## Build up what you need. We quote the package for you.
+
+Every item below carries its own price and its own delivery time. Nothing is quoted on request — nobody gets a different number.
+
+How onboarding runs →
 
 ### How much does each SEMORA STUDIO service cost?
+
+The system prices itself the same way: tick what you need, and every item answers with its published price and its delivery time. Same numbers, always.
 
 01Start — the diagnostic
 

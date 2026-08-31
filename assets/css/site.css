@@ -3308,10 +3308,9 @@ h1:has(.hl--sub) .uline::after { display: none; }
       var(--ivory) 55%);
 }
 #onboarding { overflow: hidden; }
-#onboarding .split h2 {
-  font-size: clamp( 40px, 6.4vw, 72px);
-  line-height: 0.98; letter-spacing: -0.018em;
-}
+/* The one-round display-size override (40-72) left 31 Aug 2026 — the
+   founder's standing order is exact font parity with the homepage, and
+   the homepage h2 is clamp(34, 4.1vw, 56). */
 /* 紫色标题 (founder, 31 Aug 2026: "应该是紫色的字体, 和homepage 字体统一"):
    the page's light-ground headings take the homepage serif hue — the ocm
    band's carrying step, plum-700 (9.51:1 on ivory) — instead of the

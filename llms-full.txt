@@ -1088,7 +1088,7 @@ We turn the old-school agency model on its head, in all sorts of ways. You can b
 
 01
 
-### Commercial and governance setup
+### Commercial and Contract Setup
 
 Set before any work starts:
 
@@ -1108,7 +1108,7 @@ privacy and data classification
 
 02
 
-### Access and baseline
+### Access and Baseline
 
 Request read-only or partner access to:
 
@@ -1140,7 +1140,7 @@ revenue and lead-quality data
 
 03
 
-### Commercial growth model
+### Commercial Growth Model
 
 Documented with you:
 
@@ -1170,7 +1170,7 @@ priority offer
 
 04
 
-### Measurement and quick wins
+### Measurement and Quick Wins
 
 Completed before anything launches:
 
@@ -1192,7 +1192,7 @@ client-approved 120-day roadmap
 
 05
 
-### Controlled launch
+### Controlled Launch
 
 Approved work launches across the relevant systems:
 
@@ -1214,7 +1214,7 @@ conversion experiments
 
 06
 
-### Decision and scaling
+### Decision and Scaling
 
 At the end of 120 days:
 

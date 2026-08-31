@@ -1629,7 +1629,10 @@ a.soc:hover { transform: translateY(-2px); }
 .pl-wm .ap-arc--weak { fill: var(--plum-300); }
 .pl-wm .ap-dot { fill: var(--moss-300); }
 .pl-band .slash--rule .lab { color: var(--moss-300); }
-.pl-band .who-h.pl-h { color: var(--ivory); font-size: clamp( 28px, 3vw, 40px); }
+/* 04 spoke a third voice here (who-h caps at its own 28-40 clamp) — the
+   recurring drift the founder called twice; the heading is the site h2
+   serif now, ivory on the ink field (failure register B6, 31 Aug 2026) */
+.pl-band h2 { color: var(--ivory); }
 .pl-band .who-lead p { color: var(--plum-100); }
 .pl-band .who-lead .small { color: var(--plum-300); }
 .pledger { position: relative; border-top: 1px solid var(--plum-700); margin-top: 8px; }

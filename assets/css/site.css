@@ -2757,7 +2757,9 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
    negative margin hands the space back so the leading does not change. */
 .hl { display: block; overflow: hidden;
       padding-bottom: 0.14em; margin-bottom: -0.14em; }
-.hl > span { display: block; }
+/* balance keeps a wrapping hero line from stranding an orphan word on
+   its own row ("for you." — founder, 31 Aug 2026: font problem) */
+.hl > span { display: block; text-wrap: balance; }
 /* home hero: the disclaimer recedes so the promise line carries the page.
    The promise scales past the site-wide h1 because it is the one sentence
    the homepage exists to land — checked clear of the monogram at 1400px.
@@ -3070,18 +3072,32 @@ h1:has(.hl--sub) .uline::after { display: none; }
 }
 
 /* --------------------------- client onboarding system (quote page)
-   Founder, 31 Aug 2026: "Design Semora Workflow (Replace method) — build up
-   the workflow animation to explain the clients how we manage our process."
-   The system map loops (循环播放): one acid signal travels the rail, and
-   each station answers as it passes — the full workflow, always running.
-   The six phases land in the case board's wave (res-wave-l/r), each opened
-   by its acid gate-bar, duties cascading in the checklist voice. Acid is
-   graphics-only on plum (brand rule 4): the dot, the ticks, the gate-bars —
-   never text. */
-.cos-map { position: relative; height: 72px; margin: 24px 32px 8px; }
+   v2 — founder rounds, 31 Aug 2026 evening: "SEMORA Operating System";
+   the v1 band scored 30/100 on background and 40/100 on UX. 减少方框 — no
+   card plates, no chip borders: the six phases hang off ONE drawn spine
+   (上下链接) and the duties read as a slash-separated manifest in the
+   checklist voice; phase titles join the serif display voice (the font-
+   consistency round); animation +50%: the map keeps score with an acid
+   trail behind the travelling signal, the spine draws itself phase by
+   phase, each node stamps, titles rise through the site mask, duties file
+   in with their slashes drawing after them. Acid is graphics-only on plum
+   (brand rule 4): dot, trail, ticks, nodes, slashes — never text. The
+   band's GROUND is painted in the darkness block near the end of this
+   file (id-scoped, beside the other grounds) — see the 17 Aug note there
+   before touching backgrounds here. */
+/* the rail starts on the spine's axis (left 12), so the loop above
+   visibly feeds the six phases below */
+.cos-map { position: relative; height: 72px; margin: 24px 32px 8px 12px; }
 .cos-map::before {
   content: ""; position: absolute; left: 0; right: 0; top: 12px;
   height: 2px; background: var(--plum-700);
+}
+/* the walked track: acid fills behind the signal, like the meth band's
+   walked arc */
+.cos-map__trail {
+  position: absolute; left: 0; top: 12px; height: 2px; width: 100%;
+  background: var(--moss-300);
+  transform: scaleX(0); transform-origin: left;
 }
 .cos-map__st {
   position: absolute; top: 0; left: calc(var(--n) * 20%);
@@ -3107,64 +3123,105 @@ h1:has(.hl--sub) .uline::after { display: none; }
   width: 12px; height: 12px; border-radius: 50%;
   background: var(--moss-300);
   translate: -50% -50%;
-  /* above the station ticks — without this the dot spends ~72% of the
-     loop hidden behind the tick it is visiting (review, 31 Aug 2026) */
+  /* above the ticks — without this the dot spends ~72% of the loop
+     hidden behind the tick it is visiting (review, 31 Aug 2026) */
   z-index: 1;
 }
-.cos { list-style: none; display: grid; gap: 24px; margin-top: 48px; }
+/* the flow: one spine, six phases, no boxes */
+.cos { list-style: none; margin-top: 48px; position: relative; }
+.cos::before { /* the spine reaches up toward the rail it descends from */
+  content: ""; position: absolute; left: 12px; top: -48px; height: 48px;
+  width: 2px;
+  background: linear-gradient(180deg, transparent,
+    color-mix(in srgb, var(--plum-300) 45%, transparent));
+}
 .cos-ph {
   position: relative;
-  border: 1px solid var(--plum-700);
-  background: color-mix(in srgb, var(--plum-700) 24%, transparent);
-  padding: 24px 32px;
-  display: grid; grid-template-columns: 96px 1fr; gap: 24px;
-  align-items: start;
+  display: grid; grid-template-columns: 128px 1fr;
+  column-gap: 32px; align-items: start;
+  padding: 32px 0 48px 48px;
 }
-.cos-ph::before {
-  content: ""; position: absolute; left: -1px; top: -1px; bottom: -1px;
-  width: 4px; background: var(--moss-300);
+.cos-ph::before { /* the spine segment this phase draws */
+  content: ""; position: absolute; left: 12px; top: 0; bottom: 0;
+  width: 2px;
+  background: color-mix(in srgb, var(--plum-300) 45%, transparent);
+}
+.cos-ph::after { /* the node: a sheared acid tick standing on the spine */
+  content: ""; position: absolute; left: 7px; top: 44px;
+  width: 12px; height: 26px; background: var(--moss-300);
+  transform: skewX(var(--slash-skew));
 }
 .cos-ph__no {
   font-family: var(--serif); font-size-adjust: 0.426; font-weight: 350;
   font-variation-settings: "opsz" 72;
-  font-size: 56px; line-height: 0.94; letter-spacing: -0.014em;
+  font-size: 76px; line-height: 0.94; letter-spacing: -0.014em;
   color: var(--plum-300); font-variant-numeric: tabular-nums;
 }
 .cos-ph h3 {
-  font-family: var(--sans); font-size-adjust: 0.546; font-weight: 600;
-  font-size: 19px; line-height: 1.3; letter-spacing: 0.012em;
+  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 400;
+  font-variation-settings: "opsz" 44;
+  font-size: 28px; line-height: 1.14; letter-spacing: -0.006em;
   color: var(--ivory);
 }
 .cos-ph__lead {
   font-size: 15px; line-height: 1.55; color: var(--champ);
-  margin: 4px 0 16px; max-width: none;
+  margin: 8px 0 16px; max-width: none;
 }
-.cos-du { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+.cos-du {
+  list-style: none; display: flex; flex-wrap: wrap;
+  column-gap: 12px; row-gap: 12px; max-width: 70ch;
+}
 .cos-du li {
+  display: inline-flex; align-items: center; gap: 12px;
   font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
-  font-size: 11px; letter-spacing: 0.012em; line-height: 1.2;
-  text-transform: uppercase; color: var(--champ);
-  border: 1px solid var(--plum-700);
-  background: color-mix(in srgb, var(--plum-ink) 45%, transparent);
-  padding: 8px 12px;
+  font-size: 13px; letter-spacing: 0.012em; line-height: 1.2;
+  /* one luminance step under the lead (12.94:1 on ink) — title, lead and
+     manifest each hold their own level, and the ivory hover means it */
+  text-transform: uppercase; color: var(--plum-100);
 }
-.cos-hand {
-  margin-top: 48px; padding-top: 32px;
-  border-top: 1px solid var(--plum-700);
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 24px; flex-wrap: wrap;
+.cos-du li::after {
+  content: ""; width: 6px; height: 14px;
+  background: var(--plum-300);
+  transform: skewX(var(--slash-skew));
 }
+.cos-du li:last-child::after { display: none; }
+/* the spine hands its signal on: the terminal dot under phase six */
+.cos-end {
+  display: block; position: relative;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--moss-300); margin-left: 7px;
+}
+.cos-end::after { /* the hand-off, drawn: the signal exits toward the
+  quotation system instead of stopping at the dot */
+  content: ""; position: absolute; left: 5px; top: 16px;
+  width: 2px; height: 96px;
+  background: linear-gradient(180deg,
+    color-mix(in srgb, var(--plum-300) 45%, transparent), transparent);
+}
+/* the aperture signs the band's corner — statband/meth-band grammar */
+#onboarding { overflow: hidden; }
+.cos__wm {
+  position: absolute; z-index: 0; pointer-events: none;
+  right: -6%; bottom: -10%;
+  width: clamp(280px, 34vw, 560px); height: auto;
+  opacity: 0.05;
+}
+.cos__wm .ap-arc { fill: var(--ivory); }
+.cos__wm .ap-arc--weak { fill: var(--plum-300); }
+.cos__wm .ap-dot { fill: var(--moss-300); }
 @media (max-width: 640px) {
-  .cos-map { margin-inline: 8px; }
+  .cos-map { margin-inline: 12px 8px; }
   .cos-map__st small { display: none; }
-  .cos-ph { grid-template-columns: 1fr; gap: 8px; padding: 24px; }
-  .cos-ph__no { font-size: 34px; }
+  .cos-ph { grid-template-columns: 1fr; row-gap: 8px;
+            padding: 24px 0 32px 32px; }
+  .cos-ph::after { top: 28px; }
+  .cos-ph__no { font-size: 40px; }
 }
 @media (prefers-reduced-motion: no-preference) {
-  /* the signal runs the rail: six dwells, then it re-enters at the start.
-     Station n sits at n·20% of the rail and the dot arrives there at
-     n·14% of the 14s cycle — so every tick and label below delays by
-     n·1.96s to answer exactly as the dot lands. */
+  /* the signal runs the rail and the trail keeps its score: station n
+     sits at n·20% of the rail, the dot arrives at n·14% of the 14s
+     cycle, so ticks and labels delay by n·1.96s to answer as it lands.
+     After the last dwell the signal and its trail fade and re-enter. */
   .cos-map__dot { animation: cos-run 14s var(--ease) infinite; }
   @keyframes cos-run {
     0%, 10%  { left: 0%; opacity: 1; }
@@ -3176,6 +3233,18 @@ h1:has(.hl--sub) .uline::after { display: none; }
     94%      { left: 100%; opacity: 0; }
     94.1%    { left: 0%; opacity: 0; }
     100%     { left: 0%; opacity: 1; }
+  }
+  .cos-map__trail { animation: cos-trail 14s var(--ease) infinite; }
+  @keyframes cos-trail {
+    0%, 10%  { transform: scaleX(0); opacity: 1; }
+    14%, 24% { transform: scaleX(0.2); }
+    28%, 38% { transform: scaleX(0.4); }
+    42%, 52% { transform: scaleX(0.6); }
+    56%, 66% { transform: scaleX(0.8); }
+    70%, 92% { transform: scaleX(1); opacity: 1; }
+    94%      { transform: scaleX(1); opacity: 0; }
+    94.1%    { transform: scaleX(0); opacity: 0; }
+    100%     { transform: scaleX(0); opacity: 1; }
   }
   .cos-map__st i {
     animation: cos-tick 14s var(--ease) calc(var(--n) * 1.96s) infinite;
@@ -3193,23 +3262,59 @@ h1:has(.hl--sub) .uline::after { display: none; }
     0%, 4%    { color: var(--ivory); }
     12%, 100% { color: var(--plum-100); }
   }
-  /* the phases roll in on the case board's wave; the acid gate-bar draws
-     down once a card has landed, and the duties file in behind it */
+  /* each phase: roll in on the case board's wave, draw your stretch of
+     spine, stamp your node, raise your title through the site mask, then
+     file the duties in — each drawing its own slash behind it */
   html.js .cos-ph.rv { transition: none; }
   html.js .cos-ph.rv.in { animation: res-wave-l 0.9s var(--ease) both; }
   html.js .cos-ph.rv.in:nth-child(even) { animation-name: res-wave-r; }
   html.js .cos-ph::before { transform: scaleY(0); transform-origin: top; }
   html.js .cos-ph.rv.in::before {
-    animation: cos-gate 0.8s var(--ease) 0.4s both;
+    animation: cos-gate 0.9s var(--ease) 0.25s both;
   }
   @keyframes cos-gate { to { transform: scaleY(1); } }
+  html.js .cos-ph::after {
+    transform: skewX(var(--slash-skew)) scaleY(0);
+    transform-origin: bottom;
+  }
+  html.js .cos-ph.rv.in::after {
+    animation: cos-node 0.5s var(--ease) 0.5s both;
+  }
+  @keyframes cos-node {
+    to { transform: skewX(var(--slash-skew)) scaleY(1); }
+  }
   html.js .cos-ph.rv.in .cos-ph__no {
-    animation: stat-land 0.7s var(--ease) 0.25s both;
+    animation: stat-land 0.7s var(--ease) 0.3s both;
+  }
+  html.js .cos-ph.rv.in h3 {
+    animation: mask-rise 0.95s var(--ease) 0.35s both;
+  }
+  html.js .cos-ph.rv.in .cos-ph__lead {
+    animation: item-rise 0.5s var(--ease) 0.5s backwards;
   }
   html.js .cos-ph.rv.in .cos-du li {
-    animation: item-rise 0.5s var(--ease) backwards;
-    animation-delay: calc(var(--du) * 45ms + 300ms);
+    animation: cos-file 0.55s var(--ease) backwards;
+    animation-delay: calc(var(--du) * 50ms + 550ms);
   }
+  @keyframes cos-file {
+    0%   { opacity: 0; transform: translateY(14px) rotate(1.2deg); }
+    62%  { opacity: 1; transform: translateY(-2px) rotate(-0.4deg); }
+    100% { opacity: 1; transform: none; }
+  }
+  html.js .cos-ph.rv.in .cos-du li::after {
+    animation: cos-slash 0.4s var(--ease) backwards;
+    animation-delay: calc(var(--du) * 50ms + 700ms);
+  }
+  @keyframes cos-slash {
+    from { transform: skewX(var(--slash-skew)) scaleY(0); }
+    to   { transform: skewX(var(--slash-skew)) scaleY(1); }
+  }
+  .cos-end { animation: ws-pulse 2.8s ease-in-out infinite; }
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .cos-du li { transition: color 160ms var(--ease); }
+  .cos-du li:hover { color: var(--ivory); }
+  .cos-du li:hover::after { background: var(--moss-300); }
 }
 
 /* clients page — reserved slots for cases and testimonials */
@@ -3586,6 +3691,21 @@ h1:has(.hl--sub) .uline::after { display: none; }
     radial-gradient(120% 90% at 16% 4%,
       color-mix(in srgb, var(--plum-700) 19%, var(--plum-ink)) 0%,
       var(--plum-ink) 62%);
+}
+/* 31 Aug 2026, founder: the onboarding band's flat field scored 30/100.
+   The hero's luminance system, turned to tell the flow's progression:
+   brightest behind the headline and the map, settling through the six
+   phases, lifting again at the handover to the quotation system.
+   Id-scoped and declared HERE so the one-block rule above stays true. */
+#onboarding.f-plum {
+  background:
+    radial-gradient(85% 40% at 24% 6%,
+      color-mix(in srgb, var(--plum-700) 46%, var(--plum-ink)) 0%,
+      transparent 62%),
+    linear-gradient(172deg,
+      color-mix(in srgb, var(--plum-700) 34%, var(--plum-ink)) 0%,
+      color-mix(in srgb, var(--plum-700) 14%, var(--plum-ink)) 55%,
+      color-mix(in srgb, var(--plum-700) 30%, var(--plum-ink)) 100%);
 }
 .hero {
   background:

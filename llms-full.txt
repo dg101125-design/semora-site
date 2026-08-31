@@ -130,7 +130,7 @@ Four words we are prepared to be held to.
 
 Specialist Three industries. Nobody else.
 
-Accountable One number, reviewed at 90 days.
+Accountable One number, reviewed at 120 days.
 
 Understand Your buyer, known better than you know them.
 
@@ -216,7 +216,7 @@ SEOGEO CRO
 
 Performing arts centre
 
-In delivery: the SEO system and the brand identity. The first measured numbers publish at the 90-day review.
+In delivery: the SEO system and the brand identity. The first measured numbers publish at the 120-day review.
 
 SEOBrand
 
@@ -224,7 +224,7 @@ SEOBrand
 
 Specialty coffee
 
-In delivery: SEO, the brand system and managed Google Ads. The first measured numbers publish at the 90-day review.
+In delivery: SEO, the brand system and managed Google Ads. The first measured numbers publish at the 120-day review.
 
 SEOBrand Paid
 
@@ -342,7 +342,7 @@ Personal IP & practitioner presence
 
 Governance — who decides what
 
-One KPI, reviewed at 90 days
+One KPI, reviewed at 120 days
 
 / HAUS — the system →
 
@@ -686,7 +686,7 @@ What it is not
 
 Not a strategy, and not a proposal. It measures where you stand. It does not decide your position, write your messaging or build anything, and if you want the audit to hand you a strategy at the end you will be disappointed. That is deliberate. That work is SIGNAL / and / HAUS, priced separately and published in the same detail.
 
-It is also optional. You can start at SIGNAL / instead and we set the baseline there in week one. The rule underneath all of it is no work without a baseline, because otherwise nobody can say at 90 days whether anything moved. That rule does not bend.
+It is also optional. You can start at SIGNAL / instead and we set the baseline there in week one. The rule underneath all of it is no work without a baseline, because otherwise nobody can say at 120 days whether anything moved. That rule does not bend.
 
 Book the Proof Check Next: SIGNAL / →
 
@@ -1028,7 +1028,7 @@ C2 / The number
 
 ### One agreed number, on the record
 
-Set at kickoff from your baseline · reviewed at 90 days · the enforceable clause is in legal drafting
+Set at kickoff from your baseline · reviewed at 120 days · the enforceable clause is in legal drafting
 
 C3 / Ownership
 
@@ -1066,7 +1066,7 @@ Build your quote Tell us what you need built →
 
 # Client Onboarding System — SEMORA STUDIO Melbourne
 URL: https://www.semora.com.au/quote
-Summary: Six phases run every engagement, from governance and access to the 120-day decision. Every price published — tick what you need and the system quotes the package.
+Summary: The SEMORA Operating System: six phases from governance to the 120-day decision. Every price published — the quotation system prices the pack you tick.
 
 Client onboarding system
 
@@ -1076,13 +1076,13 @@ Every item below carries its own price and its own delivery time. Nothing is quo
 
 Straight to every price →
 
-The SEMORA workflow
+Client onboarding / six phases
 
-### Six phases, one system.
+### SEMORA Operating System
 
-Every engagement runs one sequence: governance before access, access before baseline, baseline before launch. The cycle closes at day 120. Scale what performed. Stop what did not.
+A traditional engagement starts from a campaign brief. Ours starts from governance — the contract, the sign-off chain, the access register — then a written baseline, so every later number is read against it.
 
-Nothing launches without your approval, and nothing is measured against a number we did not write down first.
+The cycle closes at day 120 with a decision. Scale what performed, stop what did not. The next plan is presented against your numbers, not our memory.
 
 01Setup02Access03Model04Quick wins05Launch06Decision
 
@@ -1232,9 +1232,11 @@ calculate next-quarter capacity
 
 present the following 120-day plan
 
-The system prices itself the same way. Every item below is published, every price identical for every client, and the pack you tick becomes the proposal we send back within one business day. Same numbers, always.
+Published pricing / one business day
 
-Build your pack
+### The Quotation System
+
+The system prices itself the same way. Every item below is published, every price identical for every client, and the pack you tick becomes the proposal we send back within one business day. Same numbers, always.
 
 ### How much does each SEMORA STUDIO service cost?
 
@@ -1270,7 +1272,7 @@ Nothing is sent until you email it. We reply within one business day, with the s
 
 # Method — SEMORA STUDIO Melbourne
 URL: https://www.semora.com.au/method
-Summary: One agreed number reviewed at 90 days, everything handed over, and our own eleven-surface score published — zeros included.
+Summary: One agreed number reviewed at 120 days, everything handed over, and our own eleven-surface score published — zeros included.
 
 Method
 
@@ -1284,7 +1286,7 @@ A named metric in the contract, everything handed over at completion — and our
 
 ### What is the one number SEMORA STUDIO is accountable to?
 
-One metric from your audit baseline — win rate, fee integrity, or founder dependency — reviewed at 90 days, on the record. The full accountability clause is in legal drafting and publishes here when signed off: a commitment before it is enforceable would be a claim we could not evidence.
+One metric from your audit baseline — win rate, fee integrity, or founder dependency — reviewed at 120 days, on the record. The full accountability clause is in legal drafting and publishes here when signed off: a commitment before it is enforceable would be a claim we could not evidence.
 
 02
 
@@ -1364,13 +1366,13 @@ Measurement
 
 Campaign or channel metrics
 
-Tied to one agreed commercial number, reviewed at 90 days
+Tied to one agreed commercial number, reviewed at 120 days
 
 Track record
 
 An established firm may hold years of references and measured cases
 
-New. Began 2026. Four client results published, and no verified client reviews yet — we ask for those at the 90-day review. The AXIS measured result publishes 8 November 2026
+New. Began 2026. Four client results published, and no verified client reviews yet — we ask for those at the 120-day review. The AXIS measured result publishes 8 November 2026
 
 Which should you choose? If you have people who can execute but no direction, a consultant may be enough. If your strategy is settled and you only lack production capacity, a specialist agency will do. We are built for the case in between — no senior marketer in-house, and not enough capacity to run it either. See the four products →
 

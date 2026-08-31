@@ -1068,9 +1068,9 @@ Summary: The SEMORA Operating System: six phases run every client engagement, fr
 
 Clients onboard
 
-## Six phases. One system.
+## How the system works at SEMORA.
 
-How SEMORA STUDIO takes a new client from signed contract to the decision at day 120.
+One operating system runs every client engagement, from the signed contract to the decision at day 120.
 
 See every price →
 
@@ -1234,9 +1234,9 @@ present the following 120-day plan
 
 The next step
 
-### Priced by the same system.
+### We design the right products for clients to achieve the best outcome.
 
-Prices live one page over. Every item shows its price and its time, the pack you tick becomes the quote we send back, and nobody gets a different number. One business day, in writing.
+The prices are public. Tick the items that fit and the quotation system turns them into a written quote, with the same numbers for every client. One business day.
 
 Open the Quotation System
 

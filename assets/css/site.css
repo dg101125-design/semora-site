@@ -3106,6 +3106,59 @@ h1:has(.hl--sub) .uline::after { display: none; }
   text-decoration-thickness: 2px; text-decoration-color: var(--moss-300);
 }
 
+/* ------------------- the onboarding hero's orbiting instrument
+   (founder, 31 Aug 2026 round 11: icon design with animation). The
+   aperture holds still — the mark never rotates — while the signal
+   satellite rides the ring, and each station tick answers as it passes:
+   the satellite laps in 9s, ticks sit at r·60°, so tick r lights at
+   r·1.5s. Static render: mark, ring, ticks, satellite parked at the top. */
+.onb-orbit {
+  position: relative; width: clamp(220px, 26vw, 360px);
+  aspect-ratio: 1; margin: 0 auto; align-self: center;
+}
+.onb-orbit__ring {
+  position: absolute; inset: 0; border-radius: 50%;
+  border: 1px solid var(--plum-700);
+}
+.onb-orbit__tick {
+  position: absolute; inset: 0;
+  transform: rotate(calc(var(--r) * 60deg));
+}
+.onb-orbit__tick::before {
+  content: ""; position: absolute; top: -5px; left: 50%;
+  width: 2px; height: 12px; margin-left: -1px;
+  background: var(--plum-300);
+}
+.onb-orbit__sat { position: absolute; inset: 0; }
+.onb-orbit__sat::before {
+  content: ""; position: absolute; top: -6px; left: 50%;
+  width: 12px; height: 12px; margin-left: -6px; border-radius: 50%;
+  background: var(--moss-300);
+}
+.onb-orbit svg { position: absolute; inset: 19%; width: 62%; height: 62%; }
+.onb-orbit .ap-arc { fill: var(--ivory); }
+.onb-orbit .ap-arc--weak { fill: var(--plum-300); }
+.onb-orbit .ap-dot { fill: var(--moss-300); }
+@media (max-width: 860px) {
+  .onb-orbit { width: clamp(180px, 44vw, 260px); margin-top: 32px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .onb-orbit__sat { animation: onb-orbit 9s linear infinite; }
+  @keyframes onb-orbit { to { transform: rotate(1turn); } }
+  .onb-orbit__tick::before {
+    animation: onb-tick 9s linear infinite;
+    animation-delay: calc(var(--r) * 1.5s);
+  }
+  @keyframes onb-tick {
+    0%, 4%    { background: var(--moss-300); }
+    12%, 100% { background: var(--plum-300); }
+  }
+  .onb-orbit .ap-dot {
+    transform-box: fill-box; transform-origin: center;
+    animation: ws-pulse 2.8s ease-in-out infinite;
+  }
+}
+
 /* --------------------------- client onboarding system (quote page)
    v2 — founder rounds, 31 Aug 2026 evening: "SEMORA Operating System";
    the v1 band scored 30/100 on background and 40/100 on UX. 减少方框 — no

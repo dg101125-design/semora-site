@@ -68,7 +68,7 @@
 
     /* render */
     if (!lines.length) {
-      sumEl.innerHTML = '<p class="qb-empty">Tick what you need — every item is priced and timed. The quote assembles itself.</p>';
+      sumEl.innerHTML = '<p class="qb-empty">Build up what you need — every item is priced and timed. We quote the package for you.</p>';
       totEl.innerHTML = "";
       return;
     }

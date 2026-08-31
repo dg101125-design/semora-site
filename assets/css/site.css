@@ -3128,9 +3128,9 @@ h1:has(.hl--sub) .uline::after { display: none; }
   z-index: 1;
 }
 /* the flow: one spine, six phases, no boxes */
-.cos { list-style: none; margin-top: 48px; position: relative; }
+.cos { list-style: none; margin-top: 64px; position: relative; }
 .cos::before { /* the spine reaches up toward the rail it descends from */
-  content: ""; position: absolute; left: 12px; top: -48px; height: 48px;
+  content: ""; position: absolute; left: 12px; top: -64px; height: 64px;
   width: 2px;
   background: linear-gradient(180deg, transparent,
     color-mix(in srgb, var(--plum-300) 45%, transparent));
@@ -3139,7 +3139,7 @@ h1:has(.hl--sub) .uline::after { display: none; }
   position: relative;
   display: grid; grid-template-columns: 128px 1fr;
   column-gap: 32px; align-items: start;
-  padding: 32px 0 48px 48px;
+  padding: 48px 0 64px 48px;
 }
 .cos-ph::before { /* the spine segment this phase draws */
   content: ""; position: absolute; left: 12px; top: 0; bottom: 0;
@@ -3147,44 +3147,47 @@ h1:has(.hl--sub) .uline::after { display: none; }
   background: color-mix(in srgb, var(--plum-300) 45%, transparent);
 }
 .cos-ph::after { /* the node: a sheared acid tick standing on the spine */
-  content: ""; position: absolute; left: 7px; top: 44px;
+  content: ""; position: absolute; left: 7px; top: 64px;
   width: 12px; height: 26px; background: var(--moss-300);
   transform: skewX(var(--slash-skew));
 }
 .cos-ph__no {
   font-family: var(--serif); font-size-adjust: 0.426; font-weight: 350;
   font-variation-settings: "opsz" 72;
-  font-size: 76px; line-height: 0.94; letter-spacing: -0.014em;
+  font-size: 96px; line-height: 0.94; letter-spacing: -0.014em;
   color: var(--plum-300); font-variant-numeric: tabular-nums;
 }
 .cos-ph h3 {
   font-family: var(--serif); font-size-adjust: 0.426; font-weight: 400;
   font-variation-settings: "opsz" 44;
-  font-size: 28px; line-height: 1.14; letter-spacing: -0.006em;
-  color: var(--ivory);
+  font-size: 34px; line-height: 1.14; letter-spacing: -0.006em;
+  /* acid as TEXT — founder order 31 Aug 2026 ("把title 换成绿色"), a
+     recorded exception to brand rule 4, scoped to this band; 10.41:1 on
+     ink so the reading is sound, the rule was discipline not contrast */
+  color: var(--moss-300);
 }
 .cos-ph__lead {
   font-size: 15px; line-height: 1.55; color: var(--champ);
   margin: 8px 0 16px; max-width: none;
 }
 .cos-du {
-  list-style: none; display: flex; flex-wrap: wrap;
-  column-gap: 12px; row-gap: 12px; max-width: 70ch;
+  list-style: none; display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 48px;
 }
 .cos-du li {
-  display: inline-flex; align-items: center; gap: 12px;
+  display: flex; align-items: center; gap: 12px;
   font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
   font-size: 13px; letter-spacing: 0.012em; line-height: 1.2;
   /* one luminance step under the lead (12.94:1 on ink) — title, lead and
-     manifest each hold their own level, and the ivory hover means it */
+     manifest each hold their own level, and the acid hover means it */
   text-transform: uppercase; color: var(--plum-100);
 }
-.cos-du li::after {
-  content: ""; width: 6px; height: 14px;
+.cos-du li::before { /* each line leads with its own slash */
+  content: ""; flex: 0 0 auto; width: 6px; height: 14px;
   background: var(--plum-300);
-  transform: skewX(var(--slash-skew));
+  transform: skewX(var(--slash-skew)); transform-origin: bottom;
 }
-.cos-du li:last-child::after { display: none; }
 /* the spine hands its signal on: the terminal dot under phase six */
 .cos-end {
   display: block; position: relative;
@@ -3200,6 +3203,10 @@ h1:has(.hl--sub) .uline::after { display: none; }
 }
 /* the aperture signs the band's corner — statband/meth-band grammar */
 #onboarding { overflow: hidden; }
+#onboarding .split h2 {
+  font-size: clamp( 40px, 6.4vw, 72px);
+  line-height: 0.98; letter-spacing: -0.018em;
+}
 .cos__wm {
   position: absolute; z-index: 0; pointer-events: none;
   right: -6%; bottom: -10%;
@@ -3216,6 +3223,8 @@ h1:has(.hl--sub) .uline::after { display: none; }
             padding: 24px 0 32px 32px; }
   .cos-ph::after { top: 28px; }
   .cos-ph__no { font-size: 40px; }
+  .cos-ph h3 { font-size: 25px; }
+  .cos-du { grid-template-columns: 1fr; }
 }
 @media (prefers-reduced-motion: no-preference) {
   /* the signal runs the rail and the trail keeps its score: station n
@@ -3301,7 +3310,7 @@ h1:has(.hl--sub) .uline::after { display: none; }
     62%  { opacity: 1; transform: translateY(-2px) rotate(-0.4deg); }
     100% { opacity: 1; transform: none; }
   }
-  html.js .cos-ph.rv.in .cos-du li::after {
+  html.js .cos-ph.rv.in .cos-du li::before {
     animation: cos-slash 0.4s var(--ease) backwards;
     animation-delay: calc(var(--du) * 50ms + 700ms);
   }
@@ -3313,8 +3322,10 @@ h1:has(.hl--sub) .uline::after { display: none; }
 }
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
   .cos-du li { transition: color 160ms var(--ease); }
-  .cos-du li:hover { color: var(--ivory); }
-  .cos-du li:hover::after { background: var(--moss-300); }
+  .cos-du li::before { transition: background 160ms var(--ease); }
+  /* 鼠标停在哪儿，哪儿就变成绿色 (founder, 31 Aug 2026) */
+  .cos-du li:hover { color: var(--moss-300); }
+  .cos-du li:hover::before { background: var(--moss-300); }
 }
 
 /* clients page — reserved slots for cases and testimonials */

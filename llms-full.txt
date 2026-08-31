@@ -1064,15 +1064,177 @@ Build your quote Tell us what you need built →
 
 ---
 
-# Build your quote — SEMORA STUDIO Melbourne
+# Client Onboarding System — SEMORA STUDIO Melbourne
 URL: https://www.semora.com.au/quote
-Summary: Tick the services you need — positioning, brand, website, SEO, ads, content, CRM. Every item carries its price and delivery time. Same prices for everyone.
+Summary: Six phases run every engagement, from governance and access to the 120-day decision. Every price published — tick what you need and the system quotes the package.
 
-Build your quote
+Client onboarding system
 
 ## Build up what you need. We quote the package for you.
 
 Every item below carries its own price and its own delivery time. Nothing is quoted on request — nobody gets a different number.
+
+Straight to every price →
+
+The SEMORA workflow
+
+### Six phases, one system.
+
+Every engagement runs one sequence: governance before access, access before baseline, baseline before launch. The cycle closes at day 120. Scale what performed. Stop what did not.
+
+Nothing launches without your approval, and nothing is measured against a number we did not write down first.
+
+01Setup02Access03Model04Quick wins05Launch06Decision
+
+01
+
+### Commercial and governance setup
+
+Set before any work starts:
+
+contract
+
+payment
+
+client approval authority
+
+communication channels
+
+access register
+
+meeting cadence
+
+privacy and data classification
+
+02
+
+### Access and baseline
+
+Request read-only or partner access to:
+
+website CMS
+
+domain and DNS where necessary
+
+GA4
+
+Search Console
+
+Tag Manager
+
+Google Ads
+
+Meta Business Manager
+
+LinkedIn Campaign Manager
+
+CRM
+
+call-tracking platform
+
+email platform
+
+relevant sales reports
+
+revenue and lead-quality data
+
+03
+
+### Commercial growth model
+
+Documented with you:
+
+target customer
+
+priority services
+
+average transaction or client value
+
+gross margin where available
+
+lead-to-appointment rate
+
+appointment-to-sale rate
+
+sales cycle
+
+repeat or referral value
+
+customer acquisition ceiling
+
+target location or market
+
+priority offer
+
+120-day target
+
+04
+
+### Measurement and quick wins
+
+Completed before anything launches:
+
+tracking audit
+
+CRM pipeline check
+
+campaign and search baseline
+
+landing-page review
+
+immediate waste reduction
+
+quick conversion fixes
+
+experiment backlog
+
+client-approved 120-day roadmap
+
+05
+
+### Controlled launch
+
+Approved work launches across the relevant systems:
+
+demand campaigns
+
+landing pages
+
+technical SEO
+
+local search
+
+content and case evidence
+
+CRM follow-up
+
+email nurture
+
+conversion experiments
+
+06
+
+### Decision and scaling
+
+At the end of 120 days:
+
+identify what performed
+
+stop weak work
+
+scale validated activity
+
+compare commercial results with baseline
+
+identify data limitations
+
+calculate next-quarter capacity
+
+present the following 120-day plan
+
+The system prices itself the same way. Every item below is published, every price identical for every client, and the pack you tick becomes the proposal we send back within one business day. Same numbers, always.
+
+Build your pack
 
 ### How much does each SEMORA STUDIO service cost?
 

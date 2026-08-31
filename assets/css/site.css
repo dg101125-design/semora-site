@@ -3118,7 +3118,7 @@ h1:has(.hl--sub) .uline::after { display: none; }
 }
 .onb-orbit__ring {
   position: absolute; inset: 0; border-radius: 50%;
-  border: 1px solid var(--plum-700);
+  border: 1px solid var(--moss-700);
 }
 .onb-orbit__tick {
   position: absolute; inset: 0;
@@ -3127,31 +3127,23 @@ h1:has(.hl--sub) .uline::after { display: none; }
 .onb-orbit__tick::before {
   content: ""; position: absolute; top: -5px; left: 50%;
   width: 2px; height: 12px; margin-left: -1px;
-  background: var(--plum-300);
-}
-.onb-orbit__sat { position: absolute; inset: 0; }
-.onb-orbit__sat::before {
-  content: ""; position: absolute; top: -6px; left: 50%;
-  width: 12px; height: 12px; margin-left: -6px; border-radius: 50%;
-  background: var(--moss-300);
+  background: color-mix(in srgb, var(--ivory) 35%, transparent);
 }
 .onb-orbit svg { position: absolute; inset: 19%; width: 62%; height: 62%; }
 .onb-orbit .ap-arc { fill: var(--ivory); }
-.onb-orbit .ap-arc--weak { fill: var(--plum-300); }
+.onb-orbit .ap-arc--weak { fill: var(--moss-100); }
 .onb-orbit .ap-dot { fill: var(--moss-300); }
 @media (max-width: 860px) {
   .onb-orbit { width: clamp(180px, 44vw, 260px); margin-top: 32px; }
 }
 @media (prefers-reduced-motion: no-preference) {
-  .onb-orbit__sat { animation: onb-orbit 9s linear infinite; }
-  @keyframes onb-orbit { to { transform: rotate(1turn); } }
   .onb-orbit__tick::before {
     animation: onb-tick 9s linear infinite;
     animation-delay: calc(var(--r) * 1.5s);
   }
   @keyframes onb-tick {
     0%, 4%    { background: var(--moss-300); }
-    12%, 100% { background: var(--plum-300); }
+    12%, 100% { background: color-mix(in srgb, var(--ivory) 35%, transparent); }
   }
   .onb-orbit .ap-dot {
     transform-box: fill-box; transform-origin: center;
@@ -3835,6 +3827,20 @@ h1:has(.hl--sub) .uline::after { display: none; }
       color-mix(in srgb, var(--plum-700) 34%, var(--plum-ink)) 50%,
       color-mix(in srgb, var(--plum-700) 16%, var(--plum-ink)) 100%);
 }
+/* 31 Aug 2026, founder: "SEMORA hero section change to green color" —
+   the Clients Onboard hero alone moves to the moss system (the method
+   band's dark green), same luminance shape as the plum hero above. */
+.pg-quote .hero {
+  background:
+    radial-gradient(90% 70% at 20% 6%,
+      color-mix(in srgb, var(--moss-700) 45%, var(--moss-900)) 0%,
+      transparent 60%),
+    linear-gradient(165deg,
+      color-mix(in srgb, var(--moss-700) 38%, var(--moss-900)) 0%,
+      color-mix(in srgb, var(--moss-700) 18%, var(--moss-900)) 50%,
+      var(--moss-900) 100%);
+}
+.pg-quote .hero .sig-dots i { background: var(--moss-300); }
 .statband {
   background: linear-gradient(180deg,
     color-mix(in srgb, var(--plum-700) 46%, var(--plum-ink)) 0%,

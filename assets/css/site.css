@@ -109,6 +109,8 @@
   --champ:     #F8F6F2;   /* folded into ivory */
   --champ-300: #F8F6F2;   /* folded into ivory */
   --ivory:     #F8F6F2;
+  --cream:     #F7F4F0;   /* founder, 1 Sep 2026 — the statband ground
+                             (one step off ivory; unify later if ordered) */
   --white:     #FFFFFF;
   --graph-900: #242424;
   --graph-700: #333333;
@@ -3886,11 +3888,12 @@ h1:has(.hl--sub) .uline::after { display: none; }
       color-mix(in srgb, var(--plum-700) 16%, var(--plum-ink)) 100%);
 }
 .statband {
-  background: linear-gradient(180deg,
-    color-mix(in srgb, var(--plum-700) 46%, var(--plum-ink)) 0%,
-    color-mix(in srgb, var(--plum-700) 26%, var(--plum-ink)) 50%,
-    color-mix(in srgb, var(--plum-700) 34%, var(--plum-ink)) 100%);
+  /* founder, 1 Sep 2026: the band leaves the dark for the cream — flat,
+     per the same round's flat-colour ruling; every foreground colour
+     flips in the "statband on cream" block beside the wwd2 styles */
+  background: var(--cream);
 }
+.statband::before { display: none; }
 .hero::before, .statband::before, .f-plum::before, .f-moss::before {
   content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
   opacity: 0.05;
@@ -3909,6 +3912,30 @@ h1:has(.hl--sub) .uline::after { display: none; }
 .statband__mark .ap-arc { fill: var(--ivory); }
 .statband__mark .ap-arc--weak { fill: var(--plum-300); }
 .statband__mark .ap-dot { fill: var(--moss-300); }
+
+/* ── statband on cream (founder, 1 Sep 2026): the dark band's whole
+   foreground flips with its ground. Ink for the statement and rows,
+   graph for body, the light-ground acid for labels and glyph dots,
+   plum tints for the watermark. */
+.statband .statband__h { color: var(--plum-ink); }
+.statband .lab--rev { color: var(--moss-700); }
+.statband .sig-dots i { background: var(--moss-700); }
+.statband > .wrap > p, .wwd2__lead p { color: var(--graph-700); }
+.statband .wwd2__rows { border-top-color: var(--champ-700); }
+.statband .wrow { border-bottom-color: var(--champ-700); }
+.statband .wico-ring, .statband .wico-tick, .statband .wico-bar,
+.statband .wico-axis { stroke: var(--plum-ink); }
+.statband .wico-dot { fill: var(--moss-700); }
+.statband .ws-stroke { stroke: var(--plum-ink); }
+.statband .ws-dot { fill: var(--moss-700); }
+.statband .wrow__name { color: var(--plum-ink); }
+.statband .wrow:hover .wrow__name { color: var(--plum-700); }
+.statband .wrow__cta { border-color: var(--champ-700); color: var(--moss-700); }
+.statband .wrow:hover .wrow__cta { background: var(--moss-700);
+  border-color: var(--moss-700); color: var(--ivory); }
+.statband .wrow__txt p { color: var(--graph-700); }
+.statband__mark .ap-arc { fill: var(--plum); }
+.statband__mark .ap-dot { fill: var(--moss-700); }
 
 /* ── what-we-do v2: statement + product accordion (13 Aug 2026).
    Structure from the founder's reference (002); skin entirely ours. */

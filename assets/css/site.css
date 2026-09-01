@@ -4754,3 +4754,46 @@ h1:has(.hl--sub) .uline::after { display: none; }
     100% { opacity: 1; translate: 0 0; scale: 1; }
   }
 }
+
+/* ── 02 / the flagship packages (founder, 2 Sep 2026) ────────────────────
+   Two cards on the plum field. No new type voice: names repeat the
+   .prow__h recipe (sans-caps, acid on ink), tags the .prow__tag mono,
+   list items the .prow__list scope ticks — always visible here, nothing
+   behind a hover. No prices on this band. */
+.pkg-band { overflow: hidden; }
+.pkgs {
+  display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-6);
+  margin-top: var(--sp-7);
+}
+.pkgcard {
+  border: 1px solid var(--plum-700);
+  padding: var(--sp-6);
+  background: color-mix(in srgb, var(--plum-700) 22%, transparent);
+}
+.pkgcard__tag {
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
+  font-size: 11px; letter-spacing: 0.012em; text-transform: uppercase;
+  color: var(--plum-100); margin: 0 0 var(--sp-4);
+}
+.pkgcard__h {
+  font-family: var(--sans); font-size-adjust: 0.546; font-weight: 600;
+  font-size: clamp(19px, 2.2vw, 28px); line-height: 1.14;
+  letter-spacing: -0.006em; text-transform: uppercase;
+  color: var(--moss-300); margin: 0 0 var(--sp-4);
+}
+.pkgcard__lead { max-width: 44ch; }
+.pkgcard__list { margin-top: var(--sp-5); }
+.pkgcard__list span {
+  display: block; position: relative;
+  font-size: 13px; line-height: 1.55; color: var(--plum-100);
+  padding: 3px 0 3px 16px;
+}
+.pkgcard__list span::before {
+  content: ""; position: absolute; left: 2px; top: 0.62em;
+  width: 4px; height: 11px; background: var(--moss-300);
+  transform: skewX(var(--slash-skew));
+}
+@media (max-width: 860px) {
+  .pkgs { grid-template-columns: 1fr; gap: var(--sp-5); }
+  .pkgcard { padding: var(--sp-5); }
+}

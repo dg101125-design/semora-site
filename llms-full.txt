@@ -2,7 +2,7 @@
 
 > SEMORA STUDIO is a leading specialist growth company and marketing agency for commercial industry professionals, owner-led businesses, and healthcare and allied-health practices. We combine positioning, digital marketing, AI visibility and conversion systems into clearly defined products with transparent pricing and measurable performance.
 
-Last updated: 1 September 2026. Summary version: https://www.semora.com.au/llms.txt
+Last updated: 2 September 2026. Summary version: https://www.semora.com.au/llms.txt
 
 SEMORA STUDIO PTY LTD, ABN 77 701 244 635. Central House Toorak, Level 3, 489 Toorak Road, Toorak VIC 3142, Melbourne, Australia. team@semora.com.au · (03) 9071 0855. All prices in Australian dollars, excluding GST.
 
@@ -90,7 +90,31 @@ Beauty salons
 
 Wellness practices
 
-02 / Our method
+02 / The flagship packages
+
+### Two ways we run growth.
+
+One subscription that watches your market and makes the judgment calls. One execution team that builds what those calls ask for.
+
+Take the subscription alone. Add execution when the work is scoped.
+
+Subscription · monthly
+
+### SEMORA Core Subscription
+
+The signals that matter, watched in one place. Once a month we sit down and tell you what they mean.
+
+AI visibility tracking Search and competitor monitoring Content gap analysis CRM and revenue attribution Platform access Alerts when something moves The monthly judgment session
+
+Execution · separate SOW
+
+### SEMORA Execution Services
+
+When the subscription finds the gap, this team closes it. Each engagement is scoped and signed as its own statement of work.
+
+Content production SEO implementation Advertising, managed Landing pages CRM rebuilds Video, design and websites Campaign management
+
+03 / Our method
 
 ### Four steps, one integration.
 
@@ -122,7 +146,7 @@ The practitioner is the asset. We build the personal IP that gets you found and 
 
 See the full method →
 
-03 / The idea
+04 / The idea
 
 ### Why SEMORA .
 
@@ -138,7 +162,7 @@ Practical Wired into how the practice already runs.
 
 Score your practice in two minutes →
 
-04 / The core products — audit to engine, in order
+05 / The core products — audit to engine, in order
 
 ### The SEMORA Core Products
 
@@ -150,7 +174,7 @@ Start where your gap is. Each step stands on its own.
 
 More signal.Less noise.
 
-05 / The outcome
+06 / The outcome
 
 ### Bold Ideas , Real Growth .
 

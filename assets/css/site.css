@@ -153,6 +153,11 @@ body {
   color: var(--graph);
   background: var(--ivory);
   -webkit-font-smoothing: antialiased;
+  /* Fraunces ships fi/ff ligatures on by default and at display sizes
+     the welded pair reads as one broken glyph (founder, 1 Sep 2026:
+     "the f words are weird"). Common ligatures off site-wide — every
+     f keeps its crossbar, every i keeps its dot, all three faces. */
+  font-variant-ligatures: no-common-ligatures;
 }
 img, svg { max-width: 100%; display: block; }
 a { color: inherit; }

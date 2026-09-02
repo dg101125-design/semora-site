@@ -5067,7 +5067,9 @@ h1:has(.hl--sub) .uline::after { display: none; }
   display: grid; grid-template-columns: 1.25fr 0.75fr;
   gap: 48px; align-items: center; margin-top: 24px;
 }
-.pg-team .hl--sub { margin: 0.7em 0 0; color: var(--graph-700); }
+/* the quote wraps naturally — balance handles every width, the caps
+   voice comes whole from .who-h (no per-line masks, no orphans) */
+.team-q { text-wrap: balance; }
 .team-quote__fig { position: relative; margin: 0; padding-left: 24px; }
 .team-quote__fig img {
   display: block; width: 100%; height: auto;

@@ -1276,11 +1276,11 @@ Summary: Tick what you need — every item carries its published price and deliv
 
 The quotation system
 
-## Build up what you need. We quote the package for you.
+## Build up what you need. We quote the package for you
 
 Every item below carries its own price and its own delivery time. Nothing is quoted on request — nobody gets a different number.
 
-How onboarding runs →
+Build your package How onboarding runs →
 
 ### How much does each SEMORA STUDIO service cost?
 

@@ -4983,3 +4983,55 @@ h1:has(.hl--sub) .uline::after { display: none; }
   html.js .pkgcard.rv.in .pkgcard__list span:nth-child(6) { transition-delay: calc(var(--pkd, 0s) + 0.90s); }
   html.js .pkgcard.rv.in .pkgcard__list span:nth-child(7) { transition-delay: calc(var(--pkd, 0s) + 0.97s); }
 }
+
+/* ── the builder on warm ground (founder, 2 Sep 2026 night: "不要用黑色…
+   统一的紫色加另一个绿色" on the summary card, and the white flanks lift
+   +40%). Cream floor = the founder's own 1 Sep statband ground;
+   light-orange declined as a fourth hue (11 Aug three-hue ruling).
+   The summary leaves ink for the HERO's own plum recipe; every CTA and
+   checked state answers in acid. ── */
+.qb-band { background: var(--cream); overflow: hidden; }
+.qb-wm {
+  position: absolute; z-index: 0; pointer-events: none;
+  right: -7%; top: 8%;
+  width: clamp(320px, 40vw, 680px); height: auto;
+  opacity: 0.06;
+}
+.qb-wm .ap-arc { fill: var(--plum); }
+.qb-wm .ap-arc--weak { fill: var(--plum-300); }
+.qb-wm .ap-dot { fill: var(--moss); }
+/* separators and states retuned for the cream floor — the old hover and
+   checked tints used tokens folded into ivory, i.e. invisible */
+.qb-item { border-top-color: var(--champ-700); }
+.qb-item:hover { background: var(--white); box-shadow: inset 3px 0 0 var(--champ-700); }
+.qb-item:has(input:checked) {
+  background: color-mix(in srgb, var(--moss) 9%, var(--white));
+  box-shadow: inset 3px 0 0 var(--moss-700);
+}
+.qb-item input[type="checkbox"]:checked {
+  background: var(--moss-700); border-color: var(--moss-700);
+}
+.qb-item input[type="checkbox"]:checked::before { background: var(--ivory); }
+/* the summary card: the hero's plum, not ink (不要黑色) */
+.qb-sum {
+  background:
+    radial-gradient(90% 70% at 20% 6%,
+      color-mix(in srgb, var(--plum-700) 52%, var(--plum-ink)) 0%,
+      transparent 60%),
+    linear-gradient(165deg,
+      color-mix(in srgb, var(--plum-700) 60%, var(--plum-ink)) 0%,
+      color-mix(in srgb, var(--plum-700) 38%, var(--plum-ink)) 55%,
+      color-mix(in srgb, var(--plum-700) 24%, var(--plum-ink)) 100%);
+}
+.qb-sum .btn {
+  background: var(--signal); color: var(--plum-ink); border-color: var(--signal);
+}
+.qb-sum .btn:hover {
+  background: var(--signal-ink); color: var(--ivory); border-color: var(--signal-ink);
+}
+.qb-sum .btn--ghost { background: transparent; color: var(--champ); border-color: var(--plum-300); }
+.qb-sum .btn--ghost:hover { background: var(--plum-700); color: var(--champ); }
+@media (prefers-reduced-motion: no-preference) {
+  .qb-item input[type="checkbox"]:checked { animation: qb-pop 0.3s var(--ease); }
+  @keyframes qb-pop { 40% { transform: scale(1.2); } }
+}

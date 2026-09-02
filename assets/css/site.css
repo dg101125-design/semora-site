@@ -5157,3 +5157,42 @@ h1:has(.hl--sub) .uline::after { display: none; }
     transition: transform 0.7s var(--ease) 0.6s; transform: scaleY(1);
   }
 }
+
+/* ── team v6: the reserved slots and the row wave (founder, 2 Sep late
+   night). Slots are typographic placeholders — one-block swaps when
+   tomorrow's photos, names and titles land. The wave: after the entry
+   sweep, the whole row breathes on a 7s loop, half a second of phase
+   apart per card — the flag effect, kept gentle. ── */
+.tcard__slot {
+  display: grid; place-content: center; aspect-ratio: 1;
+  background: color-mix(in srgb, var(--plum-700) 24%, var(--plum-ink));
+}
+.tcard__slot i {
+  font-family: var(--serif); font-size-adjust: 0.426; font-style: normal;
+  font-weight: 300; font-size: clamp(40px, 6vw, 72px);
+  font-variation-settings: "opsz" 72, "SOFT" 0, "WONK" 0;
+  color: var(--plum-300); font-variant-numeric: tabular-nums;
+}
+@media (prefers-reduced-motion: no-preference) {
+  /* entry stays a FINITE animation on the card; the infinite float
+     lives on the portrait inside it — decoupled, so the entry fill can
+     never be shadowed and the plate pseudos stay planted */
+  html.js .tcard.rv.in:nth-child(5) { animation-delay: 0.4s; }
+  html.js .tcard.rv.in:nth-child(6) { animation-delay: 0.5s; }
+  html.js .tcard.rv.in:nth-child(7) { animation-delay: 0.6s; }
+  html.js .tcard.rv.in:nth-child(8) { animation-delay: 0.7s; }
+  .tcard img, .tcard .tcard__slot {
+    animation: tcard-float 7s ease-in-out 1.6s infinite;
+  }
+  .tcard:nth-child(2) img, .tcard:nth-child(2) .tcard__slot { animation-delay: 2.1s; }
+  .tcard:nth-child(3) img, .tcard:nth-child(3) .tcard__slot { animation-delay: 2.6s; }
+  .tcard:nth-child(4) img, .tcard:nth-child(4) .tcard__slot { animation-delay: 3.1s; }
+  .tcard:nth-child(5) img, .tcard:nth-child(5) .tcard__slot { animation-delay: 3.6s; }
+  .tcard:nth-child(6) img, .tcard:nth-child(6) .tcard__slot { animation-delay: 4.1s; }
+  .tcard:nth-child(7) img, .tcard:nth-child(7) .tcard__slot { animation-delay: 4.6s; }
+  .tcard:nth-child(8) img, .tcard:nth-child(8) .tcard__slot { animation-delay: 5.1s; }
+  @keyframes tcard-float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-6px); }
+  }
+}

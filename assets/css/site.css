@@ -4864,11 +4864,13 @@ h1:has(.hl--sub) .uline::after { display: none; }
   font-family: var(--sans); font-size-adjust: 0.546; font-weight: 600;
   font-size: 13px; letter-spacing: 0.012em; text-transform: uppercase;
   padding: 16px 24px; border-radius: 999px; text-decoration: none;
-  box-shadow: 0 8px 24px rgb(0 0 0 / 0.35);
+  /* shadow derives from the ink token (Codex 2 Sep: the float-cta's
+     literal rgb(0 0 0/…) is a pre-existing exception, not a licence) */
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--plum-ink) 35%, transparent);
   transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
 }
 .pkg-cta:hover { transform: translateY(-2px);
-  box-shadow: 0 12px 32px rgb(0 0 0 / 0.4); }
+  box-shadow: 0 12px 32px color-mix(in srgb, var(--plum-ink) 40%, transparent); }
 .pkg-cta__dot { width: 8px; height: 8px; border-radius: 50%;
   background: var(--plum-ink); }
 .pkg-cta .ar { letter-spacing: 0; }

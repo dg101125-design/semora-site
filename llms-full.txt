@@ -790,7 +790,7 @@ Component · What is inside · Delivery · Price + GST ·
 
 Brand identity & brand book · Identity system, colour + type libraries, 30-mark icon set, stationery, Foundation + Applications book — editable source · 3 weeks · $9,500 ·
 
-Showcase website — 8 pages · Your work, your proof and your contact path — designed, written, built and live · 2 weeks · $3,000 ·
+Showcase website — 8 pages · Your work, your proof and your contact path — designed, written, built and live · 4–6 weeks · $3,000 ·
 
 Custom-built website — 10 pages · Custom design and function. Fast, indexable, readable by AI search. Extra pages $350 each · 4–5 weeks · $15,000 ·
 
@@ -798,7 +798,7 @@ Proposal & presentation system · 3 sector proposal templates, master deck with 
 
 Enquiry response & CRM setup · Response templates, routing, pipeline stages, follow-up, governance model · 2 weeks · $5,500 ·
 
-Growth Foundation Build complete · All four, built as one system by one team · 8–10 weeks · $36,500 ·
+Growth Foundation Build complete · All four, built as one system by one team · 8–10 weeks · — ·
 
 Take one component or all four, and each one stands on its own price. Commercial Growth Signal first is a recommendation, not a requirement. Without a position we are choosing colours and headlines against nothing. Already have a position? Bring it and we build straight from it. Build the exact quote →
 
@@ -1298,7 +1298,7 @@ Commercial Growth Signal — core scopePosition, message architecture, fee logic
 
 03Brand & build — Growth Foundation Build
 
-Brand identity & brand bookLogo system, type, colour, usage rules — every source file yours by contract. $9,5003 weeks Showcase website — 8 pagesYour work, your proof and your contact path — designed, written, built and launched. $3,0002 weeks Custom-built website — 10 pagesCustom design and function, built for what your practice does. Fast, indexable, readable by AI search. $15,0004–5 weeks Proposal & presentation systemProposal, capability statement and pitch templates, in your brand, ready to send. $6,5002 weeks Enquiry response & CRM setupSame-day response templates, routing, pipeline stages and follow-up — installed. $5,5002 weeks Additional website pagesEach page beyond your website’s included count, designed and written to the same standard. $350per page Take all four and they build as one system, Growth Foundation Build. one team · 8–10 weeks
+Brand identity & brand bookLogo system, type, colour, usage rules — every source file yours by contract. $9,5003 weeks Showcase website — 8 pagesYour work, your proof and your contact path — designed, written, built and launched. $3,0004–6 weeks Custom-built website — 10 pagesCustom design and function, built for what your practice does. Fast, indexable, readable by AI search. $15,0004–5 weeks Proposal & presentation systemProposal, capability statement and pitch templates, in your brand, ready to send. $6,5002 weeks Enquiry response & CRM setupSame-day response templates, routing, pipeline stages and follow-up — installed. $5,5002 weeks Additional website pagesEach page beyond your website’s included count, designed and written to the same standard. $350per page Take all four and they build as one system, Growth Foundation Build. one team · 8–10 weeks
 
 04Growth, monthly — Managed Growth Pod
 

@@ -5054,13 +5054,16 @@ h1:has(.hl--sub) .uline::after { display: none; }
   overflow: hidden; margin: 0;
 }
 .qb-tile img { display: block; width: 100%; height: 100%; object-fit: cover; }
-.qb-tile--dot  { top: 26%; width: clamp(220px, 22vw, 320px); aspect-ratio: 1; border-radius: 50%; }
-.qb-tile--leaf { top: 47%; left: 0; right: auto; width: clamp(200px, 19vw, 280px); aspect-ratio: 3 / 4; border-radius: 999px 0 999px 0; }
-.qb-tile--arch { top: 71%; width: clamp(280px, 28vw, 420px); aspect-ratio: 32 / 15; border-radius: 999px 999px 0 0; }
+/* one shape family: circles only (founder, 2 Sep night) — sizes and
+   sides alternate for rhythm, the mark's own dot at three scales */
+.qb-tile { aspect-ratio: 1; border-radius: 50%; }
+.qb-tile--c1 { top: 25%; width: clamp(240px, 24vw, 340px); }
+.qb-tile--c2 { top: 48%; left: 0; right: auto; width: clamp(190px, 18vw, 260px); }
+.qb-tile--c3 { top: 72%; width: clamp(280px, 27vw, 400px); }
 @media (max-width: 900px) { .qb-tile { display: none; } }
 @media (prefers-reduced-motion: no-preference) {
   html.js .qb-tile.rv { transition: none; opacity: 0; }
   html.js .qb-tile.rv.in { animation: wgal-wave-r 0.9s var(--ease) both; }
-  html.js .qb-tile--leaf.rv.in { animation-name: res-wave-l; }
-  .qb-tile--arch img { animation: vtile-roam 14s ease-in-out infinite alternate; }
+  html.js .qb-tile--c2.rv.in { animation-name: res-wave-l; }
+  .qb-tile--c3 img { animation: vtile-roam 14s ease-in-out infinite alternate; }
 }

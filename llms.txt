@@ -23,10 +23,10 @@ One shared condition: the buyer must need to see real clients and real outcomes 
 Every price and delivery time below is published. Nothing is quoted on request and no client gets a different number.
 
 - Proof Check — $1,000, 2 weeks. Optional; credited in full within 90 days. Marketing scored 0-4 with evidence, baseline measured, three fixes ranked.
-- Commercial Growth Signal the position — core scope $4,000, 4 weeks: position, message architecture, fee logic and the objection playbook. Options: written personas $1,800, competitive map $1,900 — ceiling $7,700.
-- Growth Foundation Build the system — priced by composition, 8-10 weeks. Brand identity and brand book $9,500 · website to 8 pages $16,500 (extra pages $850 each) · proposal and presentation system $6,500 · enquiry response and CRM setup $5,500. All four together $38,000.
+- Commercial Growth Signal the position — core scope $3,000, 4 weeks: position, message architecture, fee logic and the objection playbook. Options: written personas $1,800, competitive map $1,000 — ceiling $5,800.
+- Growth Foundation Build the system — priced by composition, 8-10 weeks. Brand identity and brand book $9,500 · showcase website, 8 pages, $3,000 · custom-built website, 10 pages, $15,000 (extra pages $350 each) · proposal and presentation system $6,500 · enquiry response and CRM setup $5,500. All four together $36,500.
 - Managed Growth Pod the monthly engine — Directed $3,000/mo · Shared $7,400/mo · Held $13,500/mo. Six-month minimum, then monthly.
-- Monthly services a la carte — SEO and local search $1,800 · Google and Meta ads managed $2,200 (to $15k/mo of client spend, billed direct) · AI search visibility $1,400 · editorial content and case studies $2,600 · practitioner video $2,400 · LinkedIn and key-account outreach $1,600 · email nurture and CRM $1,500 · referral partner system $1,200 · reviews and reputation $1,000. The menu is capped at Managed Growth Pod / Held, $13,500/mo.
+- Monthly services a la carte — SEO and Local search $2,000 · Google and Meta ads managed $1,500 (to $15k/mo of client spend, billed direct) · AI search visibility $1,400 · editorial content and case studies $2,600 · practitioner video $3,500 · LinkedIn and key-account outreach $1,000 · email nurture and CRM $1,500 · referral partner system $1,200 · reviews and reputation $1,000. The menu is capped at Managed Growth Pod / Held, $13,500/mo.
 - Add-ons — case study $1,800 · campaign sprint $7,500 · vertical sales edition $6,500 · pitch and tender support $1,900 · art-direction day $2,200 · strategy session $600.
 
 ## Pages
@@ -36,7 +36,7 @@ Every price and delivery time below is published. Nothing is quoted on request a
 - [Services — SEMORA STUDIO Melbourne](https://www.semora.com.au/services): Four products, published prices, published scope. Audit, position, system, momentum.
 - [SEO &amp; AI Search — SEMORA STUDIO Melbourne](https://www.semora.com.au/seo-ai-search): Be the source, not the result. Technical audit, keyword research, fixes, on-page work and content — five steps, reported against one commercial number.
 - [Proof Check — SEMORA STUDIO Melbourne](https://www.semora.com.au/proof-audit): The paid diagnostic and the recommended first step. Two weeks, $1,000 + GST, optional, credited in full.
-- [Commercial Growth Signal — SEMORA STUDIO Melbourne](https://www.semora.com.au/signal): What you stand for, to whom, and why it is worth your fee. Four weeks, from $4,000 + GST — core scope plus optional modules.
+- [Commercial Growth Signal — SEMORA STUDIO Melbourne](https://www.semora.com.au/signal): What you stand for, to whom, and why it is worth your fee. Four weeks, from $3,000 + GST — core scope plus optional modules.
 - [Growth Foundation Build — SEMORA STUDIO Melbourne](https://www.semora.com.au/haus): Brand, website, proposals and CRM — built and handed over. 8–10 weeks, every component priced, take one part or all four. Every source file transfers by contract.
 - [Managed Growth Pod — SEMORA STUDIO Melbourne](https://www.semora.com.au/momentum): Retained and priced on your time. Directed $3,000, Shared $7,400, Held $13,500 per month — responsibilities and quantities published.
 - [About SEMORA STUDIO — Melbourne marketing agency](https://www.semora.com.au/about): SEMORA STUDIO is a Melbourne specialist growth company and marketing agency for commercial industry, owner-led and healthcare practices. Published prices.
@@ -143,7 +143,7 @@ Source: https://www.semora.com.au/proof-audit
 
 ### What services does SEMORA STUDIO provide?
 
-SEMORA STUDIO runs three streams. Attracting the right clients, the managed marketing engine, and scaling with profit. They are delivered through four products, and each one carries its price on the page: the Proof Check at $1,000, Commercial Growth Signal from $4,000, Growth Foundation Build priced per part, and Managed Growth Pod from $3,000 a month, all + GST. Every capability below sits inside one of them, with a published delivery time as well as a published price. Nothing is quoted on request.
+SEMORA STUDIO runs three streams. Attracting the right clients, the managed marketing engine, and scaling with profit. They are delivered through four products, and each one carries its price on the page: the Proof Check at $1,000, Commercial Growth Signal from $3,000, Growth Foundation Build priced per part, and Managed Growth Pod from $3,000 a month, all + GST. Every capability below sits inside one of them, with a published delivery time as well as a published price. Nothing is quoted on request.
 
 Source: https://www.semora.com.au/services
 
@@ -153,8 +153,8 @@ In order: the Proof Check in weeks 0–2 sets the baseline, Commercial Growth Si
 
 Source: https://www.semora.com.au/services
 
-### Why does Commercial Growth Signal cost $4,000?
+### Why does Commercial Growth Signal cost $3,000?
 
-Because a position is fee infrastructure, and the $4,000 is measured against what an undefended position costs you in a year. Open last year's client list. Beside each name, write the fee you first quoted and the fee you actually took to win the work. Add up the gap. That is what one undefended year costs you, and the same gap opens again this year, and the year after that, because nothing about the conversation that produced those discounts has changed since the last time you had it. Nobody enjoys that sum. For most practices it is a multiple of this fee. Run it in your own books before you talk to us. Six objections come up on a first call, and you answer them a different way each time, because nobody ever wrote down the best version. That is the leak. The position, the fee logic and the objection playbook exist to end that discount. Check the arithmetic against your own books. That is the only claim we make for it.
+Because a position is fee infrastructure, and the $3,000 is measured against what an undefended position costs you in a year. Open last year's client list. Beside each name, write the fee you first quoted and the fee you actually took to win the work. Add up the gap. That is what one undefended year costs you, and the same gap opens again this year, and the year after that, because nothing about the conversation that produced those discounts has changed since the last time you had it. Nobody enjoys that sum. For most practices it is a multiple of this fee. Run it in your own books before you talk to us. Six objections come up on a first call, and you answer them a different way each time, because nobody ever wrote down the best version. That is the leak. The position, the fee logic and the objection playbook exist to end that discount. Check the arithmetic against your own books. That is the only claim we make for it.
 
 Source: https://www.semora.com.au/signal

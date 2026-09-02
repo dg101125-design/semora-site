@@ -7,9 +7,12 @@
 
   var CAP = 13500; /* Managed Growth Pod / Held — the full monthly engine */
   var BUNDLES = {
-    /* Commercial Growth Signal collapsed to a single $4,000 core item in the 29 Aug 2026
-       repricing — no bundle detection needed for a one-item group. */
-    haus:   { n: 4, label: "Growth Foundation Build — the system", price: 38000,
+    /* Commercial Growth Signal is a single core item ($3,000, v1.4 2 Sep
+       2026) — no bundle detection needed for a one-item group. The haus
+       bundle is brand + CUSTOM-BUILT website + proposals + CRM: the
+       showcase website deliberately carries no data-g, so the four-piece
+       detection (and the $36,500 sum) survives the v1.4 website split. */
+    haus:   { n: 4, label: "Growth Foundation Build — the system", price: 36500,
               note: "delivery 8–10 weeks · brand + website + proposals + CRM, one team" }
   };
 

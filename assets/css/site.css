@@ -3208,6 +3208,13 @@ h1:has(.hl--sub) .uline::after { display: none; }
     color-mix(in srgb, var(--plum-ink) 48%, transparent) 40%,
     transparent 66%);
 }
+/* the two cover heroes speak the homepage promise voice one step down —
+   founder, 2 Sep 2026 evening: "font reduce size 20%, same as the
+   clients onboard page". 76→61px cap, 40→32px floor, 5.95→4.76vw,
+   both pages together; the homepage keeps its own 76px ruling. */
+.pg-quote h1:has(.hl--sub), .pg-quotation h1:has(.hl--sub) {
+  font-size: clamp(32px, 4.76vw, 61px);
+}
 /* the aperture as the headline's full stop — static, never rotated;
    nowrap keeps it welded to the last word instead of orphaning.
    Scoped to dark heroes generally: /quote and /quotation both carry it

@@ -5071,9 +5071,9 @@ h1:has(.hl--sub) .uline::after { display: none; }
    voice comes whole from .who-h (no per-line masks, no orphans) */
 .team-q { text-wrap: balance; }
 .team-quote__fig { position: relative; margin: 0; padding-left: 24px; }
+/* square by founder order, 2 Sep late night (was the arch corner) */
 .team-quote__fig img {
   display: block; width: 100%; height: auto;
-  border-radius: 0 999px 0 0;
 }
 .team-quote__bar {
   position: absolute; left: 0; top: 8%; bottom: 8%;

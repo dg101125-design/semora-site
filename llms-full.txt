@@ -2,7 +2,7 @@
 
 > SEMORA STUDIO is a leading specialist growth company and marketing agency for commercial industry professionals, owner-led businesses, and healthcare and allied-health practices. We combine positioning, digital marketing, AI visibility and conversion systems into clearly defined products with transparent pricing and measurable performance.
 
-Last updated: 2 September 2026. Summary version: https://www.semora.com.au/llms.txt
+Last updated: 3 September 2026. Summary version: https://www.semora.com.au/llms.txt
 
 SEMORA STUDIO PTY LTD, ABN 77 701 244 635. Central House Toorak, Level 3, 489 Toorak Road, Toorak VIC 3142, Melbourne, Australia. team@semora.com.au · (03) 9071 0855. All prices in Australian dollars, excluding GST.
 
@@ -254,13 +254,13 @@ SEOBrand Paid
 
 07 / How we help
 
-SEO & Local search Audited · the fix-list ranked in order
+SEO & Local search · Audited · the fix-list ranked in order
 
-AI search visibility A tracked set of buyer questions, monthly
+AI search visibility · A tracked set of buyer questions, monthly
 
-Email nurture & CRM The follow-up, installed and measured
+Email nurture & CRM · The follow-up, installed and measured
 
-Google & Meta ads, managed To $15k/mo of your spend, billed direct
+Google & Meta ads, managed · To $15k/mo of your spend, billed direct
 
 ### How we help.
 
@@ -478,7 +478,9 @@ A ranked list rewards the page that wins. An AI answer rewards the source it tru
 
 Get the free visibility report Score yourself first →
 
-What being cited looks like Qwho does marketing for commercial property firms in melbourne?
+What being cited looks like
+
+Qwho does marketing for commercial property firms in melbourne?
 
 A
 
@@ -618,7 +620,9 @@ The first line of your report is the number you chose: enquiries, pipeline, new 
 
 Get the free visibility report
 
-Your monthly report / The number ↗
+Your monthly report /
+
+The number ↗
 
 Diagnostics
 
@@ -1290,25 +1294,25 @@ You can pick the products and services you need, and we will prepare the rest of
 
 01Start — the diagnostic
 
-Proof CheckOptional. Every channel scored 0–4 with evidence, your baseline measured, the three highest-value fixes ranked. $1,0002 weeks The Proof Check is the groundwork before any long-term marketing. We go through your website and how it works, whether it is ready for SEO and AI search, and how you sit against your competitors and your industry. Then we score it. What comes back is a scan of where you stand today and what to improve next, with the evidence behind every number. Two weeks, one baseline. If you stay for the long run, this is the map we plan the work against.
+Proof Check · Optional. Every channel scored 0–4 with evidence, your baseline measured, the three highest-value fixes ranked. $1,0002 weeks The Proof Check is the groundwork before any long-term marketing. We go through your website and how it works, whether it is ready for SEO and AI search, and how you sit against your competitors and your industry. Then we score it. What comes back is a scan of where you stand today and what to improve next, with the evidence behind every number. Two weeks, one baseline. If you stay for the long run, this is the map we plan the work against.
 
 02Strategy — Commercial Growth Signal
 
-Commercial Growth Signal — core scopePosition, message architecture, fee logic and the objection playbook — decided, written down and handed over as one engagement. $3,0004 weeks Written personasTwo buyer personas, written from your real client base — not invented. $1,8001 week Competitive mapWhere you sit, who you actually beat, and where not to compete. $1,0002 weeks Add both modules and this is the ceiling, chosen at kickoff. $5,800ceiling
+Commercial Growth Signal — core scope · Position, message architecture, fee logic and the objection playbook — decided, written down and handed over as one engagement. $3,0004 weeks Written personas · Two buyer personas, written from your real client base — not invented. $1,8001 week Competitive map · Where you sit, who you actually beat, and where not to compete. $1,0002 weeks Add both modules and this is the ceiling, chosen at kickoff. $5,800ceiling
 
 03Brand & build — Growth Foundation Build
 
-Brand identity & brand bookLogo system, type, colour, usage rules — every source file yours by contract. $9,5003 weeks Showcase website — 8 pagesYour work, your proof and your contact path — designed, written, built and launched. $3,0004–6 weeks Custom-built website — 10 pagesCustom design and function, built for what your practice does. Fast, indexable, readable by AI search. $15,0004–5 weeks Proposal & presentation systemProposal, capability statement and pitch templates, in your brand, ready to send. $6,5002 weeks Enquiry response & CRM setupSame-day response templates, routing, pipeline stages and follow-up — installed. $5,5002 weeks Additional website pagesEach page beyond your website’s included count, designed and written to the same standard. $350per page Take all four and they build as one system, Growth Foundation Build. one team · 8–10 weeks
+Brand identity & brand book · Logo system, type, colour, usage rules — every source file yours by contract. $9,5003 weeks Showcase website — 8 pages · Your work, your proof and your contact path — designed, written, built and launched. $3,0004–6 weeks Custom-built website — 10 pages · Custom design and function, built for what your practice does. Fast, indexable, readable by AI search. $15,0004–5 weeks Proposal & presentation system · Proposal, capability statement and pitch templates, in your brand, ready to send. $6,5002 weeks Enquiry response & CRM setup · Same-day response templates, routing, pipeline stages and follow-up — installed. $5,5002 weeks Additional website pages · Each page beyond your website’s included count, designed and written to the same standard. $350per page Take all four and they build as one system, Growth Foundation Build. one team · 8–10 weeks
 
 04Growth, monthly — Managed Growth Pod
 
 Each service runs month after month. Six-month minimum, then monthly. Reporting and your monthly score are included with any selection — $0.
 
-SEO & Local searchRankings, Google Business Profile and the map pack — maintained and reported monthly. $2,000/ month Google & Meta ads, managedCampaigns built, run and optimised weekly, to $15k/mo of spend. The spend itself is billed to you direct — we never touch it. $1,500/ month AI search visibilityImproving your eligibility, relevance and likelihood of being accurately surfaced and cited in ChatGPT, Google AI features and Perplexity — measured against a tracked set of buyer questions, and reported. No platform sells guaranteed placement, so we do not promise one. $1,400/ month Editorial content & case studiesTwo pieces a month — researched, written, published and distributed. $2,600/ month Practitioner videoOne scripted, edited video a month, cut for three platforms. You talk; we do the rest. $3,500/ month LinkedIn & key-account outreachYour named target accounts warmed and worked, under your name. $1,000/ month Email nurture & CRMSequences, recalls and follow-up — written, sent and maintained for you. $1,500/ month Referral partner systemYour referrer list built, briefed and kept warm — the channel most practices leave to luck. $1,200/ month Reviews & reputationReviews grown on a documented path. For regulated health services we use an AHPRA-aware workflow and you approve every clinical statement — testimonial advertising is excluded, because the National Law prohibits it. $1,000/ month Run everything and Managed Growth Pod / Held caps the month. $13,500/ month cap
+SEO & Local search · Rankings, Google Business Profile and the map pack — maintained and reported monthly. $2,000/ month Google & Meta ads, managed · Campaigns built, run and optimised weekly, to $15k/mo of spend. The spend itself is billed to you direct — we never touch it. $1,500/ month AI search visibility · Improving your eligibility, relevance and likelihood of being accurately surfaced and cited in ChatGPT, Google AI features and Perplexity — measured against a tracked set of buyer questions, and reported. No platform sells guaranteed placement, so we do not promise one. $1,400/ month Editorial content & case studies · Two pieces a month — researched, written, published and distributed. $2,600/ month Practitioner video · One scripted, edited video a month, cut for three platforms. You talk; we do the rest. $3,500/ month LinkedIn & key-account outreach · Your named target accounts warmed and worked, under your name. $1,000/ month Email nurture & CRM · Sequences, recalls and follow-up — written, sent and maintained for you. $1,500/ month Referral partner system · Your referrer list built, briefed and kept warm — the channel most practices leave to luck. $1,200/ month Reviews & reputation · Reviews grown on a documented path. For regulated health services we use an AHPRA-aware workflow and you approve every clinical statement — testimonial advertising is excluded, because the National Law prohibits it. $1,000/ month Run everything and Managed Growth Pod / Held caps the month. $13,500/ month cap
 
 05Add-ons
 
-Case studiesNamed client, real numbers, dated and caveated — the proof your buyers actually check. $1,800each Campaign sprintOne campaign: the offer, the assets, the landing page — built and launched. $7,5004 weeks Vertical sales editionYour materials re-cut for a second industry — its language, its proof, its pages. $6,5003 weeks Pitch & tender supportPer submission — structure, story, design and a rehearsal. $1,9001 week / bid Art-direction dayPhotography and film directed to the brand, on set with you. $2,2001 day Strategy sessionNinety minutes, one problem, straight answers. $60090 min
+Case studies · Named client, real numbers, dated and caveated — the proof your buyers actually check. $1,800each Campaign sprint · One campaign: the offer, the assets, the landing page — built and launched. $7,5004 weeks Vertical sales edition · Your materials re-cut for a second industry — its language, its proof, its pages. $6,5003 weeks Pitch & tender support · Per submission — structure, story, design and a rehearsal. $1,9001 week / bid Art-direction day · Photography and film directed to the brand, on set with you. $2,2001 day Strategy session · Ninety minutes, one problem, straight answers. $60090 min
 
 Your quote /
 
@@ -1316,7 +1320,11 @@ Email this quote Print / PDF
 
 Nothing is sent until you email it. We reply within one business day, with the same numbers. Every figure here is set by the published method, and the firm behind them is described on about SEMORA STUDIO.
 
-Performance Campaign Content
+Performance
+
+Campaign
+
+Content
 
 ---
 
@@ -1564,15 +1572,29 @@ The team
 
 ## “Our team’s creativity and determination make every milestone possible.”
 
-Brent Matthys · Team Lead
+Brent Matthys
 
 01 / Meet the team
 
 ### Meet the team
 
-Our team is made up of tech enthusiasts, creative thinkers and problem-solvers. From developers to designers, each member brings unique expertise. Each of them works to the same standard, and signs what they ship.
+Our team is made up of strategists, creative thinkers and problem-solvers. From search to production, each member owns a discipline outright. Each of them works to the same standard, and signs what they ship.
 
-Sherry WilsonLead Developer Brent MatthysUI/UX Designer Jennifer WangProduct Manager Drew FeigSEO Lead 05 To be announcedProfile coming 06 To be announcedProfile coming 07 To be announcedProfile coming 08 To be announcedProfile coming
+Sherry Wilson · Project Lead
+
+Brent Matthys · UI/UX Designer
+
+Jennifer Wang · Product Manager
+
+Drew Feig · SEO Lead
+
+David Juma · Data Research Lead
+
+Daniel Ryan · Production Lead
+
+Anna Peng · Project Lead
+
+Aimi Tanaka · Content Strategist
 
 02 / How the work moves
 

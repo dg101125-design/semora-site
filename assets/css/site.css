@@ -5135,14 +5135,24 @@ h1:has(.hl--sub) .uline::after { display: none; }
 .tcard--c2 figcaption { color: var(--plum-ink); }
 .tcard--c3 figcaption, .tcard--c3::after { background: var(--plum-300); }
 .tcard--c3 figcaption { color: var(--plum-ink); }
-.tcard--c4 figcaption, .tcard--c4::after { background: var(--plum-ink); }
-.tcard--c4 figcaption { color: var(--ivory); }
+/* c4 was plum-ink (3 Sep verification wave, judge-confirmed 1.03:1): the
+   band's depth radial decays to pure plum-ink at caption height, so the
+   ink plate and its tongue vanished on 2 of 8 cards. Apricot is the
+   founder's ORDERED team-page hue — the fourth plate wears it. */
+.tcard--c4 figcaption, .tcard--c4::after { background: var(--apricot); }
+.tcard--c4 figcaption { color: var(--plum-ink); }
 @media (max-width: 900px) {
   .team-quote__split { grid-template-columns: 1fr; }
   .team-quote__fig { max-width: 420px; }
   .tcards { grid-template-columns: repeat(2, 1fr); }
 }
-@media (max-width: 560px) { .tcards { grid-template-columns: 1fr; } }
+@media (max-width: 560px) {
+  .tcards { grid-template-columns: 1fr; }
+  /* the eyebrow was wrapping to three cramped lines beside the giant
+     title (3 Sep verification wave) — below 560 it takes its own row */
+  .team-band__head { grid-template-columns: 1fr auto; }
+  .team-band__head .lab { grid-column: 1 / -1; margin-top: 0; }
+}
 @media (prefers-reduced-motion: no-preference) {
   html.js .tcard.rv { transition: none; opacity: 0; }
   html.js .tcard.rv.in { animation: res-wave-l 0.9s var(--ease) both; }

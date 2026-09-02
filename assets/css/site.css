@@ -3654,7 +3654,7 @@ h1:has(.hl--sub) .uline::after { display: none; }
 
 /* quote print sheet — site chrome hidden, summary becomes the document */
 @media print {
-  .site-head, .site-foot, .qb__col,
+  .site-head, .site-foot, .qb__col, .qb-side__fig,
   .mq, .qb-sum .cta-row, .qb-sum .small { display: none !important; }
   .qb { display: block; }
   .qb-sum { position: static; background: none; color: #000;
@@ -5041,3 +5041,13 @@ h1:has(.hl--sub) .uline::after { display: none; }
   .qb-item input[type="checkbox"]:checked { animation: qb-pop 0.3s var(--ease); }
   @keyframes qb-pop { 40% { transform: scale(1.2); } }
 }
+
+/* ── the summary column becomes one sticky unit: plum card + the shoot's
+   wide arch detail below it (founder, 2 Sep night: 右侧很空) ── */
+.qb-side { position: sticky; top: 1.2rem; }
+.qb-side .qb-sum { position: static; top: auto; }
+.qb-side__fig {
+  margin: 24px 0 0; border-radius: 999px 999px 0 0; overflow: hidden;
+}
+.qb-side__fig img { display: block; width: 100%; height: auto; }
+@media (max-width: 900px) { .qb-side { position: static; } }

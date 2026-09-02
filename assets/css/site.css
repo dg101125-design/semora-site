@@ -3421,8 +3421,6 @@ h1:has(.hl--sub) .uline::after { display: none; }
 .cos__wm .ap-arc--weak { fill: var(--plum-300); }
 .cos__wm .ap-dot { fill: var(--moss-700); }
 @media (max-width: 640px) {
-  .cos-map { margin-inline: 12px 8px; }
-  .cos-map__st small { display: none; }
   .cos-ph { grid-template-columns: 1fr; row-gap: 8px;
             padding: 24px 0 32px 32px; }
   .cos-ph__no::after { display: none; }

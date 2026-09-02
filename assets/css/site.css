@@ -5012,16 +5012,22 @@ h1:has(.hl--sub) .uline::after { display: none; }
   background: var(--moss-700); border-color: var(--moss-700);
 }
 .qb-item input[type="checkbox"]:checked::before { background: var(--ivory); }
-/* the summary card: the hero's plum, not ink (不要黑色) */
-.qb-sum {
-  background:
-    radial-gradient(90% 70% at 20% 6%,
-      color-mix(in srgb, var(--plum-700) 52%, var(--plum-ink)) 0%,
-      transparent 60%),
-    linear-gradient(165deg,
-      color-mix(in srgb, var(--plum-700) 60%, var(--plum-ink)) 0%,
-      color-mix(in srgb, var(--plum-700) 38%, var(--plum-ink)) 55%,
-      color-mix(in srgb, var(--plum-700) 24%, var(--plum-ink)) 100%);
+/* the summary card: the hero's plum recipe with the lower stops lifted
+   (38/55/24 vs the hero's 34/50/16 — the small card must not fall to
+   near-ink at its foot), not ink (不要黑色). Screen-scoped so the print
+   sheet's `background: none` (quote print block, ~line 3655) keeps
+   winning on paper — Codex round 1 caught the cascade regression. */
+@media screen {
+  .qb-sum {
+    background:
+      radial-gradient(90% 70% at 20% 6%,
+        color-mix(in srgb, var(--plum-700) 52%, var(--plum-ink)) 0%,
+        transparent 60%),
+      linear-gradient(165deg,
+        color-mix(in srgb, var(--plum-700) 60%, var(--plum-ink)) 0%,
+        color-mix(in srgb, var(--plum-700) 38%, var(--plum-ink)) 55%,
+        color-mix(in srgb, var(--plum-700) 24%, var(--plum-ink)) 100%);
+  }
 }
 .qb-sum .btn {
   background: var(--signal); color: var(--plum-ink); border-color: var(--signal);

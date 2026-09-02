@@ -3184,6 +3184,95 @@ h1:has(.hl--sub) .uline::after { display: none; }
   }
 }
 
+/* ── Cover Story hero + the instrument on paper (founder, 2 Sep 2026:
+   the quote hero at 50 → the magazine-cover build; the bridge h2 text
+   leaves and the relocated instrument takes its slot). Voices: the h1
+   fires the homepage promise recipe via :has(.hl--sub); everything
+   else reuses standing recipes. ── */
+.pg-quote .onb-cover {
+  position: absolute; right: max(24px, 6vw); bottom: 0;
+  width: clamp(340px, 36vw, 560px); height: min(78%, 640px);
+  margin: 0; border-radius: 999px 999px 0 0; overflow: hidden;
+}
+.pg-quote .onb-cover picture, .pg-quote .onb-cover img {
+  display: block; width: 100%; height: 100%; object-fit: cover;
+}
+/* left-edge scrim: the caps line stays legible wherever it overlaps */
+.pg-quote .onb-cover::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(90deg,
+    color-mix(in srgb, var(--plum-ink) 55%, transparent), transparent 38%);
+}
+/* the aperture as the headline's full stop — static, never rotated;
+   nowrap keeps it welded to the last word instead of orphaning */
+.pg-quote h1 .hl-end { white-space: nowrap; }
+.pg-quote h1 .hl-mark {
+  display: inline-block;   /* the global img,svg block rule would orphan it */
+  height: 0.52em; width: 0.52em; vertical-align: -0.04em;
+}
+.pg-quote h1 .ap-arc { fill: var(--ivory); }
+.pg-quote h1 .ap-arc--weak { fill: var(--plum-300); }
+.pg-quote h1 .ap-dot { fill: var(--moss-300); }
+@media (max-width: 860px) {
+  .pg-quote .onb-cover {
+    position: static; max-width: 480px; width: 100%; height: auto;
+    margin: 48px auto 0;
+  }
+  .pg-quote .onb-cover picture, .pg-quote .onb-cover img { height: auto; }
+}
+/* the instrument recoloured for the paper ground: hairline ring, plum
+   aperture, acid as graphics only (satellite · tick flash · trail) */
+.onb-inst2 { max-width: 320px; }
+.onb-orbit--paper {
+  width: clamp(220px, 24vw, 320px); margin: 0 0 48px;
+}
+.onb-orbit--paper .onb-orbit__ring { border-color: var(--champ-700); }
+.onb-orbit--paper .ap-arc { fill: var(--plum-700); }
+.onb-orbit--paper .ap-arc--weak { fill: var(--plum-300); }
+.onb-orbit--paper .ap-dot { fill: var(--moss-700); }
+.onb-orbit--paper .onb-orbit__tick::before { background: var(--plum-700); }
+.onb-orbit__arm { position: absolute; inset: 0; pointer-events: none; }
+.onb-orbit__sat {
+  position: absolute; top: -6px; left: 50%;
+  width: 12px; height: 12px; margin-left: -6px; border-radius: 50%;
+  background: var(--moss-700);
+}
+.onb-inst2__cap {
+  position: absolute; left: 0; right: 0; bottom: -32px; text-align: center;
+}
+.onb-trail {
+  display: block; height: 2px; margin-top: 16px;
+  background: var(--moss); transform: scaleX(1); transform-origin: left;
+}
+@media (max-width: 860px) {
+  .onb-inst2 { margin-inline: auto; }
+  .onb-orbit--paper { margin-inline: auto; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  /* guards first — omit them and the entries die silently (D1 shape) */
+  html.js .onb-cover.rv { transition: none; opacity: 0; }
+  html.js .onb-cover.rv.in { animation: wgal-wave-r 0.9s var(--ease) both 120ms; }
+  .pg-quote .onb-cover img { animation: vtile-roam 14s ease-in-out infinite alternate; }
+  /* arm and ticks share one 9s linear clock — re-time both or neither */
+  .onb-orbit--paper .onb-orbit__arm { animation: orbit-lap 9s linear infinite; }
+  @keyframes orbit-lap { to { transform: rotate(360deg); } }
+  .onb-orbit--paper .onb-orbit__tick::before {
+    animation: onb-tick-paper 9s linear infinite;
+    animation-delay: calc(var(--r) * 1.5s);
+  }
+  @keyframes onb-tick-paper {
+    0%, 4%    { background: var(--moss); }
+    12%, 100% { background: var(--plum-700); }
+  }
+  html.js .onb-inst2.rv { transition: none; }
+  html.js .onb-inst2.rv .onb-trail { transform: scaleX(0); }
+  html.js .onb-inst2.rv.in .onb-trail {
+    transition: transform 0.9s var(--ease); transform: scaleX(1);
+  }
+  /* one hop per page — it lives on the bridge button, not the hero's */
+  .pg-quote .f-white .btn { animation: cta-hop 4.5s var(--ease) 2s infinite; }
+}
+
 /* --------------------------- client onboarding system (quote page)
    v2 — founder rounds, 31 Aug 2026 evening: "SEMORA Operating System";
    the v1 band scored 30/100 on background and 40/100 on UX. 减少方框 — no

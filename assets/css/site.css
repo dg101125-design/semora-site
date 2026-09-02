@@ -4777,6 +4777,13 @@ h1:has(.hl--sub) .uline::after { display: none; }
    The watermark is .pl-wm mirrored to the LEFT so the two plum bands
    do not twin. No prices on this band. */
 .pkg-band { overflow: hidden; }
+/* caps heading, no full stop (founder, 2 Sep 2026) — the who-h voice the
+   two caps neighbours already speak; the accent rule takes the bright
+   acid because this ground is dark (moss-300 is scoped to f-plum) */
+.pkg-band .who-em::after { background: var(--moss-300); }
+/* the kicker takes the acid the OTHER plum band already settled on
+   (.pl-band precedent) — champagne here forked the two grounds */
+.pkg-band .slash--rule .lab { color: var(--moss-300); }
 .pkg-wm {
   position: absolute; left: -6vw; bottom: -10vw;
   width: clamp(360px, 38vw, 640px); height: auto;
@@ -4827,23 +4834,48 @@ h1:has(.hl--sub) .uline::after { display: none; }
   font-size: var(--t-body-sm); line-height: var(--lh-body-sm);
   max-width: 40ch; margin: 0;
 }
+/* margin-top:auto bottom-anchors the 7-item lists, so the hairlines and
+   every tick row sit level across both cards whatever the lead length
+   (design-review round, 2 Sep 2026); padding/tick offsets reproduce the
+   .prow__list recipe exactly */
 .pkgcard__list {
-  margin-top: var(--sp-5); padding-top: var(--sp-4);
+  margin-top: auto; margin-bottom: var(--sp-5); padding-top: var(--sp-3);
   border-top: 1px solid var(--plum-700);
 }
 .pkgcard__list span {
   display: block; position: relative;
   font-size: 13px; line-height: 1.55; color: var(--plum-100);
-  padding: 4px 0 4px 16px;
+  padding: 3px 0 3px 16px;
 }
 .pkgcard__list span::before {
-  content: ""; position: absolute; left: 2px; top: 0.6em;
+  content: ""; position: absolute; left: 2px; top: 0.62em;
   width: 4px; height: 11px; background: var(--moss-300);
   transform: skewX(var(--slash-skew));
 }
-/* the CTAs sit on one line across both cards whatever the lead length —
-   the flex column absorbs the difference above the button */
-.pkgcard .btn { margin-top: auto; align-self: flex-start; }
+/* the card CTAs speak the float-cta's own language (founder, 2 Sep 2026:
+   "same style as free visibility report… add animation style like
+   bounce") — the acid pill, the dot, the 13 Aug hop-and-flash, minus
+   the fixed positioning. Bottom-aligned across both cards by the flex
+   column, one line whatever the lead length. */
+.pkg-cta {
+  display: inline-flex; align-items: center; gap: 12px;
+  align-self: flex-start;
+  background: var(--moss-300); color: var(--plum-ink);
+  font-family: var(--sans); font-size-adjust: 0.546; font-weight: 600;
+  font-size: 13px; letter-spacing: 0.012em; text-transform: uppercase;
+  padding: 16px 24px; border-radius: 999px; text-decoration: none;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.35);
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+.pkg-cta:hover { transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgb(0 0 0 / 0.4); }
+.pkg-cta__dot { width: 8px; height: 8px; border-radius: 50%;
+  background: var(--plum-ink); }
+.pkg-cta .ar { letter-spacing: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  .pkg-cta { animation: cta-hop 4.5s var(--ease) 2s infinite; }
+  .pkg-cta__dot { animation: cta-flash 4.5s linear 2s infinite; }
+}
 .pkgcard__list { margin-bottom: var(--sp-5); }
 @media (max-width: 860px) {
   .pkgs { grid-template-columns: 1fr; gap: var(--sp-5); }
@@ -4852,7 +4884,11 @@ h1:has(.hl--sub) .uline::after { display: none; }
 /* motion: the cards ride the results band's wave, then the scope steps
    in tick by tick. Reduced motion keeps the plain reveal. */
 @media (prefers-reduced-motion: no-preference) {
-  html.js .pkgcard.rv { opacity: 0; }
+  /* transition: none kills the global .rv transition that otherwise
+     masks the wave for its full run — the guard every animated band
+     carries (.res.rv, .vtile.rv, .wgal__it.rv, .cos-ph.rv); caught by
+     the 2 Sep design-review round: the wave had never actually played */
+  html.js .pkgcard.rv { opacity: 0; transition: none; }
   html.js .pkgcard.rv:nth-child(2) { --pkd: 0.14s; }
   html.js .pkgcard.rv.in:nth-child(1) { animation: pkg-wave-l 0.9s var(--ease) both; }
   html.js .pkgcard.rv.in:nth-child(2) { animation: pkg-wave-r 0.9s var(--ease) var(--pkd) both; }

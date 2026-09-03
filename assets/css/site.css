@@ -1209,7 +1209,9 @@ html.lr .site-head__word::before {
 .foot-links li + li { margin-top: 4px; }
 .foot-links a {
   font-family: var(--sans); font-size-adjust: 0.546; font-weight: 500;
-  font-size: 15px; line-height: 1.55; color: var(--ivory);
+  /* 15px −20% by founder order, 3 Sep 2026 ("reduce font 20% size",
+     footer nav screenshot) — 12 registered as a founder-set step */
+  font-size: 12px; line-height: 1.55; color: var(--ivory);
   /* caps are a CSS decision (founder, 30 Aug: 大小写统一) — the source
      strings stay prose for machines and screen readers */
   text-transform: uppercase; letter-spacing: 0.012em;
@@ -1218,9 +1220,9 @@ html.lr .site-head__word::before {
 }
 .foot-links a:hover { color: var(--moss-300); }
 @media (max-width: 560px) {
-  /* phone touch targets: 23px line + 2×12px = 47px ≥ 44 */
+  /* phone touch targets after the −20%: 18.6px line + 2×16px = 50.6 ≥ 44 */
   .foot-links li + li { margin-top: 0; }
-  .foot-links a { padding-block: 12px; }
+  .foot-links a { padding-block: 16px; }
 }
 /* A hairline between columns, centred in the 48px gap. Four blocks of small
    text separated by air alone read as one drifting field — the same reason

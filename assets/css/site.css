@@ -5057,8 +5057,9 @@ h1:has(.hl--sub) .uline::after { display: none; }
 /* ── the team page (founder redesign, 2 Sep 2026 late night) ──────────
    The attached template's grammar in our voices; the people are SAMPLE
    placeholders and the page says so in copy. --apricot is the founder's
-   ORDERED exception to the 11 Aug three-hue ruling — team-page grounds
-   only, registered here, never a stray hex. */
+   ORDERED exception to the 11 Aug three-hue ruling — registered here,
+   never a stray hex. Grounds by order: team-page (2 Sep) and the
+   client-projects cover (3 Sep, .cs-cover). Nowhere else. */
 :root { --apricot: #F8E3CC; }
 .f-apricot { background: var(--apricot); }
 .team-quote__split {
@@ -5191,6 +5192,9 @@ h1:has(.hl--sub) .uline::after { display: none; }
 /* the deck line's --plum-100 was set for dark grounds; on apricot it
    washed out — the cover speaks it in dark plum instead */
 .pg-client-projects .hl--sub { color: var(--plum-700); }
+/* the homepage lead spacing is scoped to .hero — this cover is not one,
+   so the lead hugged the h1 (verification wave, 3 Sep) */
+.cs-cover .lead { margin-top: 32px; }
 .cs-cover__split {
   display: grid; grid-template-columns: 1.05fr 0.95fr;
   gap: 48px; align-items: center; margin-top: 16px;
@@ -5238,8 +5242,15 @@ h1:has(.hl--sub) .uline::after { display: none; }
   font-variation-settings: "opsz" 72, "SOFT" 0, "WONK" 0;
   color: var(--plum-300); font-variant-numeric: tabular-nums;
 }
+/* the in-delivery cards carried no bottom anchor, so a two-line name
+   pushed their hold text and pills 32px below the neighbour's — the
+   stats' own margin-top:auto contract, extended to the hold copy
+   (verification wave, 3 Sep; fixes the homepage board's row too) */
+.res__hold { margin-top: auto; }
 .res-foot {
-  margin-top: 32px; font-size: 15px; line-height: 1.55;
+  margin-top: 48px; padding-top: 24px;
+  border-top: 1px solid color-mix(in srgb, var(--plum-300) 30%, transparent);
+  font-size: 15px; line-height: 1.55;
   color: var(--plum-100); max-width: 52ch;
 }
 @media (max-width: 900px) {
@@ -5266,6 +5277,10 @@ h1:has(.hl--sub) .uline::after { display: none; }
   .pg-client-projects .res:nth-child(3) .res__panel--slot i { animation-delay: 2.8s; }
   .pg-client-projects .res:nth-child(4) .res__panel img,
   .pg-client-projects .res:nth-child(4) .res__panel--slot i { animation-delay: 3.3s; }
+  .pg-client-projects .res:nth-child(5) .res__panel img,
+  .pg-client-projects .res:nth-child(5) .res__panel--slot i { animation-delay: 3.8s; }
+  .pg-client-projects .res:nth-child(6) .res__panel img,
+  .pg-client-projects .res:nth-child(6) .res__panel--slot i { animation-delay: 4.3s; }
 }
 
 @media (prefers-reduced-motion: no-preference) {

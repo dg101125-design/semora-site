@@ -3203,7 +3203,7 @@ h1:has(.hl--sub) .uline::after { display: none; }
    clients onboard page". 76→61px cap, 40→32px floor, 5.95→4.76vw,
    both pages together; the homepage keeps its own 76px ruling. */
 .pg-quote h1:has(.hl--sub), .pg-quotation h1:has(.hl--sub),
-.pg-team h1:has(.hl--sub) {
+.pg-team h1:has(.hl--sub), .pg-client-projects h1:has(.hl--sub) {
   font-size: clamp(32px, 4.76vw, 61px);
 }
 /* the aperture as the headline's full stop — static, never rotated;
@@ -5181,6 +5181,93 @@ h1:has(.hl--sub) .uline::after { display: none; }
   font-variation-settings: "opsz" 72, "SOFT" 0, "WONK" 0;
   color: var(--plum-300); font-variant-numeric: tabular-nums;
 }
+/* ── the case-study page (founder rebuild, 3 Sep 2026, 55 → 90) ──────
+   Hero on --apricot (the founder's ordered hue — its ground EXTENDED
+   from team pages to this cover by the same order), cases on the plum
+   band. The film plate is a labelled reservation: we hold no client
+   films, and a dead play button would be a small lie — the ring
+   breathes, the strip names the state, the first real film drops in. */
+.cs-cover .wrap { position: relative; }
+/* the deck line's --plum-100 was set for dark grounds; on apricot it
+   washed out — the cover speaks it in dark plum instead */
+.pg-client-projects .hl--sub { color: var(--plum-700); }
+.cs-cover__split {
+  display: grid; grid-template-columns: 1.05fr 0.95fr;
+  gap: 48px; align-items: center; margin-top: 16px;
+}
+.cs-film { margin: 0; }
+.cs-film__plate {
+  position: relative; aspect-ratio: 16 / 9; overflow: hidden;
+  background: var(--plum-ink);
+  display: grid; place-items: center;
+}
+.cs-film__wm {
+  position: absolute; inset: auto -10% -34% auto; width: 62%;
+  opacity: 0.14; pointer-events: none;
+}
+.cs-film__wm .ap-arc { fill: var(--plum-300); }
+.cs-film__wm .ap-arc--weak { fill: var(--plum-700); }
+.cs-film__wm .ap-dot { fill: var(--moss-300); }
+.cs-film__play {
+  position: relative; display: grid; place-items: center;
+  width: 76px; height: 76px; border-radius: 999px;
+  background: var(--moss-300);
+}
+.cs-film__play svg { width: 32px; height: 32px; fill: var(--plum-ink); }
+.cs-film__ring {
+  position: absolute; inset: -2px; border-radius: 999px;
+  border: 2px solid var(--moss-300); opacity: 0;
+}
+.cs-film__strip {
+  position: absolute; left: 16px; bottom: 12px; color: var(--plum-100);
+}
+.cs-film__cap {
+  margin-top: 12px; font-size: 15px; line-height: 1.55;
+  color: color-mix(in srgb, var(--plum-ink) 72%, var(--apricot));
+  max-width: 44ch;
+}
+/* reserved case positions: the folio void, no fabricated client */
+.res-grid--slots { margin-top: 24px; }
+.res__panel--slot {
+  background: color-mix(in srgb, var(--plum-700) 22%, var(--plum-ink));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--plum-300) 34%, transparent);
+}
+.res__panel--slot i {
+  font-family: var(--serif); font-size-adjust: 0.426; font-style: normal;
+  font-weight: 300; font-size: clamp(40px, 6vw, 72px);
+  font-variation-settings: "opsz" 72, "SOFT" 0, "WONK" 0;
+  color: var(--plum-300); font-variant-numeric: tabular-nums;
+}
+.res-foot {
+  margin-top: 32px; font-size: 15px; line-height: 1.55;
+  color: var(--plum-100); max-width: 52ch;
+}
+@media (max-width: 900px) {
+  .cs-cover__split { grid-template-columns: 1fr; gap: 32px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  html.js .cs-film.rv { transition: none; opacity: 0; }
+  html.js .cs-film.rv.in { animation: wgal-wave-r 0.9s var(--ease) both 120ms; }
+  .cs-film__ring { animation: cs-ring 3.2s var(--ease) 1.4s infinite; }
+  @keyframes cs-ring {
+    0%   { opacity: 0.9; transform: scale(1); }
+    60%  { opacity: 0; transform: scale(1.55); }
+    100% { opacity: 0; transform: scale(1.55); }
+  }
+  /* the board breathes on this page only — float on the panel's inner,
+     decoupled from the card's finite entry (the virtual-time lesson) */
+  .pg-client-projects .res__panel img,
+  .pg-client-projects .res__panel--slot i {
+    animation: tcard-float 7s ease-in-out 1.8s infinite;
+  }
+  .pg-client-projects .res:nth-child(2) .res__panel img,
+  .pg-client-projects .res:nth-child(2) .res__panel--slot i { animation-delay: 2.3s; }
+  .pg-client-projects .res:nth-child(3) .res__panel img,
+  .pg-client-projects .res:nth-child(3) .res__panel--slot i { animation-delay: 2.8s; }
+  .pg-client-projects .res:nth-child(4) .res__panel img,
+  .pg-client-projects .res:nth-child(4) .res__panel--slot i { animation-delay: 3.3s; }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   /* entry stays a FINITE animation on the card; the infinite float
      lives on the portrait inside it — decoupled, so the entry fill can

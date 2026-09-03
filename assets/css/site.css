@@ -1265,28 +1265,29 @@ html.lr .site-head__word::before {
 .foot-mailto .ar { flex: none; margin-left: auto; transition: transform 180ms var(--ease); }
 .foot-mailto:hover { background: var(--plum-700); color: var(--ivory); }
 .foot-mailto:hover .ar { transform: translateX(3px); }
-/* The phone stays findable and stops instructing. Mono because it is data —
-   and since 30 Aug 2026 the email string and the postal address speak the
-   same data voice, so everything a visitor copies rather than reads is one
-   face. (This comment previously claimed the address was already mono; it
-   was not — that inconsistency is the one this change closes.) */
+/* Founder, 3 Sep 2026 ("talk to us 的字体和左边的字体对齐设计"): the
+   contact column leaves the mono data voice and aligns with the nav
+   columns' face and scale — Instrument Sans 500 at the links' 12px.
+   Strings stay verbatim (NAP) and keep their own case: an uppercased
+   email address would misstate the string. The 30 Aug mono ruling for
+   this column is superseded by this order. */
 .foot-med {
   display: inline-flex; align-items: flex-start; gap: 12px;
   width: fit-content; margin-top: 12px;
-  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
-  font-size: 13px; line-height: 1.45; letter-spacing: 0.012em;
+  font-family: var(--sans); font-size-adjust: 0.546; font-weight: 500;
+  font-size: 12px; line-height: 1.45; letter-spacing: 0.012em;
   color: var(--plum-100);
 }
 .foot-med:hover, .foot-med:hover .foot-ic { color: var(--moss-300); }
 .foot-addr {
   font-style: normal;
-  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
-  font-size: 13px; line-height: 1.55; letter-spacing: 0.012em;
+  font-family: var(--sans); font-size-adjust: 0.546; font-weight: 500;
+  font-size: 12px; line-height: 1.55; letter-spacing: 0.012em;
   color: var(--plum-100); max-width: 26ch; margin: 0;
 }
 .foot-mailto__t {
-  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
-  font-size: 13px; letter-spacing: 0.012em;
+  font-family: var(--sans); font-size-adjust: 0.546; font-weight: 500;
+  font-size: 12px; letter-spacing: 0.012em;
 }
 
 /* ---- the four channels.
@@ -3423,15 +3424,10 @@ h1:has(.hl--sub) .uline::after { display: none; }
    header corner, an acid-tinted lift where the flow hands off, the
    aperture large enough to be seen, and a ghost numeral watermarking
    each phase — luminance and brand geometry only, nothing glows. */
-#onboarding.f-ivory {
-  background:
-    radial-gradient(70% 46% at 82% 4%,
-      color-mix(in srgb, var(--plum-300) 14%, var(--ivory)) 0%,
-      var(--ivory) 60%),
-    radial-gradient(60% 30% at 8% 96%,
-      color-mix(in srgb, var(--moss-300) 12%, var(--ivory)) 0%,
-      var(--ivory) 55%);
-}
+/* Founder, 3 Sep 2026: the plum/moss radial washes leave — this ground
+   now carries the SAME color code as the Quotation System's builder
+   band (--cream), so the two pages read as one system side by side. */
+#onboarding.f-ivory { background: var(--cream); }
 #onboarding { overflow: hidden; }
 /* The one-round display-size override (40-72) left 31 Aug 2026 — the
    founder's standing order is exact font parity with the homepage, and

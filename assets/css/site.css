@@ -3601,6 +3601,11 @@ h1:has(.hl--sub) .uline::after { display: none; }
   }
   @keyframes ic-draw { from { stroke-dashoffset: 90; } }
 }
+/* The summary card, re-set 4 Sep 2026 (founder: one voice, 95-score
+   push). ONE money voice — the serif figure — at two sizes: 19 on the
+   line, 28 on the total. Buttons stack full-width in one column with
+   one hierarchy: Pay Now (acid, appears only when payments are live),
+   Email Quote (ivory), Download PDF (ghost). */
 .qb-sum {
   position: sticky; top: 1.2rem;
   background: var(--plum-ink);
@@ -3609,14 +3614,19 @@ h1:has(.hl--sub) .uline::after { display: none; }
 }
 .qb-sum > .lab { color: var(--moss-300); margin-bottom: 8px; }
 .qb-empty { color: var(--plum-100); font-size: 15px; max-width: none; }
-.qb-line { display: flex; justify-content: space-between; gap: 16px; padding: 8px 0; border-bottom: 1px solid var(--plum-700); }
+.qb-line { display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-bottom: 1px solid var(--plum-700); }
 .qb-line span { display: block; font-size: 15px; color: var(--ivory); max-width: none; }
 .qb-line em {
   display: block; font-family: var(--mono); font-size-adjust: 0.516; font-style: normal;
   font-size: 11px; letter-spacing: 0.012em; text-transform: uppercase;
   color: var(--plum-100); margin-top: 4px;
 }
-.qb-line b { font-variant-numeric: tabular-nums; white-space: nowrap; font-weight: 600; color: var(--champ); }
+.qb-line b {
+  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 300;
+  font-size: 19px; color: var(--ivory);
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+#qb-totals > .qb-total:first-child { border-top: 2px solid var(--plum-700); padding-top: 16px; }
 .qb-total { display: flex; justify-content: space-between; align-items: baseline; margin-top: 16px; }
 .qb-total span {
   font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 11px;
@@ -3627,8 +3637,16 @@ h1:has(.hl--sub) .uline::after { display: none; }
   color: var(--ivory); font-variant-numeric: tabular-nums;
 }
 .qb-fine { font-size: 13px; line-height: 1.45; color: var(--plum-100); margin-top: 16px; max-width: none; }
+.qb-acts { flex-direction: column; align-items: stretch; gap: 8px; }
+.qb-sum .btn { display: block; width: 100%; text-align: center; }
 .qb-sum .btn { background: var(--ivory); color: var(--plum); border-color: var(--ivory); }
 .qb-sum .btn:hover { background: var(--champ); border-color: var(--champ); }
+.qb-sum .qb-btn--pay { background: var(--moss-300); color: var(--plum-ink); border-color: var(--moss-300); }
+.qb-sum .qb-btn--pay:hover { background: var(--champ); border-color: var(--champ); }
+/* one hierarchy even against later .btn ground rules: Pay acid, Email
+   ivory, PDF ghost — ids outrank whatever the band paints */
+.qb-sum #qb-mail { background: var(--ivory); color: var(--plum); border-color: var(--ivory); }
+.qb-sum #qb-mail:hover { background: var(--champ); border-color: var(--champ); }
 .qb-sum .btn--ghost { background: transparent; color: var(--champ); border-color: var(--plum-300); }
 .qb-sum .btn--ghost:hover { background: var(--plum-700); }
 .qb-sum .small { color: var(--plum-100); }
@@ -3637,6 +3655,12 @@ h1:has(.hl--sub) .uline::after { display: none; }
   letter-spacing: 0.012em; text-transform: uppercase;
   color: var(--moss-300); margin: 0 0 16px; max-width: none;
 }
+
+/* The hidden attribute must actually hide (4 Sep 2026): the founder's
+   screenshot showed the pay button rendering while hidden — any class
+   that sets display (`.btn` here) outruns the UA's [hidden] default.
+   This is the standing gap, closed globally: hidden wins, always. */
+[hidden] { display: none !important; }
 
 /* the quote sheet's letterhead and foot live ONLY on paper — on screen
    the summary card stays a card (4 Sep 2026: the print path became a
@@ -3668,14 +3692,37 @@ h1:has(.hl--sub) .uline::after { display: none; }
   .qb-line span, .qb-total b { color: #000; }
   .qb-line em, .qb-fine { color: #444; }
   .qb-line { border-color: #ccc; }
+  /* the SEMORA quotation document (founder redesign, 4 Sep 2026):
+     brand head with the meta block right, the firm's NAP line, a
+     SERVICE / PRICE column rule, the lines, the totals, a signed-off
+     foot. One serif money voice carries from screen to paper. */
   .qsheet-head, .qsheet-foot { display: block !important; }
-  .qsheet-head { margin: 8px 0 24px; }
-  .qsheet-head__firm { color: #000; font-weight: 600; font-size: 15px; }
-  .qsheet-head__nap, .qsheet-head__meta, .qsheet-foot {
+  .qsheet-head { margin: 12px 0 0; }
+  .qsheet-head__row {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 24px;
+  }
+  .qsheet-head__firm { color: #000; font-weight: 600; font-size: 15px; line-height: 1.45; }
+  .qsheet-head__firm span { font-weight: 400; color: #444; font-size: 12px; }
+  .qsheet-head__meta {
+    text-align: right; color: #000; font-weight: 600; font-size: 15px; line-height: 1.45;
+  }
+  .qsheet-head__meta span { font-weight: 400; color: #444; font-size: 12px; }
+  .qsheet-head__nap {
+    color: #444; font-size: 12px; line-height: 1.55; margin-top: 8px;
+  }
+  .qsheet-cols {
+    display: flex; justify-content: space-between;
+    margin-top: 24px; padding-bottom: 8px; border-bottom: 2px solid #000;
+    font-family: var(--mono); font-size-adjust: 0.516; font-size: 11px;
+    letter-spacing: 0.012em; text-transform: uppercase; color: var(--moss-700);
+  }
+  .qb-line b { color: #000; }
+  #qb-totals > .qb-total:first-child { border-top: 2px solid #000; }
+  .qsheet-foot {
+    margin-top: 32px; border-top: 1px solid #ccc; padding-top: 8px;
     color: #444; font-size: 12px; line-height: 1.55;
   }
-  .qsheet-head__meta { margin-top: 8px; }
-  .qsheet-foot { margin-top: 24px; border-top: 1px solid #ccc; padding-top: 8px; }
 }
 
 @media (prefers-reduced-motion: no-preference) {

@@ -92,7 +92,7 @@
 
     /* render */
     if (!lines.length) {
-      sumEl.innerHTML = '<p class="qb-empty">Build up what you need — every item is priced and timed. We quote the package for you.</p>';
+      sumEl.innerHTML = '<p class="qb-empty">Build up what you need — each item is priced and timed. We quote the package for you.</p>';
       totEl.innerHTML = "";
       oneOffNow = 0;        /* Codex r1: the pay button went stale when the
                                selection emptied — this branch returns early */
@@ -115,7 +115,7 @@
           "never costs more than " + fmt(CAP) + " a month.</p>";
       }
     }
-    t += '<p class="qb-fine">All + GST. The audit credits in full against any engagement within 90 days. Every price on this page is published — identical for every client.</p>';
+    t += '<p class="qb-fine">GST applies on purchase.</p>';
     totEl.innerHTML = t;
     oneOffNow = oneOff;
     payVisibility();
@@ -130,7 +130,7 @@
     totEl.querySelectorAll(".qb-total").forEach(function (l) {
       out += l.querySelector("span").textContent + ": " + l.querySelector("b").textContent + "\n";
     });
-    out += "All + GST.\n";
+    out += "GST applies on purchase.\n";
     return out;
   }
 
@@ -182,12 +182,12 @@
       }).then(function (r) { return r.json(); }).then(function (out) {
         if (out && out.url) { window.location.href = out.url; return; }
         payBtn.disabled = false;
-        payBtn.textContent = "Pay the one-off items";
+        payBtn.textContent = "Pay Now";
         if (payNote) payNote.textContent = (out && out.error) ||
           "Payment could not start. Email the quote instead — same numbers.";
       }).catch(function () {
         payBtn.disabled = false;
-        payBtn.textContent = "Pay the one-off items";
+        payBtn.textContent = "Pay Now";
         if (payNote) payNote.textContent =
           "Payment could not start. Email the quote instead — same numbers.";
       });

@@ -3638,10 +3638,29 @@ h1:has(.hl--sub) .uline::after { display: none; }
   color: var(--moss-300); margin: 0 0 16px; max-width: none;
 }
 
-/* quote print sheet — site chrome hidden, summary becomes the document */
+/* the quote sheet's letterhead and foot live ONLY on paper — on screen
+   the summary card stays a card (4 Sep 2026: the print path became a
+   formal quotation document; the founder's PDF order) */
+.qsheet-head, .qsheet-foot { display: none; }
+/* the payment return band (filled by quote.js from ?payment=…) */
+.qb-paystatus {
+  padding: 12px 16px; margin-bottom: 16px;
+  font-size: 15px; line-height: 1.55;
+  border: 1px solid var(--plum-300); color: var(--ivory);
+}
+.qb-paystatus--ok { border-color: var(--moss-300); color: var(--moss-300); }
+
+/* quote print sheet — site chrome hidden, summary becomes the document.
+   4 Sep 2026: every section except the builder's own band leaves the
+   paper too — a QUOTATION prints as one document, not as the web page
+   it was built on (the hero was printing as page one before this). */
 @media print {
   .site-head, .site-foot, .qb__col, .qb-plate,
-  .mq, .qb-sum .cta-row, .qb-sum .small { display: none !important; }
+  .mq, .qb-sum .cta-row, .qb-sum .small,
+  .pg-quotation main > section:not(.qb-band),
+  .qb-band .slash--rule, .qb-band .split, .qb-wm,
+  .qb-band .wrap > .lead,
+  .qb-paystatus { display: none !important; }
   .qb { display: block; }
   .qb-sum { position: static; background: none; color: #000;
             border-top: 4px solid var(--moss-700); }
@@ -3649,6 +3668,14 @@ h1:has(.hl--sub) .uline::after { display: none; }
   .qb-line span, .qb-total b { color: #000; }
   .qb-line em, .qb-fine { color: #444; }
   .qb-line { border-color: #ccc; }
+  .qsheet-head, .qsheet-foot { display: block !important; }
+  .qsheet-head { margin: 8px 0 24px; }
+  .qsheet-head__firm { color: #000; font-weight: 600; font-size: 15px; }
+  .qsheet-head__nap, .qsheet-head__meta, .qsheet-foot {
+    color: #444; font-size: 12px; line-height: 1.55;
+  }
+  .qsheet-head__meta { margin-top: 8px; }
+  .qsheet-foot { margin-top: 24px; border-top: 1px solid #ccc; padding-top: 8px; }
 }
 
 @media (prefers-reduced-motion: no-preference) {

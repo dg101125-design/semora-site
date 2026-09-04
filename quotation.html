@@ -25,10 +25,10 @@
 <link rel="preload" href="/assets/fonts/Fraunces-Italic-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/InstrumentSans-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/FragmentMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/site.css?v=e8d3a632">
+<link rel="stylesheet" href="assets/css/site.css?v=cd5a0fe6">
 <script defer src="assets/js/site.js?v=d195fd45"></script>
-<script defer src="assets/js/quote.js?v=2d823260"></script>
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Organization","ProfessionalService"],"@id":"https://www.semora.com.au/#organization","name":"SEMORA STUDIO","url":"https://www.semora.com.au/"},{"@type":"WebSite","@id":"https://www.semora.com.au/#website","url":"https://www.semora.com.au/","name":"SEMORA STUDIO","publisher":{"@id":"https://www.semora.com.au/#organization"}},{"@type":"WebPage","@id":"https://www.semora.com.au/quotation#webpage","url":"https://www.semora.com.au/quotation","name":"Quotation System — SEMORA STUDIO Melbourne","description":"Tick what you need — every item carries its published price and delivery time, and the pack you build becomes the proposal we send back. Same numbers for everyone.","isPartOf":{"@id":"https://www.semora.com.au/#website"},"about":{"@id":"https://www.semora.com.au/#organization"},"publisher":{"@id":"https://www.semora.com.au/#organization"},"inLanguage":"en-AU","dateModified":"2026-09-03","primaryImageOfPage":{"@type":"ImageObject","url":"https://www.semora.com.au/assets/img/og-semora.png","width":1200,"height":630},"breadcrumb":{"@id":"https://www.semora.com.au/quotation#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://www.semora.com.au/quotation#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.semora.com.au/"},{"@type":"ListItem","position":2,"name":"Quotation System","item":"https://www.semora.com.au/quotation"}]}]}</script>
+<script defer src="assets/js/quote.js?v=3466ba46"></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Organization","ProfessionalService"],"@id":"https://www.semora.com.au/#organization","name":"SEMORA STUDIO","url":"https://www.semora.com.au/"},{"@type":"WebSite","@id":"https://www.semora.com.au/#website","url":"https://www.semora.com.au/","name":"SEMORA STUDIO","publisher":{"@id":"https://www.semora.com.au/#organization"}},{"@type":"WebPage","@id":"https://www.semora.com.au/quotation#webpage","url":"https://www.semora.com.au/quotation","name":"Quotation System — SEMORA STUDIO Melbourne","description":"Tick what you need — every item carries its published price and delivery time, and the pack you build becomes the proposal we send back. Same numbers for everyone.","isPartOf":{"@id":"https://www.semora.com.au/#website"},"about":{"@id":"https://www.semora.com.au/#organization"},"publisher":{"@id":"https://www.semora.com.au/#organization"},"inLanguage":"en-AU","dateModified":"2026-09-04","primaryImageOfPage":{"@type":"ImageObject","url":"https://www.semora.com.au/assets/img/og-semora.png","width":1200,"height":630},"breadcrumb":{"@id":"https://www.semora.com.au/quotation#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://www.semora.com.au/quotation#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.semora.com.au/"},{"@type":"ListItem","position":2,"name":"Quotation System","item":"https://www.semora.com.au/quotation"}]}]}</script>
 </head>
 <body class="pg-quotation">
 <a class="skip" href="#main">Skip to content</a>
@@ -278,22 +278,39 @@
 
       <aside class="qb-side rv">
         <div class="qb-sum" aria-live="polite">
+        <div id="qb-paystatus" hidden></div>
         <div class="qb-sum__brand">
           <img src="assets/logo/SEMORA_Monogram_primary-plum-moss.svg?v=45e0139b"
                alt="SEMORA monogram" width="32" height="46">
           <p class="lab">Your quote /</p>
         </div>
+        <div class="qsheet-head" aria-hidden="true">
+          <p class="qsheet-head__firm">SEMORA STUDIO PTY LTD &middot; ABN 77 701 244 635</p>
+          <p class="qsheet-head__nap">Central House Toorak, Level 3, 489 Toorak Road, Toorak VIC 3142<br>
+          (03) 9071 0855 &middot; team@semora.com.au &middot; semora.com.au</p>
+          <p class="qsheet-head__meta">Quotation &middot; <span id="qsheet-date"></span>
+          &middot; ref <span id="qsheet-ref"></span></p>
+        </div>
         <div id="qb-lines"></div>
         <div id="qb-totals"></div>
         <div class="cta-row mt3">
           <a class="btn" id="qb-mail" href="mailto:team@semora.com.au">Email this quote</a>
-          <button class="btn btn--ghost" id="qb-print" type="button">Print / PDF</button>
+          <button class="btn btn--ghost" id="qb-print" type="button">Download the quote (PDF)</button>
+          <button class="btn" id="qb-pay" type="button" hidden>Pay the one-off items</button>
         </div>
-        <p class="small mt2">Nothing is sent until you email it. We reply within
+        <p class="small mt2" id="qb-paynote" hidden>Card payment covers the
+        one-off items, + 10% GST, through Stripe. Monthly items start by
+        contract &#8212; we send the SOW with the same published numbers.</p>
+        <p class="small mt2">Nothing is sent until you email it, and nothing
+        is charged until you choose to pay. We reply within
         one business day, with the same numbers. Every figure here is set by
         the published <a class="alink" href="/method">method</a>, and the
         firm behind them is described on
         <a class="alink" href="/about">about SEMORA STUDIO</a>.</p>
+        <p class="qsheet-foot" aria-hidden="true">Prices as published at
+        semora.com.au on the date above &middot; all + GST &middot; identical
+        for every client. This sheet restates the published prices; it
+        creates no obligation on either side.</p>
         </div>
         <figure class="qb-plate qb-plate--1 rv" aria-hidden="true">
           <img src="assets/img/qb-plate-1.jpg?v=62072f50" alt="" width="1000" height="750" loading="lazy">

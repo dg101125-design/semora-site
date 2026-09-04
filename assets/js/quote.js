@@ -22,12 +22,24 @@
   var totEl = document.getElementById("qb-totals");
   var boxes = root.querySelectorAll("input[type=checkbox]");
   var qtys = root.querySelectorAll("input[type=number]");
+  var payBtn = document.getElementById("qb-pay");
+  var payNote = document.getElementById("qb-paynote");
+  var payEnabled = false;      /* /api/checkout GET says whether Stripe is connected */
+  var payable = [];            /* the current one-off selection, labels + qty */
+  var oneOffNow = 0;
 
   function fmt(n) { return "$" + n.toLocaleString("en-AU"); }
+
+  function payVisibility() {
+    var show = payEnabled && oneOffNow > 0;
+    if (payBtn) payBtn.hidden = !show;
+    if (payNote) payNote.hidden = !show;
+  }
 
   function build() {
     var lines = [];
     var oneOff = 0, moMenu = 0;
+    payable = [];
 
     /* bundle detection: all core items of a group ticked → one product line */
     var bundled = {};
@@ -54,7 +66,15 @@
         if (el.dataset.note) note += " · " + el.dataset.note;
         lines.push([el.dataset.label, fmt(p), note]);
         oneOff += p;
+        payable.push({ label: el.dataset.label });
       }
+    });
+    /* the bundle's own cores go to the server as their four labels — the
+       checkout endpoint folds them to the published bundle line itself */
+    Object.keys(bundled).forEach(function (g) {
+      root.querySelectorAll('input[data-g="' + g + '"]').forEach(function (el) {
+        payable.push({ label: el.dataset.label });
+      });
     });
 
     qtys.forEach(function (el) {
@@ -64,6 +84,7 @@
       lines.push([el.dataset.label + " × " + n, fmt(p),
         el.dataset.t ? "delivery " + el.dataset.t : ""]);
       oneOff += p;
+      payable.push({ label: el.dataset.label, qty: n });
     });
 
     var capped = moMenu > CAP;
@@ -93,6 +114,8 @@
     }
     t += '<p class="qb-fine">All + GST. The audit credits in full against any engagement within 90 days. Every price on this page is published — identical for every client.</p>';
     totEl.innerHTML = t;
+    oneOffNow = oneOff;
+    payVisibility();
   }
 
   function quoteText() {
@@ -117,7 +140,68 @@
       "&body=" + encodeURIComponent(quoteText() + "\nMy details:\nName:\nPractice:\nPhone:\n");
   });
   var pr = document.getElementById("qb-print");
-  if (pr) pr.addEventListener("click", function () { window.print(); });
+  if (pr) pr.addEventListener("click", function () {
+    /* the print sheet's date and reference — filled at print time so the
+       saved PDF says when its published prices were read */
+    var d = document.getElementById("qsheet-date");
+    var r = document.getElementById("qsheet-ref");
+    var now = new Date();
+    if (d) d.textContent = now.toLocaleDateString("en-AU",
+      { day: "numeric", month: "long", year: "numeric" });
+    if (r) r.textContent = "Q" + now.toISOString().slice(0, 10).replace(/-/g, "") +
+      "-" + String(now.getTime() % 1000).padStart(3, "0");
+    window.print();
+  });
+
+  /* ── payment (founder order, 4 Sep 2026) ─────────────────────────────
+     The button exists only when /api/checkout says a payment account is
+     connected AND the selection holds one-off items. The charge itself is
+     rebuilt server-side from the generated price table — what is sent
+     here is only WHICH items, never what they cost. */
+  if (payBtn) {
+    fetch("/api/checkout", { method: "GET" })
+      .then(function (r) { return r.json(); })
+      .then(function (cfg) { payEnabled = !!(cfg && cfg.enabled); payVisibility(); })
+      .catch(function () { payEnabled = false; });
+    payBtn.addEventListener("click", function () {
+      if (!payable.length) return;
+      payBtn.disabled = true;
+      payBtn.textContent = "Opening secure payment…";
+      fetch("/api/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ lines: payable })
+      }).then(function (r) { return r.json(); }).then(function (out) {
+        if (out && out.url) { window.location.href = out.url; return; }
+        payBtn.disabled = false;
+        payBtn.textContent = "Pay the one-off items";
+        if (payNote) payNote.textContent = (out && out.error) ||
+          "Payment could not start. Email the quote instead — same numbers.";
+      }).catch(function () {
+        payBtn.disabled = false;
+        payBtn.textContent = "Pay the one-off items";
+        if (payNote) payNote.textContent =
+          "Payment could not start. Email the quote instead — same numbers.";
+      });
+    });
+  }
+
+  /* the return leg: Stripe sends the buyer back with ?payment=… */
+  var status = document.getElementById("qb-paystatus");
+  if (status) {
+    var pv = new URLSearchParams(window.location.search).get("payment");
+    if (pv === "success") {
+      status.hidden = false;
+      status.className = "qb-paystatus qb-paystatus--ok";
+      status.textContent = "Payment received — the receipt is in your email, " +
+        "and we reply within one business day to start delivery.";
+    } else if (pv === "cancelled") {
+      status.hidden = false;
+      status.className = "qb-paystatus";
+      status.textContent = "Payment was cancelled — nothing was charged. " +
+        "Your selection is still here.";
+    }
+  }
 
   build();
 })();

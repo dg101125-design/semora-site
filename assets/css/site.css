@@ -3110,14 +3110,22 @@ h1:has(.hl--sub) .uline::after { display: none; }
   padding: 0.35em 0.45em; border: 2px solid var(--plum-900);
   background: var(--white); color: var(--plum-900); flex: 0 0 auto;
 }
+/* 5 Sep 2026, founder-caught: the 11px label sat mathematically centred
+   (probe delta = 0) beside an 86px tile and still read as unaligned —
+   centring unequal masses is a decision the eye rejects. The tile drops
+   to label scale on screen so the two masses match; print keeps the
+   letterhead size. Lesson in the register: E6. */
 .qb-sum__brand {
   display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
 }
 .qb-sum__brand img {
-  display: block; width: 86px; height: auto;
-  background: var(--champ); padding: 8px 8px;
+  display: block; width: 44px; height: auto;
+  background: var(--champ); padding: 4px;
 }
 .qb-sum__brand .lab { margin: 0; }
+@media print {
+  .qb-sum__brand img { width: 86px; padding: 8px; }
+}
 .qb-cap {
   font-size: 13px; line-height: 1.45; color: var(--champ);
   border: 1px solid var(--moss-300); padding: 0.55em 0.8em;

@@ -1316,11 +1316,19 @@ Case studies · Named client, real numbers, dated and caveated — the proof you
 
 Your quote /
 
-SEMORA STUDIO PTY LTD ABN 77 701 244 635
+SEMORA STUDIO PTY LTD
 
-Quotation ref
+ABN 77 701 244 635
 
-Central House Toorak, Level 3, 489 Toorak Road, Toorak VIC 3142 · (03) 9071 0855 · team@semora.com.au
+Central House Toorak Level 3, 489 Toorak Road Toorak VIC 3142
+
+(03) 9071 0855 team@semora.com.au
+
+Quotation
+
+Date
+
+Ref
 
 ServicePrice
 
@@ -1330,7 +1338,7 @@ Card payment covers the one-off items, + 10% GST, through Stripe. Monthly items 
 
 We will help you choose the right service for your business marketing.
 
-Prices as published at semora.com.au on the date above · GST applies on purchase. This sheet restates the published prices; it creates no obligation on either side.
+Issued by the SEMORA STUDIO quotation system from the prices published at semora.com.au on the date above. GST applies on purchase. A quotation may change with the project’s scope and conditions; the final figure is confirmed in the engagement agreement.
 
 Performance
 

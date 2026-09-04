@@ -27,6 +27,7 @@
   var payEnabled = false;      /* /api/checkout GET says whether Stripe is connected */
   var payable = [];            /* the current one-off selection, labels + qty */
   var oneOffNow = 0;
+  var monthlyNow = 0;          /* capped monthly menu, for the print sheet */
 
   function fmt(n) { return "$" + n.toLocaleString("en-AU"); }
 
@@ -96,6 +97,7 @@
       totEl.innerHTML = "";
       oneOffNow = 0;        /* Codex r1: the pay button went stale when the
                                selection emptied — this branch returns early */
+      monthlyNow = 0;
       payVisibility();
       return;
     }
@@ -118,6 +120,7 @@
     t += '<p class="qb-fine">GST applies on purchase.</p>';
     totEl.innerHTML = t;
     oneOffNow = oneOff;
+    monthlyNow = monthly;
     payVisibility();
   }
 
@@ -151,8 +154,26 @@
     var now = new Date();
     if (d) d.textContent = now.toLocaleDateString("en-AU",
       { day: "numeric", month: "long", year: "numeric" });
-    if (r) r.textContent = "Q" + now.toISOString().slice(0, 10).replace(/-/g, "") +
-      "-" + String(now.getTime() % 1000).padStart(3, "0");
+    /* local date parts, not UTC — the ref once said 0904 beside a Date
+       line saying 5 September (caught at 1:1 review, 5 Sep 2026) */
+    var ymd = now.getFullYear() * 10000 + (now.getMonth() + 1) * 100 + now.getDate();
+    if (r) r.textContent = "Q" + ymd + "-" + String(now.getTime() % 1000).padStart(3, "0");
+    /* the document's money block: subtotal, GST, payable total — and the
+       monthly menu as its own contract line (5 Sep 2026 redesign) */
+    var tt = document.getElementById("qsheet-totals");
+    if (tt) {
+      var gst = Math.round(oneOffNow * 0.1);
+      var rows = "";
+      if (oneOffNow) {
+        rows += '<div class="qsheet-trow"><span>Subtotal (one-off, ex GST)</span><b>' + fmt(oneOffNow) + "</b></div>";
+        rows += '<div class="qsheet-trow"><span>GST (10%)</span><b>' + fmt(gst) + "</b></div>";
+        rows += '<div class="qsheet-trow qsheet-trow--total"><span>Total payable</span><b>' + fmt(oneOffNow + gst) + "</b></div>";
+      }
+      if (monthlyNow) {
+        rows += '<div class="qsheet-trow qsheet-trow--mo"><span>Monthly menu (ex GST, starts by contract)</span><b>' + fmt(monthlyNow) + " / mo</b></div>";
+      }
+      tt.innerHTML = rows;
+    }
   }
   window.addEventListener("beforeprint", fillSheet);
   var pr = document.getElementById("qb-print");

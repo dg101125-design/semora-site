@@ -94,6 +94,9 @@
     if (!lines.length) {
       sumEl.innerHTML = '<p class="qb-empty">Build up what you need — every item is priced and timed. We quote the package for you.</p>';
       totEl.innerHTML = "";
+      oneOffNow = 0;        /* Codex r1: the pay button went stale when the
+                               selection emptied — this branch returns early */
+      payVisibility();
       return;
     }
     sumEl.innerHTML = lines.map(function (l) {
@@ -139,10 +142,10 @@
       encodeURIComponent("Quote request — via semora.com.au/quote") +
       "&body=" + encodeURIComponent(quoteText() + "\nMy details:\nName:\nPractice:\nPhone:\n");
   });
-  var pr = document.getElementById("qb-print");
-  if (pr) pr.addEventListener("click", function () {
-    /* the print sheet's date and reference — filled at print time so the
-       saved PDF says when its published prices were read */
+  /* the print sheet's date and reference — filled whenever a print
+     actually starts (the button, Ctrl-P, the browser menu: beforeprint
+     covers them all — Codex r1 caught the button-only version) */
+  function fillSheet() {
     var d = document.getElementById("qsheet-date");
     var r = document.getElementById("qsheet-ref");
     var now = new Date();
@@ -150,6 +153,11 @@
       { day: "numeric", month: "long", year: "numeric" });
     if (r) r.textContent = "Q" + now.toISOString().slice(0, 10).replace(/-/g, "") +
       "-" + String(now.getTime() % 1000).padStart(3, "0");
+  }
+  window.addEventListener("beforeprint", fillSheet);
+  var pr = document.getElementById("qb-print");
+  if (pr) pr.addEventListener("click", function () {
+    fillSheet();
     window.print();
   });
 
@@ -186,15 +194,37 @@
     });
   }
 
-  /* the return leg: Stripe sends the buyer back with ?payment=… */
+  /* the return leg: Stripe sends the buyer back with ?payment=…&session_id=….
+     "Payment received" prints ONLY after the server has asked Stripe and
+     Stripe said paid — a typed URL gets the neutral line (Codex r1: the
+     banner was forgeable). */
   var status = document.getElementById("qb-paystatus");
   if (status) {
-    var pv = new URLSearchParams(window.location.search).get("payment");
-    if (pv === "success") {
+    var q = new URLSearchParams(window.location.search);
+    var pv = q.get("payment");
+    var sid = q.get("session_id") || "";
+    if (pv === "success" && sid) {
       status.hidden = false;
-      status.className = "qb-paystatus qb-paystatus--ok";
-      status.textContent = "Payment received — the receipt is in your email, " +
-        "and we reply within one business day to start delivery.";
+      status.className = "qb-paystatus";
+      status.textContent = "Checking the payment…";
+      fetch("/api/checkout?session_id=" + encodeURIComponent(sid))
+        .then(function (r) { return r.json(); })
+        .then(function (v) {
+          if (v && v.paid) {
+            status.className = "qb-paystatus qb-paystatus--ok";
+            status.textContent = "Payment received — the receipt is in your " +
+              "email, and we reply within one business day to start delivery.";
+          } else {
+            status.textContent = "We could not confirm a payment for this " +
+              "visit. If you paid, the Stripe receipt in your email is the " +
+              "record — nothing further is needed.";
+          }
+        })
+        .catch(function () {
+          status.textContent = "We could not confirm a payment for this " +
+            "visit. If you paid, the Stripe receipt in your email is the " +
+            "record — nothing further is needed.";
+        });
     } else if (pv === "cancelled") {
       status.hidden = false;
       status.className = "qb-paystatus";

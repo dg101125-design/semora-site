@@ -56,7 +56,10 @@ export function priceSelection(lines) {
   const picked = new Set();
   for (const l of lines) {
     const label = typeof l?.label === "string" ? l.label : "";
-    const row = PRICES[label];
+    /* own properties only — "__proto__" and friends must read as unknown,
+     * not as inherited object plumbing (Codex r1) */
+    const row = Object.prototype.hasOwnProperty.call(PRICES, label)
+      ? PRICES[label] : null;
     if (!row) throw new Error("Unknown item: " + label.slice(0, 60));
     if (row.mo) throw new Error("Monthly items are contracted, not carded: " + label);
     if (picked.has(label)) throw new Error("Duplicate line: " + label);
@@ -93,6 +96,27 @@ export default async function handler(req, res) {
 
   if (req.method === "GET") {
     res.setHeader("Cache-Control", "no-store");
+    /* ?session_id=cs_… → verify a return leg against Stripe itself.
+     * Codex r1: the success banner was forgeable by typing the URL —
+     * "Payment received" must only ever follow Stripe saying paid. */
+    const sid = new URL(req.url, "http://local").searchParams.get("session_id");
+    if (sid) {
+      if (!key || !/^cs_[A-Za-z0-9_]+$/.test(sid)) {
+        return res.status(200).json({ enabled: Boolean(key), paid: false });
+      }
+      try {
+        const r = await fetch(
+          "https://api.stripe.com/v1/checkout/sessions/" + sid,
+          { headers: { Authorization: "Bearer " + key } });
+        const s = await r.json();
+        return res.status(200).json({
+          enabled: true,
+          paid: r.ok && s.payment_status === "paid",
+        });
+      } catch {
+        return res.status(200).json({ enabled: true, paid: false });
+      }
+    }
     return res.status(200).json({ enabled: Boolean(key) });
   }
   if (req.method !== "POST") {

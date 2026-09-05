@@ -25,7 +25,7 @@
 <link rel="preload" href="/assets/fonts/Fraunces-Italic-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/InstrumentSans-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/FragmentMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/site.css?v=ca3dbe18">
+<link rel="stylesheet" href="assets/css/site.css?v=b1231977">
 <script defer src="assets/js/site.js?v=d195fd45"></script>
 <script defer src="assets/js/quote.js?v=dc27680b"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Organization","ProfessionalService"],"@id":"https://www.semora.com.au/#organization","name":"SEMORA STUDIO","url":"https://www.semora.com.au/"},{"@type":"WebSite","@id":"https://www.semora.com.au/#website","url":"https://www.semora.com.au/","name":"SEMORA STUDIO","publisher":{"@id":"https://www.semora.com.au/#organization"}},{"@type":"WebPage","@id":"https://www.semora.com.au/quotation#webpage","url":"https://www.semora.com.au/quotation","name":"Quotation System — SEMORA STUDIO Melbourne","description":"Tick what you need — every item carries its published price and delivery time, and the pack you build becomes the proposal we send back. Same numbers for everyone.","isPartOf":{"@id":"https://www.semora.com.au/#website"},"about":{"@id":"https://www.semora.com.au/#organization"},"publisher":{"@id":"https://www.semora.com.au/#organization"},"inLanguage":"en-AU","dateModified":"2026-09-05","primaryImageOfPage":{"@type":"ImageObject","url":"https://www.semora.com.au/assets/img/og-semora.png","width":1200,"height":630},"breadcrumb":{"@id":"https://www.semora.com.au/quotation#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://www.semora.com.au/quotation#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.semora.com.au/"},{"@type":"ListItem","position":2,"name":"Quotation System","item":"https://www.semora.com.au/quotation"}]}]}</script>
@@ -133,9 +133,6 @@
             <span><b>Competitive Map</b><small>Where you sit, who you actually beat,
             and where not to compete.</small></span>
             <em><b>$1,000</b><i>2 weeks</i></em></label>
-          <div class="qb-cap-line"><span>Add both modules and this is
-          the ceiling, chosen at kickoff.</span>
-          <em><b>$5,800</b><i>ceiling</i></em></div>
           <p class="qb-hint qb-hint--mo">The same six items the homepage
           names, priced by the month — from $3,000 a month as the account
           floor.</p>
@@ -154,27 +151,33 @@
             <span><b>Website and Conversion Path</b><small>The pages and the path
             an enquiry walks, kept working and improving.</small></span>
             <em><b>$1,000</b><i>/ mo</i></em></label>
-          <label class="qb-item qb-item--qty">
+          <label class="qb-item qb-item--budget">
             <span><b>Paid Ads, Search and AI Visibility</b><small>Custom — set a
             monthly figure to suit the campaign; commonly $3,000 a
             month.</small></span>
-            <input type="number" data-cmo="1" data-label="Paid Ads, Search and AI Visibility"
-              min="0" max="99000" step="100" value="0" aria-label="Monthly media management figure in dollars">
-            <em><b>Custom</b><i>/ mo</i></em></label>
-          <label class="qb-item qb-item--qty">
+            <em class="qb-budget"><b>$<input type="number" data-cmo="1"
+              data-label="Paid Ads, Search and AI Visibility"
+              min="0" max="99000" step="100"
+              aria-label="Monthly media management figure in dollars"></b>
+            <i>/ mo</i></em></label>
+          <label class="qb-item qb-item--budget">
             <span><b>CRM, Analytics and Enquiry Routing</b><small>Client budget —
             set the monthly figure; response templates, pipeline stages and
             follow-up, run and refined.</small></span>
-            <input type="number" data-cmo="1" data-label="CRM, Analytics and Enquiry Routing"
-              min="0" max="99000" step="100" value="0" aria-label="Monthly CRM budget in dollars">
-            <em><b>Client Budget</b><i>/ mo</i></em></label>
-          <label class="qb-item qb-item--qty">
+            <em class="qb-budget"><b>$<input type="number" data-cmo="1"
+              data-label="CRM, Analytics and Enquiry Routing"
+              min="0" max="99000" step="100"
+              aria-label="Monthly CRM budget in dollars"></b>
+            <i>/ mo</i></em></label>
+          <label class="qb-item qb-item--budget">
             <span><b>Content Creative and Management</b><small>Client budget —
             set the monthly figure; the content produced and managed against
             the calendar.</small></span>
-            <input type="number" data-cmo="1" data-label="Content Creative and Management"
-              min="0" max="99000" step="100" value="0" aria-label="Monthly content budget in dollars">
-            <em><b>Client Budget</b><i>/ mo</i></em></label>
+            <em class="qb-budget"><b>$<input type="number" data-cmo="1"
+              data-label="Content Creative and Management"
+              min="0" max="99000" step="100"
+              aria-label="Monthly content budget in dollars"></b>
+            <i>/ mo</i></em></label>
           <label class="qb-item"><input type="checkbox" data-p="0" data-mo="1" data-free="1"
               data-label="Measurement Reliability and the Commercial Roadmap">
             <span><b>Measurement Reliability and the Commercial Roadmap</b><small>The

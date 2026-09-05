@@ -3102,9 +3102,25 @@ h1:has(.hl--sub) .uline::after { display: none; }
    per-unit labels, which are not durations */
 .qb-item em i::before { content: "delivery "; color: var(--graph-400); }
 .qb-item:has(input[data-mo]) em i::before,
-.qb-item--qty em i::before { content: ""; }
+.qb-item--qty em i::before,
+.qb-item--budget em i::before { content: ""; }
 /* checkbox-less rows keep the name column's left axis */
-.qb-item--qty > span { margin-left: calc(1.25rem + 16px); }
+.qb-item--qty > span, .qb-item--budget > span { margin-left: calc(1.25rem + 16px); }
+/* budget rows (founder 对齐 order, 5 Sep 2026 evening): ONE box, seated
+   in the price column itself — the input IS the figure, no counter,
+   no spinner, blank until the client writes the budget */
+.qb-budget b { display: inline-flex; align-items: baseline; gap: 4px; }
+.qb-budget input {
+  width: 5.2rem; font-family: var(--mono); font-size-adjust: 0.516;
+  font-size: 15px; text-align: right;
+  padding: 0.35em 0.45em; border: 2px solid var(--plum-900);
+  background: var(--white); color: var(--plum-900);
+  appearance: textfield; -moz-appearance: textfield;
+}
+.qb-budget input::-webkit-outer-spin-button,
+.qb-budget input::-webkit-inner-spin-button {
+  -webkit-appearance: none; margin: 0;
+}
 .qb-item--qty input[type="number"] {
   width: 4.2rem; font-family: var(--mono); font-size-adjust: 0.516; font-size: 15px;
   padding: 0.35em 0.45em; border: 2px solid var(--plum-900);

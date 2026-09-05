@@ -7,7 +7,7 @@ export const PRICES = {
     "mo": false,
     "qty": false
   },
-  "Commercial Growth Signal — core scope": {
+  "Commercial Growth Signal — Core Scope": {
     "p": 3000,
     "mo": false,
     "qty": false
@@ -22,33 +22,48 @@ export const PRICES = {
     "mo": false,
     "qty": false
   },
-  "Brand identity & brand book": {
-    "p": 9500,
-    "mo": false,
+  "Positioning and strategy": {
+    "p": 500,
+    "mo": true,
     "qty": false
   },
-  "Showcase website — 8 pages": {
-    "p": 3000,
-    "mo": false,
+  "Customer, brand and position research": {
+    "p": 1000,
+    "mo": true,
     "qty": false
   },
-  "Custom-built website — 10 pages": {
-    "p": 15000,
-    "mo": false,
+  "Website and conversion path": {
+    "p": 1000,
+    "mo": true,
     "qty": false
   },
-  "Proposal & presentation system": {
-    "p": 6500,
-    "mo": false,
+  "Measurement reliability and the commercial roadmap": {
+    "p": 0,
+    "mo": true,
     "qty": false
   },
-  "Enquiry response & CRM setup": {
+  "Brand Identity and Brand Book": {
     "p": 5500,
     "mo": false,
     "qty": false
   },
+  "Website Design — 8 pages": {
+    "p": 3500,
+    "mo": false,
+    "qty": false
+  },
+  "Custom Function Website Build — 10 pages": {
+    "p": 15000,
+    "mo": false,
+    "qty": false
+  },
+  "Proposal & Presentation System": {
+    "p": 5000,
+    "mo": false,
+    "qty": false
+  },
   "Additional website pages": {
-    "p": 350,
+    "p": 500,
     "mo": false,
     "qty": true
   },
@@ -129,12 +144,7 @@ export const PRICES = {
   }
 };
 export const BUNDLE = {
-  "labels": [
-    "Brand identity & brand book",
-    "Custom-built website — 10 pages",
-    "Proposal & presentation system",
-    "Enquiry response & CRM setup"
-  ],
+  "labels": [],
   "label": "Growth Foundation Build — the system",
   "price": 36500
 };

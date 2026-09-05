@@ -3641,7 +3641,9 @@ h1:has(.hl--sub) .uline::after { display: none; }
   letter-spacing: 0.012em; text-transform: uppercase; color: var(--moss-300);
 }
 .qb-total b {
-  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 300; font-size: 28px;
+  /* 28 → 19, founder 5 Sep 2026: the total sits at the line figures'
+     own size ("font 对齐上面的size") — one money voice, one size */
+  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 300; font-size: 19px;
   color: var(--ivory); font-variant-numeric: tabular-nums;
 }
 .qb-fine { font-size: 13px; line-height: 1.45; color: var(--plum-100); margin-top: 16px; max-width: none; }

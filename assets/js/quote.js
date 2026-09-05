@@ -6,15 +6,10 @@
   "use strict";
 
   var CAP = 13500; /* Managed Growth Pod / Held — the full monthly engine */
-  var BUNDLES = {
-    /* Commercial Growth Signal is a single core item ($3,000, v1.4 2 Sep
-       2026) — no bundle detection needed for a one-item group. The haus
-       bundle is brand + CUSTOM-BUILT website + proposals + CRM: the
-       showcase website deliberately carries no data-g, so the four-piece
-       detection (and the $36,500 sum) survives the v1.4 website split. */
-    haus:   { n: 4, label: "Growth Foundation Build — the system", price: 36500,
-              note: "delivery 8–10 weeks · brand + website + proposals + CRM, one team" }
-  };
+  /* The haus bundle fold RETIRED 5 Sep 2026 with the founder's GFB
+     recomposition (v1.5): four pieces, new prices, no bundle price
+     ordered — each line prices itself. */
+  var BUNDLES = {};
 
   var root = document.getElementById("qb");
   if (!root) return;
@@ -60,8 +55,12 @@
       if (el.dataset.g && bundled[el.dataset.g]) return; /* folded into bundle */
       var p = parseInt(el.dataset.p, 10) || 0;
       if (el.dataset.mo) {
-        lines.push([el.dataset.label, fmt(p) + " / mo", "monthly · 6-month minimum"]);
-        moMenu += p;
+        if (el.dataset.free) {
+          lines.push([el.dataset.label, "Free", "included with the monthly engine"]);
+        } else {
+          lines.push([el.dataset.label, fmt(p) + " / mo", "monthly · 6-month minimum"]);
+          moMenu += p;
+        }
       } else {
         var note = el.dataset.t ? "delivery " + el.dataset.t : "";
         if (el.dataset.note) note += " · " + el.dataset.note;
@@ -81,6 +80,13 @@
     qtys.forEach(function (el) {
       var n = Math.max(0, parseInt(el.value, 10) || 0);
       if (!n) return;
+      if (el.dataset.cmo) {
+        /* a client-budget monthly figure, typed in dollars (5 Sep 2026) */
+        lines.push([el.dataset.label, fmt(n) + " / mo",
+          "client budget · monthly"]);
+        moMenu += n;
+        return;
+      }
       var p = (parseInt(el.dataset.p, 10) || 0) * n;
       lines.push([el.dataset.label + " × " + n, fmt(p),
         el.dataset.t ? "delivery " + el.dataset.t : ""]);
@@ -107,7 +113,7 @@
 
     var t = "";
     if (oneOff) {
-      t += '<div class="qb-total"><span>One-off</span><b>' + fmt(oneOff) + "</b></div>";
+      t += '<div class="qb-total"><span>Invoice Amount</span><b>' + fmt(oneOff) + "</b></div>";
     }
     if (monthly) {
       t += '<div class="qb-total"><span>Monthly</span><b>' +

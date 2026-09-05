@@ -3714,12 +3714,12 @@ h1:has(.hl--sub) .uline::after { display: none; }
     display: flex; justify-content: space-between; align-items: flex-start;
     gap: 32px;
   }
-  .qsheet-firm__name { color: #000; font-weight: 600; font-size: 15px; line-height: 1.45; }
-  .qsheet-firm__line { color: #444; font-size: 12px; line-height: 1.55; margin-top: 8px; }
+  .qsheet-firm__name { color: #000; font-weight: 600; font-size: 12px; line-height: 1.45; }
+  .qsheet-firm__line { color: #444; font-size: 10px; line-height: 1.55; margin-top: 8px; }
   .qsheet-firm__addr { margin-top: 12px; }
   .qsheet-meta { text-align: right; }
   .qsheet-meta__title {
-    color: #000; font-weight: 600; font-size: 19px; line-height: 1.3;
+    color: #000; font-weight: 600; font-size: 15px; line-height: 1.3;
     letter-spacing: 0.004em; text-transform: uppercase;
   }
   .qsheet-meta__kv {
@@ -3727,40 +3727,43 @@ h1:has(.hl--sub) .uline::after { display: none; }
     gap: 12px; margin-top: 8px;
   }
   .qsheet-meta__kv span {
-    font-family: var(--mono); font-size-adjust: 0.516; font-size: 11px;
+    font-family: var(--mono); font-size-adjust: 0.516; font-size: 9px;
     letter-spacing: 0.012em; text-transform: uppercase; color: var(--moss-700);
   }
-  .qsheet-meta__kv b { font-weight: 400; color: #000; font-size: 12px; }
+  .qsheet-meta__kv b { font-weight: 400; color: #000; font-size: 10px; }
   .qsheet-cols {
     display: flex; justify-content: space-between;
     margin-top: 32px; padding-bottom: 8px; border-bottom: 2px solid #000;
-    font-family: var(--mono); font-size-adjust: 0.516; font-size: 11px;
+    font-family: var(--mono); font-size-adjust: 0.516; font-size: 9px;
     letter-spacing: 0.012em; text-transform: uppercase; color: var(--moss-700);
   }
-  .qb-line b { color: #000; }
+  /* the sheet's type runs 20% under the screen card (founder, 5 Sep) */
+  .qb-line span { font-size: 12px; }
+  .qb-line em { font-size: 9px; }
+  .qb-line b { color: #000; font-size: 15px; }
   .qsheet-totals { margin-top: 16px; border-top: 2px solid #000; padding-top: 8px; }
   .qsheet-trow {
     display: flex; justify-content: space-between; align-items: baseline;
     padding: 4px 0;
   }
-  .qsheet-trow span { color: #444; font-size: 12px; }
+  .qsheet-trow span { color: #444; font-size: 10px; }
   .qsheet-trow b {
-    font-weight: 400; color: #000; font-size: 15px;
+    font-weight: 400; color: #000; font-size: 12px;
     font-variant-numeric: tabular-nums;
   }
   .qsheet-trow--total { border-top: 1px solid #ccc; margin-top: 4px; padding-top: 8px; }
   .qsheet-trow--total span {
-    font-family: var(--mono); font-size-adjust: 0.516; font-size: 11px;
+    font-family: var(--mono); font-size-adjust: 0.516; font-size: 9px;
     letter-spacing: 0.012em; text-transform: uppercase; color: var(--moss-700);
   }
   .qsheet-trow--total b {
     font-family: var(--serif); font-size-adjust: 0.426; font-weight: 300;
-    font-size: 28px;
+    font-size: 22px;
   }
   .qsheet-trow--mo { border-top: 1px solid #ccc; margin-top: 8px; padding-top: 8px; }
   .qsheet-foot {
     margin-top: 32px; border-top: 1px solid #ccc; padding-top: 8px;
-    color: #444; font-size: 12px; line-height: 1.55;
+    color: #444; font-size: 10px; line-height: 1.55;
   }
 }
 

@@ -51,6 +51,7 @@
     });
 
     boxes.forEach(function (el) {
+      if (el.dataset.bx) return; /* a budget row's selector — priced via its own amount box */
       if (!el.checked) return;
       if (el.dataset.g && bundled[el.dataset.g]) return; /* folded into bundle */
       var p = parseInt(el.dataset.p, 10) || 0;
@@ -81,7 +82,10 @@
       var n = Math.max(0, parseInt(el.value, 10) || 0);
       if (!n) return;
       if (el.dataset.cmo) {
-        /* a client-budget monthly figure, typed in dollars (5 Sep 2026) */
+        /* a client-budget monthly figure, typed in dollars (5 Sep 2026);
+           the row counts only while its checkbox is ticked */
+        var bx = el.closest("label").querySelector("input[data-bx]");
+        if (bx && !bx.checked) return;
         lines.push([el.dataset.label, fmt(n) + " / mo",
           "client budget · monthly"]);
         moMenu += n;
@@ -143,8 +147,26 @@
     return out;
   }
 
-  boxes.forEach(function (b) { b.addEventListener("change", build); });
-  qtys.forEach(function (q) { q.addEventListener("input", build); });
+  boxes.forEach(function (b) {
+    b.addEventListener("change", function () {
+      /* ticking a budget row invites the figure straight away */
+      if (b.dataset.bx && b.checked) {
+        var inp = b.closest("label").querySelector("input[data-cmo]");
+        if (inp && !inp.value) inp.focus();
+      }
+      build();
+    });
+  });
+  qtys.forEach(function (q) {
+    q.addEventListener("input", function () {
+      /* typing an amount IS selecting the row; clearing it deselects */
+      if (q.dataset.cmo) {
+        var bx = q.closest("label").querySelector("input[data-bx]");
+        if (bx) bx.checked = (parseInt(q.value, 10) || 0) > 0;
+      }
+      build();
+    });
+  });
   var mail = document.getElementById("qb-mail");
   if (mail) mail.addEventListener("click", function () {
     mail.href = "mailto:team@semora.com.au?subject=" +

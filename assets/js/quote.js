@@ -22,7 +22,8 @@
   var payEnabled = false;      /* /api/checkout GET says whether Stripe is connected */
   var payable = [];            /* the current one-off selection, labels + qty */
   var oneOffNow = 0;
-  var monthlyNow = 0;          /* capped monthly menu, for the print sheet */
+  var monthlyNow = 0;          /* monthly total, for the print sheet */
+  var cappedNow = false;       /* whether the Held cap trimmed the fixed menu */
 
   function fmt(n) { return "$" + n.toLocaleString("en-AU"); }
 
@@ -34,7 +35,7 @@
 
   function build() {
     var lines = [];
-    var oneOff = 0, moMenu = 0;
+    var oneOff = 0, moMenu = 0, moBudget = 0;
     payable = [];
 
     /* bundle detection: all core items of a group ticked → one product line */
@@ -80,6 +81,10 @@
 
     qtys.forEach(function (el) {
       var n = Math.max(0, parseInt(el.value, 10) || 0);
+      /* the markup's own max is the law for typed input too — the keyboard
+         once outran the spinner bounds (context audit, 5 Sep 2026) */
+      var mx = parseInt(el.max, 10) || 99;
+      if (n > mx) { n = mx; el.value = mx; }
       if (!n) return;
       if (el.dataset.cmo) {
         /* a client-budget monthly figure, typed in dollars (5 Sep 2026);
@@ -88,7 +93,7 @@
         if (bx && !bx.checked) return;
         lines.push([el.dataset.label, fmt(n) + " / mo",
           "client budget · monthly"]);
-        moMenu += n;
+        moBudget += n;
         return;
       }
       var p = (parseInt(el.dataset.p, 10) || 0) * n;
@@ -98,8 +103,11 @@
       payable.push({ label: el.dataset.label, qty: n });
     });
 
+    /* the Held cap governs the FIXED monthly menu only — a client-set
+       budget is the client's own figure and is never trimmed (the cap
+       once silently rewrote a typed budget; context audit, 5 Sep 2026) */
     var capped = moMenu > CAP;
-    var monthly = capped ? CAP : moMenu;
+    var monthly = (capped ? CAP : moMenu) + moBudget;
 
     /* render */
     if (!lines.length) {
@@ -121,16 +129,17 @@
     }
     if (monthly) {
       t += '<div class="qb-total"><span>Monthly</span><b>' +
-        (capped ? "<s>" + fmt(moMenu) + "</s> " : "") + fmt(monthly) + " / mo</b></div>";
+        (capped ? "<s>" + fmt(moMenu + moBudget) + "</s> " : "") + fmt(monthly) + " / mo</b></div>";
       if (capped) {
-        t += '<p class="qb-cap">Managed Growth Pod / Held cap applied — the full engine ' +
-          "never costs more than " + fmt(CAP) + " a month.</p>";
+        t += '<p class="qb-cap">Managed Growth Pod / Held cap applied — the fixed monthly ' +
+          "menu never costs more than " + fmt(CAP) + " a month; client-set budgets ride on top.</p>";
       }
     }
     t += '<p class="qb-fine">GST applies on purchase.</p>';
     totEl.innerHTML = t;
     oneOffNow = oneOff;
     monthlyNow = monthly;
+    cappedNow = capped;
     payVisibility();
   }
 
@@ -140,9 +149,13 @@
       out += l.querySelector("span").textContent + " — " + l.querySelector("b").textContent +
         " (" + l.querySelector("em").textContent + ")\n";
     });
-    totEl.querySelectorAll(".qb-total").forEach(function (l) {
-      out += l.querySelector("span").textContent + ": " + l.querySelector("b").textContent + "\n";
-    });
+    /* totals from the numbers, not the DOM — the capped strikethrough
+       once emailed as two run-together figures (context audit, 5 Sep) */
+    if (oneOffNow) out += "Invoice Amount: " + fmt(oneOffNow) + "\n";
+    if (monthlyNow) {
+      out += "Monthly: " + fmt(monthlyNow) + " / mo" +
+        (cappedNow ? " (fixed menu capped at " + fmt(CAP) + ")" : "") + "\n";
+    }
     out += "GST applies on purchase.\n";
     return out;
   }
@@ -198,7 +211,9 @@
         rows += '<div class="qsheet-trow qsheet-trow--total"><span>Total payable</span><b>' + fmt(oneOffNow + gst) + "</b></div>";
       }
       if (monthlyNow) {
-        rows += '<div class="qsheet-trow qsheet-trow--mo"><span>Monthly menu (ex GST, starts by contract)</span><b>' + fmt(monthlyNow) + " / mo</b></div>";
+        rows += '<div class="qsheet-trow qsheet-trow--mo"><span>Monthly menu (ex GST, starts by contract' +
+          (cappedNow ? ", fixed menu capped at " + fmt(CAP) : "") +
+          ')</span><b>' + fmt(monthlyNow) + " / mo</b></div>";
       }
       tt.innerHTML = rows;
     }

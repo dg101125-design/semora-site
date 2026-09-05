@@ -209,7 +209,7 @@ export default async function handler(req, res) {
       from: FROM,
       to: [TO],
       reply_to: d.email,
-      subject: `New enquiry — ${d.practice || d.name}`,
+      subject: `New enquiry — ${String(d.practice || d.name).replace(/[\r\n]+/g, " ")}`,
       html: notificationHtml(d),
     });
 

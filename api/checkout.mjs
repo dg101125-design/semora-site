@@ -11,7 +11,7 @@
  *
  * Money rules, in order of importance:
  *   1. Prices come from api/_prices.mjs — GENERATED from the builder's own
- *      markup, which answers to 01_Service_Architecture.md v1.4. The
+ *      markup, which answers to 01_Service_Architecture.md v1.5.1. The
  *      client's numbers are never trusted; unknown labels are rejected.
  *   2. Only one-off items are chargeable here. Monthly items carry a
  *      6-month minimum and go through the SOW/margin gate (SOP Stage 1) —

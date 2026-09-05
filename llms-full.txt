@@ -754,7 +754,7 @@ The number · One agreed metric, set from your baseline · What all following wo
 
 The handover · The written document + a 90-minute team session · Repeatable by a new hire without you in the room ·
 
-Core scope is $3,000 fixed. The two optional modules take the ceiling to $5,800 — chosen at kickoff, not mid-engagement.
+Core scope is $3,000 fixed. The two optional modules are chosen at kickoff, not mid-engagement.
 
 Why it is priced like this
 

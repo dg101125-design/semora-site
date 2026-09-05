@@ -172,7 +172,7 @@ The most efficient path we run for a client — audit to engine, in the order th
 
 Start where your gap is. Each step stands on its own.
 
-01 Proof Check Diagnostic · baseline · strategy package Your marketing scored, measured, and handed back as a strategy package. Eleven surfaces scored, with evidence Baseline: win rate, fee, founder-hours Three competitors, same instrument The marketing strategy package, ranked One-off $1,000 2 weeks · optional · credited in full · + GST → 02 Commercial Growth Signal The qualification and strategy product Positioning, strategy and the commercial roadmap — decided. Positioning and strategy Customer, brand and position research Website and conversion path Paid ads, search and AI visibility CRM and sales follow-up Measurement reliability and the commercial roadmap From $3,000 4 weeks · core scope + optional modules · + GST → 03 Growth Foundation Build For foundations not yet ready for performance Not simply traffic — the complete journey between enquiry and revenue, built. Positioning and messaging Website or landing-page architecture CRM, analytics and enquiry routing Sales pipeline and campaign assets Content and search structure Property and professional services, especially Custom 8–10 weeks · every part priced · + GST → 04 Managed Growth Pod One coordinated team · one growth plan One commercial growth plan — not disconnected monthly services from separate departments. Paid acquisition SEO and GEO Content and conversion CRM and lifecycle Commercial reporting Programmatic search and enterprise pods From $3,000 per month · 6-month minimum · + GST →
+01 Proof Check Diagnostic · baseline · strategy package Your marketing scored, measured, and handed back as a strategy package. Eleven surfaces scored, with evidence Baseline: win rate, fee, founder-hours Three competitors, same instrument The marketing strategy package, ranked One-off $1,000 2 weeks · optional · credited in full · + GST → 02 Commercial Growth Signal The qualification and strategy product Positioning, strategy and the commercial roadmap — decided. Positioning and Strategy Customer, Brand and Position Research Website and Conversion Path Paid Ads, Search and AI Visibility CRM, Analytics and Enquiry Routing Content Creative and Management Measurement Reliability and the Commercial Roadmap From $3,000 4 weeks · core scope + optional modules · + GST → 03 Growth Foundation Build For foundations not yet ready for performance Not simply traffic — the complete journey between enquiry and revenue, built. Positioning and messaging Website or landing-page architecture Sales pipeline and campaign assets Content and search structure Property and professional services, especially Custom 8–10 weeks · every part priced · + GST → 04 Managed Growth Pod One coordinated team · one growth plan One commercial growth plan — not disconnected monthly services from separate departments. Paid acquisition SEO and GEO Content and conversion CRM and lifecycle Commercial reporting Programmatic search and enterprise pods From $3,000 per month · 6-month minimum · + GST →
 
 More signal.Less noise.
 
@@ -254,7 +254,7 @@ SEOBrand Paid
 
 07 / How we help
 
-SEO & Local search · Audited · the fix-list ranked in order
+SEO & GEO System · Audited · the fix-list ranked in order
 
 AI search visibility · A tracked set of buyer questions, monthly
 
@@ -792,19 +792,15 @@ Scope / every part priced
 
 Component · What is inside · Delivery · Price + GST ·
 
-Brand identity & brand book · Identity system, colour + type libraries, 30-mark icon set, stationery, Foundation + Applications book — editable source · 3 weeks · $9,500 ·
+Brand Identity and Brand Book · Identity system, colour + type libraries, 30-mark icon set, stationery, Foundation + Applications book — editable source · 3 weeks · $5,500 ·
 
-Showcase website — 8 pages · Your work, your proof and your contact path — designed, written, built and live · 4–6 weeks · $3,000 ·
+Website Design — 8 pages · Your work, your proof and your contact path — designed, written, built and live · 4–6 weeks · $3,500 ·
 
-Custom-built website — 10 pages · Custom design and function. Fast, indexable, readable by AI search. Extra pages $350 each · 4–5 weeks · $15,000 ·
+Custom Function Website Build — 10 pages · Custom design and function. Fast, indexable, readable by AI search. Extra pages $500 each · 4–5 weeks · $15,000 ·
 
-Proposal & presentation system · 3 sector proposal templates, master deck with 10 layouts — editable · 2 weeks · $6,500 ·
+Proposal & Presentation System · 3 sector proposal templates, master deck with 10 layouts — editable · 2 weeks · $5,000 ·
 
-Enquiry response & CRM setup · Response templates, routing, pipeline stages, follow-up, governance model · 2 weeks · $5,500 ·
-
-Growth Foundation Build complete · All four, built as one system by one team · 8–10 weeks · — ·
-
-Take one component or all four, and each one stands on its own price. Commercial Growth Signal first is a recommendation, not a requirement. Without a position we are choosing colours and headlines against nothing. Already have a position? Bring it and we build straight from it. Build the exact quote →
+Take one component or the set, and each one stands on its own price. Commercial Growth Signal first is a recommendation, not a requirement. Without a position we are choosing colours and headlines against nothing. Already have a position? Bring it and we build straight from it. Build the exact quote →
 
 The handover clause
 
@@ -882,8 +878,6 @@ SEO, local search & Google Business Profile — audited, fix-list you implement
 
 AI search visibility — baseline measured, reviewed quarterly
 
-Referral partner list built — your team works it
-
 Paid media — targeting & budget plan; you or your agency run it
 
 Systems — specified, you run
@@ -931,8 +925,6 @@ SEO, local search & Google Business Profile — maintained monthly
 AI search visibility — tracked and improved
 
 LinkedIn & key-account outreach, drafted for you
-
-Referral partner system — built, run with you
 
 Google & Meta ads — optional, + fee at this tier
 
@@ -987,8 +979,6 @@ SEO, local search & Google Business Profile — maintained monthly
 AI search visibility — tracked, cited-by reported
 
 LinkedIn & key-account outreach, under your name
-
-Referral partner system — run for you
 
 Google & Meta ads managed — to $15k/mo of your spend, billed to you direct
 

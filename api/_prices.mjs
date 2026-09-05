@@ -140,6 +140,6 @@ export const PRICES = {
 };
 export const BUNDLE = {
   "labels": [],
-  "label": "Growth Foundation Build — the system",
-  "price": 36500
+  "label": "",
+  "price": 0
 };

@@ -12,32 +12,32 @@ export const PRICES = {
     "mo": false,
     "qty": false
   },
-  "Written personas": {
+  "Written Personas": {
     "p": 1800,
     "mo": false,
     "qty": false
   },
-  "Competitive map": {
+  "Competitive Map": {
     "p": 1000,
     "mo": false,
     "qty": false
   },
-  "Positioning and strategy": {
+  "Positioning and Strategy": {
     "p": 500,
     "mo": true,
     "qty": false
   },
-  "Customer, brand and position research": {
+  "Customer, Brand and Position Research": {
     "p": 1000,
     "mo": true,
     "qty": false
   },
-  "Website and conversion path": {
+  "Website and Conversion Path": {
     "p": 1000,
     "mo": true,
     "qty": false
   },
-  "Measurement reliability and the commercial roadmap": {
+  "Measurement Reliability and the Commercial Roadmap": {
     "p": 0,
     "mo": true,
     "qty": false
@@ -62,82 +62,77 @@ export const PRICES = {
     "mo": false,
     "qty": false
   },
-  "Additional website pages": {
+  "Additional Website Pages": {
     "p": 500,
     "mo": false,
     "qty": true
   },
-  "SEO & Local search": {
+  "SEO & GEO System": {
     "p": 2000,
     "mo": true,
     "qty": false
   },
-  "Google & Meta ads, managed": {
+  "Google & Meta Ads, Managed": {
     "p": 1500,
     "mo": true,
     "qty": false
   },
-  "AI search visibility": {
+  "AI Search Visibility": {
     "p": 1400,
     "mo": true,
     "qty": false
   },
-  "Editorial content & case studies": {
+  "Editorial Content & Case Studies": {
     "p": 2600,
     "mo": true,
     "qty": false
   },
-  "Practitioner video": {
+  "Practitioner Video": {
     "p": 3500,
     "mo": true,
     "qty": false
   },
-  "LinkedIn & key-account outreach": {
+  "LinkedIn & Key-Account Outreach": {
     "p": 1000,
     "mo": true,
     "qty": false
   },
-  "Email nurture & CRM": {
+  "Email Nurture & CRM": {
     "p": 1500,
     "mo": true,
     "qty": false
   },
-  "Referral partner system": {
-    "p": 1200,
-    "mo": true,
-    "qty": false
-  },
-  "Reviews & reputation": {
+  "Reviews & Reputation": {
     "p": 1000,
     "mo": true,
     "qty": false
   },
-  "Case studies": {
+  "Case Studies": {
     "p": 1800,
     "mo": false,
     "qty": true
   },
-  "Campaign sprint": {
+  "Campaign Sprint": {
     "p": 7500,
     "mo": false,
     "qty": false
   },
-  "Vertical sales edition": {
+  "Vertical Sales Edition": {
     "p": 6500,
     "mo": false,
     "qty": false
   },
-  "Pitch & tender support": {
+  "Pitch & Tender Support": {
     "p": 1900,
     "mo": false,
     "qty": false
   },
-  "Art-direction day": {
+  "Art-Direction Day": {
     "p": 2200,
     "mo": false,
     "qty": false
   },
-  "Strategy session": {
+  "Strategy Session": {
     "p": 600,
     "mo": false,
     "qty": false

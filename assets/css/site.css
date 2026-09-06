@@ -57,7 +57,7 @@
   --t-body: 17px;  --lh-body: 1.62;  --w-body: 400;  --tr-body: 0em;
   --t-body-sm: 15px;  --lh-body-sm: 1.55;  --w-body-sm: 400;  --tr-body-sm: 0em;
   --t-caption: 13px;  --lh-caption: 1.45;  --w-caption: 400;  --tr-caption: 0.004em;
-  --t-label: 11px;  --lh-label: 1.2;  --w-label: 500;  --tr-label: 0.24em;
+  --t-label: 11px;  --lh-label: 1.2;  --w-label: 400;  --tr-label: 0.24em;
   --t-quote: 34px;  --lh-quote: 1.24;  --w-quote: 300;  --tr-quote: 0em;
   /* spacing — the published 12 steps */
   --sp-0: 0px; --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-5: 24px; --sp-6: 32px; --sp-7: 48px; --sp-8: 64px; --sp-9: 96px; --sp-10: 128px; --sp-11: 160px;
@@ -123,9 +123,16 @@
                               The CTA now carries acid, the only accent left. */
   --signal-ink: #3F4A0C;   /* acid darkened — ivory type on it reads 8.9:1 */
 
-  --serif: "Fraunces", "Iowan Old Style", Georgia, serif;
+  /* Fallbacks ordered by measured x-height against the webfont (6 Sep 2026,
+     fontTools on the files): Georgia 0.4814 vs Fraunces 0.4820 and ships on
+     both platforms, so it leads the serif stack; Iowan declares no sxHeight
+     and is macOS-only. Menlo 0.5469 / Monaco 0.5454 vs Fragment Mono 0.5240
+     — under the 0.516 pin they render ×0.94 where Courier New (0.4229)
+     rendered ×1.22, a 24% wider run in fixed-width label cells during the
+     swap window. Consolas holds the Windows seat. */
+  --serif: "Fraunces", Georgia, "Iowan Old Style", serif;
   --sans:  "Instrument Sans", -apple-system, "Helvetica Neue", Arial, sans-serif;
-  --mono:  "Fragment Mono", "Courier New", monospace;
+  --mono:  "Fragment Mono", Menlo, Consolas, "Courier New", monospace;
   /* Every spacing and line-height in this file was tuned around the RETIRED
      faces' glyph metrics. The replacements render at different apparent sizes
      — Fraunces +13.1% (x-height 0.482 vs Newsreader 0.426, measured from the
@@ -217,7 +224,7 @@ p  { max-width: var(--measure); }
 
 /* mono label — the system voice */
 .lab {
-  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
+  font-family: var(--mono); font-variation-settings: normal; font-size-adjust: 0.516; font-weight: 400;
   font-size: 11px; letter-spacing: 0.012em;
   text-transform: uppercase;
   color: var(--moss-700);
@@ -421,7 +428,7 @@ section > .wrap { position: relative; z-index: 1; }
    ::before; hover owns ::after — separate layers, so the two never
    fight over one property. */
 .meth-h {
-  font-family: var(--sans); font-size-adjust: 0.546; font-weight: 600;
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546; font-weight: 600;
   /* 40 cap, not 56 (founder, 13 Aug: 排版变成两行) — at 56 the second
      line broke into three on every desktop width */
   /* 1.04, the display line-height (founder, 31 Aug: pay attention to the
@@ -466,7 +473,7 @@ section > .wrap { position: relative; z-index: 1; }
 }
 .mstep h3 {
   margin: 16px 0 0;
-  font-family: var(--sans); font-size-adjust: 0.546; font-weight: 600;
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546; font-weight: 600;
   font-size: 19px; letter-spacing: 0.004em; text-transform: uppercase;
 }
 .mstep p { font-size: 15px; color: var(--moss-100); margin-top: 16px; }
@@ -636,7 +643,10 @@ section > .wrap { position: relative; z-index: 1; }
   font-variant-numeric: tabular-nums;
 }
 .price small {
-  font-family: var(--mono); font-size-adjust: 0.516; font-size: 11px;
+  /* .price is Fraunces 350 with opsz/SOFT/WONK; the face changes here, so the
+     weight and the axes change with it — Fragment Mono ships 400 and no axes. */
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
+  font-variation-settings: normal; font-size: 11px;
   letter-spacing: 0.012em; color: var(--graph-400);
   display: block; margin-top: 8px; text-transform: uppercase;
 }
@@ -776,8 +786,12 @@ html.lr .site-head__word::before {
 .site-nav { margin-left: auto; display: flex; align-items: center; gap: 24px;
             align-self: stretch; }
 .site-nav a:not(.btn) {
-  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
-  font-size: 11px; letter-spacing: 0.012em; text-transform: uppercase;
+  /* the text face in normal case (founder, 12 Aug 2026: match the second
+     reference strip) — the register every mainstream agency nav uses. The
+     mono-uppercase voice this block first carried was overridden 3,500 lines
+     down for three weeks; one selector now binds one face (6 Sep 2026). */
+  font-family: var(--sans); font-size-adjust: 0.546; font-weight: 500;
+  font-size: 15px; letter-spacing: 0; text-transform: none;
   color: var(--graph); text-decoration: none;
   padding-block: 0.4em;
   border-bottom: 2px solid transparent;
@@ -922,7 +936,10 @@ html.lr .site-head__word::before {
    sentence case made the second word look like a description of the first. */
 .mega__col .lab {
   /* 500, not 600 — the serif's weight range on this site runs 300–500 */
-  font-family: var(--serif) !important; font-weight: 500 !important;
+  /* the adjust must be re-pinned with the face: .lab hands down the mono's
+     0.516 and Fraunces rendered 21% oversize under it on every page. */
+  font-family: var(--serif) !important; font-size-adjust: 0.426;
+  font-weight: 500 !important;
   font-size: 1.06rem !important; line-height: 1.2 !important;
   letter-spacing: -0.01em !important; text-transform: none !important;
   color: var(--plum-900); margin: 0 0 8px;
@@ -948,7 +965,8 @@ html.lr .site-head__word::before {
   display: flex; align-items: flex-start; gap: 0.7em;
   padding: 0.4em 0.5em;
   margin-left: -0.55em;
-  font-family: var(--sans) !important; font-size: 0.82rem !important;
+  font-family: var(--sans) !important; font-size-adjust: 0.546;
+  font-size: 0.82rem !important;
   letter-spacing: 0.004em !important; text-transform: none !important;
   font-weight: 400 !important; line-height: 1.55;
   color: var(--plum-ink) !important; border-bottom: 0 !important;
@@ -1046,12 +1064,14 @@ html.lr .site-head__word::before {
 .cs-arrow { color: var(--moss-700); padding: 0 0.15em; }
 .cs-delta {
   display: inline-block; margin-left: 0.35em;
-  font-family: var(--mono); font-size-adjust: 0.516; font-size: 0.62em; font-weight: 500;
+  /* 400, not 500: Fragment Mono ships a single weight and 500 silently
+     resolves back to it — the rule read as emphasis it could never render. */
+  font-family: var(--mono); font-size-adjust: 0.516; font-size: 0.62em; font-weight: 400;
   letter-spacing: 0.012em; color: var(--moss-700);
   vertical-align: 0.28em;
 }
 .cs-num__m {
-  font-family: var(--mono); font-size-adjust: 0.516; font-size: 11px; letter-spacing: 0.012em;
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 11px; letter-spacing: 0.012em;
   line-height: 1.45; color: var(--graph); margin: 0;
 }
 /* A required section that is empty prints the gap. It never disappears
@@ -1061,7 +1081,7 @@ html.lr .site-head__word::before {
   display: block; padding: 0.7em 0.9em;
   border-left: 3px solid var(--plum);
   background: color-mix(in srgb, var(--plum) 7%, transparent);
-  font-family: var(--mono); font-size-adjust: 0.516; font-size: 11px; line-height: 1.62;
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 11px; line-height: 1.62;
   color: var(--plum);
 }
 .cs-quote {
@@ -1073,7 +1093,7 @@ html.lr .site-head__word::before {
   margin: 0 0 8px;
 }
 .cs-quote figcaption {
-  font-family: var(--mono); font-size-adjust: 0.516; font-size: 11px; letter-spacing: 0.012em;
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 11px; letter-spacing: 0.012em;
   color: var(--graph);
 }
 
@@ -1982,7 +2002,7 @@ html.js .prow.in .prow__tick { background: var(--moss-300); }
 }
 .scale input:focus-visible + label { outline: 2px solid var(--plum); outline-offset: 2px; }
 .scale-key { display: flex; justify-content: space-between; max-width: 300px;
-  font-family: var(--mono); font-size-adjust: 0.516; font-size: 11px; letter-spacing: 0.012em;
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 11px; letter-spacing: 0.012em;
   text-transform: uppercase; color: var(--graph-400); margin-top: 8px; }
 
 /* ----------------------------------------- the three audiences */
@@ -1995,7 +2015,7 @@ html.js .prow.in .prow__tick { background: var(--moss-300); }
    statband grammar, no mono anywhere inside. */
 .who-lead { margin-bottom: 48px; }
 .who-h {
-  font-family: var(--sans); font-size-adjust: 0.546; font-weight: 600;
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546; font-weight: 600;
   font-size: clamp( 28px, 3.6vw, 56px); line-height: 1.14;
   letter-spacing: -0.006em; text-transform: uppercase;
   /* ink again (founder, 13 Aug: "change back to black color but add
@@ -2377,7 +2397,7 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
 /* the sector line carries the CLIENT's colour where we hold one, acid where we
    do not — set per card with --sector (founder, 16 Aug 2026) */
 .res .res__sector {
-  font-family: var(--mono); font-size-adjust: 0.516;
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
   font-size: 11px; line-height: 1.2; letter-spacing: 0.24em;
   text-transform: uppercase; color: var(--sector, var(--moss-300));
   margin-top: 8px;
@@ -2449,9 +2469,9 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
 }
 .menu-row:hover { background: color-mix(in srgb, var(--champ-300) 60%, transparent); padding-left: 1.5rem; }
 .menu-row:hover::before { transform: skewX(var(--slash-skew)) scaleY(1); }
-.menu-row h3 { font-family: var(--sans); font-size-adjust: 0.546; font-weight: 600; font-size: 17px; color: var(--plum-900); }
+.menu-row h3 { font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546; font-weight: 600; font-size: 17px; color: var(--plum-900); }
 .menu-row .unit {
-  font-family: var(--mono); font-size-adjust: 0.516; font-size: 11px; letter-spacing: 0.012em;
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 11px; letter-spacing: 0.012em;
   text-transform: uppercase; color: var(--graph-400); display: block; margin-top: 4px;
 }@media (max-width: 560px) {
   .menu-row { grid-template-columns: 1fr; }}
@@ -2710,7 +2730,7 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
 .cmt__card::before { content: ""; position: absolute; top: 0; left: 0;
              width: 14px; height: 14px; background: var(--moss-300);
              clip-path: polygon(0 0, 100% 0, 0 100%); }
-.cmt__ix { font-family: var(--mono); font-size-adjust: 0.516;
+.cmt__ix { font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
            font-size: var(--t-label); letter-spacing: var(--tr-label);
            color: var(--graph-400); display: block;
            margin-bottom: var(--sp-4); }
@@ -2730,7 +2750,7 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
            gap: 0 40px; padding: 20px 0 22px;
            border-bottom: 1px solid var(--champ-700); }
 .vs__row:last-child { border-bottom: 1px solid var(--plum-ink); }
-.vs__area { font-family: var(--mono); font-size-adjust: 0.516;
+.vs__area { font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
             font-size: var(--t-label); letter-spacing: var(--tr-label);
             text-transform: uppercase; color: var(--graph-400);
             padding-top: 4px; }
@@ -2746,7 +2766,7 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
   .vs__head { display: none; }
   .vs__row { grid-template-columns: 1fr; gap: 8px 0; }
   .vs__them::before { content: "Traditional — "; font-family: var(--mono);
-      font-size-adjust: 0.516; font-size: var(--t-label);
+      font-size-adjust: 0.516; font-weight: 400; font-size: var(--t-label);
       letter-spacing: var(--tr-label); text-transform: uppercase; }
   .vs__us { padding-left: 16px; }
 }
@@ -2762,7 +2782,7 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
   .oscore__row { grid-template-columns: 1fr 52px; }
   .oscore__lab { grid-column: 1 / -1; }
 }
-.oscore__lab { font-family: var(--mono); font-size-adjust: 0.516;
+.oscore__lab { font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
                font-size: var(--t-label); letter-spacing: var(--tr-label);
                text-transform: uppercase; color: var(--champ); }
 .oscore__track { height: 10px; border-radius: 5px;
@@ -2773,7 +2793,8 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
 .oscore__fill { position: absolute; inset: 0 auto 0 0; border-radius: 4px;
                 background: var(--ivory); }
 .oscore__fill--full { background: var(--moss-300); }
-.oscore__n { font-family: var(--mono); font-size: 13px; color: var(--ivory);
+.oscore__n { font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
+             font-size: 13px; color: var(--ivory);
              text-align: right; font-variant-numeric: tabular-nums; }
 .oscore__ev { grid-column: 1 / -1; font-size: 13.5px; color: var(--champ);
               margin: -2px 0 2px; }
@@ -2814,7 +2835,7 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 5.95vw, 76px); }
    The verdict word carries acid instead of an underline; the word-cycle
    grammar is untouched. */
 h1:has(.hl--sub) {
-  font-family: var(--sans); font-size-adjust: 0.546; font-weight: 600;
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546; font-weight: 600;
   text-transform: uppercase; letter-spacing: -0.006em; line-height: 1.04;
 }
 h1:has(.hl--sub) .hl--sub { text-transform: none; }
@@ -3130,7 +3151,7 @@ h1:has(.hl--sub) .uline::after { display: none; }
   -webkit-appearance: none; margin: 0;
 }
 .qb-item--qty input[type="number"] {
-  width: 4.2rem; font-family: var(--mono); font-size-adjust: 0.516; font-size: 15px;
+  width: 4.2rem; font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 15px;
   padding: 0.35em 0.45em; border: 2px solid var(--plum-900);
   background: var(--white); color: var(--plum-900); flex: 0 0 auto;
 }
@@ -3412,7 +3433,7 @@ h1:has(.hl--sub) .uline::after { display: none; }
      keeps the display h2 and the numerals; phase titles speak the
      component sans (the wwd2 one-typeface precedent, founder 13 Aug).
      The green stays ("把title 换成绿色") — moss-700, 5.44:1 on ivory. */
-  font-family: var(--sans); font-size-adjust: 0.546; font-weight: 600;
+  font-family: var(--sans); font-size-adjust: 0.546; font-variation-settings: normal; font-weight: 600;
   font-size: 25px; line-height: 1.3; letter-spacing: 0.012em;
   color: var(--moss-700);
 }
@@ -3649,7 +3670,7 @@ h1:has(.hl--sub) .uline::after { display: none; }
 .qb-line { display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-bottom: 1px solid var(--plum-700); }
 .qb-line span { display: block; font-size: 15px; color: var(--ivory); max-width: none; }
 .qb-line em {
-  display: block; font-family: var(--mono); font-size-adjust: 0.516; font-style: normal;
+  display: block; font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-style: normal;
   font-size: 11px; letter-spacing: 0.012em; text-transform: uppercase;
   color: var(--plum-100); margin-top: 4px;
 }
@@ -3753,14 +3774,14 @@ h1:has(.hl--sub) .uline::after { display: none; }
     gap: 12px; margin-top: 8px;
   }
   .qsheet-meta__kv span {
-    font-family: var(--mono); font-size-adjust: 0.516; font-size: 9px;
+    font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 9px;
     letter-spacing: 0.012em; text-transform: uppercase; color: var(--moss-700);
   }
   .qsheet-meta__kv b { font-weight: 400; color: #000; font-size: 10px; }
   .qsheet-cols {
     display: flex; justify-content: space-between;
     margin-top: 32px; padding-bottom: 8px; border-bottom: 2px solid #000;
-    font-family: var(--mono); font-size-adjust: 0.516; font-size: 9px;
+    font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 9px;
     letter-spacing: 0.012em; text-transform: uppercase; color: var(--moss-700);
   }
   /* the sheet's type runs 20% under the screen card (founder, 5 Sep) */
@@ -3779,7 +3800,7 @@ h1:has(.hl--sub) .uline::after { display: none; }
   }
   .qsheet-trow--total { border-top: 1px solid #ccc; margin-top: 4px; padding-top: 8px; }
   .qsheet-trow--total span {
-    font-family: var(--mono); font-size-adjust: 0.516; font-size: 9px;
+    font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 9px;
     letter-spacing: 0.012em; text-transform: uppercase; color: var(--moss-700);
   }
   .qsheet-trow--total b {
@@ -4095,17 +4116,8 @@ h1:has(.hl--sub) .uline::after { display: none; }
 }
 .statband, .f-plum, .f-moss { position: relative; }
 .statband > .wrap, .f-plum > .wrap, .f-moss > .wrap { position: relative; z-index: 1; }
+/* .statband__mark (the band's aperture watermark) retired 6 Sep 2026, register #19 */
 
-.statband__mark {
-  position: absolute; z-index: 0; pointer-events: none;
-  right: -4%; bottom: -16%;
-  width: clamp(280px, 30vw, 520px); height: auto;
-  opacity: 0.06;
-}
-.statband__mark .mk-tile { fill: none; }
-.statband__mark .ap-arc { fill: var(--ivory); }
-.statband__mark .ap-arc--weak { fill: var(--plum-300); }
-.statband__mark .ap-dot { fill: var(--moss-300); }
 
 /* ── statband on cream (founder, 1 Sep 2026): the dark band's whole
    foreground flips with its ground. Ink for the statement and rows,
@@ -4128,8 +4140,6 @@ h1:has(.hl--sub) .uline::after { display: none; }
 .statband .wrow:hover .wrow__cta { background: var(--moss-700);
   border-color: var(--moss-700); color: var(--ivory); }
 .statband .wrow__txt p { color: var(--graph-700); }
-.statband__mark .ap-arc { fill: var(--plum); }
-.statband__mark .ap-dot { fill: var(--moss-700); }
 
 /* ── what-we-do v2: statement + product accordion (13 Aug 2026).
    Structure from the founder's reference (002); skin entirely ours. */
@@ -4139,7 +4149,7 @@ h1:has(.hl--sub) .uline::after { display: none; }
    The serif remains the site's display voice elsewhere; here the
    statement speaks the rows' language, only larger. */
 .wwd2 .statband__h {
-  font-family: var(--sans); font-size-adjust: 0.546; font-weight: 600;
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546; font-weight: 600;
   font-size: clamp( 28px, 3.6vw, 56px); line-height: 1.14;
   letter-spacing: -0.006em; text-transform: uppercase;
 }
@@ -4208,7 +4218,7 @@ h1:has(.hl--sub) .uline::after { display: none; }
   /* one voice per row (founder, 13 Aug: 左右字体要统一) — the body face,
      loud, set like a statement. The serif stays the display voice of the
      column headline; the mono stays a label voice inside the body. */
-  font-family: var(--sans); font-size-adjust: 0.546; font-weight: 600;
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546; font-weight: 600;
   /* founder, 29 Aug: −20% from 28px; 30 Aug: −15% again. 1.33vw ≈ 19.1px
      at 1440; endpoints are scale members so the fluid form stays legal. */
   font-size: clamp( 17px, 1.33vw, 19px); line-height: 1.14; letter-spacing: 0.012em;
@@ -4298,15 +4308,9 @@ h1:has(.hl--sub) .uline::after { display: none; }
                   white-space: normal; line-height: 1.45; }
 }
 
-/* ── nav typography (founder, 12 Aug: match the second reference strip) ────
-   The navigation drops the mono-uppercase voice for the text face in normal
-   case — the register every mainstream agency nav uses, and the single
-   loudest AI-adjacent visual tic the brand audit named. The mono stays where
-   it earns its seat: prices, delivery chips, folio numbers, data labels. */
-.site-nav a:not(.btn) {
-  font-family: var(--sans); font-size-adjust: 0.546; font-weight: 500;
-  font-size: 15px; letter-spacing: 0; text-transform: none;
-}
+/* ── nav typography: the founder's 12 Aug ruling now lives ON .site-nav a
+   (its first declaration), not as an override here. The mono stays where it
+   earns its seat: prices, delivery chips, folio numbers, data labels. */
 .mega__col ul a span { font-family: var(--sans); font-size-adjust: 0.546; letter-spacing: 0; }
 
 /* ── the loud interlude (founder, 12 Aug: "非常明显的动画效果") ────────────
@@ -4326,88 +4330,9 @@ h1:has(.hl--sub) .uline::after { display: none; }
   right: 6%; z-index: 0; pointer-events: none;
 }
 
-/* ── the what-we-do journey + image frames + client circles ───────────────
-   Values on the published scales throughout. The imgslot renders as a
-   composed void with a hairline and a folio label — a reserved position, not
-   a broken image — until the founder's high-resolution files arrive. */.imgslots {
-  display: grid; gap: 16px; margin-top: 32px;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-}
-.imgslot {
-  margin: 0; aspect-ratio: 16 / 9; position: relative;
-  border: 1px solid rgb(255 255 255 / 0.18);
-  background: rgb(255 255 255 / 0.03);
-  display: flex; align-items: flex-end;
-}
-.imgslot figcaption { padding: 12px 16px; opacity: 0.6; }
-.imgslot > img { position: absolute; inset: 0; width: 100%; height: 100%;
-                 object-fit: cover; }
+/* the what-we-do image frame and its aperture sting left with the image
+   (founder, 6 Sep 2026) — .imgslots/.imgslot/.sting rules retired whole */
 
-/* the feature plate (founder, 13 Aug: 不要方方正正 — 圆弧、要动):
-   a deep arc frame, a slow breath, a drift tied to scroll where the
-   platform supports scroll timelines, and the accepted aperture
-   animation looping in the corner. */
-.imgslot--feature {
-  border: 0; border-radius: 64px; overflow: hidden;
-  border-top-left-radius: 160px;
-}
-.imgslot--feature > img { will-change: transform; }
-@media (prefers-reduced-motion: no-preference) {
-  .imgslot--feature > img {
-    animation: plate-breathe 26s ease-in-out infinite;
-  }
-  @keyframes plate-breathe {
-    0%, 100% { transform: scale(1.02) translate(0, 0); }
-    50% { transform: scale(1.1) translate(-1.4%, 1.2%); }
-  }
-  @supports (animation-timeline: view()) {
-    .imgslot--feature > img {
-      animation: plate-breathe 26s ease-in-out infinite,
-                 plate-drift linear both;
-      animation-timeline: auto, view();
-      animation-range: normal, entry 0% exit 100%;
-    }
-    @keyframes plate-drift {
-      from { object-position: 50% 28%; }
-      to { object-position: 50% 72%; }
-    }
-  }
-}
-.imgslot__sting {
-  /* bottom-left — the floating strategy pill owns the bottom-right */
-  position: absolute; left: 32px; bottom: 32px;
-  width: clamp(96px, 12vw, 160px); aspect-ratio: 1;
-  background: var(--plum-ink); border-radius: 32px;
-  box-shadow: 0 12px 32px rgb(0 0 0 / 0.35);
-}
-.imgslot__sting svg { width: 100%; height: 100%; display: block; }
-.sting__arc path { fill: var(--ivory); }
-.sting__arc--3 path { fill: var(--plum-300); }
-.sting__dot { fill: var(--moss-300); }
-@media (prefers-reduced-motion: no-preference) {
-  .sting__cycle { animation: sting-cycle 7s var(--ease) infinite; }
-  .sting__arc { transform-box: view-box; transform-origin: 500px 540px;
-    animation: sting-sweep 7s var(--ease) infinite; }
-  .sting__arc--2 { animation-delay: 0.25s; }
-  .sting__arc--3 { animation-delay: 0.5s; }
-  .sting__dot { transform-box: fill-box; transform-origin: center;
-    animation: sting-pop 7s cubic-bezier(.34,1.56,.64,1) infinite; }
-  @keyframes sting-cycle {
-    0%, 92% { opacity: 1; } 97%, 100% { opacity: 0; }
-  }
-  @keyframes sting-sweep {
-    0% { transform: rotate(-42deg); opacity: 0; }
-    10%, 100% { transform: rotate(0deg); opacity: 1; }
-  }
-  @keyframes sting-pop {
-    0%, 16% { transform: scale(0); opacity: 0; }
-    24%, 100% { transform: scale(1); opacity: 1; }
-  }
-}
-@media (max-width: 640px) {
-  .imgslot--feature { border-radius: 32px; border-top-left-radius: 64px; }
-  .imgslot__sting { left: 16px; bottom: 16px; border-radius: 16px; }
-}
 /* logo-ring / logo-dot retired with the circles section, 13 Aug 2026 */
 
 /* the hero figure is gone — the living aperture sits in the site header */
@@ -4471,7 +4396,7 @@ h1:has(.hl--sub) .uline::after { display: none; }
 .qa__a { padding-top: 16px; }
 .qa__tag {
   flex: none; width: 24px; height: 24px; display: grid; place-items: center;
-  font-family: var(--mono); font-size-adjust: 0.516; font-size: 11px;
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 11px;
   letter-spacing: 0.012em; border: 1px solid var(--champ-700);
   color: var(--graph-400);
 }
@@ -4487,7 +4412,7 @@ h1:has(.hl--sub) .uline::after { display: none; }
 .qa__chip {
   display: inline-flex; align-items: center; gap: 8px;
   height: 28px; padding: 0 12px; border: 1px solid var(--champ-700);
-  font-family: var(--mono); font-size-adjust: 0.516; font-size: 11px;
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 11px;
   letter-spacing: 0.012em; color: var(--graph-400);
 }
 .qa__chip:empty { width: 96px; }
@@ -4510,7 +4435,7 @@ h1:has(.hl--sub) .uline::after { display: none; }
   padding: 12px 0; white-space: nowrap; width: max-content;
 }
 .qmq__track span {
-  font-family: var(--mono); font-size-adjust: 0.516; font-size: 13px;
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 13px;
   letter-spacing: 0.012em; color: var(--plum-100);
 }
 .qmq__track i {
@@ -4525,7 +4450,8 @@ h1:has(.hl--sub) .uline::after { display: none; }
 }
 .shead--tight { grid-template-columns: auto minmax(0, 1fr); margin-bottom: 24px; }
 .shead__no {
-  font-family: var(--serif); font-weight: 300; font-size: 96px; line-height: 0.94;
+  font-family: var(--serif); font-size-adjust: 0.426;
+  font-weight: 300; font-size: 96px; line-height: 0.94;
   letter-spacing: -0.018em; color: transparent;
   -webkit-text-stroke: 1.5px var(--champ-700);
   transform: translateY(0.06em);
@@ -4566,7 +4492,7 @@ h1:has(.hl--sub) .uline::after { display: none; }
      painted as a white notch at the right edge. These two carry a ground. */
   max-width: none;
   margin: 0; padding: 0 24px 16px;
-  font-family: var(--mono); font-size-adjust: 0.516; font-size: 11px;
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 11px;
   letter-spacing: 0.012em; text-transform: uppercase; color: var(--graph-400);
   border-bottom: 1px solid var(--champ-700);
 }
@@ -4574,7 +4500,7 @@ h1:has(.hl--sub) .uline::after { display: none; }
 .door--ai .door__sub { background: var(--plum-900); color: var(--moss-300); border-bottom: 0; }
 .door__dl { margin: 0; padding: 8px 24px 24px; }
 .door__dl dt {
-  font-family: var(--mono); font-size-adjust: 0.516; font-size: 11px;
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 11px;
   letter-spacing: 0.012em; text-transform: uppercase; color: var(--graph-400);
   padding-top: 12px;
 }
@@ -4692,7 +4618,7 @@ h1:has(.hl--sub) .uline::after { display: none; }
   display: inline-grid; place-items: center; min-width: 32px; height: 32px;
   padding: 0 8px; margin-bottom: 16px; border-radius: 50%;
   background: var(--plum-900); color: var(--moss-300);
-  font-family: var(--mono); font-size-adjust: 0.516; font-size: 13px;
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 13px;
   letter-spacing: 0.012em;
 }
 .pcard h3 {
@@ -4713,7 +4639,7 @@ h1:has(.hl--sub) .uline::after { display: none; }
   gap: 12px; align-items: center; padding: 8px 0; }
 .report__row--one { border-bottom: 1px solid var(--champ-700); padding-bottom: 16px; margin-bottom: 8px; }
 .report__lab {
-  font-family: var(--mono); font-size-adjust: 0.516; font-size: 11px;
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 11px;
   letter-spacing: 0.012em; text-transform: uppercase; color: var(--graph-400);
 }
 .report__row--one .report__lab { color: var(--plum-900); }
@@ -5001,7 +4927,7 @@ h1:has(.hl--sub) .uline::after { display: none; }
   color: var(--plum-100); margin: 0;
 }
 .pkgcard__h {
-  font-family: var(--sans); font-size-adjust: 0.546; font-weight: 600;
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546; font-weight: 600;
   font-size: 19px; letter-spacing: 0.004em; text-transform: uppercase;
   line-height: var(--lh-h3); color: var(--moss-300); margin: 0 0 var(--sp-3);
 }
@@ -5229,7 +5155,7 @@ h1:has(.hl--sub) .uline::after { display: none; }
 }
 .team-band__head .lab { justify-self: start; margin-top: 12px; }
 .team-band__h {
-  font-family: var(--sans); font-size-adjust: 0.546; font-weight: 600;
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546; font-weight: 600;
   font-size: clamp(40px, 6.6vw, 96px); line-height: 1.04;
   letter-spacing: -0.006em; text-transform: uppercase;
   color: var(--ivory); text-align: center; margin: 0;

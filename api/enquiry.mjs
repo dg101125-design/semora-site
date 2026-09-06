@@ -122,12 +122,12 @@ function send(payload) {
 function notificationHtml(d) {
   const row = (label, value) =>
     `<tr>
-       <td style="padding:6px 14px 6px 0;font:500 12px/1.5 monospace;letter-spacing:.1em;text-transform:uppercase;color:#8B6B7E;white-space:nowrap;vertical-align:top;">${label}</td>
-       <td style="padding:6px 0;font:400 15px/1.55 -apple-system,'Segoe UI',Arial,sans-serif;color:#2E1C29;">${escapeHtml(value) || "—"}</td>
+       <td style="padding:6px 14px 6px 0;font-family:'Fragment Mono',Menlo,Consolas,monospace;font-weight:400;font-size:12px;line-height:1.5;letter-spacing:.1em;text-transform:uppercase;color:#8B6B7E;white-space:nowrap;vertical-align:top;">${label}</td>
+       <td style="padding:6px 0;font-family:'Instrument Sans',-apple-system,'Segoe UI',Arial,sans-serif;font-weight:400;font-size:15px;line-height:1.55;color:#2E1C29;">${escapeHtml(value) || "—"}</td>
      </tr>`;
-  return `<div style="font-family:-apple-system,'Segoe UI',Arial,sans-serif;max-width:620px;">
-    <p style="margin:0 0 4px;font:500 12px/1.5 monospace;letter-spacing:.18em;text-transform:uppercase;color:#6B7B4E;">New enquiry / semora.com.au</p>
-    <h2 style="margin:0 0 18px;font-family:Georgia,serif;font-weight:400;font-size:26px;color:#2E1C29;">${escapeHtml(d.name) || "No name given"} — ${escapeHtml(d.practice) || "no practice given"}</h2>
+  return `<div style="font-family:'Instrument Sans',-apple-system,'Segoe UI',Arial,sans-serif;max-width:620px;">
+    <p style="margin:0 0 4px;font-family:'Fragment Mono',Menlo,Consolas,monospace;font-weight:400;font-size:12px;line-height:1.5;letter-spacing:.18em;text-transform:uppercase;color:#6B7B4E;">New enquiry / semora.com.au</p>
+    <h2 style="margin:0 0 18px;font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:26px;color:#2E1C29;">${escapeHtml(d.name) || "No name given"} — ${escapeHtml(d.practice) || "no practice given"}</h2>
     <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
       ${row("Email", d.email)}
       ${row("Phone", d.phone)}
@@ -135,7 +135,7 @@ function notificationHtml(d) {
       ${row("Field", d.vertical)}
       ${row("Wants", d.want)}
     </table>
-    <p style="margin:18px 0 6px;font:500 12px/1.5 monospace;letter-spacing:.1em;text-transform:uppercase;color:#8B6B7E;">What prompted this</p>
+    <p style="margin:18px 0 6px;font-family:'Fragment Mono',Menlo,Consolas,monospace;font-weight:400;font-size:12px;line-height:1.5;letter-spacing:.1em;text-transform:uppercase;color:#8B6B7E;">What prompted this</p>
     <p style="margin:0;padding:14px 18px;background:#F0E8EC;border-left:3px solid #6B7B4E;font-size:15px;line-height:1.6;color:#2E1C29;white-space:pre-wrap;">${escapeHtml(d.prompt) || "—"}</p>
     <p style="margin:22px 0 0;font-size:13px;color:#6B6560;">Reply straight to this email — it goes to the enquirer.</p>
   </div>`;

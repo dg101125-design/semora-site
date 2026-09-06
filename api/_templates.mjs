@@ -56,17 +56,17 @@ export function autoReplyHtml(d) {
   <!-- ── body ─────────────────────────────────────────────────── -->
   <tr>
     <td class="px" style="padding:44px 40px 12px;">
-      <p style="margin:0 0 10px;font-family:'IBM Plex Mono',Consolas,monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#8B6B7E;">
+      <p style="margin:0 0 10px;font-family:'Fragment Mono',Menlo,Consolas,monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#8B6B7E;">
         Your enquiry /
       </p>
-      <h1 class="h1" style="margin:0 0 20px;font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:36px;line-height:1.15;letter-spacing:-0.01em;color:#2E1C29;">
+      <h1 class="h1" style="margin:0 0 20px;font-family:'Fraunces',Georgia,'Times New Roman',serif;font-weight:400;font-size:36px;line-height:1.15;letter-spacing:-0.01em;color:#2E1C29;">
         Thank you — that’s with us.
       </h1>
-      <p style="margin:0 0 18px;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:16px;line-height:1.62;color:#424242;">
+      <p style="margin:0 0 18px;font-family:'Instrument Sans',-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:16px;line-height:1.62;color:#424242;">
         Hello ${e(d.name)} — we have your enquiry and it has gone straight to a
         person, not a queue.
       </p>
-      <p style="margin:0 0 18px;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:16px;line-height:1.62;color:#424242;">
+      <p style="margin:0 0 18px;font-family:'Instrument Sans',-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:16px;line-height:1.62;color:#424242;">
         <strong style="color:#2E1C29;">You will hear back within one business day.</strong>
         Response speed is one of the eleven surfaces we score, and we are
         scored on it too — so that is a commitment, not a courtesy.
@@ -79,16 +79,16 @@ export function autoReplyHtml(d) {
     <td class="px" style="padding:14px 40px 8px;">
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-left:3px solid #6B7B4E;">
         <tr><td style="padding:4px 0 4px 22px;">
-          <p style="margin:0 0 12px;font-family:'IBM Plex Mono',Consolas,monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#525E3A;">
+          <p style="margin:0 0 12px;font-family:'Fragment Mono',Menlo,Consolas,monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#525E3A;">
             What happens next /
           </p>
-          <p style="margin:0 0 10px;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:15px;line-height:1.6;color:#424242;">
+          <p style="margin:0 0 10px;font-family:'Instrument Sans',-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:15px;line-height:1.6;color:#424242;">
             <strong style="color:#2E1C29;">1 ·</strong> We read what you sent and look at your current marketing before we reply.
           </p>
-          <p style="margin:0 0 10px;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:15px;line-height:1.6;color:#424242;">
+          <p style="margin:0 0 10px;font-family:'Instrument Sans',-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:15px;line-height:1.6;color:#424242;">
             <strong style="color:#2E1C29;">2 ·</strong> You get a named person, a straight answer, and a number — never a discovery call to qualify you.
           </p>
-          <p style="margin:0;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:15px;line-height:1.6;color:#424242;">
+          <p style="margin:0;font-family:'Instrument Sans',-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:15px;line-height:1.6;color:#424242;">
             <strong style="color:#2E1C29;">3 ·</strong> If we are not the right fit, we will say so and tell you who is.
           </p>
         </td></tr>
@@ -99,7 +99,7 @@ export function autoReplyHtml(d) {
   <!-- ── CTA ──────────────────────────────────────────────────── -->
   <tr>
     <td class="px" style="padding:34px 40px 8px;">
-      <p style="margin:0 0 18px;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:16px;line-height:1.62;color:#424242;">
+      <p style="margin:0 0 18px;font-family:'Instrument Sans',-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:16px;line-height:1.62;color:#424242;">
         While you wait, score your own practice on the eleven surfaces buyers
         actually judge. It takes four minutes and you keep the result whether
         or not we work together.
@@ -108,12 +108,12 @@ export function autoReplyHtml(d) {
       <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word"
         href="https://www.semora.com.au/score" style="height:52px;v-text-anchor:middle;width:272px;" arcsize="0%" stroke="f" fillcolor="#3C2637">
         <w:anchorlock/>
-        <center style="color:#F0E9DD;font-family:Arial,sans-serif;font-size:12px;letter-spacing:2px;">SCORE YOUR PRACTICE</center>
+        <center style="color:#F0E9DD;font-family:'Instrument Sans',Arial,sans-serif;font-size:12px;letter-spacing:2px;">SCORE YOUR PRACTICE</center>
       </v:roundrect>
       <![endif]-->
       <!--[if !mso]><!-- -->
       <a href="https://www.semora.com.au/score"
-         style="display:inline-block;background:#3C2637;color:#F0E9DD;font-family:'IBM Plex Mono',Consolas,monospace;font-size:12px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;text-decoration:none;padding:18px 32px;mso-hide:all;">
+         style="display:inline-block;background:#3C2637;color:#F0E9DD;font-family:'Fragment Mono',Menlo,Consolas,monospace;font-size:12px;font-weight:400;letter-spacing:0.16em;text-transform:uppercase;text-decoration:none;padding:18px 32px;mso-hide:all;">
         Score your practice
       </a>
       <!--<![endif]-->
@@ -125,19 +125,19 @@ export function autoReplyHtml(d) {
     <td class="px" style="padding:36px 40px 44px;">
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top:1px solid #E7DCCB;">
         <tr><td style="padding:24px 0 0;">
-          <p style="margin:0 0 14px;font-family:'IBM Plex Mono',Consolas,monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#8B6B7E;">
+          <p style="margin:0 0 14px;font-family:'Fragment Mono',Menlo,Consolas,monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#8B6B7E;">
             What you sent us /
           </p>
-          <p style="margin:0 0 7px;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:14px;line-height:1.6;color:#6B6560;">
+          <p style="margin:0 0 7px;font-family:'Instrument Sans',-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:14px;line-height:1.6;color:#6B6560;">
             <span style="color:#8B6B7E;">Practice</span> &nbsp;${e(d.practice)}
           </p>
-          <p style="margin:0 0 7px;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:14px;line-height:1.6;color:#6B6560;">
+          <p style="margin:0 0 7px;font-family:'Instrument Sans',-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:14px;line-height:1.6;color:#6B6560;">
             <span style="color:#8B6B7E;">Field</span> &nbsp;${e(d.vertical)}
           </p>
-          <p style="margin:0 0 7px;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:14px;line-height:1.6;color:#6B6560;">
+          <p style="margin:0 0 7px;font-family:'Instrument Sans',-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:14px;line-height:1.6;color:#6B6560;">
             <span style="color:#8B6B7E;">Wants</span> &nbsp;${e(d.want)}
           </p>
-          <p style="margin:0;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:14px;line-height:1.6;color:#6B6560;">
+          <p style="margin:0;font-family:'Instrument Sans',-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:14px;line-height:1.6;color:#6B6560;">
             <span style="color:#8B6B7E;">Note</span> &nbsp;${e(d.prompt)}
           </p>
         </td></tr>
@@ -156,19 +156,19 @@ export function autoReplyHtml(d) {
                  style="display:block;border:0;width:34px;height:auto;">
           </td>
           <td valign="top" class="stack">
-            <p style="margin:0 0 8px;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:13px;line-height:1.6;color:#D7C8D1;">
+            <p style="margin:0 0 8px;font-family:'Instrument Sans',-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:13px;line-height:1.6;color:#D7C8D1;">
               <strong style="color:#F0E9DD;">SEMORA STUDIO</strong> — a specialist
               growth company and marketing agency for commercial industry
               professionals, owner-led businesses, and healthcare and
               allied-health practices.
             </p>
-            <p style="margin:0 0 8px;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:13px;line-height:1.6;color:#8B6B7E;">
+            <p style="margin:0 0 8px;font-family:'Instrument Sans',-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:13px;line-height:1.6;color:#8B6B7E;">
               Central House Toorak, Level 3, 489 Toorak Road, Toorak VIC 3142<br>
               <a href="mailto:team@semora.com.au" style="color:#CFC0A8;text-decoration:none;">team@semora.com.au</a>
               &nbsp;·&nbsp;
               <a href="https://www.semora.com.au" style="color:#CFC0A8;text-decoration:none;">semora.com.au</a>
             </p>
-            <p style="margin:0;font-family:'IBM Plex Mono',Consolas,monospace;font-size:10px;letter-spacing:0.12em;color:#8B6B7E;">
+            <p style="margin:0;font-family:'Fragment Mono',Menlo,Consolas,monospace;font-size:10px;letter-spacing:0.12em;color:#8B6B7E;">
               SEMORA STUDIO PTY LTD · ABN 77 701 244 635
             </p>
           </td>
@@ -179,7 +179,7 @@ export function autoReplyHtml(d) {
 
 </table>
 
-<p style="margin:22px 0 0;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:11px;line-height:1.6;color:#8B6B7E;max-width:600px;">
+<p style="margin:22px 0 0;font-family:'Instrument Sans',-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:11px;line-height:1.6;color:#8B6B7E;max-width:600px;">
   You are receiving this because you sent an enquiry through semora.com.au.
 </p>
 

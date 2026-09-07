@@ -176,23 +176,41 @@ a { color: inherit; }
 .scorebar :focus-visible { outline-color: var(--champ); }
 
 /* ----------------------------------------------- typography */
+/* ── ONE HEADING VOICE (founder, 7 Sep 2026: "统一样式 用sans") ─────────
+   Every h1, h2 and h3 on every page now speaks the homepage's sans voice —
+   the hero h1 the founder chose on 13 Aug ("hero 也统一用 b") and the
+   statement h2s (.who-h / .statband__h / .meth-h) that stood beside it.
+   Until tonight 12 pages carried a Fraunces h1 against 5 sans ones, 40
+   Fraunces h2s against 8 sans and one mono, and h3 spoke four ways
+   (measured; see MD file/2026-09-06_heading-evidence/). Fraunces keeps the
+   display accents: pull quotes, prices, the big figures, italic emphasis
+   in body copy, the ghost numerals. ONE heading is deliberately outside the
+   voice: /score's results line is a Fragment Mono label. The register
+   carries this as #20. */
 .display, h1 {
-  font-family: var(--serif); font-size-adjust: 0.426;
-  font-weight: 350;
-  font-variation-settings: "opsz" 72, "SOFT" 0, "WONK" 0;
-  font-size: clamp( 40px, 6.4vw, 72px);
-  line-height: 0.98;
-  letter-spacing: -0.018em;
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546;
+  font-weight: 600; text-transform: uppercase;
+  /* 61, not the homepage's 76 (7 Sep 2026, #20). Uppercase sans sets ~20%
+     wider than the Fraunces it replaced, and at 76 six product-page heroes
+     gained a line — "Be the source, not the result." went from two lines to
+     four. 61 is the founder's own cap from 2 Sep ("font reduce size 20%,
+     same as the clients onboard page") and renders at 65.3px effective
+     against the retired Fraunces 72's 63.6px: the same optical size, no
+     rewrap. The homepage promise line keeps 76 in its own rule below. */
+  font-size: clamp( 32px, 4.76vw, 61px);
+  line-height: 1.04;
+  letter-spacing: -0.006em;
   color: var(--plum-900);
   text-wrap: balance;
 }
 h2 {
-  font-family: var(--serif); font-size-adjust: 0.426;
-  font-weight: 400;
-  font-variation-settings: "opsz" 44, "SOFT" 0, "WONK" 0;
-  font-size: clamp( 34px, 4.1vw, 56px);
-  line-height: 1.04;
-  letter-spacing: -0.014em;
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546;
+  font-weight: 600; text-transform: uppercase;
+  /* the homepage statement clamp (.who-h / .wwd2 .statband__h), not the
+     retired serif h2's 34/4.1vw — same 56 cap, the homepage's floor and slope */
+  font-size: clamp( 28px, 3.6vw, 56px);
+  line-height: 1.14;
+  letter-spacing: -0.006em;
   /* plum-700 site-wide (founder, confirmed 1 Sep 2026) — the homepage
      serif hue on every light ground, 9.51:1 on ivory; dark bands keep
      their ivory overrides, who-h keeps its founder-ordered ink */
@@ -200,11 +218,11 @@ h2 {
   text-wrap: balance;
 }
 h3 {
-  font-family: var(--serif); font-size-adjust: 0.426;
-  font-weight: 400;
-  font-variation-settings: "opsz" 28, "SOFT" 0, "WONK" 0;
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546;
+  font-weight: 600; text-transform: uppercase;
   font-size: 19px;
   line-height: 1.2;
+  letter-spacing: 0.012em;
   color: var(--plum-900);
 }
 p  { max-width: var(--measure); }
@@ -214,6 +232,18 @@ p  { max-width: var(--measure); }
   max-width: 54ch;
 }
 .serif-em { font-family: var(--serif); font-size-adjust: 0.426; font-style: italic; font-weight: 350; }
+/* inside a heading the emphasis word stays in the heading's own voice —
+   upright sans, one hue up: plum on light grounds, acid on ink (the hero's
+   verdict word, 13 Aug, now the rule everywhere) */
+h1 .serif-em, h2 .serif-em, h3 .serif-em {
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546;
+  font-style: normal; font-weight: 600; color: var(--plum);
+}
+.hero :is(h1, h2, h3) .serif-em, .f-plum :is(h1, h2, h3) .serif-em,
+.f-moss :is(h1, h2, h3) .serif-em { color: var(--moss-300); }
+/* the statband is cream, not ink — the darkened acid, 5.44:1 */
+.statband :is(h1, h2, h3) .serif-em { color: var(--moss-700); }
+h1 .uline::after { display: none; }
 /* slash-angled emphasis underline (static by default; animated when motion allowed) */
 .uline { position: relative; }
 .uline::after {
@@ -279,8 +309,9 @@ section > .wrap { position: relative; z-index: 1; }
    3/10 — two voices fighting, an underline decorating nothing, a ghost
    slash on a 12s loop nobody caught). This is the brand's punctuation
    mark, so it speaks the CTA's own language at section scale: the ACID
-   band. One serif voice, ink on acid; the two phrases converge under the
-   reader's scroll and the slash draws itself between them. */
+   band. One voice, ink on acid (the serif's, until #20 moved the headings
+   to the sans on 7 Sep 2026); the two phrases converge under the reader's
+   scroll and the slash draws itself between them. */
 .interlude {
   position: relative;
   padding-block: clamp( 48px, 7vw, 96px); overflow: hidden;
@@ -400,12 +431,12 @@ section > .wrap { position: relative; z-index: 1; }
 .f-champ3 { background: var(--champ-300); }
 .f-white  { background: var(--white); }
 .f-plum   { background: var(--plum-field); color: var(--ivory); }
-.f-plum h2, .f-plum .display { color: var(--ivory); }
+.f-plum h1, .f-plum h2, .f-plum h3, .f-plum .display { color: var(--ivory); }
 .f-plum p { color: var(--champ); }
 .f-plum .rule { border-color: var(--plum-700); }
 /* deep moss field — ivory/moss-100 text only (both ≥7.9:1 on moss-900) */
 .f-moss { background: var(--moss-900); color: var(--ivory); }
-.f-moss h2, .f-moss h3, .f-moss .display { color: var(--ivory); }
+.f-moss h1, .f-moss h2, .f-moss h3, .f-moss .display { color: var(--ivory); }
 .f-moss p { color: var(--moss-100); }
 .f-moss .lab { color: var(--moss-100); }
 .f-moss .slash--rule::after { background: var(--moss-700); }
@@ -637,7 +668,7 @@ section > .wrap { position: relative; z-index: 1; }
 /* price figure */
 .price {
   font-family: var(--serif); font-size-adjust: 0.426; font-weight: 350;
-  font-variation-settings: "opsz" 60, "SOFT" 0, "WONK" 0;
+  font-variation-settings: "opsz" 48, "SOFT" 0, "WONK" 0;
   font-size: clamp( 34px, 5.2vw, 56px);
   line-height: 0.98; color: var(--plum-900);
   font-variant-numeric: tabular-nums;
@@ -1116,14 +1147,18 @@ html.lr .site-head__word::before {
 }
 .statband .lab--rev { color: var(--moss-300); }
 .statband .sig-dots i { background: var(--moss-300); }
-/* Bold, on the founder's call 11 Aug. The display faces ran at 200 — an
-   editorial weight that reads as restraint on a book page and as timidity on a
-   home page next to agencies setting everything at 700. 500 keeps Newsreader's
-   character and stops the headline apologising for itself. */
+/* Bold, on the founder's call 11 Aug: the display face had run at 200, an
+   editorial weight that reads as restraint on a book page and as timidity on
+   a home page next to agencies setting everything at 700. That call now
+   lives as the statement voice's 600 (#20, 7 Sep 2026). */
 .statband__h {
-  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 500;
-  font-size: clamp( 28px, 4.4vw, 56px); line-height: 1.14;
-  letter-spacing: -0.014em; color: var(--ivory);
+  /* the sans statement voice (7 Sep 2026, #20) — this class had stayed
+     Fraunces 500 at the retired −0.014em and was sans on the homepage only
+     because `.wwd2 .statband__h` outranked it */
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546;
+  font-weight: 600; text-transform: uppercase;
+  font-size: clamp( 28px, 3.6vw, 56px); line-height: 1.14;
+  letter-spacing: -0.006em; color: var(--ivory);
   margin: 1.1rem 0 clamp( 32px, 5vw, 48px); max-width: 20ch;
 }
 /* Footer links get a real tap area on touch. Measured at 21px tall on a
@@ -1672,8 +1707,8 @@ a.soc:hover { transform: translateY(-2px); }
 .pl-wm .ap-dot { fill: var(--moss-300); }
 .pl-band .slash--rule .lab { color: var(--moss-300); }
 /* 04 spoke a third voice here (who-h caps at its own 28-40 clamp) — the
-   recurring drift the founder called twice; the heading is the site h2
-   serif now, ivory on the ink field (failure register B6, 31 Aug 2026) */
+   recurring drift the founder called twice; the heading is the site h2 —
+   sans since #20 (7 Sep 2026) — ivory on the ink field (register B6, 31 Aug) */
 .pl-band h2 { color: var(--ivory); }
 .pl-band .who-lead p { color: var(--plum-100); }
 .pl-band .who-lead .small { color: var(--plum-300); }
@@ -1925,7 +1960,21 @@ html.js .prow.in .prow__tick { background: var(--moss-300); }
 }
 .tier--hi { border-color: var(--moss-700); }
 .tier--hi .tier__flag { background: var(--moss-700); color: var(--ivory); }
-.tier h3 { font-size: 28px; }
+/* fluid, not fixed (7 Sep 2026, #20): in the uppercase sans voice the middle
+   card's "THE MANAGED MARKETING ENGINE" no longer fits a 294px column at 28px
+   and took a third line, dropping its list 33.6px below its neighbours
+   (audit_layout HIGH). Floor 25, not 22: 22's recorded authority is the
+   print quotation sheet only (audit_site.py's scale note), and 25 is a
+   screen step. 2.1vw is 25.2px at 1200 and reaches 28 from 1333 up. */
+.tier h3 { font-size: clamp( 25px, 2.1vw, 28px); }
+/* Each title is authored as two lines with a <br>. In capitals the middle
+   card's second line ("MARKETING ENGINE") overflows its column between the
+   980px single-column breakpoint and ~1180px, and its list dropped a line
+   below its neighbours'. Reserve the third line there, the same device the
+   card already uses for its "Delivered by" note (1 Sep 2026). */
+@media (min-width: 981px) and (max-width: 1180px) {
+  .tier h3 { min-height: calc(3 * 1.2em); }
+}
 .tier .price { font-size: 28px; margin-top: 12px; }
 /* Every tier card reserves two small-lines under its figure, whether its
    terms need one or two: MOMENTUM's longer terms line wrapped and pushed
@@ -2023,6 +2072,10 @@ html.js .prow.in .prow__tick { background: var(--moss-300); }
      from behind their masks, then the brand-green rule draws itself
      under SPECIALIST. */
 }
+/* /team's h1 carries .who-h for the mask-rise; as an h1 it takes the
+   founder's long-headline cap (61) so it outranks the h2 that shares the
+   class (7 Sep 2026) */
+h1.who-h { font-size: clamp( 32px, 4.76vw, 61px); }
 .whl { display: block; overflow: hidden;
        padding-bottom: 0.08em; margin-bottom: -0.08em; }
 .whl > span { display: block; }
@@ -2377,8 +2430,9 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
   color: var(--plum-100); max-width: 44ch;
 }
 
-/* One type system, three voices, no fourth (founder, 16 Aug 2026). Fraunces
-   carries display, headings AND figures; Instrument Sans carries body and UI;
+/* One type system, three voices, no fourth (founder, 16 Aug 2026; heading
+   roles reassigned 7 Sep 2026, #20). Instrument Sans carries the headings,
+   the body and the UI; Fraunces carries quotes, prices AND figures;
    Fragment Mono carries labels and data eyebrows. The first cut of this
    component set the wordmark, the brand name and the numbers in Instrument
    Sans 600 — a bold grotesque taken from the reference, which introduced a
@@ -2389,8 +2443,8 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
    The stripe field on .res__panel::before stays — it is the automatic
    placeholder for the next card that arrives without a file. */
 .res__name {
-  font-family: var(--serif); font-size-adjust: 0.426;
-  font-weight: 400; font-size: 28px;
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546;
+  font-weight: 600; font-size: 28px;
   line-height: 1.14; letter-spacing: 0.012em;
   text-transform: uppercase; color: var(--ivory);
 }
@@ -2486,9 +2540,11 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
 
    "font 要做到上下统一, consistent" — round 1 ran Fraunces 96, Instrument
    Sans 28 and Instrument Sans 17 in one short block: three typographic
-   worlds stacked, none of them clearly subordinate. Now two faces with one
-   job and ONE size each. Fraunces states the message at two weights;
-   Instrument Sans carries every supporting line at 19px. The 28px lead is
+   worlds stacked, none of them clearly subordinate. Now one face with one
+   job and ONE size each: since #20 (7 Sep 2026) the slogan states the
+   message in the sans at two weights — 400 for the adjectives, 600 for the
+   nouns, which keeps the founder's round-3 casing grammar — and Instrument
+   Sans carries every supporting line at 19px. The 28px lead is
    gone — it was competing with the headline, not supporting it.
 
    "颜色也要协调, 不要黑色" — round 1 set the headline and the lead in
@@ -2534,9 +2590,17 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
 .ocm__ap .ap-dot { fill: var(--moss-700); }
 
 .ocm__h {
-  font-family: var(--serif); font-size-adjust: 0.426;
-  font-size: clamp( 40px, 7.6vw, 96px);
-  line-height: 0.94; letter-spacing: -0.018em;
+  /* the slogan joins the one heading voice (founder, 7 Sep 2026, #20):
+     sans, one scale step under the hero's 76 so the page's h1 stays the
+     largest word on it. Was Fraunces 96 with opsz 96 on both words. */
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546;
+  font-weight: 600;
+  /* the founder's round-3 casing survives the face change: the NOUNS carry
+     the capitals (.ocm__n), the adjectives stay mixed-case, so the extracted
+     string is still "Bold Ideas, Real Growth." */
+  text-transform: none;
+  font-size: clamp( 40px, 5.95vw, 72px);
+  line-height: 1.04; letter-spacing: -0.006em;
   max-width: none;
   margin-top: 24px; margin-bottom: 32px;
   /* Founder: "bold idea 这两个 word 中间间距太近". Measured at 0.179em — the
@@ -2544,7 +2608,10 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
      so the display line was set tighter than body copy. 0.14em of word
      spacing brings the gap to 0.32em, which is where a two-word display line
      wants to sit, and it applies to both lines from one declaration. */
-  word-spacing: 0.14em;
+  /* 0.14 → 0.06 (7 Sep 2026): the compensation was computed against
+     Fraunces' −0.018em tracking; the sans line tracks −0.006em, so the old
+     value opened the gap the founder had asked to close. */
+  word-spacing: 0.06em;
   /* the comma and the full stop are direct children of the line, not of
      either span — without this they inherit h2's --plum-900 and two black
      marks of punctuation sit in an otherwise all-plum headline. Measured,
@@ -2555,9 +2622,11 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
 .ocm__ln--b { margin-left: clamp( 16px, 3vw, 48px); }
 /* the adjectives qualify, the nouns carry — the sentence's own grammar,
    made visible with weight and two steps of one hue rather than two faces */
-.ocm__a { font-weight: 300; font-variation-settings: "opsz" 96, "SOFT" 0, "WONK" 0; color: var(--plum); }
+/* adjectives light, nouns heavy — the weight contrast that carried the
+   grammar in Fraunces 300/500, redrawn on the published sans steps (400/600) */
+.ocm__a { font-weight: 400; color: var(--plum); }
 .ocm__n {
-  font-weight: 500; font-variation-settings: "opsz" 96, "SOFT" 0, "WONK" 0;
+  font-weight: 600;
   color: var(--plum-700);
   /* Both nouns in capitals (founder, round 3): the brief was typed "Bold
      IDEAS, Real Growth" and the mixed casing was carried across verbatim
@@ -2735,9 +2804,7 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
            color: var(--graph-400); display: block;
            margin-bottom: var(--sp-4); }
 .cmt__card h3 { margin: 0 0 var(--sp-2);
-                font-family: var(--serif); font-size-adjust: 0.426;
-                font-size: var(--t-h2); line-height: var(--lh-h2);
-                font-weight: var(--w-h2); letter-spacing: var(--tr-h2); }
+  font-size: var(--t-h2); line-height: var(--lh-h2); }
 .cmt__card .unit { display: block; }
 @media (max-width: 760px) { .cmt { grid-template-columns: 1fr; } }
 
@@ -2799,6 +2866,7 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
 .oscore__ev { grid-column: 1 / -1; font-size: 13.5px; color: var(--champ);
               margin: -2px 0 2px; }
 .osfig { font-family: var(--serif); font-size-adjust: 0.426;
+         font-variation-settings: "opsz" 48, "SOFT" 0, "WONK" 0;
          font-size: clamp(72px, 7vw, 96px); line-height: 0.98;
          color: var(--ivory); font-weight: 300; }
 .osfig small { font-size: .38em; color: var(--champ); font-weight: 400; }
@@ -2828,22 +2896,21 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
    the homepage exists to land — checked clear of the monogram at 1400px.
    76px cap, founder-set 13 Aug 2026 (96 → −10% → "reduce to 76");
    recorded as its own scale step in audit_site check 14. */
+/* The hero keeps its OWN size rule (0,1,1) as it had before 6 Sep: folding
+   it into the base h1 let the ≤560px `.display, h1` rule win at equal
+   specificity and the homepage promise line dropped 40px → 33px on a phone.
+   Same numbers as the base; the specificity is the point. */
 h1:has(.hl--sub) { font-size: clamp( 40px, 5.95vw, 76px); }
 /* B won (founder, 13 Aug: "hero 也统一用 b") — the homepage hero speaks
-   the same sans as what-we-do. The serif remains the wordmark's world and
-   the other pages' display voice until the founder extends the ruling.
+   the same sans as what-we-do. The founder EXTENDED that ruling to every
+   page and every heading level on 7 Sep 2026 (register #20); the serif now
+   keeps quotes, prices and figures. (The wordmark is neither face — it is
+   frozen Newsreader-outline artwork.)
    The verdict word carries acid instead of an underline; the word-cycle
    grammar is untouched. */
-h1:has(.hl--sub) {
-  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546; font-weight: 600;
-  text-transform: uppercase; letter-spacing: -0.006em; line-height: 1.04;
-}
+/* (the hero's sans voice is the base h1 rule since 7 Sep 2026 — the
+   register's #20; only the sub-line's normal case is hero-specific) */
 h1:has(.hl--sub) .hl--sub { text-transform: none; }
-h1:has(.hl--sub) .serif-em {
-  font-family: var(--sans); font-size-adjust: 0.546; font-style: normal;
-  font-weight: 600; color: var(--moss-300);
-}
-h1:has(.hl--sub) .uline::after { display: none; }
 .hl--sub {
   /* founder, 13 Aug: the positioning sentence read as a footnote at 19px —
      it is the one differentiating line the page has; give it deck size.
@@ -2856,7 +2923,11 @@ h1:has(.hl--sub) .uline::after { display: none; }
 /* narrow phones: fixed display lines must wrap naturally */
 @media (max-width: 560px) {
   h1 br, .display br { display: none; }
-  .display, h1 { font-size: clamp( 28px, 8.8vw, 40px); }
+  /* 8.8vw → 7.3vw (7 Sep 2026, #20): the phone floor was set for Fraunces,
+     which at 33px rendered 29.2px effective; uppercase Instrument Sans at
+     the same 33px renders 35.3px and wrapped six heroes onto extra lines.
+     7.3vw puts the sans back on the retired face's optical size. */
+  .display, h1 { font-size: clamp( 25px, 7.3vw, 40px); }
   .hl { display: inline; overflow: visible; }
   .hl > span { display: inline; }
 }
@@ -3365,8 +3436,8 @@ h1:has(.hl--sub) .uline::after { display: none; }
    the v1 band scored 30/100 on background and 40/100 on UX. 减少方框 — no
    card plates, no chip borders: the six phases hang off ONE drawn spine
    (上下链接) and the duties read as a slash-separated manifest in the
-   checklist voice; phase titles join the serif display voice (the font-
-   consistency round); animation +50%: the map keeps score with an acid
+   checklist voice; phase titles join the display voice (Fraunces at the
+   font-consistency round, the sans since #20, 7 Sep 2026); animation +50%: the map keeps score with an acid
    trail behind the travelling signal, the spine draws itself phase by
    phase, each node stamps, titles rise through the site mask, duties file
    in with their slashes drawing after them. Round 6 (founder: 上面的hero
@@ -3400,7 +3471,7 @@ h1:has(.hl--sub) .uline::after { display: none; }
   content: counter(cosph, decimal-leading-zero);
   position: absolute; right: 0; top: 8px; z-index: 0;
   font-family: var(--serif); font-size-adjust: 0.426; font-weight: 300;
-  font-variation-settings: "opsz" 72, "SOFT" 0, "WONK" 0;
+  font-variation-settings: "opsz" 48, "SOFT" 0, "WONK" 0;
   font-size: clamp( 96px, 16vw, 128px); line-height: 0.94;
   letter-spacing: -0.018em;
   color: color-mix(in srgb, var(--plum) 10%, transparent);
@@ -3417,7 +3488,7 @@ h1:has(.hl--sub) .uline::after { display: none; }
 }
 .cos-ph__no {
   font-family: var(--serif); font-size-adjust: 0.426; font-weight: 350;
-  font-variation-settings: "opsz" 72, "SOFT" 0, "WONK" 0;
+  font-variation-settings: "opsz" 48, "SOFT" 0, "WONK" 0;
   font-size: 96px; line-height: 0.94; letter-spacing: -0.014em;
   color: var(--plum-300); font-variant-numeric: tabular-nums;
 }
@@ -3429,9 +3500,10 @@ h1:has(.hl--sub) .uline::after { display: none; }
   opacity: 0;
 }
 .cos-ph h3 {
-  /* 字体协调 (founder, 31 Aug round 7): one voice per layer — the serif
-     keeps the display h2 and the numerals; phase titles speak the
-     component sans (the wwd2 one-typeface precedent, founder 13 Aug).
+  /* 字体协调 (founder, 31 Aug round 7): phase titles speak the component
+     sans (the wwd2 one-typeface precedent, founder 13 Aug) — which since
+     #20 (7 Sep 2026) is the voice of every heading; the serif keeps the
+     numerals.
      The green stays ("把title 换成绿色") — moss-700, 5.44:1 on ivory. */
   font-family: var(--sans); font-size-adjust: 0.546; font-variation-settings: normal; font-weight: 600;
   font-size: 25px; line-height: 1.3; letter-spacing: 0.012em;
@@ -3483,8 +3555,9 @@ h1:has(.hl--sub) .uline::after { display: none; }
 #onboarding.f-ivory { background: var(--cream); }
 #onboarding { overflow: hidden; }
 /* The one-round display-size override (40-72) left 31 Aug 2026 — the
-   founder's standing order is exact font parity with the homepage, and
-   the homepage h2 is clamp(34, 4.1vw, 56). */
+   founder's standing order is exact font parity with the homepage, and the
+   homepage h2 is the base h2 rule: clamp(28px, 3.6vw, 56px) since #20
+   (7 Sep 2026), clamp(34, 4.1vw, 56) before it. */
 /* The .pg-quote purple-heading scope of 31 Aug retired 1 Sep 2026 —
    the founder confirmed plum-700 for every light-ground h2, so the hue
    now lives on the base h2 rule. */
@@ -3655,8 +3728,11 @@ h1:has(.hl--sub) .uline::after { display: none; }
   @keyframes ic-draw { from { stroke-dashoffset: 90; } }
 }
 /* The summary card, re-set 4 Sep 2026 (founder: one voice, 95-score
-   push). ONE money voice — the serif figure — at two sizes: 19 on the
-   line, 28 on the total. Buttons stack full-width in one column with
+   push). ONE money voice — the serif figure at 19px, on the line and on
+   the total alike. (This comment described 28 on the total, which was true
+   until the founder's 5 Sep order took it to 19 — commit 4a15534, recorded
+   on the rule itself. The comment was left behind then; corrected 7 Sep
+   2026, no CSS changed.) Buttons stack full-width in one column with
    one hierarchy: Pay Now (acid, appears only when payments are live),
    Email Quote (ivory), Download PDF (ghost). */
 .qb-sum {
@@ -4146,8 +4222,8 @@ h1:has(.hl--sub) .uline::after { display: none; }
 .wwd2 { display: grid; gap: 48px; margin-top: 24px; position: relative; z-index: 1; }
 /* one typeface through the whole section (founder, 13 Aug round 3):
    the reference sets left statement and right rows in a single sans.
-   The serif remains the site's display voice elsewhere; here the
-   statement speaks the rows' language, only larger. */
+   Retired 7 Sep 2026 (#20): the sans IS the site's heading voice now; this
+   rule survives only for its own clamp and colour. */
 .wwd2 .statband__h {
   font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546; font-weight: 600;
   font-size: clamp( 28px, 3.6vw, 56px); line-height: 1.14;
@@ -4216,8 +4292,8 @@ h1:has(.hl--sub) .uline::after { display: none; }
 }
 .wrow__name {
   /* one voice per row (founder, 13 Aug: 左右字体要统一) — the body face,
-     loud, set like a statement. The serif stays the display voice of the
-     column headline; the mono stays a label voice inside the body. */
+     loud, set like a statement. The mono stays a label voice inside the body; since #20 (7 Sep 2026) this
+     row voice is also the site's h3. */
   font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546; font-weight: 600;
   /* founder, 29 Aug: −20% from 28px; 30 Aug: −15% again. 1.33vw ≈ 19.1px
      at 1440; endpoints are scale members so the fluid form stays legal. */
@@ -4288,8 +4364,9 @@ h1:has(.hl--sub) .uline::after { display: none; }
 
 /* (accordion mechanics retired 13 Aug v4 — all four rows always speak) */
 
-/* the loud version of the band's voice */
-.statband__h { font-weight: 500; font-size: clamp(40px, 7vw, 72px); }
+/* the loud version of the band's voice — capped at the statement step so it
+   cannot outrank a page's h1 (7 Sep 2026, #20) */
+.statband__h { font-size: clamp( 34px, 4.4vw, 56px); }
 .statband__sub {
   margin: 16px 0 0; max-width: 44ch;
   font-size: 19px; line-height: 1.55; color: var(--plum-100);
@@ -4451,13 +4528,16 @@ h1:has(.hl--sub) .uline::after { display: none; }
 .shead--tight { grid-template-columns: auto minmax(0, 1fr); margin-bottom: 24px; }
 .shead__no {
   font-family: var(--serif); font-size-adjust: 0.426;
+  /* the ghost numerals set no optical size at all until 7 Sep 2026 — 96px
+     drawn with the axis default. #20's "改 opsz 48" applies here too. */
+  font-variation-settings: "opsz" 48, "SOFT" 0, "WONK" 0;
   font-weight: 300; font-size: 96px; line-height: 0.94;
   letter-spacing: -0.018em; color: transparent;
   -webkit-text-stroke: 1.5px var(--champ-700);
   transform: translateY(0.06em);
 }
 .shead h2 { margin-bottom: 0; }
-.shead .serif-em { color: var(--plum); font-style: italic; }
+.shead .serif-em { color: var(--plum); }
 .shead__note {
   margin: 0; font-size: 15px; line-height: 1.55; color: var(--graph);
   padding-left: 16px; border-left: 3px solid var(--moss-700);
@@ -4555,11 +4635,7 @@ h1:has(.hl--sub) .uline::after { display: none; }
 .tl__it.lit .tl__node b { color: var(--plum-900); }
 .tl__it:last-child.lit .tl__node { background: var(--plum-900); border-color: var(--plum-900); }
 .tl__it:last-child.lit .tl__node b { color: var(--moss-300); }
-.tl h3 {
-  margin: 0 0 8px; font-family: var(--serif); font-size-adjust: 0.426;
-  font-weight: 350; font-size: 19px; line-height: 1.2; letter-spacing: -0.006em;
-  color: var(--plum-900);
-}
+.tl h3 { margin: 0 0 8px; }
 .tl p { margin: 0; font-size: 15px; line-height: 1.45; color: var(--graph); }
 .tl__foot {
   margin: 48px 0 0; padding: 12px 0 12px 16px; max-width: 56ch;
@@ -4590,11 +4666,7 @@ h1:has(.hl--sub) .uline::after { display: none; }
   font-size: 28px; letter-spacing: 0.004em; line-height: 0.98;
   color: var(--moss-700);
 }
-.acard h3 {
-  margin: 0 0 8px; font-family: var(--serif); font-size-adjust: 0.426;
-  font-weight: 350; font-size: 19px; line-height: 1.2; letter-spacing: -0.006em;
-  color: var(--plum-900);
-}
+.acard h3 { margin: 0 0 8px; }
 .acard p { margin: 0; font-size: 15px; line-height: 1.45; color: var(--graph); }
 
 /* ---- platform plates */
@@ -4621,11 +4693,7 @@ h1:has(.hl--sub) .uline::after { display: none; }
   font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 13px;
   letter-spacing: 0.012em;
 }
-.pcard h3 {
-  margin: 0 0 4px; font-family: var(--serif); font-size-adjust: 0.426;
-  font-weight: 350; font-size: 19px; line-height: 1.2; letter-spacing: -0.006em;
-  color: var(--plum-900);
-}
+.pcard h3 { margin: 0 0 4px; }
 .pcard p { margin: 0; font-size: 13px; line-height: 1.45; color: var(--graph); }
 
 /* ---- the report as an object */
@@ -5146,9 +5214,9 @@ h1:has(.hl--sub) .uline::after { display: none; }
   position: absolute; left: 0; top: 8%; bottom: 8%;
   width: 8px; background: var(--moss);
 }
-/* the reference band: centred giant title, acid arrow tile, plates on
-   the dark ground. Title = the display-h1 caps family (96 cap is the
-   homepage's own founder-set display step). */
+/* the reference band: centred title, acid arrow tile, plates on the dark
+   ground. The title is a plain h2 since #20 (7 Sep 2026) — it had been set
+   at a 96 cap, above its own page's h1 at every width. */
 .team-band__head {
   display: grid; grid-template-columns: 1fr auto 1fr;
   align-items: start; gap: 24px;
@@ -5156,7 +5224,10 @@ h1:has(.hl--sub) .uline::after { display: none; }
 .team-band__head .lab { justify-self: start; margin-top: 12px; }
 .team-band__h {
   font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546; font-weight: 600;
-  font-size: clamp(40px, 6.6vw, 96px); line-height: 1.04;
+  /* 96 → the base h2, exactly (7 Sep 2026, #20): as an h2 it had rendered
+     larger than its own page's h1 at every width. It now inherits the
+     statement clamp and line-height rather than inventing its own, so the
+     "one h2 voice" claim is true at every width, not only at the 56 cap. */
   letter-spacing: -0.006em; text-transform: uppercase;
   color: var(--ivory); text-align: center; margin: 0;
 }
@@ -5247,7 +5318,7 @@ h1:has(.hl--sub) .uline::after { display: none; }
 .tcard__slot i {
   font-family: var(--serif); font-size-adjust: 0.426; font-style: normal;
   font-weight: 300; font-size: clamp(40px, 6vw, 72px);
-  font-variation-settings: "opsz" 72, "SOFT" 0, "WONK" 0;
+  font-variation-settings: "opsz" 48, "SOFT" 0, "WONK" 0;
   color: var(--plum-300); font-variant-numeric: tabular-nums;
 }
 /* ── the case-study page (founder rebuild, 3 Sep 2026, 55 → 90) ──────
@@ -5307,7 +5378,7 @@ h1:has(.hl--sub) .uline::after { display: none; }
 .res__panel--slot i {
   font-family: var(--serif); font-size-adjust: 0.426; font-style: normal;
   font-weight: 300; font-size: clamp(40px, 6vw, 72px);
-  font-variation-settings: "opsz" 72, "SOFT" 0, "WONK" 0;
+  font-variation-settings: "opsz" 48, "SOFT" 0, "WONK" 0;
   color: var(--plum-300); font-variant-numeric: tabular-nums;
 }
 /* the in-delivery cards carried no bottom anchor, so a two-line name

@@ -127,7 +127,7 @@ function notificationHtml(d) {
      </tr>`;
   return `<div style="font-family:'Instrument Sans',-apple-system,'Segoe UI',Arial,sans-serif;max-width:620px;">
     <p style="margin:0 0 4px;font-family:'Fragment Mono',Menlo,Consolas,monospace;font-weight:400;font-size:12px;line-height:1.5;letter-spacing:.18em;text-transform:uppercase;color:#6B7B4E;">New enquiry / semora.com.au</p>
-    <h2 style="margin:0 0 18px;font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:26px;color:#2E1C29;">${escapeHtml(d.name) || "No name given"} — ${escapeHtml(d.practice) || "no practice given"}</h2>
+    <h2 style="margin:0 0 18px;font-family:Georgia,serif;font-weight:400;font-size:26px;color:#2E1C29;">${escapeHtml(d.name) || "No name given"} — ${escapeHtml(d.practice) || "no practice given"}</h2>
     <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
       ${row("Email", d.email)}
       ${row("Phone", d.phone)}

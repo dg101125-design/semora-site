@@ -12,21 +12,17 @@
    sharp on demand; Instrument Sans — a grotesque with drawn character, not a
    neutral system face; Fragment Mono — a Grilli-flavoured mono for the data
    voice. All OFL, all self-hosted, all variable where it matters. */
-@font-face {
-  font-family: "Fraunces";
-  src: url("../fonts/Fraunces-var.woff2") format("woff2-variations");
-  font-weight: 100 900; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: "Fraunces";
-  src: url("../fonts/Fraunces-Italic-var.woff2") format("woff2-variations");
-  font-weight: 100 900; font-style: italic; font-display: swap;
-}
+/* Fraunces left the site 7 Sep 2026 by founder order ("去掉这个字体") —
+   register #21. Two DOWNLOADED faces remain, and one system serif joined
+   them the same evening for the homepage headline alone (#22, Georgia): the
+   site loads 135 kB of font instead of 565 kB, but three families render.
+   Fraunces' italic is replaced by the voice system further down. */
 @font-face {
   font-family: "Instrument Sans";
   src: url("../fonts/InstrumentSans-var.woff2") format("woff2-variations");
   font-weight: 400 700; font-style: normal; font-display: swap;
 }
+
 @font-face {
   font-family: "Fragment Mono";
   src: url("../fonts/FragmentMono-Regular.woff2") format("woff2");
@@ -123,14 +119,22 @@
                               The CTA now carries acid, the only accent left. */
   --signal-ink: #3F4A0C;   /* acid darkened — ivory type on it reads 8.9:1 */
 
-  /* Fallbacks ordered by measured x-height against the webfont (6 Sep 2026,
-     fontTools on the files): Georgia 0.4814 vs Fraunces 0.4820 and ships on
-     both platforms, so it leads the serif stack; Iowan declares no sxHeight
-     and is macOS-only. Menlo 0.5469 / Monaco 0.5454 vs Fragment Mono 0.5240
+  /* Fallbacks ordered by measured x-height against the webfont (fontTools on
+     the files). The serif stack went with Fraunces on 7 Sep 2026 (#21);
+     what remains: Menlo 0.5469 / Monaco 0.5454 vs Fragment Mono 0.5240
      — under the 0.516 pin they render ×0.94 where Courier New (0.4229)
      rendered ×1.22, a 24% wider run in fixed-width label cells during the
      swap window. Consolas holds the Windows seat. */
-  --serif: "Fraunces", Georgia, "Iowan Old Style", serif;
+  /* The display serif returns 7 Sep 2026 (#22) for the homepage headline
+     alone, on the founder's ruling: the reference sets that line in a serif,
+     but Fraunces is not coming back (#21 — its f was the whole problem) and
+     no new file is downloaded. Georgia ships on macOS AND Windows, is the
+     sturdiest of the three cross-platform serifs at display size, and draws
+     an f with no overhanging hook. Times is the fallback for the rare
+     machine without it; font-size-adjust pins it to Georgia's own x-height
+     (0.4814 measured) so the two set at the same apparent size. Didot is
+     closer to the reference and was rejected: macOS only. */
+  --serif: Georgia, "Times New Roman", serif;
   --sans:  "Instrument Sans", -apple-system, "Helvetica Neue", Arial, sans-serif;
   --mono:  "Fragment Mono", Menlo, Consolas, "Courier New", monospace;
   /* Every spacing and line-height in this file was tuned around the RETIRED
@@ -151,6 +155,16 @@
 
 /* ---------------------------------------------------- reset */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* NO SYNTHESISED OBLIQUE, at the document level (7 Sep 2026, #21).
+   Neither downloaded face ships an italic, so the browser would slant the
+   roman — a fourth voice by the back door. `audit_site.py` bans an authored
+   `font-style: italic`, but these elements are italic by USER-AGENT default,
+   which no stylesheet gate can see. Every current instance happened to be
+   reset by its own component; this makes it a property of the document
+   instead of a coincidence, so the next <em> written in body copy is upright
+   without anyone remembering. Purely defensive: nothing renders italic today
+   (face census: 0 obliques), so this changes no pixel. */
+em, i, cite, dfn, var, address, q, u { font-style: normal; }
 /* scroll-padding keeps anchor jumps (#qb, #our-own-score) clear of the
    74px sticky header, which otherwise covers the target's first line */
 html { scroll-behavior: smooth; overflow-x: clip; scroll-padding-top: 96px; }
@@ -160,10 +174,11 @@ body {
   color: var(--graph);
   background: var(--ivory);
   -webkit-font-smoothing: antialiased;
-  /* Fraunces ships fi/ff ligatures on by default and at display sizes
-     the welded pair reads as one broken glyph (founder, 1 Sep 2026:
-     "the f words are weird"). Common ligatures off site-wide — every
-     f keeps its crossbar, every i keeps its dot, all three faces. */
+  /* Set 1 Sep 2026 when Fraunces was here and welded fi/ff into one broken
+     glyph at display sizes (founder: "the f words are weird"). Fraunces left
+     on 7 Sep (#21) and the two remaining faces do not weld, so this is now
+     insurance rather than a fix — kept because turning it off changes
+     rendering for no stated reason. */
   font-variant-ligatures: no-common-ligatures;
 }
 img, svg { max-width: 100%; display: block; }
@@ -182,11 +197,11 @@ a { color: inherit; }
    statement h2s (.who-h / .statband__h / .meth-h) that stood beside it.
    Until tonight 12 pages carried a Fraunces h1 against 5 sans ones, 40
    Fraunces h2s against 8 sans and one mono, and h3 spoke four ways
-   (measured; see MD file/2026-09-06_heading-evidence/). Fraunces keeps the
-   display accents: pull quotes, prices, the big figures, italic emphasis
-   in body copy, the ghost numerals. ONE heading is deliberately outside the
-   voice: /score's results line is a Fragment Mono label. The register
-   carries this as #20. */
+   (measured; see MD file/2026-09-06_heading-evidence/). ONE heading is
+   deliberately outside the voice: /score's results line is a Fragment Mono
+   label. The register carries this as #20 — and #21 the next day, when
+   Fraunces left the site and the display accents it had kept (quotes,
+   prices, figures, italic emphasis) moved to the sans as well. */
 .display, h1 {
   font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546;
   font-weight: 600; text-transform: uppercase;
@@ -231,18 +246,39 @@ p  { max-width: var(--measure); }
   color: var(--graph-700);
   max-width: 54ch;
 }
-.serif-em { font-family: var(--serif); font-size-adjust: 0.426; font-style: italic; font-weight: 350; }
+/* ── WHOSE WORDS ARE THESE (7 Sep 2026, register #21) ────────────────────
+   Fraunces left the site and took the only true italic with it: Instrument
+   Sans ships no italic file and Fragment Mono has one upright weight, so
+   `font-style: italic` on either would make the browser synthesise an
+   oblique — a fourth voice by the back door, banned.
+
+   The italic did one job with one signal: it said "a different register"
+   and left the reader to work out which. The replacement says it with THREE
+   signals that agree, so no surface rests on a reader catching one cue:
+
+     WEIGHT   400 = words we did not write, at the volume they were said in.
+              500 = a claim we are making. (600 is the heading voice.)
+     HUE      plum-700 = language we stand behind. graph / graph-400 =
+              language we attribute to someone else and will not lend our
+              colour to. moss stays the mono system voice, so a label and a
+              claim never share a hue.
+     MARK     hanging quotation marks = a person speaking, and only that.
+              The acid rail = ours, asserted. Neither borrows the other's.
+
+   Emphasis inside running copy is the fourth case: one step of weight, plus
+   the acid underline the site already owns. */
+.em-mark { font-style: normal; font-weight: 500; }
 /* inside a heading the emphasis word stays in the heading's own voice —
    upright sans, one hue up: plum on light grounds, acid on ink (the hero's
    verdict word, 13 Aug, now the rule everywhere) */
-h1 .serif-em, h2 .serif-em, h3 .serif-em {
+h1 .em-mark, h2 .em-mark, h3 .em-mark {
   font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546;
   font-style: normal; font-weight: 600; color: var(--plum);
 }
-.hero :is(h1, h2, h3) .serif-em, .f-plum :is(h1, h2, h3) .serif-em,
-.f-moss :is(h1, h2, h3) .serif-em { color: var(--moss-300); }
+.hero :is(h1, h2, h3) .em-mark, .f-plum :is(h1, h2, h3) .em-mark,
+.f-moss :is(h1, h2, h3) .em-mark { color: var(--moss-300); }
 /* the statband is cream, not ink — the darkened acid, 5.44:1 */
-.statband :is(h1, h2, h3) .serif-em { color: var(--moss-700); }
+.statband :is(h1, h2, h3) .em-mark { color: var(--moss-700); }
 h1 .uline::after { display: none; }
 /* slash-angled emphasis underline (static by default; animated when motion allowed) */
 .uline { position: relative; }
@@ -399,16 +435,19 @@ section > .wrap { position: relative; z-index: 1; }
 .entry:hover { background: color-mix(in srgb, var(--champ-300) 55%, transparent); }
 .f-plum .entry:hover { background: color-mix(in srgb, var(--plum-700) 55%, transparent); }
 .entry__no {
-  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 300;
-  font-size: 40px; line-height: 0.98;
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546; font-weight: 400;
+  font-size: 34px; line-height: 0.98;
   color: var(--plum-300);
   font-variant-numeric: tabular-nums;
 }
 .entry h3 { margin-bottom: 4px; }
 .entry p  { color: var(--graph-700); }
 .entry .q {
-  font-family: var(--serif); font-size-adjust: 0.426; font-style: italic; font-weight: 350;
-  font-size: 18px; color: var(--moss-700);
+  /* ours, asserted — plum-700 at 500; moss is surrendered to the mono
+     system voice so a label and a claim never share a hue */
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546;
+  font-weight: 500; font-size: 15px; line-height: 1.55;
+  color: var(--plum-700);
   margin-bottom: 8px;
 }
 @media (max-width: 640px) {
@@ -418,9 +457,12 @@ section > .wrap { position: relative; z-index: 1; }
 .f-plum .entry__no { color: var(--plum-100); }
 /* the industry habit, crossed out above our answer */
 .f-plum .them { color: var(--plum-100); }
+/* UNUSED — no built page carries .them; the live comparison column is
+   .vs__them. Converted so no Fraunces reference survives. */
 .them {
-  font-family: var(--serif); font-size-adjust: 0.426; font-style: italic; font-weight: 350;
-  font-size: 17px; color: var(--plum-100);
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546;
+  font-weight: 400;
+  font-size: 15px; color: var(--plum-100);
   text-decoration: line-through;
   text-decoration-color: var(--moss-300); text-decoration-thickness: 1.5px;
   margin-bottom: 8px; opacity: 0.85;
@@ -498,7 +540,7 @@ section > .wrap { position: relative; z-index: 1; }
 .mstep { position: relative; transition: transform 200ms var(--ease); }
 .mstep:hover { transform: translateY(-3px); }
 .mstep .pno {
-  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 300; font-size: 34px;
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546; font-weight: 400; font-size: 28px;
   color: var(--moss-300); font-variant-numeric: tabular-nums;
   transform-origin: left bottom;
 }
@@ -667,15 +709,16 @@ section > .wrap { position: relative; z-index: 1; }
 
 /* price figure */
 .price {
-  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 350;
-  font-variation-settings: "opsz" 48, "SOFT" 0, "WONK" 0;
-  font-size: clamp( 34px, 5.2vw, 56px);
+  font-family: var(--sans); font-size-adjust: 0.546; font-weight: 400;
+  font-variation-settings: normal;
+  font-size: clamp( 28px, 4.29vw, 40px);
   line-height: 0.98; color: var(--plum-900);
   font-variant-numeric: tabular-nums;
 }
 .price small {
-  /* .price is Fraunces 350 with opsz/SOFT/WONK; the face changes here, so the
-     weight and the axes change with it — Fragment Mono ships 400 and no axes. */
+  /* .price was Fraunces 350 with opsz/SOFT/WONK until 7 Sep 2026 (#21) and
+     is Instrument Sans now; either way the face changes HERE, so the weight
+     and the axes change with it — Fragment Mono ships 400 and no axes. */
   font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
   font-variation-settings: normal; font-size: 11px;
   letter-spacing: 0.012em; color: var(--graph-400);
@@ -969,9 +1012,9 @@ html.lr .site-head__word::before {
   /* 500, not 600 — the serif's weight range on this site runs 300–500 */
   /* the adjust must be re-pinned with the face: .lab hands down the mono's
      0.516 and Fraunces rendered 21% oversize under it on every page. */
-  font-family: var(--serif) !important; font-size-adjust: 0.426;
+  font-family: var(--sans) !important; font-size-adjust: 0.546;
   font-weight: 500 !important;
-  font-size: 1.06rem !important; line-height: 1.2 !important;
+  font-size: 15px !important; line-height: 1.2 !important;
   letter-spacing: -0.01em !important; text-transform: none !important;
   color: var(--plum-900); margin: 0 0 8px;
   align-self: end;
@@ -1087,8 +1130,8 @@ html.lr .site-head__word::before {
 .cs-num { border-top: 3px solid var(--moss); padding-top: 16px; }
 .cs-num .lab { color: var(--plum); margin-bottom: 8px; }
 .cs-num__v {
-  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 300;
-  font-size: clamp( 28px, 3vw, 34px); line-height: 1.14;
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546; font-weight: 400;
+  font-size: clamp( 22px, 2.48vw, 28px); line-height: 1.14;
   color: var(--plum-ink); margin: 0 0 8px;
 }
 .cs-num__v strong { font-weight: 500; }
@@ -1120,7 +1163,7 @@ html.lr .site-head__word::before {
   border-left: 3px solid var(--moss-300);
 }
 .cs-quote blockquote {
-  font-family: var(--serif); font-size-adjust: 0.426; font-size: 18px; line-height: 1.45;
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546; font-size: 15px; line-height: 1.45;
   margin: 0 0 8px;
 }
 .cs-quote figcaption {
@@ -1230,8 +1273,8 @@ html.lr .site-head__word::before {
 /* 64px tall → ~240px wide (descriptor lockup 3.74:1) */
 .foot-mark__word { height: 64px; width: auto; }
 .foot-say {
-  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 300;
-  font-size: clamp( 28px, 3.4vw, 40px); line-height: 1.04;
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546; font-weight: 400;
+  font-size: clamp( 22px, 2.81vw, 34px); line-height: 1.04;
   letter-spacing: -0.014em; color: var(--plum-900);
   text-align: right; max-width: none; margin: 0;
 }
@@ -1431,16 +1474,166 @@ a.soc:hover { transform: translateY(-2px); }
 /* the right field: the display-cut aperture as the hero's one image —
    arcs as a quiet ivory ghost, the acid dot at full strength, the signal
    point that balances the acid CTA in the lower left */
-.hero__ap {
-  position: absolute; z-index: 0; pointer-events: none;
-  top: 54%; right: clamp(-240px, -15vw, -96px);
-  width: clamp(420px, 43vw, 640px); height: auto;
-  transform: translateY(-46%);
+/* ── Hero v5 (founder, 7 Sep 2026, from their reference 02) ──────────────
+   The say and the object stop overlapping. Three columns at desktop: the
+   sentence, the aperture standing as a stage, and a mono rail of the four
+   practice areas. Below 1180px the rail folds away (it is a margin device
+   and has no margin to stand in); below 900 the stage drops under the say
+   at half scale, because an object that cannot be seen beside the words is
+   not composition, it is weight. */
+.hero__grid { display: grid; gap: 48px; }
+@media (min-width: 900px) {
+  .hero__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 34%);
+    align-items: center; column-gap: 48px;
+  }
 }
-.hero__ap .ap-arc { fill: var(--ivory); opacity: 0.12; }
-.hero__ap .ap-arc--weak { fill: var(--plum-300); opacity: 0.38; }
+.hero__say { min-width: 0; }
+
+/* the aperture and its orbit stack in one cell — the orbit never displaces
+   the mark, it only surrounds it */
+.hero__stage { position: relative; min-width: 0; display: grid;
+               place-items: center; }
+.hero__stage > * { grid-area: 1 / 1; }
+
+/* ── the glass sphere (founder override of R9, 7 Sep 2026, #23) ──────────
+   R9 bans gradient mesh and glow; the founder ruled the other way for this
+   one object, having seen the argument. Every stop is derived from a palette
+   token — plum light through plum glass on the plum field — so the object is
+   ours rather than the generic bloom the rule was written against. One
+   specular highlight, one terminator, no colour outside the pack, and no
+   light spilling past the sphere's own edge. Static: the motion is the
+   orbit, not the glass. */
+.hero__sphere {
+  /* 520 is a stage cap, not a type or spacing step: the aperture, the glass
+     and the orbit share one number so the three stay concentric at every
+     width. It replaces the 640/420 clamp the aperture carried before. */
+  width: min(100%, 520px); aspect-ratio: 1; border-radius: 50%;
+  pointer-events: none;
+  background:
+    /* the specular — a single light source, upper left, as the hero's own
+       radial wash already implies */
+    radial-gradient(circle at 30% 26%,
+      color-mix(in srgb, var(--white) 20%, transparent) 0%,
+      color-mix(in srgb, var(--white) 6%, transparent) 26%, transparent 46%),
+    /* the far wall of the glass, catching plum */
+    radial-gradient(circle at 72% 76%,
+      color-mix(in srgb, var(--plum) 46%, transparent) 0%, transparent 58%),
+    /* the body: lighter at the centre, falling to the field at the rim */
+    radial-gradient(circle at 50% 48%,
+      color-mix(in srgb, var(--plum-700) 34%, transparent) 0%,
+      color-mix(in srgb, var(--plum-ink) 46%, transparent) 72%,
+      color-mix(in srgb, var(--plum-ink) 66%, transparent) 100%);
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--white) 10%, transparent),
+    inset 0 24px 64px color-mix(in srgb, var(--white) 5%, transparent);
+}
+
+/* ── the orbiting signal (founder, 7 Sep 2026 — reference 02's animated
+   right side). The MARK is untouched: R10.3 forbids rotating a static
+   placement, so every moving part below is a separate ellipse and dot.
+   Tilted -20°, the slash's own shear, so the orbit sits on the brand axis. */
+.hero__orbit { width: min(100%, 520px); height: auto; pointer-events: none;
+               overflow: visible; }
+/* stacking inside the stage cell: glass behind, mark, signal in front */
+.hero__sphere { z-index: 0; } .hero__ap { z-index: 1; } .hero__orbit { z-index: 2; }
+.orb__tilt { transform: rotate(-20deg); transform-origin: 500px 540px; }
+.orb__ring { fill: none; stroke: var(--moss-300); stroke-width: 1.5;
+             opacity: 0.22; }
+.orb__ring--in { stroke: var(--plum-300); opacity: 0.30; }
+.orb__sig { fill: var(--moss-300);
+            offset-path: path("M 134,540 a 366,150 0 1,0 732,0 a 366,150 0 1,0 -732,0");
+            offset-rotate: 0deg; offset-distance: 22%; }
+.orb__sig--in { fill: var(--plum-300);
+            offset-path: path("M 238,540 a 262,96 0 1,0 524,0 a 262,96 0 1,0 -524,0");
+            offset-distance: 68%; }
+@media (prefers-reduced-motion: no-preference) {
+  .orb__sig    { animation: orb-run 19s linear infinite; }
+  .orb__sig--in{ animation: orb-run-in 13s linear infinite reverse; }
+  .orb__ring   { animation: orb-breathe 19s ease-in-out infinite; }
+  /* Each signal needs its OWN keyframe, because a bare `to` takes the
+     element's own offset-distance as its `from`: the inner dot starts at
+     68%, so sharing the outer's `to: 122%` gave it a 54-point range — it
+     travelled half the ellipse and snapped back, every 13s, for as long as
+     anyone watched (found in review, 7 Sep 2026). Each pair is now exactly
+     100 points apart, which is one full lap. */
+  @keyframes orb-run     { from { offset-distance:  22%; }
+                           to   { offset-distance: 122%; } }
+  @keyframes orb-run-in  { from { offset-distance:  68%; }
+                           to   { offset-distance: 168%; } }
+  @keyframes orb-breathe { 0%, 100% { opacity: 0.22; } 50% { opacity: 0.38; } }
+}
+.hero__ap {
+  /* was absolute and half off the right edge; it is the hero's one image and
+     now stands in its own column at full width */
+  position: relative; z-index: 0; pointer-events: none;
+  width: min(100%, 520px); height: auto;
+}
+@media (min-width: 861px) and (max-width: 899px) {
+  .hero__ap, .hero__sphere, .hero__orbit { width: min(64%, 320px); }
+}
+
+/* the rail: the practice areas, set as the system voice reads them */
+/* the rail lives in the MARGIN, not in a column — the reference sets it
+   outside the content, and as a grid track it stole the width the headline
+   needs. Absolute against the hero, clear of the floating CTA at the foot. */
+.hero__rail { display: none; }
+/* the rail's strip is a real grid track on the spacing scale (160 + the 48
+   gap), not an off-scale padding — R10.2. The rail is positioned over it. */
+@media (min-width: 1180px) {
+  .hero__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 34%) 160px; }
+}
+@media (min-width: 1180px) {
+  .hero__rail {
+    display: flex; flex-direction: column; justify-content: space-between;
+    position: absolute; z-index: 1;
+    top: clamp( 64px, 11vw, 128px); bottom: 96px;
+    right: clamp( 24px, 3vw, 48px);
+      padding-left: 24px;
+    border-left: 1px solid color-mix(in srgb, var(--white) 14%, transparent);
+  }
+}
+.hero__rail-list { list-style: none; margin: 0; padding: 0; }
+.hero__rail-list li {
+  font-family: var(--mono); font-variation-settings: normal;
+  font-size-adjust: 0.516; font-weight: 400;
+  font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--plum-100); line-height: 1.62; white-space: nowrap;
+}
+.hero__rail-foot {
+  font-family: var(--mono); font-variation-settings: normal;
+  font-size-adjust: 0.516; font-weight: 400;
+  font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--plum-300); line-height: 1.62; margin: 0; max-width: none;
+}
+
+/* the proof row under the call to action */
+.hero__proof {
+  list-style: none; margin: 48px 0 0; padding: 0;
+  display: grid; gap: 24px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 560px)  { .hero__proof { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; } }
+/* the glyph centres against the two-line label, as the reference sets it */
+.hero__proof li { display: flex; align-items: center; gap: 12px; }
+.hero__proof span {
+  font-size: 15px; line-height: 1.45; color: var(--plum-100);
+}
+.hpf__ico { flex: none; width: 28px; height: 28px; }
+.hpf__ico .wico-dot { fill: var(--moss-300); }
+.hpf__ico .wico-dot--dim { fill: var(--plum-300); }
+.hpf__ico .wico-dot--mid { fill: var(--plum-300); }
+.hpf__ico .wico-ring { fill: none; stroke: var(--plum-300); stroke-width: 2.5; }
+.hpf__ico .wico-tick { stroke: var(--plum-300); stroke-width: 2.5;
+                       stroke-linecap: round; }
+/* the arcs carried 0.12 when the object was a wash behind the words; as the
+   hero's one image in its own column it has to read as an object */
+.hero__ap .ap-arc { fill: var(--ivory); opacity: 0.30; }
+.hero__ap .ap-arc--weak { fill: var(--plum-300); opacity: 0.70; }
 .hero__ap .ap-dot { fill: var(--moss-300); }
-@media (max-width: 860px) { .hero__ap { display: none; } }
+/* the stage is one object — glass, mark and orbit — and it leaves together.
+   Hiding only the aperture left a phone showing an empty glass ball. */
+@media (max-width: 860px) { .hero__stage { display: none; } }
 @media (prefers-reduced-motion: no-preference) {
   .hero__ap { opacity: 0; animation: heroap-in 1100ms var(--ease) 200ms forwards; }
   @keyframes heroap-in { to { opacity: 1; } }
@@ -1496,10 +1689,13 @@ a.soc:hover { transform: translateY(-2px); }
 }
 .mq:hover .mq__track { animation-play-state: paused; }
 .mq__item {
-  margin-right: 3.2rem;
-  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 300; font-style: italic;
-  font-variation-settings: "opsz" 40, "SOFT" 0, "WONK" 0;
-  font-size: clamp( 19px, 2.4vw, 28px);
+  /* 48, the scale step (was 3.2rem = 51.2px). This rule is one this wave
+     rewrote, so its spacing is this wave's to answer for, not history's. */
+  margin-right: 48px;
+  /* ours, and already punctuated by the acid slash between items */
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546;
+  font-weight: 500;
+  font-size: clamp( 15px, 1.98vw, 22px); letter-spacing: 0.012em;
   color: var(--plum-700); white-space: nowrap;
   display: flex; align-items: center; gap: 48px;
 }
@@ -1771,8 +1967,8 @@ a.soc:hover { transform: translateY(-2px); }
 .prow:focus-visible { outline: 2px solid var(--moss-300); outline-offset: -2px; }
 .prow__ix {
   display: flex; align-items: flex-start; gap: 12px;
-  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 300;
-  font-size: 19px; line-height: 0.98; color: var(--pla);
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546; font-weight: 400;
+  font-size: 15px; line-height: 0.98; color: var(--pla);
   padding-top: 8px;
   transition: color 300ms var(--ease);
 }
@@ -1860,8 +2056,8 @@ html.js .prow.in .prow__tick { background: var(--moss-300); }
 .prow__tag { color: var(--moss-300); min-height: 1lh; }
 .prow:hover .prow__tag, .prow:focus-visible .prow__tag { color: var(--moss-700); }
 .prow__fig {
-  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 350;
-  font-size: clamp( 28px, 2.6vw, 40px); line-height: 0.98;
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546; font-weight: 400;
+  font-size: clamp( 22px, 2.15vw, 34px); line-height: 0.98;
   letter-spacing: -0.014em; font-variant-numeric: tabular-nums;
   color: var(--plf);
   transform-origin: right top;
@@ -1982,7 +2178,9 @@ html.js .prow.in .prow__tick { background: var(--moss-300); }
    sibling-alignment defect. Reserved space, never truncation. */
 .tier .price small { min-height: 2lh; }
 .tier .who {
-  font-family: var(--serif); font-size-adjust: 0.426; font-style: italic; color: var(--plum-700);
+  /* a delivery note, not a claim: 400, graph-400, a step under the card */
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546;
+  font-weight: 400; font-size: 15px; line-height: 1.55; color: var(--graph-400);
   margin: 16px 0 8px;
 }
 /* grouped scope inside tier cards */
@@ -2022,14 +2220,21 @@ html.js .prow.in .prow__tick { background: var(--moss-300); }
 .qrow:last-of-type { border-bottom: 1px solid var(--champ-700); }
 .qrow:hover { background: color-mix(in srgb, var(--champ-300) 55%, transparent); }
 .qrow__no {
-  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 300;
-  font-size: 40px; line-height: 0.98;
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546; font-weight: 400;
+  font-size: 34px; line-height: 0.98;
   color: var(--plum-300); font-variant-numeric: tabular-nums;
 }
 .qrow h3 { margin-bottom: 4px; }
 .qrow .q {
-  font-family: var(--serif); font-size-adjust: 0.426; font-style: italic; font-weight: 350;
-  font-size: 18px; color: var(--moss-700); margin-bottom: 16px;
+  /* a person speaking, verbatim: 400 because we do not add volume to words
+     we did not write, graph because we do not lend them our plum, and the
+     quotation mark hangs outside the measure so the first LETTER stays
+     flush with the column. The mark is the signal, not the letterform. */
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546;
+  font-weight: 400; font-size: 15px; line-height: 1.55;
+  color: var(--graph);
+  text-indent: -0.44em; padding-left: 0.44em;
+  margin-bottom: 16px;
 }
 @media (max-width: 640px) {
   .qrow { grid-template-columns: 1fr; padding-block: 24px; }
@@ -2038,13 +2243,21 @@ html.js .prow.in .prow__tick { background: var(--moss-300); }
 .scale { display: flex; gap: 24px; flex-wrap: wrap; align-items: baseline; }
 .scale input { position: absolute; width: 1px; height: 1px; opacity: 0; }
 .scale label {
-  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 300; font-size: 19px;
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546; font-weight: 400; font-size: 15px;
   color: var(--graph-400); cursor: pointer;
   padding: 0.1em 0.35em 0.25em;
   border-bottom: 2px solid var(--champ-700);
   transition: color 140ms var(--ease), border-color 140ms var(--ease);
 }
 .scale label:hover { color: var(--plum); border-color: var(--plum-300); }
+/* The score scale is the free tool's only control, and it is used with a
+   thumb. At the retired serif's 19px the label stood 39.4px tall — already
+   under the 44px both platforms publish — and the face change to 15px took
+   it to 31.5px, which trips the layout gate. Padding, not line-height, so
+   the row keeps its rhythm; the device the footer links already use. */
+@media (hover: none), (max-width: 700px) {
+  .scale label { padding-block: 0.7em; }
+}
 .scale input:checked + label {
   color: var(--plum); font-weight: 500;
   border-bottom: 3px solid var(--moss);
@@ -2132,8 +2345,8 @@ h1.who-h { font-size: clamp( 32px, 4.76vw, 61px); }
 }
 .wpan__head:focus-visible { outline: 2px solid var(--moss-300); outline-offset: -8px; }
 .wpan__no {
-  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 300;
-  font-size: 19px; color: var(--plum-300); padding-top: 4px;
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546; font-weight: 400;
+  font-size: 15px; color: var(--plum-300); padding-top: 4px;
 }
 .wpan__name {
   font-family: var(--sans); font-size-adjust: 0.546; font-weight: 600;
@@ -2302,10 +2515,12 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
   transition: transform 220ms var(--ease), box-shadow 220ms var(--ease);
 }
 .testi:hover { transform: translateY(-4px); box-shadow: 0 14px 34px rgba(46, 28, 41, 0.10); }
+/* no live instance today — set in the buyer-quote register so it is right
+   the day a testimonial lands */
 .testi blockquote {
-  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 300; font-style: italic;
-  font-variation-settings: "opsz" 32, "SOFT" 0, "WONK" 0;
-  font-size: 19px; line-height: 1.3; color: var(--plum-700);
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546;
+  font-weight: 400; font-size: 15px; line-height: 1.55; color: var(--graph);
+  text-indent: -0.44em; padding-left: 0.44em;
 }
 .testi footer { margin-top: auto; padding-top: 24px; }
 .testi cite {
@@ -2430,10 +2645,14 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
   color: var(--plum-100); max-width: 44ch;
 }
 
-/* One type system, three voices, no fourth (founder, 16 Aug 2026; heading
-   roles reassigned 7 Sep 2026, #20). Instrument Sans carries the headings,
-   the body and the UI; Fraunces carries quotes, prices AND figures;
-   Fragment Mono carries labels and data eyebrows. The first cut of this
+/* One type system, few voices and never an unplanned one (founder, 16 Aug
+   2026 for the principle; heading roles reassigned 7 Sep 2026 by #20,
+   Fraunces removed the same day by #21, and a system serif returned that
+   evening by #22). Instrument Sans carries the headings, the body, the UI,
+   the quotes, the prices and the figures; Fragment Mono carries labels and
+   data eyebrows; Georgia carries the homepage headline and nothing else.
+   "TWO voices, no third" was true for the hours between #21 and #22 —
+   it is three now, two of them downloaded. The first cut of this
    component set the wordmark, the brand name and the numbers in Instrument
    Sans 600 — a bold grotesque taken from the reference, which introduced a
    voice this site does not own. Every binding site below now names the face
@@ -2473,8 +2692,8 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
    page is the drift the founder called out */
 .stat__n {
   display: block;
-  font-family: var(--serif); font-size-adjust: 0.426;
-  font-weight: 350; font-size: clamp(28px, 2.6vw, 40px);
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546;
+  font-weight: 400; font-size: clamp(22px, 2.15vw, 34px);
   line-height: 0.98; letter-spacing: -0.014em;
   font-variant-numeric: tabular-nums;
   color: var(--moss-300);
@@ -2679,7 +2898,7 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
   padding-block: 12px; flex-wrap: wrap;
 }
 .scorebar .total {
-  font-family: var(--serif); font-size-adjust: 0.426; font-size: 28px; color: var(--ivory);
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546; font-size: 22px; color: var(--ivory);
   font-variant-numeric: tabular-nums;
 }
 .scorebar .meter {
@@ -2712,10 +2931,15 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
   padding-left: 1.1rem; max-width: 58ch;
 }
 .pull {
-  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 300; font-style: italic;
-  font-variation-settings: "opsz" 40, "SOFT" 0, "WONK" 0;
-  font-size: clamp( 28px, 3vw, 34px); line-height: 1.24;
+  /* ours, asserted: 500 and the acid rail — the rail .vs__us already takes
+     for "our side, evidenced". No quotation marks: the house is speaking. */
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546;
+  font-weight: 500; font-size: clamp( 22px, 2.48vw, 28px); line-height: 1.2;
+  letter-spacing: -0.006em;
   color: var(--plum-700); max-width: 30ch;
+  /* 24, the scale step. The rail gesture is .vs__us's; its own 20px gap
+     predates the scale and is left alone rather than restyled from here. */
+  padding-left: 24px; border-left: 3px solid var(--moss-700);
 }
 .sr-only {
   position: absolute; width: 1px; height: 1px;
@@ -2865,10 +3089,10 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
              text-align: right; font-variant-numeric: tabular-nums; }
 .oscore__ev { grid-column: 1 / -1; font-size: 13.5px; color: var(--champ);
               margin: -2px 0 2px; }
-.osfig { font-family: var(--serif); font-size-adjust: 0.426;
-         font-variation-settings: "opsz" 48, "SOFT" 0, "WONK" 0;
-         font-size: clamp(72px, 7vw, 96px); line-height: 0.98;
-         color: var(--ivory); font-weight: 300; }
+.osfig { font-family: var(--sans); font-size-adjust: 0.546;
+         font-variation-settings: normal;
+         font-size: clamp(61px, 5.78vw, 76px); line-height: 0.98;
+         color: var(--ivory); font-weight: 400; }
 .osfig small { font-size: .38em; color: var(--champ); font-weight: 400; }
 
 /* --------------------------------------------------- motion */
@@ -2901,11 +3125,35 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
    specificity and the homepage promise line dropped 40px → 33px on a phone.
    Same numbers as the base; the specificity is the point. */
 h1:has(.hl--sub) { font-size: clamp( 40px, 5.95vw, 76px); }
+
+/* ── The homepage headline, in the display serif (founder, 7 Sep 2026, #22,
+   from reference 02: sentence case, serif). This is the ONE heading outside
+   #20's sans voice, and it is deliberate — the homepage is the reference's
+   subject. Every other h1 on the site is untouched. The word cycle and its
+   acid strike are unchanged. */
+.pg-index h1:has(.hl--sub) {
+  font-family: var(--serif); font-size-adjust: 0.481;
+  font-variation-settings: normal;
+  font-weight: 400; text-transform: none;
+  font-size: clamp( 40px, 5.6vw, 72px);
+  line-height: 1.04; letter-spacing: -0.014em;
+}
+/* the deck above it keeps the sans — two voices, and the serif is the louder */
+.pg-index h1:has(.hl--sub) .hl--sub {
+  font-family: var(--sans); font-variation-settings: normal;
+  font-size-adjust: 0.546; font-weight: 400;
+}
+/* the cycling word stays in the headline's own face */
+.pg-index h1 .em-mark, .pg-index .wcycle .w {
+  font-family: var(--serif); font-size-adjust: 0.481; font-weight: 400;
+}
 /* B won (founder, 13 Aug: "hero 也统一用 b") — the homepage hero speaks
    the same sans as what-we-do. The founder EXTENDED that ruling to every
-   page and every heading level on 7 Sep 2026 (register #20); the serif now
-   keeps quotes, prices and figures. (The wordmark is neither face — it is
-   frozen Newsreader-outline artwork.)
+   page and every heading level on 7 Sep 2026 (register #20). The quotes,
+   prices and figures went to the sans too when Fraunces left (#21); the
+   serif that came back the same evening (#22) is Georgia, and it keeps the
+   homepage headline directly above and nothing else. (The wordmark is
+   neither face — it is frozen Newsreader-outline artwork.)
    The verdict word carries acid instead of an underline; the word-cycle
    grammar is untouched. */
 /* (the hero's sans voice is the base h1 rule since 7 Sep 2026 — the
@@ -2930,6 +3178,10 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
   .display, h1 { font-size: clamp( 25px, 7.3vw, 40px); }
   .hl { display: inline; overflow: visible; }
   .hl > span { display: inline; }
+  /* ...except the positioning deck, which is a separate sentence in a
+     separate voice. Inlined with the headline it read "…company. WE BRING
+     YOU" as one run (found in the hero v5 phone capture, 7 Sep 2026). */
+  .hl--sub, .hl--sub > span { display: block; }
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -3125,8 +3377,8 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
 }
 .qb-no {
   display: inline-block; padding-right: 0.7em;
-  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 350;
-  font-size: 25px; color: var(--plum-300);
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546; font-weight: 400;
+  font-size: 22px; color: var(--plum-300);
   border-right: 2px solid var(--moss-300);
 }
 .qb-ic {
@@ -3180,8 +3432,8 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
 }
 .qb-item em { font-style: normal; text-align: right; flex: 0 0 auto; }
 .qb-item em b {
-  display: block; font-family: var(--serif); font-size-adjust: 0.426; font-weight: 400;
-  font-size: 19px; color: var(--plum-ink); font-variant-numeric: tabular-nums;
+  display: block; font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546; font-weight: 400;
+  font-size: 15px; color: var(--plum-ink); font-variant-numeric: tabular-nums;
   /* pin the price's first baseline to the 15px name's first-line box */
   line-height: 1.04;
 }
@@ -3203,11 +3455,12 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
    no spinner, blank until the client writes the budget */
 .qb-budget b { display: inline-flex; align-items: baseline; gap: 4px; }
 /* the typed figure speaks the SAME price voice as the fixed rows
-   (founder, 5 Sep 2026 evening: 数字字体保持一致) — serif 19px on a
-   paper-form underline, not a boxed foreign control */
+   (founder, 5 Sep 2026 evening: 数字字体保持一致) — a paper-form underline,
+   not a boxed foreign control. Was serif 19px; sans 15px since #21, which is
+   the same rendered size under the pinning (19 x 0.8255 = 15.7). */
 .qb-budget input {
-  width: 4.8rem; font-family: var(--serif); font-size-adjust: 0.426;
-  font-size: 19px; font-weight: 400; font-variant-numeric: tabular-nums;
+  width: 4.8rem; font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546;
+  font-size: 15px; font-weight: 400; font-variant-numeric: tabular-nums;
   line-height: 1.04; text-align: right;
   padding: 0 2px 3px; border: 0; border-radius: 0;
   border-bottom: 2px solid var(--plum-900);
@@ -3470,9 +3723,9 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
 .cos-ph__no::after { /* the phase's own watermark, drawn by counter */
   content: counter(cosph, decimal-leading-zero);
   position: absolute; right: 0; top: 8px; z-index: 0;
-  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 300;
-  font-variation-settings: "opsz" 48, "SOFT" 0, "WONK" 0;
-  font-size: clamp( 96px, 16vw, 128px); line-height: 0.94;
+  font-family: var(--sans); font-size-adjust: 0.546; font-weight: 400;
+  font-variation-settings: normal;
+  font-size: clamp( 76px, 13.21vw, 96px); line-height: 0.94;
   letter-spacing: -0.018em;
   color: color-mix(in srgb, var(--plum) 10%, transparent);
 }
@@ -3487,9 +3740,9 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
   transform: skewX(var(--slash-skew));
 }
 .cos-ph__no {
-  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 350;
-  font-variation-settings: "opsz" 48, "SOFT" 0, "WONK" 0;
-  font-size: 96px; line-height: 0.94; letter-spacing: -0.014em;
+  font-family: var(--sans); font-size-adjust: 0.546; font-weight: 400;
+  font-variation-settings: normal;
+  font-size: 76px; line-height: 0.94; letter-spacing: -0.014em;
   color: var(--plum-300); font-variant-numeric: tabular-nums;
 }
 /* the signal at the frontier: parked at the phase's foot on the spine */
@@ -3649,7 +3902,8 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
 
 
 /* the group ceilings, spoken in the ledger's own grammar — sentence left,
-   Fraunces figure right, mono term beneath (50→90 round, 31 Aug 2026) */
+   figure right, mono term beneath (50→90 round, 31 Aug 2026; the figure was
+   Fraunces until #21, 7 Sep 2026) */
 .qb-cap-line {
   display: flex; justify-content: space-between; align-items: baseline;
   gap: 16px; margin-top: 16px; padding: 12px 12px 0;
@@ -3658,8 +3912,8 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
 .qb-cap-line span { font-size: 15px; color: var(--graph-700); max-width: 40ch; }
 .qb-cap-line em { font-style: normal; text-align: right; flex: 0 0 auto; }
 .qb-cap-line em b {
-  display: block; font-family: var(--serif); font-size-adjust: 0.426;
-  font-weight: 400; font-size: 19px; color: var(--plum-ink);
+  display: block; font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546;
+  font-weight: 400; font-size: 15px; color: var(--plum-ink);
   font-variant-numeric: tabular-nums;
 }
 .qb-cap-line em i {
@@ -3691,7 +3945,7 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
 }
 .tslot__mark {
   position: absolute; top: 0.4rem; left: 1.1rem;
-  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 300; font-size: 56px;
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546; font-weight: 400; font-size: 40px;
   line-height: 0.98; color: var(--moss-300); pointer-events: none;
 }
 .tslot p { font-size: 15px; line-height: 1.62; color: var(--graph-400); max-width: none; }
@@ -3751,8 +4005,8 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
   color: var(--plum-100); margin-top: 4px;
 }
 .qb-line b {
-  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 300;
-  font-size: 19px; color: var(--ivory);
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546; font-weight: 400;
+  font-size: 15px; color: var(--ivory);
   font-variant-numeric: tabular-nums; white-space: nowrap;
 }
 #qb-totals > .qb-total:first-child { border-top: 2px solid var(--plum-700); padding-top: 16px; }
@@ -3764,7 +4018,7 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
 .qb-total b {
   /* 28 → 19, founder 5 Sep 2026: the total sits at the line figures'
      own size ("font 对齐上面的size") — one money voice, one size */
-  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 300; font-size: 19px;
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546; font-weight: 400; font-size: 15px;
   color: var(--ivory); font-variant-numeric: tabular-nums;
 }
 .qb-fine { font-size: 13px; line-height: 1.45; color: var(--plum-100); margin-top: 16px; max-width: none; }
@@ -3880,8 +4134,8 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
     letter-spacing: 0.012em; text-transform: uppercase; color: var(--moss-700);
   }
   .qsheet-trow--total b {
-    font-family: var(--serif); font-size-adjust: 0.426; font-weight: 300;
-    font-size: 22px;
+    font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546; font-weight: 400;
+    font-size: 18px;
   }
   .qsheet-trow--mo { border-top: 1px solid #ccc; margin-top: 8px; padding-top: 8px; }
   .qsheet-foot {
@@ -4527,17 +4781,17 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
 }
 .shead--tight { grid-template-columns: auto minmax(0, 1fr); margin-bottom: 24px; }
 .shead__no {
-  font-family: var(--serif); font-size-adjust: 0.426;
+  font-family: var(--sans); font-size-adjust: 0.546;
   /* the ghost numerals set no optical size at all until 7 Sep 2026 — 96px
      drawn with the axis default. #20's "改 opsz 48" applies here too. */
-  font-variation-settings: "opsz" 48, "SOFT" 0, "WONK" 0;
-  font-weight: 300; font-size: 96px; line-height: 0.94;
+  font-variation-settings: normal;
+  font-weight: 400; font-size: 76px; line-height: 0.94;
   letter-spacing: -0.018em; color: transparent;
   -webkit-text-stroke: 1.5px var(--champ-700);
   transform: translateY(0.06em);
 }
 .shead h2 { margin-bottom: 0; }
-.shead .serif-em { color: var(--plum); }
+.shead .em-mark { color: var(--plum); }
 .shead__note {
   margin: 0; font-size: 15px; line-height: 1.55; color: var(--graph);
   padding-left: 16px; border-left: 3px solid var(--moss-700);
@@ -4564,8 +4818,8 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
 .door__h {
   max-width: none;
   margin: 0; padding: 24px 24px 4px;
-  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 350;
-  font-size: 25px; line-height: 1.2; letter-spacing: -0.01em; color: var(--plum-900);
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546; font-weight: 400;
+  font-size: 22px; line-height: 1.2; letter-spacing: -0.01em; color: var(--plum-900);
 }
 .door__sub {
   /* the site caps bare <p> measure globally; on the plum header that cap
@@ -4598,11 +4852,12 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
 }
 .doors__foot {
   margin: 32px 0 0; max-width: none;
-  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 350;
-  font-size: 25px; line-height: 1.3; letter-spacing: -0.006em;
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546; font-weight: 400;
+  font-size: 22px; line-height: 1.3; letter-spacing: -0.006em;
   color: var(--plum-900);
 }
-.doors__foot em { font-style: italic; color: var(--plum); }
+/* was an italic aside; now the emphasis register — weight and hue, no slant */
+.doors__foot em { font-style: normal; font-weight: 500; color: var(--plum); }
 @media (max-width: 800px) {
   .doors { grid-template-columns: 1fr; }
   .door__vs { justify-self: center; }
@@ -4985,8 +5240,8 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
   gap: var(--sp-4); margin-bottom: var(--sp-4);
 }
 .pkgcard__no {
-  font-family: var(--serif); font-size-adjust: 0.426; font-weight: 300;
-  font-size: 34px; color: var(--moss-300);
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546; font-weight: 400;
+  font-size: 28px; color: var(--moss-300);
   font-variant-numeric: tabular-nums;
 }
 .pkgcard__tag {
@@ -5316,9 +5571,9 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
   background: color-mix(in srgb, var(--plum-700) 24%, var(--plum-ink));
 }
 .tcard__slot i {
-  font-family: var(--serif); font-size-adjust: 0.426; font-style: normal;
-  font-weight: 300; font-size: clamp(40px, 6vw, 72px);
-  font-variation-settings: "opsz" 48, "SOFT" 0, "WONK" 0;
+  font-family: var(--sans); font-size-adjust: 0.546; font-style: normal;
+  font-weight: 400; font-size: clamp(34px, 4.95vw, 61px);
+  font-variation-settings: normal;
   color: var(--plum-300); font-variant-numeric: tabular-nums;
 }
 /* ── the case-study page (founder rebuild, 3 Sep 2026, 55 → 90) ──────
@@ -5376,9 +5631,9 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
   box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--plum-300) 34%, transparent);
 }
 .res__panel--slot i {
-  font-family: var(--serif); font-size-adjust: 0.426; font-style: normal;
-  font-weight: 300; font-size: clamp(40px, 6vw, 72px);
-  font-variation-settings: "opsz" 48, "SOFT" 0, "WONK" 0;
+  font-family: var(--sans); font-size-adjust: 0.546; font-style: normal;
+  font-weight: 400; font-size: clamp(34px, 4.95vw, 61px);
+  font-variation-settings: normal;
   color: var(--plum-300); font-variant-numeric: tabular-nums;
 }
 /* the in-delivery cards carried no bottom anchor, so a two-line name

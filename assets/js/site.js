@@ -127,12 +127,31 @@
         var done = document.createElement("div");
         done.className = "form-done";
         done.setAttribute("role", "status");
-        done.innerHTML =
-          "<h3>Thank you — that’s with us.</h3>" +
-          "<p>A named person replies within one business day. " +
-          "If it’s urgent, email " +
-          "<a class=\"alink\" href=\"mailto:team@semora.com.au\">" +
-          "team@semora.com.au</a> directly.</p>";
+        /* The confirmation is the form's own, not a shared one (audit B3,
+           7 Sep 2026): this handler serves both /contact and the free AI
+           visibility report, and the shared line promised "a reply within
+           one business day" to somebody who had just been promised a
+           REPORT within 24 hours — a different deliverable on a different
+           clock, and a weekend turns one into the other. Each form carries
+           its own two strings in the markup; the contact wording is the
+           fallback, so a new form that forgets them still says something
+           true about a reply. */
+        var h = document.createElement("h3");
+        h.textContent = form.dataset.doneTitle || "Thank you — that’s with us.";
+        var p = document.createElement("p");
+        /* textContent, not innerHTML: the two strings are generator-set, but
+           a confirmation panel is no place to open a markup path */
+        p.textContent = (form.dataset.doneLine ||
+          "A named person replies within one business day.") +
+          " If it’s urgent, email ";
+        var a = document.createElement("a");
+        a.className = "alink";
+        a.href = "mailto:team@semora.com.au";
+        a.textContent = "team@semora.com.au";
+        p.appendChild(a);
+        p.appendChild(document.createTextNode(" directly."));
+        done.appendChild(h);
+        done.appendChild(p);
         form.parentNode.replaceChild(done, form);
         done.scrollIntoView({ behavior: "smooth", block: "center" });
       })

@@ -5700,3 +5700,18 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
     50%      { transform: translateY(-6px); }
   }
 }
+
+/* ── the services menu's "scoped" marker (audit D2, 7 Sep 2026) ─────────
+   A menu row whose price is empty in SERVICE_MENU is, per
+   03_Package_and_Service/05_Service_Scope.md, "not yet priced, not yet
+   sellable" — capability we run inside an engagement. The founder's
+   11 Aug order took prices out of the menu, which left a buyer no way to
+   tell those rows from the twelve they can buy today, so the menu was
+   advertising animation production and an AI automation system beside
+   Proof Check at $1,000.
+
+   Colour only. Same face, same size, same weight as the row it sits in,
+   because the typography parity rule does not admit a new voice for a
+   two-word marker. --graph-400 on ivory measures 4.95:1. */
+.mega__col a .mega-scoped,
+.mega__foot .mega-scoped { color: var(--graph-400); white-space: nowrap; }

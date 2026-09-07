@@ -37,7 +37,7 @@
     },
     {
       "source": "/pricing",
-      "destination": "/quote",
+      "destination": "/quotation",
       "permanent": true
     },
     {

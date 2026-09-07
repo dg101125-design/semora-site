@@ -27,6 +27,85 @@
 
   function fmt(n) { return "$" + n.toLocaleString("en-AU"); }
 
+  /* ── selection persistence (audit B1, 7 Sep 2026) ────────────────────
+     The cart lived in page state alone. Stripe's cancel URL is
+     /quotation?payment=cancelled, so a cancelled checkout came back to an
+     EMPTY builder under a banner reading "Your selection is still here" —
+     true about the charge, false about the page. A refresh lost the
+     selection the same way.
+
+     What is stored: WHICH rows are ticked, the typed quantities, and the
+     client's own budget figures. Never a price. Every figure is recomputed
+     from the page's own data attributes on the way back in, and the charge
+     is still rebuilt server-side from the generated price table, so
+     persistence cannot move a number. sessionStorage, so it lives for the
+     tab and dies with it. A saved row whose label has left the catalogue
+     is dropped, because restore walks the LIVE inputs and looks each one
+     up — never the other way round. */
+  var STORE_KEY = "semora.quotation.v1";
+
+  function keyOf(el) {
+    if (el.dataset.bx) {
+      /* a budget row's selector carries no label of its own — it borrows
+         the amount box's, so the pair round-trips as one row */
+      var lab = el.closest("label");
+      var amt = lab && lab.querySelector("input[data-cmo]");
+      return amt && amt.dataset.label ? "b:" + amt.dataset.label : "";
+    }
+    if (!el.dataset.label) return "";
+    return (el.type === "number" ? "n:" : "c:") + el.dataset.label;
+  }
+
+  function saveState() {
+    var state = { c: {}, n: {} };
+    boxes.forEach(function (el) {
+      var k = keyOf(el);
+      if (k && el.checked) state.c[k] = 1;
+    });
+    qtys.forEach(function (el) {
+      var k = keyOf(el);
+      var v = parseInt(el.value, 10);
+      if (k && v > 0) state.n[k] = v;
+    });
+    try {
+      window.sessionStorage.setItem(STORE_KEY, JSON.stringify(state));
+    } catch (e) { /* private mode, quota, storage off — the builder still works */ }
+  }
+
+  function restoreState() {
+    var raw;
+    try { raw = window.sessionStorage.getItem(STORE_KEY); } catch (e) { return; }
+    if (!raw) return;
+    var state;
+    try { state = JSON.parse(raw); } catch (e) { return; }
+    if (!state || typeof state !== "object") return;
+    var c = state.c && typeof state.c === "object" ? state.c : {};
+    var n = state.n && typeof state.n === "object" ? state.n : {};
+    var has = function (o, k) { return Object.prototype.hasOwnProperty.call(o, k); };
+    qtys.forEach(function (el) {
+      var k = keyOf(el);
+      if (!k || !has(n, k)) return;
+      var v = parseInt(n[k], 10);
+      if (!(v > 0)) return;
+      /* the markup's own max stays the law on the way back in, exactly as
+         it is for typed input */
+      var mx = parseInt(el.max, 10) || 99;
+      el.value = String(Math.min(v, mx));
+    });
+    boxes.forEach(function (el) {
+      var k = keyOf(el);
+      if (!k) return;
+      if (el.dataset.bx) {
+        /* a budget row is selected iff its own figure came back */
+        var lab = el.closest("label");
+        var amt = lab && lab.querySelector("input[data-cmo]");
+        el.checked = !!(amt && (parseInt(amt.value, 10) || 0) > 0);
+        return;
+      }
+      el.checked = has(c, k);
+    });
+  }
+
   function payVisibility() {
     var show = payEnabled && oneOffNow > 0;
     if (payBtn) payBtn.hidden = !show;
@@ -34,6 +113,9 @@
   }
 
   function build() {
+    /* every change path funnels through build(), so this is the one place
+       the saved selection can never fall out of step with the page */
+    saveState();
     var lines = [];
     var oneOff = 0, moMenu = 0, moBudget = 0;
     payable = [];
@@ -180,10 +262,19 @@
       build();
     });
   });
+  /* The source route is READ from the page, not typed (audit B4, 7 Sep
+     2026): the builder moved to /quotation and the mailto still said
+     /quote, which is now Client Onboarding — so every emailed quote named
+     the wrong page and misdirected the follow-up. The literal below is the
+     file:// fallback only. */
+  var SRC_PATH = (function () {
+    var here = (window.location.pathname || "").replace(/\.html$/, "");
+    return /^\/[a-z0-9-]+$/.test(here) ? here : "/quotation";
+  })();
   var mail = document.getElementById("qb-mail");
   if (mail) mail.addEventListener("click", function () {
     mail.href = "mailto:team@semora.com.au?subject=" +
-      encodeURIComponent("Quote request — via semora.com.au/quote") +
+      encodeURIComponent("Quote request — via semora.com.au" + SRC_PATH) +
       "&body=" + encodeURIComponent(quoteText() + "\nMy details:\nName:\nPractice:\nPhone:\n");
   });
   /* the print sheet's date and reference — filled whenever a print
@@ -258,6 +349,12 @@
     });
   }
 
+  /* the selection comes back BEFORE the return-leg banner is written, so
+     the banner can say what is actually on the page rather than what the
+     page hoped (audit B1) */
+  restoreState();
+  build();
+
   /* the return leg: Stripe sends the buyer back with ?payment=…&session_id=….
      "Payment received" prints ONLY after the server has asked Stripe and
      Stripe said paid — a typed URL gets the neutral line (Codex r1: the
@@ -292,10 +389,15 @@
     } else if (pv === "cancelled") {
       status.hidden = false;
       status.className = "qb-paystatus";
+      /* the second sentence is a statement about THIS page, so it is read
+         off this page — storage can be switched off, and a banner that
+         promises a selection that is not there is the defect this fix
+         exists to remove */
       status.textContent = "Payment was cancelled — nothing was charged. " +
-        "Your selection is still here.";
+        (oneOffNow || monthlyNow
+          ? "Your selection is still here."
+          : "Your selection was not carried back — build it again below and " +
+            "the numbers are the same.");
     }
   }
-
-  build();
 })();

@@ -2,7 +2,7 @@
 
 > SEMORA STUDIO is a leading specialist growth company and marketing agency for commercial industry professionals, owner-led businesses, and healthcare and allied-health practices. We combine positioning, digital marketing, AI visibility and conversion systems into clearly defined products with transparent pricing and measurable performance.
 
-Last updated: 7 September 2026. Summary version: https://www.semora.com.au/llms.txt
+Last updated: 8 September 2026. Summary version: https://www.semora.com.au/llms.txt
 
 SEMORA STUDIO PTY LTD, ABN 77 701 244 635. Central House Toorak, Level 3, 489 Toorak Road, Toorak VIC 3142, Melbourne, Australia. team@semora.com.au · (03) 9071 0855. All prices in Australian dollars, excluding GST.
 
@@ -16,7 +16,7 @@ Summary: We bring you the right clients. Melbourne specialist growth company and
 
 Strategy, AI-assisted research, brand craft and personal IP direction. Marketing built into how the business runs, not bolted on the side.
 
-Get your free visibility report Build your quote →
+Get your free visibility report Build your package →
 
 More of the right clients
 
@@ -40,7 +40,7 @@ What we do
 
 Digital marketing for specialist practices: the position, the search system and the enquiry that follows, built to be checked. Every price published.
 
-Build your quote
+Build your package
 
 ### Know where you actually stand
 
@@ -66,7 +66,7 @@ Free visibility report →
 
 One shared condition: your buyers commit only when they can see real clients and real numbers. Stories do not close them.
 
-Nobody competing on lowest price. Narrowness is what lets us know your buyer better than you do.
+Nobody competing on lowest price. Narrowness is what lets us know your buyer better than you do. Outside these three we take a practice only when its buyers must see real outcomes first. The same rule sits on contact.
 
 01 Commercial property The agencies and advisors commercial property runs on.
 
@@ -113,6 +113,8 @@ Wellness practices
 One subscription that watches your market and makes the judgment calls. One execution team that builds what those calls ask for.
 
 Take the subscription alone. Add execution when the work is scoped.
+
+Neither is a fifth product. Both take the four core products below and the monthly services and wrap them as one package. Every part keeps the price published on its own page. See the four products, or price a composition →
 
 01 Subscription · monthly
 
@@ -188,7 +190,7 @@ The most efficient path we run for a client — audit to engine, in the order th
 
 Start where your gap is. Each step stands on its own.
 
-01 Proof Check Diagnostic · baseline · strategy package Your marketing scored, measured, and handed back as a strategy package. Eleven surfaces scored, with evidence Baseline: win rate, fee, founder-hours Three competitors, same instrument The marketing strategy package, ranked One-off $1,000 2 weeks · optional · credited in full · + GST → 02 Commercial Growth Signal The qualification and strategy product Positioning, strategy and the commercial roadmap — decided. Positioning and Strategy Customer, Brand and Position Research Website and Conversion Path Paid Ads, Search and AI Visibility CRM, Analytics and Enquiry Routing Content Creative and Management Measurement Reliability and the Commercial Roadmap From $3,000 4 weeks · core scope + optional modules · + GST → 03 Growth Foundation Build For foundations not yet ready for performance Not simply traffic — the complete journey between enquiry and revenue, built. Positioning and messaging Website or landing-page architecture Sales pipeline and campaign assets Content and search structure Property and professional services, especially Custom 8–10 weeks · every part priced · + GST → 04 Managed Growth Pod One coordinated team · one growth plan One commercial growth plan — not disconnected monthly services from separate departments. Paid acquisition SEO and GEO Content and conversion CRM and lifecycle Commercial reporting Programmatic search and enterprise pods From $3,000 per month · 6-month minimum · + GST →
+01 Proof Check Diagnostic · baseline · the ranked fix list Your marketing scored and measured, and the three fixes worth making first, in order. Eleven surfaces scored, with evidence Baseline: win rate, fee, founder-hours Three competitors, same instrument The three surfaces to fix, ranked, and why One-off $1,000 2 weeks · optional · credited in full · + GST → 02 Commercial Growth Signal The qualification and strategy product Positioning, strategy and the commercial roadmap — decided. Positioning and Strategy Customer, Brand and Position Research Website and Conversion Path Paid Ads, Search and AI Visibility CRM, Analytics and Enquiry Routing Content Creative and Management Measurement Reliability and the Commercial Roadmap From $3,000 4 weeks · core scope + optional modules · + GST → 03 Growth Foundation Build For foundations not yet ready for performance Not simply traffic — the complete journey between enquiry and revenue, built. Positioning and messaging Website or landing-page architecture Sales pipeline and campaign assets Content and search structure Property and professional services, especially Custom 8–10 weeks · every part priced · + GST → 04 Managed Growth Pod One coordinated team · one growth plan One commercial growth plan — not disconnected monthly services from separate departments. Paid acquisition SEO and GEO Content and conversion CRM and lifecycle Commercial reporting Programmatic search and enterprise pods From $3,000 per month · 6-month minimum · + GST →
 
 More signal.Less noise.
 
@@ -200,7 +202,7 @@ Chosen more often, at your fee, with less of you in the room. That is the growth
 
 We review the results with our clients every month, keeping the strategy efficient and the right one for their business.
 
-06 / Case studies
+07 / Case studies
 
 ### How SEMORA helps our clients grow their business.
 
@@ -268,7 +270,7 @@ In delivery: SEO, the brand system and managed Google Ads. The first measured nu
 
 SEOBrand Paid
 
-07 / How we help
+08 / How we help
 
 SEO & GEO System · Audited · the fix-list ranked in order
 
@@ -282,7 +284,7 @@ Google & Meta ads, managed · To $15k/mo of your spend, billed direct
 
 A channel on its own cannot carry a practice. Search and AI answers, email, ads, the enquiry that follows: all of it runs as one system or none of it does, each channel feeding the next, because a lead found by search and lost by the follow-up was never really found at all. So we build the lot. The position, the website, the proposals, the CRM, the monthly engine, connected, measured against one number you choose. Where a channel leaks, we score it, rank the fix and report the movement in revenue. Not impressions.
 
-Get your free visibility report Build your quote →
+Get your free visibility report Build your package →
 
 ---
 
@@ -440,7 +442,7 @@ Monthly · three tiers · 6-month minimum
 
 Add-ons and every price — on the quote builder →
 
-Build your quote — tick what you need
+Build your package — tick what you need
 
 A worked example — hypothetical
 
@@ -708,7 +710,7 @@ The order of work
 
 ### How long does the Proof Check take, and what do you have to do?
 
-Two weeks, and ninety minutes of your time. You give us two things: one 90-minute working session, and your last five proposals. Nothing else is asked of you. Nothing waits on your team.
+Two weeks, and two and a half hours of your time. You give us two things: the 90-minute working session, and your last five proposals. The 60-minute findings session closes it. Nothing else waits on your team.
 
 Then, in order. We score the eleven surfaces against evidence, and we set your baseline: win rate on qualified enquiries, average fee, founder-hours per win. Then your proposals. Your last five, read against the ones that won. Then the three competitors you name, scored on the same instrument, and if that list is the wrong one, if the firm actually taking your work is not on it, we say so and we say why. Last comes the part you actually wanted: the three surfaces to fix, ranked, with the reason each one sits where it does.
 
@@ -850,9 +852,11 @@ Primary focus · Direction you execute · Managed growth with you · The engine 
 
 Who implements · Your team, briefed by us · We build, you approve · We hold it ·
 
-Your time · ~3 hrs / week · ~1 hr / week · ~1 hr / month ·
+Your time · ~3 hrs / week · ~1 hr / week · ~45 min / week ·
 
-Reporting · Quarterly · Monthly · Monthly + quarterly review ·
+Strategy session · Monthly, 60 min · Fortnightly, 60 min · Weekly, 45 min ·
+
+Written report · Quarterly · Monthly · Monthly + quarterly review ·
 
 Response · 2 business days · 1 business day · Same business day ·
 
@@ -962,7 +966,7 @@ Held
 
 ### We hold the engine.
 
-$13,500per month · + GST · ~1 hr of you / month
+$13,500per month · + GST · ~45 min of you / week
 
 Strategy & accountability
 
@@ -1012,6 +1016,8 @@ Proactive improvements — no request needed
 
 Start here →
 
+The review and the report are separate commitments. The table above carries both. Every tier meets on a published cadence, and the written report against the number is quarterly at Directed and monthly from Shared. A monthly score rides free with any à-la-carte monthly service, on any tier.
+
 Quantities are published on purpose. A retainer that says “content as needed” can mean four pieces or none, and by month three nobody in the room can remember what was agreed, so we write the number down and you hold us to it. Fourteen means fourteen. 6-month minimum, then monthly, 60 days' notice. Systems built under Managed Growth Pod are owned by you, like everything else we build. Review and testimonial automation is excluded for regulated health services. AHPRA prohibits it, and knowing that before you ask is part of the service.
 
 The comparison
@@ -1020,7 +1026,7 @@ The comparison
 
 Managed Growth Pod is priced against a hire, not against an agency. Shared comes to $88,800 a year, under a Marketing Specialist on $80k–$95k plus super. Held comes to $162,000, under a Head of Marketing on $172,500 plus super. Both salary figures are from SEEK's published Melbourne marketing salary data, 2026. What a salary also buys is somebody in the building, which a retainer does not, so the fair comparison is the list above against one person's week.
 
-Build your quote Start with the audit →
+Build your package Start with the audit →
 
 ---
 
@@ -1042,11 +1048,11 @@ Three fields, one condition. Commercial industry professionals — commercial pr
 
 Owner-led businesses. Firms with a name on the door and a founder still in the room. The kind whose buyers read everything before they call. Not a startup before its first revenue, and not anyone whose pitch is the cheapest price in the market.
 
-Healthcare and allied health practices. Clinics with more than one practitioner. Health advertising is regulated in Australia. So every clinical claim we write is checked against the National Law and against current Ahpra guidance, we write down what backs it, and it does not go live until you have read it and said yes. That is slower. We keep that record so you can produce it. It is not legal advice, and we will tell you when to get some.
+Healthcare and allied health practices. Clinics with more than one practitioner, and the wellness practices beside them. Health advertising is regulated in Australia. So every clinical claim we write is checked against the National Law and against current Ahpra guidance, we write down what backs it, and it does not go live until you have read it and said yes. That is slower. We keep that record so you can produce it. It is not legal advice, and we will tell you when to get some.
 
 The shared condition: your buyers must need to see real clients and real outcomes before they commit. That rules out plenty of good businesses, and we would rather say so on the first call than three months into a retainer you are already paying for. So here it is. If a good story on its own wins your market, we are the wrong firm.
 
-Who we are not for: startups pre-revenue, and anyone competing on lowest price. Narrowness is what lets us know your buyer better than you do.
+Who we are not for: startups pre-revenue, and anyone competing on lowest price. Narrowness is what lets us know your buyer better than you do. Outside the three fields we take a practice only when the shared condition above holds: its buyers must need to see real clients and real outcomes before they commit.
 
 02 / What we publish that others do not
 
@@ -1084,11 +1090,11 @@ The eleven surfaces, free and ungated — score yourself → before you speak to
 
 Yes — new, and we say so. SEMORA STUDIO works from Central House Toorak, Level 3, 489 Toorak Road, Toorak VIC 3142, Melbourne, with Australian practices. The company began operating in 2026. There is no decade of case studies here and we will not pretend there is. What we publish instead is the thinking, the prices and our own score, zeros included.
 
-How the work gets done: six named people, listed on the team page, with the work split by function. Research and production are AI-assisted, and we say so rather than let you picture a floor of staff who are not there. Nothing leaves until a person has read it and signed it off.
+How the work gets done: the people listed on the team page, with the work split by function. Research and production are AI-assisted, and we say so rather than let you picture a floor of staff who are not there. Nothing leaves until a person has read it and signed it off.
 
-How we handle claims: named, dated, sourced and caveated. A client quote is published with their name on it and their written yes, or labelled as a sample until a real one replaces it. A claim without a source, a date or a starting number does not ship.
+How we handle claims: named, dated, sourced and caveated. A client quote is published with their name on it and their written yes, or labelled as a sample until a real one replaces it. A claim without a source, a date or a starting number does not ship. Our board is the exception. The cards print the change without the period behind it, so ask and we will take you through any of them.
 
-Legal entitySEMORA STUDIO PTY LTD · ABN 77 701 244 635 AddressCentral House Toorak, Level 3, 489 Toorak Road, Toorak VIC 3142 Began operating2026 · new, and we say so The teamSix named people · listed, by function → Published resultsFour client results, on the homepage · the first measured 90-day result publishes 8 November 2026 Our own score24 / 44 at launch · zeros included →
+Legal entitySEMORA STUDIO PTY LTD · ABN 77 701 244 635 AddressCentral House Toorak, Level 3, 489 Toorak Road, Toorak VIC 3142 Began operating2026 · new, and we say so The teamNamed, one discipline each · listed, by function → Published resultsFour client results, on the homepage · the first measured 90-day result publishes 8 November 2026 Our own score24 / 44 at launch · zeros included →
 
 Start
 
@@ -1096,7 +1102,7 @@ Start
 
 Price it yourself. Each service is listed with its fee and how long it takes. Or have the gap measured first with the Proof Check: $1,000 + GST, optional, credited in full within 90 days.
 
-Build your quote Tell us what you need built →
+Build your package Tell us what you need built →
 
 ---
 
@@ -1338,11 +1344,13 @@ Ref
 
 ServicePrice
 
-Pay Now Email Quote Download PDF
+Pay Now Email Quote Print / Save PDF
 
 Card payment covers the one-off items, + 10% GST, through Stripe. Monthly items start by contract, with the same published numbers.
 
 We will help you choose the right service for your business marketing.
+
+Every priced line here is the published price, and it is the same number for every client, on this page and in the engagement agreement. The rows marked client budget are yours. We never trim them and we never count them as our fee. Scope is written into the agreement before anything starts.
 
 Issued by the SEMORA STUDIO quotation system from the prices published at semora.com.au on the date above. GST applies on purchase. A quotation may change with the project’s scope and conditions; the final figure is confirmed in the engagement agreement.
 
@@ -1554,7 +1562,7 @@ Who does the work
 
 Varies significantly by size and specialisation
 
-A named team of six, listed on the team page. Research and production are AI-assisted, and we say so. Nothing ships until a person has signed it off
+A named team, listed on the team page. Research and production are AI-assisted, and we say so. Nothing ships until a person has signed it off
 
 Measurement
 
@@ -1608,7 +1616,7 @@ The standard we hold
 
 ### Sourced. Dated. Baselined. Attributable.
 
-Every claim passes all four tests, and every case study names what else changed in the period — the caveat is what separates evidence from advertising.
+Every claim passes all four tests before it ships, and every case study names what else changed in the period. The caveat is what separates evidence from advertising. On the board the card carries the change and we carry the rest. Ask for any of it.
 
 Start with the audit
 

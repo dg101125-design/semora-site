@@ -6,6 +6,15 @@ export function escapeHtml(s) {
       '"': '&quot;', "'": '&#39;' }[c]));
 }
 
+/* The deadline the visitor was actually given, keyed off the
+   form's own `want` field. The free report form posts
+   "Free AI visibility report"; everything else is an enquiry. */
+export function promise(d) {
+  return /ai visibility report/i.test(String((d && d.want) || ''))
+    ? 'Your free AI visibility report lands in your inbox within 24 hours.'
+    : 'A named person replies within one business day.';
+}
+
 export function autoReplyHtml(d) {
   const e = escapeHtml;
   return `<!doctype html>
@@ -34,7 +43,7 @@ export function autoReplyHtml(d) {
 </head>
 <body style="margin:0;padding:0;background:#F0E8EC;-webkit-font-smoothing:antialiased;">
 <div style="display:none;font-size:1px;color:#F0E8EC;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;">
-  We have your enquiry. A named person replies within one business day.
+  We have your enquiry. ${e(promise(d))}
   &#8203;&#847;&#8203;&#847;&#8203;&#847;&#8203;&#847;&#8203;&#847;&#8203;&#847;
 </div>
 
@@ -67,7 +76,7 @@ export function autoReplyHtml(d) {
         person, not a queue.
       </p>
       <p style="margin:0 0 18px;font-family:'Instrument Sans',-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:16px;line-height:1.62;color:#424242;">
-        <strong style="color:#2E1C29;">You will hear back within one business day.</strong>
+        <strong style="color:#2E1C29;">${e(promise(d))}</strong>
         Response speed is one of the eleven surfaces we score, and we are
         scored on it too — so that is a commitment, not a courtesy.
       </p>

@@ -255,3 +255,28 @@
   }, { threshold: 0.4 });
   ns.forEach(function (el) { io.observe(el); });
 })();
+
+
+/* HERO STAGE v6 pointer parallax — progressive enhancement only (8 Sep 2026).
+   The stage is complete without this: every plane reads --mx/--my, which
+   default to 0. This writes two numbers; CSS transitions on the registered
+   properties do the easing, so there is no per-frame script. Off for coarse
+   pointers and for prefers-reduced-motion. */
+(function () {
+  if (!('CSS' in window) || !CSS.registerProperty) return;
+  if (!matchMedia('(pointer: fine)').matches) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var stage = document.querySelector('.hstage');
+  if (!stage) return;
+  var raf = 0, mx = 0, my = 0;
+  function write () { raf = 0;
+    stage.style.setProperty('--mx', mx.toFixed(3));
+    stage.style.setProperty('--my', my.toFixed(3)); }
+  window.addEventListener('pointermove', function (e) {
+    mx = Math.max(-1, Math.min(1, (e.clientX / window.innerWidth  - 0.5) * 2));
+    my = Math.max(-1, Math.min(1, (e.clientY / window.innerHeight - 0.5) * 2));
+    if (!raf) raf = requestAnimationFrame(write);
+  }, { passive: true });
+  document.addEventListener('pointerleave', function () { mx = 0; my = 0;
+    if (!raf) raf = requestAnimationFrame(write); });
+})();

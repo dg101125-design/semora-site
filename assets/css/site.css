@@ -1496,82 +1496,113 @@ a.soc:hover { transform: translateY(-2px); }
                place-items: center; }
 .hero__stage > * { grid-area: 1 / 1; }
 
-/* ── the glass sphere (founder override of R9, 7 Sep 2026, #23) ──────────
-   R9 bans gradient mesh and glow; the founder ruled the other way for this
-   one object, having seen the argument. Every stop is derived from a palette
-   token — plum light through plum glass on the plum field — so the object is
-   ours rather than the generic bloom the rule was written against. One
-   specular highlight, one terminator, no colour outside the pack, and no
-   light spilling past the sphere's own edge. Static: the motion is the
-   orbit, not the glass. */
-.hero__sphere {
-  /* 520 is a stage cap, not a type or spacing step: the aperture, the glass
-     and the orbit share one number so the three stay concentric at every
-     width. It replaces the 640/420 clamp the aperture carried before. */
-  width: min(100%, 520px); aspect-ratio: 1; border-radius: 50%;
-  pointer-events: none;
-  background:
-    /* the specular — a single light source, upper left, as the hero's own
-       radial wash already implies */
-    radial-gradient(circle at 30% 26%,
-      color-mix(in srgb, var(--white) 20%, transparent) 0%,
-      color-mix(in srgb, var(--white) 6%, transparent) 26%, transparent 46%),
-    /* the far wall of the glass, catching plum */
-    radial-gradient(circle at 72% 76%,
-      color-mix(in srgb, var(--plum) 46%, transparent) 0%, transparent 58%),
-    /* the body: lighter at the centre, falling to the field at the rim */
-    radial-gradient(circle at 50% 48%,
-      color-mix(in srgb, var(--plum-700) 34%, transparent) 0%,
-      color-mix(in srgb, var(--plum-ink) 46%, transparent) 72%,
-      color-mix(in srgb, var(--plum-ink) 66%, transparent) 100%);
-  box-shadow:
-    inset 0 0 0 1px color-mix(in srgb, var(--white) 10%, transparent),
-    inset 0 24px 64px color-mix(in srgb, var(--white) 5%, transparent);
+/* ── HERO STAGE v6: depth (founder, 8 Sep 2026 — v5 scored 30/100, "立体感 ·
+   原创设计 · 动画效果 · 3D 立体效果", target 90; R9 override #23 confirmed and
+   widened the same day: glow, bloom, specular, rim light, palette only).
+   Four planes stacked in one 520 cell, back to front — FAR arcs and halo ·
+   the BACK copy of the light · MID: glass body, glass-inner effects, the
+   locked MARK and the surface, on ONE transform · the FRONT copy of the
+   light. The light is one comet drawn twice: each copy is clipped to its
+   half of the tilted orbit, so it genuinely goes behind the glass and comes
+   out in front. One registered number, --p, is the whole animation: both
+   copies, the through-glow, the glint, the rim catch and the surface
+   reflection all read it, so nothing can drift out of step. The parallax
+   factors differ per plane — that difference IS the depth — and the pointer
+   only ever writes --mx/--my (site.js, progressive enhancement); the page is
+   complete with them at 0. 520 is the shared stage cap (see the sphere note
+   of 7 Sep): mark, glass and orbit share one box so they stay concentric.
+   Geometry below is SVG user units and stroke widths, not type or spacing
+   steps; every colour is a token or a color-mix of one. */
+@property --p  { syntax: "<number>"; inherits: true; initial-value: 30; }
+@property --mx { syntax: "<number>"; inherits: true; initial-value: 0; }
+@property --my { syntax: "<number>"; inherits: true; initial-value: 0; }
+.hstage {
+  position: relative; width: min(100%, 520px); aspect-ratio: 1;
+  display: grid; place-items: center; isolation: isolate; pointer-events: none;
+  --p: 30;                                     /* rest: light in front, lower right */
+  --ease-stage: cubic-bezier(0.22, 0.61, 0.21, 1);
+  transition: --mx 900ms var(--ease-stage), --my 900ms var(--ease-stage);
 }
-
-/* ── the orbiting signal (founder, 7 Sep 2026 — reference 02's animated
-   right side). The MARK is untouched: R10.3 forbids rotating a static
-   placement, so every moving part below is a separate ellipse and dot.
-   Tilted -20°, the slash's own shear, so the orbit sits on the brand axis. */
-.hero__orbit { width: min(100%, 520px); height: auto; pointer-events: none;
-               overflow: visible; }
-/* stacking inside the stage cell: glass behind, mark, signal in front */
-.hero__sphere { z-index: 0; } .hero__ap { z-index: 1; } .hero__orbit { z-index: 2; }
-.orb__tilt { transform: rotate(-20deg); transform-origin: 500px 540px; }
-.orb__ring { fill: none; stroke: var(--moss-300); stroke-width: 1.5;
-             opacity: 0.22; }
-.orb__ring--in { stroke: var(--plum-300); opacity: 0.30; }
-.orb__sig { fill: var(--moss-300);
-            offset-path: path("M 134,540 a 366,150 0 1,0 732,0 a 366,150 0 1,0 -732,0");
-            offset-rotate: 0deg; offset-distance: 22%; }
-.orb__sig--in { fill: var(--plum-300);
-            offset-path: path("M 238,540 a 262,96 0 1,0 524,0 a 262,96 0 1,0 -524,0");
-            offset-distance: 68%; }
+.hstage > * { grid-area: 1 / 1; }
+.hs-defs { position: absolute; width: 0; height: 0; }
+.hs-pl { width: 100%; height: 100%; pointer-events: none; }
+svg.hs-pl { overflow: visible; display: block; }
+/* far slides WITH the pointer, near slides against it; near never departs
+   mid by more than ~7px, so the orbit's crossover points stay outside the rim */
+.hs-pl--far  { z-index: 0; transform: translate(calc(var(--mx) * 12px), calc(var(--my) * 9px)); }
+.hs-pl--back { z-index: 1; transform: translate(calc(var(--mx) * -8px), calc(var(--my) * -6px)); }
+.hs-pl--mid  { z-index: 2; transform: translate(calc(var(--mx) * -2px), calc(var(--my) * -1.5px)); }
+.hs-pl--front{ z-index: 3; transform: translate(calc(var(--mx) * -8px), calc(var(--my) * -6px)); }
+.hs-pl--mid { position: relative; display: grid; place-items: center; }
+.hs-pl--mid > * { grid-area: 1 / 1; width: 100%; height: 100%; }
+.hs-pl--mid svg { overflow: visible; display: block; }
+.hs-glass { will-change: transform; }        /* repaints every frame: its own layer */
+.hs-pl--far { position: relative; }
+.hs-far__arcs, .hs-far__under {
+  position: absolute; left: -36.5%; top: -36.5%; width: 173%; height: 173%; overflow: visible;
+  /* the site caps every svg at max-width:100% — that cap clipped this plane to
+     the stage's own width and the depth arcs vanished (found by measuring the
+     built page: 386px wide, 668px tall). This plane is MEANT to overhang. */
+  max-width: none;
+}
+.hs-far__arcs { filter: blur(22px); }
+.hs-far__arcs path { fill: none; stroke-linecap: butt; }
+/* the demo read these at 10/13/7% on a near-ink ground; the hero's ground is
+   52% plum over ink, and at those values the arcs washed out — the depth the
+   founder asked for was there and invisible. Lifted to read on OUR ground. */
+.hs-far__a1 { stroke: color-mix(in srgb, var(--ivory) 18%, transparent); stroke-width: 44; }
+.hs-far__a2 { stroke: color-mix(in srgb, var(--plum-300) 24%, transparent); stroke-width: 58; }
+.hs-far__a3 { stroke: color-mix(in srgb, var(--ivory) 12%, transparent); stroke-width: 24; }
+/* the light: one ellipse rx 372 · ry 146, tilted -20° (the slash's shear);
+   pathLength=100 so every dash is a percentage of one lap */
+.hs-ring { fill: none; stroke: var(--plum-300); stroke-width: 1; opacity: .13; }
+.hs-tl { fill: none; stroke-linecap: round;
+         stroke-dashoffset: calc((var(--len) - var(--p)) * 1px); }
+.hs-t0 { stroke: var(--moss-300); stroke-width: 30; opacity: .05; }
+.hs-t0b{ stroke: var(--moss-300); stroke-width: 15; opacity: .08; }
+.hs-t1 { stroke: var(--moss-300); stroke-width: 1.0; opacity: .14; }
+.hs-t2 { stroke: var(--moss-300); stroke-width: 1.6; opacity: .22; }
+.hs-t3 { stroke: var(--moss-300); stroke-width: 2.4; opacity: .34; }
+.hs-t4 { stroke: var(--moss-300); stroke-width: 3.4; opacity: .50; }
+.hs-t5 { stroke: var(--moss-300); stroke-width: 4.6; opacity: .72; }
+.hs-t6 { stroke: var(--ivory);    stroke-width: 5.4; opacity: .60; }
+.hs-mover {
+  offset-path: path("M -21,351 a 372,146 0 1,0 744,0 a 372,146 0 1,0 -744,0");
+  offset-rotate: 0deg; offset-distance: calc(var(--p) * 1%);
+}
+/* nearer = bigger and brighter: sin() is +1 at the front of the orbit (p=25), -1 at the back (p=75) */
+.hs-head {
+  transform-box: fill-box; transform-origin: center;
+  scale: calc(0.84 + 0.16 * sin(var(--p) * 3.6deg));
+  opacity: calc(0.80 + 0.20 * sin(var(--p) * 3.6deg));
+}
+/* the sphere */
+.hs-sph__base { fill: var(--plum-ink); }
+.hs-sph__innerRim     { fill: none; stroke: url(#hs-gInnerRim); stroke-width: 1; }
+.hs-sph__innerRimSoft { fill: none; stroke: url(#hs-gInnerRim); stroke-width: 6; opacity: .18; }
+.hs-sur__rim     { fill: none; stroke: url(#hs-gRim); stroke-width: 1.7; }
+.hs-sur__rimSoft { fill: none; stroke: url(#hs-gRim); stroke-width: 7; opacity: .32; }
+.hs-sur__rimHalo { fill: none; stroke: url(#hs-gRim); stroke-width: 18; opacity: .10; }
+.hs-sur__shell   { fill: none; stroke: url(#hs-gRim); stroke-width: 1; opacity: .38; }
+/* motion: the lap is the clock; everything else is a slow drift */
 @media (prefers-reduced-motion: no-preference) {
-  .orb__sig    { animation: orb-run 19s linear infinite; }
-  .orb__sig--in{ animation: orb-run-in 13s linear infinite reverse; }
-  .orb__ring   { animation: orb-breathe 19s ease-in-out infinite; }
-  /* Each signal needs its OWN keyframe, because a bare `to` takes the
-     element's own offset-distance as its `from`: the inner dot starts at
-     68%, so sharing the outer's `to: 122%` gave it a 54-point range — it
-     travelled half the ellipse and snapped back, every 13s, for as long as
-     anyone watched (found in review, 7 Sep 2026). Each pair is now exactly
-     100 points apart, which is one full lap. */
-  @keyframes orb-run     { from { offset-distance:  22%; }
-                           to   { offset-distance: 122%; } }
-  @keyframes orb-run-in  { from { offset-distance:  68%; }
-                           to   { offset-distance: 168%; } }
-  @keyframes orb-breathe { 0%, 100% { opacity: 0.22; } 50% { opacity: 0.38; } }
+  .hstage      { opacity: 0;
+                 animation-name: hs-lap, hs-arrive; animation-duration: 16s, 1100ms;
+                 animation-timing-function: linear, var(--ease-stage);
+                 animation-delay: 0s, 150ms; animation-iteration-count: infinite, 1;
+                 animation-fill-mode: none, forwards; }
+  .hs-pl--far  { animation: hs-drift 26s ease-in-out infinite alternate; }
+  .hs-pl--mid  { animation: hs-bob 9s ease-in-out infinite; }
+  .hs-pl--back, .hs-pl--front { animation: hs-bob-near 9s ease-in-out -2.2s infinite; }
+  @keyframes hs-lap      { from { --p: 0; } to { --p: 100; } }
+  @keyframes hs-arrive   { to { opacity: 1; } }
+  @keyframes hs-drift    { from { translate: -8px 5px; scale: 1; } to { translate: 8px -5px; scale: 1.03; } }
+  @keyframes hs-bob      { 0%, 100% { translate: 0 3px; } 50% { translate: 0 -3px; } }
+  @keyframes hs-bob-near { 0%, 100% { translate: 0 -1.5px; } 50% { translate: 0 1.5px; } }
 }
-.hero__ap {
-  /* was absolute and half off the right edge; it is the hero's one image and
-     now stands in its own column at full width */
-  position: relative; z-index: 0; pointer-events: none;
-  width: min(100%, 520px); height: auto;
-}
-@media (min-width: 861px) and (max-width: 899px) {
-  .hero__ap, .hero__sphere, .hero__orbit { width: min(64%, 320px); }
-}
+@media (prefers-reduced-motion: reduce) { .hstage { --p: 30; opacity: 1; } }
+.hero__ap { position: relative; pointer-events: none; width: 100%; height: auto; }
+@media (min-width: 861px) and (max-width: 899px) { .hstage { width: min(64%, 320px); } }
 
 /* the rail: the practice areas, set as the system voice reads them */
 /* the rail lives in the MARGIN, not in a column — the reference sets it

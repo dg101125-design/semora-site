@@ -1549,19 +1549,21 @@ svg.hs-pl { overflow: visible; display: block; }
 .hs-glass { z-index: 1; will-change: transform; }   /* repaints every frame: its own layer */
 .hs-sur   { z-index: 2; }
 .hs-pl--mid > .hero__ap { z-index: 3; }
-/* The two half-clips meet on the orbit's long axis. Anything clipped to one
-   half is faded to nothing at the two crossovers (p = 0 and 50), so the cut
-   line is never painted — the review measured a straight-edged step of up to
-   66/255 across the glass where the haze ended. Behind = p 50→100. */
+/* Nothing inside the glass is clipped to a half of the orbit. Each effect on
+   the body is a smooth disc, and whether the light is behind or in front is
+   said by its opacity alone, on the same number that moves the light: zero on
+   the wrong side, full at the deepest point. (An effect clipped to one half
+   cut a straight edge across the glass wherever it straddled the axis —
+   measured up to 66/255 in the demo, 25 in the first build.) Behind = p 50→100. */
 .hs-gl--through { opacity: clamp(0, calc(-1 * sin(var(--p) * 3.6deg)), 1); }
 .hs-gl--glint   { opacity: clamp(0, calc(-0.8 * sin(var(--p) * 3.6deg)), 0.8); }
 .hs-gl--refl    { opacity: clamp(0, calc(0.55 * sin(var(--p) * 3.6deg)), 0.55); }
 /* The front light's bloom is drawn twice: outside the sphere's silhouette at
    full strength (it meets the back copy's bloom there, so the handover is
-   seamless), and OVER the glass at a strength that follows how far in front
-   the light is — nothing at the two crossovers, full at p = 25. So the glass
-   eclipses the glow at its rim, the way a ball eclipses a light passing
-   behind it, and no straight cut is ever painted across the body. */
+   seamless), and OVER the glass — the disc alone clips it — at a strength
+   that follows how far in front the light is: nothing at the two crossovers,
+   full at p = 25. So the glass eclipses the glow at its rim, the way a ball
+   eclipses a light passing behind it. */
 .hs-gl--over    { opacity: clamp(0, sin(var(--p) * 3.6deg), 1); }
 .hs-pl--far { position: relative; }
 .hs-far__arcs, .hs-far__under {
@@ -1613,12 +1615,13 @@ svg.hs-pl { overflow: visible; display: block; }
 /* motion: the lap is the clock; everything else is a slow drift */
 @media (prefers-reduced-motion: no-preference) {
   .hstage      { opacity: 0; animation: hs-arrive 1100ms var(--ease-stage) 150ms forwards; }
-  /* The lap runs only where sin() is understood. The crossover fades above
-     are written in sin(); an engine that drops them would run the lap with
-     the haze and the bloom at full strength and paint the clip line back.
-     Without sin() the stage is the rest frame, --p 30, the light parked in
-     front — the same frame prefers-reduced-motion shows — and the markup's
-     own opacity attributes carry that frame's values. */
+  /* The lap runs only where sin() is understood. The four opacity rules
+     above are written in sin(); an engine that drops them would run the lap
+     with the haze full while the light is in front and the bloom full while
+     it is behind — lighting that contradicts the light's position. Without
+     sin() the stage is the rest frame, --p 30, the light parked in front —
+     the same frame prefers-reduced-motion shows — and the markup's own
+     opacity attributes carry that frame's values. */
   @supports (opacity: calc(sin(1deg))) {
     .hstage    { animation-name: hs-lap, hs-arrive; animation-duration: 16s, 1100ms;
                  animation-timing-function: linear, var(--ease-stage);

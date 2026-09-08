@@ -1542,7 +1542,9 @@ svg.hs-pl { overflow: visible; display: block; }
    dot and the through-haze over the arcs (found by the design review, by
    pixel). Grid items honour z-index without position, so the order is
    written down: sphere, the light's glass effects, the surface, and the
-   mark LAST — nothing in the stage, moving or still, is ever painted on it. */
+   mark LAST — nothing in the MID plane, moving or still, is ever painted on
+   it. (The front plane sits above the whole mid plane and the light crosses
+   the mark on its near pass — that is the occlusion, by design.) */
 .hs-sph   { z-index: 0; }
 .hs-glass { z-index: 1; will-change: transform; }   /* repaints every frame: its own layer */
 .hs-sur   { z-index: 2; }
@@ -1610,11 +1612,19 @@ svg.hs-pl { overflow: visible; display: block; }
 .hs-sur__shell   { fill: none; stroke: url(#hs-gRim); stroke-width: 1; opacity: .38; }
 /* motion: the lap is the clock; everything else is a slow drift */
 @media (prefers-reduced-motion: no-preference) {
-  .hstage      { opacity: 0;
-                 animation-name: hs-lap, hs-arrive; animation-duration: 16s, 1100ms;
+  .hstage      { opacity: 0; animation: hs-arrive 1100ms var(--ease-stage) 150ms forwards; }
+  /* The lap runs only where sin() is understood. The crossover fades above
+     are written in sin(); an engine that drops them would run the lap with
+     the haze and the bloom at full strength and paint the clip line back.
+     Without sin() the stage is the rest frame, --p 30, the light parked in
+     front — the same frame prefers-reduced-motion shows — and the markup's
+     own opacity attributes carry that frame's values. */
+  @supports (opacity: calc(sin(1deg))) {
+    .hstage    { animation-name: hs-lap, hs-arrive; animation-duration: 16s, 1100ms;
                  animation-timing-function: linear, var(--ease-stage);
                  animation-delay: 0s, 150ms; animation-iteration-count: infinite, 1;
                  animation-fill-mode: none, forwards; }
+  }
   .hs-pl--far  { animation: hs-drift 26s ease-in-out infinite alternate; }
   .hs-pl--mid  { animation: hs-bob 9s ease-in-out infinite; }
   .hs-pl--back, .hs-pl--front { animation: hs-bob-near 9s ease-in-out -2.2s infinite; }

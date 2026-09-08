@@ -68,7 +68,7 @@ export function autoReplyHtml(d) {
       <p style="margin:0 0 10px;font-family:'Fragment Mono',Menlo,Consolas,monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#8B6B7E;">
         Your enquiry /
       </p>
-      <h1 class="h1" style="margin:0 0 20px;font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:36px;line-height:1.15;letter-spacing:-0.01em;color:#2E1C29;">
+      <h1 class="h1" style="margin:0 0 20px;font-family:Arial,Helvetica,sans-serif;font-weight:600;font-size:34px;line-height:1.14;letter-spacing:-0.006em;text-transform:uppercase;color:#2E1C29;">
         Thank you — that’s with us.
       </h1>
       <p style="margin:0 0 18px;font-family:'Instrument Sans',-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:16px;line-height:1.62;color:#424242;">

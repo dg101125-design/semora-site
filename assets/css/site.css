@@ -1645,7 +1645,14 @@ svg.hs-pl { overflow: visible; display: block; }
   /* The lap runs only where sin() (the fades) and hypot() (light B's rim
      catch) are understood; elsewhere the stage is the rest frame, --p 30,
      and every in-glass effect carries that frame's opacity and position as
-     a markup attribute. */
+     a markup attribute.
+     One engine band is not covered by this test and cannot be, because
+     @supports cannot ask about an at-rule here: an engine with the maths but
+     WITHOUT @property registration (Firefox 118–127) enters the gate and
+     steps --p discretely instead of interpolating it — a lap in stages
+     rather than a glide. Not broken, and not worth a JS test on a
+     progressive enhancement; recorded in the brief rather than implied
+     away (Codex, 9 Sep 2026). */
   @supports (opacity: calc(sin(1deg))) and (opacity: calc(hypot(3, 4) / 5)) {
     /* The lap runs on the three elements that move — the two light planes
        and the glass layer — not on the stage. One keyframe set, one
@@ -1748,13 +1755,22 @@ svg.hs-pl { overflow: visible; display: block; }
   .hero__rail-list li:nth-child(3), .hero__rail-list li:nth-child(3)::before, .hero__rail-list li:nth-child(3)::after { animation-delay: -6s; }
   .hero__rail-list li:nth-child(4), .hero__rail-list li:nth-child(4)::before, .hero__rail-list li:nth-child(4)::after { animation-delay: -4s; }
   .hero__rail-list li:nth-child(5), .hero__rail-list li:nth-child(5)::before, .hero__rail-list li:nth-child(5)::after { animation-delay: -2s; }
-  @keyframes rail-lit  {  0% { opacity: .62 }  4%, 16% { opacity: 1 } 20%, 100% { opacity: .62 } }
-  @keyframes rail-ix   {  0% { color: var(--plum-300) }  4%, 16% { color: var(--moss-300) }
-                         20%, 100% { color: var(--plum-300) } }
-  @keyframes rail-rule {  0% { transform: scaleX(0); transform-origin: left center }
-                          5%, 16% { transform: scaleX(1); transform-origin: left center }
-                         16.01% { transform: scaleX(1); transform-origin: right center }
-                         21%, 100% { transform: scaleX(0); transform-origin: right center } }
+  /* Each item owns 20% of the lap and the next one's 0% IS this one's 20%.
+     So the light CROSSES OVER: this item fades out from 20% to 22% while the
+     next fades in over its own 0–2%, and there is never an instant with no
+     item lit (Codex found the gap). The rule is stricter: it must be fully
+     out by 19%, before the next one starts drawing at 20%, so two rules are
+     never on screen together. */
+  @keyframes rail-lit  {  0% { opacity: .62 }   2%, 20% { opacity: 1 } 22%, 100% { opacity: .62 } }
+  @keyframes rail-ix   {  0% { color: var(--plum-300) }   2%, 20% { color: var(--moss-300) }
+                         22%, 100% { color: var(--plum-300) } }
+  /* the rule waits for the cross-fade to finish and then draws under the item
+     that HAS the signal — starting it at 0% put it under the item still
+     coming up while the last one was fractionally brighter */
+  @keyframes rail-rule {  0%, 2% { transform: scaleX(0); transform-origin: left center }
+                          6%, 15% { transform: scaleX(1); transform-origin: left center }
+                         15.01% { transform: scaleX(1); transform-origin: right center }
+                         19%, 100% { transform: scaleX(0); transform-origin: right center } }
   /* the rail rests when the hero does — the same observer the stage uses */
   .hstage.is-off ~ * .hero__rail-list li,
   .hero:has(.hstage.is-off) .hero__rail-list li,

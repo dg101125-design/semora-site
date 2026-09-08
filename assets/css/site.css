@@ -1536,7 +1536,31 @@ svg.hs-pl { overflow: visible; display: block; }
 .hs-pl--mid { position: relative; display: grid; place-items: center; }
 .hs-pl--mid > * { grid-area: 1 / 1; width: 100%; height: 100%; }
 .hs-pl--mid svg { overflow: visible; display: block; }
-.hs-glass { will-change: transform; }        /* repaints every frame: its own layer */
+/* paint order is DECLARED. will-change makes the glass layer a stacking
+   context, and a stacking context paints after its plain siblings whatever
+   the source order says — in the demo that put the moving glint ON the acid
+   dot and the through-haze over the arcs (found by the design review, by
+   pixel). Grid items honour z-index without position, so the order is
+   written down: sphere, the light's glass effects, the surface, and the
+   mark LAST — nothing in the stage, moving or still, is ever painted on it. */
+.hs-sph   { z-index: 0; }
+.hs-glass { z-index: 1; will-change: transform; }   /* repaints every frame: its own layer */
+.hs-sur   { z-index: 2; }
+.hs-pl--mid > .hero__ap { z-index: 3; }
+/* The two half-clips meet on the orbit's long axis. Anything clipped to one
+   half is faded to nothing at the two crossovers (p = 0 and 50), so the cut
+   line is never painted — the review measured a straight-edged step of up to
+   66/255 across the glass where the haze ended. Behind = p 50→100. */
+.hs-gl--through { opacity: clamp(0, calc(-1 * sin(var(--p) * 3.6deg)), 1); }
+.hs-gl--glint   { opacity: clamp(0, calc(-0.8 * sin(var(--p) * 3.6deg)), 0.8); }
+.hs-gl--refl    { opacity: clamp(0, calc(0.55 * sin(var(--p) * 3.6deg)), 0.55); }
+/* The front light's bloom is drawn twice: outside the sphere's silhouette at
+   full strength (it meets the back copy's bloom there, so the handover is
+   seamless), and OVER the glass at a strength that follows how far in front
+   the light is — nothing at the two crossovers, full at p = 25. So the glass
+   eclipses the glow at its rim, the way a ball eclipses a light passing
+   behind it, and no straight cut is ever painted across the body. */
+.hs-gl--over    { opacity: clamp(0, sin(var(--p) * 3.6deg), 1); }
 .hs-pl--far { position: relative; }
 .hs-far__arcs, .hs-far__under {
   position: absolute; left: -36.5%; top: -36.5%; width: 173%; height: 173%; overflow: visible;
@@ -1600,6 +1624,9 @@ svg.hs-pl { overflow: visible; display: block; }
   @keyframes hs-bob      { 0%, 100% { translate: 0 3px; } 50% { translate: 0 -3px; } }
   @keyframes hs-bob-near { 0%, 100% { translate: 0 -1.5px; } 50% { translate: 0 1.5px; } }
 }
+/* off-screen the clock stops (site.js toggles the class from an
+   IntersectionObserver); a paused stage costs nothing below the fold */
+.hstage.is-off, .hstage.is-off .hs-pl { animation-play-state: paused; }
 @media (prefers-reduced-motion: reduce) { .hstage { --p: 30; opacity: 1; } }
 .hero__ap { position: relative; pointer-events: none; width: 100%; height: auto; }
 @media (min-width: 861px) and (max-width: 899px) { .hstage { width: min(64%, 320px); } }

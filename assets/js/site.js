@@ -280,3 +280,18 @@
   document.addEventListener('pointerleave', function () { mx = 0; my = 0;
     if (!raf) raf = requestAnimationFrame(write); });
 })();
+
+/* HERO STAGE v6 — the clock stops off-screen. The 16s lap is a registered
+   custom property, so it costs a style recalc of the stage every frame for
+   the life of the page; below the fold that is spend for nothing. One
+   observer toggles .is-off (CSS: animation-play-state paused); without it
+   the stage simply keeps running, as it does with JS off. */
+(function () {
+  var stage = document.querySelector('.hstage');
+  if (!stage || !("IntersectionObserver" in window)) return;
+  new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      stage.classList.toggle('is-off', !e.isIntersecting);
+    });
+  }, { threshold: 0 }).observe(stage);
+})();

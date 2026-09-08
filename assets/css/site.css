@@ -1506,13 +1506,36 @@ a.soc:hover { transform: translateY(-2px); }
    of 7 Sep): mark, glass and orbit share one box so they stay concentric.
    Geometry below is SVG user units and stroke widths, not type or spacing
    steps; every colour is a token or a color-mix of one. */
+/* ══ HERO STAGE v7 (register #25, 8 September 2026) ═══════════════════════
+   The founder scored v6 70/100 and asked for a 40% uplift — 立体感, 原创设计,
+   动画效果, 3D, and image 优化性. Four directions were built on v6's skeleton and
+   this one won by eye: the glass ANSWERS the light. Everything below is that
+   direction's stage, transplanted whole; v6's contract is unchanged — one
+   registered --p, four planes, the mark painted last, no half-clip inside the
+   glass, palette only, reduced-motion and no-JS frames complete.
+   What is new: a caustic that rides the far wall opposite the light, an inner
+   body that throws a swinging shadow, a rim catch that tracks the nearest
+   point of the rim, a second plum-300 signal counter-orbiting twice a lap with
+   its own two-copy occlusion, and a far field of sheared signal arcs on the
+   brand's own 70° axis. The lap now runs on the three elements that MOVE
+   rather than on the stage — animating --p on the stage invalidated every
+   descendant's paint (31 ms a frame measured; 4 ms on the movers).          */
 @property --p  { syntax: "<number>"; inherits: true; initial-value: 30; }
 @property --mx { syntax: "<number>"; inherits: true; initial-value: 0; }
 @property --my { syntax: "<number>"; inherits: true; initial-value: 0; }
+/* ══ THE STAGE ═══════════════════════════════════════════════════════════
+   One clock, --p (0→100 over 16 s). Four planes: FAR · BACK · MID · FRONT.
+   Light A (acid) laps orbit A once; light B (plum-300) laps orbit B twice,
+   the other way. Every glass effect reads the same number.               */
 .hstage {
   position: relative; width: min(100%, 520px); aspect-ratio: 1;
   display: grid; place-items: center; isolation: isolate; pointer-events: none;
-  --p: 30;                                     /* rest: light in front, lower right */
+  --p: 30;                                     /* rest: light A in front, lower right */
+  /* the stage's own easing token. It lived in the demo's :root, and stripping
+     that on transplant left var(--ease-stage) undefined — which made both the
+     transition below and the arrive animation invalid at computed-value time,
+     so the stage never faded in and sat at opacity 0 with the lap running
+     underneath, unseen (founder, 8 Sep: "the animation is disappear"). */
   --ease-stage: cubic-bezier(0.22, 0.61, 0.21, 1);
   transition: --mx 900ms var(--ease-stage), --my 900ms var(--ease-stage);
 }
@@ -1520,120 +1543,133 @@ a.soc:hover { transform: translateY(-2px); }
 .hs-defs { position: absolute; width: 0; height: 0; }
 .hs-pl { width: 100%; height: 100%; pointer-events: none; }
 svg.hs-pl { overflow: visible; display: block; }
-/* far slides WITH the pointer, near slides against it; near never departs
-   mid by more than ~7px, so the orbit's crossover points stay outside the rim */
-.hs-pl--far  { z-index: 0; transform: translate(calc(var(--mx) * 12px), calc(var(--my) * 9px)); }
-.hs-pl--back { z-index: 1; transform: translate(calc(var(--mx) * -8px), calc(var(--my) * -6px)); }
-.hs-pl--mid  { z-index: 2; transform: translate(calc(var(--mx) * -2px), calc(var(--my) * -1.5px)); }
-.hs-pl--front{ z-index: 3; transform: translate(calc(var(--mx) * -8px), calc(var(--my) * -6px)); }
+/* Each plane is its own composited layer, declared. v6 got this for free
+   from its drift/bob keyframes (an animated transform promotes the element);
+   without a promotion the blurred far plane sits in the root layer and is
+   re-blurred in every tile the light damages — measured 31 ms a frame
+   against v6's 4.8. With the four layers only the light planes and the two
+   glass layers rasterise per frame; the blur, the sphere and the mark are
+   rasterised once. The planes' z-index is explicit, so the stacking contexts
+   the promotion creates change no paint order. */
+.hs-pl--far  { z-index: 0; will-change: transform; transform: translate(calc(var(--mx) * 12px), calc(var(--my) * 9px)); }
+.hs-pl--back { z-index: 1; will-change: transform; transform: translate(calc(var(--mx) * -8px), calc(var(--my) * -6px)); }
+.hs-pl--mid  { z-index: 2; will-change: transform; transform: translate(calc(var(--mx) * -2px), calc(var(--my) * -1.5px)); }
+.hs-pl--front{ z-index: 3; will-change: transform; transform: translate(calc(var(--mx) * -8px), calc(var(--my) * -6px)); }
 .hs-pl--mid { position: relative; display: grid; place-items: center; }
 .hs-pl--mid > * { grid-area: 1 / 1; width: 100%; height: 100%; }
 .hs-pl--mid svg { overflow: visible; display: block; }
-/* paint order is DECLARED. will-change makes the glass layer a stacking
-   context, and a stacking context paints after its plain siblings whatever
-   the source order says — in the demo that put the moving glint ON the acid
-   dot and the through-haze over the arcs (found by the design review, by
-   pixel). Grid items honour z-index without position, so the order is
-   written down: sphere, the light's glass effects, the surface, and the
-   mark LAST — nothing in the MID plane, moving or still, is ever painted on
-   it. (The front plane sits above the whole mid plane and the light crosses
-   the mark on its near pass — that is the occlusion, by design.) */
+/* MID paint order is DECLARED (grid items honour z-index without position):
+   the still sphere · one moving glass layer (in it: the effects behind the
+   inner body, the inner body, the effects on the near glass) · the surface ·
+   the mark LAST. Nothing in this plane ever paints on the mark. One glass
+   layer, not two: a layer whose discs move invalidates whole every frame,
+   so a second one doubled the raster (measured, trace.sh). */
 .hs-sph   { z-index: 0; }
-.hs-glass { z-index: 1; will-change: transform; }   /* repaints every frame: its own layer */
+.hs-glass { z-index: 1; will-change: transform; }   /* repaints every frame: ONE layer */
 .hs-sur   { z-index: 2; }
 .hs-pl--mid > .hero__ap { z-index: 3; }
-/* Nothing inside the glass is clipped to a half of the orbit. Each effect on
-   the body is a smooth disc, and whether the light is behind or in front is
-   said by its opacity alone, on the same number that moves the light: zero on
-   the wrong side, full at the deepest point. (An effect clipped to one half
-   cut a straight edge across the glass wherever it straddled the axis —
-   measured up to 66/255 in the demo, 25 in the first build.) Behind = p 50→100. */
+
+/* Nothing inside the glass is clipped to a half of an orbit. Every in-glass
+   effect is a smooth disc; where its light is (behind / in front) is said by
+   its opacity alone, on the same number that moves the light. Light A is
+   behind for p 50→100 (sin < 0); light B is behind when sin(7.2p) > 0. */
 .hs-gl--through { opacity: clamp(0, calc(-1 * sin(var(--p) * 3.6deg)), 1); }
-.hs-gl--glint   { opacity: clamp(0, calc(-0.8 * sin(var(--p) * 3.6deg)), 0.8); }
+.hs-gl--glint   { opacity: clamp(0, calc(-0.55 * sin(var(--p) * 3.6deg)), 0.55); }
 .hs-gl--refl    { opacity: clamp(0, calc(0.55 * sin(var(--p) * 3.6deg)), 0.55); }
-/* The front light's bloom is drawn twice: outside the sphere's silhouette at
-   full strength (it meets the back copy's bloom there, so the handover is
-   seamless), and OVER the glass — the disc alone clips it — at a strength
-   that follows how far in front the light is: nothing at the two crossovers,
-   full at p = 25. So the glass eclipses the glow at its rim, the way a ball
-   eclipses a light passing behind it. */
-.hs-gl--over    { opacity: clamp(0, sin(var(--p) * 3.6deg), 1); }
+.hs-gl--over    { opacity: clamp(0, calc(sin(var(--p) * 3.6deg)), 1); }
+.hs-gl--shadow  { opacity: clamp(0, calc(0.9 * sin(var(--p) * 3.6deg)), 0.9); }
+.hs-gl--caust   { opacity: clamp(0, calc(sin(var(--p) * 3.6deg)), 1); }
+.hs-gl--catch   { opacity: clamp(0.1, calc(0.55 - 0.45 * sin(var(--p) * 3.6deg)), 1); }
+.hs-gl--throughB{ opacity: clamp(0, calc(sin(var(--p) * 7.2deg)), 1); }
+.hs-gl--reflB   { opacity: clamp(0, calc(-0.6 * sin(var(--p) * 7.2deg)), 0.6); }
+.hs-gl--overB   { opacity: clamp(0, calc(-1 * sin(var(--p) * 7.2deg)), 1); }
+.hs-gl--catchB  { opacity: clamp(0.1, calc(0.55 + 0.45 * sin(var(--p) * 7.2deg)), 1); }
+
+/* ── far plane ─────────────────────────────────────────────────────────── */
 .hs-pl--far { position: relative; }
 .hs-far__arcs, .hs-far__under {
-  position: absolute; left: -36.5%; top: -36.5%; width: 173%; height: 173%; overflow: visible;
-  /* the site caps every svg at max-width:100% — that cap clipped this plane to
-     the stage's own width and the depth arcs vanished (found by measuring the
-     built page: 386px wide, 668px tall). This plane is MEANT to overhang. */
-  max-width: none;
+  position: absolute; left: -36.5%; top: -36.5%; width: 173%; height: 173%; overflow: visible; max-width: none;
 }
-.hs-far__arcs { filter: blur(22px); }
-.hs-far__arcs path { fill: none; stroke-linecap: butt; }
-/* the demo read these at 10/13/7% on a near-ink ground; the hero's ground is
-   52% plum over ink, and at those values the arcs washed out — the depth the
-   founder asked for was there and invisible. Lifted to read on OUR ground. */
-.hs-far__a1 { stroke: color-mix(in srgb, var(--ivory) 18%, transparent); stroke-width: 44; }
-.hs-far__a2 { stroke: color-mix(in srgb, var(--plum-300) 24%, transparent); stroke-width: 58; }
-.hs-far__a3 { stroke: color-mix(in srgb, var(--ivory) 12%, transparent); stroke-width: 24; }
-/* the light: one ellipse rx 372 · ry 146, tilted -20° (the slash's shear);
-   pathLength=100 so every dash is a percentage of one lap */
-.hs-ring { fill: none; stroke: var(--plum-300); stroke-width: 1; opacity: .13; }
-.hs-tl { fill: none; stroke-linecap: round;
-         stroke-dashoffset: calc((var(--len) - var(--p)) * 1px); }
-.hs-t0 { stroke: var(--moss-300); stroke-width: 30; opacity: .05; }
-.hs-t0b{ stroke: var(--moss-300); stroke-width: 15; opacity: .08; }
-.hs-t1 { stroke: var(--moss-300); stroke-width: 1.0; opacity: .14; }
-.hs-t2 { stroke: var(--moss-300); stroke-width: 1.6; opacity: .22; }
-.hs-t3 { stroke: var(--moss-300); stroke-width: 2.4; opacity: .34; }
-.hs-t4 { stroke: var(--moss-300); stroke-width: 3.4; opacity: .50; }
-.hs-t5 { stroke: var(--moss-300); stroke-width: 4.6; opacity: .72; }
+.hs-far__arcs { filter: blur(22px); }                 /* static filter 1 of 2 */
+.hs-far__a1 { fill: color-mix(in srgb, var(--ivory) 18%, transparent); }
+.hs-far__a2 { fill: color-mix(in srgb, var(--plum-300) 24%, transparent); }
+.hs-far__a3 { fill: color-mix(in srgb, var(--ivory) 12%, transparent); }
+
+/* ── light A: the acid signal ──────────────────────────────────────────── */
+.hs-ring  { fill: none; stroke: var(--plum-300); stroke-width: 2; opacity: .10; }
+.hs-ringB { fill: none; stroke: var(--plum-300); stroke-width: 2; opacity: .07; }
+.hs-tl  { fill: none; stroke-linecap: round; stroke-dashoffset: calc((var(--len) - var(--p)) * 1px); }
+.hs-tlB { fill: none; stroke-linecap: round; stroke-dashoffset: calc((var(--len) - var(--p) * 2) * 1px); }
+/* acid never sits on plum at partial alpha: the wake is plum-300, and every
+   acid stroke is ≥ .7 — the tail fades by width and length, not by alpha */
+.hs-t1 { stroke: var(--plum-300); stroke-width: 2.0; opacity: .30; }
+.hs-t2 { stroke: var(--moss-300); stroke-width: 1.9; opacity: .70; }
+.hs-t3 { stroke: var(--moss-300); stroke-width: 2.6; opacity: .80; }
+.hs-t4 { stroke: var(--moss-300); stroke-width: 3.4; opacity: .90; }
+.hs-t5 { stroke: var(--moss-300); stroke-width: 4.6; opacity: 1; }
 .hs-t6 { stroke: var(--ivory);    stroke-width: 5.4; opacity: .60; }
-.hs-mover {
-  offset-path: path("M -21,351 a 372,146 0 1,0 744,0 a 372,146 0 1,0 -744,0");
-  offset-rotate: 0deg; offset-distance: calc(var(--p) * 1%);
-}
-/* nearer = bigger and brighter: sin() is +1 at the front of the orbit (p=25), -1 at the back (p=75) */
-.hs-head {
-  transform-box: fill-box; transform-origin: center;
-  scale: calc(0.84 + 0.16 * sin(var(--p) * 3.6deg));
-  opacity: calc(0.80 + 0.20 * sin(var(--p) * 3.6deg));
-}
-/* the sphere */
+.hs-b1 { stroke: var(--plum-300); stroke-width: 2.0; opacity: .35; }
+.hs-b2 { stroke: var(--plum-300); stroke-width: 3.0; opacity: .60; }
+.hs-b3 { stroke: var(--plum-300); stroke-width: 4.0; opacity: .90; }
+.hs-b4 { stroke: var(--ivory);    stroke-width: 2.4; opacity: .80; }
+.hs-mover  { offset-path: path("M -21,351 a 372,146 0 1,0 744,0 a 372,146 0 1,0 -744,0 Z");
+             offset-rotate: 0deg; offset-distance: calc(var(--p) * 1%); }
+/* the antipode: the same orbit, scaled about C, half a lap ahead — where the
+   light's caustic collects on the far wall and where the inner body's shadow falls */
+.hs-moverC { offset-path: path("M 60.84,351 a 290.16,113.88 0 1,0 580.32,0 a 290.16,113.88 0 1,0 -580.32,0 Z");
+             offset-rotate: 0deg; offset-distance: calc(var(--p) * 1% + 50%); }
+.hs-moverS { offset-path: path("M 194.76,351 a 156.24,61.32 0 1,0 312.48,0 a 156.24,61.32 0 1,0 -312.48,0 Z");
+             offset-rotate: 0deg; offset-distance: calc(var(--p) * 1% + 50%); }
+/* the rim catch rides the rim itself, in step with the light */
+.hs-moverR { offset-path: path("M 0,351 a 351,351 0 1,0 702,0 a 351,351 0 1,0 -702,0 Z");
+             offset-rotate: 0deg; offset-distance: calc(var(--p) * 1%); }
+.hs-moverB { offset-path: path("M -392,0 a 392,84 0 1,1 784,0 a 392,84 0 1,1 -784,0 Z");
+             offset-rotate: 0deg; offset-distance: calc(var(--p) * 2%); }
+.hs-head  { transform-box: fill-box; transform-origin: center;
+            scale: calc(0.84 + 0.16 * sin(var(--p) * 3.6deg)); opacity: calc(0.80 + 0.20 * sin(var(--p) * 3.6deg)); }
+.hs-headB { transform-box: fill-box; transform-origin: center;
+            scale: calc(0.85 - 0.15 * sin(var(--p) * 7.2deg)); opacity: calc(0.80 - 0.20 * sin(var(--p) * 7.2deg)); }
+
+/* ── the sphere ────────────────────────────────────────────────────────── */
 .hs-sph__base { fill: var(--plum-ink); }
-.hs-sph__innerRim     { fill: none; stroke: url(#hs-gInnerRim); stroke-width: 1; }
-.hs-sph__innerRimSoft { fill: none; stroke: url(#hs-gInnerRim); stroke-width: 6; opacity: .18; }
-.hs-sur__rim     { fill: none; stroke: url(#hs-gRim); stroke-width: 1.7; }
+.hs-sph__innerRim     { fill: none; stroke: url(#hs-gInnerRim); stroke-width: 2; opacity: .85; }
+.hs-sph__innerRimSoft { fill: none; stroke: url(#hs-gInnerRim); stroke-width: 7; opacity: .16; }
+.hs-sur__rim     { fill: none; stroke: url(#hs-gRim); stroke-width: 2; }
 .hs-sur__rimSoft { fill: none; stroke: url(#hs-gRim); stroke-width: 7; opacity: .32; }
 .hs-sur__rimHalo { fill: none; stroke: url(#hs-gRim); stroke-width: 18; opacity: .10; }
-.hs-sur__shell   { fill: none; stroke: url(#hs-gRim); stroke-width: 1; opacity: .38; }
-/* motion: the lap is the clock; everything else is a slow drift */
+.hs-sur__shell   { fill: none; stroke: url(#hs-gRim); stroke-width: 2; opacity: .30; }
+
+/* ── motion: the lap is the only clock ─────────────────────────────────── */
 @media (prefers-reduced-motion: no-preference) {
-  .hstage      { opacity: 0; animation: hs-arrive 1100ms var(--ease-stage) 150ms forwards; }
-  /* The lap runs only where sin() is understood. The four opacity rules
-     above are written in sin(); an engine that drops them would run the lap
-     with the haze full while the light is in front and the bloom full while
-     it is behind — lighting that contradicts the light's position. Without
-     sin() the stage is the rest frame, --p 30, the light parked in front —
-     the same frame prefers-reduced-motion shows — and the markup's own
-     opacity attributes carry that frame's values. */
-  @supports (opacity: calc(sin(1deg))) {
-    .hstage    { animation-name: hs-lap, hs-arrive; animation-duration: 16s, 1100ms;
-                 animation-timing-function: linear, var(--ease-stage);
-                 animation-delay: 0s, 150ms; animation-iteration-count: infinite, 1;
-                 animation-fill-mode: none, forwards; }
+  .hstage { opacity: 0; animation: hs-arrive 1100ms var(--ease-stage) 150ms forwards; }
+  /* The lap runs only where sin() (the fades) and hypot() (light B's rim
+     catch) are understood; elsewhere the stage is the rest frame, --p 30,
+     and every in-glass effect carries that frame's opacity and position as
+     a markup attribute. */
+  @supports (opacity: calc(sin(1deg))) and (opacity: calc(hypot(3, 4) / 5)) {
+    /* The lap runs on the three elements that move — the two light planes
+       and the glass layer — not on the stage. One keyframe set, one
+       duration, one document timeline, started in the same style pass: one
+       clock. Animated on the stage, the inherited --p change invalidated
+       the paint of every descendant, and the blurred far plane and the
+       masked sphere were re-rasterised every frame though nothing in them
+       moved (measured: 31 ms a frame; on the movers 4 ms, the far plane and
+       the sphere rasterised once). No drift, no bob: the planes never move
+       on the clock. */
+    .hs-pl--back, .hs-pl--front, .hs-glass { animation: hs-lap 16s linear infinite; }
+    /* light B's rim catch: the rim point nearest the light, exactly */
+    .hs-catchB { --bx: calc(31 - 392 * cos(var(--p) * 7.2deg));
+                 --by: calc(145.74 - 84 * sin(var(--p) * 7.2deg));
+                 --bn: hypot(var(--bx), var(--by));
+                 transform: translate(calc((351 * var(--bx) / var(--bn) - 30.98) * 1px),
+                                      calc((351 * var(--by) / var(--bn) - 145.74) * 1px)); }
   }
-  .hs-pl--far  { animation: hs-drift 26s ease-in-out infinite alternate; }
-  .hs-pl--mid  { animation: hs-bob 9s ease-in-out infinite; }
-  .hs-pl--back, .hs-pl--front { animation: hs-bob-near 9s ease-in-out -2.2s infinite; }
-  @keyframes hs-lap      { from { --p: 0; } to { --p: 100; } }
-  @keyframes hs-arrive   { to { opacity: 1; } }
-  @keyframes hs-drift    { from { translate: -8px 5px; scale: 1; } to { translate: 8px -5px; scale: 1.03; } }
-  @keyframes hs-bob      { 0%, 100% { translate: 0 3px; } 50% { translate: 0 -3px; } }
-  @keyframes hs-bob-near { 0%, 100% { translate: 0 -1.5px; } 50% { translate: 0 1.5px; } }
+  @keyframes hs-lap    { from { --p: 0; } to { --p: 100; } }
+  @keyframes hs-arrive { to { opacity: 1; } }
 }
-/* off-screen the clock stops (site.js toggles the class from an
-   IntersectionObserver); a paused stage costs nothing below the fold */
-.hstage.is-off, .hstage.is-off .hs-pl { animation-play-state: paused; }
+.hstage.is-off, .hstage.is-off .hs-pl, .hstage.is-off .hs-glass { animation-play-state: paused; }
 @media (prefers-reduced-motion: reduce) { .hstage { --p: 30; opacity: 1; } }
+
 .hero__ap { position: relative; pointer-events: none; width: 100%; height: auto; }
 @media (min-width: 861px) and (max-width: 899px) { .hstage { width: min(64%, 320px); } }
 
@@ -1683,6 +1719,49 @@ svg.hs-pl { overflow: visible; display: block; }
   font-weight: 400; font-size: 11px; letter-spacing: 0.012em;
   color: var(--plum-300);
 }
+/* THE RAIL SCANS (founder, 8 Sep 2026: "右边的 list 加上动画效果"). The signal
+   takes each practice in turn — two seconds each, five items, a ten-second
+   lap — because that is what the mark is: a signal passing through an
+   aperture. Not a blink and not a glow (R9): the item that holds the signal
+   comes up to full ivory, its index turns acid, and an acid rule draws in
+   under it from the left, holds, and leaves to the right.
+   Cost: five opacities, five small colour paints and one scaled 1px bar —
+   no JS, no filter, nothing per-frame on the main thread but the colour of
+   an 11px numeral. The list is complete and legible at rest, and the whole
+   effect is withheld under prefers-reduced-motion. Negative delays so every
+   item is in its steady state at load, not waiting for its first turn. */
+.hero__rail-list li { position: relative; }
+.hero__rail-list li::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px;
+  background: var(--moss-300); transform: scaleX(0); transform-origin: left center;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero__rail-list li,
+  .hero__rail-list li::before,
+  .hero__rail-list li::after { animation-duration: 10s; animation-timing-function: linear;
+                               animation-iteration-count: infinite; }
+  .hero__rail-list li          { animation-name: rail-lit; opacity: .62; }
+  .hero__rail-list li::before  { animation-name: rail-ix; }
+  .hero__rail-list li::after   { animation-name: rail-rule; }
+  .hero__rail-list li:nth-child(1), .hero__rail-list li:nth-child(1)::before, .hero__rail-list li:nth-child(1)::after { animation-delay:  0s; }
+  .hero__rail-list li:nth-child(2), .hero__rail-list li:nth-child(2)::before, .hero__rail-list li:nth-child(2)::after { animation-delay: -8s; }
+  .hero__rail-list li:nth-child(3), .hero__rail-list li:nth-child(3)::before, .hero__rail-list li:nth-child(3)::after { animation-delay: -6s; }
+  .hero__rail-list li:nth-child(4), .hero__rail-list li:nth-child(4)::before, .hero__rail-list li:nth-child(4)::after { animation-delay: -4s; }
+  .hero__rail-list li:nth-child(5), .hero__rail-list li:nth-child(5)::before, .hero__rail-list li:nth-child(5)::after { animation-delay: -2s; }
+  @keyframes rail-lit  {  0% { opacity: .62 }  4%, 16% { opacity: 1 } 20%, 100% { opacity: .62 } }
+  @keyframes rail-ix   {  0% { color: var(--plum-300) }  4%, 16% { color: var(--moss-300) }
+                         20%, 100% { color: var(--plum-300) } }
+  @keyframes rail-rule {  0% { transform: scaleX(0); transform-origin: left center }
+                          5%, 16% { transform: scaleX(1); transform-origin: left center }
+                         16.01% { transform: scaleX(1); transform-origin: right center }
+                         21%, 100% { transform: scaleX(0); transform-origin: right center } }
+  /* the rail rests when the hero does — the same observer the stage uses */
+  .hstage.is-off ~ * .hero__rail-list li,
+  .hero:has(.hstage.is-off) .hero__rail-list li,
+  .hero:has(.hstage.is-off) .hero__rail-list li::before,
+  .hero:has(.hstage.is-off) .hero__rail-list li::after { animation-play-state: paused; }
+}
+
 /* the markets served: the mono label voice, one per line, 24px under the
    list's closing rule */
 .hero__rail-foot {

@@ -125,16 +125,9 @@
      — under the 0.516 pin they render ×0.94 where Courier New (0.4229)
      rendered ×1.22, a 24% wider run in fixed-width label cells during the
      swap window. Consolas holds the Windows seat. */
-  /* The display serif returns 7 Sep 2026 (#22) for the homepage headline
-     alone, on the founder's ruling: the reference sets that line in a serif,
-     but Fraunces is not coming back (#21 — its f was the whole problem) and
-     no new file is downloaded. Georgia ships on macOS AND Windows, is the
-     sturdiest of the three cross-platform serifs at display size, and draws
-     an f with no overhanging hook. Times is the fallback for the rare
-     machine without it; font-size-adjust pins it to Georgia's own x-height
-     (0.4814 measured) so the two set at the same apparent size. Didot is
-     closer to the reference and was rejected: macOS only. */
-  --serif: Georgia, "Times New Roman", serif;
+  /* No serif token: Georgia held the homepage headline from 7 Sep 2026 (#22)
+     to 8 Sep 2026 (#24), when the founder set that line in the heading voice
+     with every other heading. Two downloaded faces, nothing from the system. */
   --sans:  "Instrument Sans", -apple-system, "Helvetica Neue", Arial, sans-serif;
   --mono:  "Fragment Mono", Menlo, Consolas, "Courier New", monospace;
   /* Every spacing and line-height in this file was tuned around the RETIRED
@@ -1656,26 +1649,47 @@ svg.hs-pl { overflow: visible; display: block; }
 }
 @media (min-width: 1180px) {
   .hero__rail {
-    display: flex; flex-direction: column; justify-content: space-between;
-    position: absolute; z-index: 1;
-    top: clamp( 64px, 11vw, 128px); bottom: 96px;
+    display: block; position: absolute; z-index: 1;
+    top: clamp( 64px, 11vw, 128px);
     right: clamp( 24px, 3vw, 48px);
-      padding-left: 24px;
+    /* 176 wide, not the 160 track: the widest name — THOUGHT LEADERSHIP at
+       12px, 600, capitals, +0.012em — measures 140.8px (fontTools on the
+       file) and needs its column with room to spare; the rail overhangs the
+       stage column's outer gutter, where only the far plane's arcs live
+       (checked against the sphere's box at 1180, 1300 and 1600). A width,
+       not a spacing step (as the stage's 520 is). */
+    width: 176px; padding-left: 16px;
     border-left: 1px solid color-mix(in srgb, var(--white) 14%, transparent);
   }
 }
-.hero__rail-list { list-style: none; margin: 0; padding: 0; }
+/* five indexed practices in the heading voice at its smallest size: the
+   index is a counter (no text in the markup), the name is Instrument Sans
+   600 in capitals at 12px, +0.012em like every small-caps label on the site;
+   a hairline closes each item, 12px above and below it (founder, 8 Sep 2026:
+   "重新排版设计，字体，间距") */
+.hero__rail-list { list-style: none; margin: 0; padding: 0; counter-reset: rail; }
 .hero__rail-list li {
-  font-family: var(--mono); font-variation-settings: normal;
-  font-size-adjust: 0.516; font-weight: 400;
-  font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
-  color: var(--plum-100); line-height: 1.62; white-space: nowrap;
+  counter-increment: rail;
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546;
+  font-weight: 600; font-size: 12px; line-height: 1.45; letter-spacing: 0.012em;
+  text-transform: uppercase; color: var(--ivory);
+  padding: 12px 0; margin: 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--white) 14%, transparent);
 }
+.hero__rail-list li:first-child { padding-top: 0; }
+.hero__rail-list li::before {
+  content: counter(rail, decimal-leading-zero) "\2002";
+  font-family: var(--mono); font-variation-settings: normal; font-size-adjust: 0.516;
+  font-weight: 400; font-size: 11px; letter-spacing: 0.012em;
+  color: var(--plum-300);
+}
+/* the markets served: the mono label voice, one per line, 24px under the
+   list's closing rule */
 .hero__rail-foot {
   font-family: var(--mono); font-variation-settings: normal;
   font-size-adjust: 0.516; font-weight: 400;
-  font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
-  color: var(--plum-300); line-height: 1.62; margin: 0; max-width: none;
+  font-size: 11px; letter-spacing: 0.012em; text-transform: uppercase;
+  color: var(--plum-300); line-height: 1.62; margin: 24px 0 0; max-width: none;
 }
 
 /* the proof row under the call to action */
@@ -3197,27 +3211,11 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
    Same numbers as the base; the specificity is the point. */
 h1:has(.hl--sub) { font-size: clamp( 40px, 5.95vw, 76px); }
 
-/* ── The homepage headline, in the display serif (founder, 7 Sep 2026, #22,
-   from reference 02: sentence case, serif). This is the ONE heading outside
-   #20's sans voice, and it is deliberate — the homepage is the reference's
-   subject. Every other h1 on the site is untouched. The word cycle and its
-   acid strike are unchanged. */
-.pg-index h1:has(.hl--sub) {
-  font-family: var(--serif); font-size-adjust: 0.481;
-  font-variation-settings: normal;
-  font-weight: 400; text-transform: none;
-  font-size: clamp( 40px, 5.6vw, 72px);
-  line-height: 1.04; letter-spacing: -0.014em;
-}
-/* the deck above it keeps the sans — two voices, and the serif is the louder */
-.pg-index h1:has(.hl--sub) .hl--sub {
-  font-family: var(--sans); font-variation-settings: normal;
-  font-size-adjust: 0.546; font-weight: 400;
-}
-/* the cycling word stays in the headline's own face */
-.pg-index h1 .em-mark, .pg-index .wcycle .w {
-  font-family: var(--serif); font-size-adjust: 0.481; font-weight: 400;
-}
+/* ── The homepage headline speaks the base heading voice — Instrument Sans
+   600, capitals, the site-wide h1 clamp — since 8 Sep 2026 (register #24:
+   founder, "对标其他的 font 字体，并且大写"). The Georgia rule that stood here
+   from 7 Sep (#22) is gone with the deck line it keyed on; the cycling word
+   and its acid strike are unchanged. */
 /* B won (founder, 13 Aug: "hero 也统一用 b") — the homepage hero speaks
    the same sans as what-we-do. The founder EXTENDED that ruling to every
    page and every heading level on 7 Sep 2026 (register #20). The quotes,

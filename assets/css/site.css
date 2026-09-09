@@ -220,7 +220,8 @@ h2 {
   line-height: 1.14;
   letter-spacing: -0.006em;
   /* plum-700 site-wide (founder, confirmed 1 Sep 2026) — the homepage
-     serif hue on every light ground, 9.51:1 on ivory; dark bands keep
+     heading hue (the serif's, when there was one) on every light ground,
+     9.51:1 on ivory; dark bands keep
      their ivory overrides, who-h keeps its founder-ordered ink */
   color: var(--plum-700);
   text-wrap: balance;
@@ -375,7 +376,7 @@ section > .wrap { position: relative; z-index: 1; }
 @media (prefers-reduced-motion: no-preference) {
   /* the header's own perpetual scan, on the band's mark — same 22s beat */
   html.js .interlude .intl-spin {
-    transform-box: view-box; transform-origin: 500px 540px;
+    transform-box: view-box;   /* the origin is on the element — from the geometry, see build_site.py */
     animation: hm-spin 22s linear infinite;
   }
 }
@@ -795,9 +796,12 @@ section > .wrap { position: relative; z-index: 1; }
 .site-head__mark .ap-arc--weak { fill: var(--plum-300); }
 .site-head__mark .ap-dot { fill: var(--moss-300); }
 @media (prefers-reduced-motion: no-preference) {
-  /* the aperture scans beside the name — the site's one perpetual motion */
+  /* the aperture scans beside the name. Since 9 Sep 2026 (#26) the
+     hero's mark scans on this same keyframe — hm-spin is shared, not
+     copied: one keyframe, one duration. (Phase is not asserted anywhere;
+     each starts when its element does.) */
   .site-head__mark .shm-spin {
-    transform-box: view-box; transform-origin: 500px 540px;
+    transform-box: view-box;   /* the origin is on the element — from the geometry, see build_site.py */
     animation: hm-spin 22s linear infinite;
   }
   @keyframes hm-spin { to { transform: rotate(360deg); } }
@@ -1002,7 +1006,8 @@ html.lr .site-head__word::before {
    six headings in a row read as one row of names when every word is capped —
    sentence case made the second word look like a description of the first. */
 .mega__col .lab {
-  /* 500, not 600 — the serif's weight range on this site runs 300–500 */
+  /* 500, not 600 — set when the serif's range here ran 300–500 (#21 retired
+     it); 500 is still the published claim weight on the sans */
   /* the adjust must be re-pinned with the face: .lab hands down the mono's
      0.516 and Fraunces rendered 21% oversize under it on every page. */
   font-family: var(--sans) !important; font-size-adjust: 0.546;
@@ -1454,9 +1459,10 @@ a.soc:hover { transform: translateY(-2px); }
 .hero .cta-row { margin-top: 48px; }
 
 /* hero v4 (founder, 13 Aug — the band scored 50/100: identity invisible at
-   11px, the right field dead plum). Two instruments, both STATIC per R10.3 —
-   the scan animation is the header's alone, and static placements never
-   rotate, gap up the 70° axis. */
+   11px, the right field dead plum). Two instruments. The identity lockup
+   below is STATIC and stays so: gap up the 70° axis, never rotated. The
+   stage mark was static too until 9 Sep 2026 (#26), when the founder gave it
+   the header's scan — see .hero__ap-spin. */
 /* the identity lockup — mark at icon size beside the full name */
 .hero-id { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
 .hero-id__mark { width: 44px; height: 44px; flex: none; }
@@ -1817,6 +1823,26 @@ svg.hs-pl { overflow: visible; display: block; }
 @media (prefers-reduced-motion: no-preference) {
   .hero__ap { opacity: 0; animation: heroap-in 1100ms var(--ease) 200ms forwards; }
   @keyframes heroap-in { to { opacity: 1; } }
+  /* The mark scans, on the header's own beat (founder, 9 Sep 2026, #26).
+     The entrance fade stays on .hero__ap and the rotation goes on the
+     inner group, so neither declaration can overwrite the other. One
+     shorthand CAN carry both, comma-separated (an earlier cut of this
+     comment said it could not); the point is that any later rule setting
+     `animation` on .hero__ap would silently drop the fade, and two
+     elements with two declarations leave nothing to collide.
+     transform-box: view-box puts the origin in viewBox units. The origin
+     itself is NOT written here: build_site.py sets it inline on the group
+     from AP_DISPLAY.cx/cy, so the pivot and the dot share one source
+     (R10.2 — Codex round 2 found it retyped here as 500px 540px).
+     hm-spin is the header's keyframe, reused deliberately: one beat for
+     both marks. It is declared in the .site-head__mark block under this
+     same media query, so it resolves here; if that block ever moves,
+     this rule loses its animation silently — spin-probe.py (filed with the
+     9 Sep brief) is what catches that; the stage harness does not look. */
+  .hero__ap .hero__ap-spin {
+    transform-box: view-box;   /* the origin is on the element — from the geometry, see build_site.py */
+    animation: hm-spin 22s linear infinite;
+  }
 }
 
 /* the word verdict — new / more / right */
@@ -2830,9 +2856,9 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
    Fraunces removed the same day by #21, and a system serif returned that
    evening by #22). Instrument Sans carries the headings, the body, the UI,
    the quotes, the prices and the figures; Fragment Mono carries labels and
-   data eyebrows; Georgia carries the homepage headline and nothing else.
-   "TWO voices, no third" was true for the hours between #21 and #22 —
-   it is three now, two of them downloaded. The first cut of this
+   data eyebrows. Georgia carried the homepage headline for one day and left
+   on 8 Sep 2026 (#24), so it is TWO voices again, both downloaded — the
+   three-voice state above lasted from #22 to #24 and is history, not a rule. The first cut of this
    component set the wordmark, the brand name and the numbers in Instrument
    Sans 600 — a bold grotesque taken from the reference, which introduced a
    voice this site does not own. Every binding site below now names the face
@@ -3314,9 +3340,9 @@ h1:has(.hl--sub) { font-size: clamp( 40px, 5.95vw, 76px); }
 /* B won (founder, 13 Aug: "hero 也统一用 b") — the homepage hero speaks
    the same sans as what-we-do. The founder EXTENDED that ruling to every
    page and every heading level on 7 Sep 2026 (register #20). The quotes,
-   prices and figures went to the sans too when Fraunces left (#21); the
-   serif that came back the same evening (#22) is Georgia, and it keeps the
-   homepage headline directly above and nothing else. (The wordmark is
+   prices and figures went to the sans too when Fraunces left (#21). The
+   serif that came back that evening (#22) was Georgia; it held the headline
+   directly above for one day and left on 8 Sep (#24). No serif remains. (The wordmark is
    neither face — it is frozen Newsreader-outline artwork.)
    The verdict word carries acid instead of an underline; the word-cycle
    grammar is untouched. */
@@ -3584,8 +3610,8 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
 .qb-item > span { flex: 1; font-size: 15px; color: var(--graph-700); max-width: none; }
 .qb-item > span b {
   /* 对标 homepage (founder, 31 Aug): component names speak the homepage's
-     sans 600 card voice; the serif stays on the FIGURES, as on the
-     playbook. */
+     sans 600 card voice; the figures keep the lighter figure voice (400,
+     the sans since #21 — it was the serif's when this was written). */
   display: block; font-family: var(--sans); font-size-adjust: 0.546; font-weight: 600;
   font-size: 15px; line-height: 1.3; color: var(--plum-ink);
   letter-spacing: 0.012em;
@@ -3919,8 +3945,8 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
 .cos-ph h3 {
   /* 字体协调 (founder, 31 Aug round 7): phase titles speak the component
      sans (the wwd2 one-typeface precedent, founder 13 Aug) — which since
-     #20 (7 Sep 2026) is the voice of every heading; the serif keeps the
-     numerals.
+     #20 (7 Sep 2026) is the voice of every heading; the numerals keep the
+     figure voice (sans 400 since #21; the serif's until then).
      The green stays ("把title 换成绿色") — moss-700, 5.44:1 on ivory. */
   font-family: var(--sans); font-size-adjust: 0.546; font-variation-settings: normal; font-weight: 600;
   font-size: 25px; line-height: 1.3; letter-spacing: 0.012em;
@@ -4146,7 +4172,8 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
   @keyframes ic-draw { from { stroke-dashoffset: 90; } }
 }
 /* The summary card, re-set 4 Sep 2026 (founder: one voice, 95-score
-   push). ONE money voice — the serif figure at 19px, on the line and on
+   push). ONE money voice — the figure voice (sans 400 since #21, serif
+   when written) at 19px, on the line and on
    the total alike. (This comment described 28 on the total, which was true
    until the founder's 5 Sep order took it to 19 — commit 4a15534, recorded
    on the rule itself. The comment was left behind then; corrected 7 Sep
@@ -4512,7 +4539,7 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
    negative margin gives the space back, so the legal line does not move. */
 .site-foot__legal a { padding-block: 16px; margin-block: -16px; }
 
-/* The scale snap grew two nowrap runs — the serif price to 19px, the mono
+/* The scale snap grew two nowrap runs — the price (then serif) to 19px, the mono
    delivery chip to 11px at 0.24em — and together they pushed a quote row's
    min-content past a phone viewport. The sizes are correct scale members, so
    the fix is containment: on a phone the price block drops under the label,

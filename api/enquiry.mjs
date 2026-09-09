@@ -41,7 +41,10 @@ const RESEND = "https://api.resend.com/emails";
 /* "website" is posted by the FREE AI VISIBILITY REPORT form — it is the URL
  * the 24-hour report is ABOUT. Dropping it (as this list once did) meant the
  * notification arrived without the one datum the promise depends on. */
-const FIELDS = ["name", "practice", "email", "phone", "website", "vertical", "want", "prompt"];
+/* "found" is measure 7 of 8 — how the enquirer found us, asked on both
+ * forms since 9 Sep 2026. It cannot be backfilled, so a name missing from
+ * this list is a datum lost for good, not a datum delayed. */
+const FIELDS = ["name", "practice", "email", "phone", "website", "vertical", "want", "found", "prompt"];
 
 /* Read the enquiry out of the request whatever shape it arrives in.
  *
@@ -134,6 +137,7 @@ function notificationHtml(d) {
       ${row("Website", d.website)}
       ${row("Field", d.vertical)}
       ${row("Wants", d.want)}
+      ${row("Found us", d.found)}
     </table>
     <p style="margin:18px 0 6px;font-family:'Fragment Mono',Menlo,Consolas,monospace;font-weight:400;font-size:12px;line-height:1.5;letter-spacing:.1em;text-transform:uppercase;color:#8B6B7E;">What prompted this</p>
     <p style="margin:0;padding:14px 18px;background:#F0E8EC;border-left:3px solid #6B7B4E;font-size:15px;line-height:1.6;color:#2E1C29;white-space:pre-wrap;">${escapeHtml(d.prompt) || "—"}</p>

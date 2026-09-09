@@ -17,7 +17,7 @@
  * Requires the RESEND_API_KEY environment variable, set in the Vercel
  * project. It is never committed.
  */
-import { autoReplyHtml, escapeHtml } from "./_templates.mjs";
+import { autoReplyHtml, escapeHtml, frame } from "./_templates.mjs";
 
 /* Vercel's body parser is turned off so this function always owns the request
  * stream. It has to be, because leaving it on loses enquiries.
@@ -123,26 +123,55 @@ function send(payload) {
 }
 
 function notificationHtml(d) {
+  /* The studio's copy wears THE SAME FRAME as the visitor's auto-reply
+   * (9 Sep 2026 — the founder saw the first one bare and said so): ink
+   * masthead, kicker, title, ink footer, all from _templates.mjs, so the two
+   * emails cannot drift apart. Inside: the enquirer's fields as label/value
+   * rows in the site's label voice, the message on a cream field behind the
+   * darkened-acid rail, and one line on how to answer. The rows are the
+   * site's .tbl — 15 / 1.62 values beside 11 px mono labels on the body's
+   * inherited leading; the foot line is .small, 13 / 1.62. Every hex is a
+   * site token; the render test refuses any other. */
+  const e = escapeHtml;
   const row = (label, value) =>
     `<tr>
-       <td style="padding:6px 14px 6px 0;font-family:'Fragment Mono',Menlo,Consolas,monospace;font-weight:400;font-size:12px;line-height:1.5;letter-spacing:.1em;text-transform:uppercase;color:#8B6B7E;white-space:nowrap;vertical-align:top;">${label}</td>
-       <td style="padding:6px 0;font-family:'Instrument Sans',-apple-system,'Segoe UI',Arial,sans-serif;font-weight:400;font-size:15px;line-height:1.55;color:#2E1C29;">${escapeHtml(value) || "—"}</td>
+       <td valign="top" style="padding:7px 16px 7px 0;font-family:'Fragment Mono',Menlo,Consolas,monospace;font-weight:400;font-size:11px;line-height:1.62;letter-spacing:.012em;text-transform:uppercase;color:#5D6B12;white-space:nowrap;">${label}</td>
+       <td valign="top" style="padding:7px 0;font-family:'Instrument Sans',-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-weight:400;font-size:15px;line-height:1.62;color:#1B0D16;">${e(value) || "&#8212;"}</td>
      </tr>`;
-  return `<div style="font-family:'Instrument Sans',-apple-system,'Segoe UI',Arial,sans-serif;max-width:620px;">
-    <p style="margin:0 0 4px;font-family:'Fragment Mono',Menlo,Consolas,monospace;font-weight:400;font-size:12px;line-height:1.5;letter-spacing:.18em;text-transform:uppercase;color:#6B7B4E;">New enquiry / semora.com.au</p>
-    <h2 style="margin:0 0 18px;font-family:Arial,Helvetica,sans-serif;font-weight:600;font-size:25px;text-transform:uppercase;letter-spacing:-0.006em;color:#2E1C29;">${escapeHtml(d.name) || "No name given"} — ${escapeHtml(d.practice) || "no practice given"}</h2>
-    <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
-      ${row("Email", d.email)}
-      ${row("Phone", d.phone)}
-      ${row("Website", d.website)}
-      ${row("Field", d.vertical)}
-      ${row("Wants", d.want)}
-      ${row("Found us", d.found)}
-    </table>
-    <p style="margin:18px 0 6px;font-family:'Fragment Mono',Menlo,Consolas,monospace;font-weight:400;font-size:12px;line-height:1.5;letter-spacing:.1em;text-transform:uppercase;color:#8B6B7E;">What prompted this</p>
-    <p style="margin:0;padding:14px 18px;background:#F0E8EC;border-left:3px solid #6B7B4E;font-size:15px;line-height:1.6;color:#2E1C29;white-space:pre-wrap;">${escapeHtml(d.prompt) || "—"}</p>
-    <p style="margin:22px 0 0;font-size:13px;color:#6B6560;">Reply straight to this email — it goes to the enquirer.</p>
-  </div>`;
+  const who = `${e(d.name) || "No name given"} — ${e(d.practice) || "no practice given"}`;
+  const body = `
+  <tr>
+    <td class="px" style="padding:0 40px 8px;">
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
+        ${row("Email", d.email)}
+        ${row("Phone", d.phone)}
+        ${row("Website", d.website)}
+        ${row("Field", d.vertical)}
+        ${row("Wants", d.want)}
+        ${row("Found us", d.found)}
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="px" style="padding:22px 40px 10px;">
+      <p style="margin:0 0 10px;font-family:'Fragment Mono',Menlo,Consolas,monospace;font-weight:400;font-size:11px;line-height:1.62;letter-spacing:.24em;text-transform:uppercase;color:#5D6B12;">What prompted this /</p>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-left:3px solid #5D6B12;background:#F7F4F0;">
+        <tr><td style="padding:16px 20px;font-family:'Instrument Sans',-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:15px;line-height:1.62;color:#1B0D16;white-space:pre-wrap;">${e(d.prompt) || "&#8212;"}</td></tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="px" style="padding:22px 40px 44px;">
+      <p style="margin:0;font-family:'Instrument Sans',-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:13px;line-height:1.62;color:#6B6560;">Reply straight to this email &#8212; it goes to the enquirer.</p>
+    </td>
+  </tr>`;
+  return frame({
+    preheader: `${e(d.name) || "An enquiry"} — ${e(d.want) || "enquiry"}${d.found ? " — found us via " + e(d.found) : ""}`,
+    kicker: "New enquiry / semora.com.au",
+    title: who,
+    body,
+    footnote: "Sent to the studio by the enquiry form on semora.com.au.",
+  });
 }
 
 export default async function handler(req, res) {

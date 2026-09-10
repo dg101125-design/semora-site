@@ -409,6 +409,20 @@ section > .wrap { position: relative; z-index: 1; }
 }
 .rule { border: 0; border-top: 1px solid var(--champ-700); }
 
+/* ---- the byline (task 2.6, 10 Sep 2026): a named author on every page that
+   argues something. No new voice: the label is .lab, the name is the body at
+   500 (our own claim, per the weight rule), the note is the 15/1.55 small
+   print the footer's identity line already uses. No date — the founder took
+   the reviewed stamp off the legal line on 30 Aug 2026, and the date a
+   machine needs is on the page as dateModified. ---- */
+.byline { padding-block: clamp(32px, 4vw, 48px); }
+.byline__in { border-top: 1px solid var(--champ-700); padding-top: 24px; }
+.byline__who { margin-top: 12px; font-size: 17px; line-height: 1.62;
+  font-weight: 500; color: var(--ink); }
+.byline__who a { color: var(--plum); text-underline-offset: 3px; }
+.byline__note { margin-top: 8px; font-size: 15px; line-height: 1.55;
+  color: var(--graph-400); max-width: 62ch; }
+
 .split {
   display: grid; gap: 2.5rem var(--gutter);
   grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);

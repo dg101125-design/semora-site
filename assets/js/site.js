@@ -295,3 +295,55 @@
     });
   }, { threshold: 0 }).observe(stage);
 })();
+
+
+/* FIRST-TOUCH SOURCE (90-day plan 2.7, 10 Sep 2026). Vercel Web Analytics is
+   not enabled on this project, so there are no visit-level referrer segments
+   to read. What we CAN measure without an account change is the source of the
+   thing that matters commercially: an enquiry. The referrer is recorded on the
+   FIRST page of the session and kept for the session, because by the time
+   someone reaches /contact the referrer is our own site — the reason a
+   last-touch reading always says "direct" and never says "ChatGPT".
+
+   WHAT IS KEPT IS REDUCED HERE, AT CAPTURE, NOT LATER: the referrer's HOSTNAME
+   only, never its path or query (a ChatGPT referrer carries the conversation
+   id; a search referrer can carry the query), and our own PATHNAME only, never
+   location.search (Codex, 10 Sep 2026: a visitor arriving at
+   /contact?email=alice@example.com&token=… put both in the studio's inbox).
+   Reducing at capture means the untrimmed value never enters storage, never
+   crosses the network, and cannot be reconstructed downstream.
+
+   No cookie, no id, nothing that identifies a person: one hostname and one
+   path, sent only with a form the visitor chose to submit, only to our own
+   inbox, and cleared when the tab closes. */
+(function () {
+  var KEY = 'semora_src_v1';
+
+  /* This page's own reading, computed first and always. */
+  var here = '';
+  try {
+    var u = document.referrer ? new URL(document.referrer) : null;
+    /* our own pages are not a source. Compare ORIGINS, not string prefixes —
+       a prefix test reads https://www.semora.com.au.evil.example/ as ours. */
+    if (u && u.origin !== location.origin) here = u.hostname;
+  } catch (e) { here = ''; }
+  var mine = JSON.stringify({ ref: here, land: location.pathname });
+
+  /* Storage is a PREFERENCE, not a precondition. Every access is wrapped
+     separately, because each one throws on its own: reaching for
+     window.sessionStorage throws when a browser is set to block site data,
+     getItem can throw, and setItem can throw on quota. Codex found the field
+     left BLANK on 10 Sep 2026 by making the getter throw — an earlier cut
+     returned early on any storage failure. Now the field is filled whenever
+     JS runs at all; storage only decides whether it is the SESSION's first
+     touch or THIS page's. */
+  var first = null;
+  try { first = window.sessionStorage.getItem(KEY); } catch (e) { first = null; }
+  if (!first) {
+    first = mine;
+    try { window.sessionStorage.setItem(KEY, first); } catch (e) { /* fine */ }
+  }
+
+  var fields = document.querySelectorAll('input[name="source"]');
+  for (var i = 0; i < fields.length; i++) fields[i].value = first;
+})();

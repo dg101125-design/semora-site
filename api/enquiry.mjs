@@ -44,7 +44,7 @@ const RESEND = "https://api.resend.com/emails";
 /* "found" is measure 7 of 8 — how the enquirer found us, asked on both
  * forms since 9 Sep 2026. It cannot be backfilled, so a name missing from
  * this list is a datum lost for good, not a datum delayed. */
-const FIELDS = ["name", "practice", "email", "phone", "website", "vertical", "want", "found", "prompt"];
+const FIELDS = ["name", "practice", "email", "phone", "website", "vertical", "want", "found", "prompt", "source"];
 
 /* Read the enquiry out of the request whatever shape it arrives in.
  *
@@ -122,6 +122,52 @@ function send(payload) {
   });
 }
 
+/* The answer engines, by the host they send people from (90-day plan 2.7).
+ * Google's AI Overviews and Gemini grounding arrive via a redirect host, not
+ * google.com, which is why the list is by hostname and not by search engine.
+ * An unknown host is reported as itself — never guessed at, never bucketed. */
+const AI_SOURCES = [
+  [/(^|\.)chatgpt\.com$|(^|\.)chat\.openai\.com$/, "ChatGPT"],
+  [/(^|\.)perplexity\.ai$/, "Perplexity"],
+  [/(^|\.)copilot\.microsoft\.com$|(^|\.)edgeservices\.bing\.com$/, "Copilot"],
+  [/(^|\.)gemini\.google\.com$|(^|\.)bard\.google\.com$|(^|\.)vertexaisearch\.cloud\.google\.com$/, "Google AI"],
+  [/(^|\.)claude\.ai$/, "Claude"],
+  [/(^|\.)you\.com$|(^|\.)phind\.com$|(^|\.)poe\.com$/, "Another assistant"],
+];
+
+/* "ChatGPT (chatgpt.com) · landed on /score" — or the plain truth when there is
+ * none. site.js sends a hostname and a pathname, already reduced. This function
+ * re-reduces anyway: the field is client-supplied and a browser is not the only
+ * thing that can post to this endpoint, so a full URL, a query string or junk
+ * must all come out as a hostname and a path or as nothing at all. */
+function describeSource(raw) {
+  if (typeof raw !== "string" || !raw) return "";
+  let o;
+  try { o = JSON.parse(raw); } catch { return ""; }
+  if (!o || typeof o !== "object" || Array.isArray(o)) return "";
+  /* strings only. An array coerced by String() once produced the landing path
+   * "/contact," out of ["/contact", "x"] (Codex, 10 Sep 2026). */
+  let host = typeof o.ref === "string" ? o.ref : "";
+  let land = typeof o.land === "string" ? o.land : "";
+  if (/[/:?#]/.test(host)) {                       /* a full URL slipped in */
+    try { host = new URL(host).hostname; } catch { host = ""; }
+  }
+  host = host.trim().toLowerCase().replace(/\.$/, "");   /* "chatgpt.com." is chatgpt.com */
+  /* A REAL hostname, not just permitted characters: two or more labels, each
+   * 1-63 of a-z 0-9 or hyphen, never starting or ending with a hyphen. The
+   * character whitelist this replaces passed "..." (printed as "..") and
+   * "-bad-.example". A shape we cannot vouch for is reported as no referrer,
+   * which is the honest answer, rather than as a plausible-looking domain. */
+  if (host.length > 253 ||
+      !/^(?!-)[a-z0-9-]{1,63}(?<!-)(\.(?!-)[a-z0-9-]{1,63}(?<!-))+$/.test(host)) host = "";
+  /* the path, and never the query or fragment, however it arrived */
+  land = land.split(/[?#]/)[0].slice(0, 120);
+  if (land && !land.startsWith("/")) land = "";
+  let name = host ? host.replace(/^www\./, "") : "No referrer (typed, bookmarked, or an app)";
+  for (const [re, label] of AI_SOURCES) if (re.test(host)) { name = `${label} (${host})`; break; }
+  return land ? `${name} · landed on ${land}` : name;
+}
+
 function notificationHtml(d) {
   /* The studio's copy wears THE SAME FRAME as the visitor's auto-reply
    * (9 Sep 2026 — the founder saw the first one bare and said so): ink
@@ -149,6 +195,7 @@ function notificationHtml(d) {
         ${row("Field", d.vertical)}
         ${row("Wants", d.want)}
         ${row("Found us", d.found)}
+        ${row("Came from", describeSource(d.source))}
       </table>
     </td>
   </tr>

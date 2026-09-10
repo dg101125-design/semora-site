@@ -31,11 +31,6 @@
   ],
   "redirects": [
     {
-      "source": "/about",
-      "destination": "/team",
-      "permanent": true
-    },
-    {
       "source": "/eleven-surfaces",
       "destination": "/score",
       "permanent": true

@@ -3726,6 +3726,24 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
   background: transparent; color: var(--plum-ink);
   appearance: textfield; -moz-appearance: textfield;
 }
+/* Phone touch targets. My first attempt at this padded the NUMBER inputs and
+   claimed the gate findings fixed; it changed nothing, because audit_layout
+   measures `a, button, label, input[type=checkbox]` and the four 20px
+   findings were the CHECKBOXES at 1.25rem. Codex caught the false claim in
+   output I had already run and not read.
+   The checkbox now takes the 44px both Apple and Google publish (the gate's
+   own test is the laxer <32px); the tick scales with it. The number inputs
+   keep their extra padding too — a 20px-tall money field on a phone is hard
+   to hit whether or not a gate measures it — and the desktop row is
+   untouched, so the paper-form underline the founder set on 5 Sep stands. */
+@media (max-width: 700px) {
+  .qb-item input[type="checkbox"] { width: 2.75rem; height: 2.75rem; }
+  .qb-item input[type="checkbox"]:checked::before { width: 1.4rem; height: 1.4rem; }
+  /* padding-block only: restating the horizontal 2px would introduce a
+     second off-scale value where the original is grandfathered */
+  .qb-budget input { padding-block: 16px 12px; }
+  .qb-item--qty input[type="number"] { padding-block: 12px; }
+}
 .qb-budget input:focus-visible {
   outline: 2px solid var(--acid); outline-offset: 3px;
 }
@@ -4317,7 +4335,13 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
      already carries. The badge, the paddings and the clip are all in em,
      so every part of the button scales with it. */
   font-size: 12px;
-  --btn-r: 999px;              /* set 0 for the site's square grammar */
+  /* Square, because these are `.btn` and `.btn` is square everywhere else.
+     An earlier note here said "every other button on the site is square" —
+     that was FALSE and Codex disproved it: `.float-cta` and `.pkg-cta` both
+     carry border-radius 999px. The site runs two shapes; the choice is to
+     match the class these buttons belong to, not to claim a uniformity that
+     does not exist. One value to reverse: set 999px for pills. */
+  --btn-r: 0;
   --arw-d: 1.75em;             /* badge diameter */
   --arw-gap: 0.28em;
   --arw-px: calc(var(--arw-d) + var(--arw-gap) * 2 + 0.7em);

@@ -3317,6 +3317,61 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
 
 /* --------------------------------------------------- motion */
 /* Print and any motionless pipeline get the resting page, whole. */
+/* ── arrow-fill: context locks ───────────────────────────────────────────
+   Placed at the END, after every band rule, and scoped so specificity wins
+   as well as order. Two things have to be held:
+
+   1. LAYOUT. `.qb-sum .btn` is (0,2,0) and sets display:block +
+      text-align:center; the generic `.btn.btn--arw` is also (0,2,0) but
+      sits EARLIER in the file, so it lost. That is why the panel showed two
+      labels side by side — the real one centred by text-align, the overlay
+      left-aligned by justify-content. Scoped here to (0,3,0), both layers
+      are flex-centred in every context.
+
+   2. HOVER GROUND. `.qb-sum .btn:hover` and `.qb-close__acts .btn--ghost:hover`
+      repaint the whole button, which fights the sweep. The sweep IS the
+      hover effect, so the resting ground is pinned through :hover too. */
+.qb-sum .btn.btn--arw, .qb-close .btn.btn--arw {
+  display: flex; align-items: center; justify-content: center;
+  padding: var(--arw-py) var(--arw-px); line-height: 1.45;
+}
+/* founder, 11 Sep 2026: "把这个方框的 length reduce 30%". The panel's
+   buttons were stretched to the full column by `.qb-sum .btn { width:100% }`;
+   they now run at 70% of it and sit to the left edge, which is where the
+   lines and totals above them start. */
+/* founder, 11 Sep 2026: "position need to be in the central" — at 70% they
+   were pinned to the column's left edge; centred in the panel now. */
+/* founder, 11 Sep 2026: the three boxes sit UNDER the total figure and
+   align to its right edge — the figure is right-set in .qb-total b, so the
+   buttons end on the same line. Box is 15% narrower (70% → 60%). */
+.qb-sum .btn.btn--arw { width: 60%; align-self: flex-end; }
+.qb-sum .btn.btn--arw .btn__t--fill, .qb-close .btn.btn--arw .btn__t--fill {
+  display: flex; align-items: center; justify-content: center;
+  padding: var(--arw-py) var(--arw-px); line-height: 1.45;
+}
+/* panel grounds, held through hover */
+.qb-sum .btn.btn--arw#qb-mail, .qb-sum .btn.btn--arw#qb-mail:hover,
+.qb-sum .btn.btn--arw#qb-print, .qb-sum .btn.btn--arw#qb-print:hover {
+  background: transparent; color: var(--champ); border-color: var(--champ);
+}
+.qb-sum .btn.btn--arw#qb-print, .qb-sum .btn.btn--arw#qb-print:hover { border-color: var(--plum-300); }
+.qb-sum .qb-btn--pay.btn.btn--arw, .qb-sum .qb-btn--pay.btn.btn--arw:hover {
+  background: var(--moss-300); color: var(--plum-ink); border-color: var(--moss-300);
+}
+.qb-sum .qb-btn--pay.btn.btn--arw:disabled {
+  background: transparent; border: 1px dashed var(--plum-300); color: var(--plum-100);
+}
+/* closing-block grounds, held through hover */
+.qb-close .btn.btn--arw.btn--ghost, .qb-close .btn.btn--arw.btn--ghost:hover {
+  background: transparent; color: var(--champ); border-color: var(--champ);
+}
+.qb-close .qb-btn--pay.btn.btn--arw, .qb-close .qb-btn--pay.btn.btn--arw:hover {
+  background: var(--moss-300); color: var(--plum-ink); border-color: var(--moss-300);
+}
+.qb-close .qb-btn--pay.btn.btn--arw:disabled {
+  background: transparent; border: 1px dashed var(--plum-300); color: var(--plum-100);
+}
+
 @media print {
   .rv, .rv * { opacity: 1 !important; transform: none !important;
                translate: none !important; scale: none !important;
@@ -4232,6 +4287,177 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
    money voice and size as every other figure (founder, 5 Sep). */
 .qb-total--pay { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--acid); }
 .qb-total--pay span { color: var(--acid); }
+/* ARROW-FILL BUTTON (founder, 11 Sep 2026: "design the button use this
+   templated", supplying a React/Tailwind/shadcn component). That component
+   cannot be installed — this site is generated static HTML with no React,
+   no Tailwind, no TypeScript and no package.json; adopting it would mean
+   rebuilding the website and would blind all three gates. The BEHAVIOUR is
+   rebuilt here in plain CSS instead: a circular arrow badge parked at the
+   right, which on hover expands to fill the whole button while a clipped
+   copy of the label is revealed in the fill's own colour, and two arrows
+   trade places.
+
+   Two things are deliberately NOT copied from the reference. Its type is
+   sized in vw (1.155vw, 3.15vw, 4.41vw) — ours keeps the base .btn voice,
+   because a new size needs founder sign-off (typography parity, 31 Aug).
+   And its radius is a full pill; --btn-r carries that here so the shape is
+   one value to change, but the site's own grammar is square. */
+/* The label, the fill and the badge. Rewritten 11 Sep 2026 after TWO failed
+   attempts, and the cause was never the clip — it was the cascade.
+   `.qb-sum .btn` is (0,2,0) and sets display:block + text-align:center;
+   `.btn--arw` was (0,1,0) and lost, so inside the panel the button was not a
+   flex box at all: the real label sat CENTRED by text-align while my overlay
+   sat LEFT by justify-content. Two copies, side by side. The closing block
+   behaved differently again. So nothing here inherits or assumes: both
+   layers are the same box, the same padding and the same centring, which
+   makes a misalignment structurally impossible. Specificity is .btn.btn--arw
+   so it beats .qb-sum .btn, and this block sits after it in source. */
+.btn.btn--arw {
+  /* founder, 11 Sep 2026: "字体缩小 20%" — 15px → 12px, a size the system
+     already carries. The badge, the paddings and the clip are all in em,
+     so every part of the button scales with it. */
+  font-size: 12px;
+  --btn-r: 999px;              /* set 0 for the site's square grammar */
+  --arw-d: 1.75em;             /* badge diameter */
+  --arw-gap: 0.28em;
+  --arw-px: calc(var(--arw-d) + var(--arw-gap) * 2 + 0.7em);
+  --arw-py: 0.62em;            /* founder: "reduce size by 35%" — off the padding, never the type */
+  --arw-fill: var(--plum-ink);
+  --arw-on-fill: var(--moss-300);
+  position: relative; overflow: hidden; isolation: isolate;
+  border-radius: var(--btn-r);
+  /* symmetric padding: the badge's room is reserved on BOTH sides so the
+     label is truly centred and the two layers cannot drift */
+  display: flex; align-items: center; justify-content: center;
+  padding: var(--arw-py) var(--arw-px); line-height: 1.45;
+}
+/* z-order is the effect. The fill has to travel OVER the label and the
+   clipped duplicate has to sit on the fill — the reference does exactly
+   this (base text z-1, fill z-2, fill-text z-2-after-it, icon z-3). Mine
+   had the real label at z-3, on top of everything, so the fill slid BEHIND
+   the words and nothing ever changed colour: the founder's "color slide
+   cover the words", reported twice before I looked at the stacking. */
+.btn.btn--arw .btn__t { position: relative; z-index: 1; line-height: 1.45; }
+/* the badge, and the same element grown to the whole button on hover */
+.btn.btn--arw .btn__fill {
+  position: absolute; z-index: 2; border-radius: var(--btn-r);
+  background: var(--arw-fill);
+  top: 50%; right: var(--arw-gap);
+  width: var(--arw-d); height: var(--arw-d); transform: translateY(-50%);
+  transition: width 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86),
+              height 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86),
+              right 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+/* the SAME box as the button — same display, same centring, same padding —
+   so the duplicate label lands exactly on the original, every context */
+.btn.btn--arw .btn__t--fill {
+  position: absolute; inset: 0; z-index: 3;
+  display: flex; align-items: center; justify-content: center;
+  padding: var(--arw-py) var(--arw-px); line-height: 1.45;
+  color: var(--arw-on-fill);
+  clip-path: inset(calc((100% - var(--arw-d)) / 2) var(--arw-gap)
+                   calc((100% - var(--arw-d)) / 2)
+                   calc(100% - var(--arw-gap) - var(--arw-d)));
+  transition: clip-path 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+.btn.btn--arw .btn__ico {
+  position: absolute; z-index: 4; right: var(--arw-gap); top: 50%;
+  width: var(--arw-d); height: var(--arw-d); transform: translateY(-50%);
+  display: grid; place-items: center; overflow: hidden; color: var(--arw-on-fill);
+}
+.btn.btn--arw .btn__ico svg {
+  grid-area: 1 / 1; width: 1.05em; height: 1.05em; fill: none;
+  stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+  transition: transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+.btn.btn--arw .btn__ico svg:first-child { transform: translateX(-170%) scale(0); }
+.btn.btn--arw:hover:not(:disabled) .btn__fill,
+.btn.btn--arw:focus-visible:not(:disabled) .btn__fill { width: 100%; height: 100%; right: 0; }
+.btn.btn--arw:hover:not(:disabled) .btn__t--fill,
+.btn.btn--arw:focus-visible:not(:disabled) .btn__t--fill { clip-path: inset(0 0 0 0); }
+.btn.btn--arw:hover:not(:disabled) .btn__ico svg:first-child { transform: translateX(0) scale(1); }
+.btn.btn--arw:hover:not(:disabled) .btn__ico svg:last-child { transform: translateX(170%) scale(0); }
+@media (prefers-reduced-motion: reduce) {
+  .btn.btn--arw .btn__fill, .btn.btn--arw .btn__t--fill,
+  .btn.btn--arw .btn__ico svg { transition: none; }
+}
+/* per-context colours — the fill is always the ground the button sits against */
+.qb-close .btn.btn--arw#qb-mail2 { --arw-fill: var(--champ); --arw-on-fill: var(--plum); }
+.qb-close .qb-btn--pay.btn.btn--arw { --arw-fill: var(--plum-ink); --arw-on-fill: var(--moss-300); }
+.qb-sum .btn.btn--arw#qb-mail, .qb-sum .btn.btn--arw#qb-print { --arw-fill: var(--champ); --arw-on-fill: var(--plum); }
+.qb-sum .qb-btn--pay.btn.btn--arw { --arw-fill: var(--plum-ink); --arw-on-fill: var(--moss-300); }
+.btn.btn--arw:disabled .btn__fill, .btn.btn--arw:disabled .btn__ico { display: none; }
+.btn.btn--arw:disabled .btn__t--fill { display: none; }
+
+/* ONE pay hierarchy, shared by the sticky panel and the foot of the list
+   (founder, 11 Sep 2026: "提高 ux, ui design by 50% — size, font, click
+   button, color"). Three faults were found, and only the third was taste:
+
+   1. .qb-btn--pay and .btn--ghost were scoped to .qb-sum alone, so the
+      closing block's buttons inherited NOTHING and fell back to the base
+      .btn — which is why Pay Now rendered dark olive there.
+   2. :disabled was done with opacity 0.42, which turns acid into a muddy
+      sage on ivory and a khaki on plum — a colour in neither palette, and
+      it reads as broken rather than as waiting.
+   3. Email Quote outranked Pay Now on both grounds: a solid ivory or olive
+      slab beside a washed-out one. The money action must lead.
+
+   Hierarchy is built from FILL, BORDER and HEIGHT. No new type: every
+   button keeps the base .btn size and voice (typography parity, 31 Aug). */
+
+/* primary — the money action, on either ground */
+.qb-btn--pay {
+  background: var(--moss-300); color: var(--plum-ink); border-color: var(--moss-300);
+}
+.qb-btn--pay:hover:not(:disabled),
+.qb-btn--pay:focus-visible:not(:disabled) { background: var(--champ); border-color: var(--champ); }
+/* waiting, not broken: no fill, a dashed edge, and a label that says what is missing */
+.qb-btn--pay:disabled { background: transparent; cursor: not-allowed; }
+.qb-close .qb-btn--pay:disabled { border: 1px dashed var(--moss-700); color: var(--moss-700); }
+.qb-sum .qb-btn--pay:disabled { border: 1px dashed var(--plum-300); color: var(--plum-100); }
+
+/* Closing action at the foot of the builder, and the terms that moved out
+   of the sticky panel with it (founder, 11 Sep 2026). The figures reuse the
+   panel's own .qb-total rows — only their colours change for the light
+   ground, so no new type enters the page (typography parity, 31 Aug). */
+/* founder, 11 Sep 2026: "对齐右边设计" — the foot of the list was an ivory
+   row while the sticky panel beside it is an ink card, so the page carried
+   two payment designs. It now wears the panel's: same ground, same acid
+   rule on top, same stacked order, same button widths. */
+.qb-close {
+  background: var(--plum-ink); color: var(--champ);
+  border-top: 6px solid var(--moss-300);
+  padding: 24px 32px; margin: 0 0 32px;
+}
+.qb-close__row { display: flex; flex-direction: column; align-items: flex-end; gap: 24px; }
+.qb-close__fig { width: 100%; }
+.qb-close .qb-total { margin-top: 12px; }
+.qb-close .qb-total:first-child { margin-top: 0; }
+.qb-close .qb-total span { color: var(--moss-300); }
+.qb-close .qb-total b { color: var(--ivory); }
+.qb-close .qb-total--pay { border-top-color: var(--acid, var(--moss-300)); }
+/* stacked and centred, the panel's own rhythm */
+.qb-close__acts { display: flex; flex-direction: column; gap: 8px; align-items: flex-end; width: 100%; }
+.qb-close__acts .btn { text-align: center; }
+.qb-close__acts .btn.btn--arw { width: 60%; }
+/* secondary: outline only. It is the same size as the primary and a quarter
+   of its weight, which is the whole point. */
+.qb-close__acts .btn--ghost {
+  min-width: 105px; background: transparent; color: var(--plum-ink);
+  border-color: var(--plum-ink);
+}
+.qb-close__acts .btn--ghost:hover { background: var(--plum-ink); color: var(--champ); }
+.qb-close__empty { font-size: 15px; color: var(--plum-100); margin: 0; max-width: none; }
+.qb-terms { margin: 0 0 48px; }
+.qb-terms .small + .small { margin-top: 12px; }
+@media (max-width: 700px) {
+  .qb-close__row { flex-direction: column; align-items: stretch; }
+  .qb-close__acts { flex-direction: column; }
+  .qb-close__acts .btn { width: 100%; }
+}
+/* present, and plainly not ready — the state that replaced a vanishing button */
+.qb-btn--pay:disabled { opacity: 0.42; cursor: not-allowed; }
+.qb-sum .qb-btn--pay:disabled:hover { background: var(--moss-300); border-color: var(--moss-300); }
 .qb-fine { font-size: 13px; line-height: 1.45; color: var(--plum-100); margin-top: 16px; max-width: none; }
 .qb-acts { flex-direction: column; align-items: stretch; gap: 8px; }
 .qb-sum .btn { display: block; width: 100%; text-align: center; }
@@ -4241,8 +4467,11 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
 .qb-sum .qb-btn--pay:hover { background: var(--champ); border-color: var(--champ); }
 /* one hierarchy even against later .btn ground rules: Pay acid, Email
    ivory, PDF ghost — ids outrank whatever the band paints */
-.qb-sum #qb-mail { background: var(--ivory); color: var(--plum); border-color: var(--ivory); }
-.qb-sum #qb-mail:hover { background: var(--champ); border-color: var(--champ); }
+/* was a solid ivory slab — louder than the pay button beside it. Outline
+   now, so the order of the three reads money, quote, paper. */
+.qb-sum #qb-mail { background: transparent; color: var(--champ); border-color: var(--champ); }
+.qb-sum #qb-mail:hover { background: var(--champ); color: var(--plum); border-color: var(--champ); }
+
 .qb-sum .btn--ghost { background: transparent; color: var(--champ); border-color: var(--plum-300); }
 .qb-sum .btn--ghost:hover { background: var(--plum-700); }
 .qb-sum .small { color: var(--plum-100); }

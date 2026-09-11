@@ -19,6 +19,23 @@
   var qtys = root.querySelectorAll("input[type=number]");
   var payBtn = document.getElementById("qb-pay");
   var payNote = document.getElementById("qb-paynote");
+  /* the closing action at the foot of the list (founder, 11 Sep 2026) */
+  var payBtn2 = document.getElementById("qb-pay2");
+  /* The arrow-fill button carries the label TWICE — once visible, once
+     clipped inside the badge so it turns colour as the fill sweeps across.
+     textContent would wipe both spans and the badge with them, so every
+     label change goes through here. Falls back to textContent for any
+     button that is not the arrow-fill kind. */
+  function setLabel(b, text) {
+    if (!b) return;
+    var spans = b.querySelectorAll(".btn__t");
+    if (!spans.length) { b.textContent = text; return; }
+    for (var i = 0; i < spans.length; i++) spans[i].textContent = text;
+  }
+  /* the note's resting sentence, kept so an error can be undone */
+  var PAY_NOTE = "Card payment covers the one-off items, + 10% GST, through " +
+    "Stripe. Monthly items start by contract, with the same published numbers.";
+  var closeTot = document.getElementById("qb-close-totals");
   var payEnabled = false;      /* /api/checkout GET says whether Stripe is connected */
   var payable = [];            /* the current one-off selection, labels + qty */
   var oneOffNow = 0;
@@ -107,9 +124,41 @@
   }
 
   function payVisibility() {
-    var show = payEnabled && oneOffNow > 0;
-    if (payBtn) payBtn.hidden = !show;
-    if (payNote) payNote.hidden = !show;
+    /* Founder, 11 Sep 2026: the button is PRESENT whenever a payment
+       account is connected — not only once something is ticked. A control
+       that materialises reads as a glitch, and a first-time reader never
+       learns card payment exists. The original intent survives: with no
+       account connected it is still not rendered at all, because a dead
+       pay button is worse than none. */
+    var live = payEnabled;
+    var ready = live && oneOffNow > 0;
+    var gst = oneOffNow ? Math.round(oneOffNow * 0.1) : 0;
+    var inc = oneOffNow + gst;
+    [payBtn, payBtn2].forEach(function (b) {
+      if (!b) return;
+      b.hidden = !live;
+      b.disabled = !ready;
+      /* the amount rides on the label, so the buyer reads what leaves the
+         card before they leave our page */
+      /* a disabled control that repeats its own name teaches nothing; this
+         one names the missing step (founder UX round, 11 Sep 2026) */
+      setLabel(b, ready ? "Pay Now — " + fmt(inc) : "Select an item to pay");
+    });
+    if (payNote) {
+      payNote.hidden = !ready;
+      /* Codex r1, 11 Sep 2026: a failed checkout wrote its error into this
+         note and nothing ever put the note back, so the next selection read
+         a stale failure. The note owns one sentence and restores it here. */
+      payNote.textContent = PAY_NOTE;
+    }
+    if (closeTot) {
+      closeTot.innerHTML = oneOffNow
+        ? '<div class="qb-total"><span>Subtotal (ex GST)</span><b>' + fmt(oneOffNow) + "</b></div>" +
+          '<div class="qb-total"><span>GST (10%)</span><b>' + fmt(gst) + "</b></div>" +
+          '<div class="qb-total qb-total--pay"><span>Total payable (inc GST)</span><b>' +
+            fmt(inc) + "</b></div>"
+        : '<p class="qb-close__empty">Tick an item above and the total appears here.</p>';
+    }
   }
 
   function build() {
@@ -281,10 +330,13 @@
     return /^\/[a-z0-9-]+$/.test(here) ? here : "/quotation";
   })();
   var mail = document.getElementById("qb-mail");
-  if (mail) mail.addEventListener("click", function () {
-    mail.href = "mailto:team@semora.com.au?subject=" +
+  var mail2 = document.getElementById("qb-mail2");
+  [mail, mail2].forEach(function (m) {
+  if (m) m.addEventListener("click", function () {
+    m.href = "mailto:team@semora.com.au?subject=" +
       encodeURIComponent("Quote request — via semora.com.au" + SRC_PATH) +
       "&body=" + encodeURIComponent(quoteText() + "\nMy details:\nName:\nPractice:\nPhone:\n");
+  });
   });
   /* the print sheet's date and reference — filled whenever a print
      actually starts (the button, Ctrl-P, the browser menu: beforeprint
@@ -330,31 +382,39 @@
      connected AND the selection holds one-off items. The charge itself is
      rebuilt server-side from the generated price table — what is sent
      here is only WHICH items, never what they cost. */
-  if (payBtn) {
+  if (payBtn || payBtn2) {
     fetch("/api/checkout", { method: "GET" })
       .then(function (r) { return r.json(); })
       .then(function (cfg) { payEnabled = !!(cfg && cfg.enabled); payVisibility(); })
       .catch(function () { payEnabled = false; });
-    payBtn.addEventListener("click", function () {
+    /* both pay buttons run one starter; failure restores BOTH labels
+       through payVisibility() rather than hard-coding "Pay Now", which
+       would drop the amount the label now carries */
+    function startCheckout(btn) {
       if (!payable.length) return;
-      payBtn.disabled = true;
-      payBtn.textContent = "Opening secure payment…";
+      [payBtn, payBtn2].forEach(function (b) { if (b) b.disabled = true; });
+      setLabel(btn, "Opening secure payment…");
+      function failed(msg) {
+        payVisibility();
+        if (payNote) {
+          payNote.hidden = false;
+          payNote.textContent = msg;
+        }
+      }
       fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ lines: payable })
       }).then(function (r) { return r.json(); }).then(function (out) {
         if (out && out.url) { window.location.href = out.url; return; }
-        payBtn.disabled = false;
-        payBtn.textContent = "Pay Now";
-        if (payNote) payNote.textContent = (out && out.error) ||
-          "Payment could not start. Email the quote instead — same numbers.";
+        failed((out && out.error) ||
+          "Payment could not start. Email the quote instead — same numbers.");
       }).catch(function () {
-        payBtn.disabled = false;
-        payBtn.textContent = "Pay Now";
-        if (payNote) payNote.textContent =
-          "Payment could not start. Email the quote instead — same numbers.";
+        failed("Payment could not start. Email the quote instead — same numbers.");
       });
+    }
+    [payBtn, payBtn2].forEach(function (b) {
+      if (b) b.addEventListener("click", function () { startCheckout(b); });
     });
   }
 

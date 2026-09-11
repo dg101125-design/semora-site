@@ -207,7 +207,11 @@
 
     var t = "";
     if (oneOff) {
-      t += '<div class="qb-total"><span>Invoice Amount</span><b>' + fmt(oneOff) + "</b></div>";
+      var gstNow = Math.round(oneOff * 0.1);
+      t += '<div class="qb-total"><span>Subtotal (ex GST)</span><b>' + fmt(oneOff) + "</b></div>";
+      t += '<div class="qb-total"><span>GST (10%)</span><b>' + fmt(gstNow) + "</b></div>";
+      t += '<div class="qb-total qb-total--pay"><span>Total payable (inc GST)</span><b>' +
+        fmt(oneOff + gstNow) + "</b></div>";
     }
     if (monthly) {
       t += '<div class="qb-total"><span>Monthly</span><b>' +
@@ -233,7 +237,12 @@
     });
     /* totals from the numbers, not the DOM — the capped strikethrough
        once emailed as two run-together figures (context audit, 5 Sep) */
-    if (oneOffNow) out += "Invoice Amount: " + fmt(oneOffNow) + "\n";
+    if (oneOffNow) {
+      var gstMail = Math.round(oneOffNow * 0.1);
+      out += "Subtotal (ex GST): " + fmt(oneOffNow) + "\n";
+      out += "GST (10%): " + fmt(gstMail) + "\n";
+      out += "Total payable (inc GST): " + fmt(oneOffNow + gstMail) + "\n";
+    }
     if (monthlyNow) {
       out += "Monthly: " + fmt(monthlyNow) + " / mo" +
         (cappedNow ? " (fixed menu capped at " + fmt(CAP) + ")" : "") + "\n";
@@ -373,18 +382,21 @@
         .then(function (v) {
           if (v && v.paid) {
             status.className = "qb-paystatus qb-paystatus--ok";
-            status.textContent = "Payment received — the receipt is in your " +
-              "email, and we reply within one business day to start delivery.";
+            /* The "within one business day" promise is OUT until runbook
+               item 7 names who answers it (Codex r3). Restore this line the
+               day the founder names the owner — it is one string. */
+            status.textContent = "Payment received. We will email you to " +
+              "start delivery.";
           } else {
             status.textContent = "We could not confirm a payment for this " +
-              "visit. If you paid, the Stripe receipt in your email is the " +
-              "record — nothing further is needed.";
+              "visit. If you believe you paid, email team@semora.com.au " +
+              "with your Stripe receipt and we will confirm it.";
           }
         })
         .catch(function () {
           status.textContent = "We could not confirm a payment for this " +
-            "visit. If you paid, the Stripe receipt in your email is the " +
-            "record — nothing further is needed.";
+            "visit. If you believe you paid, email team@semora.com.au " +
+            "with your Stripe receipt and we will confirm it.";
         });
     } else if (pv === "cancelled") {
       status.hidden = false;
@@ -393,7 +405,7 @@
          off this page — storage can be switched off, and a banner that
          promises a selection that is not there is the defect this fix
          exists to remove */
-      status.textContent = "Payment was cancelled — nothing was charged. " +
+      status.textContent = "Payment was cancelled. " +
         (oneOffNow || monthlyNow
           ? "Your selection is still here."
           : "Your selection was not carried back — build it again below and " +

@@ -4226,6 +4226,12 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
   font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546; font-weight: 400; font-size: 15px;
   color: var(--ivory); font-variant-numeric: tabular-nums;
 }
+/* Total payable (inc GST) — runbook item 1, 11 Sep 2026. The row the buyer
+   is charged must sit at least as prominent as the subtotal above it, so it
+   takes the acid rule and a tighter gap to bind it to the GST line. Same
+   money voice and size as every other figure (founder, 5 Sep). */
+.qb-total--pay { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--acid); }
+.qb-total--pay span { color: var(--acid); }
 .qb-fine { font-size: 13px; line-height: 1.45; color: var(--plum-100); margin-top: 16px; max-width: none; }
 .qb-acts { flex-direction: column; align-items: stretch; gap: 8px; }
 .qb-sum .btn { display: block; width: 100%; text-align: center; }

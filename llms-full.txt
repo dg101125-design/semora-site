@@ -2,7 +2,7 @@
 
 > SEMORA STUDIO is a leading specialist growth company and marketing agency for commercial industry professionals, owner-led businesses, and healthcare and allied-health practices. We combine positioning, digital marketing, AI visibility and conversion systems into clearly defined products with transparent pricing and measurable performance.
 
-Last updated: 10 September 2026. Summary version: https://www.semora.com.au/llms.txt
+Last updated: 11 September 2026. Summary version: https://www.semora.com.au/llms.txt
 
 SEMORA STUDIO PTY LTD, ABN 77 701 244 635. Central House Toorak, Level 3, 489 Toorak Road, Toorak VIC 3142, Melbourne, Australia. team@semora.com.au · (03) 9071 0855. All prices in Australian dollars, excluding GST.
 
@@ -1789,4 +1789,74 @@ Melbourne business hours. If nobody picks up, leave a message and it comes back 
 Who we can help
 
 Commercial industry professionals · owner-led operators · healthcare and allied health practices — the three fields set out on about SEMORA STUDIO. Our own score →
+
+---
+
+# Privacy — SEMORA STUDIO Melbourne
+URL: https://www.semora.com.au/privacy
+Summary: What the enquiry form collects, which four companies handle it, what our host measures, and how to have it corrected or deleted.
+
+Privacy
+
+## What we hold, and what we do with it
+
+You filled in a form. Here is where it goes, who else touches it, and how to get it back.
+
+01 / What the form asks for
+
+### Which fields are required?
+
+Seven of the eight on our contact page. Your name, your practice, your email, your field, what you want built, how you found us, and what prompted the enquiry. Your phone is the optional one. The free visibility report page also asks for your website address, because the report is about that website.
+
+Our server is stricter about three of them and lets the rest through empty: your name, your email, and your message.
+
+The page adds one line you did not type. It holds the site that sent you and the page you landed on, so that when you arrive from a search engine or from a link inside an assistant like ChatGPT, we can tell which channels bring us work instead of guessing at it. It is a hostname and a path. Two short strings. Some hostnames do identify a company, so that line is not always anonymous, and we would rather say so than pretend otherwise.
+
+02 / Where the enquiry goes
+
+### What happens after I press send?
+
+It becomes an email in our inbox. We send you an acknowledgement as well. That second one is best effort: if it does not reach you, your enquiry still reached us.
+
+The form writes to no customer database. An enquiry to SEMORA STUDIO is a message in a mailbox, which is a smaller footprint than most agencies keep and is worth saying plainly.
+
+03 / The Quotation System
+
+### Do you see the package I build?
+
+No. Tick a service and the total changes on your screen. Your browser holds that selection so a reload does not wipe it, and it clears when the browsing session ends. If your browser blocks site data, it is not held at all.
+
+Press Email Quote and your own mail program opens with the quote already written out. You decide whether to send it.
+
+Card payments run on a page Stripe hosts. Your card number goes to them. What comes back to us is the amount, the items, whether the payment cleared, and the contact details Stripe collected at the till.
+
+04 / Cookies and measurement
+
+### Does this site set cookies?
+
+Our own code sets none, so you will not meet a banner here.
+
+Our host runs two small scripts. Between them they record the page, the site that referred you, your country and city, your device, browser and operating system, your network speed and how quickly the page loaded. That is a long list. The traffic one works without cookies by turning each request into a hash so it can count a returning visitor within the same day without storing who that visitor is. Counted, not named. It is a fuller account than most sites print. We would rather give you it than call the whole thing anonymous and leave you to find out.
+
+05 / Who else handles it
+
+### Which companies are involved?
+
+Four, and each does one job. Resend delivers the emails. Google hosts the mailbox they land in. Stripe processes card payments. Vercel serves this website and runs the two scripts above.
+
+Some of them store data outside Australia. We are saying so before you type rather than in a clause you find later.
+
+We do not sell it.
+
+06 / Getting it back
+
+### How do I see or delete what you hold?
+
+Email team@semora.com.au and ask. A person here reads it, tells you what we hold, and corrects or deletes what we are free to change.
+
+Records that belong to a payment stay longer, because Australian tax law generally requires a company to keep them for five years.
+
+If our answer does not satisfy you, the Office of the Australian Information Commissioner takes privacy complaints at oaic.gov.au. Tell us first. We would rather fix it than read about it.
+
+SEMORA STUDIO PTY LTD · ABN 77 701 244 635 · Central House Toorak, Level 3, 489 Toorak Road, Toorak VIC 3142 · (03) 9071 0855 · team@semora.com.au. Last changed 11 September 2026.
 

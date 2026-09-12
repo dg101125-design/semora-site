@@ -3564,7 +3564,11 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
 /* ------------------------------------------------ utilities */
 .mt1 { margin-top: 8px; }  .mt2 { margin-top: 16px; }
 .mt3 { margin-top: 24px; }  .mt4 { margin-top: 32px; }.stack > * + * { margin-top: 16px; }@media (max-width: 640px) { }
-.small { font-size: 13px; color: var(--graph-400); }
+/* body-sm, straight off the brand book's own scale (05_Typography/
+   type-tokens.json: 15px / 1.55 / 400). This read 13px until 12 Sep —
+   a size the book does not contain. Founder rule, same day: the brand
+   book governs font and design on every surface, strictly. */
+.small { font-size: 15px; line-height: 1.55; color: var(--graph-400); }
 .foot-note {
   font-size: 13px; color: var(--graph-400);
   border-left: 2px solid var(--champ-700);
@@ -6631,13 +6635,80 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
      and does not. */
   grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
   gap: var(--sp-8);
-  align-items: start;
+  /* 对齐高度 (founder, 12 Sep 2026). The two columns ended 429.3px apart —
+     the say at 814px, the card at 1243.3px — leaving a dead plum slab under
+     the left one. `stretch` makes the column as tall as the card; the contact
+     block below then takes `margin-top: auto` and sits on the shared bottom
+     edge.
+     The alternative was to grow the PICTURE into the gap, and it was rejected
+     by measurement rather than taste: 001.png is 1.79 landscape, so filling a
+     487x700 frame with it means showing 39% of its width and cropping the
+     rest away. Aligning the columns should not cost most of the image. */
+  align-items: stretch;
+}
+.contact-say {
+  display: flex; flex-direction: column;
 }
 .contact-say .lead { margin-top: var(--sp-6); }
 
+/* The plate. It replaced the nine-line lead on the founder's ruling of
+   12 Sep 2026 ("图取代长文案"), so it IS the left column's weight now — the
+   headline came out in the same ruling and the h1 that remains is sr-only.
+
+   aspect-ratio + object-fit: cover, which is `.idea-fig`'s discipline: the
+   frame holds whatever proportions a future replacement arrives with, and
+   swapping the picture stays a one-line edit rather than a redesign. The
+   source is 3:4; the frame is a little squarer so the figure does not sit so
+   low in a column that also has to carry the question, the contact lines and
+   the audience note. */
+.contact-plate { margin: var(--sp-6) 0 0; }
+/* The frame that crops is the PICTURE, not the figure.
+   It was the figure until 12 Sep, and that silently ate the disclosure: a
+   figure with a fixed aspect-ratio AND overflow:hidden clips its own
+   <figcaption>, because the caption lays out below the ratio-locked box and
+   overflow removes anything outside it. Measured at caption top y536.8
+   against figure bottom y524.8 — present in the DOM, 35.6px tall, painting
+   nothing. The page was carrying the claim with no disclosure under it, which
+   is worse than having written none. Found by zooming the capture, not by any
+   gate: no gate reads whether a required sentence is visible.
+   001.png is 2752x1536 (1.79); aspect-ratio + object-fit: cover still means a
+   replacement of any proportion drops in without a redesign. */
+.contact-plate picture {
+  aspect-ratio: 2752 / 1536;
+  overflow: hidden;
+}
+.contact-plate picture, .contact-plate img {
+  display: block; width: 100%; height: 100%;
+  /* The figure and the plum wallet sit left of centre and low in the source,
+     so the crop is pinned there rather than to the default centre — a centred
+     crop takes the top off the glazing and pushes the subject out of frame. */
+  object-fit: cover; object-position: 50% 50%;
+}
+
+/* Body-copy disclosure, not a decorative caption. The picture shows a branded
+   event that has not happened; ACL s18/s29 turn an unmarked depiction of it
+   into a representation about this business. This line is what makes it a
+   concept rather than a record, so it travels with the image — if the image
+   goes, this goes; if this goes, the image must too. */
+.contact-plate__cap {
+  margin-top: var(--sp-3);
+  /* body-sm, not the mono label role this borrowed until 12 Sep. `label` is
+     11px UPPERCASE mono and exists for two or three words; this is a sentence
+     that has to be read, and a sentence set in 11px mono caps is a sentence
+     nobody reads — which for a disclosure is the same as not having one. */
+  font-family: var(--sans); font-size-adjust: 0.546; font-weight: 400;
+  font-size: 15px; line-height: 1.55; letter-spacing: 0;
+  color: var(--plum-100);
+  max-width: 46ch;
+}
+.contact-say__lead { margin-top: var(--sp-6); }
+
 /* the direct lines — the template's "Mail us at / OR / socials" block */
 .contact-direct {
-  margin-top: var(--sp-7);
+  /* auto, not a fixed step: this is what pins the column's bottom edge to the
+     card's. The --sp-7 it replaces is kept as the MINIMUM so the block never
+     rides up against the picture on a short viewport. */
+  margin-top: auto; padding-top: var(--sp-7);
   display: grid; gap: var(--sp-5);
   border-top: 1px solid var(--plum-700);
   padding-top: var(--sp-6);
@@ -6762,7 +6833,11 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
 .want input:checked + .want__box::after {
   transform: translateY(-1px) rotate(45deg) scale(1); opacity: 1; }
 .want input:focus-visible + .want__box { outline: 2px solid var(--plum); outline-offset: 2px; }
-.want__t { font-family: var(--sans); font-size-adjust: 0.546; font-size: 15px; color: var(--graph); }
+.want__t {
+  font-family: var(--sans); font-size-adjust: 0.546; font-size: 15px;
+  line-height: 1.55;   /* body-sm's line in the book; it was inheriting body's 1.62 */
+  color: var(--graph);
+}
 .want input:checked ~ .want__t { color: var(--graph-700); font-weight: 500; }
 
 /* one full-width send, as the template has it */

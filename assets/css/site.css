@@ -797,14 +797,28 @@ section > .wrap { position: relative; z-index: 1; }
   min-height: 74px;
 }
 .site-head__logo { flex: 0 0 auto; display: flex; align-items: center; }
-/* 46px tall → ~239px wide: at the brand's 240px screen floor,
-   umlaut dots ~2.5px — above the 2px reproduction floor. */
+/* 46px tall renders 249.8px wide — MEASURED 12 Sep 2026; the "~239px" this
+   comment claimed was never right, and it mattered, because 239 would have put
+   the wordmark UNDER its own floor. The brand system's digital minimum for the
+   primary wordmark is 240px (vol1.py, SIZE + SCALING), set there because the
+   umlaut dots — 0.1324 x cap height — fall under a 2px screen reproduction
+   floor below it. So there are 9.8px of headroom here and no more: the
+   masthead's largest object cannot be shrunk to pay for anything, which is the
+   constraint the whole row is designed around. Below the floor the brand
+   system's answer is the ASCII system lockup, not a smaller wordmark. */
 .site-head__logo img { height: 46px; width: auto; }
 
 /* The seal sits OUTSIDE the animated wordmark, not inside it. The reveal
    below is calibrated in hard pixels to the wordmark's 249px width, so
-   anything sharing that box shifts the wipe off its own slash. */
-.site-head__mark { height: 52px; width: 52px; margin-right: 18px; }
+   anything sharing that box shifts the wipe off its own slash.
+   52→40px, 12 Sep 2026. The seal was TALLER than the name beside it (52
+   against the wordmark's 46) — the mark out-massing the word is the wrong way
+   round, and the 320px logo block it made was the single biggest object in a
+   row that had no room for it. 40px is the roundel/tile digital minimum
+   published in the brand system (vol1, SIZE + SCALING), so this is the floor
+   and not a step above it: the seal cannot pay for another label. The 18px
+   beside it goes to 16px and off the grandfather list with it. */
+.site-head__mark { height: 40px; width: 40px; margin-right: 16px; }
 .site-head__mark .shm-tile { fill: var(--plum); }
 .site-head__mark .ap-arc { fill: var(--ivory); }
 .site-head__mark .ap-arc--weak { fill: var(--plum-300); }
@@ -866,37 +880,218 @@ html.lr .site-head__word::before {
 /* align-self: stretch so the nav — and the Services cell inside it — fills the
    header's full height. That is what closes the dead band between the trigger
    and the mega panel; see .has-mega. Children stay centred, so nothing moves. */
-/* gap 32→24, 1 Sep 2026: six labels + the CTA overran the right gutter
-   at 1440 without tripping the scroll gate */
+/* THE ROW HAS A HARD CEILING: 1,136px (measured 12 Sep 2026).
+   `.wrap` is max-width 1280px with a 72px gutter each side, so the masthead
+   gets 1,136px of content box at EVERY viewport from 1440px up — a wider
+   screen buys the row nothing, because the cap, not the screen, is the limit.
+   On 1 Sep the gap went 32→24 because "six labels + the CTA overran the right
+   gutter at 1440 without tripping the scroll gate". That reading was right, and
+   the correction was real but not nearly enough: 32→24px across six gaps took
+   48px off a row that was 194px over its ceiling (an earlier version of this
+   comment called it an "8px correction" — wrong, it is 8px per gap and there
+   are six; Codex, 12 Sep). Nothing re-measured it afterwards. The row still
+   needed 1,282px against those 1,136, so:
+     · at 1440/1600/1920 the CTA hung 146px PAST the grid every section below
+       the header aligns to — the logo on the page's left edge, the button out
+       in the gutter, nothing in the bar lining up with anything on the page;
+     · from 1241px (the desktop breakpoint) to 1428px it hung off the SCREEN.
+       At 1366 the button read "FREE VISIBILITY REPOR" and the page scrolled
+       sideways by 27px; at 1280, by 66px.
+   The layout gate sampled 1600, 1200 and 390. 1600 has no page scroll (the
+   overrun stays inside the viewport) and 1200 is already on the drawer, so the
+   entire broken band fell between two samples and three green gates never saw
+   it. 1280 is now a gate width and the masthead has a grid check of its own.
+   Rebuilt the row needs 1,095.8px: 40.2px of slack at 1440+, 56.2px at 1280,
+   and 21.1px at the 1241px breakpoint, which is the tightest desktop width.
+   Getting there took BOTH halves. The first cut (16px gaps, the CTA still
+   reading "Free visibility report") fit the ceiling with 29px to spare and the
+   founder read it as 拥挤 on sight — correctly: 16px against 13px type is a
+   1.2:1 gap-to-type ratio, and a nav needs closer to 2:1 before the labels
+   stop running together. The gaps are back at 24px (1.85:1); that cost 48px,
+   and it was paid by the CTA's label, the only object in the row that could
+   pay: "Free report" is 128.7px where "Free visibility report" was 190.7px.
+   That slack IS the whole tolerance — a seventh top-level label, or a longer
+   word in the CTA, breaks it again, and the gate is what will say so. */
 .site-nav { margin-left: auto; display: flex; align-items: center; gap: 24px;
             align-self: stretch; }
-.site-nav a:not(.btn) {
+/* `> a`, not a descendant `a` — see the 1241px block below for the full
+   account. The mega panel's links live inside this same nav, and a descendant
+   selector here sits at (0,2,1), which outranks `.mega__col a` (0,1,1) and
+   `.alink` (0,1,0). That is how this rule was silently setting type inside the
+   mega panel: it suppressed `.mega__col a`'s own background transition, and it
+   was sizing the five `.mega__foot` arrow-links — at 15px before this wave and
+   13px after it, neither of which anything had chosen (Codex, 12 Sep). */
+.site-nav > a:not(.btn), .has-mega > a {
   /* the text face in normal case (founder, 12 Aug 2026: match the second
      reference strip) — the register every mainstream agency nav uses. The
      mono-uppercase voice this block first carried was overridden 3,500 lines
-     down for three weeks; one selector now binds one face (6 Sep 2026). */
+     down for three weeks; one selector now binds one face (6 Sep 2026).
+     15→13px, 12 Sep 2026. Not a taste call: at 15px the six labels alone ran
+     547px and NO arrangement of the other parts fit the 1,136px ceiling —
+     every alternative was measured before this one was chosen. It also repairs
+     the proportion the founder scored at 60: a 46px wordmark against a 15px
+     label is a 3:1 shout-to-whisper with no middle register in between.
+     --graph-900 carries the smaller size; --graph was tuned against 15px. */
+  font-family: var(--sans); font-size-adjust: 0.546; font-weight: 500;
+  font-size: 13px; letter-spacing: 0.004em; text-transform: none;
+  color: var(--graph-900); text-decoration: none;
+  transition: color 160ms var(--ease);
+}
+.site-nav > a:not(.btn):hover, .has-mega > a:hover { color: var(--plum); }
+.site-nav > a[aria-current="page"], .has-mega > a[aria-current="page"] {
+  color: var(--plum);
+}
+/* Pinned to what PRODUCTION renders today, not to what `.alink` declares.
+   These five reached 15px sans by accident — the nav rule above was
+   overreaching into the panel — and scoping that rule correctly would have
+   dropped them to `.alink`'s own 11px mono in a wave the founder asked to
+   touch the top bar only. So the accidental value is made explicit rather
+   than either perpetuated invisibly or silently changed: zero pixels move,
+   and the next person can see there is a decision here that nobody has made.
+   Open in the 12 Sep brief for the founder to rule on. */
+.mega__foot .alink {
   font-family: var(--sans); font-size-adjust: 0.546; font-weight: 500;
   font-size: 15px; letter-spacing: 0; text-transform: none;
   color: var(--graph); text-decoration: none;
   padding-block: 0.4em;
+  /* transparent, NOT absent: `.alink`'s own rule draws a 1px champagne
+     hairline, and the over-reaching nav rule had been suppressing it with this
+     transparent 2px for as long as it had been over-reaching. Scoping the nav
+     rule correctly made that hairline appear under all five links — a visible
+     change nobody asked for, in a wave about the top bar. Measured, not
+     reasoned: border-bottom read `1px solid rgb(220,215,206)` before this line
+     was added. */
   border-bottom: 2px solid transparent;
   transition: color 160ms var(--ease);
 }
-.site-nav a:not(.btn):hover { color: var(--plum); }
-.site-nav a[aria-current="page"] { color: var(--plum); border-bottom-color: var(--moss); }
-.site-nav .btn { padding: 0.85em 1.4em; white-space: nowrap; }
-/* five labels share the row now — a top-level label must never fold.
+/* 15→12px and the padding with it. The masthead CTA was 239.4×51.8 — a quarter
+   of the row, and standing 51.8px against the logo seal's 52px, so the two
+   heaviest objects in the bar were the same size and argued with each other
+   instead of one closing the row. (This said "TALLER than the logo seal" until
+   Codex measured it: 51.8 against 52.0 is 0.2px SHORTER. The point was the
+   parity of mass, and overstating it as dominance was the same reflex that put
+   every other unmeasured number in this file.) It is now 128.7×46.6 and still the only filled object in the
+   bar. It keeps the uppercase button voice deliberately: the hero's CTA and
+   this one have to read as the same species of object (typography parity,
+   founder 31 Aug).
+   Three measured states, in order, because the middle one is not the current
+   one and an earlier version of this comment left that ambiguous:
+     239.4×51.8  as it shipped
+     190.7×46.6  after the type cut alone — still 21.9px over the ceiling
+     128.7×46.6  now, once the LABEL shortened too (see build_site.py) — 46%
+                 off the original width
+   The founder asked for it smaller twice; the second time the type had already
+   gone as far as it could, so the label was the only thing left to give. The
+   1.6em side padding is deliberately more generous than the 1.35em the long
+   label had: a short word in a tight box reads mean, and there is now room to
+   be kind. */
+/* THE PILL (founder, 12 Sep 2026: "change the free report style into free
+   visibility report style"). The masthead CTA now speaks the floating CTA's
+   language — acid ground, ink type, fully rounded — so the site's two standing
+   conversion objects read as one offer rather than two unrelated buttons.
+   Three things this deliberately does NOT copy from the float pill, each for a
+   measured reason:
+     · the DOT and the ARROW. Both fit the float pill because it floats in open
+       page space. In the row they cost 36.8px, and the row has 21.1px at the
+       1241px breakpoint — measured: with them it is 15.8px OVER. They unlock
+       together with the full label, and only if the wordmark moves (see the
+       12 Sep brief).
+     · the 13px/16-24px sizing. Held at 12px and the existing 1.05em/1.6em, so
+       the pill costs the row 1.6px rather than 35px.
+     · the heavy `0 8px 24px / 0.35` shadow. A drop shadow that reads as "this
+       floats above the page" is wrong on an object welded into a bar.
+   The shadow it DOES take is doing real work, not decoration: acid on ivory is
+   1.67:1, so the pill's own edge is nearly invisible against the header and
+   the shape would dissolve without it. (The type inside is fine — plum-ink on
+   acid is 8.84:1.) The float pill solves the same problem the same way.
+   NOTE, because it reverses a one-day-old decision: `.btn` is square by the
+   founder's ruling of 11 Sep (commit e724415, "Square buttons"). This rounds
+   the masthead one ONLY — every other button on the site stays square. */
+.site-nav .btn {
+  font-size: 12px; padding: 1.05em 1.6em; white-space: nowrap;
+  background: var(--moss-300); color: var(--plum-ink);
+  border-color: var(--moss-300); border-radius: 999px;
+  box-shadow: 0 2px 8px rgb(27 13 22 / 0.16);
+}
+.site-nav .btn:hover {
+  background: var(--signal-ink); color: var(--ivory);
+  border-color: var(--signal-ink);
+}
+/* SIX labels share the row now — a top-level label must never fold.
+   (This said "five" for as long as there have been six; counted 12 Sep.)
    Scoped to the nav's own children: the mega menu's row links live in
    the same nav and MUST keep wrapping (nowrap there blew the columns
    to 1604px — 31 Aug 2026, caught by the layout gate). */
 .site-nav > a, .has-mega > a { white-space: nowrap; }
 
+/* ── the row's vertical order (12 Sep 2026) ──────────────────────────────
+   Three things in a 74px bar ended at three different heights: the logo at
+   y63.0, the CTA at y62.9, and the active link's 2px underline at y56.1,
+   floating under its own word with nothing else on that line. That is most of
+   what "line space" was pointing at — the bar had no shared horizontal to read
+   against. Each link now fills the bar's full height, so all six share one
+   optical band and one hit target (74px tall, where the old padding-block gave
+   38px), and the indicator moves DOWN onto the header's own hairline: an
+   active tab now reads as part of the bar's structure instead of as an
+   underlined word. `bottom:-1px` laps the 1px border rather than stacking a
+   second line on top of it.
+   Desktop only. In the drawer these links stack, and a full-width rule under
+   each one stops being an indicator and becomes a table. */
+@media (min-width: 1241px) {
+  /* `> a`, NOT `a` — the child combinator is load-bearing (Codex, 12 Sep).
+     `.site-nav a:not(.btn)` is a DESCENDANT selector at (0,2,1), and the mega
+     panel's ~30 column links live inside this same nav. `.mega__col a` guards
+     its font-size, colour and border with `!important`, so the base rule was
+     always survivable — but these four layout properties have no `!important`
+     twin to lose to, and they landed on every mega link: measured
+     `display:inline-flex`, `align-self:stretch`, `position:relative` and a 2px
+     acid `::after` on all of them, turning full-row flex targets into
+     shrink-to-fit ones and hanging an underline under every row on hover.
+     The file already had the right idiom one block up (`.site-nav > a,
+     .has-mega > a { white-space: nowrap }`, scoped for exactly this reason in
+     August) and I did not follow it. Any rule added here takes the same two
+     selectors — and `:not(.btn)` stays on the .site-nav half of the pair,
+     because the CTA is ALSO a direct child of .site-nav. Dropping it while
+     fixing the mega regression stretched the button to the full 74px bar and
+     hung an acid indicator under it. Caught by measuring, one round later:
+     narrowing a selector is its own change and needs its own check. */
+  .site-nav > a:not(.btn), .has-mega > a {
+    align-self: stretch; display: inline-flex; align-items: center;
+    position: relative;
+  }
+  .site-nav > a:not(.btn)::after, .has-mega > a::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: -1px;
+    height: 2px; background: var(--moss);
+    transform: scaleX(0); transform-origin: left center;
+    transition: transform 200ms var(--ease);
+  }
+  .site-nav > a:not(.btn):hover::after, .has-mega > a:hover::after,
+  .site-nav > a:not(.btn)[aria-current="page"]::after,
+  .has-mega > a[aria-current="page"]::after { transform: scaleX(1); }
+  /* The CTA is the row's end-stop, not its seventh label. One spacing step of
+     separation past the 24px gap is what makes the six read as a group and the
+     button as the close — at a flat gap it queued up as one more word. */
+  .site-nav .btn { margin-left: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-nav > a:not(.btn)::after, .has-mega > a::after { transition: none; }
+}
+
 
 /* --------------------------------------------- services mega-menu
    Their format, our content. The large agencies run a menu like this listing
    twenty or thirty capabilities and not one number, which is precisely what
-   leaves a buyer having to ask. Every row here carries its price and its
-   delivery time — the same information, turned from a menu into an argument.
+   leaves a buyer having to ask.
+
+   THIS COMMENT USED TO CLAIM "every row here carries its price and its
+   delivery time — the same information, turned from a menu into an argument".
+   Counted 12 Sep 2026: five columns, 30 rows, ZERO prices and ZERO delivery
+   times. The menu became names-only at some point and the comment describing
+   its whole rationale never followed, so the file has been asserting our
+   sharpest differentiator on a surface that stopped carrying it. Whether the
+   numbers come back is a founder decision, raised in the 12 Sep brief; what is
+   fixed here is the file claiming something a reader can disprove in one
+   glance at the page.
 
    CSS only: hover for a mouse, :focus-within for a keyboard, and it collapses
    out entirely below the mega breakpoint where the checkbox nav takes over.
@@ -926,7 +1121,13 @@ html.lr .site-head__word::before {
 .has-mega:focus-within .mega-caret { transform: translateY(0.05em) rotate(225deg); }
 
 .mega {
-  position: absolute; top: calc(100% + 1.15rem); left: 50%;
+  /* ONE definition of the trigger-to-panel gap. It was three separate
+     `1.15rem` literals until Codex pointed out that three literals is
+     exactly what drifting looks like before it drifts — the comment below
+     claimed they "cannot" diverge while nothing stopped them. Now the
+     offset and the bridge both read this property, so they cannot. */
+  --mega-gap: 1.15rem;
+  position: absolute; top: calc(100% + var(--mega-gap)); left: 50%;
   transform: translateX(-50%) translateY(-6px);
   width: min(1400px, calc(100vw - 2.5rem));
   background: var(--ivory);
@@ -960,9 +1161,28 @@ html.lr .site-head__word::before {
    clears them (bridge top 64.4 against their bottom edge at 63.0) and is tall
    enough to catch a FAST rightward diagonal, which leaves the trigger's
    x-range about 1.2px above where a 20px bridge started.
-   If the header height or the panel offset changes, re-measure this. */
+   If the header height or the panel offset changes, re-measure this.
+
+   12 SEP 2026 — that last line came true and was not followed. Making the six
+   top-level links full-height moved their bottom edge from y56.1 to y74, into
+   the 28px bridge (y64.4-92.4). The bridge is full panel width at z-index 60
+   with pointer events, so while the menu was OPEN it swallowed the bottom
+   9.6px of EVERY top-level link: `elementFromPoint` at each link's bottom
+   returned <div.mega>, not the link. Found by Codex reading the boxes, then
+   confirmed by hit-testing. The 28px was measured against a 30.3px gap that no
+   longer exists — the gap is now 1.15rem, because .has-mega stretches to the
+   full header.
+   The fix is to stop carrying the number twice. The bridge is the gap, so it
+   is written as the gap: `--mega-gap`, declared once on .mega and read by both
+   its own `top` offset and this bridge, so a change to one cannot leave the
+   other stale. (It was three separate `1.15rem` literals when this comment
+   first claimed they could not drift — Codex, 12 Sep. A shared value has to be
+   shared, not merely written identically three times.) Spans exactly y74 to y92.4 — the links end AT 74, so nothing
+   overlaps. The fast-diagonal catch the 28px was buying is more than repaid by
+   the trigger itself growing from 38.3px tall to 74px. */
 .mega::before {
-  content: ""; position: absolute; left: 0; right: 0; top: -28px; height: 28px;
+  content: ""; position: absolute; left: 0; right: 0;
+  top: calc(-1 * var(--mega-gap)); height: var(--mega-gap);
 }
 /* Rows are declared on the container and each column spans them with subgrid,
    so the heading, the promise and the list line up across all five columns
@@ -1028,7 +1248,12 @@ html.lr .site-head__word::before {
   font-weight: 500 !important;
   font-size: 15px !important; line-height: 1.2 !important;
   letter-spacing: -0.01em !important; text-transform: none !important;
-  color: var(--plum-900); margin: 0 0 8px;
+  /* plum-900 → PLUM, founder 12 Sep 2026: the five column titles take the
+     primary purple. plum-900 is the near-black end of the ramp and read as
+     ink beside the graph-coloured rows under it, so the menu's structure —
+     five named territories — was carried by position alone. 6.98:1 on the
+     panel's ivory. */
+  color: var(--plum); margin: 0 0 8px;
   align-self: end;
 }
 .mega__sub {
@@ -1056,6 +1281,17 @@ html.lr .site-head__word::before {
   letter-spacing: 0.004em !important; text-transform: none !important;
   font-weight: 400 !important; line-height: 1.55;
   color: var(--plum-ink) !important; border-bottom: 0 !important;
+  /* Declared here 12 Sep 2026, not inherited from anywhere. Until this wave
+     these rows got `text-decoration: none` from `.site-nav a:not(.btn)`
+     reaching into the panel; scoping that rule to top-level links (correctly)
+     handed all 30 rows back to the user-agent default and they shipped to the
+     founder's preview UNDERLINED. Caught by looking at the rendered menu — a
+     before/after computed-style comparison run in the same wave listed the
+     properties it checked BY HAND and text-decoration was not among them,
+     which is how a hand-written check quietly becomes a hand-written blind
+     spot. The full-property diff that would have caught it is filed in the
+     12 Sep evidence folder. */
+  text-decoration: none;
   border-radius: 2px;
   transition: color 140ms var(--ease), background 140ms var(--ease);
 }
@@ -1095,7 +1331,7 @@ html.lr .site-head__word::before {
   .mega, .mega-caret { transition: none; }
 }
 /* Below the desktop nav breakpoint the checkbox menu takes over and the panel
-   is removed rather than restyled — a four-column price table inside a phone
+   is removed rather than restyled — a five-column menu inside a phone
    drawer is worse than the plain link it replaces. */
 @media (max-width: 1240px) {
   .has-mega { display: contents; }
@@ -1105,7 +1341,18 @@ html.lr .site-head__word::before {
 /* mobile nav — checkbox hack; checkbox stays focusable */
 .nav-toggle-box { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; }
 .nav-toggle-box:focus-visible + .nav-toggle { outline: 2px solid var(--plum); outline-offset: 3px; }
-@media (min-width: 981px) { .nav-toggle-box { display: none; } }
+/* 981→1241px, 12 Sep 2026 — a stale breakpoint, and a real one.
+   The drawer moved to `max-width: 1240px` at some point; this rule did not
+   follow it. Between 981px and 1240px the toggle LABEL was displayed and the
+   drawer was the only navigation, while the checkbox that opens it was
+   `display:none` — which takes it out of the tab order entirely. A mouse still
+   worked (clicking a label activates its control however the control is
+   hidden), so nothing looked wrong; a keyboard or switch user simply could not
+   open the navigation at any width in that band. Measured 12 Sep: at 1100 and
+   1200, `box.focus()` left document.activeElement unchanged.
+   The number must equal the drawer's breakpoint + 1, always: the checkbox may
+   only be hidden where the desktop row is actually rendering. */
+@media (min-width: 1241px) { .nav-toggle-box { display: none; } }
 .nav-toggle {
   display: none; margin-left: auto;
   /* sans since 30 Aug 2026 — the nav itself went sans on 12 Aug and the
@@ -1123,9 +1370,22 @@ html.lr .site-head__word::before {
     background: var(--ivory);
     border-bottom: 1px solid var(--champ-700);
     flex-direction: column; align-items: flex-start;
-    padding: 1.2rem var(--gutter) 1.6rem; gap: 16px;
+    padding: 1.2rem var(--gutter) 1.6rem; gap: 8px;
   }
   .nav-toggle-box:checked ~ .site-nav { display: flex; }
+  /* The 13px and the stripped padding are the DESKTOP row's problem, and the
+     drawer must not inherit either (caught 12 Sep, in the same wave that
+     caused it). Stacked in a drawer there is no width pressure at all, so the
+     links keep the 15px voice — and they need the tap area back: at 13px with
+     no padding-block they measured 21px tall against a 44px published
+     minimum. 12px each side gives 48.3px, and the gap drops 16→8px so the
+     targets sit close without the row rhythm growing.
+     The layout gate CANNOT see this. Its touch-target check runs at phone
+     width, where the drawer is `display:none` until the checkbox is ticked —
+     every link measures 0×0 and is skipped. Nothing here is gate-covered;
+     it was measured by hand, with the drawer opened. */
+  .site-nav a:not(.btn) { font-size: 15px; padding-block: 12px; }
+  .site-nav .btn { font-size: 15px; padding: 0.85em 1.4em; margin-top: 8px; }
 }
 
 

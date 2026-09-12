@@ -6599,3 +6599,181 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
    two-word marker. --graph-400 on ivory measures 4.95:1. */
 .mega__col a .mega-scoped,
 .mega__foot .mega-scoped { color: var(--graph-400); white-space: nowrap; }
+
+
+/* ============================================================== CONTACT ===
+   Rebuilt 12 Sep 2026 from the founder's supplied template. The template was a
+   React/shadcn/Tailwind component; none of that stack exists here or was
+   introduced. What was carried is the composition — the say on the left, the
+   form as a light card lifted off a dark ground on the right, and the
+   single-choice "what do you want built" <select> replaced by a checkbox grid.
+
+   The dark ground is our own ink/plum hero field, not the template's stock
+   photograph. If a photograph is ever wanted here, it goes on .contact-hero as
+   a background-image and nothing else changes.
+
+   EVERY TYPE SIZE HERE IS ONE THE PAGE ALREADY SPEAKS (typography parity,
+   31 Aug 2026): .lab is the 11px mono label, .field label is the same, inputs
+   are the form system's 17px sans, h1/h2/.lead/.small are the shared roles.
+   No new size, clamp or face-for-role is introduced.
+
+   The card is LIGHT inside .hero, which is DARK. Every .hero descendant rule
+   that would otherwise bleed into it is re-stated below at .hero .contact-card
+   specificity (0,3,0) rather than left to source order — failure D4 is a rule
+   that lost the cascade because it was declared far from the block it served,
+   and "later in the file" is not a guarantee anyone can see from the markup. */
+.contact-grid {
+  display: grid;
+  /* The FORM takes the wider column, not the prose. At 6fr/5fr the card came
+     out 487px, its checkbox columns 156px, and every label long enough to wrap
+     stretched its whole grid row to 72.6px — measured, not guessed. The say is
+     prose and reads fine narrower; the form is nine labels and six controls
+     and does not. */
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: var(--sp-8);
+  align-items: start;
+}
+.contact-say .lead { margin-top: var(--sp-6); }
+
+/* the direct lines — the template's "Mail us at / OR / socials" block */
+.contact-direct {
+  margin-top: var(--sp-7);
+  display: grid; gap: var(--sp-5);
+  border-top: 1px solid var(--plum-700);
+  padding-top: var(--sp-6);
+}
+.contact-direct__row .lab { margin: 0 0 var(--sp-2); }
+.contact-direct__v { margin: 0 0 var(--sp-2); }
+.contact-direct__row .small { margin: 0; color: var(--plum-100); }
+.contact-direct__soc { list-style: none; display: flex; gap: var(--sp-2); margin: 0; padding: 0; }
+.contact-who { margin-top: var(--sp-6); color: var(--plum-100); }
+
+/* The FAQ question and its answer, on the DARK field. Both needed saying: an
+   unclassed <p> in .hero takes the light-ground body colour and rendered dark
+   grey on plum — legible in the stylesheet, invisible on the page. Caught by
+   looking at a capture, which is the only thing that catches it: the contrast
+   sweep is a separate tool and no gate reads colour pairs. */
+.contact-say__h { margin-top: var(--sp-7); }
+.hero .contact-say__h { color: var(--champ); }
+.contact-say__a { margin-top: var(--sp-3); color: var(--plum-100); }
+
+/* ---- the card */
+.contact-card {
+  background: var(--ivory);
+  border: 1px solid var(--champ-700);
+  padding: var(--sp-7);
+  /* Square, like every other input and button on the site. The masthead CTA is
+     the one pill, and it is a pill because it echoes the floating CTA. */
+  border-radius: 0;
+}
+.contact-card__h { margin: 0 0 var(--sp-2); }
+.contact-card__sub { margin: 0 0 var(--sp-6); }
+.contact-card .form-grid { max-width: none; gap: var(--sp-5); }
+
+/* Re-state what .hero would otherwise paint onto a light card. */
+/* --graph-700 is what the site colours a heading on a light ground. An earlier
+   cut of this line said var(--ink) — a token that DOES NOT EXIST (the ink
+   token is --plum-ink). An unknown custom property makes the declaration
+   invalid at computed-value time, so the colour silently fell back to the
+   inherited one and no gate saw a thing. That is the 7 Sep transplant defect
+   again: check every var() a new block references. */
+.hero .contact-card :is(h1, h2, h3) { color: var(--graph-700); }
+.hero .contact-card .lab { color: var(--graph-400); }
+.hero .contact-card .small { color: var(--graph); }
+.hero .contact-card .alink { color: var(--plum-700); border-color: var(--champ-700); }
+.hero .contact-card .alink:hover { color: var(--plum); border-color: var(--plum-300); }
+.hero .contact-card .form-status { color: var(--graph-400); }
+
+/* name+email side by side, the template's one two-up row. Collapses first,
+   before the page does, because two 17px inputs in a 5fr column get tight
+   long before the grid itself needs to stack. */
+.field-pair { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-4); }
+@media (max-width: 1180px) { .field-pair { grid-template-columns: 1fr; } }
+
+/* ---- the checkbox grid: "I'm looking for…"
+   A fieldset, because these nine boxes are one question and a screen reader
+   should hear the question once rather than nine times. The legend carries
+   .field label's exact type so the grid reads as another field, not a new
+   component. */
+.want-set { border: 0; margin: 0; padding: 0; min-inline-size: 0; }
+.want-set legend {
+  padding: 0;
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
+  font-size: 11px; letter-spacing: 0.012em; text-transform: uppercase;
+  color: var(--graph-400); margin-bottom: var(--sp-3);
+}
+.want-set legend .opt {
+  color: var(--plum-300); text-transform: none; letter-spacing: 0.012em;
+}
+.want-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-2) var(--sp-4);
+  /* Without this a grid row is as tall as its tallest item AND every item
+     stretches to match, so one two-line label made its neighbour a 72px box
+     with one word in it. */
+  align-items: start;
+}
+@media (max-width: 520px) { .want-grid { grid-template-columns: 1fr; } }
+
+.want {
+  display: grid; grid-template-columns: auto 1fr; align-items: start;
+  gap: var(--sp-3);
+  /* Tap height bought with padding rather than a height, so the text may wrap
+     to two lines without the row fighting it. Register B10 is this exact
+     measurement going wrong in the nav drawer. 12px against a 15px line gives
+     ~46px, over the 44px floor, and stays on the 12-step spacing scale —
+     11px would have sat nearer the floor and audit_site.py rejects it,
+     correctly: an off-scale number nobody can re-derive is how a scale stops
+     being one. */
+  padding-block: var(--sp-3);
+  cursor: pointer;
+}
+/* The real input stays in the accessibility tree and in the tab order; it is
+   the painted box that is replaced. Never display:none — that removes it from
+   both. */
+.want input {
+  position: absolute; opacity: 0; width: 18px; height: 18px; margin: 0;
+  pointer-events: none;
+}
+.want__box {
+  width: 18px; height: 18px;
+  /* Optical, not structural: the box is 18px against a ~23px first line, so it
+     is nudged onto that line's centre rather than its top. A transform rather
+     than a margin, because it must not change what the row occupies. */
+  transform: translateY(2px);
+  border: 1px solid var(--champ-700); background: var(--white);
+  display: grid; place-items: center;
+  transition: background-color 140ms var(--ease), border-color 140ms var(--ease);
+}
+/* The tick is drawn, not an icon: two borders of an empty box, rotated. One
+   less asset, and it takes the ink colour without a second file. */
+.want__box::after {
+  /* A rotated L. Its visual centre sits below its box centre once turned, so
+     the 1px ride up is folded into the transform rather than taken as a
+     negative margin. */
+  content: ""; width: 5px; height: 9px;
+  border: solid var(--ivory); border-width: 0 2px 2px 0;
+  transform: translateY(-1px) rotate(45deg) scale(0.4); opacity: 0;
+  transition: transform 140ms var(--ease), opacity 140ms var(--ease);
+}
+.want:hover .want__box { border-color: var(--plum-300); }
+/* Plum, not acid: acid (#B4CC2E) is 1.67:1 on ivory and is scoped to dark
+   grounds only. This box sits on a light card. */
+.want input:checked + .want__box { background: var(--plum); border-color: var(--plum); }
+.want input:checked + .want__box::after {
+  transform: translateY(-1px) rotate(45deg) scale(1); opacity: 1; }
+.want input:focus-visible + .want__box { outline: 2px solid var(--plum); outline-offset: 2px; }
+.want__t { font-family: var(--sans); font-size-adjust: 0.546; font-size: 15px; color: var(--graph); }
+.want input:checked ~ .want__t { color: var(--graph-700); font-weight: 500; }
+
+/* one full-width send, as the template has it */
+.contact-send { display: grid; gap: var(--sp-3); }
+.contact-send .btn { width: 100%; }
+
+/* ---- stacked */
+@media (max-width: 980px) {
+  .contact-grid { grid-template-columns: 1fr; gap: var(--sp-7); }
+  .contact-card { padding: var(--sp-6); }
+}
+@media (max-width: 560px) {
+  .contact-card { padding: var(--sp-5); }
+}

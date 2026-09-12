@@ -79,6 +79,24 @@ async function rawBody(req) {
   }
 }
 
+/* A form field may legitimately appear MORE THAN ONCE in one submission: a
+ * checkbox group posts one pair per ticked box, all sharing the field's name.
+ * Both parsers below used to write `out[name] = value`, and
+ * `Object.fromEntries` does the same — so every box but the LAST was dropped,
+ * with nothing to show for it. That is failure C1's exact shape (the form that
+ * appeared to work while losing what it was given), which is why this is a
+ * function with a comment rather than a one-line change.
+ *
+ * Repeats are joined with ", " so the field stays a STRING. Everything
+ * downstream — the FIELDS loop, the length cap, the email templates — reads
+ * these as strings, and returning an array here would have moved the defect
+ * rather than fixed it: `String(["a","b"])` is "a,b" with no space, and a
+ * single-element array would silently stringify fine, so the bug would only
+ * appear once someone ticked two boxes. */
+function add(out, key, value) {
+  out[key] = key in out ? `${out[key]}, ${value}` : value;
+}
+
 async function readFields(req) {
   const body = req.body;
   if (body && typeof body === "object" && !Buffer.isBuffer(body)
@@ -99,7 +117,7 @@ async function readFields(req) {
       if (split === -1) continue;
       const name = /name="([^"]*)"/.exec(part.slice(0, split));
       if (!name) continue;
-      out[name[1]] = part.slice(split + 4).replace(/\r\n$/, "");
+      add(out, name[1], part.slice(split + 4).replace(/\r\n$/, ""));
     }
     return out;
   }
@@ -108,7 +126,9 @@ async function readFields(req) {
     try { return JSON.parse(raw); } catch { return {}; }
   }
 
-  return Object.fromEntries(new URLSearchParams(raw));
+  const out = {};
+  for (const [k, v] of new URLSearchParams(raw)) add(out, k, v);
+  return out;
 }
 
 function send(payload) {

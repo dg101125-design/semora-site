@@ -749,6 +749,25 @@ section > .wrap { position: relative; z-index: 1; }
      dark fields take the bright one below. */
   background: var(--signal-ink); color: var(--ivory);
   border: 1px solid var(--signal-ink);
+  /* THE PILL, founder 12 Sep 2026: "this button need to match the other
+     button design", pointing at the homepage hero's CTA against the masthead
+     pill they had just confirmed.
+     The site has run TWO button shapes for a while and the stylesheet already
+     said so: `.float-cta` and `.pkg-cta` have carried `border-radius: 999px`
+     throughout, and the note on `.btn.btn--arw` spells out the fix — "One
+     value to reverse: set 999px for pills." This is that one value. `--btn-r`
+     already existed and was already read by `.btn--arw` and its travelling
+     `.btn__fill`; declaring it here hands every button the same shape from a
+     single place, and the arrow buttons inherit it instead of overriding it.
+     Measured before shipping, because `.btn--arw` is the one that could break:
+     at 999px its five instances keep identical width, height and fill width,
+     the fill picks up the pill radius, `overflow: hidden` clips it to the new
+     shape, and `deltaX` stays 0 — the two label layers still coincide, which
+     is the defect that took five deliveries to kill on 11 Sep.
+     This reverses the 11 Sep "Square buttons" ruling (e724415) deliberately
+     and on the founder's instruction. */
+  --btn-r: 999px;
+  border-radius: var(--btn-r);
   transition: background 180ms var(--ease), transform 180ms var(--ease);
 }
 .btn:hover { background: var(--plum-ink); transform: translateY(-2px); }
@@ -1004,14 +1023,19 @@ html.lr .site-head__word::before {
    1.67:1, so the pill's own edge is nearly invisible against the header and
    the shape would dissolve without it. (The type inside is fine — plum-ink on
    acid is 8.84:1.) The float pill solves the same problem the same way.
-   NOTE, because it reverses a one-day-old decision: `.btn` is square by the
-   founder's ruling of 11 Sep (commit e724415, "Square buttons"). This rounds
-   the masthead one ONLY — every other button on the site stays square. */
+   This rule used to end by saying `.btn` is square by the 11 Sep ruling and
+   that only the masthead was rounded. TRUE FOR ONE DAY. On 12 Sep the founder
+   pointed at the homepage hero — "this button need to match the other button
+   design" — and every `.btn` became a pill; the note is corrected here rather
+   than left to mislead the next reader.
+   The radius is no longer hard-coded at 999px either. It reads `--btn-r`, the
+   same token `.btn` declares and `.btn--arw` inherits, so the site has ONE
+   declaration of the button shape instead of two that happen to agree. */
 .site-nav .btn {
   font-size: 12px; padding: 1.05em 1.6em; white-space: nowrap;
   background: var(--moss-300); color: var(--plum-ink);
-  border-color: var(--moss-300); border-radius: 999px;
-  box-shadow: 0 2px 8px rgb(27 13 22 / 0.16);
+  border-color: var(--moss-300); border-radius: var(--btn-r);
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--plum-ink) 16%, transparent);
 }
 .site-nav .btn:hover {
   background: var(--signal-ink); color: var(--ivory);
@@ -2267,12 +2291,89 @@ svg.hs-pl { overflow: visible; display: block; }
    word on one baseline BELOW its shape, one size, one alignment. The
    shapes hold pure artwork now; the reader's scroll swims it. */
 .idea-band { background: var(--champ-300); }
+/* ── the section's one image, over its four reasons ──────────────────────
+   Founder, 12 Sep 2026: "the image is on the top and four reasons below the
+   image, reduce the image by 35% size and keep the animation still."
+   "Reduce by 35%" is read as 65% OF THE CONTENT WIDTH — the founder confirmed
+   that reading before this was built, and it is how the same phrase was used
+   on `.btn--arw`'s padding on 11 Sep. Centred, so the four reasons below it
+   read as its caption rather than as a second column of something.
+   The frame carries the QUARTER corner rather than one of the four shapes it
+   replaces. Those four (arch, dot, leaf, quarter) only made sense as a set;
+   one of them alone on a wide image would read as an accident. The quarter is
+   the same frame `.qs-cover` and `.onb-cover` use for a single wide picture,
+   so this is the site's existing discipline for exactly this object, not a
+   new invention.
+   `aspect-ratio` + `object-fit: cover` because the real marketing image has
+   not arrived: whatever its proportions, it fills this frame without
+   redesigning anything. */
+.idea-fig {
+  /* 65% -> 91% (founder, 12 Sep 2026: "image 002 enlarge 40%"). 65 x 1.4 = 91,
+     so this is the same plate scaled, not a new proportion chosen by hand.
+     "keep the original size and don't change the size" is read as: ONLY this
+     plate moves. The four tiles below stay at 199.5px, the word stays 19px,
+     the line stays 12px, and the picture keeps its own 1600/893 ratio so
+     nothing is cropped at rest. */
+  /* FLUSH LEFT with the page grid (founder, 12 Sep 2026: "这个图片的左边往外
+     再延伸对齐上面的布局"). It was centred at 91%, which put its left edge
+     51px inside the column and left it aligned with nothing — the label, the
+     heading and the four tiles below all start at the grid's left edge, and
+     the picture was the only thing that did not. Now it starts where they do
+     and keeps one spacing step of air on the right, so the asymmetry reads as
+     a decision rather than as centring that missed.
+     `auto` on the right, `0` on the left: that is what left-aligns it. */
+  width: calc(100% - 48px); margin: 48px auto 0 0;
+  /* THE PICTURE'S OWN RATIO, not a chosen one (1600x893 = 1.7917). The first
+     cut framed it 16/9 behind a quarter-frame corner; the founder's answer was
+     "no cut off shape just take the completed image for this place", so the
+     corner is gone and the frame matches the file, which means nothing is
+     cropped when the plate is at rest.
+     `overflow: hidden` stays, and it is not a crop of the picture — it is what
+     contains the roam. The roam is a ken-burns: it lives at scale(1.08-1.2),
+     so a few per cent is always outside the frame while it moves. Keeping the
+     animation was the founder's explicit instruction on 12 Sep, so that
+     trade is theirs and it is named here rather than quietly resolved. */
+  /* 43/24 is the picture's ratio in lowest terms (2752x1536, and the exported
+     2064x1152, both reduce to it). Writing the fraction rather than either
+     pixel pair means the frame and the file cannot disagree by the rounding
+     error a resize introduces — at 2100x1172 they were out by 0.0001, which
+     is a sub-pixel crop of an image the founder asked twice not to crop. */
+  aspect-ratio: 43 / 24; overflow: hidden;
+  background: var(--plum-field);
+}
+.idea-fig__img { display: block; width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 900px) {
+  /* On a phone the gutters are already only 20px, so holding 91% on top of
+     them just squeezes the picture for no gain. The 9% inset is a desktop
+     proportion — it is what "左右还是预留部分空间" is asking for, and the
+     gutter does that job on its own once the column is narrow. */
+  .idea-fig { width: 100%; }
+}
+
 .vals {
   display: grid; gap: 32px 24px;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   align-items: start; margin-top: 48px;
 }
+/* The four shaped tiles, SUBORDINATE to the plate above them (founder, 12 Sep:
+   "with reduced font and images"). They are the same four shapes and the same
+   four pictures that stood here before — restored, not rebuilt — at a size
+   that reads as evidence under a headline rather than as the headline.
+   Measured reduction, against what 003 shows: the figure goes from the full
+   266px column to 75% of it and from a 4/5 box to a square, so 266x332.5
+   becomes 199.5x199.5 — 25% narrower, 40% shorter. The word drops a step on
+   the type scale (25 to 19 at the top of its clamp) and the line from 13px to
+   12px. Both new sizes are on the published scale. */
+.vals--sub { margin-top: 32px; }
+.vals--sub .vtile__fig { max-width: 75%; aspect-ratio: 1 / 1; }
+.vals--sub .vtile__word { font-size: clamp(17px, 1.4vw, 19px); margin-top: 12px; }
+.vals--sub .vtile__line { font-size: 12px; }
 .vtile { display: flex; flex-direction: column; }
+/* These were deleted earlier on 12 Sep, when the section briefly went to one
+   image over four worded reasons, and restored the same day when the founder
+   asked for the shaped tiles back underneath the plate. Restored from git
+   rather than retyped, so the four shapes are the ones that shipped before,
+   to the pixel. `.vals--sub` below is what makes them smaller. */
 .vtile__fig {
   position: relative; overflow: hidden;
   aspect-ratio: 4 / 5; width: 100%;
@@ -2299,28 +2400,59 @@ svg.hs-pl { overflow: visible; display: block; }
   color: var(--graph-700);
 }
 @media (prefers-reduced-motion: no-preference) {
-  .vtile__fig {
+  /* PERPETUAL (founder, 16 Aug: 动画要持续性，不是一次展示) — the artwork
+     roams its frame on a slow 14s loop so the section never rests.
+     12 Sep 2026, founder: "keep the animation still" — kept, and moved. It ran
+     on four tile images that no longer exist; it now runs on the one image
+     above them, on the SAME keyframe and the same 14s beat, which is also the
+     beat `.qs-cover` and `.onb-cover` run on. The four-phase stagger
+     (-3.5s / -7s / -10.5s) went with the four images: one image cannot be
+     offset against itself, and inventing a second motion to replace the
+     stagger would be adding an effect the founder did not ask for.
+     The reveal stagger on the four reasons is untouched — see the
+     `.vtile.rv.in` delays below, which still fire 100/200/300ms apart. */
+  /* NO ROAM ON THE PLATE (founder, 12 Sep 2026: "keep the original size don't
+     crop the image", said twice). A ken-burns IS a crop — it lives at
+     scale(1.08-1.2), so at rest it hid 7.4% of the picture and at mid-cycle
+     17%, and the SEMORA/ wordmark on the studio wall sits at the left edge
+     where the crop bites first. The two instructions cannot both hold on one
+     element, and "don't crop" is the one the founder repeated, so the scaling
+     animation comes off this plate. It is NOT deleted from the site: the four
+     tiles below still run it on the same keyframe, and so do .qs-cover and
+     .onb-cover. The plate keeps the hover lift and the hover filter, neither
+     of which crops anything. */
+  .idea-fig {
     transition: transform 300ms var(--ease), box-shadow 300ms var(--ease);
   }
-  /* PERPETUAL (founder, 16 Aug: 动画要持续性，不是一次展示) — each
-     artwork roams its shape on a slow 14s loop, the four phases offset
-     so the row never rests and never moves in unison. The header's
-     perpetual scan, answered in imagery. */
-  .vtile__img {
-    animation: vtile-roam 14s ease-in-out infinite alternate;
-  }
+  /* `html.js .idea-fig.rv.in:hover`, not `.idea-fig:hover`. The reveal sets
+     `html.js .rv.in { transform: none }` at (0,3,1); a plain `.idea-fig:hover`
+     is (0,2,0) and LOSES, so the lift never fired and the shadow snapped on
+     with no transition. The four tiles never had this problem because `.rv`
+     sits on `.vtile` while the lift is on its CHILD `.vtile__fig` — two
+     elements, no contest. Putting the reveal class and the hover on the SAME
+     node is what created it, and it is invisible to every gate: nothing here
+     measures a hover state. Caught by the review desk reading specificity,
+     confirmed by measuring the computed transform. */
+  html.js .idea-fig.rv.in:hover { transform: translateY(-8px);
+    box-shadow: 0 24px 48px color-mix(in srgb, var(--plum-ink) 30%, transparent); }
+  .idea-fig__img { transition: filter 300ms var(--ease); }
+  .idea-fig:hover .idea-fig__img { filter: saturate(1.18) brightness(1.07); }
+  /* and the four tiles keep the motion they always had — one keyframe, one
+     14s beat, the four phases offset so the row never moves in unison */
+  .vtile__img { animation: vtile-roam 14s ease-in-out infinite alternate; }
   .vtile:nth-child(2) .vtile__img { animation-delay: -3.5s; }
   .vtile:nth-child(3) .vtile__img { animation-delay: -7s; }
   .vtile:nth-child(4) .vtile__img { animation-delay: -10.5s; }
+  .vtile__fig { transition: transform 300ms var(--ease), box-shadow 300ms var(--ease); }
+  .vtile:hover .vtile__fig { transform: translateY(-8px);
+    box-shadow: 0 24px 48px rgba(27, 13, 22, 0.3); }
+  .vtile__img { transition: filter 300ms var(--ease); }
+  .vtile:hover .vtile__img { filter: saturate(1.18) brightness(1.07); }
   @keyframes vtile-roam {
     0%   { transform: scale(1.08) translate(2.5%, 1.5%); }
     50%  { transform: scale(1.2) translate(-1.5%, -2.5%); }
     100% { transform: scale(1.1) translate(-2.5%, 2%); }
   }
-  .vtile:hover .vtile__fig { transform: translateY(-8px);
-    box-shadow: 0 24px 48px rgba(27, 13, 22, 0.3); }
-  .vtile__img { transition: filter 300ms var(--ease); }
-  .vtile:hover .vtile__img { filter: saturate(1.18) brightness(1.07); }
   html.js .vtile.rv { transition: none; }
   html.js .vtile.rv.in { animation: vtile-pop 0.6s var(--ease) both; }
   html.js .vtile.rv.in:nth-child(2) { animation-delay: 100ms; }
@@ -2333,9 +2465,7 @@ svg.hs-pl { overflow: visible; display: block; }
   }
 }
 @media (max-width: 980px) { .vals { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 560px) { .vals { grid-template-columns: 1fr; }
-  .vtile__fig { aspect-ratio: 4 / 3; }
-  .vtile__fig--dot { aspect-ratio: 1 / 1; max-width: 380px; } }
+@media (max-width: 560px) { .vals { grid-template-columns: 1fr; } }
 
 /* ── the industries as campaigns — v4 (founder, 16 Aug 2026: one shape,
    both ARCHES, symmetric). A colonnade pair: two equal arches on one
@@ -4625,13 +4755,13 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
      already carries. The badge, the paddings and the clip are all in em,
      so every part of the button scales with it. */
   font-size: 12px;
-  /* Square, because these are `.btn` and `.btn` is square everywhere else.
-     An earlier note here said "every other button on the site is square" —
-     that was FALSE and Codex disproved it: `.float-cta` and `.pkg-cta` both
-     carry border-radius 999px. The site runs two shapes; the choice is to
-     match the class these buttons belong to, not to claim a uniformity that
-     does not exist. One value to reverse: set 999px for pills. */
-  --btn-r: 0;
+  /* This used to pin `--btn-r: 0` and explain that it matched `.btn`, which
+     was square while `.float-cta` and `.pkg-cta` were pills — "One value to
+     reverse: set 999px for pills." The founder reversed it on 12 Sep 2026, so
+     the override is GONE rather than flipped: these buttons now inherit the
+     shape from `.btn` itself and there is one declaration of it on the site.
+     Re-measured at the new radius — width, height, fill width and the
+     two-layer `deltaX` are all unchanged. */
   --arw-d: 1.75em;             /* badge diameter */
   --arw-gap: 0.28em;
   --arw-px: calc(var(--arw-d) + var(--arw-gap) * 2 + 0.7em);

@@ -6675,17 +6675,14 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
 .contact-plate {
   margin: var(--sp-6) 0 0;
   display: flex; flex-direction: column;
-  /* flex-shrink: 0 IS THE FIX, and the mechanism is worth stating because it
-     is invisible from here. `.contact-say` is a flex COLUMN whose height is
-     pinned by the 12 Sep height alignment ("对齐高度" — the two columns end
-     together). When its content exceeds that height the column shrinks
-     whichever child can shrink, and this figure was the only one: measured
-     13 Sep it wanted 377px and was compressed to 330.453px. The picture holds
-     its own height, so the 47px the figure lost came off the CAPTION, which
-     then painted outside a box with overflow:visible and looked fine only
-     because nothing followed it. Let the figure keep its height and the
-     alignment gives instead — `.contact-direct`'s `margin-top: auto` is what
-     absorbs the difference, which is what it was put there to do. */
+  /* flex-shrink: 0 is BELT AND BRACES, not the fix — an earlier version of
+     this comment claimed it was the fix and that was wrong. It was applied,
+     the computed value took, and the box stayed at 330.453px: the figure was
+     never being shrunk. The fix is two rules below, on the picture. This stays
+     because `.contact-say` IS a flex column with a height pinned by the 12 Sep
+     alignment, so the figure remains shrinkable in principle and the caption
+     is what would pay. `.contact-direct`'s `margin-top: auto` absorbs the
+     difference, which is what it was put there for. */
   flex: 0 0 auto;
 }
 .contact-plate picture { flex: 0 0 auto; }
@@ -6695,8 +6692,19 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
    the heading rendered plum-700 (#6E2455, a 9.51:1 colour ON IVORY) against
    near-ink, and the answer rendered graphite on near-ink: both present, neither
    readable. No gate reads contrast. */
-.contact-say h2 { color: var(--ivory); }
-.contact-say h2 + p { color: var(--plum-100); }
+/* The restored question. h3, not h2 — see the note in build_site.py: the h2
+   role is the PAGE heading and this rendered as a second one at 54px on
+   12 Sep, which was filed as a defect that day. */
+.contact-q {
+  /* The disclosure directly above ends exactly where this began: measured at
+     every width from 1600 to 348, caption.bottom === heading.top. Zero
+     separation on the one line here that is legally load-bearing reads as one
+     block of text with the headline, which is the opposite of what a
+     disclosure needs. */
+  margin-top: var(--sp-6);
+  color: var(--ivory);
+}
+.contact-q + p { color: var(--plum-100); }
 /* The frame that crops is the PICTURE, not the figure.
    It was the figure until 12 Sep, and that silently ate the disclosure: a
    figure with a fixed aspect-ratio AND overflow:hidden clips its own

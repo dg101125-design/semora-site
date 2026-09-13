@@ -6661,7 +6661,42 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
    source is 3:4; the frame is a little squarer so the figure does not sit so
    low in a column that also has to carry the question, the contact lines and
    the audience note. */
-.contact-plate { margin: var(--sp-6) 0 0; }
+/* THE CAPTION MUST SIT INSIDE THE FIGURE'S BOX, and until 13 Sep it did not.
+   Measured: the figure ran to y583 and its own <figcaption> painted 595->642,
+   47px entirely outside its parent. Nothing followed the figure, so the line
+   fell into empty column and looked fine. The moment decision #43 restored the
+   question below it, the heading landed ON the disclosure — the one sentence
+   on this page that is legally load-bearing (#41, ACL s18/s29).
+   This is the SECOND time this figure has eaten its own caption by a different
+   mechanism; on 12 Sep it was overflow:hidden on a ratio-locked box. Making the
+   figure an explicit flex column ends the class of bug rather than this
+   instance of it: both children are now laid out by the figure, so the caption
+   cannot be outside it whatever the picture's height resolves to. */
+.contact-plate {
+  margin: var(--sp-6) 0 0;
+  display: flex; flex-direction: column;
+  /* flex-shrink: 0 IS THE FIX, and the mechanism is worth stating because it
+     is invisible from here. `.contact-say` is a flex COLUMN whose height is
+     pinned by the 12 Sep height alignment ("对齐高度" — the two columns end
+     together). When its content exceeds that height the column shrinks
+     whichever child can shrink, and this figure was the only one: measured
+     13 Sep it wanted 377px and was compressed to 330.453px. The picture holds
+     its own height, so the 47px the figure lost came off the CAPTION, which
+     then painted outside a box with overflow:visible and looked fine only
+     because nothing followed it. Let the figure keep its height and the
+     alignment gives instead — `.contact-direct`'s `margin-top: auto` is what
+     absorbs the difference, which is what it was put there to do. */
+  flex: 0 0 auto;
+}
+.contact-plate picture { flex: 0 0 auto; }
+
+/* The restored question and its answer. This column is a HERO — a dark ground —
+   and the default heading and body colours are tuned for ivory. Without these
+   the heading rendered plum-700 (#6E2455, a 9.51:1 colour ON IVORY) against
+   near-ink, and the answer rendered graphite on near-ink: both present, neither
+   readable. No gate reads contrast. */
+.contact-say h2 { color: var(--ivory); }
+.contact-say h2 + p { color: var(--plum-100); }
 /* The frame that crops is the PICTURE, not the figure.
    It was the figure until 12 Sep, and that silently ate the disclosure: a
    figure with a fixed aspect-ratio AND overflow:hidden clips its own
@@ -6677,7 +6712,16 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
   aspect-ratio: 2752 / 1536;
   overflow: hidden;
 }
-.contact-plate picture, .contact-plate img {
+/* `height: 100%` belongs to the IMG, inside the ratio-locked picture, and NOT
+   to the picture itself. It was on both, and that is what pushed the caption
+   out of the figure: the picture's percentage height resolved against the
+   figure's own height, so the picture ate all 330px of a box whose 330px was
+   the correct total for picture (271.8, from the aspect ratio) PLUS caption
+   (47) PLUS the gap. The figure was never the wrong height. The picture was.
+   Measured 13 Sep after decision #43 put a heading directly beneath it and the
+   heading landed on the disclosure. */
+.contact-plate picture { display: block; width: 100%; }
+.contact-plate img {
   display: block; width: 100%; height: 100%;
   /* The figure and the plum wallet sit left of centre and low in the source,
      so the crop is pinned there rather than to the default centre — a centred

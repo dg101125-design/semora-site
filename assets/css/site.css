@@ -6692,9 +6692,22 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
    the heading rendered plum-700 (#6E2455, a 9.51:1 colour ON IVORY) against
    near-ink, and the answer rendered graphite on near-ink: both present, neither
    readable. No gate reads contrast. */
-/* The restored question. h3, not h2 — see the note in build_site.py: the h2
-   role is the PAGE heading and this rendered as a second one at 54px on
-   12 Sep, which was filed as a defect that day. */
+/* The restored question. It is an h2 ELEMENT carrying the h3 ROLE, and both
+   halves of that are findings.
+   The SIZE: `.hero h2` is the page-heading role, and this rendered as a second
+   page heading at 54px on 12 Sep — filed as a defect that day, and the filed
+   repair was 19px.
+   The LEVEL: shipping it as an actual <h3> on 13 Sep fixed the size by
+   breaking the outline — h1 (sr-only) then h3, with no h2 between. Valid HTML,
+   not a logical heading order, and `audit_site.py` cannot see it because it
+   only counts h1s. So the element goes back to h2 and the size is held by this
+   class instead. `.hero h2` is (0,1,1), so the selector below has to outrank
+   it rather than merely follow it — this is failure B14's shape, a page rule
+   losing a specificity contest it looked like it had won. */
+.hero h2.contact-q, .contact-q {
+  font-size: 19px; line-height: 1.2; letter-spacing: 0.012em; font-weight: 600;
+  text-transform: uppercase;
+}
 .contact-q {
   /* The disclosure directly above ends exactly where this began: measured at
      every width from 1600 to 348, caption.bottom === heading.top. Zero

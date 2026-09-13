@@ -2,7 +2,7 @@
 
 > SEMORA STUDIO is a leading specialist growth company and marketing agency for commercial industry professionals, owner-led businesses, and healthcare and allied-health practices. We combine positioning, digital marketing, AI visibility and conversion systems into clearly defined products with transparent pricing and measurable performance.
 
-Last updated: 13 September 2026. Summary version: https://www.semora.com.au/llms.txt
+Last updated: 14 September 2026. Summary version: https://www.semora.com.au/llms.txt
 
 SEMORA STUDIO PTY LTD, ABN 77 701 244 635. Central House Toorak, Level 3, 489 Toorak Road, Toorak VIC 3142, Melbourne, Australia. team@semora.com.au · (03) 9071 0855. All prices in Australian dollars, excluding GST.
 
@@ -1732,13 +1732,17 @@ Portraits and profiles are being added as each person confirms what may be publi
 URL: https://www.semora.com.au/ai-visibility-report
 Summary: Does AI mention you, cite you or recommend you when a buyer asks? We run the check on ChatGPT and Perplexity and email you what we find within 24 hours. Free.
 
-Free / no obligation
+Free AI visibility report
 
-## Does AI know you exist?
+Nine short questions. The report lands in your inbox within 24 hours.
 
-Ask ChatGPT who does what you do. If the answer names your competitors and not you, that is where your next client just went. We will run the check properly and send you what we find.
+Free, and nothing is sold to you here.
 
-01 / What you get
+In your inbox within 24 hours.
+
+We publish our own score every month, zeros included.
+
+What the report contains
 
 ### A real report. Not a widget
 
@@ -1746,11 +1750,17 @@ We take the questions a buyer in your field actually asks, run them on ChatGPT a
 
 The report shows whether AI mentions you, cites you or recommends you, names the competitors appearing in the answers where you should be, and ends with the three fixes we would make first, in order. It arrives by email. A document you keep, whether or not we ever speak again.
 
-One thing it will not contain is a guarantee of placement. Nobody controls what these systems answer, and anyone who promises a position in them is selling you weather.
+How we run it
 
-02 / How we run it
+### Every question, asked cold
 
-Every question is asked in a fresh session with no account signed in, because a logged-in run measures what the platform knows about the asker, not what a stranger would be told. The wording is fixed before we start and never adjusted to flatter the result. Each answer is scored on three rungs. Mentioned means your name appears. Cited means the answer links to you. Recommended means you are the suggestion, which is the only rung that wins work.
+Every question is asked in a fresh session with no account signed in, because a logged-in run measures what the platform knows about the asker, not what a stranger would be told. The wording is fixed before we start. Never bent to flatter the result.
+
+### Three rungs, scored
+
+Mentioned means your name appears. Cited means the answer links to you. Recommended means you are the suggestion, which is the only rung that wins work.
+
+One thing the report will not contain is a guarantee of placement. Nobody controls what these systems answer, and anyone who promises a position in them is selling you weather.
 
 Written by /
 

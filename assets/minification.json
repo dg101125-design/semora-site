@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "tool": "esbuild",
+  "version": "0.28.0",
+  "options": {
+    "minifyWhitespace": true,
+    "minifyIdentifiers": false,
+    "minifySyntax": false,
+    "treeShaking": false,
+    "legalComments": "eof",
+    "charset": "utf8"
+  },
+  "assets": [
+    {
+      "source": "assets/css/site.css",
+      "output": "assets/css/site.min.css",
+      "source_sha256": "0661fd6e69c4822a1ddd28acec872ebec0423aa5d1e026a8fda549a10f510842",
+      "output_sha256": "e68b03c205a38ef3cf763fbdbf2a3d7bf90ccf18e7c3f684d9ddd598ca62f6da",
+      "source_bytes": 380575,
+      "output_bytes": 176086
+    },
+    {
+      "source": "assets/js/quote.js",
+      "output": "assets/js/quote.min.js",
+      "source_sha256": "72fee6837ed6cd38dddd1959c38a181b1c2a9d4c43b0f8531228730aede3b4a3",
+      "output_sha256": "df2852c3b626ee4d6873bda1db424808b77977ab1213b35a2a6a16bdb514c1d0",
+      "source_bytes": 21508,
+      "output_bytes": 10866
+    },
+    {
+      "source": "assets/js/report.js",
+      "output": "assets/js/report.min.js",
+      "source_sha256": "38160866ee5620c1d31af9bd18c518b73daaf003f3eba86cf89cc0996cbb62d4",
+      "output_sha256": "9f094a05d24ab84a77dfed0ab3aa8ff938986fa87af0c185da0e01b8c348097e",
+      "source_bytes": 11081,
+      "output_bytes": 5806
+    },
+    {
+      "source": "assets/js/score.js",
+      "output": "assets/js/score.min.js",
+      "source_sha256": "1ed9553e1e8485939de536a7a12fe8cbf230ce6049e2189d58d11533f58422aa",
+      "output_sha256": "d2b38d3926545e29920f6b5afeafeb3a85275c19faff860ca9ee3aa4ed4a9f83",
+      "source_bytes": 2925,
+      "output_bytes": 2181
+    },
+    {
+      "source": "assets/js/site.js",
+      "output": "assets/js/site.min.js",
+      "source_sha256": "f95ecdec1bd618d84d9673ff65679456f5288970d1723292125644e33a3880f0",
+      "output_sha256": "d555ac7cf5e2d91705d2e7e59690ea0a0d7f08966b371cf1b1d4e3c4a5172b85",
+      "source_bytes": 16000,
+      "output_bytes": 6486
+    }
+  ]
+}

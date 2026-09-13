@@ -745,7 +745,29 @@ section > .wrap { position: relative; z-index: 1; }
   /* founder, 13 Aug: buttons still spoke mono after the hero went sans (B) —
      the call to action now speaks the headline's own voice, one size up */
   font-family: var(--sans); font-size-adjust: 0.546; font-weight: 600;
-  font-size: 15px; letter-spacing: 0.012em; text-transform: uppercase;
+  /* founder, 13 Sep 2026: "reduce this button by 20%", pointing at the
+     homepage hero's acid pill. The three candidate sizes went side by side at
+     true size in their browser and the founder settled on A, the exact 20%:
+     measured 263 x 61 -> 211 x 49.
+     ONE value does it — the paddings, the tracking and the pill radius are all
+     em-based or relative, so the whole button scales from the font size.
+     The cut had to come from the type: the label is 195px of the old 263px
+     width, 74% of it, so padding alone could never give back 20% without the
+     pill hugging the words.
+     RECORDED AS DECISION #58 (13 Sep 2026). It supersedes #46, taken the same
+     day, which had ruled this back to 15px and explicitly rejected keeping the
+     CTA at 12px as an exception; and it releases `/team` from #47's freeze for
+     this one change. Codex caught that collision at QS because the register was
+     not read before building — the founder then confirmed the override.
+     12px is NOT on the brand book's scale (11, 15, 17, 19, 22, 28 ...) and
+     ships as a documented exception under R10.2 — not a new one: the founder
+     made the same call on 11 Sep 2026 for `.btn--arw` ("字体缩小 20%",
+     15px -> 12px, noted below as "a size the system already carries"). Every
+     button on the site now speaks at 12px.
+     NOT followed: `.site-nav .btn` in the mobile drawer (~line 1427) keeps
+     15px — at 12px it measures 41.8px against the 44px touch minimum that
+     override exists to satisfy. */
+  font-size: 12px; letter-spacing: 0.012em; text-transform: uppercase;
   text-decoration: none; cursor: pointer;
   padding: 1.15em 2.2em;
   /* The primary call to action carries the EXPRESSIVE signal. Its whole job in
@@ -6982,4 +7004,289 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
 }
 @media (max-width: 560px) {
   .contact-card { padding: var(--sp-5); }
+}
+
+/* ==================================================== FREE REPORT FUNNEL ===
+   Founder instruction, 13 September 2026: redesign /ai-visibility-report to
+   the First Page Digital qualification funnel supplied in the reference folder
+   (References/04) — "remove all the long words design", add booking, 95%
+   similar. Reviewed as an interactive HTML draft over four rounds and scored
+   40 -> 70 -> 80 -> 90/100; 90 accepted, which is the charter's design target.
+
+   WHAT IS BORROWED AND WHAT IS NOT. The FLOW is the reference's: one question
+   per screen, progressive commitment, contact details asked last. The design
+   is ours — References/04 lists what must not cross over, and the two that
+   bite are its five-star rating and its per-screen client testimonial. We hold
+   no filed client quote; the founder's ruling on 13 Sep is that reviews arrive
+   once the Google Business Profile is verified, so there is no social-proof
+   rail here at all rather than an invented one.
+
+   PROGRESSIVE ENHANCEMENT, and it is the reason the markup looks long. Every
+   question ships as a real <fieldset> of real radios inside one <form>. With
+   JavaScript off the page is one long, working, POSTable form. With it on,
+   report.js shows one fieldset at a time. That is also the SEO answer: the
+   founder confirmed on 13 Sep that a static crawlable layer stays beneath the
+   funnel, because this is the page that sells AI visibility and a JS-only
+   funnel would leave crawlers and answer engines nothing to read.
+
+   TYPE: role tokens only (--t-h1 / --t-h2 / --t-h3 / --t-body / --t-body-sm),
+   never a hand-picked px, so audit_type.py gains no off-scale value.
+   MOTION: state-reporting only — where you are, what you chose, what is next.
+   No glow, no gradient sweep, no sparkle (R9). */
+
+.fnl { display: grid; grid-template-columns: minmax(320px, 30%) 1fr;
+  border-top: 1px solid var(--champ-700); }
+@media (max-width: 960px) { .fnl { grid-template-columns: 1fr; } }
+
+/* ---- the constant pane. --apricot is the founder's own ordered hue and
+   already carries a hero on this site via .f-apricot. */
+/* NOT sticky, and no min-height. Together they clipped the pane's own
+   content at desktop — audit_layout caught it as a HIGH: the aside needed
+   860px, a 72vh box gave it 720px, and overflow:hidden cut the rest off.
+   Stretching to the grid row instead (the default align-items) means the
+   column can never be shorter than what is in it, the apricot still fills
+   the full height beside the question, and overflow:hidden goes on doing its
+   only real job — clipping the decorative slash below. */
+.fnl__side { background: var(--apricot); color: var(--plum-ink);
+  padding: 48px 32px; position: relative;
+  display: flex; flex-direction: column; }
+@media (max-width: 960px) { .fnl__side { padding: 24px var(--gutter); } }
+/* the brand's slash, drawn large and quiet: a graphic anchor, not a watermark */
+/* Contained, not clipped. This used to hang outside the pane and rely on
+   overflow:hidden — the same overflow that was cutting the step ladder off
+   and failing audit_layout as a HIGH. It now sits wholly inside its own box,
+   so the clip is unnecessary and the ladder is never truncated. */
+.fnl__side::after { content: ""; position: absolute; right: 0; bottom: 0;
+  width: 160px; height: 320px; background: var(--plum); opacity: 0.055;
+  transform: skewX(-20deg) translateX(48px); pointer-events: none;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+@media (max-width: 960px) { .fnl__side::after { display: none; } }
+
+.fnl__id { font-size: var(--t-h3); font-weight: var(--w-h3);
+  line-height: var(--lh-h3); letter-spacing: var(--tr-h3);
+  margin: 0 0 8px; position: relative; z-index: 1; }
+.fnl__idsub { font-size: var(--t-body-sm); line-height: 1.45;
+  color: color-mix(in srgb, var(--plum-ink) 74%, var(--apricot));
+  margin: 0; max-width: 30ch; position: relative; z-index: 1; }
+
+/* `flex: 1` here is what actually caused the clipping HIGH: it expands to
+   `flex-basis: 0`, so the nine ladder items counted as ZERO when the browser
+   sized the pane, the grid row took its height from the short question column
+   and the ladder spilled into overflow:hidden. `1 0 auto` keeps the item
+   growing into spare space while its real content still sets the floor. */
+.fnl__steps { list-style: none; margin: 32px 0 0; padding: 0; flex: 1 0 auto;
+  position: relative; z-index: 1; }
+@media (max-width: 960px) { .fnl__steps { display: none; } }
+.fnl__steps li { display: grid; grid-template-columns: 26px 1fr;
+  align-items: baseline; gap: 12px; padding: 8px 0;
+  font-size: var(--t-body-sm); line-height: 1.45;
+  /* colour steps, not opacity: 0.38 opacity was unreadable on apricot */
+  color: color-mix(in srgb, var(--plum-ink) 68%, var(--apricot));
+  transition: color 340ms var(--ease), transform 340ms var(--ease); }
+.fnl__steps li b { font-weight: 400; font-variant-numeric: tabular-nums;
+  color: var(--plum); }
+.fnl__steps li.is-done { color: color-mix(in srgb, var(--plum-ink) 86%, var(--apricot)); }
+.fnl__steps li.is-at { color: var(--plum-ink); transform: translateX(4px); }
+.fnl__steps li.is-at span { font-weight: 500; box-shadow: inset 0 -2px 0 var(--signal); }
+
+.fnl__foot { margin-top: auto; position: relative; z-index: 1; }
+.fnl__promise { list-style: none; margin: 0; padding: 0; }
+.fnl__promise li { font-size: var(--t-body-sm); line-height: 1.45;
+  color: color-mix(in srgb, var(--plum-ink) 82%, var(--apricot));
+  padding: 4px 0 4px 16px; position: relative; }
+.fnl__promise li::before { content: ""; position: absolute; left: 0; top: 12px;
+  width: 6px; height: 6px; background: var(--moss-700); }
+.fnl__count { font-size: var(--t-body-sm); margin: 16px 0 0;
+  color: color-mix(in srgb, var(--plum-ink) 62%, var(--apricot)); }
+.fnl__count b { font-weight: 500; color: var(--plum-ink); }
+
+/* ---- the question pane */
+.fnl__main { padding: 64px 64px 64px;
+  background: linear-gradient(180deg, var(--ivory) 0%, var(--cream) 100%); }
+@media (max-width: 960px) { .fnl__main { padding: 48px var(--gutter) 64px; } }
+.fnl__inner { width: 100%; max-width: 660px; }
+
+.fnl__set { border: 0; margin: 0; padding: 0; min-width: 0; }
+.fnl__set + .fnl__set { margin-top: 64px; }
+/* JS turns the long form into one-at-a-time; without it they simply stack */
+.js-fnl .fnl__set { display: none; }
+.js-fnl .fnl__set.is-at { display: block; }
+.js-fnl .fnl__set + .fnl__set { margin-top: 0; }
+
+.fnl__eyebrow { position: relative; margin: 0 0 16px; }
+.fnl__eyebrow .slash { position: absolute; left: -30px; top: 3px; }
+@media (max-width: 700px) { .fnl__eyebrow .slash { display: none; } }
+.fnl__eyebrow .lab { margin: 0; }
+
+/* a <legend> cannot be the page heading, so the question is a heading inside */
+/* The site's h1/h2 rules set uppercase, and h2 also sets plum. Both are
+   right for a page heading and wrong for a question being asked of a person:
+   the design the founder accepted at 90/100 has these in ink, sentence case.
+   The first set is an h1 and the rest are h2s, so both are normalised here
+   rather than leaving the funnel to change voice halfway down. */
+.fnl__q { font-weight: var(--w-h1); font-size: clamp(var(--t-h2), 3.1vw, var(--t-h1));
+  line-height: var(--lh-h1); letter-spacing: var(--tr-h1);
+  color: var(--plum-ink); text-transform: none;
+  margin: 0 0 12px; max-width: 20ch; }
+.fnl__sub { font-size: var(--t-body); line-height: var(--lh-body);
+  color: var(--graph-700); margin: 0 0 32px; max-width: 52ch; }
+
+.fnl__opts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 0 0 32px; }
+@media (max-width: 640px) { .fnl__opts { grid-template-columns: 1fr; } }
+.fnl__opt { position: relative; display: flex; align-items: center; gap: 12px;
+  padding: 16px 16px; background: var(--white); border: 1px solid var(--champ-700);
+  border-radius: var(--field-r, 8px); cursor: pointer; overflow: hidden;
+  font-size: var(--t-body); line-height: 1.3; color: var(--plum-ink);
+  transition: border-color 180ms var(--ease), background 180ms var(--ease),
+              transform 180ms var(--ease), box-shadow 180ms var(--ease); }
+.fnl__opt::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 3px; background: var(--signal); transform: scaleY(0);
+  transform-origin: bottom; transition: transform 220ms var(--ease); }
+.fnl__opt:hover::before { transform: scaleY(1); transform-origin: top; }
+.fnl__opt:hover { border-color: var(--plum); transform: translateY(-2px);
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--plum-ink) 6%, transparent); }
+/* the radio itself is the control; it is visually replaced, never removed */
+.fnl__opt input { position: absolute; opacity: 0; pointer-events: none; }
+.fnl__opt__k { flex: none; width: 20px; font-variant-numeric: tabular-nums;
+  font-size: var(--t-body-sm); color: var(--graph-400);
+  transition: color 180ms var(--ease); }
+.fnl__opt:has(input:checked) { border-color: var(--plum); background: var(--plum-050); }
+.fnl__opt:has(input:checked)::before { transform: scaleY(1); transform-origin: top; }
+.fnl__opt:has(input:checked) .fnl__opt__k { color: var(--plum); font-weight: 500; }
+.fnl__opt:has(input:focus-visible) { outline: 2px solid var(--plum); outline-offset: 2px; }
+
+.fnl__cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 0 0 32px; }
+@media (max-width: 640px) { .fnl__cards { grid-template-columns: 1fr; } }
+.fnl__card { position: relative; padding: 24px 24px; background: var(--white);
+  border: 1px solid var(--champ-700); border-radius: var(--field-r, 8px);
+  cursor: pointer; overflow: hidden;
+  transition: border-color 180ms var(--ease), background 180ms var(--ease),
+              transform 180ms var(--ease), box-shadow 180ms var(--ease); }
+.fnl__card::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 3px; background: var(--signal); transform: scaleY(0);
+  transform-origin: bottom; transition: transform 240ms var(--ease); }
+.fnl__card:hover::before { transform: scaleY(1); transform-origin: top; }
+.fnl__card:hover { border-color: var(--plum); transform: translateY(-3px);
+  box-shadow: 0 10px 26px color-mix(in srgb, var(--plum-ink) 7%, transparent); }
+.fnl__card input { position: absolute; opacity: 0; pointer-events: none; }
+.fnl__card:has(input:checked) { border-color: var(--plum); background: var(--plum-050); }
+.fnl__card:has(input:checked)::before { transform: scaleY(1); transform-origin: top; }
+.fnl__card:has(input:focus-visible) { outline: 2px solid var(--plum); outline-offset: 2px; }
+.fnl__chip:focus-visible, .fnl__slot:focus-visible { outline: 2px solid var(--plum);
+  outline-offset: 2px; }
+.fnl__card__h { font-size: var(--t-h3); font-weight: var(--w-h3);
+  line-height: var(--lh-h3); letter-spacing: var(--tr-h3); margin: 0 0 8px; }
+.fnl__card__p { font-size: var(--t-body-sm); line-height: var(--lh-body-sm);
+  color: var(--graph-700); margin: 0; }
+
+.fnl__act { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.fnl__back { background: none; border: 0; cursor: pointer; padding: 0;
+  font-family: var(--sans); font-size-adjust: 0.546; font-size: var(--t-body-sm);
+  color: var(--graph-400); text-decoration: underline; text-underline-offset: 3px;
+  text-decoration-color: var(--champ-700); }
+.fnl__back:hover { color: var(--plum); text-decoration-color: var(--plum); }
+.fnl__hint { font-size: var(--t-body-sm); color: var(--graph-400); margin-left: auto; }
+@media (max-width: 700px) { .fnl__hint { display: none; } }
+
+.fnl__fields { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 0 0 8px; }
+@media (max-width: 640px) { .fnl__fields { grid-template-columns: 1fr; } }
+.fnl__fields .field { margin: 0; }
+.fnl__fields .fnl__wide { grid-column: 1 / -1; }
+.fnl__fine { font-size: var(--t-body-sm); line-height: var(--lh-body-sm);
+  color: var(--graph-400); margin: 12px 0 24px; max-width: 52ch; }
+
+/* ---- the call request. It says REQUEST, never "booked": no calendar is
+   connected, and a confirmed slot would be a promise we cannot keep. */
+.fnl__book { border: 1px solid var(--champ-700); border-radius: var(--field-r, 8px);
+  background: var(--white); padding: 24px; margin: 0 0 24px; }
+.fnl__book__h { font-size: var(--t-h3); font-weight: var(--w-h3);
+  letter-spacing: var(--tr-h3); margin: 0 0 4px; }
+.fnl__book__p { font-size: var(--t-body-sm); line-height: var(--lh-body-sm);
+  color: var(--graph-700); margin: 0 0 16px; }
+.fnl__chiprow { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 8px;
+  margin: 0 0 16px; }
+.fnl__chip { flex: none; border: 1px solid var(--champ-700); background: var(--ivory);
+  border-radius: var(--field-r, 8px); padding: 12px 16px; cursor: pointer;
+  font-family: var(--sans); font-size-adjust: 0.546; font-size: var(--t-body-sm);
+  color: var(--plum-ink); text-align: center; line-height: 1.3;
+  transition: border-color 180ms var(--ease), background 180ms var(--ease),
+              color 180ms var(--ease), transform 180ms var(--ease); }
+.fnl__chip small { display: block; font-size: var(--t-body-sm);
+  color: var(--graph-400); margin-top: 4px; }
+.fnl__chip:hover { border-color: var(--plum); transform: translateY(-2px); }
+.fnl__chip.is-sel { background: var(--plum); border-color: var(--plum); color: var(--ivory); }
+.fnl__chip.is-sel small { color: var(--plum-100); }
+.fnl__times { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 8px; }
+.fnl__slot { border: 1px solid var(--champ-700); background: var(--ivory);
+  border-radius: var(--field-r, 8px); padding: 12px 8px; cursor: pointer;
+  font-family: var(--sans); font-size-adjust: 0.546; font-size: var(--t-body-sm);
+  font-variant-numeric: tabular-nums; color: var(--plum-ink);
+  transition: border-color 180ms var(--ease), background 180ms var(--ease),
+              color 180ms var(--ease), transform 180ms var(--ease); }
+.fnl__slot:hover { border-color: var(--plum); transform: translateY(-2px); }
+.fnl__slot.is-sel { background: var(--plum); border-color: var(--plum); color: var(--ivory); }
+.fnl__chosen { font-size: var(--t-body-sm); line-height: var(--lh-body-sm);
+  color: var(--plum-900); margin: 16px 0 0; }
+.fnl__chosen b { font-weight: 500; }
+
+.fnl__or { display: flex; align-items: center; gap: 16px; margin: 0 0 24px;
+  font-size: var(--t-body-sm); color: var(--graph-400); }
+.fnl__or::before, .fnl__or::after { content: ""; height: 1px;
+  background: var(--champ-700); flex: 1; }
+
+/* ---- the closing band. Both lines are already published on the homepage —
+   the statband heading and its price line — so the page closes on the brand
+   without putting a new claim on a new surface (R6). */
+.fnl__sign { margin-top: 48px; padding: 32px 32px; background: var(--plum-ink);
+  border-radius: var(--field-r, 8px); position: relative; }
+.fnl__sign .slash { position: absolute; left: 32px; top: 30px; }
+.fnl__sign__h { font-size: var(--t-h2); font-weight: var(--w-h2);
+  line-height: var(--lh-h2); letter-spacing: var(--tr-h2); color: var(--ivory);
+  margin: 0 0 12px; padding-left: 32px; }
+.fnl__sign__p { font-size: var(--t-body); line-height: var(--lh-body);
+  color: var(--moss-300); margin: 0 0 16px; padding-left: 32px; }
+.fnl__sign__n { font-size: var(--t-body-sm); color: var(--plum-100);
+  margin: 0; padding-left: 32px; }
+
+/* ---- motion: state-reporting only, and never on first paint of the static
+   form (a no-JS visitor must not meet nine invisible fieldsets). */
+@media (prefers-reduced-motion: no-preference) {
+  .js-fnl .fnl__set.is-at .fnl__q,
+  .js-fnl .fnl__set.is-at .fnl__sub { clip-path: inset(0 0 100% 0); opacity: 0;
+    animation: fnl-wipe 620ms var(--ease) forwards; }
+  .js-fnl .fnl__set.is-at .fnl__sub { animation-delay: 90ms; }
+  @keyframes fnl-wipe { to { clip-path: inset(0 0 -12% 0); opacity: 1; } }
+
+  .js-fnl .fnl__set.is-at .fnl__opt,
+  .js-fnl .fnl__set.is-at .fnl__card,
+  .js-fnl .fnl__set.is-at .field,
+  .js-fnl .fnl__set.is-at .fnl__book,
+  .js-fnl .fnl__set.is-at .fnl__or,
+  .js-fnl .fnl__set.is-at .fnl__sign { opacity: 0; transform: translateY(12px);
+    animation: fnl-rise 460ms var(--ease) forwards;
+    animation-delay: calc(150ms + var(--i, 0) * 45ms); }
+  @keyframes fnl-rise { to { opacity: 1; transform: none; } }
+
+  .js-fnl .fnl__set.is-at .fnl__eyebrow .slash { animation: fnl-slash 520ms var(--ease) both; }
+  @keyframes fnl-slash { from { opacity: 0; transform: skewX(-20deg) translateY(-8px); }
+                         to { opacity: 1; transform: skewX(-20deg) translateY(0); } }
+
+  .js-fnl .fnl__steps li { animation: fnl-slide 420ms var(--ease) both;
+    animation-delay: calc(var(--s, 0) * 35ms); }
+  @keyframes fnl-slide { from { opacity: 0; transform: translateX(-10px); } }
+
+  .js-fnl .fnl__steps li.is-at span { animation: fnl-under 520ms var(--ease) both; }
+  @keyframes fnl-under { from { box-shadow: inset 0 -2px 0 transparent; }
+                         to { box-shadow: inset 0 -2px 0 var(--signal); } }
+
+  .js-fnl .fnl__count b { animation: fnl-pop 340ms var(--ease); }
+  @keyframes fnl-pop { 0% { transform: scale(1); } 40% { transform: scale(1.18); }
+                       100% { transform: scale(1); } }
+
+  .js-fnl .fnl__side::after { animation: fnl-drift 900ms var(--ease) both; }
+  @keyframes fnl-drift { from { transform: skewX(-20deg) translateY(26px); opacity: 0; }
+                         to { transform: skewX(-20deg) translateY(0); opacity: 0.055; } }
+
+  .fnl__fields .field input:focus { box-shadow: inset 0 -2px 0 var(--signal); }
 }

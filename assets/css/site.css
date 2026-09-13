@@ -141,6 +141,12 @@
   --measure: 62ch;
   --gutter: clamp(20px, 5vw, 72px);
   --maxw: 1280px;
+  /* Fields are not pills — a pill textarea reads as a lozenge — but they stop
+     being SQUARE now that every button is round (--btn-r: 999px, 12 Sep). This
+     lives in :root, not beside --btn-r, because --btn-r is declared INSIDE the
+     .btn rule and is therefore invisible to anything that is not a button. An
+     earlier cut of this put it there and the radius silently did nothing. */
+  --field-r: 8px;
   /* the signal slash is held at 70° → skew of −20° */
   --slash-skew: -20deg;
   --ease: cubic-bezier(0.22, 0.61, 0.21, 1);
@@ -960,29 +966,13 @@ html.lr .site-head__word::before {
 .site-nav > a[aria-current="page"], .has-mega > a[aria-current="page"] {
   color: var(--plum);
 }
-/* Pinned to what PRODUCTION renders today, not to what `.alink` declares.
-   These five reached 15px sans by accident — the nav rule above was
-   overreaching into the panel — and scoping that rule correctly would have
-   dropped them to `.alink`'s own 11px mono in a wave the founder asked to
-   touch the top bar only. So the accidental value is made explicit rather
-   than either perpetuated invisibly or silently changed: zero pixels move,
-   and the next person can see there is a decision here that nobody has made.
-   Open in the 12 Sep brief for the founder to rule on. */
-.mega__foot .alink {
-  font-family: var(--sans); font-size-adjust: 0.546; font-weight: 500;
-  font-size: 15px; letter-spacing: 0; text-transform: none;
-  color: var(--graph); text-decoration: none;
-  padding-block: 0.4em;
-  /* transparent, NOT absent: `.alink`'s own rule draws a 1px champagne
-     hairline, and the over-reaching nav rule had been suppressing it with this
-     transparent 2px for as long as it had been over-reaching. Scoping the nav
-     rule correctly made that hairline appear under all five links — a visible
-     change nobody asked for, in a wave about the top bar. Measured, not
-     reasoned: border-bottom read `1px solid rgb(220,215,206)` before this line
-     was added. */
-  border-bottom: 2px solid transparent;
-  transition: color 160ms var(--ease);
-}
+/* `.mega__foot` and its five arrow-links were REMOVED with the panel's foot
+   paragraph on 13 Sep 2026 (founder: "remove this section at nevigation bar").
+   Their rules are deleted rather than left dead. Two open items die with them:
+   the accidental 15px on those links, which nobody had chosen and the 12 Sep
+   brief had put to the founder, and one of the twenty-three 13px declarations
+   that decision #45's sweep was going to have to visit. `.mega-scoped` stays —
+   it is still used on the rows inside `.mega__col`. */
 /* 15→12px and the padding with it. The masthead CTA was 239.4×51.8 — a quarter
    of the row, and standing 51.8px against the logo seal's 52px, so the two
    heaviest objects in the bar were the same size and argued with each other
@@ -1376,11 +1366,6 @@ html.lr .site-head__word::before {
   background: var(--plum); transform: scale(1.4);
 }
 .mega__col a span { flex: 1 1 auto; }
-.mega__foot {
-  grid-column: 1 / -1; margin: 24px 0 0; padding-top: 16px;
-  border-top: 1px solid var(--champ-700);
-  font-size: 13px; line-height: 1.45; color: var(--graph);
-}
 @media (prefers-reduced-motion: reduce) {
   .mega, .mega-caret { transition: none; }
 }
@@ -3600,27 +3585,88 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
 
 /* forms */
 .form-grid { display: grid; gap: 24px; max-width: 560px; }
+/* THE FORM SPEAKS IN SENTENCES, founder 13 Sep 2026, working from an
+   Impressive form they supplied as the reference. The label was 11px mono
+   UPPERCASE — the book's `label` role, which exists for eyebrows of two or
+   three words. A form label is a question put to a person, and it was being
+   set in the voice the site uses for filing tabs. It is now the book's `body`
+   role at 500: the weight that says "our own claim", which is what asking a
+   direct question is. Applies to BOTH forms, because both read this rule —
+   parity, not a page-local treatment. */
 .field label {
   display: block;
-  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
-  font-size: 11px; letter-spacing: 0.012em; text-transform: uppercase;
-  color: var(--graph-400); margin-bottom: 8px;
+  font-family: var(--sans); font-size-adjust: 0.546; font-weight: 500;
+  font-size: 17px; line-height: 1.62; letter-spacing: 0;
+  text-transform: none;
+  color: var(--graph-900); margin-bottom: 8px;
 }
+/* THE REQUIRED MARK IS DERIVED FROM THE INPUT, never hand-written beside it.
+   A `*` typed into a label and a `required` attribute on the control are two
+   sources of truth that can disagree the moment one is edited — the exact
+   shape of defect this repo spent 13 Sep chasing. `:has()` reads the control,
+   so the mark cannot be wrong: it appears when the field is required and
+   disappears when it stops being. Where `:has()` is unsupported no mark shows
+   and the field is still required and still enforced.
+   THE REFERENCE USES RED. This one is PLUM — no red, ever (founder), and plum
+   is the hue the system already gives to language we stand behind. 6.98:1 on
+   ivory. */
+.field:has(:required) > label::after {
+  content: "*";
+  margin-left: 0.3em;
+  color: var(--plum);
+  font-weight: 500;
+}
+/* One convention, not two. With required fields marked, an "optional" tag on
+   the single field that is not required says the same thing twice; the
+   reference marks required and stops. The control keeps its real state — no
+   `required` attribute — which is what a screen reader reads anyway. */
+.field label .opt { display: none; }
 .field input, .field select, .field textarea {
+  /* line-height was the BROWSER's `normal` on every control until 13 Sep 2026,
+     which is not a value the brand book contains. Measured consequence: an
+     input came out 54px tall, a select 56 and the submit button 57 — three
+     controls that read as one row and were three different heights. `body`'s
+     1.62 is the line these already have in size, so the whole control now
+     derives from one role instead of half from the type system and half from
+     the user agent. */
   width: 100%; font-family: var(--sans); font-size-adjust: 0.546; font-size: 17px;
+  line-height: 1.62;
+  /* Chrome does not apply line-height to a <select>'s own box, so after the
+     line was set the input measured 58px and the select 56 — still two heights
+     for one row. The floor is written as the role rather than as a pixel:
+     one line of body (1.62em) plus this rule's own vertical padding (2 x
+     0.85em) plus the border. Change the type or the padding and the floor
+     follows; no orphan value to rediscover. */
+  min-height: calc(1.62em + 1.7em + 2px);
+  /* Square fields under pill buttons were the site's own inconsistency: the
+     buttons went to `--btn-r: 999px` on 12 Sep and the fields stayed at 0.
+     The reference rounds them, and rounding them is what makes the two agree.
+     A token, not a number in eight places. */
+  border-radius: var(--field-r);
   color: var(--graph); background: var(--white);
   border: 1px solid var(--champ-700); padding: 0.85em 1em;
-  border-radius: 0;
   transition: border-color 160ms var(--ease);
 }
+.field select {
+  /* The reference puts the chevron in a dark plate on the right. Drawn as
+     an inline SVG rather than an asset: it is two shapes, it has to recolour
+     with the tokens, and an <img> here would be a network request for a
+     triangle. `appearance: none` removes the platform arrow, so the padding
+     below reserves the plate its room — without it the longest option runs
+     under the chevron. */
+  appearance: none; -webkit-appearance: none;
+  padding-right: var(--sp-8);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231B0D16'/%3E%3Cpath d='M10.5 13.5 16 19l5.5-5.5' fill='none' stroke='%23F8F6F2' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--sp-2) center;
+}
+.field select:hover { background-color: var(--white); }
+
 .field input:hover, .field select:hover, .field textarea:hover { border-color: var(--plum-300); }
 .field input:focus, .field select:focus, .field textarea:focus {
   outline: 2px solid var(--plum); outline-offset: 1px;
 }
-.field label .opt {
-  font-weight: 400; letter-spacing: 0.012em; color: var(--plum-300);
-  text-transform: none;
-}
+
 /* Honeypot. Off-screen rather than display:none — some bots skip fields they
    can see are hidden, and a real user never reaches it (tabindex -1). */
 .hp {
@@ -6601,8 +6647,7 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
    Colour only. Same face, same size, same weight as the row it sits in,
    because the typography parity rule does not admit a new voice for a
    two-word marker. --graph-400 on ivory measures 4.95:1. */
-.mega__col a .mega-scoped,
-.mega__foot .mega-scoped { color: var(--graph-400); white-space: nowrap; }
+.mega__col a .mega-scoped { color: var(--graph-400); white-space: nowrap; }
 
 
 /* ============================================================== CONTACT ===
@@ -6837,11 +6882,17 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
 .want-set legend {
   padding: 0;
   font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
-  font-size: 11px; letter-spacing: 0.012em; text-transform: uppercase;
-  color: var(--graph-400); margin-bottom: var(--sp-3);
+  /* the same voice as .field label — a question, not a filing tab */
+  font-family: var(--sans); font-size-adjust: 0.546; font-weight: 500;
+  font-size: 17px; line-height: 1.62; letter-spacing: 0; text-transform: none;
+  color: var(--graph-900); margin-bottom: var(--sp-3);
 }
 .want-set legend .opt {
-  color: var(--plum-300); text-transform: none; letter-spacing: 0.012em;
+  /* this one STAYS visible: no control here carries `required`, so nothing
+     else tells a reader the set is optional. Sans, quiet, plum. */
+  font-family: var(--sans); font-size-adjust: 0.546; font-size: 15px;
+  font-weight: 400;
+  color: var(--plum-300); text-transform: none; letter-spacing: 0;
 }
 .want-grid {
   display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-2) var(--sp-4);
@@ -6900,9 +6951,22 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
 .want input:checked + .want__box::after {
   transform: translateY(-1px) rotate(45deg) scale(1); opacity: 1; }
 .want input:focus-visible + .want__box { outline: 2px solid var(--plum); outline-offset: 2px; }
+/* 15 HERE AND 17 ON THE CONTROLS IS DELIBERATE. Do not "fix" it — it was
+   raised as an inconsistency on 13 Sep 2026, changed to 17, measured, and
+   changed back. Both sizes are book roles and each is doing a job:
+
+     the controls stay at 17 (body) because iOS Safari ZOOMS THE VIEWPORT when
+     an input is focused below 16px, which throws a phone visitor out of the
+     layout mid-form;
+
+     these options stay at 15 (body-sm) because at 17 they do not fit the
+     two-column grid — measured, 7 of the 9 wrap to two lines against 3 at 15,
+     and one of them broke across its own hyphen. The form also grew 105px.
+
+   So this is one role at two sizes for two measured reasons, not drift. */
 .want__t {
   font-family: var(--sans); font-size-adjust: 0.546; font-size: 15px;
-  line-height: 1.55;   /* body-sm's line in the book; it was inheriting body's 1.62 */
+  line-height: 1.55;   /* body-sm's line in the book */
   color: var(--graph);
 }
 .want input:checked ~ .want__t { color: var(--graph-700); font-weight: 500; }

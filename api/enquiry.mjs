@@ -44,7 +44,13 @@ const RESEND = "https://api.resend.com/emails";
 /* "found" is measure 7 of 8 — how the enquirer found us, asked on both
  * forms since 9 Sep 2026. It cannot be backfilled, so a name missing from
  * this list is a datum lost for good, not a datum delayed. */
-const FIELDS = ["name", "practice", "email", "phone", "website", "vertical", "want", "found", "prompt", "source"];
+/* The last six are the free-report funnel's qualification answers. They were
+ * already being POSTed — a hidden <fieldset> still submits its controls — and
+ * were silently dropped here because the list did not name them, so a visitor
+ * with JavaScript off arrived unqualified. Founder confirmed adding them,
+ * 14 Sep 2026. Order matters only for readability. */
+const FIELDS = ["name", "practice", "email", "phone", "website", "vertical", "want", "found", "prompt", "source",
+                "q_problem", "q_decision", "q_budget", "q_timing", "q_access", "q_guarantee"];
 
 /* Read the enquiry out of the request whatever shape it arrives in.
  *
@@ -204,6 +210,10 @@ function notificationHtml(d) {
        <td valign="top" style="padding:7px 16px 7px 0;font-family:'Fragment Mono',Menlo,Consolas,monospace;font-weight:400;font-size:11px;line-height:1.62;letter-spacing:.012em;text-transform:uppercase;color:#5D6B12;white-space:nowrap;">${label}</td>
        <td valign="top" style="padding:7px 0;font-family:'Instrument Sans',-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-weight:400;font-size:15px;line-height:1.62;color:#1B0D16;">${e(value) || "&#8212;"}</td>
      </tr>`;
+  /* Only the funnel sends these; /contact sends none. Without this the
+   * ordinary enquiry email would carry six empty rows. */
+  const qualifying = (x) => Boolean(x.q_problem || x.q_decision || x.q_budget ||
+                                    x.q_timing || x.q_access || x.q_guarantee);
   const who = `${e(d.name) || "No name given"} — ${e(d.practice) || "no practice given"}`;
   const body = `
   <tr>
@@ -219,6 +229,20 @@ function notificationHtml(d) {
       </table>
     </td>
   </tr>
+  ${qualifying(d) ? `
+  <tr>
+    <td class="px" style="padding:14px 40px 8px;">
+      <p style="margin:0 0 6px;font-family:'Fragment Mono',Menlo,Consolas,monospace;font-weight:400;font-size:11px;line-height:1.62;letter-spacing:.24em;text-transform:uppercase;color:#5D6B12;">Qualification /</p>
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
+        ${row("Problem", d.q_problem)}
+        ${row("Decides", d.q_decision)}
+        ${row("Budget", d.q_budget)}
+        ${row("Timing", d.q_timing)}
+        ${row("Data access", d.q_access)}
+        ${row("On guarantees", d.q_guarantee)}
+      </table>
+    </td>
+  </tr>` : ""}
   <tr>
     <td class="px" style="padding:22px 40px 10px;">
       <p style="margin:0 0 10px;font-family:'Fragment Mono',Menlo,Consolas,monospace;font-weight:400;font-size:11px;line-height:1.62;letter-spacing:.24em;text-transform:uppercase;color:#5D6B12;">What prompted this /</p>

@@ -30,10 +30,10 @@
     {
       "source": "assets/js/report.js",
       "output": "assets/js/report.min.js",
-      "source_sha256": "35d12ed90abff4a5a5057ebe577c58da3967445c2f342bca60b212419212800d",
-      "output_sha256": "d8b1bcd505ea7d2315efc22a1a0dec55ce9a072e7dc2ba6cc869f28e0d44a0c1",
-      "source_bytes": 8577,
-      "output_bytes": 3830
+      "source_sha256": "6952238688fd21c8529d863ba848226300b3dc74e808dfae11cdd2323731492d",
+      "output_sha256": "2d83423afda8b25734354530e846d7066cb4ff8ddbc3e3185a22f0bbd1e2e379",
+      "source_bytes": 8505,
+      "output_bytes": 3539
     },
     {
       "source": "assets/js/score.js",

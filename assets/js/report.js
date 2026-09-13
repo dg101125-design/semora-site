@@ -27,8 +27,7 @@
 
   var ladder = root.querySelector(".fnl__steps");
   var count = root.querySelector(".fnl__count");
-  var hidden = root.querySelector("#fnl-prompt");
-  if (hidden) hidden.name = "prompt";       /* no-JS uses the noscript field */
+  var hidden = root.querySelector("#fnl-prompt");   /* named in the markup now */
 
   root.classList.add("js-fnl");
   var at = 0;
@@ -123,18 +122,13 @@
   }
 
   /* -------------------------------------------------------------- the note */
+  /* The six answers used to be packed in here because the API discarded their
+   * own field names. It accepts them now, and the notification email prints
+   * them in their own block, so repeating them would put the same six lines in
+   * the email twice. This only has to be non-empty: `prompt` is required. */
   function compose() {
     if (!hidden) return;
-    var lines = [];
-    sets.forEach(function (s) {
-      var lab = s.getAttribute("data-note");
-      if (!lab) return;
-      var picked = s.querySelector("input[type=radio]:checked");
-      if (picked) lines.push(lab + ": " + picked.value);
-    });
-    hidden.value = lines.length
-      ? "Answers from the free report funnel\n\n" + lines.join("\n")
-      : "Free AI visibility report requested from the funnel.";
+    hidden.value = "Free AI visibility report requested through the funnel.";
   }
 
   /* ------------------------------------------------------------ navigation */

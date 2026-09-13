@@ -6701,14 +6701,16 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
    breaking the outline — h1 (sr-only) then h3, with no h2 between. Valid HTML,
    not a logical heading order, and `audit_site.py` cannot see it because it
    only counts h1s. So the element goes back to h2 and the size is held by this
-   class instead. `.hero h2` is (0,1,1), so the selector below has to outrank
-   it rather than merely follow it — this is failure B14's shape, a page rule
-   losing a specificity contest it looked like it had won. */
-.hero h2.contact-q, .contact-q {
+   class instead.
+   AN EARLIER VERSION OF THIS COMMENT SAID the rule had to outrank `.hero h2`
+   at (0,1,1). There is no `.hero h2` rule in this stylesheet — that was
+   asserted, not checked, and the review desk found it. The rule actually being
+   beaten is the bare `h2` at (0,0,1) around line 214, which a single class
+   (0,1,0) outranks on its own. The compound selector was removed with the
+   false explanation that justified it. */
+.contact-q {
   font-size: 19px; line-height: 1.2; letter-spacing: 0.012em; font-weight: 600;
   text-transform: uppercase;
-}
-.contact-q {
   /* The disclosure directly above ends exactly where this began: measured at
      every width from 1600 to 348, caption.bottom === heading.top. Zero
      separation on the one line here that is legally load-bearing reads as one

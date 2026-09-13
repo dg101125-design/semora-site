@@ -14,10 +14,10 @@
     {
       "source": "assets/css/site.css",
       "output": "assets/css/site.min.css",
-      "source_sha256": "0661fd6e69c4822a1ddd28acec872ebec0423aa5d1e026a8fda549a10f510842",
-      "output_sha256": "e68b03c205a38ef3cf763fbdbf2a3d7bf90ccf18e7c3f684d9ddd598ca62f6da",
-      "source_bytes": 380575,
-      "output_bytes": 176086
+      "source_sha256": "2a6b4db8fa7d6323fb5431b9cbee1a4ab6007a7c89a6678d420e65441f0b8712",
+      "output_sha256": "9ec3766c991b22dfe003a42be5e2a6478043f143d122c1ac316709c0b728453c",
+      "source_bytes": 379861,
+      "output_bytes": 174421
     },
     {
       "source": "assets/js/quote.js",
@@ -30,10 +30,10 @@
     {
       "source": "assets/js/report.js",
       "output": "assets/js/report.min.js",
-      "source_sha256": "38160866ee5620c1d31af9bd18c518b73daaf003f3eba86cf89cc0996cbb62d4",
-      "output_sha256": "9f094a05d24ab84a77dfed0ab3aa8ff938986fa87af0c185da0e01b8c348097e",
-      "source_bytes": 11081,
-      "output_bytes": 5806
+      "source_sha256": "35d12ed90abff4a5a5057ebe577c58da3967445c2f342bca60b212419212800d",
+      "output_sha256": "d8b1bcd505ea7d2315efc22a1a0dec55ce9a072e7dc2ba6cc869f28e0d44a0c1",
+      "source_bytes": 8577,
+      "output_bytes": 3830
     },
     {
       "source": "assets/js/score.js",

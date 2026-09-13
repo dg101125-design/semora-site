@@ -6577,7 +6577,7 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
 }
 .cs-film__cap {
   margin-top: 12px; font-size: 15px; line-height: 1.55;
-  color: color-mix(in srgb, var(--plum-ink) 72%, var(--apricot));
+  color: color-mix(in srgb, var(--plum-ink) 72%, var(--cream));
   max-width: 44ch;
 }
 /* reserved case positions: the folio void, no fabricated client */
@@ -7047,8 +7047,16 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
    column can never be shorter than what is in it, the apricot still fills
    the full height beside the question, and overflow:hidden goes on doing its
    only real job — clipping the decorative slash below. */
-.fnl__side { background: var(--apricot); color: var(--plum-ink);
+/* Founder, 14 Sep 2026: "换成 ivory cream". The apricot ground is withdrawn.
+   --apricot is documented as the team page and the client-projects cover,
+   "Nowhere else", and this was a third use — Codex raised it as R10 drift and
+   the founder resolved it by removing the hue rather than widening its scope.
+   Ivory and cream are within one step of each other, so the two panes can no
+   longer be told apart by fill: the separation is now carried by the hairline
+   rule between them and by the pane's own structure. */
+.fnl__side { background: var(--cream); color: var(--plum-ink);
   padding: 48px 32px; position: relative;
+  border-right: 1px solid var(--champ-700);
   display: flex; flex-direction: column; }
 @media (max-width: 960px) { .fnl__side { padding: 24px var(--gutter); } }
 /* the brand's slash, drawn large and quiet: a graphic anchor, not a watermark */
@@ -7057,7 +7065,7 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
    and failing audit_layout as a HIGH. It now sits wholly inside its own box,
    so the clip is unnecessary and the ladder is never truncated. */
 .fnl__side::after { content: ""; position: absolute; right: 0; bottom: 0;
-  width: 160px; height: 320px; background: var(--plum); opacity: 0.055;
+  width: 160px; height: 320px; background: var(--champ-700); opacity: 0.55;
   transform: skewX(-20deg) translateX(48px); pointer-events: none;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
 @media (max-width: 960px) { .fnl__side::after { display: none; } }
@@ -7066,7 +7074,7 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
   line-height: var(--lh-h3); letter-spacing: var(--tr-h3);
   margin: 0 0 8px; position: relative; z-index: 1; }
 .fnl__idsub { font-size: var(--t-body-sm); line-height: 1.45;
-  color: color-mix(in srgb, var(--plum-ink) 74%, var(--apricot));
+  color: color-mix(in srgb, var(--plum-ink) 74%, var(--cream));
   margin: 0; max-width: 30ch; position: relative; z-index: 1; }
 
 /* `flex: 1` here is what actually caused the clipping HIGH: it expands to
@@ -7081,28 +7089,27 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
   align-items: baseline; gap: 12px; padding: 8px 0;
   font-size: var(--t-body-sm); line-height: 1.45;
   /* colour steps, not opacity: 0.38 opacity was unreadable on apricot */
-  color: color-mix(in srgb, var(--plum-ink) 68%, var(--apricot));
+  color: color-mix(in srgb, var(--plum-ink) 68%, var(--cream));
   transition: color 340ms var(--ease), transform 340ms var(--ease); }
 .fnl__steps li b { font-weight: 400; font-variant-numeric: tabular-nums;
   color: var(--plum); }
-.fnl__steps li.is-done { color: color-mix(in srgb, var(--plum-ink) 86%, var(--apricot)); }
+.fnl__steps li.is-done { color: color-mix(in srgb, var(--plum-ink) 86%, var(--cream)); }
 .fnl__steps li.is-at { color: var(--plum-ink); transform: translateX(4px); }
 .fnl__steps li.is-at span { font-weight: 500; box-shadow: inset 0 -2px 0 var(--signal); }
 
 .fnl__foot { margin-top: auto; position: relative; z-index: 1; }
 .fnl__promise { list-style: none; margin: 0; padding: 0; }
 .fnl__promise li { font-size: var(--t-body-sm); line-height: 1.45;
-  color: color-mix(in srgb, var(--plum-ink) 82%, var(--apricot));
+  color: color-mix(in srgb, var(--plum-ink) 82%, var(--cream));
   padding: 4px 0 4px 16px; position: relative; }
 .fnl__promise li::before { content: ""; position: absolute; left: 0; top: 12px;
   width: 6px; height: 6px; background: var(--moss-700); }
 .fnl__count { font-size: var(--t-body-sm); margin: 16px 0 0;
-  color: color-mix(in srgb, var(--plum-ink) 62%, var(--apricot)); }
+  color: color-mix(in srgb, var(--plum-ink) 62%, var(--cream)); }
 .fnl__count b { font-weight: 500; color: var(--plum-ink); }
 
 /* ---- the question pane */
-.fnl__main { padding: 64px 64px 64px;
-  background: linear-gradient(180deg, var(--ivory) 0%, var(--cream) 100%); }
+.fnl__main { padding: 64px 64px 64px; background: var(--ivory); }
 @media (max-width: 960px) { .fnl__main { padding: 48px var(--gutter) 64px; } }
 .fnl__inner { width: 100%; max-width: 660px; }
 
@@ -7172,8 +7179,6 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
 .fnl__card:has(input:checked) { border-color: var(--plum); background: var(--plum-050); }
 .fnl__card:has(input:checked)::before { transform: scaleY(1); transform-origin: top; }
 .fnl__card:has(input:focus-visible) { outline: 2px solid var(--plum); outline-offset: 2px; }
-.fnl__chip:focus-visible, .fnl__slot:focus-visible { outline: 2px solid var(--plum);
-  outline-offset: 2px; }
 .fnl__card__h { font-size: var(--t-h3); font-weight: var(--w-h3);
   line-height: var(--lh-h3); letter-spacing: var(--tr-h3); margin: 0 0 8px; }
 .fnl__card__p { font-size: var(--t-body-sm); line-height: var(--lh-body-sm);
@@ -7203,33 +7208,9 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
   letter-spacing: var(--tr-h3); margin: 0 0 4px; }
 .fnl__book__p { font-size: var(--t-body-sm); line-height: var(--lh-body-sm);
   color: var(--graph-700); margin: 0 0 16px; }
-.fnl__chiprow { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 8px;
-  margin: 0 0 16px; }
-.fnl__chip { flex: none; border: 1px solid var(--champ-700); background: var(--ivory);
-  border-radius: var(--field-r, 8px); padding: 12px 16px; cursor: pointer;
-  font-family: var(--sans); font-size-adjust: 0.546; font-size: var(--t-body-sm);
-  color: var(--plum-ink); text-align: center; line-height: 1.3;
-  transition: border-color 180ms var(--ease), background 180ms var(--ease),
-              color 180ms var(--ease), transform 180ms var(--ease); }
-.fnl__chip small { display: block; font-size: var(--t-body-sm);
-  color: var(--graph-400); margin-top: 4px; }
-.fnl__chip:hover { border-color: var(--plum); transform: translateY(-2px); }
-.fnl__chip.is-sel { background: var(--plum); border-color: var(--plum); color: var(--ivory); }
-.fnl__chip.is-sel small { color: var(--plum-100); }
-.fnl__times { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-  gap: 8px; }
-.fnl__slot { border: 1px solid var(--champ-700); background: var(--ivory);
-  border-radius: var(--field-r, 8px); padding: 12px 8px; cursor: pointer;
-  font-family: var(--sans); font-size-adjust: 0.546; font-size: var(--t-body-sm);
-  font-variant-numeric: tabular-nums; color: var(--plum-ink);
-  transition: border-color 180ms var(--ease), background 180ms var(--ease),
-              color 180ms var(--ease), transform 180ms var(--ease); }
-.fnl__slot:hover { border-color: var(--plum); transform: translateY(-2px); }
-.fnl__slot.is-sel { background: var(--plum); border-color: var(--plum); color: var(--ivory); }
-.fnl__chosen { font-size: var(--t-body-sm); line-height: var(--lh-body-sm);
-  color: var(--plum-900); margin: 16px 0 0; }
-.fnl__chosen b { font-weight: 500; }
-
+/* The chip row, the time slots and the chosen-time line were removed on
+   14 Sep 2026: Cal.com went live under team@semora.com.au, so the page links
+   to a real calendar and no longer collects a request it cannot confirm. */
 .fnl__or { display: flex; align-items: center; gap: 16px; margin: 0 0 24px;
   font-size: var(--t-body-sm); color: var(--graph-400); }
 .fnl__or::before, .fnl__or::after { content: ""; height: 1px;
@@ -7252,21 +7233,26 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
 /* ---- motion: state-reporting only, and never on first paint of the static
    form (a no-JS visitor must not meet nine invisible fieldsets). */
 @media (prefers-reduced-motion: no-preference) {
+  /* The hidden state lives in the KEYFRAME, never in the base rule. Written
+     the other way round — base `opacity: 0` made visible only by the
+     animation — the question and its options disappear entirely if the
+     animation does not run for any reason. Content must never depend on
+     motion to exist; `both` supplies the from-state during the delay. */
   .js-fnl .fnl__set.is-at .fnl__q,
-  .js-fnl .fnl__set.is-at .fnl__sub { clip-path: inset(0 0 100% 0); opacity: 0;
-    animation: fnl-wipe 620ms var(--ease) forwards; }
+  .js-fnl .fnl__set.is-at .fnl__sub { animation: fnl-wipe 620ms var(--ease) both; }
   .js-fnl .fnl__set.is-at .fnl__sub { animation-delay: 90ms; }
-  @keyframes fnl-wipe { to { clip-path: inset(0 0 -12% 0); opacity: 1; } }
+  @keyframes fnl-wipe { from { clip-path: inset(0 0 100% 0); opacity: 0; }
+                        to { clip-path: inset(0 0 -12% 0); opacity: 1; } }
 
   .js-fnl .fnl__set.is-at .fnl__opt,
   .js-fnl .fnl__set.is-at .fnl__card,
   .js-fnl .fnl__set.is-at .field,
   .js-fnl .fnl__set.is-at .fnl__book,
   .js-fnl .fnl__set.is-at .fnl__or,
-  .js-fnl .fnl__set.is-at .fnl__sign { opacity: 0; transform: translateY(12px);
-    animation: fnl-rise 460ms var(--ease) forwards;
+  .js-fnl .fnl__set.is-at .fnl__sign { animation: fnl-rise 460ms var(--ease) both;
     animation-delay: calc(150ms + var(--i, 0) * 45ms); }
-  @keyframes fnl-rise { to { opacity: 1; transform: none; } }
+  @keyframes fnl-rise { from { opacity: 0; transform: translateY(12px); }
+                        to { opacity: 1; transform: none; } }
 
   .js-fnl .fnl__set.is-at .fnl__eyebrow .slash { animation: fnl-slash 520ms var(--ease) both; }
   @keyframes fnl-slash { from { opacity: 0; transform: skewX(-20deg) translateY(-8px); }
@@ -7286,7 +7272,7 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
 
   .js-fnl .fnl__side::after { animation: fnl-drift 900ms var(--ease) both; }
   @keyframes fnl-drift { from { transform: skewX(-20deg) translateY(26px); opacity: 0; }
-                         to { transform: skewX(-20deg) translateY(0); opacity: 0.055; } }
+                         to { transform: skewX(-20deg) translateY(0); opacity: 0.55; } }
 
   .fnl__fields .field input:focus { box-shadow: inset 0 -2px 0 var(--signal); }
 }

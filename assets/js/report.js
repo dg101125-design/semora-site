@@ -132,12 +132,6 @@
       var picked = s.querySelector("input[type=radio]:checked");
       if (picked) lines.push(lab + ": " + picked.value);
     });
-    var day = root.querySelector(".fnl__chip.is-sel");
-    var slot = root.querySelector(".fnl__slot.is-sel");
-    if (day && slot) {
-      lines.push("Requested call: " + day.getAttribute("data-full") + ", " +
-                 slot.textContent.trim() + " (Melbourne)");
-    }
     hidden.value = lines.length
       ? "Answers from the free report funnel\n\n" + lines.join("\n")
       : "Free AI visibility report requested from the funnel.";
@@ -155,22 +149,6 @@
     var back = ev.target.closest("[data-back]");
     if (back) { ev.preventDefault(); show(at - 1); return; }
 
-    var chip = ev.target.closest(".fnl__chip");
-    if (chip) {
-      ev.preventDefault();
-      root.querySelectorAll(".fnl__chip").forEach(function (c) {
-        c.classList.remove("is-sel"); c.setAttribute("aria-pressed", "false"); });
-      chip.classList.add("is-sel"); chip.setAttribute("aria-pressed", "true");
-      compose(); syncBook(); return;
-    }
-    var slot = ev.target.closest(".fnl__slot");
-    if (slot) {
-      ev.preventDefault();
-      root.querySelectorAll(".fnl__slot").forEach(function (c) {
-        c.classList.remove("is-sel"); c.setAttribute("aria-pressed", "false"); });
-      slot.classList.add("is-sel"); slot.setAttribute("aria-pressed", "true");
-      compose(); syncBook(); return;
-    }
   });
 
   /* choosing an option moves on by itself — the reference's one good habit */
@@ -211,51 +189,12 @@
     }
   });
 
-  /* -------------------------------------------------------------- the call */
-  var DOW = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  var MON = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul",
-             "Aug", "Sep", "Oct", "Nov", "Dec"];
-
-  function buildBook() {
-    var row = root.querySelector(".fnl__chiprow");
-    if (!row) return;
-    var d = new Date(); d.setHours(0, 0, 0, 0);
-    var out = [], n = 0;
-    while (out.length < 8 && n < 30) {
-      d.setDate(d.getDate() + 1); n++;
-      if (d.getDay() === 0 || d.getDay() === 6) continue;
-      var full = DOW[d.getDay()] + " " + d.getDate() + " " + MON[d.getMonth()];
-      out.push('<button type="button" class="fnl__chip" aria-pressed="false" data-full="' + full + '">' +
-        DOW[d.getDay()] + " " + d.getDate() + "<small>" + MON[d.getMonth()] + "</small></button>");
-    }
-    row.innerHTML = out.join("");
-  }
-
-  function syncBook() {
-    var chosen = root.querySelector(".fnl__chosen");
-    var send = root.querySelector("#fnl-send");
-    var day = root.querySelector(".fnl__chip.is-sel");
-    var slot = root.querySelector(".fnl__slot.is-sel");
-    var both = !!(day && slot);
-    if (chosen) {
-      if (both) {
-        chosen.innerHTML = "Requesting <b>" + day.getAttribute("data-full") + ", " +
-          slot.textContent.trim() + "</b> — Melbourne time. We confirm by email " +
-          "within one business day.";
-      }
-      chosen.hidden = !both;
-    }
-    /* One button does both, so it has to say so — otherwise the visitor has
-     * picked a time and is looking at a button that only mentions the report. */
-    if (send) {
-      send.textContent = both ? "Send the report and request this time"
-                              : "Send the report";
-    }
-  }
-
+  /* The day-and-time chooser that used to live here is gone. Cal.com under
+   * team@semora.com.au went live on 14 Sep 2026, so the page links to a real
+   * calendar instead of collecting a request it could not confirm. Nothing
+   * replaced it in JS: a link needs no script.
+   */
   buildLadder();
-  buildBook();
-  syncBook();
   compose();
   show(0);
 })();

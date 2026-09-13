@@ -12,7 +12,7 @@ export function escapeHtml(s) {
    "Free AI visibility report"; everything else is an enquiry. */
 export function promise(d) {
   return /ai visibility report/i.test(String((d && d.want) || ''))
-    ? 'Your free AI visibility report lands in your inbox within 24 hours.'
+    ? 'A named person picks this up within one business day and sends your report.'
     : 'A named person replies within one business day.';
 }
 

@@ -435,6 +435,7 @@ section > .wrap { position: relative; z-index: 1; }
   align-items: start;
 }
 .split--rev { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+
 @media (max-width: 860px) { .split, .split--rev { grid-template-columns: 1fr; } }
 
 /* numbered editorial entries */
@@ -7191,6 +7192,9 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
   text-decoration-color: var(--champ-700); }
 .fnl__back:hover { color: var(--plum); text-decoration-color: var(--plum); }
 .fnl__hint { font-size: var(--t-body-sm); color: var(--graph-400); margin-left: auto; }
+/* the hint doubles as the error line; when it is telling someone something is
+   wrong it has to look different from when it is telling them a shortcut */
+.fnl__hint.is-nudge { color: var(--plum); font-weight: 500; }
 @media (max-width: 700px) { .fnl__hint { display: none; } }
 
 .fnl__fields { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 0 0 8px; }

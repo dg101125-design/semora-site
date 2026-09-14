@@ -112,11 +112,11 @@ Wellness practices
 
 ### The Flagship Packages
 
-One subscription that watches your market and makes the judgment calls. One execution team that builds what those calls ask for.
+The hard part of any retainer is knowing what it actually bought. So we split ours in two. One is a subscription: we watch your market, read what is moving in it, and make the calls on what you should do next, month by month. Then a team builds them.
 
-Take the subscription alone. Add execution when the work is scoped.
+Start with the subscription. Bring the build in once you know what needs building, and not before. Paying people to wait is how retainers earn their reputation.
 
-Neither is a fifth product. Both take the four core products below and the monthly services and wrap them as one package. Every part keeps the price published on its own page. See the four products, or price a composition →
+Neither is a fifth product. They wrap the four below, and the monthly work, into one arrangement. Each part keeps its own published price. See the four products, or price a composition →
 
 01 Subscription · monthly
 
@@ -140,7 +140,7 @@ Talk to Us →
 
 ### Four steps, one integration
 
-Not four channels you hire. One capability, wired into how the practice already runs, precise about what it says and to whom.
+Hire four specialists and you get four opinions and four invoices. Someone has to reconcile them. Usually you. We run this as one capability instead, built into the way your practice already works and clear about who it speaks to and what it says.
 
 01
 
@@ -1741,26 +1741,6 @@ Free, and nothing is sold to you here.
 A named person picks it up within one business day.
 
 We publish our own scorecard, zeros included.
-
-What the report contains
-
-### A real report. Not a widget
-
-We take the questions a buyer in your field actually asks, run them on ChatGPT and Perplexity in clean sessions with the wording fixed in advance, and write down exactly what came back. No demo screen. No canned insights. It is the same check we run on ourselves every month.
-
-The report shows whether AI mentions you, cites you or recommends you, names the competitors appearing in the answers where you should be, and ends with the three fixes we would make first, in order. It arrives by email. A document you keep, whether or not we ever speak again.
-
-How we run it
-
-### Every question, asked cold
-
-Every question is asked in a fresh session with no account signed in, because a logged-in run measures what the platform knows about the asker, not what a stranger would be told. The wording is fixed before we start. Never bent to flatter the result.
-
-### Three rungs, scored
-
-Mentioned means your name appears. Cited means the answer links to you. Recommended means you are the suggestion, which is the only rung that wins work.
-
-One thing the report will not contain is a guarantee of placement. Nobody controls what these systems answer, and anyone who promises a position in them is selling you weather.
 
 Written by /
 

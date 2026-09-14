@@ -102,11 +102,39 @@
   /* A set that carries radios needs one chosen before it will advance. The
    * browser cannot enforce `required` on a hidden fieldset, so it is done here
    * and the native attribute is left off rather than fighting validation. */
+  /* People type their own domain, not a URL. `www.axisplatform.au` is exactly
+   * what a buyer writes, and `type=url` rejects it for having no scheme — so
+   * the first screen refused the first thing anyone would enter. Prepend the
+   * scheme rather than lecture them about it. Anything that already carries
+   * one is left alone, including http:// and mailto-style oddities, which
+   * then fail validation on their own merits. */
+  function normaliseUrl(el) {
+    if (!el) return;
+    var v = el.value.trim();
+    if (!v) return;
+    if (!/^[a-z][a-z0-9+.\-]*:\/\//i.test(v)) {
+      el.value = "https://" + v.replace(/^\/+/, "");
+    }
+  }
+
+  /* `checkValidity()` alone is not enough either: Chrome accepts plenty that
+   * is not a website, including "https://not a website at all". The report is
+   * run against a real host, so require one — labels, a dot, a TLD. */
+  function looksLikeSite(el) {
+    normaliseUrl(el);
+    var v = el.value.trim();
+    if (!v || !el.checkValidity()) return false;
+    try {
+      return /^[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*\.[a-z]{2,}$/i
+        .test(new URL(v).hostname);
+    } catch (e) {
+      return false;
+    }
+  }
+
   function answered(set) {
-    /* `checkValidity()`, not a non-empty test: "example.com" is non-empty and
-     * still not a URL, and letting it through was the defect. */
     var url = set.querySelector('input[type=url]');
-    if (url && (!url.value.trim() || !url.checkValidity())) return false;
+    if (url && !looksLikeSite(url)) return false;
     var radios = set.querySelectorAll('input[type=radio]');
     if (!radios.length) return true;
     for (var i = 0; i < radios.length; i++) if (radios[i].checked) return true;
@@ -116,9 +144,20 @@
   function nudge(set) {
     var hint = set.querySelector(".fnl__hint");
     if (!hint) return;
-    var was = hint.textContent;
-    hint.textContent = "Choose one to continue";
-    setTimeout(function () { hint.textContent = was; }, 1800);
+    var url = set.querySelector('input[type=url]');
+    var msg = "Choose one to continue";
+    if (url) {
+      msg = url.value.trim() ? "That does not look like a website address"
+                             : "Add your website to continue";
+      url.focus();
+    }
+    var was = hint.dataset.was || hint.textContent;
+    hint.dataset.was = was;
+    hint.textContent = msg;
+    hint.classList.add("is-nudge");
+    setTimeout(function () {
+      hint.textContent = was; hint.classList.remove("is-nudge");
+    }, 2600);
   }
 
   /* -------------------------------------------------------------- the note */
@@ -146,6 +185,10 @@
   });
 
   /* choosing an option moves on by itself — the reference's one good habit */
+  root.addEventListener("blur", function (ev) {
+    if (ev.target && ev.target.type === "url") normaliseUrl(ev.target);
+  }, true);
+
   root.addEventListener("change", function (ev) {
     if (ev.target.type !== "radio") { compose(); return; }
     compose();

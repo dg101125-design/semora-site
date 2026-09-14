@@ -6572,41 +6572,10 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
 /* the homepage lead spacing is scoped to .hero — this cover is not one,
    so the lead hugged the h1 (verification wave, 3 Sep) */
 .cs-cover .lead { margin-top: 32px; }
-.cs-cover__split {
-  display: grid; grid-template-columns: 1.05fr 0.95fr;
-  gap: 48px; align-items: center; margin-top: 16px;
-}
-.cs-film { margin: 0; }
-.cs-film__plate {
-  position: relative; aspect-ratio: 16 / 9; overflow: hidden;
-  background: var(--plum-ink);
-  display: grid; place-items: center;
-}
-.cs-film__wm {
-  position: absolute; inset: auto -10% -34% auto; width: 62%;
-  opacity: 0.14; pointer-events: none;
-}
-.cs-film__wm .ap-arc { fill: var(--plum-300); }
-.cs-film__wm .ap-arc--weak { fill: var(--plum-700); }
-.cs-film__wm .ap-dot { fill: var(--moss-300); }
-.cs-film__play {
-  position: relative; display: grid; place-items: center;
-  width: 76px; height: 76px; border-radius: 999px;
-  background: var(--moss-300);
-}
-.cs-film__play svg { width: 32px; height: 32px; fill: var(--plum-ink); }
-.cs-film__ring {
-  position: absolute; inset: -2px; border-radius: 999px;
-  border: 2px solid var(--moss-300); opacity: 0;
-}
-.cs-film__strip {
-  position: absolute; left: 16px; bottom: 12px; color: var(--plum-100);
-}
-.cs-film__cap {
-  margin-top: 12px; font-size: 15px; line-height: 1.55;
-  color: color-mix(in srgb, var(--plum-ink) 72%, var(--cream));
-  max-width: 44ch;
-}
+/* One column since the reserved film block was removed (founder, 14 Sep
+   2026). It keeps a measure rather than running the full wrap width, so the
+   lead paragraph does not stretch past the book's 62ch ceiling. */
+.cs-cover__intro { margin-top: 16px; max-width: 62ch; }
 /* reserved case positions: the folio void, no fabricated client */
 .res-grid--slots { margin-top: 24px; }
 .res__panel--slot {
@@ -6634,9 +6603,6 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
   .cs-cover__split { grid-template-columns: 1fr; gap: 32px; }
 }
 @media (prefers-reduced-motion: no-preference) {
-  html.js .cs-film.rv { transition: none; opacity: 0; }
-  html.js .cs-film.rv.in { animation: wgal-wave-r 0.9s var(--ease) both 120ms; }
-  .cs-film__ring { animation: cs-ring 3.2s var(--ease) 1.4s infinite; }
   @keyframes cs-ring {
     0%   { opacity: 0.9; transform: scale(1); }
     60%  { opacity: 0; transform: scale(1.55); }
@@ -7311,4 +7277,62 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
                          to { transform: skewX(-20deg) translateY(0); opacity: 0.55; } }
 
   .fnl__fields .field input:focus { box-shadow: inset 0 -2px 0 var(--signal); }
+}
+
+/* ============================================ THE BOARD, IN TWO TIERS ===
+   Founder ruling, 14 September 2026, on how /client-projects should answer
+   its reference: "把有数字的四个做成主角，没数字的用另一种更小的形态排在后面".
+
+   impressive.com.au/case-studies makes the METRIC the hero of every card —
+   the figure is what the eye lands on and the client name is secondary. Half
+   our engagements have no published figures, so filling that grid uniformly
+   would leave visible holes where their numbers sit. The proof leads instead,
+   and the folio follows in a lighter form that carries the work honestly.
+
+   Nothing here is a new component: both tiers are the existing .res card with
+   one modifier, so a project promotes itself between them by gaining figures. */
+
+/* ---- tier one: the figure becomes the hero.
+   22-34px was a supporting size; on a card whose whole argument is the number
+   that is too quiet. clamp() ends on two brand-book steps, 28 and 56. */
+.res-grid:not(.res-grid--folio) .stat__n { font-size: clamp(28px, 3.4vw, 56px); }
+.res-grid:not(.res-grid--folio) .res__stats {
+  padding-top: 24px;
+  /* 16px between columns was set for a 34px figure. At 56 the numbers all
+     but touch — "+5,000" and "+510%" collided on the Your CFO card. */
+  gap: 24px;
+}
+
+/* ---- tier two: the same card at lower volume.
+   Three columns rather than two, so the eye reads them as a folio strip and
+   not as four more case studies that happen to be missing their numbers. */
+.res-grid--folio {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 48px var(--gutter);
+}
+@media (max-width: 900px) {
+  .res-grid--folio { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 620px) {
+  .res-grid--folio { grid-template-columns: minmax(0, 1fr); }
+}
+.res--folio .res__panel { margin-bottom: 16px; }
+.res--folio .res__name { font-size: 19px; line-height: 1.3; }
+.res--folio .res__hold { margin-top: 8px; font-size: 15px; max-width: none; }
+.res--folio .res__tags { margin-top: 16px; }
+
+/* ---- the seam between them. It has to say WHY there are two tiers, or the
+   second one reads as leftovers. */
+.res-tier { margin: 96px 0 32px; }
+.res-tier__p {
+  margin: 16px 0 0; max-width: 52ch;
+  font-size: 17px; line-height: 1.62; color: var(--plum-100);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* The lead figures count up when the card arrives — the site already does
+     this (site.js reads data-count); enlarging them makes the existing motion
+     land instead of adding a new one. The folio cards rise without counting,
+     because there is nothing to count. */
+  .res--folio.rv.in .res__panel { animation: fnl-rise 460ms var(--ease) both; }
 }

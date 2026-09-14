@@ -811,6 +811,32 @@ section > .wrap { position: relative; z-index: 1; }
 .cta-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
 
 /* arrow-link: arrow nudges on hover */
+/* A link INSIDE a sentence. `.alink` below is a standalone call to action in
+   the label voice — Fragment Mono, 11px, uppercase, its own bottom rule —
+   which is right on its own line and wrong in running prose, where it dropped
+   the type from 15px sans to 11px mono caps mid-sentence. Founder found it on
+   the homepage, 14 Sep 2026; measured across the site it was 17 places on 8
+   pages, not one.
+
+   IT TAKES ITS COLOUR FROM THE SENTENCE, and that is the whole point. The
+   first two attempts keyed the colour off ancestor sections — plum on light,
+   champ on `.f-plum`, `.hwh`, `.hero`, `.statband` — and both were wrong in a
+   way nobody would see until a buyer did: `.statband` is a cream ground, so
+   champ text vanished, and inside `/contact`'s hero there is an IVORY card,
+   where champ on ivory measured a contrast ratio of exactly 1.00. Invisible.
+   Codex found both. An ancestor class cannot tell you what is actually
+   painted behind a word, so this stops guessing: `currentColor` is by
+   definition the colour the surrounding text already proved legible, and the
+   link is marked by its underline instead. It cannot disappear on any ground. */
+.tlink {
+  color: inherit;
+  text-decoration: underline; text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: color-mix(in srgb, currentColor 45%, transparent);
+  transition: text-decoration-color 160ms var(--ease);
+}
+.tlink:hover, .tlink:focus-visible { text-decoration-color: currentColor; }
+
 .alink {
   font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
   font-size: 11px; letter-spacing: 0.012em; text-transform: uppercase;
@@ -7195,7 +7221,13 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
 /* the hint doubles as the error line; when it is telling someone something is
    wrong it has to look different from when it is telling them a shortcut */
 .fnl__hint.is-nudge { color: var(--plum); font-weight: 500; }
-@media (max-width: 700px) { .fnl__hint { display: none; } }
+/* The shortcut hint is desktop chrome and can go on a phone. An active nudge
+   is the only feedback a blocked visitor gets, and hiding it left them tapping
+   a button that did nothing with no explanation. */
+@media (max-width: 700px) {
+  .fnl__hint { display: none; }
+  .fnl__hint.is-nudge { display: block; margin: 12px 0 0; width: 100%; }
+}
 
 .fnl__fields { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 0 0 8px; }
 @media (max-width: 640px) { .fnl__fields { grid-template-columns: 1fr; } }

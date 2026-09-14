@@ -123,17 +123,22 @@
   function looksLikeSite(el) {
     normaliseUrl(el);
     var v = el.value.trim();
-    if (!v || !el.checkValidity()) return false;
+    if (!v) return false;
     try {
+      var u = new URL(v);
+      /* http(s) only, and no user-info construction — Codex found the old
+         check would take a mailto: or a user@host and call it a website. */
+      if (u.protocol !== "http:" && u.protocol !== "https:") return false;
+      if (u.username || u.password) return false;
       return /^[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*\.[a-z]{2,}$/i
-        .test(new URL(v).hostname);
+        .test(u.hostname);
     } catch (e) {
       return false;
     }
   }
 
   function answered(set) {
-    var url = set.querySelector('input[type=url]');
+    var url = set.querySelector('input[data-site]');
     if (url && !looksLikeSite(url)) return false;
     var radios = set.querySelectorAll('input[type=radio]');
     if (!radios.length) return true;
@@ -144,7 +149,7 @@
   function nudge(set) {
     var hint = set.querySelector(".fnl__hint");
     if (!hint) return;
-    var url = set.querySelector('input[type=url]');
+    var url = set.querySelector('input[data-site]');
     var msg = "Choose one to continue";
     if (url) {
       msg = url.value.trim() ? "That does not look like a website address"
@@ -186,7 +191,7 @@
 
   /* choosing an option moves on by itself — the reference's one good habit */
   root.addEventListener("blur", function (ev) {
-    if (ev.target && ev.target.type === "url") normaliseUrl(ev.target);
+    if (ev.target && ev.target.hasAttribute && ev.target.hasAttribute("data-site")) normaliseUrl(ev.target);
   }, true);
 
   root.addEventListener("change", function (ev) {

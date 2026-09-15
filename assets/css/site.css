@@ -1,3 +1,131 @@
+/* BEGIN GENERATED TYPOGRAPHY CONTRACT */
+/* Generated from Brand Book type-tokens.json; edit its generator, then rebuild. */
+:root {
+  --type-statement-family: "Instrument Sans", -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --type-statement-adjust: 0.546;
+  --type-statement-size: clamp(28px, 5vw, 72px);
+  --type-statement-weight: 600;
+  --type-statement-tracking: -0.006em;
+  --type-statement-line: 1.04;
+  --type-statement-case: uppercase;
+  --type-h1-family: "Instrument Sans", -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --type-h1-adjust: 0.546;
+  --type-h1-size: clamp(32px, 4.76vw, 61px);
+  --type-h1-weight: 600;
+  --type-h1-tracking: -0.006em;
+  --type-h1-line: 1.04;
+  --type-h1-case: uppercase;
+  --type-h2-family: "Instrument Sans", -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --type-h2-adjust: 0.546;
+  --type-h2-size: clamp(28px, 3.6vw, 56px);
+  --type-h2-weight: 600;
+  --type-h2-tracking: -0.006em;
+  --type-h2-line: 1.14;
+  --type-h2-case: uppercase;
+  --type-h3-family: "Instrument Sans", -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --type-h3-adjust: 0.546;
+  --type-h3-size: 19px;
+  --type-h3-weight: 600;
+  --type-h3-tracking: 0.012em;
+  --type-h3-line: 1.2;
+  --type-h3-case: uppercase;
+  --type-claim-family: "Instrument Sans", -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --type-claim-adjust: 0.546;
+  --type-claim-size: clamp(22px, 2.48vw, 28px);
+  --type-claim-weight: 500;
+  --type-claim-tracking: -0.006em;
+  --type-claim-line: 1.2;
+  --type-figure-family: "Instrument Sans", -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --type-figure-adjust: 0.546;
+  --type-figure-size: clamp(22px, 2.15vw, 34px);
+  --type-figure-weight: 400;
+  --type-figure-tracking: -0.014em;
+  --type-figure-line: 0.98;
+  --type-lead-family: "Instrument Sans", -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --type-lead-adjust: 0.546;
+  --type-lead-size: 19px;
+  --type-lead-weight: 400;
+  --type-lead-tracking: 0em;
+  --type-lead-line: 1.45;
+  --type-body-family: "Instrument Sans", -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --type-body-adjust: 0.546;
+  --type-body-size: 17px;
+  --type-body-weight: 400;
+  --type-body-tracking: 0em;
+  --type-body-line: 1.62;
+  --type-emphasis-family: "Instrument Sans", -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --type-emphasis-adjust: 0.546;
+  --type-emphasis-size: 17px;
+  --type-emphasis-weight: 500;
+  --type-emphasis-tracking: 0em;
+  --type-emphasis-line: 1.62;
+  --type-body-sm-family: "Instrument Sans", -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --type-body-sm-adjust: 0.546;
+  --type-body-sm-size: 15px;
+  --type-body-sm-weight: 400;
+  --type-body-sm-tracking: 0em;
+  --type-body-sm-line: 1.55;
+  --type-button-family: "Instrument Sans", -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --type-button-adjust: 0.546;
+  --type-button-size: 15px;
+  --type-button-weight: 600;
+  --type-button-tracking: 0.012em;
+  --type-button-case: uppercase;
+  --type-label-family: "Fragment Mono", Menlo, Consolas, "Courier New", monospace;
+  --type-label-adjust: 0.516;
+  --type-label-size: 11px;
+  --type-label-weight: 400;
+  --type-label-tracking: 0.012em;
+  --type-label-case: uppercase;
+  --type-label-standalone-family: "Fragment Mono", Menlo, Consolas, "Courier New", monospace;
+  --type-label-standalone-adjust: 0.516;
+  --type-label-standalone-size: 11px;
+  --type-label-standalone-weight: 400;
+  --type-label-standalone-tracking: 0.24em;
+  --type-label-standalone-case: uppercase;
+  --type-web-button-family: "Instrument Sans", -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --type-web-button-adjust: 0.546;
+  --type-web-button-size: 12px;
+  --type-web-button-weight: 600;
+  --type-web-button-tracking: 0.012em;
+  --type-web-button-case: uppercase;
+  --type-web-drawer-button-family: "Instrument Sans", -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --type-web-drawer-button-adjust: 0.546;
+  --type-web-drawer-button-size: 15px;
+  --type-web-drawer-button-weight: 600;
+  --type-web-drawer-button-tracking: 0.012em;
+  --type-web-drawer-button-case: uppercase;
+  --type-web-question-family: "Instrument Sans", -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --type-web-question-adjust: 0.546;
+  --type-web-question-size: clamp(28px, 3.1vw, 40px);
+  --type-web-question-weight: 400;
+  --type-web-question-tracking: -0.01em;
+  --type-web-question-line: 1.04;
+  --type-web-question-case: none;
+  --type-web-card-title-family: "Instrument Sans", -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --type-web-card-title-adjust: 0.546;
+  --type-web-card-title-size: 19px;
+  --type-web-card-title-weight: 600;
+  --type-web-card-title-tracking: 0.012em;
+  --type-web-card-title-line: 1.2;
+  --type-web-card-title-case: none;
+  --type-web-report-signature-family: "Instrument Sans", -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --type-web-report-signature-adjust: 0.546;
+  --type-web-report-signature-size: 28px;
+  --type-web-report-signature-weight: 400;
+  --type-web-report-signature-tracking: -0.006em;
+  --type-web-report-signature-line: 1.14;
+  --type-web-report-signature-case: none;
+  --type-web-project-heading-family: "Instrument Sans", -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --type-web-project-heading-adjust: 0.546;
+  --type-web-project-heading-size: clamp(28px, 3.57vw, 45.75px);
+  --type-web-project-heading-weight: 600;
+  --type-web-project-heading-tracking: -0.006em;
+  --type-web-project-heading-line: 1.04;
+  --type-web-project-heading-case: uppercase;
+}
+/* END GENERATED TYPOGRAPHY CONTRACT */
+
 /* ============================================================
    SEMORA — semora.com.au
    Editorial design system, built on Brand System v2.1.
@@ -13,9 +141,8 @@
    neutral system face; Fragment Mono — a Grilli-flavoured mono for the data
    voice. All OFL, all self-hosted, all variable where it matters. */
 /* Fraunces left the site 7 Sep 2026 by founder order ("去掉这个字体") —
-   register #21. Two DOWNLOADED faces remain, and one system serif joined
-   them the same evening for the homepage headline alone (#22, Georgia): the
-   site loads 135 kB of font instead of 565 kB, but three families render.
+   register #21. Georgia briefly joined the homepage under #22 and left under
+   #24. The current site downloads two faces, about 135 kB in total.
    Fraunces' italic is replaced by the voice system further down. */
 @font-face {
   font-family: "Instrument Sans";
@@ -44,17 +171,11 @@
    scale members, which is what keeps the display sizes responsive without
    letting arbitrary numbers back in. */
 :root {
-  --t-display-xl: 72px;  --lh-display-xl: 0.94;  --w-display-xl: 300;  --tr-display-xl: -0.018em;
-  --t-display-l: 56px;  --lh-display-l: 0.98;  --w-display-l: 300;  --tr-display-l: -0.014em;
-  --t-h1: 40px;  --lh-h1: 1.04;  --w-h1: 350;  --tr-h1: -0.01em;
-  --t-h2: 28px;  --lh-h2: 1.14;  --w-h2: 400;  --tr-h2: -0.006em;
-  --t-h3: 18px;  --lh-h3: 1.3;  --w-h3: 600;  --tr-h3: 0.012em;
   --t-body-lg: 19px;  --lh-body-lg: 1.55;  --w-body-lg: 400;  --tr-body-lg: 0em;
   --t-body: 17px;  --lh-body: 1.62;  --w-body: 400;  --tr-body: 0em;
   --t-body-sm: 15px;  --lh-body-sm: 1.55;  --w-body-sm: 400;  --tr-body-sm: 0em;
   --t-caption: 13px;  --lh-caption: 1.45;  --w-caption: 400;  --tr-caption: 0.004em;
   --t-label: 11px;  --lh-label: 1.2;  --w-label: 400;  --tr-label: 0.24em;
-  --t-quote: 34px;  --lh-quote: 1.24;  --w-quote: 300;  --tr-quote: 0em;
   /* spacing — the published 12 steps */
   --sp-0: 0px; --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-5: 24px; --sp-6: 32px; --sp-7: 48px; --sp-8: 64px; --sp-9: 96px; --sp-10: 128px; --sp-11: 160px;
   /* measure: 45–62ch, baseline grid 8pt */
@@ -164,12 +285,15 @@
    without anyone remembering. Purely defensive: nothing renders italic today
    (face census: 0 obliques), so this changes no pixel. */
 em, i, cite, dfn, var, address, q, u { font-style: normal; }
+/* Running emphasis uses the Book's 500; component price/name rules below retain their own roles. */
+strong, b { font-weight: var(--type-emphasis-weight); }
 /* scroll-padding keeps anchor jumps (#qb, #our-own-score) clear of the
    74px sticky header, which otherwise covers the target's first line */
 html { scroll-behavior: smooth; overflow-x: clip; scroll-padding-top: 96px; }
 body {
-  font-family: var(--sans); font-size-adjust: 0.546;
-  font-size: 17px; line-height: 1.62;
+  font-weight: var(--type-body-weight);
+  font-family: var(--type-body-family); font-size-adjust: var(--type-body-adjust);
+  font-size: var(--type-body-size); line-height: var(--type-body-line);
   color: var(--graph);
   background: var(--ivory);
   -webkit-font-smoothing: antialiased;
@@ -202,8 +326,8 @@ a { color: inherit; }
    Fraunces left the site and the display accents it had kept (quotes,
    prices, figures, italic emphasis) moved to the sans as well. */
 .display, h1 {
-  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546;
-  font-weight: 600; text-transform: uppercase;
+  font-family: var(--type-h1-family); font-variation-settings: normal; font-size-adjust: var(--type-h1-adjust);
+  font-weight: var(--type-h1-weight); text-transform: var(--type-h1-case);
   /* 61, not the homepage's 76 (7 Sep 2026, #20). Uppercase sans sets ~20%
      wider than the Fraunces it replaced, and at 76 six product-page heroes
      gained a line — "Be the source, not the result." went from two lines to
@@ -211,20 +335,20 @@ a { color: inherit; }
      same as the clients onboard page") and renders at 65.3px effective
      against the retired Fraunces 72's 63.6px: the same optical size, no
      rewrap. The homepage promise line keeps 76 in its own rule below. */
-  font-size: clamp( 32px, 4.76vw, 61px);
-  line-height: 1.04;
-  letter-spacing: -0.006em;
+  font-size: var(--type-h1-size);
+  line-height: var(--type-h1-line);
+  letter-spacing: var(--type-h1-tracking);
   color: var(--plum-900);
   text-wrap: balance;
 }
 h2 {
-  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546;
-  font-weight: 600; text-transform: uppercase;
+  font-family: var(--type-h2-family); font-variation-settings: normal; font-size-adjust: var(--type-h2-adjust);
+  font-weight: var(--type-h2-weight); text-transform: var(--type-h2-case);
   /* the homepage statement clamp (.who-h / .wwd2 .statband__h), not the
      retired serif h2's 34/4.1vw — same 56 cap, the homepage's floor and slope */
-  font-size: clamp( 28px, 3.6vw, 56px);
-  line-height: 1.14;
-  letter-spacing: -0.006em;
+  font-size: var(--type-h2-size);
+  line-height: var(--type-h2-line);
+  letter-spacing: var(--type-h2-tracking);
   /* plum-700 site-wide (founder, confirmed 1 Sep 2026) — the homepage
      heading hue (the serif's, when there was one) on every light ground,
      9.51:1 on ivory; dark bands keep
@@ -233,16 +357,16 @@ h2 {
   text-wrap: balance;
 }
 h3 {
-  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546;
-  font-weight: 600; text-transform: uppercase;
-  font-size: 19px;
-  line-height: 1.2;
-  letter-spacing: 0.012em;
+  font-family: var(--type-h3-family); font-variation-settings: normal; font-size-adjust: var(--type-h3-adjust);
+  font-weight: var(--type-h3-weight); text-transform: var(--type-h3-case);
+  font-size: var(--type-h3-size);
+  line-height: var(--type-h3-line);
+  letter-spacing: var(--type-h3-tracking);
   color: var(--plum-900);
 }
 p  { max-width: var(--measure); }
 .lead {
-  font-size: 19px; line-height: 1.45;
+  font-size: var(--type-lead-size); line-height: var(--type-lead-line);
   color: var(--graph-700);
   max-width: 54ch;
 }
@@ -290,9 +414,9 @@ h1 .uline::after { display: none; }
 
 /* mono label — the system voice */
 .lab {
-  font-family: var(--mono); font-variation-settings: normal; font-size-adjust: 0.516; font-weight: 400;
-  font-size: 11px; letter-spacing: 0.012em;
-  text-transform: uppercase;
+  font-family: var(--type-label-family); font-variation-settings: normal; font-size-adjust: var(--type-label-adjust); font-weight: var(--type-label-weight);
+  font-size: var(--type-label-size); letter-spacing: var(--type-label-tracking);
+  text-transform: var(--type-label-case);
   color: var(--moss-700);
 }
 .lab--graph { color: var(--graph-400); }
@@ -748,7 +872,7 @@ section > .wrap { position: relative; z-index: 1; }
   display: inline-block; position: relative; overflow: hidden;
   /* founder, 13 Aug: buttons still spoke mono after the hero went sans (B) —
      the call to action now speaks the headline's own voice, one size up */
-  font-family: var(--sans); font-size-adjust: 0.546; font-weight: 600;
+  font-family: var(--type-web-button-family); font-size-adjust: var(--type-web-button-adjust); font-weight: var(--type-web-button-weight);
   /* founder, 13 Sep 2026: "reduce this button by 20%", pointing at the
      homepage hero's acid pill. The three candidate sizes went side by side at
      true size in their browser and the founder settled on A, the exact 20%:
@@ -771,7 +895,7 @@ section > .wrap { position: relative; z-index: 1; }
      NOT followed: `.site-nav .btn` in the mobile drawer (~line 1427) keeps
      15px — at 12px it measures 41.8px against the 44px touch minimum that
      override exists to satisfy. */
-  font-size: 12px; letter-spacing: 0.012em; text-transform: uppercase;
+  font-size: var(--type-web-button-size); letter-spacing: var(--type-web-button-tracking); text-transform: var(--type-web-button-case);
   text-decoration: none; cursor: pointer;
   padding: 1.15em 2.2em;
   /* The primary call to action carries the EXPRESSIVE signal. Its whole job in
@@ -1074,7 +1198,7 @@ html.lr .site-head__word::before {
    same token `.btn` declares and `.btn--arw` inherits, so the site has ONE
    declaration of the button shape instead of two that happen to agree. */
 .site-nav .btn {
-  font-size: 12px; padding: 1.05em 1.6em; white-space: nowrap;
+  font-size: var(--type-web-button-size); padding: 1.05em 1.6em; white-space: nowrap;
   background: var(--moss-300); color: var(--plum-ink);
   border-color: var(--moss-300); border-radius: var(--btn-r);
   box-shadow: 0 2px 8px color-mix(in srgb, var(--plum-ink) 16%, transparent);
@@ -1476,7 +1600,7 @@ html.lr .site-head__word::before {
      every link measures 0×0 and is skipped. Nothing here is gate-covered;
      it was measured by hand, with the drawer opened. */
   .site-nav a:not(.btn) { font-size: 15px; padding-block: 12px; }
-  .site-nav .btn { font-size: 15px; padding: 0.85em 1.4em; margin-top: 8px; }
+  .site-nav .btn { font-size: var(--type-web-drawer-button-size); padding: 0.85em 1.4em; margin-top: 8px; }
 }
 
 
@@ -3798,7 +3922,7 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
            color: var(--graph-400); display: block;
            margin-bottom: var(--sp-4); }
 .cmt__card h3 { margin: 0 0 var(--sp-2);
-  font-size: var(--t-h2); line-height: var(--lh-h2); }
+  font-size: var(--type-h3-size); line-height: var(--type-h3-line); }
 .cmt__card .unit { display: block; }
 @media (max-width: 760px) { .cmt { grid-template-columns: 1fr; } }
 
@@ -4328,7 +4452,7 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
   margin-top: 12px; max-width: none;
 }
 .qb-total b s {
-  color: var(--plum-300); font-weight: 300; font-size: 18px;
+  color: var(--plum-300); font-weight: var(--type-figure-weight); font-size: 18px;
   margin-right: 0.3em;
   text-decoration-thickness: 2px; text-decoration-color: var(--moss-300);
 }
@@ -6277,9 +6401,9 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
   color: var(--plum-100); margin: 0;
 }
 .pkgcard__h {
-  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546; font-weight: 600;
-  font-size: 19px; letter-spacing: 0.004em; text-transform: uppercase;
-  line-height: var(--lh-h3); color: var(--moss-300); margin: 0 0 var(--sp-3);
+  font-family: var(--type-h3-family); font-variation-settings: normal; font-size-adjust: var(--type-h3-adjust); font-weight: var(--type-h3-weight);
+  font-size: var(--type-h3-size); letter-spacing: var(--type-h3-tracking); text-transform: var(--type-h3-case);
+  line-height: var(--type-h3-line); color: var(--moss-300); margin: 0 0 var(--sp-3);
 }
 .pkgcard__lead {
   font-size: var(--t-body-sm); line-height: var(--lh-body-sm);
@@ -6644,23 +6768,12 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
    passes moved the h1's margin and the .lab's leading and changed nothing,
    because neither was in play. */
 .cs-cover__intro { margin-top: 16px; }
-/* ── the statement, at a quarter less and in the brand's primary
-   (founder, 15 Sep 2026: "reduce font size 25% and change the color to
-   primary color") ─────────────────────────────────────────────────────
-   61 × 0.75 = 45.75px, which is not a Brand Book step. The scale runs
-   …34, 40, 56, 61…, so 45.75 sits between 40 and 56 and is nearer 40 by
-   5.75px against 10.25px. 40 is also the Book's own h1 role, so the
-   nearest honest step to the founder's 25% is the role value itself
-   rather than an off-scale number needing an R10.2 exception.
-
-   Primary is plum: the brand system names the plum tile "the primary"
-   (final_mark/master), the Brand Book's Vol 1 palette leads with plum, and
-   the mark file is SEMORA_Symbol_primary. --plum #8E2F6F, not --plum-700:
-   700 is the darkened-for-text variant, and at 6.05:1 on apricot the
-   primary itself clears body contrast (4.5:1), let alone the 3:1 this
-   size needs. Measured, not assumed. */
+/* Founder 15 Sep: reduce the desktop statement by 25% and use primary plum.
+   The component role applies 61 × .75 = 45.75, with the existing 28px narrow
+   floor. A scoped instruction is not rounded to an old CSS scale value.
+   Values are generated from the Brand Book website role contract. */
 .pg-client-projects .cs-cover h1 {
-  font-size: clamp(28px, 3.1vw, 40px);
+  font-size: var(--type-web-project-heading-size);
   color: var(--plum);
   /* 8, not 16: the eyebrow's own leading adds ~8px below its text box, so
      an authored 16 renders as 24. Authored values are what the gate reads;
@@ -7293,8 +7406,8 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
 @media (max-width: 960px) { .fnl__side::after { display: none; } }
 
-.fnl__id { font-size: var(--t-h3); font-weight: var(--w-h3);
-  line-height: var(--lh-h3); letter-spacing: var(--tr-h3);
+.fnl__id { font-size: var(--type-web-card-title-size); font-weight: var(--type-web-card-title-weight);
+  line-height: var(--type-web-card-title-line); letter-spacing: var(--type-web-card-title-tracking);
   margin: 0 0 8px; position: relative; z-index: 1; }
 .fnl__idsub { font-size: var(--t-body-sm); line-height: 1.45;
   color: color-mix(in srgb, var(--plum-ink) 74%, var(--cream));
@@ -7354,9 +7467,9 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
    the design the founder accepted at 90/100 has these in ink, sentence case.
    The first set is an h1 and the rest are h2s, so both are normalised here
    rather than leaving the funnel to change voice halfway down. */
-.fnl__q { font-weight: var(--w-h1); font-size: clamp(var(--t-h2), 3.1vw, var(--t-h1));
-  line-height: var(--lh-h1); letter-spacing: var(--tr-h1);
-  color: var(--plum-ink); text-transform: none;
+.fnl__q { font-weight: var(--type-web-question-weight); font-size: var(--type-web-question-size);
+  line-height: var(--type-web-question-line); letter-spacing: var(--type-web-question-tracking);
+  color: var(--plum-ink); text-transform: var(--type-web-question-case);
   margin: 0 0 12px; max-width: 20ch; }
 .fnl__sub { font-size: var(--t-body); line-height: var(--lh-body);
   color: var(--graph-700); margin: 0 0 32px; max-width: 52ch; }
@@ -7402,8 +7515,8 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
 .fnl__card:has(input:checked) { border-color: var(--plum); background: var(--plum-050); }
 .fnl__card:has(input:checked)::before { transform: scaleY(1); transform-origin: top; }
 .fnl__card:has(input:focus-visible) { outline: 2px solid var(--plum); outline-offset: 2px; }
-.fnl__card__h { font-size: var(--t-h3); font-weight: var(--w-h3);
-  line-height: var(--lh-h3); letter-spacing: var(--tr-h3); margin: 0 0 8px; }
+.fnl__card__h { font-size: var(--type-web-card-title-size); font-weight: var(--type-web-card-title-weight);
+  line-height: var(--type-web-card-title-line); letter-spacing: var(--type-web-card-title-tracking); margin: 0 0 8px; }
 .fnl__card__p { font-size: var(--t-body-sm); line-height: var(--lh-body-sm);
   color: var(--graph-700); margin: 0; }
 
@@ -7436,8 +7549,9 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
    connected, and a confirmed slot would be a promise we cannot keep. */
 .fnl__book { border: 1px solid var(--champ-700); border-radius: var(--field-r, 8px);
   background: var(--white); padding: 24px; margin: 0 0 24px; }
-.fnl__book__h { font-size: var(--t-h3); font-weight: var(--w-h3);
-  letter-spacing: var(--tr-h3); margin: 0 0 4px; }
+.fnl__book__h {
+  line-height: var(--type-web-card-title-line); font-size: var(--type-web-card-title-size); font-weight: var(--type-web-card-title-weight);
+  letter-spacing: var(--type-web-card-title-tracking); margin: 0 0 4px; }
 .fnl__book__p { font-size: var(--t-body-sm); line-height: var(--lh-body-sm);
   color: var(--graph-700); margin: 0 0 16px; }
 /* The chip row, the time slots and the chosen-time line were removed on
@@ -7454,8 +7568,8 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
 .fnl__sign { margin-top: 48px; padding: 32px 32px; background: var(--plum-ink);
   border-radius: var(--field-r, 8px); position: relative; }
 .fnl__sign .slash { position: absolute; left: 32px; top: 30px; }
-.fnl__sign__h { font-size: var(--t-h2); font-weight: var(--w-h2);
-  line-height: var(--lh-h2); letter-spacing: var(--tr-h2); color: var(--ivory);
+.fnl__sign__h { font-size: var(--type-web-report-signature-size); font-weight: var(--type-web-report-signature-weight);
+  line-height: var(--type-web-report-signature-line); letter-spacing: var(--type-web-report-signature-tracking); color: var(--ivory);
   margin: 0 0 12px; padding-left: 32px; }
 .fnl__sign__p { font-size: var(--t-body); line-height: var(--lh-body);
   color: var(--moss-300); margin: 0 0 16px; padding-left: 32px; }
@@ -7524,3 +7638,363 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
    the loudest thing on the page, which is where they should not have been. */
 .res__name { font-size: 34px; }
 .stat__n { font-size: clamp(22px, 2.4vw, 28px); }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   /seo-ai-search — the Search & AI Visibility capability page.
+   Rebuilt 15 September 2026 across twenty founder rounds; the hero accepted
+   at v20 ("OK, accept hero section now"). The record of every round, with
+   measurements, is 09_Reviews/2026-09-15_search-ai-visibility-draft/.
+   The reference is References/05. Nothing here is traced from it.
+   ═══════════════════════════════════════════════════════════════════════ */
+/* ══ DRAFT-ONLY. Scale values and tokens only; moves into site.css on ship. ══
+
+   v3 — the founder scored v2 at 40/100 with "animation, 设计, 排版设计 都需要
+   提高 60% 以上", and supplied (a) the Impressive hero as the reference for
+   the hero section and (b) their own generated comparison plate.
+
+   TYPE, fixed in v2 and held here: section h2 was rendering 51.8px against a
+   61px h1, and a decorative ghost numeral rendered 76px — the largest type on
+   the page was ornament. One heading step (32px), one body (17), one caption
+   (15), the numeral gone.                                                    */
+
+/* ── section head ────────────────────────────────────────────────────── */
+.sai-sh { max-width: 62ch; }
+.sai-sh__h { font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546;
+  font-weight: 600; font-size: 32px; line-height: 1.2; letter-spacing: -0.006em;
+  text-transform: uppercase; color: var(--plum-700); margin: 16px 0 0; }
+.sai-sh__note { margin-top: 16px; font-size: 17px; line-height: 1.55; color: var(--graph); }
+.sai-sh--tight .sai-sh__h { margin-top: 12px; }
+.sai-sh--rev .sai-sh__h { color: var(--ivory); }
+.f-plum .sai-sh__note, .sai-sh--rev .sai-sh__note { color: var(--plum-100); }
+
+/* ── HERO v14 — the founder's shape. ────────────────────────────────────
+   "create an image shape that takes 65% of the hero section, then move the
+   image to the shape and keep the image flash like wave" (15 Sep).
+   The shape holds the photo; the words hold the ground. They do not overlap,
+   so nothing needs a wash, a mask or a panel — the four versions before this
+   were all trying to make words and a photo share the same pixels.
+   · The shape is 65% of the stage, its left edge cut on the brand's 70°
+     signal axis (the slash every band on this site already carries).
+   · It keeps the photo's own proportions, so all eight are in frame.
+   · It arrives with res-wave-r — the site's own card entrance — then
+     breathes; and a narrow band of light passes along the 70° axis every
+     seven seconds: the "flash like wave", kept to 14% ivory so it reads as
+     a pass of light, not a glow.
+   · v15: the shape at 30% (founder: "reduce image size down to 30%, i think
+     you should be fine"). The words end at 43% of the stage and the shape
+     starts at 70%, so nothing can block the message. With the room back,
+     the statement returns to the hero's 61px. */
+.hero--seo { position: relative; overflow: hidden; padding-block: 0;
+  min-height: clamp(600px, 84vh, 800px); display: grid; align-items: center; }
+.hero--seo .wrap { padding-bottom: 0; }
+.hero--seo .wrap.sai-say { position: relative; z-index: 3; width: 100%; padding-block: 64px 48px; }
+/* v17: the shape back to 65% (founder: "it was a perfect size"), so the
+   words take the column they had at that size — 56px, one step under the
+   hero's 61, and a 34% measure. The shape's soft corners pull its edge away
+   from the words at the top and the bottom; the strip is the widest line. */
+/* v20: the lead's own measure at (0,3,0), because the 34% column cap was
+   outranking its 32ch and the lead ran 435px wide — its lower lines met the
+   curve. 28ch keeps it in five lines and ≥100px clear of the shape. */
+.sai-say > * { max-width: 34%; }
+.sai-say h1 { font-size: 56px; max-width: 11ch; }
+.hero--seo .sai-say .lead { max-width: 28ch; }
+
+/* the shape */
+.hero--seo .sai-port { position: absolute; z-index: 1; margin: 0; right: 0; top: 50%; translate: 0 -50%;
+  width: var(--shape, 60%); aspect-ratio: 1400 / 781; max-height: calc(100% - 96px);   /* v19: 65 → 60, the founder's "缩小一点点"; measured to clear every line by ≥30px */
+  clip-path: url(#hshape);   /* the soft slash: see the inline <clipPath> */
+  overflow: hidden; }
+.sai-port picture { display: block; width: 100%; height: 100%; }
+.sai-port img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%;
+  opacity: 1; -webkit-mask-image: none; mask-image: none;
+  filter: brightness(0.85);   /* 15% softer (founder, 15 Sep) */ }
+/* the light pass — a single band on the 70° axis */
+.sai-port::after { content: ""; position: absolute; inset: -20% -40%; pointer-events: none;
+  background: linear-gradient(110deg, transparent 42%, color-mix(in srgb, var(--ivory) 14%, transparent) 50%, transparent 58%);
+  translate: -70% 0; }
+
+/* the CTA as an object */
+.hero--seo .cta-row .btn.sai-cta { display: inline-flex; width: auto; align-items: center; justify-content: center;
+  gap: 12px; padding-right: 8px; flex-wrap: nowrap; white-space: nowrap; }
+.sai-cta__ar { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%;
+  background: var(--plum-ink); color: var(--moss-300); font-size: 15px; line-height: 1.04;
+  transition: translate 260ms var(--ease); }
+.sai-cta:hover .sai-cta__ar { translate: 4px 0; }
+
+/* the instrument rail — figures only, one voice, stacked in the column */
+/* the surfaces strip — names, one voice, no figures */
+/* the strip sits BELOW the shape, so it takes the full measure: one line at
+   desktop, no wrap, no line opening with a dot. Items centre on the cross
+   axis — identical spans land identically. */
+.sai-say > .sai-surf { max-width: none; }
+.sai-surf { margin: 48px 0 0; padding: 24px 0 0;
+  border-top: 1px solid color-mix(in srgb, var(--plum-300) 30%, transparent);
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px 0; }
+.sai-surf__lab { font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
+  font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--moss-300);
+  margin-right: 24px; }
+/* every name is an identical span — same font, same line-height, nothing
+   inside it — so every name shares one baseline. The separator is its own
+   element, centred on the line, touching no name's metrics. (v16 drew the dot
+   as a ::before inside the span; it shifted that span's baseline, and
+   "Google" — the one name without a dot — sat visibly higher.) */
+.sai-surf > span:not(.sai-surf__lab) { font-size: 15px; line-height: 1.45; color: var(--ivory); }
+.sai-surf > i { width: 4px; height: 4px; border-radius: 50%; background: var(--moss-300);
+  align-self: center; margin: 0 12px; }
+@media (max-width: 560px) {
+  .sai-surf { gap: 8px 24px; }
+  .sai-surf__lab { width: 100%; margin-right: 0; }
+  .sai-surf > i { display: none; }
+}
+
+@media (max-width: 1100px) { .sai-say > * { max-width: 40%; } .hero--seo .sai-port { width: 55%; } }
+@media (max-width: 760px) {
+  .hero--seo { min-height: 0; display: block; }
+  .sai-say { padding-block: 48px 32px; }
+  .sai-say > * { max-width: none; }
+  .sai-say h1 { font-size: clamp(28px, 8vw, 40px); max-width: none; }
+  .hero--seo .sai-port { position: relative; inset: auto; translate: none; width: auto; max-height: none;
+    aspect-ratio: 1400 / 781; margin: 0 calc(-1 * var(--gutter)) 0 0;
+    clip-path: url(#hshape); }
+}
+
+/* ── the comparison plate (founder-supplied) ─────────────────────────── */
+.sai-comp { margin: 48px 0 0; }
+.sai-comp picture { display: block; }
+.sai-comp img { display: block; width: 100%; height: auto;
+  border-radius: 0 64px 0 0; }
+
+/* ── four names, one job ─────────────────────────────────────────────── */
+.sai-terms { margin-top: 64px; padding-top: 24px; border-top: 1px solid var(--champ-700); }
+.sai-terms__lab { color: var(--plum-700); }
+.sai-terms__row { list-style: none; margin: 16px 0 0; padding: 0;
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+.sai-terms__row li { display: flex; flex-direction: column; gap: 4px; }
+.sai-terms__row b { font-family: var(--sans); font-size-adjust: 0.546; font-weight: 600;
+  font-size: 19px; line-height: 1.3; color: var(--graph-900); }
+.sai-terms__row span { font-size: 15px; line-height: 1.45; color: var(--graph-400); }
+@media (max-width: 760px) { .sai-terms__row { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* ── why now ─────────────────────────────────────────────────────────── */
+.sai-why { display: grid; grid-template-columns: 1fr 1fr; gap: 48px var(--gutter);
+  align-items: center; margin-top: 48px; }
+.sai-why__say p { font-size: 17px; line-height: 1.55; color: var(--graph); }
+.sai-why__say p + p { margin-top: 24px; }
+.sai-surf-lab { margin-top: 64px; color: var(--plum-700); }
+@media (max-width: 860px) { .sai-why { grid-template-columns: 1fr; gap: 32px; } }
+
+/* ── the statement band: the rhythm break. Every other section is a wrap of
+      heading + content; this one is a single line and nothing else. ───── */
+.sai-stmt { padding-block: clamp(64px, 9vw, 128px); }
+.sai-stmt__p { margin: 0; max-width: 24ch;
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546;
+  font-weight: 600; font-size: clamp(22px, 3.2vw, 40px); line-height: 1.2;
+  letter-spacing: -0.006em; color: var(--ivory); }
+.sai-stmt__p span { display: block; }
+.sai-stmt__p span + span { color: var(--moss-300); }
+
+/* ── the six services, as cards on the dark band ─────────────────────── */
+.sai-svc { list-style: none; margin: 48px 0 0; padding: 0;
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.sai-svc__c { padding: 32px; scroll-margin-top: 96px;
+  border: 1px solid color-mix(in srgb, var(--plum-300) 30%, transparent);
+  background: color-mix(in srgb, var(--plum-700) 16%, transparent);
+  display: flex; flex-direction: column;
+  transition: border-color 260ms var(--ease), background-color 260ms var(--ease),
+              transform 260ms var(--ease); }
+.sai-svc__c:hover, .sai-svc__c:focus-within, .sai-svc__c:target {
+  border-color: color-mix(in srgb, var(--moss-300) 52%, transparent);
+  background: color-mix(in srgb, var(--plum-700) 26%, transparent);
+  transform: translateY(-4px); }
+.sai-svc__ix { margin: 0 0 16px; font-family: var(--mono); font-size-adjust: 0.516;
+  font-weight: 400; font-size: 11px; letter-spacing: 0.24em; color: var(--moss-300); }
+.sai-svc__c h3 { font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546;
+  font-weight: 600; font-size: 19px; line-height: 1.3; color: var(--ivory); margin: 0 0 12px; }
+.sai-svc__p { font-size: 15px; line-height: 1.55; color: var(--plum-100); margin: 0 0 24px; }
+.sai-svc__get { list-style: none; margin: auto 0 0; padding: 16px 0 0;
+  border-top: 1px solid color-mix(in srgb, var(--plum-300) 24%, transparent); }
+.sai-svc__get li { position: relative; padding-left: 16px; margin-top: 8px;
+  font-size: 15px; line-height: 1.45; color: var(--plum-100); }
+.sai-svc__get li::before { content: ""; position: absolute; left: 0; top: 0.55em;
+  width: 6px; height: 1px; background: var(--moss-300); }
+@media (max-width: 1100px) { .sai-svc { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 680px) { .sai-svc { grid-template-columns: 1fr; } .sai-svc__c { padding: 24px; } }
+
+/* ── the close ───────────────────────────────────────────────────────── */
+.sai-close { display: grid; grid-template-columns: minmax(0, 1fr) auto;
+  gap: 32px var(--gutter); align-items: center; }
+.sai-close__h { font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546;
+  font-weight: 600; font-size: 32px; line-height: 1.2; letter-spacing: -0.006em;
+  color: var(--ivory); margin: 16px 0 0; max-width: 20ch; }
+.sai-close__p { font-size: 17px; line-height: 1.55; color: var(--plum-100); max-width: 52ch; margin: 16px 0 0; }
+.sai-close__ctas { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
+/* the close's second link measured 22.8px tall on a phone — half a touch target */
+.sai-close__link { display: inline-block; padding-block: 12px; }
+@media (max-width: 760px) { .sai-close { grid-template-columns: 1fr; } }
+
+/* ══════════════ CHOREOGRAPHY ══════════════
+   Founder, 15 Sep: animation needs to improve 60%+. v2 had only the site's
+   inherited .rv fade-up on every element, which is one gesture repeated
+   eleven times — the reason it reads as unanimated. Each section now has a
+   move of its own, built from the vocabulary the site already owns
+   (rise-in, res-wave, tl-draw, qa-wipe).                                    */
+@media (prefers-reduced-motion: no-preference) {
+
+  /* HERO v4 — the stage assembles: mark fades up, the portrait wipes in from
+     the right and settles, the chip lands after the headline masks finish,
+     then the rail reads left to right. At rest the portrait breathes. */
+  html.js   html.js .hero--seo .sai-port { animation: res-wave-r 0.9s var(--ease) 0.3s both; }
+  html.js .sai-port::after { animation: sai-sweep 7s var(--ease) 2.4s infinite; }
+  @keyframes sai-sweep { 0%, 100% { translate: -70% 0; } 18% { translate: 70% 0; } 18.01% { translate: -70% 0; } }
+  @keyframes sai-wipe-up { to { clip-path: inset(0 0 0 0); } }
+  @keyframes sai-wipe-l { to { clip-path: inset(0 0 0 0); } }
+  @keyframes sai-plate  { to { clip-path: inset(0 0 0 0); } }
+  /* the slow move (founder, 15 Sep: "image need some animation effect, maybe
+     slow"): after the entrance the photo drifts — a 20s push-in and a small
+     pan, back and forth, clipped by the shape. Visible, unhurried, the whole
+     stage alive at rest. */
+  html.js .sai-port img { scale: 1.08; animation: sai-settle 1.6s var(--ease) 0.3s forwards, sai-drift 20s ease-in-out 1.9s infinite alternate; }
+  @keyframes sai-settle { to { scale: 1; } }
+  @keyframes sai-drift { 0% { scale: 1; translate: 0 0; } 100% { scale: 1.09; translate: -2.4% 1.4%; } }
+  html.js   html.js .sai-surf.rv { opacity: 1; transform: none; }
+  html.js .sai-surf.rv > span { opacity: 0; transform: translateY(8px); animation: rise-in 0.5s var(--ease) both; }
+  html.js .sai-surf.rv > span:nth-child(1) { animation-delay: 1.0s; }
+  html.js .sai-surf.rv > span:nth-child(2) { animation-delay: 1.1s; }
+  html.js .sai-surf.rv > span:nth-child(3) { animation-delay: 1.2s; }
+  html.js .sai-surf.rv > span:nth-child(4) { animation-delay: 1.3s; }
+  html.js .sai-surf.rv > span:nth-child(5) { animation-delay: 1.4s; }
+  html.js .sai-surf.rv > span:nth-child(6) { animation-delay: 1.5s; }
+  /* pointer parallax, fine pointers only — the mark drifts with the cursor,
+     the portrait against it, so the stage has depth */
+  @media (pointer: fine) {
+        .sai-port { translate: calc(var(--px, 0) * -8px) calc(var(--py, 0) * -5px); transition: translate 0.9s var(--ease); }
+  }
+
+  /* THE PLATE — wipes up from its own bottom edge, so the two columns of the
+     table arrive as one object rather than fading like text */
+  html.js .sai-comp.rv { opacity: 1; transform: none; }
+  html.js .sai-comp.rv picture { display: block; clip-path: inset(0 0 100% 0); }
+  html.js .sai-comp.rv.in picture { animation: sai-plate 0.95s var(--ease) 0.1s forwards; }
+  html.js .sai-comp.rv img { scale: 1.05; transition: scale 1.4s var(--ease) 0.2s; }
+  html.js .sai-comp.rv.in img { scale: 1; }
+
+  /* FOUR NAMES — arrive left to right, a beat apart */
+  html.js .sai-terms.rv .sai-terms__row li { opacity: 0; }
+  html.js .sai-terms.rv.in .sai-terms__row li { animation: rise-in 0.5s var(--ease) both; }
+  html.js .sai-terms.rv.in .sai-terms__row li:nth-child(1) { animation-delay: 0.1s; }
+  html.js .sai-terms.rv.in .sai-terms__row li:nth-child(2) { animation-delay: 0.22s; }
+  html.js .sai-terms.rv.in .sai-terms__row li:nth-child(3) { animation-delay: 0.34s; }
+  html.js .sai-terms.rv.in .sai-terms__row li:nth-child(4) { animation-delay: 0.46s; }
+
+  /* THE STATEMENT — two lines, the second landing on the first's beat */
+  html.js .sai-stmt__p.rv { opacity: 1; transform: none; }
+  html.js .sai-stmt__p.rv span { display: block; opacity: 0; transform: translateY(14px); }
+  html.js .sai-stmt__p.rv.in span { animation: rise-in 0.7s var(--ease) both; }
+  html.js .sai-stmt__p.rv.in span:nth-child(1) { animation-delay: 0.05s; }
+  html.js .sai-stmt__p.rv.in span:nth-child(2) { animation-delay: 0.32s; }
+
+  /* SIX SERVICES — a wave across the grid, left column leading */
+  html.js .sai-svc.rv { opacity: 1; transform: none; }
+  html.js .sai-svc.rv .sai-svc__c { opacity: 0; transform: translateY(20px); }
+  html.js .sai-svc.rv.in .sai-svc__c { animation: rise-in 0.6s var(--ease) both; }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(1) { animation-delay: 0.06s; }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(2) { animation-delay: 0.16s; }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(3) { animation-delay: 0.26s; }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(4) { animation-delay: 0.20s; }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(5) { animation-delay: 0.30s; }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(6) { animation-delay: 0.40s; }
+  /* the acid rule under each card's deliverables draws itself */
+  html.js .sai-svc.rv .sai-svc__get { clip-path: inset(0 0 0 0); }
+  html.js .sai-svc__get li::before { transform: scaleX(0); transform-origin: left;
+    transition: transform 320ms var(--ease); }
+  html.js .sai-svc.rv.in .sai-svc__get li::before { transform: scaleX(1); }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(n) .sai-svc__get li:nth-child(2)::before { transition-delay: 80ms; }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(n) .sai-svc__get li:nth-child(3)::before { transition-delay: 160ms; }
+
+  /* SECTION HEADS — the eyebrow's rule draws before the heading lands */
+  html.js .sai-sh.rv .sai-sh__h { opacity: 0; transform: translateY(10px); }
+  html.js .sai-sh.rv.in .sai-sh__h { animation: rise-in 0.6s var(--ease) 0.12s both; }
+  html.js .sai-sh.rv .sai-sh__note { opacity: 0; }
+  html.js .sai-sh.rv.in .sai-sh__note { animation: rise-in 0.6s var(--ease) 0.28s both; }
+}
+
+/* ── 05 · why SEMORA: six commitment cards on the light ground ────────── */
+.sai-diff { list-style: none; margin: 48px 0 0; padding: 0;
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.sai-diff__c { padding: 32px; background: var(--white); border: 1px solid var(--champ-700);
+  transition: transform 260ms var(--ease), border-color 260ms var(--ease); }
+.sai-diff__c:hover { transform: translateY(-4px); border-color: var(--plum-300); }
+.sai-diff__ix { display: block; margin-bottom: 16px; font-family: var(--mono); font-size-adjust: 0.516;
+  font-weight: 400; font-size: 11px; letter-spacing: 0.24em; color: var(--plum-700); }
+.sai-diff__c h3 { font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546;
+  font-weight: 600; font-size: 19px; line-height: 1.3; color: var(--graph-900); margin: 0 0 12px; }
+.sai-diff__c p { font-size: 15px; line-height: 1.55; color: var(--graph); margin: 0; }
+@media (max-width: 1100px) { .sai-diff { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 680px) { .sai-diff { grid-template-columns: 1fr; } .sai-diff__c { padding: 24px; } }
+
+/* ── 06 · the person: the /team hero's grammar, image left this time ───── */
+.sai-who { display: grid; grid-template-columns: 0.75fr 1.25fr; gap: 48px var(--gutter); align-items: center; }
+.sai-who__fig { position: relative; margin: 0; padding-left: 24px; }
+.sai-who__fig img { display: block; width: 100%; height: auto; }
+.sai-who__bar { position: absolute; left: 0; top: 8%; bottom: 8%; width: 8px; background: var(--moss); }
+.sai-who__say .sai-sh__h { max-width: 18ch; }
+.sai-who__say > p { margin-top: 24px; font-size: 17px; line-height: 1.55; color: var(--graph); max-width: 52ch; }
+.sai-who__q { margin: 32px 0 0; padding: 0 0 0 24px; border-left: 3px solid var(--plum-700); max-width: 44ch; }
+.sai-who__q p { margin: 0; font-family: var(--sans); font-size-adjust: 0.546; font-weight: 400;
+  font-size: 22px; line-height: 1.3; color: var(--plum-700); }
+.sai-who__q cite { display: block; margin-top: 12px; font-style: normal; font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
+  font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--graph-400); }
+@media (max-width: 860px) { .sai-who { grid-template-columns: 1fr; } .sai-who__fig { max-width: 360px; } }
+
+/* ── 08 · the board teaser ───────────────────────────────────────────── */
+.sai-board { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px var(--gutter); align-items: center; }
+.sai-sh__h--rev { color: var(--ivory); }
+.sai-board__say > p { margin-top: 24px; font-size: 17px; line-height: 1.55; color: var(--plum-100); max-width: 48ch; }
+.sai-board__say .cta-row { margin-top: 32px; }
+.sai-board__list { list-style: none; margin: 0; padding: 0;
+  border-top: 1px solid color-mix(in srgb, var(--plum-300) 30%, transparent); }
+.sai-board__list li { padding: 12px 0; border-bottom: 1px solid color-mix(in srgb, var(--plum-300) 30%, transparent);
+  font-family: var(--sans); font-size-adjust: 0.546; font-weight: 600; font-size: 17px; line-height: 1.3;
+  color: var(--ivory); display: flex; align-items: baseline; gap: 16px; }
+.sai-board__list li::before { content: counter(bd, decimal-leading-zero); counter-increment: bd;
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 11px; letter-spacing: 0.24em; color: var(--moss-300); }
+.sai-board__list { counter-reset: bd; }
+@media (max-width: 860px) { .sai-board { grid-template-columns: 1fr; } }
+
+/* ── 09 · seven questions to ask ─────────────────────────────────────── */
+.sai-ask { list-style: none; margin: 48px 0 0; padding: 0;
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 var(--gutter);
+  border-top: 1px solid var(--champ-700); }
+.sai-ask li { display: grid; grid-template-columns: 3em minmax(0, 1fr); gap: 4px 16px;
+  padding: 24px 0; border-bottom: 1px solid var(--champ-700); }
+.sai-ask b { grid-row: span 2; font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
+  font-size: 11px; letter-spacing: 0.24em; color: var(--plum-700); padding-top: 8px; }
+.sai-ask h3 { font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546;
+  font-weight: 600; font-size: 19px; line-height: 1.3; color: var(--graph-900); margin: 0; }
+.sai-ask p { font-size: 15px; line-height: 1.55; color: var(--graph); margin: 0; max-width: 44ch; }
+@media (max-width: 860px) { .sai-ask { grid-template-columns: 1fr; } }
+
+/* ── 10 · FAQ: visible questions, visible answers ────────────────────── */
+.sai-faq { margin-top: 48px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px var(--gutter); }
+.sai-faq__it { padding-top: 24px; border-top: 1px solid var(--champ-700); }
+.sai-faq__it h3 { font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546;
+  font-weight: 600; font-size: 19px; line-height: 1.3; color: var(--graph-900); margin: 0 0 12px; }
+.sai-faq__it p { font-size: 15px; line-height: 1.55; color: var(--graph); margin: 0; max-width: 52ch; }
+@media (max-width: 860px) { .sai-faq { grid-template-columns: 1fr; gap: 24px; } }
+
+/* choreography for the new sections */
+@media (prefers-reduced-motion: no-preference) {
+  html.js .sai-diff.rv, html.js .sai-ask.rv, html.js .sai-faq.rv, html.js .sai-board__list.rv { opacity: 1; transform: none; }
+  html.js .sai-diff.rv .sai-diff__c, html.js .sai-ask.rv li, html.js .sai-faq.rv .sai-faq__it, html.js .sai-board__list.rv li { opacity: 0; transform: translateY(14px); }
+  html.js .sai-diff.rv.in .sai-diff__c, html.js .sai-ask.rv.in li, html.js .sai-faq.rv.in .sai-faq__it, html.js .sai-board__list.rv.in li { animation: rise-in 0.55s var(--ease) both; }
+  html.js .sai-diff.rv.in .sai-diff__c:nth-child(2), html.js .sai-ask.rv.in li:nth-child(2), html.js .sai-faq.rv.in .sai-faq__it:nth-child(2), html.js .sai-board__list.rv.in li:nth-child(2) { animation-delay: 0.08s; }
+  html.js .sai-diff.rv.in .sai-diff__c:nth-child(3), html.js .sai-ask.rv.in li:nth-child(3), html.js .sai-faq.rv.in .sai-faq__it:nth-child(3), html.js .sai-board__list.rv.in li:nth-child(3) { animation-delay: 0.16s; }
+  html.js .sai-diff.rv.in .sai-diff__c:nth-child(4), html.js .sai-ask.rv.in li:nth-child(4), html.js .sai-faq.rv.in .sai-faq__it:nth-child(4), html.js .sai-board__list.rv.in li:nth-child(4) { animation-delay: 0.24s; }
+  html.js .sai-diff.rv.in .sai-diff__c:nth-child(5), html.js .sai-ask.rv.in li:nth-child(5), html.js .sai-faq.rv.in .sai-faq__it:nth-child(5), html.js .sai-board__list.rv.in li:nth-child(5) { animation-delay: 0.32s; }
+  html.js .sai-diff.rv.in .sai-diff__c:nth-child(6), html.js .sai-ask.rv.in li:nth-child(6), html.js .sai-faq.rv.in .sai-faq__it:nth-child(6), html.js .sai-board__list.rv.in li:nth-child(6) { animation-delay: 0.40s; }
+  html.js .sai-ask.rv.in li:nth-child(7), html.js .sai-faq.rv.in .sai-faq__it:nth-child(7), html.js .sai-board__list.rv.in li:nth-child(7) { animation-delay: 0.48s; }
+  html.js .sai-faq.rv.in .sai-faq__it:nth-child(8), html.js .sai-board__list.rv.in li:nth-child(8) { animation-delay: 0.56s; }
+  html.js .sai-who__fig.rv img { clip-path: inset(0 100% 0 0); }
+  html.js .sai-who__fig.rv.in img { animation: sai-wipe-r 0.9s var(--ease) 0.1s forwards; }
+  @keyframes sai-wipe-r { to { clip-path: inset(0 0 0 0); } }
+}

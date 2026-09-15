@@ -512,17 +512,43 @@ Research and production are AI-assisted, and we say so.
 
 ---
 
-# SEO &amp; AI Search — SEMORA STUDIO Melbourne
+# Search &amp; AI Visibility — SEMORA STUDIO Melbourne
 URL: https://www.semora.com.au/seo-ai-search
-Summary: Be the source, not the result. Technical audit, keyword research, fixes, on-page work and content — five steps, reported against one commercial number.
+Summary: SEO gets you onto the list. GEO gets you into the answer. Six services, one method, measured monthly on Google, AI Overviews, ChatGPT, Perplexity and Copilot.
 
 Search & AI Visibility
 
-## Be the source, not the result
+## Let AI read your business. It matters now.
 
-A ranked list rewards the page that wins. An AI answer rewards the source it trusts, and names it. We work both.
+Your buyer’s first question now goes to a machine. If it cannot read your business, it cannot name you in the answer. We make sure it can, and we measure whether it does.
 
-Free visibility report Score yourself first →
+Free visibility report → Score yourself first →
+
+Measured on GoogleAI OverviewsChatGPTPerplexityCopilot
+
+who is the best buyers agent in melbourne/ physio near me open saturday/ how do i show up in chatgpt answers/ commercial property advisory melbourne/ seo agency that reports revenue not rankings/ who is the best buyers agent in melbourne/ physio near me open saturday/ how do i show up in chatgpt answers/ commercial property advisory melbourne/ seo agency that reports revenue not rankings/
+
+01 / SEO and GEO
+
+### Search has two doors now
+
+SEO gets you onto the list. GEO — generative engine optimisation — gets you into the answer. Same buyer, two doors, and most sites only ever built the first.
+
+Four names, one job
+
+AI SEOthe agency term
+
+AI searchwhat your buyer calls it
+
+LLM SEOthe engineering term
+
+GEOthe one we use
+
+02 / Why now
+
+### The answer has already moved
+
+Your buyer’s first question goes to a machine that returns one answer and a short list of names. Miss that list and the enquiry goes to a firm on it.
 
 What being cited looks like
 
@@ -532,97 +558,11 @@ A
 
 SEMORA STUDIO
 
-who is the best buyers agent in melbourne/ physio near me open saturday/ how do i show up in chatgpt answers/ commercial property advisory melbourne/ seo agency that reports revenue not rankings/ who is the best buyers agent in melbourne/ physio near me open saturday/ how do i show up in chatgpt answers/ commercial property advisory melbourne/ seo agency that reports revenue not rankings/
+What can be worked is eligibility, entity clarity and evidence. We measure all three each month, against a fixed set of buyer questions asked in clean sessions, with the wording set down in advance so this month can be held against the last.
 
-01 The shift
+The questions are your buyer’s, not ours. The wording is written down before the first run, so a month that moves can be told apart from a month that was asked differently.
 
-### Search has two doors now
-
-Your buyer still types into Google. What comes back, more and more, is an answer that names its sources.
-
-The ranked list
-
-Competes for placement
-
-The buyerTypes a phrase Comes backA list of pages Decided byRelevance · authority · speed Winning isYour page near the top
-
-The generated answer
-
-Competes for trust
-
-The buyerAsks a full question Comes backAn answer citing sources Decided byEntity clarity · evidence Winning isYour firm, named
-
-Most sites are built for the first door and absent from the second. Not ranked low. Absent.
-
-02 The method
-
-### Five steps, one order
-
-No baseline, no work. If it cannot be measured, we write that down before we start.
-
-01
-
-### Technical audit
-
-Platform, speed, what Google has indexed, whether the architecture can rank. Ranked by what it costs you.
-
-02
-
-### Keyword research
-
-What buyers type, not what the industry calls itself. One term, one owner page.
-
-03
-
-### Technical fixes
-
-Worked in order, indexability first. Every fix closed by re-measurement.
-
-04
-
-### On-page
-
-Title, headings, first hundred words, links, alt text, schema. Each page built for the term it owns.
-
-05
-
-### Content and authority
-
-Evergreen converts. Editorial earns citations. Original research and digital PR, never bought links.
-
-After step five: one commercial number, monthly. Rankings explain it. They never get to be it.
-
-03 Step one, opened
-
-### The audit checks four things
-
-1.1
-
-### Platform
-
-What it runs on, who can deploy, how fast a change lands.
-
-1.2
-
-### Speed
-
-Core Web Vitals, mobile first. Lab and field kept honest.
-
-1.3
-
-### Indexation
-
-What Google holds, and its stated reason for what it skipped.
-
-1.4
-
-### Architecture
-
-Depth, links, duplicates, redirects. Content before JavaScript.
-
-04 The surfaces
-
-### One body of proof, five surfaces
+The five surfaces we measure
 
 G
 
@@ -656,23 +596,301 @@ Microsoft’s answer layer, read via Bing.
 
 No platform sells a place in an AI answer. Anyone offering one is selling something else.
 
-Eligibility, entity clarity and evidence can all be worked, and we measure all three each month against a fixed set of buyer questions, asked in clean sessions with the wording set down in advance so that this month can be held against the last. We run the same test on our own name. Results published. Zeros left in.
+03 / What we do
 
-05 The number
+### Six services, one system
+
+Each is sold on its own and runs on the same method. The names are the names in the menu, so what you clicked is what you find.
+
+01
+
+### SEO & GEO System
+
+The whole method, monthly. Both doors worked in one order.
+
+Audit, keyword and question map, fixes, on-page, content
+
+A report whose first line is enquiries or pipeline
+
+Rankings underneath, as the reason why
+
+02
+
+### AI search visibility
+
+Sixteen buyer questions put to ChatGPT and Perplexity in clean sessions, wording fixed in advance.
+
+A score per question: not mentioned, mentioned, cited, recommended
+
+A monthly total, held against last month
+
+The work to move it. Misses stay on the sheet
+
+03
+
+### Entity recognition & Google Business Profile
+
+A machine resolves your name to one company before it can cite you. Three records have to agree.
+
+Schema, Google Business Profile and directories, one string
+
+The profile claimed and verified
+
+Confusable names written down and watched
+
+04
+
+### Website diagnosis & improvement
+
+Access first. Without Search Console an audit is a guess dressed as a diagnosis.
+
+Four checks: platform, speed, indexation, architecture
+
+A fix ledger sorted by what each fault costs you
+
+Each row closed by re-measurement, with the date
+
+05
+
+### Keyword research
+
+What buyers type, in their words, and now the full questions they put to a machine.
+
+A signed keyword-to-page map, one owner page per term
+
+A question-to-page map beside it
+
+Volume breaks a tie. The buyer sets the list
+
+06
+
+### Technical SEO research & support
+
+For firms with their own developer. We specify, your team ships, we re-measure.
+
+The audit and the ledger, without handing over your codebase
+
+A second pair of eyes on each release
+
+The row closes when the number moves
+
+04 / How it runs
+
+### Five steps, one order
+
+No baseline, no work. If something cannot be measured, we write that down before we start.
+
+01
+
+### Technical audit
+
+Platform, speed, what Google has indexed, whether the architecture can rank.
+
+02
+
+### Keyword research
+
+What buyers type, in their words. One term, one owner page.
+
+03
+
+### Technical fixes
+
+Worked in order, indexability first. Each fix closed by re-measurement.
+
+04
+
+### On-page
+
+Title, headings, first hundred words, links, alt text, schema.
+
+05
+
+### Content and authority
+
+Evergreen converts. Editorial earns citations. No bought links.
+
+05 / Why SEMORA
+
+### Six things we put in writing
+
+An agency that publishes its prices, its method and its own misses can be held to them. That is the point of publishing.
+
+01
+
+### Prices, published
+
+The retainer and each service, in figures, on the site. A quote is arithmetic on numbers you can already see.
+
+02
+
+### One number, reported
+
+Your report opens with enquiries, pipeline or new clients. Rankings and clicks sit underneath as the explanation.
+
+03
+
+### The method, in the open
+
+Five steps in one order, on this page and on the method page. What we do to your site is not a secret.
+
+04
+
+### Misses left in
+
+We score ourselves on the same instrument and publish the result, zeros included. A benchmark that hides its misses cannot be trusted next month.
+
+05
+
+### No bought links
+
+Authority comes from original research, editorial and digital PR. A purchased link is a liability with a delay on it.
+
+06
+
+### The accounts stay yours
+
+Search Console, analytics, the profile, the files. Yours from day one, yours on the day you leave.
+
+06 / Who is accountable
+
+### The method is the founder’s, and so is the phone number.
+
+The five steps on this page are Brent’s five steps, written down and gated before the first client ran through them. He is the person answerable for the engagement, and the person who reads the report before you do.
+
+“Our team’s creativity and determination make every milestone possible.”
+
+Brent Matthys · Team Lead & Founder Meet the team →
+
+07 / The number
 
 ### Reported against one number
 
 The first line of your report is the number you chose: enquiries, pipeline, new clients. Clicks and rankings sit under it, as the reason why. No result yet? Then the page says so.
 
-Free visibility report
-
 Your monthly report /
 
-The number ↗
+The number↗
 
 Diagnostics
 
-Start figure, finish figure, dates, method — on every result we publish.
+Start figure, finish figure, dates, method. On each result we publish.
+
+08 / The board
+
+### Eight engagements, on the record
+
+Four carry published figures. Four are in delivery. A figure there publishes measured, or not at all, and the record behind any of them is yours on request.
+
+See the client projects
+
+Axis Platform
+
+Your CFO Partner
+
+PROQM
+
+South Melbourne Rehabilitation Centre
+
+Melbourne Dance & Arts Centre
+
+SAAZAA
+
+JE Real Estate
+
+AXIOM
+
+09 / Before you sign
+
+### Seven questions to ask any search agency
+
+Put these to us as well. An agency that can answer them in writing is one you can hold to the answers.
+
+01
+
+### What is the baseline, and who measured it?
+
+If nobody can name the starting number, nobody can prove the finishing one.
+
+02
+
+### Which number leads the monthly report?
+
+If it is rankings or traffic, ask what those are for. Enquiries, pipeline and clients are the answer.
+
+03
+
+### Who owns the accounts?
+
+Search Console, analytics and the business profile should be in your name before work starts.
+
+04
+
+### How is AI visibility measured?
+
+A fixed set of buyer questions, asked in clean sessions with the wording set down in advance. Anything looser cannot be compared month to month.
+
+05
+
+### Where do the links come from?
+
+Earned through research, editorial and PR, or bought. Ask to see the last ten.
+
+06
+
+### Who is accountable, by name?
+
+A person you can phone, who reads the report before you do.
+
+07
+
+### What happens when a month goes backwards?
+
+It will, at least once. The honest answer is what the report will say, and when.
+
+10 / Questions we get asked
+
+### Straight answers
+
+### What is the difference between SEO and GEO?
+
+SEO earns a place on the list of results. GEO, generative engine optimisation, earns a place inside the generated answer, as a named source. Same buyer, two doors; the second is decided by entity clarity and evidence rather than by links alone.
+
+### Can you guarantee a position in an AI answer?
+
+No. Nobody can. No platform sells one, and an agency that offers one is selling something else. What can be worked is whether you are eligible, whether a machine can resolve your name to one company, and whether there is evidence for it to cite.
+
+### How do you measure AI search visibility?
+
+Sixteen questions your buyer would ask, put to ChatGPT and Perplexity in clean sessions with the wording fixed in advance. Each answer scores 0 to 3: not mentioned, mentioned, cited, recommended. The total is reported monthly, misses included.
+
+### Do you need access to our Search Console?
+
+Yes, before anything starts. Without it an audit is a guess dressed as a diagnosis: we can see what your site is, but not what it earns. Analytics and the business profile follow the same rule.
+
+### What does the first month look like?
+
+Access first: Search Console, analytics, the business profile, and whoever holds the site, all in your name before anything else happens, because an audit without them is a guess dressed as a diagnosis. Then the baseline, written down. Then the four-part audit of platform, speed, indexation and architecture, which produces the fix ledger, sorted by what each fault costs you and closed row by row on re-measurement. Each row has a date. The keyword-to-page map and the question-to-page map come out of the same month. The first report follows the baseline, so the number on its first line has a starting figure beside it and a date under it.
+
+### Do you work with our own developer?
+
+Yes. Technical SEO research and support is built for that: we find the faults, rank them by cost and specify the fix; your team ships it; we re-measure and close the row.
+
+### Which platforms do you optimise for?
+
+Five surfaces: Google’s ranked results and map pack, Google AI Overviews, ChatGPT, Perplexity and Copilot. One body of evidence serves all five; what differs is how each one reads it.
+
+### Is this priced?
+
+Yes, in figures, on the quotation page and the homepage. A quote is arithmetic on published numbers. The budget conversation is already on the page.
+
+Start here
+
+### Find out where you stand before you spend a dollar.
+
+We put your name to the same sixteen questions and email you what came back. It is free. The method is published.
+
+Free visibility report Contact SEMORA STUDIO →
 
 Written by /
 

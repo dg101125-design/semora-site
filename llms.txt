@@ -35,7 +35,7 @@ Every price and delivery time below is published. Nothing is quoted on request a
 - [SEMORA STUDIO Melbourne — We bring you the right clients](https://www.semora.com.au/): We bring you the right clients. Melbourne specialist growth company and marketing agency for commercial industry, owner-led and healthcare practices. Published prices.
 - [Score your practice — SEMORA STUDIO Melbourne](https://www.semora.com.au/score): The eleven surfaces a buyer of expert advice actually checks, as a two-minute self-score. Free, ungated, scored in your browser. Your three weakest, named.
 - [Services — SEMORA STUDIO Melbourne](https://www.semora.com.au/services): Four products, published prices, published scope. Audit, position, system, momentum.
-- [SEO &amp; AI Search — SEMORA STUDIO Melbourne](https://www.semora.com.au/seo-ai-search): Be the source, not the result. Technical audit, keyword research, fixes, on-page work and content — five steps, reported against one commercial number.
+- [Search &amp; AI Visibility — SEMORA STUDIO Melbourne](https://www.semora.com.au/seo-ai-search): SEO gets you onto the list. GEO gets you into the answer. Six services, one method, measured monthly on Google, AI Overviews, ChatGPT, Perplexity and Copilot.
 - [Proof Check — SEMORA STUDIO Melbourne](https://www.semora.com.au/proof-audit): The paid diagnostic and the recommended first step. Two weeks, $1,000 + GST, optional, credited in full.
 - [Commercial Growth Signal — SEMORA STUDIO Melbourne](https://www.semora.com.au/signal): What you stand for, to whom, and why it is worth your fee. Four weeks, from $3,000 + GST — core scope plus optional modules.
 - [Growth Foundation Build — SEMORA STUDIO Melbourne](https://www.semora.com.au/haus): Brand, website, proposals and CRM — built and handed over. 8–10 weeks, every component priced, take one part or all four. Every source file transfers by contract.
@@ -137,6 +137,54 @@ Source: https://www.semora.com.au/proof-audit
 Not a strategy, and not a proposal. It measures where you stand. It does not decide your position, write your messaging or build anything, and if you want the audit to hand you a strategy at the end you will be disappointed. That is deliberate. That work is Commercial Growth Signal and Growth Foundation Build, priced separately and published in the same detail. It is also optional. You can start at Commercial Growth Signal instead and we set the baseline there in week one. The rule underneath all of it is no work without a baseline, because otherwise nobody can say at 120 days whether anything moved. That rule does not bend.
 
 Source: https://www.semora.com.au/proof-audit
+
+### What is the difference between SEO and GEO?
+
+SEO earns a place on the list of results. GEO, generative engine optimisation, earns a place inside the generated answer, as a named source. Same buyer, two doors; the second is decided by entity clarity and evidence rather than by links alone.
+
+Source: https://www.semora.com.au/seo-ai-search
+
+### Can you guarantee a position in an AI answer?
+
+No. Nobody can. No platform sells one, and an agency that offers one is selling something else. What can be worked is whether you are eligible, whether a machine can resolve your name to one company, and whether there is evidence for it to cite.
+
+Source: https://www.semora.com.au/seo-ai-search
+
+### How do you measure AI search visibility?
+
+Sixteen questions your buyer would ask, put to ChatGPT and Perplexity in clean sessions with the wording fixed in advance. Each answer scores 0 to 3: not mentioned, mentioned, cited, recommended. The total is reported monthly, misses included.
+
+Source: https://www.semora.com.au/seo-ai-search
+
+### Do you need access to our Search Console?
+
+Yes, before anything starts. Without it an audit is a guess dressed as a diagnosis: we can see what your site is, but not what it earns. Analytics and the business profile follow the same rule.
+
+Source: https://www.semora.com.au/seo-ai-search
+
+### What does the first month look like?
+
+Access first: Search Console, analytics, the business profile, and whoever holds the site, all in your name before anything else happens, because an audit without them is a guess dressed as a diagnosis. Then the baseline, written down. Then the four-part audit of platform, speed, indexation and architecture, which produces the fix ledger, sorted by what each fault costs you and closed row by row on re-measurement. Each row has a date. The keyword-to-page map and the question-to-page map come out of the same month. The first report follows the baseline, so the number on its first line has a starting figure beside it and a date under it.
+
+Source: https://www.semora.com.au/seo-ai-search
+
+### Do you work with our own developer?
+
+Yes. Technical SEO research and support is built for that: we find the faults, rank them by cost and specify the fix; your team ships it; we re-measure and close the row.
+
+Source: https://www.semora.com.au/seo-ai-search
+
+### Which platforms do you optimise for?
+
+Five surfaces: Google’s ranked results and map pack, Google AI Overviews, ChatGPT, Perplexity and Copilot. One body of evidence serves all five; what differs is how each one reads it.
+
+Source: https://www.semora.com.au/seo-ai-search
+
+### Is this priced?
+
+Yes, in figures, on the quotation page and the homepage. A quote is arithmetic on published numbers. The budget conversation is already on the page.
+
+Source: https://www.semora.com.au/seo-ai-search
 
 ### What services does SEMORA STUDIO provide?
 

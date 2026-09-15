@@ -347,3 +347,21 @@
   var fields = document.querySelectorAll('input[name="source"]');
   for (var i = 0; i < fields.length; i++) fields[i].value = first;
 })();
+
+(function () {
+  // /seo-ai-search hero: the photo and its shape answer the pointer, fine
+  // pointers only, reduced-motion respected. Sets --px/--py on the section.
+  var h = document.querySelector('.hero--seo');
+  if (!h) return;
+  if (!matchMedia('(pointer: fine)').matches) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var raf = 0, px = 0, py = 0;
+  function write() { raf = 0; h.style.setProperty('--px', px.toFixed(3)); h.style.setProperty('--py', py.toFixed(3)); }
+  h.addEventListener('pointermove', function (e) {
+    var r = h.getBoundingClientRect();
+    px = Math.max(-1, Math.min(1, ((e.clientX - r.left) / r.width - .5) * 2));
+    py = Math.max(-1, Math.min(1, ((e.clientY - r.top) / r.height - .5) * 2));
+    if (!raf) raf = requestAnimationFrame(write);
+  }, { passive: true });
+  h.addEventListener('pointerleave', function () { px = 0; py = 0; if (!raf) raf = requestAnimationFrame(write); });
+})();

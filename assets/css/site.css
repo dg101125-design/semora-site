@@ -423,8 +423,11 @@ section > .wrap { position: relative; z-index: 1; }
    machine needs is on the page as dateModified. ---- */
 .byline { padding-block: clamp(32px, 4vw, 48px); }
 .byline__in { border-top: 1px solid var(--champ-700); padding-top: 24px; }
+/* var(--ink) here was dead from the day it was written — the token does not
+   exist, so the founder's own name rendered at inherited body grey instead
+   of the darker weight the 500 was chosen for. Found 14 Sep 2026. */
 .byline__who { margin-top: 12px; font-size: 17px; line-height: 1.62;
-  font-weight: 500; color: var(--ink); }
+  font-weight: 500; color: var(--graph-700); }
 .byline__who a { color: var(--plum); text-underline-offset: 3px; }
 .byline__note { margin-top: 8px; font-size: 15px; line-height: 1.55;
   color: var(--graph-400); max-width: 62ch; }
@@ -3294,6 +3297,30 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
   transition: transform 260ms var(--ease);
 }
 .res:hover .res__panel { transform: translateY(-4px); }
+/* ── the card answers the cursor (14 Sep 2026) ────────────────────────────
+   Until today the only response to a pointer anywhere on this board was a
+   4px lift, which is why the founder scored the interaction at 20/100. The
+   artwork now pushes in behind its own cut, the brand name draws an acid
+   rule, and the service pills warm. Each is a different property, so they
+   compose rather than queue. */
+.res__art { transition: scale 520ms var(--ease); }
+.res:hover .res__art, .res:focus-within .res__art { scale: 1.045; }
+/* fit-content, NOT inline-block: .res is display:flex, and a flex item's
+   inline-block is blockified back to block by the spec — the rule under the
+   name would have run the full 532px card width instead of the word. */
+.res__name { position: relative; width: fit-content; }
+.res__name::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -6px;
+  height: 2px; background: var(--moss-300);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 380ms var(--ease);
+}
+.res:hover .res__name::after, .res:focus-within .res__name::after { transform: scaleX(1); }
+.tagpill { transition: border-color 260ms var(--ease), color 260ms var(--ease); }
+.res:hover .tagpill { border-color: color-mix(in srgb, var(--moss-300) 62%, transparent); }
+/* arriving from the cover index: the card names itself for a beat */
+.res:target .res__panel { outline: 2px solid var(--moss-300); outline-offset: 6px; }
+.res:target .res__name::after { transform: scaleX(1); }
 /* the placeholder ground: hard-edged bars on the 70° signal axis. A pattern,
    not a gradient — R9 keeps mesh and glow off this site. */
 .res__panel::before {
@@ -3315,7 +3342,11 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
 /* rows five and six (30 Aug 2026): no numbers yet, so the card carries its
    delivery status in the body voice until a measured stat block replaces it */
 .res__hold {
-  margin-top: 16px; font-size: 15px; line-height: 1.55;
+  /* padding, not margin: margin-top is overridden to `auto` further down so
+     the hold text bottom-anchors with the stat blocks, and a two-line brand
+     name then ate the whole gap — the sector label sat welded to the
+     paragraph on Melbourne Dance and on nothing else. */
+  margin-top: 16px; padding-top: 16px; font-size: 15px; line-height: 1.55;
   color: var(--plum-100); max-width: 44ch;
 }
 
@@ -6133,9 +6164,18 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
 
 /* ── the case-study finish (founder, 30 Aug 2026: 最后呈现 +30%) ──────────
    The card settles, the artwork eases from a slight zoom to rest, and the
-   three figures land LAST, one beat apart — the number is the finale. The
-   digits are static text throughout: every frame of the animation shows the
-   true value (the S1 rule — nothing counts up, nothing photographs false). */
+   three figures land LAST, one beat apart — the number is the finale.
+
+   This comment used to say the digits were static text and that no figure
+   ever counted up. That was true when it was written and STOPPED being true
+   on 30 August 2026, when the founder ordered the results-board count-up
+   back (decision register #14). `site.js` now writes an interpolated value
+   every frame, so a screenshot taken mid-run shows +205% where the filed
+   figure is +240%. That is authorised and guarded — the TRUE value is what
+   the markup ships, so no-JS readers, crawlers and answer engines only ever
+   see the real number; the run is 700ms and fires once, in view. Corrected
+   15 Sep 2026: a stale comment asserting a safety property the code no
+   longer has is worse than no comment. */
 @media (prefers-reduced-motion: no-preference) {
   html.js .res.rv { transition: none; }
   /* 波浪式 (founder, 31 Aug): the six cards ROLL in as a wave — the left
@@ -6150,6 +6190,10 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
   html.js .res.rv.in:nth-child(4) { --wd: 0.42s; }
   html.js .res.rv.in:nth-child(5) { --wd: 0.56s; }
   html.js .res.rv.in:nth-child(6) { --wd: 0.7s; }
+  /* seven and eight joined the board on 14 Sep 2026 (JE Real Estate and
+     AXIOM); without their own beats they arrived on the first pair's. */
+  html.js .res.rv.in:nth-child(7) { --wd: 0.84s; }
+  html.js .res.rv.in:nth-child(8) { --wd: 0.98s; }
   html.js .res.rv.in { animation-delay: var(--wd, 0s); }
   @keyframes res-wave-l {
     0%   { opacity: 0; transform: translate(-6vw, 24px) rotate(-1.1deg); }
@@ -6565,17 +6609,152 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
    band. The film plate is a labelled reservation: we hold no client
    films, and a dead play button would be a small lie — the ring
    breathes, the strip names the state, the first real film drops in. */
-.cs-cover .wrap { position: relative; }
+/* overflow:hidden because the mark is deliberately cropped by the band
+   edge — without it the -7vw bleed made the PAGE scroll sideways by up to
+   112px (audit_layout, three breakpoints). Every other watermark band on
+   this site already does this: .pkg-band, .pl-band, .meth-band, .statband,
+   .qb-band. I missed the pattern; the gate did not. */
+.cs-cover { overflow: hidden; }
+.cs-cover .wrap { position: relative; z-index: 1; }
 /* the deck line's --plum-100 was set for dark grounds; on apricot it
    washed out — the cover speaks it in dark plum instead */
 .pg-client-projects .hl--sub { color: var(--plum-700); }
 /* the homepage lead spacing is scoped to .hero — this cover is not one,
    so the lead hugged the h1 (verification wave, 3 Sep) */
 .cs-cover .lead { margin-top: 32px; }
-/* One column since the reserved film block was removed (founder, 14 Sep
-   2026). It keeps a measure rather than running the full wrap width, so the
-   lead paragraph does not stretch past the book's 62ch ceiling. */
-.cs-cover__intro { margin-top: 16px; max-width: 62ch; }
+/* Two columns since 14 Sep 2026 evening: the statement on the left, the
+   board's own contents on the right. The cover had been one column at 62ch
+   with the right 54% of the band empty — 539px of apricot carrying nothing,
+   which is what the founder scored at 30/100. The index is not decoration:
+   it is the count, the states and eight jump links, generated from the same
+   PROJECTS list the board is, so it cannot drift out of step with it. */
+/* ── the cover, one column (founder, 15 Sep 2026: "remove the content
+   lists") ──────────────────────────────────────────────────────────────
+   The contents index that sat on the right is gone, and with it the
+   1.25fr/0.75fr split that carried it. What replaces it is NOT the old
+   narrow measure with an empty right half — that composition is the one
+   that scored 30 — but a statement spread: the headline runs the full
+   width of the book and only the prose under it keeps a reading measure.
+   The /team hero's proportions no longer apply, because there is no second
+   column to proportion against; what carries across is its voice, the caps
+   statement and the 24px top margin. */
+.cs-cover__intro { margin-top: 24px; }
+.cs-cover__say { max-width: none; }
+/* the headline spans the book; the prose under it does not. 62ch is the
+   reading measure the book sets, and a 61px caps line is not prose. */
+.cs-cover__say .lead, .cs-cover__say .cta-row { max-width: 62ch; }
+/* …but it stops short of the mark. Measured at four widths: the mark's
+   left edge sits at 73-93% of the content width (closest at 1024 and 1280),
+   and without this cap `text-wrap: balance` chose TWO lines at 1280 and ran
+   the headline 307px through the mark. 72% clears it at every width and
+   costs one extra line at the tightest. */
+.cs-cover__say h1 { max-width: 72%; }
+
+/* ── the close (founder, 15 Sep 2026: "this part, just make it simple —
+   Want to Know More Project, Contact Semora") ──────────────────────────
+   This was the reserved-positions strip: a 09/10 numeral, a heading about
+   two open slots, and a paragraph explaining what sits behind a published
+   figure. The founder cut it to a question and a button, which also gives
+   the page the closing ask it did not have — the reference ends on one too.
+   The numeral went with the copy: 09/10 counted board positions, and with
+   the positions gone it counted nothing.
+
+   The one thing that could NOT go with it is the offer of the written
+   record. This page publishes eleven percentages and that sentence was the
+   only substantiation on it; it now opens the page instead, in the cover
+   lead. The AXIS date needed no rescue — /about and /method both carry it. */
+/* the evidence offer, at footnote weight. It is not the sales message —
+   the founder has asked for simple three times — but this page publishes
+   eleven percentages and something on it has to say the records exist and
+   can be had. One line, 15px, the same voice the board's other small print
+   uses. */
+.cp-note {
+  margin-top: 48px; font-size: 15px; line-height: 1.55;
+  color: var(--plum-100); max-width: 62ch;
+}
+.cp-cta {
+  margin-top: 48px; padding-top: 32px;
+  border-top: 1px solid color-mix(in srgb, var(--plum-300) 30%, transparent);
+  display: grid; gap: 24px var(--gutter);
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+}
+/* 28px -> 15px (founder, 15 Sep 2026: "reduce font size down to 14-16px").
+   15 is the only Brand Book step inside that range. At display size the
+   tight -0.006em tracking and the 1.24 leading were right; at 15px
+   uppercase they are not, so both move to their label values. The 24ch cap
+   was sized for a 28px line and would now break a short question across two
+   rows for no reason. */
+.cp-cta__h {
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546;
+  font-weight: 600; font-size: 15px; line-height: 1.3;
+  letter-spacing: 0.012em; color: var(--ivory); margin: 0;
+}
+@media (max-width: 760px) {
+  .cp-cta { grid-template-columns: 1fr; }
+}
+
+/* ── the board's ground (founder, 15 Sep 2026: "background color 加一些
+   设计，或者调整 background 颜色的调整") ──────────────────────────────────
+   The generic .f-plum wash is 19% of plum-700 over ink with its bright
+   point at 16% 4% — and since the CASE STUDIES head came off this page,
+   that bright point sits BEHIND the first card's artwork, so the whole band
+   rendered flat near-ink. This band now rides the homepage hero's own
+   ground instead, which is the recipe the founder already reached for once
+   on the flagship band (2 Sep 2026: "background color need to consistency
+   with home page background"). Identical values, so the two stay one
+   system, and no new token enters the palette.
+
+   Declared AFTER the background-depth block's .f-plum (line ~5416), which
+   is the only place these grounds are painted and outranks the .f-plum up
+   at line 493 — so this has to sit below it to win, not above. */
+.pg-client-projects .cp-board.f-plum {
+  background:
+    radial-gradient(90% 70% at 20% 6%,
+      color-mix(in srgb, var(--plum-700) 52%, var(--plum-ink)) 0%,
+      transparent 60%),
+    linear-gradient(165deg,
+      color-mix(in srgb, var(--plum-700) 60%, var(--plum-ink)) 0%,
+      color-mix(in srgb, var(--plum-700) 34%, var(--plum-ink)) 50%,
+      color-mix(in srgb, var(--plum-700) 16%, var(--plum-ink)) 100%);
+}
+/* The spacing the founder asked to be DESIGNED ("注意间距行设计"), not
+   defaulted. With the band head gone the first thing in the band is a card
+   image, so the band edge has to hold more air than the row break does or
+   the grid reads as starting mid-thought. Generic `section` gives
+   clamp(48px,8vw,96px): at 1440 that is 96px against a 64px row gap, which
+   works, but on a phone it collapses to 48px against a 48px row gap — the
+   band edge and the row break become the same interval and the hierarchy
+   disappears. The floor moves to 64px; the desktop value is unchanged. */
+.cp-board { padding-block: clamp(64px, 8vw, 96px); }
+/* and the reserved strip is a different kind of thing from a card, so it
+   sits a step further out than one row from the next */
+/* (the close carries its own margin-top; see .cp-cta) */
+
+/* ── the cover's ground ──────────────────────────────────────────────────
+   The aperture at watermark scale, the same device as .pkg-wm / .pl-wm /
+   .meth__wm, cropped off the bottom-left corner. Those three all fill their
+   arcs --ivory because they sit on dark grounds; this one is on apricot, so
+   it takes plum-700 and a lower opacity. It is the brand's own mark at
+   size, not a texture — R9 keeps mesh and glow off this site. */
+.cs-wm {
+  position: absolute; z-index: 0; pointer-events: none;
+  /* right, not left: since the contents index came off (15 Sep) the empty
+     half of this band is the right one, and the mark is what fills it —
+     cropped by the band edge the way .pl-wm is, so it reads as a detail of
+     something larger rather than a logo parked in a corner. */
+  right: -7vw; top: 50%; translate: 0 -46%;
+  width: clamp(320px, 36vw, 600px); height: auto;
+  opacity: 0.07;
+}
+/* a watermark is a desktop composition device: on a phone the band is
+   narrow enough that the mark lands squarely behind the headline (measured
+   -267px of clearance at 390), so it comes off rather than smudging it. */
+@media (max-width: 860px) { .cs-wm { display: none; } }
+.cs-wm .ap-arc { fill: var(--plum-700); }
+.cs-wm .ap-arc--weak { fill: var(--plum); }
+.cs-wm .ap-dot { fill: var(--moss); }
+
 /* reserved case positions: the folio void, no fabricated client */
 .res-grid--slots { margin-top: 24px; }
 .res__panel--slot {
@@ -7279,60 +7458,18 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
   .fnl__fields .field input:focus { box-shadow: inset 0 -2px 0 var(--signal); }
 }
 
-/* ============================================ THE BOARD, IN TWO TIERS ===
-   Founder ruling, 14 September 2026, on how /client-projects should answer
-   its reference: "把有数字的四个做成主角，没数字的用另一种更小的形态排在后面".
 
-   impressive.com.au/case-studies makes the METRIC the hero of every card —
-   the figure is what the eye lands on and the client name is secondary. Half
-   our engagements have no published figures, so filling that grid uniformly
-   would leave visible holes where their numbers sit. The proof leads instead,
-   and the folio follows in a lighter form that carries the work honestly.
+/* ==================================== THE BOARD'S TYPE, PER THE REFERENCE ===
+   impressive.com.au/case-studies — the founder's named standard for this page —
+   makes the CLIENT NAME the largest text on every card, with the metric
+   triplet sitting beneath it. Ours had it upside down: .res__name at 28px
+   under a .stat__n rendering 32.25px, so the figure out-shouted the client it
+   belonged to. The founder called it in two words, "字体不对", alongside the
+   note that the page had not been designed to the reference at all.
 
-   Nothing here is a new component: both tiers are the existing .res card with
-   one modifier, so a project promotes itself between them by gaining figures. */
-
-/* ---- tier one: the figure becomes the hero.
-   22-34px was a supporting size; on a card whose whole argument is the number
-   that is too quiet. clamp() ends on two brand-book steps, 28 and 56. */
-.res-grid:not(.res-grid--folio) .stat__n { font-size: clamp(28px, 3.4vw, 56px); }
-.res-grid:not(.res-grid--folio) .res__stats {
-  padding-top: 24px;
-  /* 16px between columns was set for a 34px figure. At 56 the numbers all
-     but touch — "+5,000" and "+510%" collided on the Your CFO card. */
-  gap: 24px;
-}
-
-/* ---- tier two: the same card at lower volume.
-   Three columns rather than two, so the eye reads them as a folio strip and
-   not as four more case studies that happen to be missing their numbers. */
-.res-grid--folio {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 48px var(--gutter);
-}
-@media (max-width: 900px) {
-  .res-grid--folio { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-@media (max-width: 620px) {
-  .res-grid--folio { grid-template-columns: minmax(0, 1fr); }
-}
-.res--folio .res__panel { margin-bottom: 16px; }
-.res--folio .res__name { font-size: 19px; line-height: 1.3; }
-.res--folio .res__hold { margin-top: 8px; font-size: 15px; max-width: none; }
-.res--folio .res__tags { margin-top: 16px; }
-
-/* ---- the seam between them. It has to say WHY there are two tiers, or the
-   second one reads as leftovers. */
-.res-tier { margin: 96px 0 32px; }
-.res-tier__p {
-  margin: 16px 0 0; max-width: 52ch;
-  font-size: 17px; line-height: 1.62; color: var(--plum-100);
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  /* The lead figures count up when the card arrives — the site already does
-     this (site.js reads data-count); enlarging them makes the existing motion
-     land instead of adding a new one. The folio cards rise without counting,
-     because there is nothing to count. */
-  .res--folio.rv.in .res__panel { animation: fnl-rise 460ms var(--ease) both; }
-}
+   Both values are brand-book steps (28 · 32 · 34). The name takes 34 and the
+   figures come back to 28 — the hierarchy the reference actually uses, and it
+   has the side effect of standing eleven unevidenced percentages down from
+   the loudest thing on the page, which is where they should not have been. */
+.res__name { font-size: 34px; }
+.stat__n { font-size: clamp(22px, 2.4vw, 28px); }

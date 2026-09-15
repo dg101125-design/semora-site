@@ -6638,7 +6638,58 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
    The /team hero's proportions no longer apply, because there is no second
    column to proportion against; what carries across is its voice, the caps
    statement and the 24px top margin. */
-.cs-cover__intro { margin-top: 24px; }
+/* 16, not 24 — and this is the lever for the eyebrow-to-heading gap, which
+   is not obvious: .lab is a sibling of .cs-cover__intro inside .wrap, so the
+   space under the eyebrow is this container's OWN margin-top. Two earlier
+   passes moved the h1's margin and the .lab's leading and changed nothing,
+   because neither was in play. */
+.cs-cover__intro { margin-top: 16px; }
+/* ── the statement, at a quarter less and in the brand's primary
+   (founder, 15 Sep 2026: "reduce font size 25% and change the color to
+   primary color") ─────────────────────────────────────────────────────
+   61 × 0.75 = 45.75px, which is not a Brand Book step. The scale runs
+   …34, 40, 56, 61…, so 45.75 sits between 40 and 56 and is nearer 40 by
+   5.75px against 10.25px. 40 is also the Book's own h1 role, so the
+   nearest honest step to the founder's 25% is the role value itself
+   rather than an off-scale number needing an R10.2 exception.
+
+   Primary is plum: the brand system names the plum tile "the primary"
+   (final_mark/master), the Brand Book's Vol 1 palette leads with plum, and
+   the mark file is SEMORA_Symbol_primary. --plum #8E2F6F, not --plum-700:
+   700 is the darkened-for-text variant, and at 6.05:1 on apricot the
+   primary itself clears body contrast (4.5:1), let alone the 3:1 this
+   size needs. Measured, not assumed. */
+.pg-client-projects .cs-cover h1 {
+  font-size: clamp(28px, 3.1vw, 40px);
+  color: var(--plum);
+  /* 8, not 16: the eyebrow's own leading adds ~8px below its text box, so
+     an authored 16 renders as 24. Authored values are what the gate reads;
+     RENDERED gaps are what a reader sees, and these are tuned to the second
+     and measured after every change. */
+  margin-top: 0;
+}
+/* ── the cover's vertical rhythm, measured and then chosen ──────────────
+   At 61px the spacing was inherited and it happened to work. At 40px it
+   did not, and the measurements said so: eyebrow→heading 24px against
+   heading→body 26px — two transitions of quite different weight rendered
+   at the same interval, which reads as no hierarchy at all — and
+   body→button at **0px**, the button sitting flush against the sentence
+   above it.
+
+   The rhythm ascends now, each step a scale value: 16 (the eyebrow hugs
+   its heading) · 24 (heading releases to body) · 32 (body releases to the
+   action). A reader's eye gets told what belongs to what. */
+/* 32, not 24: .hl carries padding-bottom .14em with an equal negative
+   margin (the mask's descender window), so the heading's box ends ~6px
+   short of its ink and an authored 24 renders as 18. */
+/* 48, not 40: 40 is on the TYPE scale and NOT on the 12-step SPACING
+   scale (0 4 8 12 16 24 32 48 64 96 128 160). audit_site caught it. */
+.pg-client-projects .cs-cover .lead { margin-top: 32px; }
+.pg-client-projects .cs-cover .cta-row { margin-top: 48px; }
+/* the mark was scaled against a 61px headline in a 560px band. The band is
+   426px now, and a 518px mark was larger than the thing containing it —
+   the crop stopped reading as a crop and started reading as the subject. */
+.pg-client-projects .cs-wm { width: clamp(260px, 27vw, 440px); }
 .cs-cover__say { max-width: none; }
 /* the headline spans the book; the prose under it does not. 62ch is the
    reading measure the book sets, and a 61px caps line is not prose. */

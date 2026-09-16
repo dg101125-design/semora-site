@@ -209,6 +209,13 @@
      stay at ink no matter what happens here. That is why the last two lifts
      appeared to do nothing to the hero. */
   --plum-field: color-mix(in srgb, var(--plum-700) 52%, var(--plum-ink));
+  --field-lamp: radial-gradient(90% 70% at 20% 6%,
+    color-mix(in srgb, var(--plum-700) 52%, var(--plum-ink)) 0%,
+    transparent 60%);
+  --field-fall: linear-gradient(165deg,
+    color-mix(in srgb, var(--plum-700) 60%, var(--plum-ink)) 0%,
+    color-mix(in srgb, var(--plum-700) 34%, var(--plum-ink)) 50%,
+    color-mix(in srgb, var(--plum-700) 16%, var(--plum-ink)) 100%);
   --plum-900:  #1B0D16;   /* collapsed into ink — flat fields, no gradient */
   --plum-700:  #6E2455;   /* PLUM, darkened for text on ivory — 9.51:1 */
   --plum:      #8E2F6F;   /* PLUM — 6.98:1 on ivory */
@@ -462,7 +469,6 @@ section > .wrap { position: relative; z-index: 1; }
    collided with the folio numerals. The class names stay so the generator's
    markup keeps working — they are now inert, and sections simply stack. */
 .cut, .cut--r, .no-cut { margin-top: 0; clip-path: none; }
-
 
 /* ---- typographic interludes ---- */
 /* ── the signal band — v2 (founder, 15 Aug 2026: the ink version scored
@@ -1274,7 +1280,6 @@ html.lr .site-head__word::before {
   .site-nav > a:not(.btn)::after, .has-mega > a::after { transition: none; }
 }
 
-
 /* --------------------------------------------- services mega-menu
    Their format, our content. The large agencies run a menu like this listing
    twenty or thirty capabilities and not one number, which is precisely what
@@ -1610,7 +1615,6 @@ html.lr .site-head__word::before {
   .site-nav .btn { font-size: var(--type-web-drawer-button-size); padding: 0.85em 1.4em; margin-top: 8px; }
 }
 
-
 /* ------------------------------------------------ case studies
    The three big numbers, but each one written from its starting point.
    A percentage on its own is the industry habit and it is unreadable as
@@ -1664,7 +1668,6 @@ html.lr .site-head__word::before {
   font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 11px; letter-spacing: 0.012em;
   color: var(--graph);
 }
-
 
 /* ------------------------------------------- the statement band
    The pattern the large agencies use for case-study heroes: dark field, three
@@ -1908,7 +1911,6 @@ a.soc:hover { transform: translateY(-2px); }
 @media (hover: none), (max-width: 700px) { .soc { width: 44px; height: 44px; } }
 /* "launching soon" rides the label now, so it costs a word rather than a line */
 .lab-soft { color: var(--graph-400); }
-
 
 /* ---- the base line */
 .site-foot__base {
@@ -2403,7 +2405,6 @@ svg.hs-pl { overflow: visible; display: block; }
 }
 .mq__item .slash { height: 0.9em; }
 @keyframes mq { to { transform: translateX(-50%); } }
-
 
 
 
@@ -3014,7 +3015,6 @@ html.js .prow.in .prow__tick { background: var(--moss-300); }
   transform: skewX(var(--slash-skew));
 }
 .tier .cta-row { margin-top: auto; padding-top: 24px; }
-
 
 /* ------------------------------------------------ score tool */
 /* editorial rows — same voice as the eleven-surfaces entries, no boxes */
@@ -3907,7 +3907,6 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
 .form-done p { margin: 0; color: var(--graph); }
 
 
-
 /* Inline links inside the facts ledger: full touch height on phone,
    no visual change (padding reclaimed by negative margin). */
 @media (max-width: 720px) {
@@ -4210,7 +4209,6 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
 
   /* (the hero mark choreography retired 12 Aug night — see header) */
   @keyframes hm-floor-in { to { stroke-dashoffset: 0; } }
-  
 
   /* scroll reveal — armed only once site.js has run (html.js) */
   html.js .rv {
@@ -4278,7 +4276,6 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
   }
 }
 
-
 /* --------------------------------------- per-page signatures */
 /* The Standard: poster-scale index numerals */@media (max-width: 640px) {}
 /* Services: the worked example becomes a noded timeline */
@@ -4290,7 +4287,6 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
   width: 12px; height: 12px; border-radius: 50%;
   background: var(--moss); border: 2px solid var(--champ-300);
 }
-
 
 /* (the legacy team-card block was EXCISED 2 Sep 2026 late night: its
    `.tcard img { aspect-ratio: 1 }` squared — i.e. DISTORTED — the new
@@ -4857,7 +4853,6 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
   .cos-du li:hover { color: var(--moss-700); }
   .cos-du li:hover::before { background: var(--moss-700); }
 }
-
 
 /* the group ceilings, spoken in the ledger's own grammar — sentence left,
    figure right, mono term beneath (50→90 round, 31 Aug 2026; the figure was
@@ -5567,15 +5562,11 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
 /* The 31 Aug #onboarding dark ground lived here for one evening; the
    band flipped to ivory the same night (founder: hero 和下面 需要有区分)
    and the override retired with it. */
+/* The hero's ground, lifted into two tokens so anything that must carry the
+   SAME field can reuse it and the two can never drift (founder, 16 Sep 2026:
+   the answer card takes the hero's colour). Values unchanged. */
 .hero {
-  background:
-    radial-gradient(90% 70% at 20% 6%,
-      color-mix(in srgb, var(--plum-700) 52%, var(--plum-ink)) 0%,
-      transparent 60%),
-    linear-gradient(165deg,
-      color-mix(in srgb, var(--plum-700) 60%, var(--plum-ink)) 0%,
-      color-mix(in srgb, var(--plum-700) 34%, var(--plum-ink)) 50%,
-      color-mix(in srgb, var(--plum-700) 16%, var(--plum-ink)) 100%);
+  background: var(--field-lamp), var(--field-fall);
 }
 .statband {
   /* founder, 1 Sep 2026: the band leaves the dark for the cream — flat,
@@ -5592,7 +5583,6 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
 .statband, .f-plum, .f-moss { position: relative; }
 .statband > .wrap, .f-plum > .wrap, .f-moss > .wrap { position: relative; z-index: 1; }
 /* .statband__mark (the band's aperture watermark) retired 6 Sep 2026, register #19 */
-
 
 /* ── statband on cream (founder, 1 Sep 2026): the dark band's whole
    foreground flips with its ground. Ink for the statement and rows,
@@ -5833,7 +5823,6 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
    the top of their shared row so a future wrap can never stagger the line. */
 .mega__col > .lab { align-self: start; }
 
-
 /* =================================================== SEO & AI SEARCH page
    Rebuilt 20 Aug 2026 after the founder scored v1 at 40/100 — "只显示了文字编辑".
    v1 was typography arranged in sections; this is components. Every section now
@@ -5858,7 +5847,6 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
 /* the hero on this page closes ~100px tighter: the citation card and the CTA
    should share a bottom line instead of floating apart */
 .hero--seo .wrap { padding-bottom: 24px; }
-
 
 /* ---- the query marquee: the questions this page exists to answer, rolling
    on an ink band directly under the hero. Examples, not claims. */
@@ -6952,7 +6940,6 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
    two-word marker. --graph-400 on ivory measures 4.95:1. */
 .mega__col a .mega-scoped { color: var(--graph-400); white-space: nowrap; }
 
-
 /* ============================================================== CONTACT ===
    Rebuilt 12 Sep 2026 from the founder's supplied template. The template was a
    React/shadcn/Tailwind component; none of that stack exists here or was
@@ -7568,7 +7555,6 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
   .fnl__fields .field input:focus { box-shadow: inset 0 -2px 0 var(--signal); }
 }
 
-
 /* ==================================== THE BOARD'S TYPE, PER THE REFERENCE ===
    impressive.com.au/case-studies — the founder's named standard for this page —
    makes the CLIENT NAME the largest text on every card, with the metric
@@ -7733,22 +7719,25 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
 /* the aperture rides as a background image at its own geometry — never
    rotated. As an element it bled past the card and the layout gate read the
    overflow as clipped text (3 HIGHs); a background creates no overflow. */
-.sai-door--ai { background-color: var(--plum); color: var(--ivory); border: 1px solid var(--plum);
+.sai-door--ai { background-color: var(--plum-ink); color: var(--ivory);
+  border: 1px solid color-mix(in srgb, var(--plum-300) 22%, transparent);
   border-radius: 0 64px 0 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg' viewBox='69 109 862 862'%3E%3Cpath fill='%23F8F6F2' fill-opacity='0.16' d='M691.47 294.93 A311.00 311.00 0 0 1 510.85 850.81 L567.60 694.89 A169.00 169.00 0 0 0 637.85 442.24 Z'%2F%3E%3Cpath fill='%23F8F6F2' fill-opacity='0.16' d='M446.17 845.29 A310.00 310.00 0 0 1 208.70 433.97 L348.68 388.68 A214.00 214.00 0 0 0 479.75 753.04 Z'%2F%3E%3Cpath fill='%23F8F6F2' fill-opacity='0.10' d='M237.11 375.73 A310.00 310.00 0 0 1 510.82 230.19 L488.96 290.24 A250.00 250.00 0 0 0 363.84 330.33 Z'%2F%3E%3Ccircle fill='%23B4CC2E' fill-opacity='0.18' cx='500' cy='540' r='98'%2F%3E%3C%2Fsvg%3E");
-  background-repeat: no-repeat; background-position: right -96px bottom -96px; background-size: 320px 320px; }
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg' viewBox='69 109 862 862'%3E%3Cpath fill='%23F8F6F2' fill-opacity='0.16' d='M691.47 294.93 A311.00 311.00 0 0 1 510.85 850.81 L567.60 694.89 A169.00 169.00 0 0 0 637.85 442.24 Z'%2F%3E%3Cpath fill='%23F8F6F2' fill-opacity='0.16' d='M446.17 845.29 A310.00 310.00 0 0 1 208.70 433.97 L348.68 388.68 A214.00 214.00 0 0 0 479.75 753.04 Z'%2F%3E%3Cpath fill='%23F8F6F2' fill-opacity='0.10' d='M237.11 375.73 A310.00 310.00 0 0 1 510.82 230.19 L488.96 290.24 A250.00 250.00 0 0 0 363.84 330.33 Z'%2F%3E%3Ccircle fill='%238E2F6F' fill-opacity='0.18' cx='500' cy='540' r='98'%2F%3E%3C%2Fsvg%3E"), var(--field-lamp), var(--field-fall);
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-position: right -96px bottom -96px, 0 0, 0 0;
+  background-size: 320px 320px, cover, cover; }
 .sai-door__head { grid-column: 1 / -1; display: flex; align-items: center; gap: 12px; padding-bottom: 16px; }
 .sai-door__ico { flex: none; width: 48px; height: 48px; display: grid; place-items: center; border-radius: 50%; }
 .sai-door__ico svg { width: 24px; height: 24px; fill: currentColor; overflow: visible; }
 .sai-door__ico rect { transform-box: fill-box; transform-origin: left center; }
 .sai-door__ico path { transform-box: fill-box; transform-origin: center; }
 .sai-door--list .sai-door__ico { background: var(--ivory); color: var(--graph-700); border: 1px solid var(--champ-700); }
-.sai-door--ai .sai-door__ico { background: color-mix(in srgb, var(--plum-900) 34%, var(--plum)); color: var(--moss-300); }
+.sai-door--ai .sai-door__ico { background: color-mix(in srgb, var(--plum) 62%, var(--plum-ink)); color: var(--moss-300); }
 .sai-door__h { margin: 0; font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546;
   font-weight: 600; font-size: 28px; line-height: 1.2; letter-spacing: -0.01em; }
 .sai-door__sub { margin: 4px 0 0; font-size: 15px; line-height: 1.45; }
 .sai-door--list .sai-door__sub { color: var(--graph-400); }
-.sai-door--ai .sai-door__sub { color: color-mix(in srgb, var(--ivory) 78%, var(--plum)); }
+.sai-door--ai .sai-door__sub { color: var(--plum-100); }
 .sai-door__dl { margin: 0; display: contents; }
 .sai-door__dl dt, .sai-door__dl dd { margin: 0; padding: 12px 0; display: flex; align-items: center;
   background: linear-gradient(var(--champ-700), var(--champ-700)) left top / 100% 1px no-repeat;
@@ -7757,7 +7746,7 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
 .sai-door__dl dt { padding-right: 16px; font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
   font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; line-height: 1.45; align-items: center; }
 .sai-door--list .sai-door__dl dt { color: var(--graph-400); }
-.sai-door--ai .sai-door__dl dt { color: color-mix(in srgb, var(--ivory) 76%, var(--plum)); }
+.sai-door--ai .sai-door__dl dt { color: var(--plum-300); }
 .sai-door__dl dd { font-size: 17px; line-height: 1.3; }
 /* one glyph per question, identical on both cards, so the eye pairs the two
    answers across the gutter. SUCCESS carries the house slash. */
@@ -7779,7 +7768,7 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
 .sai-doors__foot b { font-weight: 600; color: var(--graph-700); }
 /* pointer: the answer card comes forward; a row lights on BOTH cards at once —
    the same question, two doors — via :has() on the hovered row */
-.sai-door--ai:hover { transform: translateY(-8px); box-shadow: 0 24px 48px -32px color-mix(in srgb, var(--plum-900) 60%, transparent); }
+.sai-door--ai:hover { transform: translateY(-8px); box-shadow: 0 24px 48px -32px color-mix(in srgb, var(--plum-ink) 70%, transparent); }
 .sai-doors:has(.sai-door--ai:hover) .sai-door--list { opacity: 0.86; }
 .sai-doors:has(.sai-door__dl > :is(:nth-child(1), :nth-child(2)):hover) .sai-door__dl > :is(:nth-child(1), :nth-child(2)) { translate: 4px 0; }
 .sai-doors:has(.sai-door__dl > :is(:nth-child(1), :nth-child(2)):hover) .sai-door--list .sai-door__dl > dt:nth-child(1) { color: var(--plum-700); }
@@ -7852,7 +7841,6 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
   .sai-surf5__no { font-size: 56px; }
   .sai-surf5__h { font-size: 32px; }
 }
-
 
 /* ── the statement band: the rhythm break. Every other section is a wrap of
       heading + content; this one is a single line and nothing else. ───── */
@@ -8201,19 +8189,8 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
   html.js .sai-sh.rv.in .sai-sh__note { animation: rise-in 0.6s var(--ease) 0.28s both; }
 }
 
-/* ── 05 · why SEMORA: six commitment cards on the light ground ────────── */
-.sai-diff { list-style: none; margin: 48px 0 0; padding: 0;
-  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
-.sai-diff__c { padding: 32px; background: var(--white); border: 1px solid var(--champ-700);
-  transition: transform 260ms var(--ease), border-color 260ms var(--ease); }
-.sai-diff__c:hover { transform: translateY(-4px); border-color: var(--plum-300); }
-.sai-diff__ix { display: block; margin-bottom: 16px; font-family: var(--mono); font-size-adjust: 0.516;
-  font-weight: 400; font-size: 11px; letter-spacing: 0.24em; color: var(--plum-700); }
-.sai-diff__c h3 { font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546;
-  font-weight: 600; font-size: 19px; line-height: 1.3; color: var(--graph-900); margin: 0 0 12px; }
-.sai-diff__c p { font-size: 15px; line-height: 1.55; color: var(--graph); margin: 0; }
-@media (max-width: 1100px) { .sai-diff { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 680px) { .sai-diff { grid-template-columns: 1fr; } .sai-diff__c { padding: 24px; } }
+@media (max-width: 1100px) { }
+@media (max-width: 680px) { }
 
 /* ── 06 · the person: the /team hero's grammar, image left this time ───── */
 .sai-who { display: grid; grid-template-columns: 0.75fr 1.25fr; gap: 48px var(--gutter); align-items: center; }
@@ -8267,14 +8244,14 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
 
 /* choreography for the new sections */
 @media (prefers-reduced-motion: no-preference) {
-  html.js .sai-diff.rv, html.js .sai-ask.rv, html.js .sai-faq.rv, html.js .sai-board__list.rv { opacity: 1; transform: none; }
-  html.js .sai-diff.rv .sai-diff__c, html.js .sai-ask.rv li, html.js .sai-faq.rv .sai-faq__it, html.js .sai-board__list.rv li { opacity: 0; transform: translateY(14px); }
-  html.js .sai-diff.rv.in .sai-diff__c, html.js .sai-ask.rv.in li, html.js .sai-faq.rv.in .sai-faq__it, html.js .sai-board__list.rv.in li { animation: rise-in 0.55s var(--ease) both; }
-  html.js .sai-diff.rv.in .sai-diff__c:nth-child(2), html.js .sai-ask.rv.in li:nth-child(2), html.js .sai-faq.rv.in .sai-faq__it:nth-child(2), html.js .sai-board__list.rv.in li:nth-child(2) { animation-delay: 0.08s; }
-  html.js .sai-diff.rv.in .sai-diff__c:nth-child(3), html.js .sai-ask.rv.in li:nth-child(3), html.js .sai-faq.rv.in .sai-faq__it:nth-child(3), html.js .sai-board__list.rv.in li:nth-child(3) { animation-delay: 0.16s; }
-  html.js .sai-diff.rv.in .sai-diff__c:nth-child(4), html.js .sai-ask.rv.in li:nth-child(4), html.js .sai-faq.rv.in .sai-faq__it:nth-child(4), html.js .sai-board__list.rv.in li:nth-child(4) { animation-delay: 0.24s; }
-  html.js .sai-diff.rv.in .sai-diff__c:nth-child(5), html.js .sai-ask.rv.in li:nth-child(5), html.js .sai-faq.rv.in .sai-faq__it:nth-child(5), html.js .sai-board__list.rv.in li:nth-child(5) { animation-delay: 0.32s; }
-  html.js .sai-diff.rv.in .sai-diff__c:nth-child(6), html.js .sai-ask.rv.in li:nth-child(6), html.js .sai-faq.rv.in .sai-faq__it:nth-child(6), html.js .sai-board__list.rv.in li:nth-child(6) { animation-delay: 0.40s; }
+html.js .sai-ask.rv, html.js .sai-faq.rv, html.js .sai-board__list.rv { opacity: 1; transform: none; }
+html.js .sai-ask.rv li, html.js .sai-faq.rv .sai-faq__it, html.js .sai-board__list.rv li { opacity: 0; transform: translateY(14px); }
+html.js .sai-ask.rv.in li, html.js .sai-faq.rv.in .sai-faq__it, html.js .sai-board__list.rv.in li { animation: rise-in 0.55s var(--ease) both; }
+html.js .sai-ask.rv.in li:nth-child(2), html.js .sai-faq.rv.in .sai-faq__it:nth-child(2), html.js .sai-board__list.rv.in li:nth-child(2) { animation-delay: 0.08s; }
+html.js .sai-ask.rv.in li:nth-child(3), html.js .sai-faq.rv.in .sai-faq__it:nth-child(3), html.js .sai-board__list.rv.in li:nth-child(3) { animation-delay: 0.16s; }
+html.js .sai-ask.rv.in li:nth-child(4), html.js .sai-faq.rv.in .sai-faq__it:nth-child(4), html.js .sai-board__list.rv.in li:nth-child(4) { animation-delay: 0.24s; }
+html.js .sai-ask.rv.in li:nth-child(5), html.js .sai-faq.rv.in .sai-faq__it:nth-child(5), html.js .sai-board__list.rv.in li:nth-child(5) { animation-delay: 0.32s; }
+html.js .sai-ask.rv.in li:nth-child(6), html.js .sai-faq.rv.in .sai-faq__it:nth-child(6), html.js .sai-board__list.rv.in li:nth-child(6) { animation-delay: 0.40s; }
   html.js .sai-ask.rv.in li:nth-child(7), html.js .sai-faq.rv.in .sai-faq__it:nth-child(7), html.js .sai-board__list.rv.in li:nth-child(7) { animation-delay: 0.48s; }
   html.js .sai-faq.rv.in .sai-faq__it:nth-child(8), html.js .sai-board__list.rv.in li:nth-child(8) { animation-delay: 0.56s; }
   html.js .sai-who__fig.rv img { clip-path: inset(0 100% 0 0); }

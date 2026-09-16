@@ -678,9 +678,9 @@ The row closes when the number moves
 
 03 / How it runs
 
-### Five steps, one order
+### How Semora runs our SEO system
 
-No baseline, no work. If something cannot be measured, we write that down before we start.
+We start editing your website and move to the next steps.
 
 01
 
@@ -712,49 +712,7 @@ Title, headings, first hundred words, links, alt text, schema.
 
 Evergreen converts. Editorial earns citations. No bought links.
 
-04 / Why SEMORA
-
-### Six things we put in writing
-
-An agency that publishes its prices, its method and its own misses can be held to them. That is the point of publishing.
-
-01
-
-### Prices, published
-
-The retainer and each service, in figures, on the site. A quote is arithmetic on numbers you can already see.
-
-02
-
-### One number, reported
-
-Your report opens with enquiries, pipeline or new clients. Rankings and clicks sit underneath as the explanation.
-
-03
-
-### The method, in the open
-
-Five steps in one order, on this page and on the method page. What we do to your site is not a secret.
-
-04
-
-### Misses left in
-
-We score ourselves on the same instrument and publish the result, zeros included. A benchmark that hides its misses cannot be trusted next month.
-
-05
-
-### No bought links
-
-Authority comes from original research, editorial and digital PR. A purchased link is a liability with a delay on it.
-
-06
-
-### The accounts stay yours
-
-Search Console, analytics, the profile, the files. Yours from day one, yours on the day you leave.
-
-05 / Who is accountable
+04 / Who is accountable
 
 ### The method is the founder’s, and so is the phone number.
 
@@ -764,7 +722,7 @@ The five steps on this page are Brent’s five steps, written down and gated bef
 
 Brent Matthys · Team Lead & Founder Meet the team →
 
-06 / The number
+05 / The number
 
 ### Reported against one number
 
@@ -778,7 +736,7 @@ Diagnostics
 
 Start figure, finish figure, dates, method. On each result we publish.
 
-07 / The board
+06 / The board
 
 ### Eight engagements, on the record
 
@@ -802,7 +760,7 @@ JE Real Estate
 
 AXIOM
 
-08 / Before you sign
+07 / Before you sign
 
 ### Seven questions to ask any search agency
 
@@ -850,7 +808,7 @@ A person you can phone, who reads the report before you do.
 
 It will, at least once. The honest answer is what the report will say, and when.
 
-09 / Questions we get asked
+08 / Questions we get asked
 
 ### Straight answers
 

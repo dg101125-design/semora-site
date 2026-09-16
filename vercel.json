@@ -31,6 +31,11 @@
   ],
   "redirects": [
     {
+      "source": "/services",
+      "destination": "/seo-ai-search",
+      "permanent": true
+    },
+    {
       "source": "/eleven-surfaces",
       "destination": "/score",
       "permanent": true

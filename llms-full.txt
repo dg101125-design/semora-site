@@ -2,7 +2,7 @@
 
 > SEMORA STUDIO is a leading specialist growth company and marketing agency for commercial industry professionals, owner-led businesses, and healthcare and allied-health practices. We combine positioning, digital marketing, AI visibility and conversion systems into clearly defined products with transparent pricing and measurable performance.
 
-Last updated: 15 September 2026. Summary version: https://www.semora.com.au/llms.txt
+Last updated: 16 September 2026. Summary version: https://www.semora.com.au/llms.txt
 
 SEMORA STUDIO PTY LTD, ABN 77 701 244 635. Central House Toorak, Level 3, 489 Toorak Road, Toorak VIC 3142, Melbourne, Australia. team@semora.com.au · (03) 9071 0855. All prices in Australian dollars, excluding GST.
 
@@ -530,39 +530,33 @@ who is the best buyers agent in melbourne/ physio near me open saturday/ how do 
 
 01 / SEO and GEO
 
-### Search has two doors now
+### Google vs AI search. Which option is more efficient?
 
-SEO gets you onto the list. GEO — generative engine optimisation — gets you into the answer. Same buyer, two doors, and most sites only ever built the first.
+Google’s list still matters, and SEO is how you get on it. GEO, generative engine optimisation, means being a source an AI trusts enough to name.
 
-Four names, one job
+Semora builds for both. The list and the answer both get measured against the number you agreed to move, and the figures go in your report. Moved or not.
 
-AI SEOthe agency term
+Get your free visibility report →
 
-AI searchwhat your buyer calls it
+Traditional SEO
 
-LLM SEOthe engineering term
+The race for the top spot
 
-GEOthe one we use
+UserShort, keyword-driven queries ResultAn ordered list of websites ActionBrowse list, click, and evaluate pages FocusContent targeting and link profile SuccessSecuring positions on Page One
 
-02 / Why now
+AI Search & GEO
 
-### The answer has already moved
+Winning authoritative references
 
-Your buyer’s first question goes to a machine that returns one answer and a short list of names. Miss that list and the enquiry goes to a firm on it.
+UserConversational, question-based prompts ResultDirectly generated, referenced answer ActionReceive, understand summary, and make decisions FocusStructured data, content entities, and validation SuccessBeing used as a trusted reference
 
-What being cited looks like
+The evolution of search: traditional vs. AI & GEO. From ranking on lists to building trust for answers.
 
-Qwho does marketing for commercial property firms in melbourne?
+5
 
-A
+### AI search connections
 
-SEMORA STUDIO
-
-What can be worked is eligibility, entity clarity and evidence. We measure all three each month, against a fixed set of buyer questions asked in clean sessions, with the wording set down in advance so this month can be held against the last.
-
-The questions are your buyer’s, not ours. The wording is written down before the first run, so a month that moves can be told apart from a month that was asked differently.
-
-The five surfaces we measure
+Your buyer, your engineer and your last agency each call this something different. The work underneath is one job, and it has our name on it. We check all five against the same buyer questions, written down before the first run, so a month that moves can be told apart from a month that was asked differently. The wording is fixed.
 
 G
 
@@ -594,9 +588,17 @@ Co
 
 Microsoft’s answer layer, read via Bing.
 
-No platform sells a place in an AI answer. Anyone offering one is selling something else.
+Where we publish the work
 
-03 / What we do
+Instagram
+
+X
+
+No platform sells a place in an AI answer.
+
+The most important thing is to let AI read and understand your business.
+
+02 / What we do
 
 ### Six services, one system
 
@@ -674,7 +676,7 @@ A second pair of eyes on each release
 
 The row closes when the number moves
 
-04 / How it runs
+03 / How it runs
 
 ### Five steps, one order
 
@@ -710,7 +712,7 @@ Title, headings, first hundred words, links, alt text, schema.
 
 Evergreen converts. Editorial earns citations. No bought links.
 
-05 / Why SEMORA
+04 / Why SEMORA
 
 ### Six things we put in writing
 
@@ -752,7 +754,7 @@ Authority comes from original research, editorial and digital PR. A purchased li
 
 Search Console, analytics, the profile, the files. Yours from day one, yours on the day you leave.
 
-06 / Who is accountable
+05 / Who is accountable
 
 ### The method is the founder’s, and so is the phone number.
 
@@ -762,7 +764,7 @@ The five steps on this page are Brent’s five steps, written down and gated bef
 
 Brent Matthys · Team Lead & Founder Meet the team →
 
-07 / The number
+06 / The number
 
 ### Reported against one number
 
@@ -776,7 +778,7 @@ Diagnostics
 
 Start figure, finish figure, dates, method. On each result we publish.
 
-08 / The board
+07 / The board
 
 ### Eight engagements, on the record
 
@@ -800,7 +802,7 @@ JE Real Estate
 
 AXIOM
 
-09 / Before you sign
+08 / Before you sign
 
 ### Seven questions to ask any search agency
 
@@ -848,7 +850,7 @@ A person you can phone, who reads the report before you do.
 
 It will, at least once. The honest answer is what the report will say, and when.
 
-10 / Questions we get asked
+09 / Questions we get asked
 
 ### Straight answers
 

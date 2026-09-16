@@ -1742,10 +1742,12 @@ html.lr .site-head__word::before {
    already found competing. */
 .site-foot {
   position: relative;
-  /* Footer v3, founder 30 Aug 2026 (reference: dark link-architecture
-     footer): the page signs off on the dark field it opened on. */
-  background: var(--plum-ink);
-  color: var(--plum-100);
+  /* Footer v4, founder 16 Sep 2026: light. This reverses v3's dark field
+     (30 Aug) and applies to every page. Each colour below was re-derived for
+     the ivory ground rather than left to inherit — a light footer built by
+     swapping only the background is how a site ends up with 2:1 text. */
+  background: var(--champ-700);
+  color: var(--graph-700);
   border-top: 3px solid var(--plum-700);
 }
 /* the seam is marked, not merely coloured: plum edge, acid catch at the text
@@ -1765,7 +1767,7 @@ html.lr .site-head__word::before {
    optically aligned to the WORDMARK rather than centred on the whole block,
    because the descriptor line hangs below the wordmark's baseline and centring
    against it drops the mark visibly low. */
-.foot-mark { display: inline-flex; align-items: flex-start; gap: 16px; }
+.foot-mark { display: inline-flex; align-items: flex-start; gap: 12px; }
 .foot-mark__ap { height: 52px; width: auto; margin-top: 4px; }
 /* 64px tall → ~240px wide (descriptor lockup 3.74:1) */
 .foot-mark__word { height: 64px; width: auto; }
@@ -1783,37 +1785,37 @@ html.lr .site-head__word::before {
    content — so the fourth tile wrapped to a second line and the row stopped
    reading as a set. */
 .foot-grid {
-  display: grid; gap: 16px 32px;
+  display: grid; gap: 12px 24px;
   /* Three columns since 30 Aug 2026 — the QR column is gone by founder
      order, and the grid rebalances: the email control needs the most room,
      the address next, the four discs the least. */
   grid-template-columns: minmax(0, 4.5fr) minmax(0, 2.5fr) minmax(0, 3fr) minmax(0, 4fr);
-  padding-block: 32px;
+  padding-block: 24px;
   border-top: 1px solid var(--champ-700);
 }
 /* Four columns need ~1060px between them. Below that, two comfortable
    columns; phones get one. */
 @media (max-width: 1160px) { .foot-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 560px)  { .foot-grid { grid-template-columns: 1fr; } }
-.foot-col .lab { margin-bottom: 8px; color: var(--moss-300); }
-.site-foot .lab-soft { color: var(--plum-100); }
-.foot-id__line { margin-top: 16px; font-size: 15px; line-height: 1.55;
-  color: var(--plum-100); max-width: 30ch; }
-.foot-follow { margin-top: 24px; }
+.foot-col .lab { margin-bottom: 8px; color: var(--plum-700); }
+.site-foot .lab-soft { color: var(--graph-400); }
+.foot-id__line { margin-top: 12px; font-size: 15px; line-height: 1.55;
+  color: var(--graph); max-width: 30ch; }
+.foot-follow { margin-top: 16px; }
 .foot-links { list-style: none; padding: 0; margin: 0; }
 .foot-links li + li { margin-top: 4px; }
 .foot-links a {
   font-family: var(--sans); font-size-adjust: 0.546; font-weight: 500;
   /* 15px −20% by founder order, 3 Sep 2026 ("reduce font 20% size",
      footer nav screenshot) — 12 registered as a founder-set step */
-  font-size: 12px; line-height: 1.55; color: var(--ivory);
+  font-size: 12px; line-height: 1.55; color: var(--graph-900);
   /* caps are a CSS decision (founder, 30 Aug: 大小写统一) — the source
      strings stay prose for machines and screen readers */
   text-transform: uppercase; letter-spacing: 0.012em;
   display: inline-block; padding-block: 4px;
   transition: color 180ms var(--ease);
 }
-.foot-links a:hover { color: var(--moss-300); }
+.foot-links a:hover { color: var(--plum-700); }
 @media (max-width: 560px) {
   /* phone touch targets after the −20%: 18.6px line + 2×16px = 50.6 ≥ 44 */
   .foot-links li + li { margin-top: 0; }
@@ -1825,7 +1827,7 @@ html.lr .site-head__word::before {
    drops to two columns and the rules would fall in the wrong places. */
 @media (min-width: 1161px) {
   .foot-col + .foot-col {
-    border-left: 1px solid rgb(248 246 242 / 0.14);
+    border-left: 1px solid var(--champ-700);
     padding-left: 16px; margin-left: -16px;
   }
 }
@@ -1840,8 +1842,8 @@ html.lr .site-head__word::before {
      splits an email address across two lines is worse than no control. */
   display: flex; align-items: center; gap: 12px;
   width: 100%; padding: 12px;
-  border: 1px solid var(--plum-300);
-  color: var(--ivory); font-size: 15px; line-height: 1.45;
+  border: 1px solid var(--plum-700);
+  color: var(--graph-900); font-size: 15px; line-height: 1.45;
   transition: background 180ms var(--ease), color 180ms var(--ease);
 }
 /* No anywhere-break: an address breaks at no point that reads correctly. */
@@ -1852,7 +1854,7 @@ html.lr .site-head__word::before {
    does not float its pin into the middle of the block. */
 .foot-row { display: flex; align-items: flex-start; gap: 12px; }
 .foot-ic {
-  width: 16px; height: 16px; flex: none; color: var(--plum-100);
+  width: 16px; height: 16px; flex: none; color: var(--graph-400);
   margin-top: calc((1.45em - 16px) / 2);
 }
 .foot-ic--addr { margin-top: calc((1.55em - 16px) / 2); }
@@ -1873,12 +1875,12 @@ html.lr .site-head__word::before {
   font-size: 12px; line-height: 1.45; letter-spacing: 0.012em;
   color: var(--plum-100);
 }
-.foot-med:hover, .foot-med:hover .foot-ic { color: var(--moss-300); }
+.foot-med:hover, .foot-med:hover .foot-ic { color: var(--plum-700); }
 .foot-addr {
   font-style: normal;
   font-family: var(--sans); font-size-adjust: 0.546; font-weight: 500;
   font-size: 12px; line-height: 1.55; letter-spacing: 0.012em;
-  color: var(--plum-100); max-width: 26ch; margin: 0;
+  color: var(--graph-700); max-width: 26ch; margin: 0;
 }
 .foot-mailto__t {
   font-family: var(--sans); font-size-adjust: 0.546; font-weight: 500;
@@ -1914,19 +1916,19 @@ a.soc:hover { transform: translateY(-2px); }
 
 /* ---- the base line */
 .site-foot__base {
-  display: flex; flex-wrap: wrap; gap: 12px 24px;
+  display: flex; flex-wrap: wrap; gap: 8px 24px;
   justify-content: space-between; align-items: center;
-  padding-block: 16px;
+  padding-block: 12px;
   border-top: 1px solid rgb(248 246 242 / 0.16);
 }
 .foot-nav { display: flex; flex-wrap: wrap; gap: 0 24px; }
-.foot-nav a { font-size: 13px; color: var(--plum-100); border-bottom: 1px solid transparent; }
-.foot-nav a:hover { color: var(--moss-300); border-color: var(--moss-300); }
+.foot-nav a { font-size: 13px; color: var(--graph); border-bottom: 1px solid transparent; }
+.foot-nav a:hover { color: var(--plum-700); border-color: var(--plum-700); }
 /* The legal line carries the ABN, so it must never break mid-number or run
    off a narrow viewport. Each segment is atomic; the line breaks only at the
    separators between them. min-width:0 lets the flex item shrink at all —
    without it the item keeps its min-content width and overflows the page. */
-.site-foot__legal { min-width: 0; color: var(--plum-100); }
+.site-foot__legal { min-width: 0; color: var(--graph-700); }
 .site-foot__legal .nb { white-space: nowrap; }
 
 /* ------------------------------------------- the hero mark (Ö seal) */
@@ -2405,7 +2407,6 @@ svg.hs-pl { overflow: visible; display: block; }
 }
 .mq__item .slash { height: 0.9em; }
 @keyframes mq { to { transform: translateX(-50%); } }
-
 
 
 /* ── the campaign strip — the brand line answered in pictures. Full
@@ -3905,7 +3906,6 @@ html.js .wpan.is-act .wpan__body { min-width: clamp(280px, 24vw, 420px); }
 }
 .form-done h3 { margin: 0 0 8px; }
 .form-done p { margin: 0; color: var(--graph); }
-
 
 /* Inline links inside the facts ledger: full touch height on phone,
    no visual change (padding reclaimed by negative margin). */
@@ -7605,7 +7605,24 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
 .sai-sh__r { padding-top: 32px; }
 .sai-sh__r .sai-sh__note { margin-top: 0; max-width: 52ch; }
 .sai-sh__r .sai-sh__note + .sai-sh__note { margin-top: 16px; }
-.sai-sh__r .btn.sai-cta { margin-top: 24px; display: inline-flex; width: auto; align-items: center; justify-content: center; gap: 12px; }
+/* founder, 16 Sep 2026: the pair reads better stacked in the right column
+   than spanning the measure. Back to the column. */
+.sai-sh__cta { margin-top: 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; }
+.sai-sh__r .btn.sai-cta, .sai-sh__cta .btn { display: inline-flex; width: auto; align-items: center;
+  justify-content: center; gap: 12px; }
+/* The second way in is the SAME button role as the first — one size, one
+   case, one tracking, one radius, one arrow — and differs only in fill.
+   Its predecessor was a dead modifier: identical specificity to the base it
+   meant to override, and earlier in the source, so the base won and the
+   authored 15px never rendered. That is why a lowercase 'o' here stood as
+   tall as a capital next door. */
+.btn--ghost { background: var(--plum); color: var(--ivory); }
+.btn--ghost:hover, .btn--ghost:focus-visible { background: var(--plum-700); }
+/* the second way in, at the smaller of the two weights so the free report
+   keeps the primary voice */
+
+
+
 @media (max-width: 860px) {
   .sai-sh--split { grid-template-columns: 1fr; row-gap: 24px; }
   .sai-sh__h--big { font-size: 32px; }
@@ -7794,6 +7811,201 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
 }
 
 /* ── four names, one job ─────────────────────────────────────────────── */
+/* ═══ /seo-report-example — the monthly report, opened to the public ══════
+   A worked specimen. It carries figures, so it says so in the first line and
+   again in the last: every number on it is invented and no client's data is
+   on the page. The layers are read as bars because a reader compares seven
+   numbers faster than they read them. */
+.hero--rpt { background: var(--field-lamp), var(--field-fall); color: var(--ivory);
+  padding-block: clamp(64px, 9vw, 128px); }
+.rpt-kick { color: var(--moss-300); }
+.rpt-h1 { margin: 16px 0 0; font-family: var(--sans); font-variation-settings: normal;
+  font-size-adjust: 0.546; font-weight: 600; font-size: clamp(32px, 4.76vw, 61px);
+  line-height: 1.04; letter-spacing: -0.014em; text-transform: uppercase;
+  color: var(--ivory); max-width: 16ch; }
+.rpt-lead { margin: 24px 0 0; font-size: 19px; line-height: 1.45; color: var(--champ); max-width: 62ch; }
+.rpt-meta { margin: 32px 0 0; padding-top: 24px; max-width: 72ch;
+  border-top: 1px solid color-mix(in srgb, var(--plum-300) 34%, transparent);
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 11px;
+  letter-spacing: 0.24em; text-transform: uppercase; line-height: 1.62; color: var(--plum-300); }
+
+.rpt-bars { margin-top: 48px; display: grid; gap: 16px; }
+.rpt-bar { display: grid; grid-template-columns: minmax(0, 16em) minmax(0, 1fr) 3em;
+  gap: 24px; align-items: center; }
+.rpt-bar__k { font-size: 17px; line-height: 1.45; color: var(--graph-900); }
+.rpt-bar__t { position: relative; height: 8px; background: var(--champ-700); overflow: hidden; }
+.rpt-bar__f { position: absolute; inset: 0 auto 0 0; width: var(--w, 0%); background: var(--plum);
+  transform-origin: left; }
+.rpt-bar__f--low { background: var(--plum-300); }
+.rpt-bar__v { font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 15px;
+  text-align: right; color: var(--graph-900); }
+.rpt-note { margin: 32px 0 0; max-width: 72ch; font-size: 17px; line-height: 1.55; color: var(--graph); }
+.rpt-note--rev { color: var(--champ); }
+
+.rpt-two { margin-top: 48px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.rpt-score { padding: 32px; background: var(--ivory); border: 1px solid var(--champ-700); }
+.rpt-score__n { margin: 0; font-family: var(--sans); font-variation-settings: normal;
+  font-size-adjust: 0.546; font-weight: 600; font-size: 72px; line-height: 0.94;
+  letter-spacing: -0.018em; color: var(--plum); }
+.rpt-score__n span { font-size: 22px; letter-spacing: 0; color: var(--graph-400); }
+.rpt-score p { margin: 12px 0 0; font-size: 15px; line-height: 1.55; color: var(--graph); }
+.rpt-score p b { font-weight: 600; color: var(--graph-900); }
+
+.rpt-reg { list-style: none; margin: 48px 0 0; padding: 0; }
+.rpt-reg li { display: grid; grid-template-columns: minmax(0, 9em) minmax(0, 1fr); gap: 24px;
+  padding: 16px 0; border-top: 1px solid var(--champ-700); align-items: start; }
+.rpt-reg__s { font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 11px;
+  letter-spacing: 0.24em; text-transform: uppercase; line-height: 1.45; padding: 4px 8px;
+  justify-self: start; }
+.rpt-reg__s--done { background: var(--moss-900); color: var(--moss-300); }
+.rpt-reg__s--part { background: var(--champ-700); color: var(--graph-700); }
+.rpt-reg__s--you  { background: var(--plum); color: var(--white); }
+.rpt-reg__s--open { background: var(--plum-ink); color: var(--plum-300); }
+.rpt-reg li b { display: block; font-weight: 600; font-size: 17px; line-height: 1.3; color: var(--graph-900); }
+.rpt-reg li p { margin: 4px 0 0; font-size: 15px; line-height: 1.45; color: var(--graph); }
+
+.rpt-stop { list-style: none; margin: 48px 0 0; padding: 0;
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.rpt-stop li { padding: 24px; background: color-mix(in srgb, var(--plum-700) 26%, transparent);
+  border: 1px solid color-mix(in srgb, var(--plum-300) 26%, transparent); }
+.rpt-stop__t { margin: 0 0 8px; font-family: var(--sans); font-variation-settings: normal;
+  font-size-adjust: 0.546; font-weight: 600; font-size: 19px; line-height: 1.3; color: var(--moss-300); }
+.rpt-stop li p { font-size: 15px; line-height: 1.55; color: var(--plum-100); margin: 0; }
+
+.rpt-next { list-style: none; margin: 48px 0 0; padding: 0; counter-reset: rn; }
+.rpt-next li { counter-increment: rn; display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) minmax(0, 16em); gap: 24px;
+  padding: 16px 0; border-top: 1px solid var(--champ-700); align-items: baseline; }
+.rpt-next li::before { content: counter(rn, decimal-leading-zero); font-family: var(--mono);
+  font-size-adjust: 0.516; font-weight: 400; font-size: 11px; letter-spacing: 0.24em; color: var(--plum-700); }
+.rpt-next b { display: block; font-weight: 600; font-size: 17px; line-height: 1.3; color: var(--graph-900); }
+.rpt-next p { margin: 4px 0 0; font-size: 15px; line-height: 1.45; color: var(--graph); }
+.rpt-next__w { font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 11px;
+  letter-spacing: 0.24em; text-transform: uppercase; line-height: 1.45; color: var(--graph-400); }
+
+.rpt-close { margin-top: 48px; padding-top: 24px; border-top: 2px solid var(--plum-700);
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; }
+.rpt-close__p { margin: 0; flex: 1 1 40ch; min-width: 0; max-width: 62ch;
+  font-size: 15px; line-height: 1.55; color: var(--graph-400); }
+.rpt-close .btn.sai-cta { display: inline-flex; width: auto; align-items: center;
+  justify-content: center; gap: 12px; flex: none; }
+
+@media (max-width: 860px) {
+  .rpt-bar { grid-template-columns: minmax(0, 1fr) 3em; gap: 8px 16px; }
+  .rpt-bar__t { grid-column: 1 / -1; }
+  .rpt-two, .rpt-stop { grid-template-columns: 1fr; }
+  .rpt-reg li { grid-template-columns: 1fr; gap: 8px; }
+  .rpt-next li { grid-template-columns: 32px minmax(0, 1fr); }
+  .rpt-next__w { grid-column: 2; }
+}
+
+
+/* ── 05 · the seam ───────────────────────────────────────────────────────
+   Two words at one cap height with a narrow channel; a third crossing it at
+   half the cap, stroked in the GROUND colour so the overlap reads as a hole
+   cut through the layer behind. The only bright moment is an acid disc behind
+   the crossing word — the reference got that free from letter counters at a
+   weight Instrument Sans cannot reach (it stops at 700), so ours comes from
+   behind instead. One colour makes the depth: no gradient, no glow (R9). */
+.sai-seamband { padding-block: 64px; }
+@media (max-width: 860px) { .sai-seamband { padding-block: 32px; } }
+.sai-seam { position: relative; text-align: center; padding-block: 24px 0; }
+.sai-seam__mask { display: block; overflow: hidden; }
+.sai-seam__w { display: block; font-family: var(--sans); font-variation-settings: normal;
+  font-size-adjust: 0.546; font-weight: 600; font-size: clamp(40px, 10.8vw, 96px);
+  line-height: 1.3; letter-spacing: -0.018em; text-transform: uppercase; white-space: nowrap; }
+.sai-seam__w--top { color: var(--plum); }
+.sai-seam__w--bot { color: var(--plum-ink); }
+.sai-seam__mask--bot { margin-top: -0.36em; }
+.sai-seam__eye { position: absolute; left: 50%; top: 24px; translate: -50% -50%;
+  width: clamp(48px, 9vw, 104px); aspect-ratio: 1; border-radius: 50%; background: var(--moss-300); z-index: 1; }
+.sai-seam__x { position: absolute; left: 50%; top: 24px; translate: -50% -50%; z-index: 2;
+  display: flex; justify-content: center; }
+.sai-seam__l { display: inline-block; font-family: var(--sans); font-variation-settings: normal;
+  font-size-adjust: 0.546; font-weight: 600; font-size: clamp(22px, 5.6vw, 56px); line-height: 0.98;
+  letter-spacing: -0.01em; text-transform: uppercase; color: var(--plum-ink);
+  -webkit-text-stroke: 0.12em var(--ivory); paint-order: stroke fill;
+  rotate: var(--r, 0deg); translate: 0 var(--y, 0);
+  transition: rotate 420ms var(--ease), translate 420ms var(--ease); }
+.sai-seam__l--acid { color: var(--moss-700); }
+/* the tilt resolves under the pointer: the section's argument in one gesture */
+.sai-seam:hover .sai-seam__l, .sai-seam:focus-within .sai-seam__l { rotate: 0deg; translate: 0 0; }
+.sai-seam__foot { margin: 48px auto 0; max-width: 46ch; font-size: 17px; line-height: 1.55; color: var(--graph); }
+@media (max-width: 700px) { .sai-seam__w { letter-spacing: -0.014em; } .sai-seam__foot { margin-top: 32px; } }
+
+/* ── the way in to the worked report ─────────────────────────────────────
+   One ring leaving the button on the section's own ease. It is a ring, not a
+   glow: a hairline that grows and fades, so the button reads as live without
+   the site borrowing an AI-startup halo (R9). It stops entirely for anyone who
+   asks for less motion. */
+.sai-open { margin-top: 48px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px 32px; }
+.sai-open__b { position: relative; display: inline-flex; align-items: center; gap: 12px;
+  padding: 16px 32px; border-radius: 96px; background: var(--plum); color: var(--ivory);
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546;
+  font-weight: 600; font-size: 17px; line-height: 1.3; letter-spacing: -0.006em;
+  text-decoration: none; isolation: isolate;
+  transition: background-color 260ms var(--ease), transform 260ms var(--ease); }
+.sai-open__t { position: relative; }
+.sai-open__ar { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%;
+  background: var(--moss-300); color: var(--plum-ink); font-size: 15px; line-height: 1.04;
+  transition: translate 260ms var(--ease); }
+.sai-open__b:hover, .sai-open__b:focus-visible { background: var(--plum-700); transform: translateY(-2px); }
+.sai-open__b:hover .sai-open__ar, .sai-open__b:focus-visible .sai-open__ar { translate: 4px 0; }
+.sai-open__s { margin: 0; flex: 1 1 32ch; min-width: 0; max-width: 52ch;
+  font-size: 15px; line-height: 1.45; color: var(--graph-400); }
+@media (max-width: 700px) { .sai-open__b { width: 100%; justify-content: center; } }
+
+/* ── 04 · the working, published (16 Sep 2026) ───────────────────────────
+   The report shown as a document rather than described: a header bar, the
+   monthly cycle with what closes each step, the reasons it holds beside it,
+   and the person who signs it. No figures — the method is a fact we can
+   stand behind today; a result is not, and the first one is not ours yet. */
+.sai-rep { margin-top: 48px; background: var(--white); border: 1px solid var(--champ-700);
+  display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+.sai-rep__bar { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: baseline;
+  justify-content: space-between; gap: 8px 24px; padding: 16px 32px;
+  background: var(--plum-ink); color: var(--ivory); }
+.sai-rep__doc { font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546;
+  font-weight: 600; font-size: 19px; line-height: 1.3; letter-spacing: -0.006em; }
+.sai-rep__of { font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 11px;
+  letter-spacing: 0.24em; text-transform: uppercase; line-height: 1.45; color: var(--plum-300); }
+.sai-rep__cycle { list-style: none; margin: 0; padding: 32px; display: grid; gap: 24px; }
+.sai-rep__cycle li { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 16px;
+  padding-top: 24px; border-top: 1px solid var(--champ-700); }
+.sai-rep__cycle li:first-child { padding-top: 0; border-top: 0; }
+.sai-rep__n { margin: 0; font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
+  font-size: 11px; letter-spacing: 0.24em; line-height: 1.62; color: var(--plum-700); }
+.sai-rep__cycle h3 { margin: 0; font-family: var(--sans); font-variation-settings: normal;
+  font-size-adjust: 0.546; font-weight: 600; font-size: 19px; line-height: 1.3;
+  letter-spacing: -0.006em; color: var(--graph-900); }
+.sai-rep__cycle p { margin: 8px 0 0; font-size: 15px; line-height: 1.55; color: var(--graph); }
+.sai-rep__cl { padding-top: 8px; }
+.sai-rep__cl b { font-weight: 400; font-family: var(--mono); font-size-adjust: 0.516; font-size: 11px;
+  letter-spacing: 0.24em; text-transform: uppercase; color: var(--moss-700); }
+.sai-rep__why { padding: 32px; background: var(--ivory); border-left: 1px solid var(--champ-700); }
+.sai-rep__why .lab { color: var(--plum-700); }
+.sai-rep__why ul { list-style: none; margin: 16px 0 0; padding: 0; }
+.sai-rep__why li { position: relative; padding-left: 24px; margin-top: 16px;
+  font-size: 15px; line-height: 1.55; color: var(--graph); }
+.sai-rep__why li::before { content: ""; position: absolute; left: 0; top: 0.62em; width: 12px; height: 2px;
+  background: var(--moss-300); transform-origin: left; }
+.sai-rep__sign { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px;
+  padding: 24px 32px; border-top: 1px solid var(--champ-700); background: var(--white); }
+.sai-rep__sign img { flex: none; width: 64px; height: 64px; object-fit: cover; border-radius: 50%; }
+.sai-rep__sign > div { flex: 1 1 24ch; min-width: 0; }
+.sai-rep__who { margin: 0; font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546;
+  font-weight: 600; font-size: 17px; line-height: 1.3; color: var(--graph-900); }
+.sai-rep__role { margin: 4px 0 0; font-size: 15px; line-height: 1.45; color: var(--graph-400); max-width: 46ch; }
+/* 22.8px is a readable line and an unusable tap target; the padding takes it
+   past 44px without moving the text (audit_layout, phone) */
+.sai-rep__link { flex: none; display: inline-block; padding-block: 12px; }
+@media (max-width: 860px) {
+  .sai-rep { grid-template-columns: 1fr; }
+  .sai-rep__cycle, .sai-rep__why { padding: 24px; }
+  .sai-rep__why { border-left: 0; border-top: 1px solid var(--champ-700); }
+  .sai-rep__bar, .sai-rep__sign { padding: 16px 24px; }
+}
+
 /* ── the five surfaces (founder plate 002, built 16 Sep 2026) ────────────
    A ghost outlined numeral against the plum word, then five bordered cards
    on the section's own ground — square corners, ink disc with an acid mono
@@ -7926,7 +8138,6 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
   @keyframes sai-sweep { 0%, 100% { translate: -70% 0; } 18% { translate: 70% 0; } 18.01% { translate: -70% 0; } }
   @keyframes sai-wipe-up { to { clip-path: inset(0 0 0 0); } }
   @keyframes sai-wipe-l { to { clip-path: inset(0 0 0 0); } }
-  @keyframes sai-plate  { to { clip-path: inset(0 0 0 0); } }
   /* the slow move (founder, 15 Sep: "image need some animation effect, maybe
      slow"): after the entrance the photo drifts — a 20s push-in and a small
      pan, back and forth, clipped by the shape. Visible, unhurried, the whole
@@ -7954,11 +8165,131 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
      specificity than the win rules, which stole the finale's 1.7s beat and
      made the acid line fire with row one. */
 
+  html.js .sai-open.rv { opacity: 1; transform: none; }
+  html.js .sai-open.rv:not(.in) > * { opacity: 0; }
+  html.js .sai-open.rv.in > * { animation: rise-in 0.5s var(--ease) backwards; }
+  html.js .sai-open.rv.in > :nth-child(1) { animation-delay: 1.05s; }
+  html.js .sai-open.rv.in > :nth-child(2) { animation-delay: 1.18s; }
+  /* The pulse is a box-shadow ring, not a scaled element: a shadow paints
+     outside the button without a layout box, so it can never widen the
+     document the way an inset:0 span scaled to 1.18 did at phone width. It is
+     a hairline that grows and fades — a ring, not a glow (R9). */
+  html.js .sai-open.rv.in .sai-open__b, html.js .sai-sh--split.rv.in .btn--ghost {
+    animation: sai-ring 2.8s var(--ease) 1.6s infinite; }
+  .sai-open__b:hover, .sai-open__b:focus-visible,
+  .btn--ghost:hover, .btn--ghost:focus-visible { animation-play-state: paused; }
+  @keyframes sai-ring {
+    0%   { box-shadow: 0 0 0 0 color-mix(in srgb, var(--plum) 55%, transparent); }
+    70%  { box-shadow: 0 0 0 14px color-mix(in srgb, var(--plum) 0%, transparent); }
+    100% { box-shadow: 0 0 0 14px color-mix(in srgb, var(--plum) 0%, transparent); }
+  }
+  /* THE REPORT PAGE — the seven bars grow left to right in order, then the
+     register rows, the stops and the ranked next steps arrive on the same
+     beat the rest of the site uses. */
+  html.js .rpt-bars.rv { opacity: 1; transform: none; }
+  html.js .rpt-bars.rv:not(.in) .rpt-bar__f { transform: scaleX(0); }
+  html.js .rpt-bars.rv.in .rpt-bar__f { animation: sai-grow 0.85s var(--ease) backwards; }
+  html.js .rpt-bars.rv.in .rpt-bar:nth-child(1) .rpt-bar__f { animation-delay: 0.10s; }
+  html.js .rpt-bars.rv.in .rpt-bar:nth-child(2) .rpt-bar__f { animation-delay: 0.19s; }
+  html.js .rpt-bars.rv.in .rpt-bar:nth-child(3) .rpt-bar__f { animation-delay: 0.28s; }
+  html.js .rpt-bars.rv.in .rpt-bar:nth-child(4) .rpt-bar__f { animation-delay: 0.37s; }
+  html.js .rpt-bars.rv.in .rpt-bar:nth-child(5) .rpt-bar__f { animation-delay: 0.46s; }
+  html.js .rpt-bars.rv.in .rpt-bar:nth-child(6) .rpt-bar__f { animation-delay: 0.55s; }
+  html.js .rpt-bars.rv.in .rpt-bar:nth-child(7) .rpt-bar__f { animation-delay: 0.64s; }
+  @keyframes sai-grow { from { transform: scaleX(0); } }
+  html.js .rpt-reg.rv:not(.in) li, html.js .rpt-next.rv:not(.in) li,
+  html.js .rpt-stop.rv:not(.in) li, html.js .rpt-two.rv:not(.in) > * { opacity: 0; }
+  html.js .rpt-reg.rv.in li, html.js .rpt-next.rv.in li,
+  html.js .rpt-stop.rv.in li, html.js .rpt-two.rv.in > * { animation: rise-in 0.5s var(--ease) backwards; }
+  html.js :is(.rpt-reg, .rpt-next, .rpt-stop, .rpt-two).rv.in > :nth-child(1) { animation-delay: 0.06s; }
+  html.js :is(.rpt-reg, .rpt-next, .rpt-stop, .rpt-two).rv.in > :nth-child(2) { animation-delay: 0.14s; }
+  html.js :is(.rpt-reg, .rpt-next, .rpt-stop, .rpt-two).rv.in > :nth-child(3) { animation-delay: 0.22s; }
+  html.js :is(.rpt-reg, .rpt-next, .rpt-stop, .rpt-two).rv.in > :nth-child(4) { animation-delay: 0.30s; }
+  html.js :is(.rpt-reg, .rpt-next).rv.in > :nth-child(5) { animation-delay: 0.38s; }
+  html.js :is(.rpt-reg, .rpt-next).rv.in > :nth-child(6) { animation-delay: 0.46s; }
+  html.js .rpt-reg.rv.in > :nth-child(7) { animation-delay: 0.54s; }
+  html.js .rpt-reg.rv.in > :nth-child(8) { animation-delay: 0.62s; }
+  /* The answer rises as it opens. It is ONLY an entrance: <details> does the
+     showing natively, so a failure here can never leave the answer invisible —
+     which is exactly what the first attempt did (block-size stayed 0 when open,
+     measured, caught before it shipped). */
+  html.js .sai-faq__it[open] .sai-faq__a { animation: rise-in 0.42s var(--ease) both; }
+  /* THE SEAM — the two words rise out of their own masks, the acid disc lands
+     behind, the crossing word drops in letter by letter, and the line follows.
+     Then the disc breathes, slowly, for as long as it is on screen. */
+  html.js .sai-seam.rv { opacity: 1; transform: none; }
+  html.js .sai-seam.rv:not(.in) .sai-seam__w { translate: 0 110%; }
+  html.js .sai-seam.rv:not(.in) .sai-seam__eye { scale: 0; }
+  html.js .sai-seam.rv:not(.in) :is(.sai-seam__l, .sai-seam__foot) { opacity: 0; }
+  html.js .sai-seam.rv.in .sai-seam__w--top { animation: sai-seam-up 0.8s var(--ease) 0.05s backwards; }
+  html.js .sai-seam.rv.in .sai-seam__w--bot { animation: sai-seam-up 0.8s var(--ease) 0.20s backwards; }
+  html.js .sai-seam.rv.in .sai-seam__eye { animation: sai-eye 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.55s backwards,
+    sai-float-eye 13s var(--ease) 1.6s infinite alternate; }
+  @keyframes sai-float-eye {
+    from { translate: calc(-50% - 14px) -50%; scale: 1; }
+    to { translate: calc(-50% + 14px) -50%; scale: 1.07; } }
+  html.js .sai-seam.rv.in .sai-seam__l { animation: sai-drop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) backwards,
+    sai-wave 3.2s var(--ease) 1.4s infinite alternate; }
+  /* the whole crossing word drifts across the seam, the two big words lean
+     against each other, and the disc floats under them — all slow enough to
+     read as drift rather than movement you have to watch */
+  html.js .sai-seam.rv.in .sai-seam__x { animation: sai-swim 13s var(--ease) 1.6s infinite alternate; }
+  html.js .sai-seam.rv.in .sai-seam__w--top { animation: sai-seam-up 0.8s var(--ease) 0.05s backwards,
+    sai-lean-l 17s var(--ease) 1.6s infinite alternate; }
+  html.js .sai-seam.rv.in .sai-seam__w--bot { animation: sai-seam-up 0.8s var(--ease) 0.20s backwards,
+    sai-lean-r 17s var(--ease) 1.6s infinite alternate; }
+  @keyframes sai-swim { from { translate: calc(-50% - 14px) -50%; } to { translate: calc(-50% + 14px) -50%; } }
+  @keyframes sai-lean-l { from { translate: -6px 0; } to { translate: 6px 0; } }
+  @keyframes sai-lean-r { from { translate: 6px 0; } to { translate: -6px 0; } }
+  /* the words sit close to the gutter on a phone; the lean stops there */
+  @media (max-width: 860px) {
+    html.js .sai-seam.rv.in .sai-seam__w--top { animation: sai-seam-up 0.8s var(--ease) 0.05s backwards; }
+    html.js .sai-seam.rv.in .sai-seam__w--bot { animation: sai-seam-up 0.8s var(--ease) 0.20s backwards; }
+  }
+  html.js .sai-seam:hover .sai-seam__l { animation-play-state: paused, paused; }
+  @keyframes sai-wave { from { translate: 0 calc(var(--y, 0px) - 0.07em); }
+    to { translate: 0 calc(var(--y, 0px) + 0.07em); } }
+  html.js .sai-seam.rv.in .sai-seam__foot { animation: rise-in 0.6s var(--ease) 1.35s backwards; }
+  @keyframes sai-seam-up { from { translate: 0 110%; } }
+  @keyframes sai-eye { from { scale: 0; } }
+  @keyframes sai-breathe { from { scale: 1; } to { scale: 1.07; } }
+  @keyframes sai-drop { from { opacity: 0; translate: 0 -1.1em; } }
+  html.js .sai-seam.rv.in .sai-seam__l:nth-child(1) { animation-delay: 0.66s; }
+  html.js .sai-seam.rv.in .sai-seam__l:nth-child(2) { animation-delay: 0.72s; }
+  html.js .sai-seam.rv.in .sai-seam__l:nth-child(3) { animation-delay: 0.78s; }
+  html.js .sai-seam.rv.in .sai-seam__l:nth-child(4) { animation-delay: 0.84s; }
+  html.js .sai-seam.rv.in .sai-seam__l:nth-child(5) { animation-delay: 0.90s; }
+  html.js .sai-seam.rv.in .sai-seam__l:nth-child(6) { animation-delay: 0.96s; }
+  html.js .sai-seam.rv.in .sai-seam__l:nth-child(7) { animation-delay: 1.02s; }
+  html.js .sai-seam.rv.in .sai-seam__l:nth-child(8) { animation-delay: 1.08s; }
+  /* THE WORKING — the document lands, the four steps arrive in order with
+     their closing line a beat behind, the reasons tick in beside them, and the
+     signature wipes in last, on the wipe the founder portrait used. */
+  html.js .sai-rep.rv { opacity: 1; transform: none; }
+  html.js .sai-rep.rv:not(.in) :is(.sai-rep__cycle li, .sai-rep__why > *, .sai-rep__sign > *) { opacity: 0; }
+  html.js .sai-rep.rv:not(.in) .sai-rep__why li::before { transform: scaleX(0); }
+  html.js .sai-rep.rv:not(.in) .sai-rep__sign img { clip-path: inset(0 100% 0 0); }
+  html.js .sai-rep.rv.in .sai-rep__cycle li { animation: rise-in 0.55s var(--ease) backwards; }
+  html.js .sai-rep.rv.in .sai-rep__cycle li:nth-child(1) { animation-delay: 0.10s; }
+  html.js .sai-rep.rv.in .sai-rep__cycle li:nth-child(2) { animation-delay: 0.22s; }
+  html.js .sai-rep.rv.in .sai-rep__cycle li:nth-child(3) { animation-delay: 0.34s; }
+  html.js .sai-rep.rv.in .sai-rep__cycle li:nth-child(4) { animation-delay: 0.46s; }
+  html.js .sai-rep.rv.in .sai-rep__why > * { animation: rise-in 0.5s var(--ease) backwards; }
+  html.js .sai-rep.rv.in .sai-rep__why > :nth-child(1) { animation-delay: 0.30s; }
+  html.js .sai-rep.rv.in .sai-rep__why > :nth-child(2) { animation-delay: 0.42s; }
+  html.js .sai-rep.rv.in .sai-rep__why li::before { animation: sai-tick 0.4s var(--ease) backwards; }
+  html.js .sai-rep.rv.in .sai-rep__why li:nth-child(1)::before { animation-delay: 0.50s; }
+  html.js .sai-rep.rv.in .sai-rep__why li:nth-child(2)::before { animation-delay: 0.58s; }
+  html.js .sai-rep.rv.in .sai-rep__why li:nth-child(3)::before { animation-delay: 0.66s; }
+  html.js .sai-rep.rv.in .sai-rep__why li:nth-child(4)::before { animation-delay: 0.74s; }
+  html.js .sai-rep.rv.in .sai-rep__sign > * { animation: rise-in 0.5s var(--ease) 0.85s backwards; }
+  html.js .sai-rep.rv.in .sai-rep__sign img { animation: sai-wipe-r 0.9s var(--ease) 0.85s backwards; }
+  @keyframes sai-tick { from { transform: scaleX(0); } }
   /* THE SPLIT HEADER — the statement rises line by line out of its mask, the
      paragraphs follow in three beats, the button lands last. */
   html.js .sai-sh--split.rv { opacity: 1; transform: none; }
   html.js .sai-sh--split.rv:not(.in) .sai-sh__mask > span { translate: 0 110%; }
-  html.js .sai-sh--split.rv:not(.in) :is(.sai-sh__r > *, .sai-sh__l > .lab) { opacity: 0; }
+  html.js .sai-sh--split.rv:not(.in) :is(.sai-sh__r > *, .sai-sh__l > .lab, .sai-sh__cta > *) { opacity: 0; }
   html.js .sai-sh--split.rv.in .sai-sh__l > .lab { animation: rise-in 0.45s var(--ease) backwards; }
   html.js .sai-sh--split.rv.in .sai-sh__mask > span { animation: sai-line-up 0.65s var(--ease) backwards; }
   html.js .sai-sh--split.rv.in .sai-sh__mask:nth-child(1) > span { animation-delay: 0.05s; }
@@ -7968,6 +8299,7 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
   html.js .sai-sh--split.rv.in .sai-sh__r > :nth-child(1) { animation-delay: 0.55s; }
   html.js .sai-sh--split.rv.in .sai-sh__r > :nth-child(2) { animation-delay: 0.67s; }
   html.js .sai-sh--split.rv.in .sai-sh__r > :nth-child(3) { animation-delay: 0.83s; }
+
   @keyframes sai-line-up { from { translate: 0 110%; } }
 
   /* THE LIST DOOR — slides in from the left, its three bars draw, its rows
@@ -8193,18 +8525,12 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
 @media (max-width: 680px) { }
 
 /* ── 06 · the person: the /team hero's grammar, image left this time ───── */
-.sai-who { display: grid; grid-template-columns: 0.75fr 1.25fr; gap: 48px var(--gutter); align-items: center; }
-.sai-who__fig { position: relative; margin: 0; padding-left: 24px; }
-.sai-who__fig img { display: block; width: 100%; height: auto; }
-.sai-who__bar { position: absolute; left: 0; top: 8%; bottom: 8%; width: 8px; background: var(--moss); }
-.sai-who__say .sai-sh__h { max-width: 18ch; }
-.sai-who__say > p { margin-top: 24px; font-size: 17px; line-height: 1.55; color: var(--graph); max-width: 52ch; }
-.sai-who__q { margin: 32px 0 0; padding: 0 0 0 24px; border-left: 3px solid var(--plum-700); max-width: 44ch; }
-.sai-who__q p { margin: 0; font-family: var(--sans); font-size-adjust: 0.546; font-weight: 400;
-  font-size: 22px; line-height: 1.3; color: var(--plum-700); }
-.sai-who__q cite { display: block; margin-top: 12px; font-style: normal; font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
-  font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--graph-400); }
-@media (max-width: 860px) { .sai-who { grid-template-columns: 1fr; } .sai-who__fig { max-width: 360px; } }
+
+
+
+
+
+
 
 /* ── 08 · the board teaser ───────────────────────────────────────────── */
 .sai-board { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px var(--gutter); align-items: center; }
@@ -8222,39 +8548,51 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
 @media (max-width: 860px) { .sai-board { grid-template-columns: 1fr; } }
 
 /* ── 09 · seven questions to ask ─────────────────────────────────────── */
-.sai-ask { list-style: none; margin: 48px 0 0; padding: 0;
-  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 var(--gutter);
-  border-top: 1px solid var(--champ-700); }
-.sai-ask li { display: grid; grid-template-columns: 3em minmax(0, 1fr); gap: 4px 16px;
-  padding: 24px 0; border-bottom: 1px solid var(--champ-700); }
-.sai-ask b { grid-row: span 2; font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
-  font-size: 11px; letter-spacing: 0.24em; color: var(--plum-700); padding-top: 8px; }
-.sai-ask h3 { font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546;
-  font-weight: 600; font-size: 19px; line-height: 1.3; color: var(--graph-900); margin: 0; }
-.sai-ask p { font-size: 15px; line-height: 1.55; color: var(--graph); margin: 0; max-width: 44ch; }
-@media (max-width: 860px) { .sai-ask { grid-template-columns: 1fr; } }
+
+
+
+
+
+@media (max-width: 860px) { }
 
 /* ── 10 · FAQ: visible questions, visible answers ────────────────────── */
-.sai-faq { margin-top: 48px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px var(--gutter); }
-.sai-faq__it { padding-top: 24px; border-top: 1px solid var(--champ-700); }
-.sai-faq__it h3 { font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546;
-  font-weight: 600; font-size: 19px; line-height: 1.3; color: var(--graph-900); margin: 0 0 12px; }
-.sai-faq__it p { font-size: 15px; line-height: 1.55; color: var(--graph); margin: 0; max-width: 52ch; }
+.sai-faq { margin-top: 48px; border-top: 1px solid var(--champ-700); }
+.sai-faq__it { border-bottom: 1px solid var(--champ-700); }
+.sai-faq__it > summary { list-style: none; cursor: pointer; padding: 16px 48px 16px 0;
+  position: relative; display: block; }
+.sai-faq__it > summary::-webkit-details-marker { display: none; }
+.sai-faq__it > summary:focus-visible { outline: 2px solid var(--plum-700); outline-offset: 4px; }
+.sai-faq__it h3 { margin: 0; font-family: var(--sans); font-variation-settings: normal;
+  font-size-adjust: 0.546; font-weight: 600; font-size: 15px; line-height: 1.24;
+  letter-spacing: -0.006em; color: var(--graph-900);
+  transition: color 240ms var(--ease); }
+.sai-faq__it[open] h3, .sai-faq__it > summary:hover h3 { color: var(--plum-700); }
+/* the marker is the house slash: one stroke that turns through 90 degrees when
+   the answer opens, so open and closed are the same mark in two states */
+.sai-faq__ar { position: absolute; right: 8px; top: 50%; translate: 0 -50%;
+  width: 16px; height: 16px; }
+.sai-faq__ar::before, .sai-faq__ar::after { content: ""; position: absolute; left: 0; top: 7px;
+  width: 16px; height: 2px; background: var(--plum-700);
+  transition: rotate 320ms var(--ease), opacity 320ms var(--ease); }
+.sai-faq__ar::after { rotate: 90deg; }
+.sai-faq__it[open] .sai-faq__ar::after { rotate: 0deg; }
+.sai-faq__a { overflow: hidden; }
+.sai-faq__it p { margin: 0; padding: 0 48px 16px 0; max-width: 72ch;
+  font-size: 15px; line-height: 1.45; color: var(--graph); }
 @media (max-width: 860px) { .sai-faq { grid-template-columns: 1fr; gap: 24px; } }
 
 /* choreography for the new sections */
 @media (prefers-reduced-motion: no-preference) {
-html.js .sai-ask.rv, html.js .sai-faq.rv, html.js .sai-board__list.rv { opacity: 1; transform: none; }
-html.js .sai-ask.rv li, html.js .sai-faq.rv .sai-faq__it, html.js .sai-board__list.rv li { opacity: 0; transform: translateY(14px); }
-html.js .sai-ask.rv.in li, html.js .sai-faq.rv.in .sai-faq__it, html.js .sai-board__list.rv.in li { animation: rise-in 0.55s var(--ease) both; }
-html.js .sai-ask.rv.in li:nth-child(2), html.js .sai-faq.rv.in .sai-faq__it:nth-child(2), html.js .sai-board__list.rv.in li:nth-child(2) { animation-delay: 0.08s; }
-html.js .sai-ask.rv.in li:nth-child(3), html.js .sai-faq.rv.in .sai-faq__it:nth-child(3), html.js .sai-board__list.rv.in li:nth-child(3) { animation-delay: 0.16s; }
-html.js .sai-ask.rv.in li:nth-child(4), html.js .sai-faq.rv.in .sai-faq__it:nth-child(4), html.js .sai-board__list.rv.in li:nth-child(4) { animation-delay: 0.24s; }
-html.js .sai-ask.rv.in li:nth-child(5), html.js .sai-faq.rv.in .sai-faq__it:nth-child(5), html.js .sai-board__list.rv.in li:nth-child(5) { animation-delay: 0.32s; }
-html.js .sai-ask.rv.in li:nth-child(6), html.js .sai-faq.rv.in .sai-faq__it:nth-child(6), html.js .sai-board__list.rv.in li:nth-child(6) { animation-delay: 0.40s; }
-  html.js .sai-ask.rv.in li:nth-child(7), html.js .sai-faq.rv.in .sai-faq__it:nth-child(7), html.js .sai-board__list.rv.in li:nth-child(7) { animation-delay: 0.48s; }
+html.js .sai-faq.rv, html.js .sai-board__list.rv { opacity: 1; transform: none; }
+html.js .sai-faq.rv .sai-faq__it, html.js .sai-board__list.rv li { opacity: 0; transform: translateY(14px); }
+html.js .sai-faq.rv.in .sai-faq__it, html.js .sai-board__list.rv.in li { animation: rise-in 0.55s var(--ease) both; }
+html.js .sai-faq.rv.in .sai-faq__it:nth-child(2), html.js .sai-board__list.rv.in li:nth-child(2) { animation-delay: 0.08s; }
+html.js .sai-faq.rv.in .sai-faq__it:nth-child(3), html.js .sai-board__list.rv.in li:nth-child(3) { animation-delay: 0.16s; }
+html.js .sai-faq.rv.in .sai-faq__it:nth-child(4), html.js .sai-board__list.rv.in li:nth-child(4) { animation-delay: 0.24s; }
+html.js .sai-faq.rv.in .sai-faq__it:nth-child(5), html.js .sai-board__list.rv.in li:nth-child(5) { animation-delay: 0.32s; }
+html.js .sai-faq.rv.in .sai-faq__it:nth-child(6), html.js .sai-board__list.rv.in li:nth-child(6) { animation-delay: 0.40s; }
+html.js .sai-faq.rv.in .sai-faq__it:nth-child(7), html.js .sai-board__list.rv.in li:nth-child(7) { animation-delay: 0.48s; }
   html.js .sai-faq.rv.in .sai-faq__it:nth-child(8), html.js .sai-board__list.rv.in li:nth-child(8) { animation-delay: 0.56s; }
-  html.js .sai-who__fig.rv img { clip-path: inset(0 100% 0 0); }
-  html.js .sai-who__fig.rv.in img { animation: sai-wipe-r 0.9s var(--ease) 0.1s forwards; }
+
   @keyframes sai-wipe-r { to { clip-path: inset(0 0 0 0); } }
 }

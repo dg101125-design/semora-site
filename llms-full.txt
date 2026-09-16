@@ -536,7 +536,7 @@ Google’s list still matters, and SEO is how you get on it. GEO, generative eng
 
 Semora builds for both. The list and the answer both get measured against the number you agreed to move, and the figures go in your report. Moved or not.
 
-Get your free visibility report →
+Get your free visibility report → Check out an SEO analysis →
 
 Traditional SEO
 
@@ -556,7 +556,7 @@ The evolution of search: traditional vs. AI & GEO. From ranking on lists to buil
 
 ### AI search connections
 
-Your buyer, your engineer and your last agency each call this something different. The work underneath is one job, and it has our name on it. We check all five against the same buyer questions, written down before the first run, so a month that moves can be told apart from a month that was asked differently. The wording is fixed.
+We check all five surfaces against the same buyer questions, so an AI can work out who your clients are and what you provide them.
 
 G
 
@@ -712,31 +712,67 @@ Title, headings, first hundred words, links, alt text, schema.
 
 Evergreen converts. Editorial earns citations. No bought links.
 
-04 / Who is accountable
+04 / How the work is done
 
-### The method is the founder’s, and so is the phone number.
+### The Semora SEO system. We show you how it is measured.
 
-The five steps on this page are Brent’s five steps, written down and gated before the first client ran through them. He is the person answerable for the engagement, and the person who reads the report before you do.
+An agency will show you the result and keep the working. Here is the working: what runs every month, what each step has to produce before it counts as done, and whose name is on the report by the time it reaches you. It is not a secret.
 
-“Our team’s creativity and determination make every milestone possible.”
+Monthly operating report How it is produced
 
-Brent Matthys · Team Lead & Founder Meet the team →
+01
 
-05 / The number
+### Measure before anything moves
 
-### Reported against one number
+Access first: Search Console and analytics, both in your own name. The business profile follows. Then the buyer questions go to the machines in clean sessions, with the wording written down before the first run.
 
-The first line of your report is the number you chose: enquiries, pipeline, new clients. Clicks and rankings sit under it, as the reason why. No result yet? Then the page says so.
+Closes on a baseline you can read, with the date on it.
 
-Your monthly report /
+02
 
-The number↗
+### Diagnose, and rank by cost
 
-Diagnostics
+Four checks: platform, speed, indexation, architecture. Each fault is ranked by what it is costing you, which is a different order from what is quickest to fix.
 
-Start figure, finish figure, dates, method. On each result we publish.
+Closes on a fix ledger, sorted, with an owner per row.
 
-06 / The board
+03
+
+### Fix in order
+
+Indexability first, because a page a machine cannot reach earns nothing downstream. Your developer can ship the work, or we can.
+
+Closes on the re-measurement of that row, dated.
+
+04
+
+### Report the commercial number
+
+The first line is enquiries, pipeline or new clients. Rankings and citations sit underneath it, as the explanation.
+
+Closes on next month, held against this one.
+
+Why it holds
+
+A row closes when the re-measurement says so, and the date goes beside it.
+
+The question wording is fixed before the first run, so a month that moved can be told apart from a month that was asked differently.
+
+Misses stay on the sheet. A scoreboard that hides its zeros cannot be read next month.
+
+A second reader re-runs the checks. What they stop is written into the report rather than quietly repaired.
+
+Brent Matthys
+
+Team Lead & Founder. The method is his, and he reads the report before you do.
+
+Meet the team →
+
+Check out an SEO analysis → Open a full worked report. Seven layers scored, the register, and what the second reader stopped. Specimen figures, no client data.
+
+Search MEASURED Answered Search on one side, the answer on the other, and one thing settling both: a number with a date beside it.
+
+05 / The board
 
 ### Eight engagements, on the record
 
@@ -760,57 +796,9 @@ JE Real Estate
 
 AXIOM
 
-07 / Before you sign
+06 / Questions we get asked
 
-### Seven questions to ask any search agency
-
-Put these to us as well. An agency that can answer them in writing is one you can hold to the answers.
-
-01
-
-### What is the baseline, and who measured it?
-
-If nobody can name the starting number, nobody can prove the finishing one.
-
-02
-
-### Which number leads the monthly report?
-
-If it is rankings or traffic, ask what those are for. Enquiries, pipeline and clients are the answer.
-
-03
-
-### Who owns the accounts?
-
-Search Console, analytics and the business profile should be in your name before work starts.
-
-04
-
-### How is AI visibility measured?
-
-A fixed set of buyer questions, asked in clean sessions with the wording set down in advance. Anything looser cannot be compared month to month.
-
-05
-
-### Where do the links come from?
-
-Earned through research, editorial and PR, or bought. Ask to see the last ten.
-
-06
-
-### Who is accountable, by name?
-
-A person you can phone, who reads the report before you do.
-
-07
-
-### What happens when a month goes backwards?
-
-It will, at least once. The honest answer is what the report will say, and when.
-
-08 / Questions we get asked
-
-### Straight answers
+### Frequently asked questions
 
 ### What is the difference between SEO and GEO?
 
@@ -852,11 +840,119 @@ We put your name to the same sixteen questions and email you what came back. It 
 
 Free visibility report Contact SEMORA STUDIO →
 
-Written by /
+---
 
-Brent Matthys, Team Lead & Founder
+# What the monthly report looks like &mdash; SEMORA STUDIO Melbourne
+URL: https://www.semora.com.au/seo-report-example
+Summary: A worked specimen of the monthly SEO report: seven layers scored, two numbers rather than one, the register, and what the second reader stopped. Every figure invented.
 
-Research and production are AI-assisted, and we say so.
+Specimen · every figure invented
+
+## The monthly report, opened
+
+This is the shape of the report a client receives, filled with invented figures so you can read the structure without reading anyone’s business, and the failures sit beside the wins for a reason that has more to do with arithmetic than with honesty: by month three somebody has to decide where the next month’s hours go, and a page carrying only good news gives them nothing to decide with. So the weak layers are named. So is the work that has not started, and the items sitting with the client rather than with us.
+
+Reporting period: month three of an engagement · Prepared by SEMORA STUDIO · Reviewed by a second reader, independent of delivery
+
+01 / The judgement
+
+### Seven layers, scored
+
+Each layer scores on what can be shown, rather than on effort spent. A layer scores low when the evidence is missing, even where the work is done. That is the point of scoring it.
+
+Technical foundation92
+
+Keyword system85
+
+Content system65
+
+Conversion tracking60
+
+Crawling and indexing55
+
+Entity recognition45
+
+External authority25
+
+The weakest layer is the one an answer engine reads first. Naming it in month three, in writing, is how it gets fixed by month six. Leaving it out costs a quarter.
+
+02 / The score
+
+### Two numbers, not one
+
+Building the system and getting a commercial result out of it are different things. Averaging them into a single number hides which one you are paying for this month.
+
+72/100
+
+System build. Infrastructure, process gates, and tools a stranger could re-run to check the claim.
+
+62/100
+
+Result readiness. Weighted across the seven layers: how far the system is from being cited by a machine and bringing work in.
+
+Why the second number sits lower: the citation work has not started, the profile verification is outstanding, part of the site waits to be re-crawled, and this month’s visibility run has not been taken, so a claim that things improved would rest on air. We do not make one.
+
+03 / The register
+
+### Every item, and its state
+
+The register is the spine of the engagement. Each row closes on evidence a second reader can re-run. Items waiting on you are marked, so none of them sits in the dark.
+
+ClosedIndexing statusConsole export reconciled against the sitemap; the arithmetic checks out.
+
+ClosedCore Web VitalsHome page lifted from red to green; largest paint cut by two thirds.
+
+ClosedKeyword-to-page mapOne owner page per term, primary and supporting named per cluster.
+
+PartialBuyer question listMapped from research. The real enquiry wording fills in as enquiries arrive.
+
+Your actionBusiness profile verificationOnly the owner can complete it, and it blocks the entity cross-check below.
+
+BlockedEntity cross-checkWaiting on the item above. The site side is already done.
+
+OpenExternal citation programmeThe target list can be drafted here. Sending it is yours to authorise.
+
+OpenFirst visibility benchmarkRuns on the locked protocol, and needs the sessions captured by hand.
+
+04 / The check
+
+### What the second reader stopped
+
+Delivery does not sign off its own work. A second reader re-runs the scripts, samples the register for honesty, and compares the log against the commit history. What they stop is published here.
+
+The closed-item count
+
+The headline count could not be reproduced. The register’s true figures replaced it everywhere.
+
+A published boundary statement
+
+It breached the writing standard. Rewritten, redeployed, confirmed live the same day.
+
+Both were fixed before the report was issued. A month with nothing stopped usually means nobody looked.
+
+05 / Next
+
+### Ordered by what moves most
+
+Verify the business profileUnlocks the entity cross-check and gives the brand terms somewhere to resolve to.
+
+You · 20 minutes
+
+Take the first visibility benchmarkTurns “no number” into a baseline, so next month can be held against something.
+
+Us, with your sign-off
+
+Publish the method page and the decision guidesThe pages answer engines quote most often are the ones explaining how a decision is made.
+
+Us to draft, you to approve
+
+Draft the external citation target listThe list costs nothing. Only sending it earns a citation, and that is your call.
+
+Us to draft
+
+Every figure on this page is invented, and no client’s data appears on it. In a real engagement each number traces to a dated source you can open yourself, and the items waiting on you are named rather than buried.
+
+Get your free visibility report →
 
 ---
 

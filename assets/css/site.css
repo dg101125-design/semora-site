@@ -616,6 +616,13 @@ section > .wrap { position: relative; z-index: 1; }
 .f-white  { background: var(--white); }
 .f-plum   { background: var(--plum-field); color: var(--ivory); }
 .f-plum h1, .f-plum h2, .f-plum h3, .f-plum .display { color: var(--ivory); }
+.f-plum.sai-svcband .sai-svc__c h3 { color: var(--moss-300); }
+/* the face rule `.f-plum p` is (0,1,1) and was quietly beating both of these
+   (0,1,0) rules — the index has been rendering champ, never its own colour.
+   Scoped to the band so each keeps the voice it was written for. */
+.sai-svcband .sai-svc__ix { color: var(--plum-300); }
+.sai-svcband .sai-svc__p { color: var(--plum-100); }
+.sai-svcband .sai-svc__get li { color: var(--plum-100); }
 .f-plum p { color: var(--champ); }
 .f-plum .rule { border-color: var(--plum-700); }
 /* deep moss field — ivory/moss-100 text only (both ≥7.9:1 on moss-900) */
@@ -7871,25 +7878,31 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
 }
 
 /* ── the six services, as cards on the dark band ─────────────────────── */
+/* the services band, 16 Sep 2026 (founder: 背景颜色调整 · title 换个颜色 ·
+   动画效果提高40%) */
+.f-plum.sai-svcband { background: var(--plum-ink); }
 .sai-svc { list-style: none; margin: 48px 0 0; padding: 0;
   display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
 .sai-svc__c { padding: 32px; scroll-margin-top: 96px;
-  border: 1px solid color-mix(in srgb, var(--plum-300) 30%, transparent);
-  background: color-mix(in srgb, var(--plum-700) 16%, transparent);
+  border: 1px solid color-mix(in srgb, var(--plum-300) 26%, transparent);
+  background: color-mix(in srgb, var(--plum-700) 26%, transparent);
   display: flex; flex-direction: column;
   transition: border-color 260ms var(--ease), background-color 260ms var(--ease),
               transform 260ms var(--ease); }
 .sai-svc__c:hover, .sai-svc__c:focus-within, .sai-svc__c:target {
   border-color: color-mix(in srgb, var(--moss-300) 52%, transparent);
-  background: color-mix(in srgb, var(--plum-700) 26%, transparent);
+  background: color-mix(in srgb, var(--plum-700) 40%, transparent);
   transform: translateY(-4px); }
 .sai-svc__ix { margin: 0 0 16px; font-family: var(--mono); font-size-adjust: 0.516;
-  font-weight: 400; font-size: 11px; letter-spacing: 0.24em; color: var(--moss-300); }
+  font-weight: 400; font-size: 11px; letter-spacing: 0.24em; color: var(--plum-300); }
 .sai-svc__c h3 { font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546;
-  font-weight: 600; font-size: 19px; line-height: 1.3; color: var(--ivory); margin: 0 0 12px; }
+  font-weight: 600; font-size: 19px; line-height: 1.3; color: var(--moss-300); margin: 0 0 12px;
+  overflow: hidden; padding-bottom: 0.1em; margin-bottom: calc(12px - 0.1em); }
+.sai-svc__c h3 > span { display: block; }
 .sai-svc__p { font-size: 15px; line-height: 1.55; color: var(--plum-100); margin: 0 0 24px; }
 .sai-svc__get { list-style: none; margin: auto 0 0; padding: 16px 0 0;
-  border-top: 1px solid color-mix(in srgb, var(--plum-300) 24%, transparent); }
+  background: linear-gradient(color-mix(in srgb, var(--plum-300) 24%, transparent),
+    color-mix(in srgb, var(--plum-300) 24%, transparent)) left top / 100% 1px no-repeat; }
 .sai-svc__get li { position: relative; padding-left: 16px; margin-top: 8px;
   font-size: 15px; line-height: 1.45; color: var(--plum-100); }
 .sai-svc__get li::before { content: ""; position: absolute; left: 0; top: 0.55em;
@@ -8110,22 +8123,76 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
   }
 
   /* SIX SERVICES — a wave across the grid, left column leading */
+  /* THE SIX SERVICES — each card arrives, then builds itself: the index, the
+     title out of its own mask, the line, the divider drawing across, and the
+     three points one beat apart. Hidden states are gated on :not(.in) because
+     the fills are `backwards` (16 Sep 2026: an ungated one hid a whole band). */
   html.js .sai-svc.rv { opacity: 1; transform: none; }
-  html.js .sai-svc.rv .sai-svc__c { opacity: 0; transform: translateY(20px); }
-  html.js .sai-svc.rv.in .sai-svc__c { animation: rise-in 0.6s var(--ease) both; }
+  html.js .sai-svc.rv:not(.in) .sai-svc__c { opacity: 0; transform: translateY(20px); }
+  html.js .sai-svc.rv:not(.in) :is(.sai-svc__ix, .sai-svc__p, .sai-svc__get li) { opacity: 0; }
+  html.js .sai-svc.rv:not(.in) h3 > span { translate: 0 110%; }
+  html.js .sai-svc.rv:not(.in) .sai-svc__get { background-size: 0 1px; }
+  html.js .sai-svc.rv.in .sai-svc__c { animation: rise-in 0.6s var(--ease) backwards; }
+  html.js .sai-svc.rv.in .sai-svc__ix { animation: rise-in 0.45s var(--ease) backwards; }
+  html.js .sai-svc.rv.in h3 > span { animation: sai-line-up 0.6s var(--ease) backwards; }
+  html.js .sai-svc.rv.in .sai-svc__p { animation: rise-in 0.5s var(--ease) backwards; }
+  html.js .sai-svc.rv.in .sai-svc__get { animation: sai-getrule 0.55s var(--ease) backwards; }
+  html.js .sai-svc.rv.in .sai-svc__get li { animation: rise-in 0.42s var(--ease) backwards; }
   html.js .sai-svc.rv.in .sai-svc__c:nth-child(1) { animation-delay: 0.06s; }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(1) .sai-svc__ix { animation-delay: 0.16s; }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(1) h3 > span { animation-delay: 0.24s; }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(1) .sai-svc__p { animation-delay: 0.34s; }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(1) .sai-svc__get li:nth-child(1) { animation-delay: 0.42s; }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(1) .sai-svc__get li:nth-child(2) { animation-delay: 0.49s; }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(1) .sai-svc__get li:nth-child(3) { animation-delay: 0.56s; }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(1) .sai-svc__get { animation-delay: 0.38s; }
   html.js .sai-svc.rv.in .sai-svc__c:nth-child(2) { animation-delay: 0.16s; }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(2) .sai-svc__ix { animation-delay: 0.26s; }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(2) h3 > span { animation-delay: 0.34s; }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(2) .sai-svc__p { animation-delay: 0.44s; }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(2) .sai-svc__get li:nth-child(1) { animation-delay: 0.52s; }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(2) .sai-svc__get li:nth-child(2) { animation-delay: 0.59s; }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(2) .sai-svc__get li:nth-child(3) { animation-delay: 0.66s; }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(2) .sai-svc__get { animation-delay: 0.48s; }
   html.js .sai-svc.rv.in .sai-svc__c:nth-child(3) { animation-delay: 0.26s; }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(3) .sai-svc__ix { animation-delay: 0.36s; }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(3) h3 > span { animation-delay: 0.44s; }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(3) .sai-svc__p { animation-delay: 0.54s; }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(3) .sai-svc__get li:nth-child(1) { animation-delay: 0.62s; }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(3) .sai-svc__get li:nth-child(2) { animation-delay: 0.69s; }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(3) .sai-svc__get li:nth-child(3) { animation-delay: 0.76s; }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(3) .sai-svc__get { animation-delay: 0.58s; }
   html.js .sai-svc.rv.in .sai-svc__c:nth-child(4) { animation-delay: 0.20s; }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(4) .sai-svc__ix { animation-delay: 0.30s; }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(4) h3 > span { animation-delay: 0.38s; }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(4) .sai-svc__p { animation-delay: 0.48s; }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(4) .sai-svc__get li:nth-child(1) { animation-delay: 0.56s; }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(4) .sai-svc__get li:nth-child(2) { animation-delay: 0.63s; }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(4) .sai-svc__get li:nth-child(3) { animation-delay: 0.70s; }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(4) .sai-svc__get { animation-delay: 0.52s; }
   html.js .sai-svc.rv.in .sai-svc__c:nth-child(5) { animation-delay: 0.30s; }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(5) .sai-svc__ix { animation-delay: 0.40s; }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(5) h3 > span { animation-delay: 0.48s; }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(5) .sai-svc__p { animation-delay: 0.58s; }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(5) .sai-svc__get li:nth-child(1) { animation-delay: 0.66s; }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(5) .sai-svc__get li:nth-child(2) { animation-delay: 0.73s; }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(5) .sai-svc__get li:nth-child(3) { animation-delay: 0.80s; }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(5) .sai-svc__get { animation-delay: 0.62s; }
   html.js .sai-svc.rv.in .sai-svc__c:nth-child(6) { animation-delay: 0.40s; }
-  /* the acid rule under each card's deliverables draws itself */
-  html.js .sai-svc.rv .sai-svc__get { clip-path: inset(0 0 0 0); }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(6) .sai-svc__ix { animation-delay: 0.50s; }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(6) h3 > span { animation-delay: 0.58s; }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(6) .sai-svc__p { animation-delay: 0.68s; }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(6) .sai-svc__get li:nth-child(1) { animation-delay: 0.76s; }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(6) .sai-svc__get li:nth-child(2) { animation-delay: 0.83s; }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(6) .sai-svc__get li:nth-child(3) { animation-delay: 0.90s; }
+  html.js .sai-svc.rv.in .sai-svc__c:nth-child(6) .sai-svc__get { animation-delay: 0.72s; }
+  @keyframes sai-getrule { from { background-size: 0 1px; } }
+  /* the tick marks keep drawing on the card's own beat */
   html.js .sai-svc__get li::before { transform: scaleX(0); transform-origin: left;
     transition: transform 320ms var(--ease); }
   html.js .sai-svc.rv.in .sai-svc__get li::before { transform: scaleX(1); }
-  html.js .sai-svc.rv.in .sai-svc__c:nth-child(n) .sai-svc__get li:nth-child(2)::before { transition-delay: 80ms; }
-  html.js .sai-svc.rv.in .sai-svc__c:nth-child(n) .sai-svc__get li:nth-child(3)::before { transition-delay: 160ms; }
+  html.js .sai-svc.rv.in .sai-svc__get li:nth-child(2)::before { transition-delay: 80ms; }
+  html.js .sai-svc.rv.in .sai-svc__get li:nth-child(3)::before { transition-delay: 160ms; }
 
   /* SECTION HEADS — the eyebrow's rule draws before the heading lands */
   html.js .sai-sh.rv .sai-sh__h { opacity: 0; transform: translateY(10px); }

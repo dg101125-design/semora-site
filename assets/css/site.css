@@ -9532,9 +9532,18 @@ html.js .sai-faq.rv.in .sai-faq__it:nth-child(7), html.js .sai-board__list.rv.in
 .adv-work { margin-top: 48px; display: grid;
   grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
   gap: 48px; align-items: center; }
-.adv-work__panel { margin: 0; overflow: hidden; border: 1px solid var(--champ-700);
-  border-radius: 0 64px 0 0; }
+.adv-work__panel { position: relative; margin: 0; overflow: hidden;
+  border: 1px solid var(--champ-700); border-radius: 0 64px 0 0; }
 .adv-work__panel img { display: block; width: 100%; height: auto; }
+/* the pass of light, on the house 70° axis. On the sibling page's dark
+   portrait this band is ivory; over a white brand sheet an ivory band is
+   invisible, so it inverts — ink at 9%, which reads as light moving across
+   the artwork rather than as a glow sitting on it (R9). */
+.adv-work__panel::after { content: ""; position: absolute; inset: -20% -40%;
+  pointer-events: none;
+  background: linear-gradient(110deg, transparent 42%,
+    color-mix(in srgb, var(--plum-ink) 9%, transparent) 50%, transparent 58%);
+  translate: -70% 0; }
 .adv-work__lab { margin: 32px 0 16px; font-family: var(--mono); font-size-adjust: 0.516;
   font-weight: 400; font-size: 11px; letter-spacing: 0.24em; line-height: 1.45;
   text-transform: uppercase; color: var(--plum-700); }
@@ -9574,6 +9583,31 @@ html.js .sai-faq.rv.in .sai-faq__it:nth-child(7), html.js .sai-board__list.rv.in
 @media (max-width: 520px) { .adv-fig { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
 @media (prefers-reduced-motion: no-preference) {
+  /* the artwork is unveiled rather than faded: the panel wipes open from the
+     left, the mark settles out of a small scale behind it, and from then on
+     the light crosses it every nine seconds. A client's mark is never
+     distorted — the scale settles to 1 and stays there. */
+  html.js .adv-work.rv:not(.in) .adv-work__panel { clip-path: inset(0 100% 0 0); }
+  html.js .adv-work.rv.in .adv-work__panel { animation: adv-unveil 0.9s var(--ease) both; }
+  @keyframes adv-unveil {
+    from { clip-path: inset(0 100% 0 0); }
+    to   { clip-path: inset(0 0 0 0); }
+  }
+  html.js .adv-work.rv:not(.in) .adv-work__panel img { scale: 1.06; opacity: 0; }
+  html.js .adv-work.rv.in .adv-work__panel img {
+    animation: adv-settle 1.2s var(--ease) 0.25s both; }
+  @keyframes adv-settle {
+    from { scale: 1.06; opacity: 0; }
+    to   { scale: 1; opacity: 1; }
+  }
+  html.js .adv-work.rv.in .adv-work__panel::after {
+    animation: adv-sheen 9s var(--ease) 1.4s infinite; }
+  @keyframes adv-sheen {
+    0%, 100% { translate: -70% 0; }
+    22%      { translate: 70% 0; }
+    22.01%   { translate: -70% 0; }
+  }
+
   html.js .adv-work.rv:not(.in) .adv-fig__it::after { transform: scaleX(0); }
   html.js .adv-work.rv.in .adv-fig__it::after {
     animation: adv-figbar 0.8s var(--ease) both; }
@@ -9581,3 +9615,26 @@ html.js .sai-faq.rv.in .sai-faq__it:nth-child(7), html.js .sai-board__list.rv.in
   html.js .adv-work.rv.in .adv-fig__it:nth-child(3)::after { animation-delay: 0.24s; }
   @keyframes adv-figbar { from { transform: scaleX(0); } to { transform: scaleX(var(--w, 1)); } }
 }
+
+
+/* ── the second call, and the way to a person ────────────────────────────
+   Founder, 17 Sep 2026: add a Contact / Talk to us button so a client can
+   see how to reach us. .btn--ghost is a PLUM FILL and `.f-plum .btn` is
+   (0,1,1), so a ghost on the ink band renders acid — two identical acid
+   pills side by side. This one is an outline, scoped to the band so it wins
+   the same way the face rule does. */
+.f-plum .btn.adv-cta2 { background: transparent; color: var(--ivory);
+  border: 1px solid color-mix(in srgb, var(--ivory) 42%, transparent); }
+.f-plum .btn.adv-cta2:hover, .f-plum .btn.adv-cta2:focus-visible {
+  background: color-mix(in srgb, var(--ivory) 12%, transparent);
+  border-color: var(--ivory); color: var(--ivory); }
+/* the close stacks its two calls; on a wide band they sit side by side */
+.sai-close__ctas { flex-direction: row; flex-wrap: wrap; align-items: center; }
+@media (max-width: 760px) { .sai-close__ctas { flex-direction: column; align-items: flex-start; } }
+
+.adv-work__ctas { margin-top: 32px; display: flex; flex-wrap: wrap;
+  align-items: center; gap: 16px 32px; }
+.adv-work__ctas .btn.sai-cta { display: inline-flex; width: auto; align-items: center;
+  justify-content: center; gap: 12px; padding-right: 8px; flex-wrap: nowrap;
+  white-space: nowrap; }
+.adv-work__ctas .alink { margin-top: 0; }

@@ -804,93 +804,27 @@ Reporting and your monthly score are included with any selection.
 
 ### How a campaign reaches its first honest number
 
-Five steps, in this order. The first one is the one most accounts skip.
-
 01
 
 ### Access and baseline
-
-Ad accounts and analytics in your name, conversion tracking checked, and the enquiry figure you are starting from written down.
 
 02
 
 ### Structure
 
-Campaigns, ad groups and audiences built around the way you sell, with negative keywords in from the first day.
-
 03
 
 ### Creative
-
-Ads, video cuts and landing pages made for the placement each one runs in.
 
 04
 
 ### Launch and adjust
 
-Budgets and bids move every week on what the search terms and the reports show.
-
 05
 
 ### Report the number
 
-Enquiries, qualified pipeline and new clients first. Cost per click sits underneath, as the explanation.
-
-04 / How the work is done
-
-### The monthly cycle, and what closes each step
-
-An agency will show you the result and keep the working. Here is the working: what runs every month, and what each step has to produce before it counts as done.
-
-Monthly advertising report How it is produced
-
-01
-
-### Agree the number before the budget
-
-We write down the enquiry or pipeline figure the spend has to move, and the date we will read it. Access to the ad accounts and analytics comes first, in your name.
-
-Closes on one agreed number, with today's figure beside it.
-
-02
-
-### Build the account so waste is visible
-
-Campaigns, ad groups and negative keywords are structured so the search-term report can be read at a glance. An account nobody can read is an account nobody can improve.
-
-Closes on a structure and a search-term list you can audit.
-
-03
-
-### Spend, then cut
-
-Every week the search terms are reviewed, negatives are added, creative is rotated, and budget moves toward whatever is producing enquiries you would answer.
-
-Closes on a dated change log for the month.
-
-04
-
-### Report against the number
-
-Enquiries, qualified pipeline and new clients on the first line. Impressions, clicks and cost per click sit underneath as the explanation for the line above them.
-
-Closes on next month, held against this one.
-
-Why it holds
-
-Each platform counts the conversions it can attribute to itself, on its own window. Added together those totals can come to more conversions than you had clients, so the report starts from your CRM.
-
-Every change carries its date, so a month that improved can be told apart from a month the market moved.
-
-Where a channel is not returning, that goes in the report. Moving the budget quietly is how a bad quarter stays invisible.
-
-Read here before it reaches you
-
-A second reader re-runs the checks on the month's numbers, and what they stop is written into the report rather than quietly repaired.
-
-Meet the team →
-
-05 / Content
+04 / Content
 
 ### The half that keeps working after the budget stops
 
@@ -922,7 +856,7 @@ The client's name, the figures and the dates, published once they have said yes 
 
 We do not publish at volume by machine. Google treats value-free scale as spam whatever produced it, and a page nobody needed earns nothing on your behalf.
 
-06 / The limits
+05 / The limits
 
 ### Five things we will not do with your advertising
 
@@ -976,7 +910,7 @@ This one is yours.
 
 The first two are the platform’s own count of its own work. The last two are yours, and they are the pair we report against.
 
-07 / Questions we get asked
+06 / Questions we get asked
 
 ### Frequently asked questions
 

@@ -9423,6 +9423,11 @@ html.js .sai-faq.rv.in .sai-faq__it:nth-child(7), html.js .sai-board__list.rv.in
    note has none either. Scoped to this page's own wrapper rather than to
    .tl, so the sibling is untouched until the founder rules on it. */
 .adv-tl { margin-top: 48px; }
+/* titles only (founder, 17 Sep 2026), so the band is the rail and nothing
+   else: the h3's bottom margin was spacing for a paragraph that no longer
+   exists, and the section takes the tighter padding the seam band uses. */
+.adv-tl .tl__it h3 { margin-bottom: 0; }
+.adv-runs { padding-block: 64px; }
 
 /* ── the money path fills its column ────────────────────────────────────
    The statement column runs to the band's full height and the diagram sat

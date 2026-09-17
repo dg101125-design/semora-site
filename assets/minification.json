@@ -14,10 +14,10 @@
     {
       "source": "assets/css/site.css",
       "output": "assets/css/site.min.css",
-      "source_sha256": "448dfd1376a8c471afb8323045bdf4be402eb63c656003edb7f912c2a3b4309f",
-      "output_sha256": "205ebcb094d05ecf962c136bcfca1e3f7ada692ccc181b21413825e58d5377b6",
-      "source_bytes": 525251,
-      "output_bytes": 265513
+      "source_sha256": "62807d6996eb9317671ba8f44fbf21464417a96854642cd625f6232b438189db",
+      "output_sha256": "64e1ec18eacb313077de41428b5382a5f1031b0e4dfd5ddad31325e11db761ff",
+      "source_bytes": 528945,
+      "output_bytes": 267662
     },
     {
       "source": "assets/js/quote.js",

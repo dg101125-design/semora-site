@@ -8813,6 +8813,7 @@ html.js .sai-faq.rv.in .sai-faq__it:nth-child(7), html.js .sai-board__list.rv.in
 
 /* ── the dial ─────────────────────────────────────────────────────────── */
 .adv-dial { position: relative; aspect-ratio: 1; }
+.adv-dial__ring { position: absolute; inset: 0; }
 .adv-dial__svg { display: block; width: 100%; height: 100%; overflow: visible; }
 .adv-dial__track { fill: none; stroke: color-mix(in srgb, var(--plum-300) 18%, transparent);
   stroke-width: 1; }
@@ -8829,7 +8830,7 @@ html.js .sai-faq.rv.in .sai-faq__it:nth-child(7), html.js .sai-board__list.rv.in
 .adv-dial__hub { fill: var(--plum-ink);
   stroke: color-mix(in srgb, var(--plum-300) 26%, transparent); stroke-width: 1; }
 
-.adv-dial__mid { position: absolute; inset: 26%; display: grid; place-items: center;
+.adv-dial__mid { position: absolute; inset: 26%; z-index: 1; display: grid; place-items: center;
   text-align: center; }
 .adv-dial__card { grid-area: 1 / 1; display: grid; gap: 12px; justify-items: center;
   opacity: 0; visibility: hidden;
@@ -8847,17 +8848,36 @@ html.js .sai-faq.rv.in .sai-faq__it:nth-child(7), html.js .sai-board__list.rv.in
   font-weight: 600; font-size: 19px; line-height: 1.3; letter-spacing: -0.006em;
   color: var(--moss-300); }
 
-/* the four names sit at the corners their arcs point into */
-.adv-dial__pin { position: absolute; cursor: pointer; padding-block: 16px;
+/* the four names sit at the corners their arcs point into. Founder, 17 Sep
+   2026: they read as labels, and a thing you are meant to press has to look
+   pressable. Each is a chip with a dot: outlined while it waits, the house
+   acid pill once it is the one you chose, and a press state that actually
+   moves under the finger. The dot is the aperture's own centre mark, which
+   is why it is the thing that lights. */
+.adv-dial__pin { position: absolute; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 12px 16px;
+  border: 1px solid color-mix(in srgb, var(--plum-300) 34%, transparent);
+  background: color-mix(in srgb, var(--plum-700) 24%, transparent);
   font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546;
   font-weight: 600; font-size: 15px; line-height: 1.24; letter-spacing: -0.006em;
-  text-transform: uppercase; color: var(--plum-100);
-  transition: color 320ms var(--ease); }
-.adv-dial__pin:hover { color: var(--ivory); }
-.adv-dial__pin--1 { top: -16px; left: 0; }
-.adv-dial__pin--2 { top: -16px; right: 0; }
-.adv-dial__pin--3 { bottom: -16px; right: 0; }
-.adv-dial__pin--4 { bottom: -16px; left: 0; }
+  text-transform: uppercase; color: var(--plum-100); white-space: nowrap;
+  transition: color 320ms var(--ease), border-color 320ms var(--ease),
+              background-color 320ms var(--ease), translate 240ms var(--ease),
+              scale 160ms var(--ease); }
+.adv-dial__pin::before { content: ""; flex: none; width: 8px; height: 8px;
+  border-radius: 50%; background: var(--plum-300);
+  transition: background-color 320ms var(--ease); }
+.adv-dial__pin:hover { color: var(--ivory); translate: 0 -2px;
+  border-color: color-mix(in srgb, var(--moss-300) 60%, transparent);
+  background: color-mix(in srgb, var(--plum-700) 44%, transparent); }
+.adv-dial__pin:hover::before { background: var(--moss-300); }
+/* the press: it moves under the finger, which is the whole point of a button */
+.adv-dial__pin:active { translate: 0 0; scale: 0.96; }
+.adv-dial__pin--1 { top: 0; left: 0; }
+.adv-dial__pin--2 { top: 0; right: 0; }
+.adv-dial__pin--3 { bottom: 0; right: 0; }
+.adv-dial__pin--4 { bottom: 0; left: 0; }
 
 /* ── the state, one rule per channel ──────────────────────────────────── */
 #ch-google:checked   ~ .adv-ch__plate .adv-dial__ptr { rotate: -45deg; }
@@ -8874,7 +8894,12 @@ html.js .sai-faq.rv.in .sai-faq__it:nth-child(7), html.js .sai-board__list.rv.in
 #ch-google:checked   ~ .adv-ch__plate .adv-dial__pin--1,
 #ch-youtube:checked  ~ .adv-ch__plate .adv-dial__pin--2,
 #ch-linkedin:checked ~ .adv-ch__plate .adv-dial__pin--3,
-#ch-meta:checked     ~ .adv-ch__plate .adv-dial__pin--4 { color: var(--moss-300); }
+#ch-meta:checked     ~ .adv-ch__plate .adv-dial__pin--4 {
+  color: var(--plum-ink); background: var(--moss-300); border-color: var(--moss-300); }
+#ch-google:checked   ~ .adv-ch__plate .adv-dial__pin--1::before,
+#ch-youtube:checked  ~ .adv-ch__plate .adv-dial__pin--2::before,
+#ch-linkedin:checked ~ .adv-ch__plate .adv-dial__pin--3::before,
+#ch-meta:checked     ~ .adv-ch__plate .adv-dial__pin--4::before { background: var(--plum-ink); }
 
 #ch-google:checked   ~ .adv-ch__plate #d-google,
 #ch-youtube:checked  ~ .adv-ch__plate #d-youtube,
@@ -8913,15 +8938,26 @@ html.js .sai-faq.rv.in .sai-faq__it:nth-child(7), html.js .sai-board__list.rv.in
   color: var(--graph-400); }
 .adv-ch__foot b { font-weight: 600; color: var(--graph-700); }
 
-@media (max-width: 1000px) {
+@media (max-width: 1280px) {
   .adv-ch__plate { grid-template-columns: 1fr; gap: 48px; padding: 32px; border-radius: 0; }
-  .adv-dial { max-width: 420px; margin-inline: auto; }
+  .adv-dial { max-width: 460px; margin-inline: auto; }
+}
+@media (max-width: 1280px) {
+  .adv-dial { aspect-ratio: auto; display: grid; grid-template-columns: 1fr 1fr;
+    gap: 12px; }
+  .adv-dial__ring { position: relative; inset: auto; grid-column: 1 / -1;
+    aspect-ratio: 1; }
+  /* one line per chip: "Google Ads" wrapping made one of the four taller
+     than the other three and the row stopped reading as a set */
+  .adv-dial__pin { position: static; justify-content: center;
+    padding: 16px 12px; gap: 8px; }
+  .adv-dial__pin:hover { translate: 0 0; }
 }
 @media (max-width: 560px) {
   .adv-spec__dl { grid-template-columns: 1fr; }
   .adv-spec__dl dt { padding-right: 0; padding-bottom: 4px; }
   .adv-spec__dl dd { padding-top: 0; background-image: none; }
-  .adv-dial__pin { font-size: 13px; }
+  .adv-dial__pin { font-size: 13px; padding: 16px; }
   .adv-dial__nm { font-size: 22px; }
 }
 
@@ -9146,6 +9182,30 @@ html.js .sai-faq.rv.in .sai-faq__it:nth-child(7), html.js .sai-board__list.rv.in
   html.js .adv-ch.rv.in .adv-dial__pin--2 { animation-delay: 0.38s; }
   html.js .adv-ch.rv.in .adv-dial__pin--3 { animation-delay: 0.50s; }
   html.js .adv-ch.rv.in .adv-dial__pin--4 { animation-delay: 0.62s; }
+
+  /* THE INVITATION. Founder: the buttons need something to draw the eye to
+     the click. Each waiting chip's dot sends one ring out, and the four fire
+     in sequence around the dial in the same direction the orbit travels, so
+     the group reads as one set of four things you can press rather than four
+     separate blinks. It is a ring that grows and fades — a hairline, not a
+     halo; R9 keeps glow off this site.
+
+     The chosen one does not ask, because you have already answered it. That
+     is also what makes the invitation legible: three asking and one silent
+     says which is which before the colour does. */
+  html.js .adv-dial__pin::before { animation: adv-tap 4.4s var(--ease) infinite; }
+  html.js .adv-dial__pin--1::before { animation-delay: 1.6s; }
+  html.js .adv-dial__pin--2::before { animation-delay: 2.7s; }
+  html.js .adv-dial__pin--3::before { animation-delay: 3.8s; }
+  html.js .adv-dial__pin--4::before { animation-delay: 4.9s; }
+  @keyframes adv-tap {
+    0%, 62%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--moss-300) 55%, transparent); }
+    80%           { box-shadow: 0 0 0 9px color-mix(in srgb, var(--moss-300) 0%, transparent); }
+  }
+  html.js #ch-google:checked   ~ .adv-ch__plate .adv-dial__pin--1::before,
+  html.js #ch-youtube:checked  ~ .adv-ch__plate .adv-dial__pin--2::before,
+  html.js #ch-linkedin:checked ~ .adv-ch__plate .adv-dial__pin--3::before,
+  html.js #ch-meta:checked     ~ .adv-ch__plate .adv-dial__pin--4::before { animation: none; }
 
   /* the spec rows arrive behind whichever panel has just been shown */
   html.js .adv-spec__dl > * { animation: rise-in 0.42s var(--ease) both; }

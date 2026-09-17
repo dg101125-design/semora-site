@@ -8664,62 +8664,180 @@ html.js .sai-faq.rv.in .sai-faq__it:nth-child(7), html.js .sai-board__list.rv.in
 .sai-surf--plain { column-gap: 24px; }
 .sai-surf--plain .sai-surf__lab { margin-right: 0; }
 
-/* ── the working board ──────────────────────────────────────────────────
-   What a team looking after your accounts actually produces: a fortnight,
-   four channels, and a column that says which items are sitting with you.
-   It states no result and carries no figure — the approval column is the
-   whole argument, and it is a description of the working, not of an
-   outcome. The shape sizes to its content: a photograph can be cropped by
-   the slash, a panel of words cannot. */
+/* ── the desk: one month of work ────────────────────────────────
+   v2 (18 Sep 2026). The working board is gone. The founder's note: the hero
+   animation did not suit, and the device wanted a lighter ground, taking the
+   sibling page's hero as the reference. The board failed because it looked
+   like telemetry — rows of cells changing state — while the headline
+   promises PEOPLE who look after the account. A dashboard shows machine
+   state; a desk shows human output.
+
+   So: straight overhead onto an ivory desk, the month's work where somebody
+   just put it down. Editorial proofs with a correction mark in the margin, a
+   storyboard strip, a campaign docket with pen ticks and a folded corner,
+   and the report clipped on top, each sheet a degree or two off square. The
+   marks, the ticks and the crooked placement are things only a person does,
+   so "the right team" is shown as the residue of care rather than asserted.
+
+   Three decisions carry it:
+   · It takes the SIBLING'S proportion (1400/781) and the sibling's deeper
+     slash, so the two heroes are the same object in the same crop — which is
+     what "reference as the previous page" asked for. Light where the board
+     was dark: ivory desk and white paper inside the cut, against the plum
+     hero, exactly the figure/ground the photograph has next door.
+   · ONE dark mass. A desk of whites reads thin beside a photograph, so the
+     report — the topmost, focal object — wears an ink band bleeding off both
+     its edges. It is also the only surface the pass of light can be seen on.
+   · NO quantities and NO channel names on the device. The published volumes
+     (2 vs 4 editorial pieces, one video, $15k/mo managed spend) belong to
+     different tiers, and published paid-media scope is Google and Meta;
+     putting any of them on a hero device depicts a package nobody sells.
+     The device carries four craft words and one already-published sentence. */
+/* NO `overflow: hidden` here. The clip-path already clips every descendant,
+   so the declaration bought nothing and cost something: it made the figure a
+   scroll container, and the report deliberately runs off the bottom edge —
+   which audit_layout correctly read as a fixed-height box eating its own
+   content. The bleed is the point (a diagram floats inside its margins; a
+   photograph is a crop of something larger), so the redundant declaration
+   goes and the real check stays sharp. */
 .adv-port { position: relative;
   margin: 0 calc(-1 * ((100vw - min(100vw, var(--maxw))) / 2 + var(--gutter)) - 48px) 0 48px;
+  aspect-ratio: 1400 / 781;
   clip-path: url(#ashape);
-  background-color: var(--plum-ink);
-  background-image: var(--field-lamp);
-  background-repeat: no-repeat; }
-.adv-board { display: grid; gap: 24px; padding: 32px 96px 32px 64px; }
-.adv-board__bar { display: flex; flex-wrap: wrap; align-items: baseline;
-  justify-content: space-between; gap: 4px 24px; padding-bottom: 12px;
-  background: linear-gradient(color-mix(in srgb, var(--plum-300) 28%, transparent),
-    color-mix(in srgb, var(--plum-300) 28%, transparent)) left bottom / 100% 1px no-repeat; }
-.adv-board__doc { font-family: var(--sans); font-variation-settings: normal;
-  font-size-adjust: 0.546; font-weight: 600; font-size: 19px; line-height: 1.3;
-  letter-spacing: -0.006em; color: var(--ivory); }
-.adv-board__of { font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
-  font-size: 11px; letter-spacing: 0.24em; line-height: 1.45; text-transform: uppercase;
-  color: var(--plum-300); }
+  background: color-mix(in srgb, var(--champ-700) 46%, var(--ivory)); }
+/* isolate, or the shade's multiply would reach the hero's plum ground */
+.adv-desk { position: absolute; inset: 0; isolation: isolate; }
 
-.adv-board__grid { position: relative; display: grid;
-  grid-template-columns: max-content minmax(0, 1fr); align-items: center;
-  column-gap: 24px; row-gap: 12px; }
-.adv-board__lab { margin: 0; font-family: var(--mono); font-size-adjust: 0.516;
+/* every object is a sheet of paper: two whites, one champagne edge, and a
+   contact shadow that is TIGHT at the join and wide below it. A symmetrical
+   blur is what turns paper back into a flat rectangle. */
+.adv-obj { position: absolute; }
+.adv-pap { position: absolute; inset: 0; display: flex; flex-direction: column;
+  gap: 12px; padding: 16px; overflow: hidden;
+  background: var(--white); border: 1px solid var(--champ-700);
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--plum-ink) 10%, transparent),
+              0 2px 3px -1px color-mix(in srgb, var(--plum-ink) 12%, transparent),
+              0 26px 32px -22px color-mix(in srgb, var(--plum-ink) 60%, transparent); }
+
+.adv-obj--under { left: 20%;   top: 11%;  width: 20%;   height: 42%; rotate: -5.6deg; }
+.adv-obj--proof { left: 21.5%; top: 6%;   width: 22%;   height: 51%; rotate: -1.8deg; }
+.adv-obj--strip { left: 40%;   top: 7%;   width: 42%;   height: 25%; rotate:  1.6deg; }
+.adv-obj--dock  { left: 60%;   top: 31%;  width: 34%;   height: 27%; rotate:  2.6deg; }
+.adv-obj--rep   { left: 36%;   top: 50%;  width: 52%;   height: 60%; rotate: -0.8deg; }
+
+/* the craft word. Four of them, and they are the whole cast list. */
+.adv-kick { flex: 0 0 auto; margin: 0;
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
+  font-size: 11px; letter-spacing: 0.24em; line-height: 1.45;
+  text-transform: uppercase; color: var(--graph-400); }
+
+/* body copy is RULES on a paper rhythm, never filled grey bars — the second
+   is greeking, the first is a page of writing seen from above. The gradient
+   draws as many lines as the sheet is tall, so it cannot overflow at any
+   width. Two ivory blocks cut the rag: a short last line and one indent. */
+.adv-lines { display: flex; flex-direction: column; flex: 1 1 auto;
+  min-height: 0; gap: 16px; overflow: hidden; }
+.adv-lines i { display: block; min-height: 0;
+  background-image: repeating-linear-gradient(to bottom,
+    var(--champ-700) 0 1px, transparent 1px 14px); }
+/* three paragraphs, each ragging at its own width — one full-width block of
+   even rules is a lined pad, and a lined pad is not a page somebody wrote */
+.adv-lines i:nth-child(1) { flex: 4 1 0; }
+.adv-lines i:nth-child(2) { flex: 3 1 0; width: 79%; }
+/* the paragraph the caret marks is indented away from it */
+.adv-obj--proof .adv-lines i:nth-child(2) { margin-left: 32px; width: 66%; }
+.adv-lines i:nth-child(3) { flex: 2 1 0; width: 56%; }
+/* the report's rows are a FORM, so they rule the full measure and stay even */
+.adv-lines--wide { gap: 0; }
+.adv-lines--wide i { flex: 1 1 auto; width: auto;
+  background-image: repeating-linear-gradient(to bottom,
+    var(--champ-700) 0 1px, transparent 1px 24px); }
+
+/* the insertion caret, in the margin, in the hand colour. It sits on the
+   LEFT, which is the margin the storyboard does not cover — a proof mark
+   half under another sheet reads as a glitch, not as a hand. */
+.adv-mark { position: absolute; left: 16px; top: 46%; width: 24px; height: 26px;
+  fill: none; stroke: var(--plum); stroke-width: 2;
+  stroke-linecap: round; stroke-linejoin: round; }
+
+/* the storyboard. The fourth frame runs off the card, so the strip continues
+   past what the crop shows — the same argument the photograph makes. */
+.adv-frames { --sketch: color-mix(in srgb, var(--champ-700) 32%, transparent);
+  display: flex; flex: 1 1 auto; min-height: 0; gap: 12px;
+  padding-bottom: 8px;
+  background: linear-gradient(var(--champ-700), var(--champ-700))
+              left bottom / 100% 1px no-repeat; }
+.adv-frames i { flex: 0 0 auto; height: 100%; aspect-ratio: 16 / 9;
+  background-color: var(--plum-ink); background-repeat: no-repeat;
+  background-image: linear-gradient(var(--sketch), var(--sketch)),
+                    linear-gradient(var(--sketch), var(--sketch));
+  background-size: 100% 1px, 26% 36%; background-position: 0 68%, 14% 32%; }
+.adv-frames i:nth-child(2) { background-size: 100% 1px, 17% 46%;
+  background-position: 0 60%, 56% 14%; }
+.adv-frames i:nth-child(3) { background-size: 100% 1px, 40% 26%;
+  background-position: 0 72%, 30% 46%; }
+.adv-frames i:nth-child(4) { background-size: 100% 1px, 22% 40%;
+  background-position: 0 64%, 22% 24%; }
+
+/* the docket: a perforated head, four pen ticks, one folded corner */
+.adv-pap--perf { border-top-style: dashed; }
+.adv-ticks { flex: 0 0 auto; width: 68%; height: 16px; fill: none;
+  stroke: var(--moss-700); stroke-width: 2.4;
+  stroke-linecap: round; stroke-linejoin: round; }
+.adv-fold { position: absolute; right: 0; top: 0; width: 24px; height: 24px;
+  background: var(--ivory); clip-path: polygon(100% 0, 100% 100%, 0 0);
+  box-shadow: -1px 1px 0 -0.5px var(--champ-700); }
+
+/* the report, on top and running off the bottom edge. The ink band is the
+   one dark mass in the device; acid sits on it because acid on white is
+   1.67:1 — on the paper below, the same colour is --moss-700. */
+.adv-pap--back { inset: 8px -12px -12px 8px; padding: 0; }
+.adv-rep { padding: 0; gap: 0; }
+.adv-rep__bar { flex: 0 0 auto; margin: 0; display: flex; align-items: center;
+  justify-content: space-between; gap: 24px; padding: 0 32px; height: 44px;
+  background: var(--plum-ink); }
+.adv-rep__bar span { font-family: var(--mono); font-size-adjust: 0.516;
   font-weight: 400; font-size: 11px; letter-spacing: 0.24em; line-height: 1.45;
-  text-transform: uppercase; color: var(--plum-100); }
-.adv-board__row { list-style: none; margin: 0; padding: 0; display: grid;
-  grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 12px; }
-.adv-board__row li { height: 20px;
-  border: 1px solid color-mix(in srgb, var(--plum-300) 26%, transparent); }
-.adv-board__row li.is-live { background: var(--plum-300); border-color: var(--plum-300); }
-.adv-board__row li.is-plan { border-color: color-mix(in srgb, var(--plum-300) 80%, transparent);
-  background: color-mix(in srgb, var(--plum-300) 26%, transparent); }
-.adv-board__row li.is-ok { background: var(--moss-300); border-color: var(--moss-300); }
-/* the fortnight's midpoint, marked the way a plan marks today */
-.adv-board__now { position: absolute; top: 0; bottom: 0; left: 50%; width: 1px;
-  background: color-mix(in srgb, var(--moss-300) 70%, transparent); }
+  text-transform: uppercase; }
+.adv-rep__bar span:first-child { color: var(--moss-300); }
+.adv-rep__bar span + span { color: var(--plum-100); }
+.adv-rep__body { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column;
+  gap: 16px; padding: 24px 32px 0; }
+.adv-rep__h { flex: 0 0 auto; margin: 0; font-size: 17px; font-weight: 500;
+  line-height: 1.3; letter-spacing: -0.006em; color: var(--plum-ink); }
+/* the form, never a figure. There is no account behind this page to put
+   numbers in, and an invented one is the shape a fabrication takes. */
+.adv-rep__cols { flex: 0 0 auto; margin: 0; display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px;
+  padding-bottom: 8px;
+  background: linear-gradient(var(--champ-700), var(--champ-700))
+              left bottom / 100% 1px no-repeat;
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
+  font-size: 9px; letter-spacing: 0.24em; line-height: 1.45;
+  text-transform: uppercase; color: var(--graph-400); }
 
-.adv-board__key { display: flex; flex-wrap: wrap; gap: 8px 24px; }
-.adv-board__k { display: inline-flex; align-items: center; gap: 8px;
-  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 11px;
-  letter-spacing: 0.24em; line-height: 1.45; text-transform: uppercase; color: var(--plum-100); }
-.adv-board__k::before { content: ""; width: 12px; height: 12px;
-  border: 1px solid color-mix(in srgb, var(--plum-300) 40%, transparent); }
-.adv-board__k--live::before { background: var(--plum-300); border-color: var(--plum-300); }
-.adv-board__k--plan::before { border-color: color-mix(in srgb, var(--plum-300) 80%, transparent);
-  background: color-mix(in srgb, var(--plum-300) 26%, transparent); }
-.adv-board__k--ok::before { background: var(--moss-300); border-color: var(--moss-300); }
-.adv-board__say { margin: 0; max-width: 46ch; font-size: 15px; line-height: 1.55;
-  color: var(--plum-100); }
+/* the caption fills the wedge the slash opens in the bottom left. C/O is the
+   postal convention for "in the care of" — the account is the client's, and
+   it is addressed through us. That is the headline, in three characters. */
+.adv-cap { position: absolute; left: 4%; bottom: 7%; margin: 0;
+  display: grid; gap: 4px;
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
+  font-size: 11px; letter-spacing: 0.24em; line-height: 1.45;
+  text-transform: uppercase; color: var(--graph-400); }
+.adv-cap::before { content: ""; width: 24px; height: 1px; background: var(--plum); }
+.adv-cap span { color: var(--plum-700); }
 
+/* the pass of light — a shade crossing the desk, multiplied so it darkens
+   the papers and barely touches the ink band, which is how a shadow behaves.
+   Parked mid-frame when it cannot run, so it stays part of the composition. */
+.adv-shade { position: absolute; inset: -20% -40%; pointer-events: none;
+  mix-blend-mode: multiply; translate: 6% 0;
+  background: linear-gradient(104deg, transparent 38%,
+    color-mix(in srgb, var(--champ-700) 62%, transparent) 50%, transparent 62%); }
+
+@media (max-width: 1240px) {
+  .adv-cap span { display: none; }
+}
 @media (max-width: 1100px) {
   .adv-say__row { grid-template-columns: minmax(0, 1fr); gap: 32px; }
   .hero--adv .adv-say__l .lead { max-width: none; }
@@ -8729,10 +8847,25 @@ html.js .sai-faq.rv.in .sai-faq__it:nth-child(7), html.js .sai-board__list.rv.in
   .hero--adv .adv-say { padding-block: 48px 32px; }
   .adv-say__h { font-size: clamp(28px, 8vw, 40px); max-width: none; }
   .adv-say__row { margin-top: 32px; }
-  .adv-board { padding: 24px 24px 24px 32px; gap: 12px; }
-  .adv-board__grid { grid-template-columns: 1fr; row-gap: 4px; }
-  .adv-board__now { display: none; }
-  .adv-board__say { max-width: none; }
+  /* phone: the same desk with fewer things on it, and squarer, because three
+     objects in a 1.79 letterbox at 350px wide is a row of stamps. The sheets
+     grow and their margins shrink — at 370px a 16px margin is a quarter of
+     the sheet, and the craft word does not fit inside what is left. */
+  .adv-port { margin: 0 calc(-1 * var(--gutter)) 0 0; aspect-ratio: 1400 / 1040; }
+  .adv-obj--under, .adv-obj--dock { display: none; }
+  .adv-obj--proof { left: 14%; top: 4%;  width: 36%; height: 48%; }
+  .adv-obj--strip { left: 54%; top: 8%;  width: 44%; height: 28%; }
+  .adv-obj--rep   { left: 24%; top: 38%; width: 74%; height: 68%; }
+  .adv-pap { padding: 12px; gap: 8px; }
+  .adv-lines { gap: 8px; }
+  .adv-mark { left: 12px; width: 16px; height: 18px; }
+  .adv-obj--proof .adv-lines i:nth-child(2) { margin-left: 24px; }
+  .adv-rep__bar { padding: 0 16px; height: 40px; }
+  .adv-rep__body { padding: 16px 16px 0; gap: 12px; }
+  /* the wedge the caption lives in is 90px wide at this size and the report
+     crosses it, so the line goes rather than sits behind a sheet. The `C/O`
+     on the report's own band carries the convention on its own. */
+  .adv-cap { display: none; }
 }
 
 /* ── the auction, now inside the Google Ads panel ───────────────────────
@@ -9302,47 +9435,42 @@ html.js .sai-faq.rv.in .sai-faq__it:nth-child(7), html.js .sai-board__list.rv.in
   html.js .adv-fun.rv.in .adv-fun__s:nth-child(3) { animation-delay: 0.54s; }
   html.js .adv-fun.rv.in .adv-fun__s:nth-child(4) { animation-delay: 0.64s; }
 
-  /* HERO · the board assembles. The plate wipes in from the right on the
-     site's own res-wave-r, then the fortnight FILLS: every cell that has
-     something in it arrives in reading order, left to right, channel by
-     channel. Forty cells at 22ms is under a second, which is the difference
-     between a board that lands and a board that crawls. */
+  /* HERO · the desk. The plate wipes in on the site's own res-wave-r, then
+     the month LANDS in the order it happened — proofs, storyboard, docket,
+     report last — each sheet dropping the last few pixels onto the desk. The
+     hand marks draw afterwards, because a mark is made after the thing it is
+     made on. Everything here is opacity and translate, so it composites. */
   html.js .hero--adv .adv-port { animation: res-wave-r 0.9s var(--ease) 0.3s both; }
-  html.js .adv-board__row li { opacity: 0; animation: adv-cell 0.42s var(--ease) both; }
-  @keyframes adv-cell { from { opacity: 0; scale: 0.7; } to { opacity: 1; scale: 1; } }
-  html.js .adv-board__grid > .adv-board__row:nth-of-type(1) li { animation-delay: calc(0.90s + var(--i, 0) * 22ms); }
-  html.js .adv-board__grid > .adv-board__row:nth-of-type(2) li { animation-delay: calc(1.12s + var(--i, 0) * 22ms); }
-  html.js .adv-board__grid > .adv-board__row:nth-of-type(3) li { animation-delay: calc(1.34s + var(--i, 0) * 22ms); }
-  html.js .adv-board__grid > .adv-board__row:nth-of-type(4) li { animation-delay: calc(1.56s + var(--i, 0) * 22ms); }
-  html.js .adv-board__row li:nth-child(1)  { --i: 0; }
-  html.js .adv-board__row li:nth-child(2)  { --i: 1; }
-  html.js .adv-board__row li:nth-child(3)  { --i: 2; }
-  html.js .adv-board__row li:nth-child(4)  { --i: 3; }
-  html.js .adv-board__row li:nth-child(5)  { --i: 4; }
-  html.js .adv-board__row li:nth-child(6)  { --i: 5; }
-  html.js .adv-board__row li:nth-child(7)  { --i: 6; }
-  html.js .adv-board__row li:nth-child(8)  { --i: 7; }
-  html.js .adv-board__row li:nth-child(9)  { --i: 8; }
-  html.js .adv-board__row li:nth-child(10) { --i: 9; }
+  html.js .adv-obj { animation: adv-land 0.46s cubic-bezier(.16,.84,.44,1) both; }
+  @keyframes adv-land { from { opacity: 0; translate: 0 18px; } to { opacity: 1; translate: 0 0; } }
+  html.js .adv-obj--under { animation-delay: 0.86s; }
+  html.js .adv-obj--proof { animation-delay: 0.94s; }
+  html.js .adv-obj--strip { animation-delay: 1.04s; }
+  html.js .adv-obj--dock  { animation-delay: 1.14s; }
+  html.js .adv-obj--rep   { animation-delay: 1.26s; }
 
-  /* the week line travels the fortnight and starts again — the one thing on
-     the board that is always moving, because time is */
-  html.js .adv-board__now { animation: adv-week 14s linear 2.2s infinite; }
-  @keyframes adv-week {
-    0%   { left: 6%;  opacity: 0; }
-    6%   { opacity: 1; }
-    88%  { opacity: 1; }
-    100% { left: 100%; opacity: 0; }
-  }
+  /* the marks draw themselves. pathLength="100" so one dash value serves
+     every path regardless of its real length. */
+  html.js .adv-mark path, html.js .adv-ticks path {
+    stroke-dasharray: 100; animation: adv-draw 0.5s var(--ease) both; }
+  @keyframes adv-draw { from { stroke-dashoffset: 100; } to { stroke-dashoffset: 0; } }
+  html.js .adv-mark path:nth-child(1) { animation-delay: 1.50s; }
+  html.js .adv-mark path:nth-child(2) { animation-delay: 1.58s; }
+  html.js .adv-mark path:nth-child(3) { animation-delay: 1.66s; }
+  html.js .adv-ticks path:nth-child(1) { animation-delay: 1.62s; }
+  html.js .adv-ticks path:nth-child(2) { animation-delay: 1.74s; }
+  html.js .adv-ticks path:nth-child(3) { animation-delay: 1.86s; }
+  html.js .adv-ticks path:nth-child(4) { animation-delay: 1.98s; }
 
-  /* the items sitting with you keep asking. A beat, not a blink: 4.4s apart
-     and it stops entirely for anyone who asked for less motion. */
-  html.js .adv-board__row li.is-ok { animation: adv-cell 0.42s var(--ease) both,
-                                                adv-await 4.4s var(--ease) 2.4s infinite; }
-  @keyframes adv-await {
-    0%, 78%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--moss-300) 60%, transparent); }
-    88%           { box-shadow: 0 0 0 5px color-mix(in srgb, var(--moss-300) 0%, transparent); }
-  }
+  /* at rest, two motions on one clock and nothing changes state. The shade
+     crosses the desk on the sibling hero's own 20s, so the two heroes
+     breathe together; the proof's corner lifts and settles against it, which
+     is the only way a flat page says the paper is not stuck down. */
+  html.js .adv-shade { animation: adv-shade 20s linear 2.2s infinite backwards; }
+  @keyframes adv-shade { from { translate: -60% 0; } to { translate: 60% 0; } }
+  html.js .adv-obj--proof .adv-pap { transform-origin: 0 100%;
+    animation: adv-corner 10s ease-in-out 2.4s infinite; }
+  @keyframes adv-corner { 0%, 100% { rotate: 0deg; } 50% { rotate: 0.8deg; } }
 
   /* 06 · the four plates each draw their own rule as they land, so the row
      reads left to right instead of four things appearing at once */
@@ -9373,8 +9501,8 @@ html.js .sai-faq.rv.in .sai-faq__it:nth-child(7), html.js .sai-board__list.rv.in
 /* no-motion: every finished state, no movement */
 @media (prefers-reduced-motion: reduce) {
   .adv-lim__no::after { transform: skewX(var(--slash-skew)) scaleX(1); }
-  .adv-board__row li { opacity: 1; }
-  .adv-board__now { left: 50%; }
+  .adv-obj { opacity: 1; translate: none; }
+  .adv-mark path, .adv-ticks path { stroke-dashoffset: 0; }
 }
 
 

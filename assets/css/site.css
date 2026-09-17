@@ -8657,6 +8657,13 @@ html.js .sai-faq.rv.in .sai-faq__it:nth-child(7), html.js .sai-board__list.rv.in
   align-items: center; justify-content: center; gap: 12px; padding-right: 8px;
   flex-wrap: nowrap; white-space: nowrap; }
 
+/* the rail without its separators (founder, 17 Sep 2026: remove all the
+   little dots after the hero message). The dot was also the spacing, so the
+   gap it used to make is declared here instead. Scoped to this page's own
+   modifier — /seo-ai-search keeps its dots. */
+.sai-surf--plain { column-gap: 24px; }
+.sai-surf--plain .sai-surf__lab { margin-right: 0; }
+
 /* ── the working board ──────────────────────────────────────────────────
    What a team looking after your accounts actually produces: a fortnight,
    four channels, and a column that says which items are sitting with you.

@@ -8782,106 +8782,147 @@ html.js .sai-faq.rv.in .sai-faq__it:nth-child(7), html.js .sai-board__list.rv.in
    2026: 统一设计，统一字体). The only difference between the two strips is
    what they say. */
 
-/* ── 01 · the channel switcher ──────────────────────────────────────────
-   Radio inputs drive it, so it works with no JavaScript and survives a
-   print or an engine render. The panels are siblings of the inputs, which
-   is the only reason :checked ~ can reach them. */
+/* ── 01 · the channel dial ──────────────────────────────────────────────
+   Founder, 17 Sep 2026: the 01-04 tab rail was 很难察觉, the table needed
+   +60% on looks and must not sit on a white floor, and the page read as
+   字体...很多，很凌乱.
+
+   Three answers in one component. (a) The rail becomes a DIAL: four arcs on
+   the diagonals, a pointer that turns to whichever channel is chosen, and a
+   short acid arc orbiting the ring on a nine-second loop so the device is
+   visibly alive before anyone touches it. (b) The section's content is ONE
+   ink plate — there is no white card anywhere in it, and the spec table sits
+   on that plate rather than on a floor of its own. (c) The type inventory in
+   this band is down to five treatments: the mono eyebrow, the h2, the note,
+   the channel name, and one body size. Everything else that used to carry a
+   size of its own is gone with the words it carried.
+
+   Radio-driven, so it works with no JavaScript and survives a print or an
+   engine render. The inputs must be siblings of .adv-ch__plate — that is the
+   only reason :checked ~ can reach the pointer. */
 .adv-ch { position: relative; margin-top: 48px; }
 .adv-ch__in { position: absolute; top: 0; left: 0; width: 1px; height: 1px;
   opacity: 0; pointer-events: none; }
 
-.adv-ch__rail { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
-.adv-ch__rail::after { content: ""; position: absolute; left: 0; top: 0; height: 2px;
-  width: 25%; background: var(--plum-700);
-  transition: translate 420ms var(--ease); }
-#ch-youtube:checked  ~ .adv-ch__rail::after { translate: 100% 0; }
-#ch-linkedin:checked ~ .adv-ch__rail::after { translate: 200% 0; }
-#ch-meta:checked     ~ .adv-ch__rail::after { translate: 300% 0; }
-.adv-ch__tab { display: flex; align-items: baseline; gap: 12px; cursor: pointer;
-  padding: 16px 16px 16px 0;
-  border-top: 2px solid var(--champ-700);
+.adv-ch__plate { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 7fr);
+  gap: 48px; align-items: center; padding: 48px;
+  background-color: var(--plum-ink);
+  background-image: var(--field-lamp);
+  background-repeat: no-repeat;
+  border-radius: 0 96px 0 0; }
+
+/* ── the dial ─────────────────────────────────────────────────────────── */
+.adv-dial { position: relative; aspect-ratio: 1; }
+.adv-dial__svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.adv-dial__track { fill: none; stroke: color-mix(in srgb, var(--plum-300) 18%, transparent);
+  stroke-width: 1; }
+.adv-dial__arc { fill: none; stroke: color-mix(in srgb, var(--plum-300) 70%, transparent);
+  stroke-width: 3; stroke-linecap: round;
+  transition: stroke 420ms var(--ease), stroke-width 420ms var(--ease); }
+/* the orbiting segment: a short arc of the ring, always moving */
+.adv-dial__orbit { fill: none; stroke: var(--ivory); stroke-width: 2; stroke-linecap: round;
+  stroke-dasharray: 20 483; transform-box: view-box; transform-origin: 100px 100px; }
+.adv-dial__ptr { transform-box: view-box; transform-origin: 100px 100px;
+  transition: rotate 620ms var(--ease); }
+.adv-dial__ptr line { stroke: color-mix(in srgb, var(--ivory) 70%, transparent); stroke-width: 2; }
+.adv-dial__ptr circle { fill: var(--moss-300); }
+.adv-dial__hub { fill: var(--plum-ink);
+  stroke: color-mix(in srgb, var(--plum-300) 26%, transparent); stroke-width: 1; }
+
+.adv-dial__mid { position: absolute; inset: 26%; display: grid; place-items: center;
+  text-align: center; }
+.adv-dial__card { grid-area: 1 / 1; display: grid; gap: 12px; justify-items: center;
+  opacity: 0; visibility: hidden;
+  transition: opacity 420ms var(--ease), visibility 420ms var(--ease); }
+.adv-dial__ix { margin: 0; font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
+  font-size: 11px; letter-spacing: 0.24em; line-height: 1.45; text-transform: uppercase;
+  color: var(--plum-300); }
+.adv-dial__nm { margin: 0; font-family: var(--sans); font-variation-settings: normal;
+  font-size-adjust: 0.546; font-weight: 600; font-size: 32px; line-height: 1.2;
+  letter-spacing: -0.01em; color: var(--moss-300); }
+/* the line that used to sit in the hub now opens the panel, where it has a
+   measure instead of a circle */
+.adv-spec__lead { margin: 0 0 32px; max-width: 46ch;
   font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546;
   font-weight: 600; font-size: 19px; line-height: 1.3; letter-spacing: -0.006em;
-  color: var(--graph-400);
-  transition: color 260ms var(--ease), border-color 260ms var(--ease); }
-.adv-ch__tab:hover { color: var(--plum-700); }
-.adv-ch__ix { font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 11px;
-  letter-spacing: 0.24em; line-height: 1.45; text-transform: uppercase; color: var(--graph-400); }
+  color: var(--moss-300); }
 
-#ch-google:checked  ~ .adv-ch__rail [for="ch-google"],
-#ch-youtube:checked ~ .adv-ch__rail [for="ch-youtube"],
-#ch-linkedin:checked ~ .adv-ch__rail [for="ch-linkedin"],
-#ch-meta:checked    ~ .adv-ch__rail [for="ch-meta"] { color: var(--plum-700); }
-#ch-google:checked  ~ .adv-ch__rail [for="ch-google"] .adv-ch__ix,
-#ch-youtube:checked ~ .adv-ch__rail [for="ch-youtube"] .adv-ch__ix,
-#ch-linkedin:checked ~ .adv-ch__rail [for="ch-linkedin"] .adv-ch__ix,
-#ch-meta:checked    ~ .adv-ch__rail [for="ch-meta"] .adv-ch__ix { color: var(--plum); }
+/* the four names sit at the corners their arcs point into */
+.adv-dial__pin { position: absolute; cursor: pointer; padding-block: 16px;
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546;
+  font-weight: 600; font-size: 15px; line-height: 1.24; letter-spacing: -0.006em;
+  text-transform: uppercase; color: var(--plum-100);
+  transition: color 320ms var(--ease); }
+.adv-dial__pin:hover { color: var(--ivory); }
+.adv-dial__pin--1 { top: -16px; left: 0; }
+.adv-dial__pin--2 { top: -16px; right: 0; }
+.adv-dial__pin--3 { bottom: -16px; right: 0; }
+.adv-dial__pin--4 { bottom: -16px; left: 0; }
 
-/* the focus ring has to land on the label, because the input it belongs to
-   is the one pixel holding the state */
-#ch-google:focus-visible  ~ .adv-ch__rail [for="ch-google"],
-#ch-youtube:focus-visible ~ .adv-ch__rail [for="ch-youtube"],
-#ch-linkedin:focus-visible ~ .adv-ch__rail [for="ch-linkedin"],
-#ch-meta:focus-visible    ~ .adv-ch__rail [for="ch-meta"] {
-  outline: 2px solid var(--plum-700); outline-offset: 4px; }
+/* ── the state, one rule per channel ──────────────────────────────────── */
+#ch-google:checked   ~ .adv-ch__plate .adv-dial__ptr { rotate: -45deg; }
+#ch-youtube:checked  ~ .adv-ch__plate .adv-dial__ptr { rotate: 45deg; }
+#ch-linkedin:checked ~ .adv-ch__plate .adv-dial__ptr { rotate: 135deg; }
+#ch-meta:checked     ~ .adv-ch__plate .adv-dial__ptr { rotate: 225deg; }
 
-.adv-ch__stage { position: relative; }
-.adv-ch__p { display: none; }
-#ch-google:checked  ~ .adv-ch__stage #p-google,
-#ch-youtube:checked ~ .adv-ch__stage #p-youtube,
-#ch-linkedin:checked ~ .adv-ch__stage #p-linkedin,
-#ch-meta:checked    ~ .adv-ch__stage #p-meta {
-  display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); }
+#ch-google:checked   ~ .adv-ch__plate .adv-dial__arc--1,
+#ch-youtube:checked  ~ .adv-ch__plate .adv-dial__arc--2,
+#ch-linkedin:checked ~ .adv-ch__plate .adv-dial__arc--3,
+#ch-meta:checked     ~ .adv-ch__plate .adv-dial__arc--4 {
+  stroke: var(--moss-300); stroke-width: 6; }
 
-.adv-ch__p { background: var(--white); border: 1px solid var(--champ-700);
-  border-top: 0; overflow: hidden; }
-.adv-ch__head { padding: 32px; display: grid; gap: 16px; align-content: center;
-  justify-items: start; background: var(--ivory); }
-.adv-ch__ico { display: grid; place-items: center; width: 48px; height: 48px;
-  border-radius: 50%; background: var(--plum-ink); color: var(--moss-300); }
-.adv-ch__ico svg { width: 24px; height: 24px; }
-.adv-ch__p h3 { margin: 0; font-family: var(--sans); font-variation-settings: normal;
-  font-size-adjust: 0.546; font-weight: 600; font-size: 28px; line-height: 1.2;
-  letter-spacing: -0.01em; text-transform: none; color: var(--plum-700); }
-.adv-ch__kick { margin: 4px 0 0; font-family: var(--mono); font-size-adjust: 0.516;
-  font-weight: 400; font-size: 11px; letter-spacing: 0.24em; line-height: 1.45;
-  text-transform: uppercase; color: var(--graph-400); }
-/* the one thing that channel is for, in the note role the sibling uses for
-   exactly this kind of supporting statement */
-.adv-ch__one { margin: 24px 0 0; padding-top: 24px; max-width: 32ch;
-  background: linear-gradient(var(--champ-700), var(--champ-700)) left top / 100% 1px no-repeat;
-  font-size: 17px; line-height: 1.55; color: var(--graph); }
+#ch-google:checked   ~ .adv-ch__plate .adv-dial__pin--1,
+#ch-youtube:checked  ~ .adv-ch__plate .adv-dial__pin--2,
+#ch-linkedin:checked ~ .adv-ch__plate .adv-dial__pin--3,
+#ch-meta:checked     ~ .adv-ch__plate .adv-dial__pin--4 { color: var(--moss-300); }
 
-.adv-ch__dl { margin: 0; padding: 32px; display: grid;
-  grid-template-columns: max-content minmax(0, 1fr); }
-.adv-ch__dl dt, .adv-ch__dl dd { margin: 0; padding: 16px 0;
-  background: linear-gradient(var(--champ-700), var(--champ-700)) left top / 100% 1px no-repeat; }
-.adv-ch__dl > dt:first-of-type, .adv-ch__dl > dt:first-of-type + dd { background-image: none; padding-top: 0; }
-.adv-ch__dl dt { padding-right: 32px;
+#ch-google:checked   ~ .adv-ch__plate #d-google,
+#ch-youtube:checked  ~ .adv-ch__plate #d-youtube,
+#ch-linkedin:checked ~ .adv-ch__plate #d-linkedin,
+#ch-meta:checked     ~ .adv-ch__plate #d-meta { opacity: 1; visibility: visible; }
+
+#ch-google:checked   ~ .adv-ch__plate #p-google,
+#ch-youtube:checked  ~ .adv-ch__plate #p-youtube,
+#ch-linkedin:checked ~ .adv-ch__plate #p-linkedin,
+#ch-meta:checked     ~ .adv-ch__plate #p-meta { display: block; }
+
+/* the focus ring lands on the label, because the input it belongs to is the
+   one pixel holding the state */
+#ch-google:focus-visible   ~ .adv-ch__plate .adv-dial__pin--1,
+#ch-youtube:focus-visible  ~ .adv-ch__plate .adv-dial__pin--2,
+#ch-linkedin:focus-visible ~ .adv-ch__plate .adv-dial__pin--3,
+#ch-meta:focus-visible     ~ .adv-ch__plate .adv-dial__pin--4 {
+  outline: 2px solid var(--moss-300); outline-offset: 4px; }
+
+/* ── the spec table, on the plate ─────────────────────────────────────── */
+.adv-spec { display: none; }
+.adv-spec__dl { margin: 0; display: grid; grid-template-columns: max-content minmax(0, 1fr); }
+.adv-spec__dl dt, .adv-spec__dl dd { margin: 0; padding: 24px 0;
+  background: linear-gradient(color-mix(in srgb, var(--plum-300) 22%, transparent),
+    color-mix(in srgb, var(--plum-300) 22%, transparent)) left top / 100% 1px no-repeat; }
+.adv-spec__dl > dt:first-of-type, .adv-spec__dl > dt:first-of-type + dd {
+  background-image: none; padding-top: 0; }
+.adv-spec__dl dt { padding-right: 32px;
   font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 11px;
-  letter-spacing: 0.24em; line-height: 1.45; text-transform: uppercase; color: var(--graph-400); }
-.adv-ch__dl dd { font-size: 17px; line-height: 1.45; color: var(--graph-900); }
-.adv-ch__dl dt.adv-ch__wrong { color: var(--plum); }
-.adv-ch__dl dd.adv-ch__wrong { color: var(--plum-700); }
+  letter-spacing: 0.24em; line-height: 1.45; text-transform: uppercase; color: var(--plum-300); }
+.adv-spec__dl dd { font-size: 17px; line-height: 1.45; color: var(--ivory); }
+.adv-spec__dl dt.adv-spec__no { color: var(--moss-300); }
+.adv-spec__dl dd.adv-spec__no { color: var(--moss-300); }
 
-.adv-ch__foot { margin: 24px 0 0; max-width: 72ch; font-size: 15px; line-height: 1.45;
+.adv-ch__foot { margin: 32px 0 0; max-width: 72ch; font-size: 15px; line-height: 1.55;
   color: var(--graph-400); }
 .adv-ch__foot b { font-weight: 600; color: var(--graph-700); }
 
-@media (max-width: 960px) {
-  .adv-ch__rail { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  #ch-google:checked  ~ .adv-ch__stage #p-google,
-  #ch-youtube:checked ~ .adv-ch__stage #p-youtube,
-  #ch-linkedin:checked ~ .adv-ch__stage #p-linkedin,
-  #ch-meta:checked    ~ .adv-ch__stage #p-meta { grid-template-columns: 1fr; }
-  .adv-auc { border-radius: 0; padding: 24px; }
-  .adv-ch__head, .adv-ch__dl { padding: 24px; }
+@media (max-width: 1000px) {
+  .adv-ch__plate { grid-template-columns: 1fr; gap: 48px; padding: 32px; border-radius: 0; }
+  .adv-dial { max-width: 420px; margin-inline: auto; }
 }
 @media (max-width: 560px) {
-  .adv-ch__dl { grid-template-columns: 1fr; }
-  .adv-ch__dl dt { padding-right: 0; padding-bottom: 4px; }
-  .adv-ch__dl dd { padding-top: 0; background-image: none; }
-  .adv-ch__tab { font-size: 17px; }
+  .adv-spec__dl { grid-template-columns: 1fr; }
+  .adv-spec__dl dt { padding-right: 0; padding-bottom: 4px; }
+  .adv-spec__dl dd { padding-top: 0; background-image: none; }
+  .adv-dial__pin { font-size: 13px; }
+  .adv-dial__nm { font-size: 22px; }
 }
 
 /* ── the statement band: whose money is whose ───────────────────────────── */
@@ -8992,12 +9033,12 @@ html.js .sai-faq.rv.in .sai-faq__it:nth-child(7), html.js .sai-board__list.rv.in
    the only decoration the band needs: the mark says "not" before the
    heading does. */
 .adv-lim { list-style: none; margin: 48px 0 0; padding: 0; display: grid; }
-.adv-lim__it { display: grid; grid-template-columns: 64px minmax(0, 5fr) minmax(0, 6fr);
+.adv-lim__it { display: grid; grid-template-columns: 48px minmax(0, 5fr) minmax(0, 6fr);
   gap: 32px; padding: 32px 0;
   border-top: 1px solid color-mix(in srgb, var(--plum-300) 26%, transparent);
   transition: background-color 260ms var(--ease); }
 .adv-lim__it:hover { background: color-mix(in srgb, var(--plum-700) 22%, transparent); }
-.adv-lim__no { position: relative; display: inline-block;
+.adv-lim__no { position: relative; display: block; width: 48px; height: 1em;
   justify-self: start; align-self: start;
   font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 15px;
   letter-spacing: 0.24em; line-height: 1.55; color: var(--plum-300); }
@@ -9009,7 +9050,7 @@ html.js .sai-faq.rv.in .sai-faq__it:nth-child(7), html.js .sai-board__list.rv.in
   letter-spacing: -0.006em; color: var(--moss-300); }
 .adv-lim__it p { margin: 0; font-size: 15px; line-height: 1.55; color: var(--plum-100); }
 @media (max-width: 860px) {
-  .adv-lim__it { grid-template-columns: 32px minmax(0, 1fr); gap: 16px; }
+  .adv-lim__it { grid-template-columns: 24px minmax(0, 1fr); gap: 16px; }
   .adv-lim__it p { grid-column: 2; }
 }
 
@@ -9077,28 +9118,41 @@ html.js .sai-faq.rv.in .sai-faq__it:nth-child(7), html.js .sai-board__list.rv.in
     94%, 100% { border-color: transparent; background-color: transparent; }
   }
 
-  /* 01 · the switcher. The rail reads left to right on reveal; the panel
-     wipes up from its own bottom edge whenever the checked panel changes,
-     because the animation re-runs each time display goes from none to
-     grid. */
-  html.js .adv-ch.rv { opacity: 1; transform: none; }
-  html.js .adv-ch.rv:not(.in) .adv-ch__tab { opacity: 0; }
-  html.js .adv-ch.rv.in .adv-ch__tab { animation: rise-in 0.5s var(--ease) both; }
-  html.js .adv-ch.rv.in .adv-ch__tab:nth-child(2) { animation-delay: 0.08s; }
-  html.js .adv-ch.rv.in .adv-ch__tab:nth-child(3) { animation-delay: 0.16s; }
-  html.js .adv-ch.rv.in .adv-ch__tab:nth-child(4) { animation-delay: 0.24s; }
-  html.js .adv-ch__p { animation: adv-panel 0.5s var(--ease) both; }
-  @keyframes adv-panel {
-    from { clip-path: inset(0 0 100% 0); translate: 0 8px; }
-    to   { clip-path: inset(0 0 0 0);    translate: 0 0; }
+  /* 01 · THE DIAL. Founder: the tab rail's animation was 很难察觉. This one
+     is meant to be impossible to miss — something on the ring is always
+     turning, and picking a channel swings the pointer a quarter of the way
+     round on the section's own easing.
+
+     The ring draws itself once on reveal, the orbiting arc never stops, and
+     the pointer and the arc-light are transitions rather than keyframes, so
+     they fire on every change rather than only on the first. */
+  html.js .adv-dial__orbit { animation: adv-orbit 9s linear infinite; }
+  @keyframes adv-orbit { from { rotate: 0deg; } to { rotate: 360deg; } }
+
+  html.js .adv-ch.rv:not(.in) .adv-dial__arc { opacity: 0; }
+  html.js .adv-ch.rv.in .adv-dial__arc { animation: adv-arc 0.6s var(--ease) both; }
+  html.js .adv-ch.rv.in .adv-dial__arc--1 { animation-delay: 0.20s; }
+  html.js .adv-ch.rv.in .adv-dial__arc--2 { animation-delay: 0.32s; }
+  html.js .adv-ch.rv.in .adv-dial__arc--3 { animation-delay: 0.44s; }
+  html.js .adv-ch.rv.in .adv-dial__arc--4 { animation-delay: 0.56s; }
+  @keyframes adv-arc {
+    from { opacity: 0; stroke-dasharray: 0 200; }
+    to   { opacity: 1; stroke-dasharray: 200 0; }
   }
-  /* the rows inside a panel arrive after the panel itself */
-  html.js .adv-ch__dl > * { animation: rise-in 0.4s var(--ease) both; }
-  html.js .adv-ch__dl > :nth-child(1), html.js .adv-ch__dl > :nth-child(2) { animation-delay: 0.30s; }
-  html.js .adv-ch__dl > :nth-child(3), html.js .adv-ch__dl > :nth-child(4) { animation-delay: 0.38s; }
-  html.js .adv-ch__dl > :nth-child(5), html.js .adv-ch__dl > :nth-child(6) { animation-delay: 0.46s; }
-  html.js .adv-ch__dl > :nth-child(7), html.js .adv-ch__dl > :nth-child(8) { animation-delay: 0.54s; }
-  html.js .adv-ch__dl > :nth-child(9), html.js .adv-ch__dl > :nth-child(10) { animation-delay: 0.62s; }
+
+  html.js .adv-ch.rv:not(.in) .adv-dial__pin { opacity: 0; }
+  html.js .adv-ch.rv.in .adv-dial__pin { animation: rise-in 0.5s var(--ease) both; }
+  html.js .adv-ch.rv.in .adv-dial__pin--1 { animation-delay: 0.26s; }
+  html.js .adv-ch.rv.in .adv-dial__pin--2 { animation-delay: 0.38s; }
+  html.js .adv-ch.rv.in .adv-dial__pin--3 { animation-delay: 0.50s; }
+  html.js .adv-ch.rv.in .adv-dial__pin--4 { animation-delay: 0.62s; }
+
+  /* the spec rows arrive behind whichever panel has just been shown */
+  html.js .adv-spec__dl > * { animation: rise-in 0.42s var(--ease) both; }
+  html.js .adv-spec__dl > :nth-child(1), html.js .adv-spec__dl > :nth-child(2) { animation-delay: 0.06s; }
+  html.js .adv-spec__dl > :nth-child(3), html.js .adv-spec__dl > :nth-child(4) { animation-delay: 0.14s; }
+  html.js .adv-spec__dl > :nth-child(5), html.js .adv-spec__dl > :nth-child(6) { animation-delay: 0.22s; }
+  html.js .adv-spec__dl > :nth-child(7), html.js .adv-spec__dl > :nth-child(8) { animation-delay: 0.30s; }
 
   /* the money moves. One dot down each line, offset, so the two payments
      read as two separate things leaving at different times. */
@@ -9276,8 +9330,7 @@ html.js .sai-faq.rv.in .sai-faq__it:nth-child(7), html.js .sai-board__list.rv.in
 .adv-fun__s--pay .adv-fun__d { color: var(--plum-100); }
 .adv-fun__w { margin: 0; padding-top: 12px;
   background: linear-gradient(var(--champ-700), var(--champ-700)) left top / 100% 1px no-repeat;
-  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 11px;
-  letter-spacing: 0.24em; line-height: 1.45; text-transform: uppercase; color: var(--graph-400); }
+  font-size: 15px; line-height: 1.55; color: var(--graph-400); }
 .adv-fun__s--ours .adv-fun__w { color: var(--plum-700); }
 .adv-fun__s--pay .adv-fun__w { color: var(--moss-300);
   background-image: linear-gradient(color-mix(in srgb, var(--plum-300) 34%, transparent),

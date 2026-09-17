@@ -109,12 +109,6 @@ Because you are bidding for a named job title rather than for a search, and ever
 
 Source: https://www.semora.com.au/advertising-content
 
-### Do you run YouTube advertising?
-
-Yes. YouTube campaigns are bought through Google Ads, so they sit in the same account as your Search campaigns and appear in the same report. If you have no film worth running, video production is a separate service and the ads wait until there is something to run.
-
-Source: https://www.semora.com.au/advertising-content
-
 ### Can Google spend more than our daily budget?
 
 On any given day, yes. Google publishes the rule: a campaign can spend up to twice its average daily budget on a busy day, and over a month you are never charged more than 30.4 times that daily average. The monthly figure is the one to budget against. We set daily budgets from the monthly number you signed off, not the other way round.
@@ -124,12 +118,6 @@ Source: https://www.semora.com.au/advertising-content
 ### Can you guarantee a cost per lead?
 
 No. The auction price moves with your competitors, your season and your own conversion rate, and nobody controls all three. What we commit to is the work, the published quantities, the tracking being correct before money runs, and a report that shows the figure whether it improved or not.
-
-Source: https://www.semora.com.au/advertising-content
-
-### What happens in the first month?
-
-Access first: the ad accounts, analytics and your CRM, all in your name, because a campaign measured on numbers we cannot see is a campaign nobody can defend. Then the baseline goes in writing, with the enquiry figure you are starting from and the date it was taken. The account is structured next, with negative keywords in before launch rather than after the first invoice. Creative follows the structure, tracking is tested with a live submission, and the first report lands against the baseline so the number on its top line has a starting point beside it.
 
 Source: https://www.semora.com.au/advertising-content
 

@@ -436,8 +436,6 @@ Audit, keyword and question map, fixes, on-page, content
 
 A report whose first line is enquiries or pipeline
 
-Rankings underneath, as the reason why
-
 02
 
 ### AI search visibility
@@ -698,57 +696,37 @@ commercial fitout melbourne/ who manages social media for small business/ google
 
 Price this yourself → How we report →
 
-Google Ads reaches a person who is already searching for what you sell. YouTube, LinkedIn and Meta reach people before they search, which is a different job and needs a different measure of success.
+Google Ads reaches a person who is already searching. The other three reach people before they search, which is a different job and needs a different measure of success. Turn the dial.
 
-We run whichever of the four your buyers actually use. When a channel cannot be measured against your enquiries, we say so before you fund it.
+01 / 04
 
-01Google Ads 02YouTube 03LinkedIn 04Meta
+Google Ads
 
-### Google Ads
+02 / 04
 
-Intent that already exists
+YouTube
 
-It is the only one of the four where the person has already told you what they want.
+03 / 04
 
-What you buyA place in the auction for a search somebody is making right now. What decides the orderYour bid, the quality of the ad and the page it lands on, and the context of the search. FormatsSearch · Performance Max · Shopping · Display · Demand Gen How we measure itConversions recorded in your own Google Ads and analytics accounts, reconciled against the enquiries your CRM holds. When it is the wrong channelWhen nobody is searching for what you sell yet. Demand you have to create costs less to build on YouTube or LinkedIn than to buy on Search. commercial fitout melbourne
+LinkedIn
 
-B 1
+04 / 04
 
-A 2
+Meta
 
-C 3
+Google Ads YouTube LinkedIn Meta
 
-D 4
+The only one of the four where the person has already told you what they want.
 
-BidQuality
+What decides the orderYour bid, the quality of the ad and its landing page. The top bidder does not always win. FormatsSearch · Performance Max · Shopping · Display · Demand Gen Measured onConversions in your own account, reconciled against your CRM. Wrong whenNobody is searching for what you sell yet. You have about five seconds before a viewer can skip you, and the skip is free to them.
 
-B bids less than A and sits above it. Google orders the ads on the bid, the quality of the ad and its landing page, and the context of the search.
+What decides the orderThe same Google Ads auction, with the creative doing more of the work. FormatsSkippable in-stream · non-skippable · bumper · in-feed · Shorts Measured onWhat happens in search and on your site afterwards. Wrong whenThere is no film worth watching. The only one of the four you can aim at a job title.
 
-### YouTube
+What decides the orderAn auction against everyone else who wants that job title, which is why the click costs what it does. FormatsSponsored Content · Message Ads · Text Ads · Dynamic Ads · Lead Gen Forms Measured onThe Insight Tag, plus pipeline against the accounts you named. Wrong whenYour buyer decides outside work. Sold on who a person is rather than on what they have just typed.
 
-Attention before the search
+What decides the orderYour bid and Meta’s estimate of how likely that person is to act. FormatsAdvantage+ · sales, leads and awareness · feed, Reels and Stories Measured onThe Pixel and the Conversions API together. Wrong whenThe offer needs a conversation first.
 
-You have about five seconds before a viewer can skip you, and the skip is free to them.
-
-What you buyVideo placements, bought through Google Ads on the same account and reported beside your Search campaigns. What decides the orderThe same auction, with the creative doing more of the work. A viewer can skip you after five seconds. FormatsSkippable in-stream · non-skippable · bumper, up to six seconds · in-feed video · Shorts How we measure itViews and view-through are the platform's own numbers. The measure we report is what happens in search and on your site afterwards. When it is the wrong channelWhen there is no film worth watching. Budget behind a weak video reaches more people who now think less of you.
-
-### LinkedIn
-
-The account list, by name
-
-It is the only one of the four you can aim at a job title.
-
-What you buyReach into a list you define by job title, seniority, company size, industry and function, or by uploading the companies you want. What decides the orderAn auction against everyone else who wants that same job title, which is why the click costs what it does. FormatsSponsored Content: single image, video, carousel, document · Message Ads · Text Ads · Dynamic Ads · Lead Gen Forms How we measure itThe LinkedIn Insight Tag, plus the pipeline your CRM records against the named accounts. LinkedIn publishes no rate card, so the cost of a click is discovered in the first month. When it is the wrong channelWhen your buyer decides outside work. Local and consumer services rarely earn back the price of the click here.
-
-### Meta
-
-The feed, and the return visit
-
-It is sold on who a person is rather than on what they have just typed.
-
-What you buyPlacements across Facebook and Instagram, sold against an audience rather than against a search. What decides the orderYour bid and Meta's estimate of how likely that person is to do the thing you asked for. FormatsAdvantage+ campaigns · sales, leads and awareness objectives · feed, Reels and Stories placements How we measure itThe Meta Pixel and the Conversions API together, because a browser can block the pixel and the server-side events fill that gap. When it is the wrong channelWhen the offer needs a conversation before it makes sense. A complex professional service sold into a scrolling feed produces enquiries nobody wants to answer.
-
-Every campaign runs in accounts you own. The Google Ads, Meta and LinkedIn accounts are opened in your name and stay with you, so ending the engagement costs you no history and no rebuild.
+Every campaign runs in accounts you own. They are opened in your name and stay with you, so ending the engagement costs you no history and no rebuild.
 
 We never hold your media budget
 
@@ -776,8 +754,6 @@ Account structure, negatives and the search-term report, read weekly
 
 Conversion tracking checked before budget runs, not after
 
-The spend is billed to you by the platform
-
 02
 
 ### LinkedIn & key-account outreach
@@ -787,8 +763,6 @@ Your named target accounts warmed and worked, under your name.
 The account list agreed with you, by company and by role
 
 Messages drafted for your approval and sent from your profile
-
-Replies and meetings recorded against the account
 
 03
 
@@ -800,8 +774,6 @@ The offer written, and the objection it has to answer named
 
 Creative and a landing page built to match the ad
 
-Tracking live before launch, and a read at four weeks
-
 04
 
 ### Editorial content & case studies
@@ -811,8 +783,6 @@ Two pieces a month, researched, written, published and distributed.
 Written from your practitioners' words, then checked by them
 
 A case study carries the name, the figures and the dates, with a written yes
-
-Nothing published at volume by a machine
 
 05
 
@@ -824,8 +794,6 @@ Scripted from a question your buyers ask you already
 
 One filming block, cut long for YouTube and short for the feed
 
-Captions and stills, so the piece works with the sound off
-
 06
 
 ### Content management, monthly
@@ -836,7 +804,7 @@ One calendar across campaigns, editorial and video
 
 Approvals tracked, so nothing publishes without your yes
 
-Not yet priced. Tell us the scope and we will quote it
+Not yet priced — tell us the scope
 
 03 / How it runs
 
@@ -918,11 +886,7 @@ Why it holds
 
 Each platform counts the conversions it can attribute to itself, on its own window. Added together those totals can come to more conversions than you had clients, so the report starts from your CRM.
 
-Google shows only the search terms a significant number of people used and withholds the rest on privacy grounds, so the report is read as a sample of the account rather than all of it.
-
 Every change carries its date, so a month that improved can be told apart from a month the market moved.
-
-The spend is billed to you by the platform, so our fee does not grow with your budget.
 
 Where a channel is not returning, that goes in the report. Moving the budget quietly is how a bad quarter stays invisible.
 
@@ -938,31 +902,23 @@ Meet the team →
 
 Advertising rents attention for as long as you pay for it. An editorial piece and a video stay on your site and in search afterwards, and they give the ads something worth clicking.
 
-The input
-
 One filming block
 
 Your practitioner answers a question your buyers ask already. Half a day, scripted in advance, and everything below comes out of it.
 
 1 IN → 4 OUT
 
-1 / month
-
 ### The long cut
 
-Edited for YouTube, where a question gets answered in full.
-
-3 platforms
+One a month, edited for YouTube, where a question gets answered in full.
 
 ### The short cuts
 
-Vertical, captioned, made for a feed with the sound off.
-
-2 / month
+Vertical and captioned, cut for three platforms and made for a feed with the sound off.
 
 ### The editorial piece
 
-Written from the same answer, published on your site.
+Two a month, written from the same answer and published on your site.
 
 On permission
 
@@ -978,31 +934,21 @@ We do not publish at volume by machine. Google treats value-free scale as spam w
 
 Each of these is a standing rule here. They are printed so you can hold us to them.
 
-01
-
 ### Put your media spend on our account
 
 You pay the platforms direct. Money passing through an agency is money whose margin you cannot see.
-
-02
 
 ### Price on performance alone
 
 A share-of-result fee needs a reliable baseline, a fixed floor, a cap, one agreed source of truth and terms a lawyer wrote. Without those five it is a bet, and you carry it.
 
-03
-
 ### Buy an email list
 
 Australian spam law requires consent. A purchased list is a fine waiting for a date, and the reply rate was never worth it.
 
-04
-
 ### Publish at volume without a reader
 
 Every piece answers a question somebody actually asks, gets checked for accuracy, and is approved by a person before it goes live.
-
-05
 
 ### Promise a position or a return
 
@@ -1010,37 +956,29 @@ No platform sells one. We commit to the work, the quantities and the reporting, 
 
 Four numbers.One is revenue.
 
-01
-
 ### Impressions
 
 An ad was served. The platform counts it and reports it back to itself.
 
-Their number
-
-02
+This is the platform’s own count.
 
 ### Clicks
 
 Somebody came. The platform counts this one too, and charges you for it.
 
-Their number
-
-03
+This is the platform’s own count.
 
 ### Enquiries
 
 Somebody asked you for something. Your site and your CRM record it.
 
-Your number
-
-04
+This one is yours.
 
 ### Clients
 
 Somebody signed. This is the line your report opens with.
 
-Your number
+This one is yours.
 
 The first two are the platform’s own count of its own work. The last two are yours, and they are the pair we report against.
 
@@ -1064,10 +1002,6 @@ Enough to buy a readable month. A budget that produces two or three conversions 
 
 Because you are bidding for a named job title rather than for a search, and everyone else who wants that title is in the same auction. LinkedIn publishes no rate card, so the real cost of a click is discovered in your first month rather than quoted in a proposal. It earns its price when one client is worth a great deal and the buying committee is several people.
 
-### Do you run YouTube advertising?
-
-Yes. YouTube campaigns are bought through Google Ads, so they sit in the same account as your Search campaigns and appear in the same report. If you have no film worth running, video production is a separate service and the ads wait until there is something to run.
-
 ### Can Google spend more than our daily budget?
 
 On any given day, yes. Google publishes the rule: a campaign can spend up to twice its average daily budget on a busy day, and over a month you are never charged more than 30.4 times that daily average. The monthly figure is the one to budget against. We set daily budgets from the monthly number you signed off, not the other way round.
@@ -1075,10 +1009,6 @@ On any given day, yes. Google publishes the rule: a campaign can spend up to twi
 ### Can you guarantee a cost per lead?
 
 No. The auction price moves with your competitors, your season and your own conversion rate, and nobody controls all three. What we commit to is the work, the published quantities, the tracking being correct before money runs, and a report that shows the figure whether it improved or not.
-
-### What happens in the first month?
-
-Access first: the ad accounts, analytics and your CRM, all in your name, because a campaign measured on numbers we cannot see is a campaign nobody can defend. Then the baseline goes in writing, with the enquiry figure you are starting from and the date it was taken. The account is structured next, with negative keywords in before launch rather than after the first invoice. Creative follows the structure, tracking is tested with a live submission, and the first report lands against the baseline so the number on its top line has a starting point beside it.
 
 ### Is this priced?
 

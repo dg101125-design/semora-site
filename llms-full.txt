@@ -722,7 +722,7 @@ The auctionYour bid, the quality of the ad and its landing page. The top bidder 
 
 The auctionThe same Google Ads auction, with the creative doing more of the work. FormatsSkippable in-streamnon-skippablebumperin-feedShorts Measured onWhat happens in search and on your site afterwards. Wrong whenThere is no film worth watching. The only one of the four you can aim at a job title.
 
-The auctionAn auction against everyone else who wants that job title, which is why the click costs what it does. FormatsSponsored ContentMessage AdsText AdsDynamic AdsLead Gen Forms Measured onThe Insight Tag, plus pipeline against the accounts you named. Wrong whenYour buyer decides outside work. Sold on who a person is rather than on what they have just typed.
+The auctionAn auction against everyone else who wants that job title. LinkedIn publishes no rate card, so what a click costs you is discovered in the first month. FormatsSponsored ContentMessage AdsText AdsDynamic AdsLead Gen Forms Measured onThe Insight Tag, plus pipeline against the accounts you named. Wrong whenYour buyer decides outside work. Sold on who a person is rather than on what they have just typed.
 
 The auctionYour bid and Meta’s estimate of how likely that person is to act. FormatsAdvantage+sales, leads and awarenessfeed, Reels and Stories Measured onThe Pixel and the Conversions API together. Wrong whenThe offer needs a conversation first.
 
@@ -748,7 +748,7 @@ Each is sold on its own. Whichever you take, they land on the same page on the s
 
 ### Google & Meta ads, managed
 
-To $15k a month of your spend
+Up to $15k a month of your spend
 
 Campaigns built, run and optimised weekly. The spend itself is billed to you direct.
 
@@ -758,7 +758,7 @@ Campaigns built, run and optimised weekly. The spend itself is billed to you dir
 
 Your named accounts
 
-Messages drafted for your approval and sent from your own profile.
+Messages drafted for your approval and sent under your name, by you.
 
 03
 
@@ -788,7 +788,7 @@ One scripted, edited video, cut for three platforms. You talk, we do the rest.
 
 ### Content management, monthly
 
-Not yet priced
+Scoped with you
 
 The calendar, the approvals and the publishing, run for you month to month.
 
@@ -842,7 +842,7 @@ No figure yet. This engagement is in delivery. Its measured result publishes whe
 
 See the client projects →
 
-Four numbers.One is revenue.
+Four numbers.Two are yours.
 
 ### Impressions
 
@@ -874,7 +874,7 @@ The first two are the platform’s own count of its own work. The last two are y
 
 ### Frequently asked questions
 
-### Who pays the platforms, you or us?
+### Who pays the platforms?
 
 You do, direct. Your card sits on your own Google Ads, Meta and LinkedIn accounts and the platform bills you for the media. Our fee is separate and published, so it stays the same whether your budget goes up or down that month.
 
@@ -900,13 +900,13 @@ No. The auction price moves with your competitors, your season and your own conv
 
 ### Is this priced?
 
-Yes, in figures, on the quotation page and the homepage. A quote here is arithmetic on published numbers, and the same numbers go to everyone.
+Five of the six carry a figure on the quotation page. Content management is scoped with you before it is priced. A quote here is arithmetic on published numbers, and the same numbers go to everyone.
 
 Start here
 
-### Find out what your advertising is actually returning.
+### Find out where the enquiries are being lost.
 
-The Proof Check reads your accounts, your enquiry path and your last five proposals, and gives you the three things to fix in order. It is $1,000 + GST, and it is credited in full against any engagement you start within 90 days.
+The Proof Check scores the eleven surfaces a buyer checks before they decide, measures your win rate on qualified enquiries, and reads your last five proposals. You get the three to fix, in order. It is $1,000 + GST, credited in full against any engagement you start within 90 days.
 
 Start with the Proof Check Contact SEMORA STUDIO →
 

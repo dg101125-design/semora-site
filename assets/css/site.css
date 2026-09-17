@@ -8714,6 +8714,8 @@ html.js .sai-faq.rv.in .sai-faq__it:nth-child(7), html.js .sai-board__list.rv.in
 .adv-board__k::before { content: ""; width: 12px; height: 12px;
   border: 1px solid color-mix(in srgb, var(--plum-300) 40%, transparent); }
 .adv-board__k--live::before { background: var(--plum-300); border-color: var(--plum-300); }
+.adv-board__k--plan::before { border-color: color-mix(in srgb, var(--plum-300) 80%, transparent);
+  background: color-mix(in srgb, var(--plum-300) 26%, transparent); }
 .adv-board__k--ok::before { background: var(--moss-300); border-color: var(--moss-300); }
 .adv-board__say { margin: 0; max-width: 46ch; font-size: 15px; line-height: 1.55;
   color: var(--plum-100); }

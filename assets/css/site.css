@@ -8596,3 +8596,707 @@ html.js .sai-faq.rv.in .sai-faq__it:nth-child(7), html.js .sai-board__list.rv.in
 
   @keyframes sai-wipe-r { to { clip-path: inset(0 0 0 0); } }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   /advertising-content — the Advertising & Content capability page.
+   DRAFT, 17 September 2026. Decision #57's second page.
+
+   Shipped 17 September 2026 after four founder rounds and
+   "hero section pass". It sits beneath the .sai- block because it is the
+   sibling page's CSS and the two must be read together.
+
+   What is reused rather than rebuilt: .sai-sh (section heads), .sai-svc
+   (service cards), .tl (the five-step walk), .sai-rep (the opened report),
+   .sai-seam, .sai-faq, .sai-close, .qmq, and the whole reveal engine. Two
+   sibling capability pages must not drift apart, and the surest way to keep
+   them together is to let them share the component rather than copy it.
+
+   What is new, and why each one earns its place:
+     .adv-auc   the hero device — a Google auction resolving. It replaces
+                the photograph the sibling page carries, because the founder
+                ruled no founder image and no human image on this page.
+                It carries NO figures: a number here would be a performance
+                claim with no account behind it.
+     .adv-ch    the four channels, as one switcher. Four panels answering
+                the same five questions is the only way a reader can compare
+                them; four cards side by side cannot hold that much text.
+     .adv-flow  where the money goes. A published position (never finance
+                client media spend) drawn rather than asserted.
+     .adv-eng   the content engine: one filming block, four surfaces.
+     .adv-lim   the five refusals, on ink.
+
+   Every length here is on the published type and spacing scales, every
+   colour is a token, and no rule sets font-style.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── HERO v2 ────────────────────────────────────────────────────────────
+   The founder's line is 58 characters. The sibling page's 34% statement
+   column holds about eleven at the shared 56px, so the headline broke into
+   six lines and the hero read as a wall — which is most of what a 50 was
+   scoring. The headline now runs the full measure in two lines, and the
+   lead, the buttons and the device take the row beneath it.
+
+   Every type role is the sibling's, unchanged: .lab is mono 11/0.24em, the
+   h1 is sans 56/600 uppercase, .lead is sans 19/400, .btn is 12px, the rail
+   is the same .sai-surf. Only the proportions moved. */
+.hero--adv { position: relative; overflow: hidden; padding-block: 0;
+  min-height: clamp(600px, 84vh, 800px); display: grid; align-items: center; }
+.hero--adv .wrap { padding-bottom: 0; }
+.hero--adv .wrap.adv-say { position: relative; z-index: 3; width: 100%; padding-block: 64px 48px; }
+/* the headline takes the measure; nothing else in the hero does */
+.adv-say__h { font-size: 56px; max-width: 24ch; }
+.adv-say__row { margin-top: 48px; display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 48px; align-items: start; }
+.adv-say__l { min-width: 0; }
+.hero--adv .adv-say__l .lead { max-width: 40ch; margin-top: 0; }
+.hero--adv .adv-say__l .cta-row { margin-top: 32px; align-items: center; }
+/* the rail closes the left column level with the board */
+.hero--adv .adv-say__l .sai-surf { margin-top: 48px; }
+/* the CTA is an object, not a line of text: label and disc on one row */
+.hero--adv .cta-row .btn.sai-cta { display: inline-flex; width: auto;
+  align-items: center; justify-content: center; gap: 12px; padding-right: 8px;
+  flex-wrap: nowrap; white-space: nowrap; }
+
+/* ── the working board ──────────────────────────────────────────────────
+   What a team looking after your accounts actually produces: a fortnight,
+   four channels, and a column that says which items are sitting with you.
+   It states no result and carries no figure — the approval column is the
+   whole argument, and it is a description of the working, not of an
+   outcome. The shape sizes to its content: a photograph can be cropped by
+   the slash, a panel of words cannot. */
+.adv-port { position: relative;
+  margin: 0 calc(-1 * ((100vw - min(100vw, var(--maxw))) / 2 + var(--gutter)) - 48px) 0 48px;
+  clip-path: url(#ashape);
+  background-color: var(--plum-ink);
+  background-image: var(--field-lamp);
+  background-repeat: no-repeat; }
+.adv-board { display: grid; gap: 24px; padding: 32px 96px 32px 64px; }
+.adv-board__bar { display: flex; flex-wrap: wrap; align-items: baseline;
+  justify-content: space-between; gap: 4px 24px; padding-bottom: 12px;
+  background: linear-gradient(color-mix(in srgb, var(--plum-300) 28%, transparent),
+    color-mix(in srgb, var(--plum-300) 28%, transparent)) left bottom / 100% 1px no-repeat; }
+.adv-board__doc { font-family: var(--sans); font-variation-settings: normal;
+  font-size-adjust: 0.546; font-weight: 600; font-size: 19px; line-height: 1.3;
+  letter-spacing: -0.006em; color: var(--ivory); }
+.adv-board__of { font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
+  font-size: 11px; letter-spacing: 0.24em; line-height: 1.45; text-transform: uppercase;
+  color: var(--plum-300); }
+
+.adv-board__grid { position: relative; display: grid;
+  grid-template-columns: max-content minmax(0, 1fr); align-items: center;
+  column-gap: 24px; row-gap: 12px; }
+.adv-board__lab { margin: 0; font-family: var(--mono); font-size-adjust: 0.516;
+  font-weight: 400; font-size: 11px; letter-spacing: 0.24em; line-height: 1.45;
+  text-transform: uppercase; color: var(--plum-100); }
+.adv-board__row { list-style: none; margin: 0; padding: 0; display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 12px; }
+.adv-board__row li { height: 20px;
+  border: 1px solid color-mix(in srgb, var(--plum-300) 26%, transparent); }
+.adv-board__row li.is-live { background: var(--plum-300); border-color: var(--plum-300); }
+.adv-board__row li.is-plan { border-color: color-mix(in srgb, var(--plum-300) 80%, transparent);
+  background: color-mix(in srgb, var(--plum-300) 26%, transparent); }
+.adv-board__row li.is-ok { background: var(--moss-300); border-color: var(--moss-300); }
+/* the fortnight's midpoint, marked the way a plan marks today */
+.adv-board__now { position: absolute; top: 0; bottom: 0; left: 50%; width: 1px;
+  background: color-mix(in srgb, var(--moss-300) 70%, transparent); }
+
+.adv-board__key { display: flex; flex-wrap: wrap; gap: 8px 24px; }
+.adv-board__k { display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 11px;
+  letter-spacing: 0.24em; line-height: 1.45; text-transform: uppercase; color: var(--plum-100); }
+.adv-board__k::before { content: ""; width: 12px; height: 12px;
+  border: 1px solid color-mix(in srgb, var(--plum-300) 40%, transparent); }
+.adv-board__k--live::before { background: var(--plum-300); border-color: var(--plum-300); }
+.adv-board__k--ok::before { background: var(--moss-300); border-color: var(--moss-300); }
+.adv-board__say { margin: 0; max-width: 46ch; font-size: 15px; line-height: 1.55;
+  color: var(--plum-100); }
+
+@media (max-width: 1100px) {
+  .adv-say__row { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .hero--adv .adv-say__l .lead { max-width: none; }
+}
+@media (max-width: 760px) {
+  .hero--adv { min-height: 0; display: block; }
+  .hero--adv .adv-say { padding-block: 48px 32px; }
+  .adv-say__h { font-size: clamp(28px, 8vw, 40px); max-width: none; }
+  .adv-say__row { margin-top: 32px; }
+  .adv-board { padding: 24px 24px 24px 32px; gap: 12px; }
+  .adv-board__grid { grid-template-columns: 1fr; row-gap: 4px; }
+  .adv-board__now { display: none; }
+  .adv-board__say { max-width: none; }
+}
+
+/* ── the auction, now inside the Google Ads panel ───────────────────────
+   It answered "the highest bid does not win", which is no longer what the
+   hero line says, so it moved to where that sentence is the lesson. An ink
+   plate inside the panel's light head, which keeps its colours and gives
+   that column something to hold. */
+.adv-auc { grid-column: 1 / -1; display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: 24px 48px; padding: 32px 32px 32px 64px;
+  border-radius: 0 0 0 64px;
+  background-color: var(--plum-ink); background-image: var(--field-lamp);
+  background-repeat: no-repeat; }
+.adv-auc__q { grid-column: 1 / -1; max-width: 62ch; display: flex; align-items: center; gap: 8px;
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 13px;
+  letter-spacing: 0.012em; line-height: 1.62; color: var(--ivory);
+  padding-bottom: 12px;
+  border-bottom: 1px solid color-mix(in srgb, var(--plum-300) 28%, transparent); }
+.adv-auc__cur { width: 2px; height: 13px; background: var(--moss-300); flex: none; }
+.adv-auc__rows { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.adv-auc__r { --rowh: 40px; --bid: 0; --qual: 0; --from: 0;
+  display: grid; grid-template-columns: 16px minmax(0, 1fr) 16px;
+  align-items: center; gap: 12px; height: 32px;
+  padding-inline: 8px; border: 1px solid transparent; }
+.adv-auc__r--win { border-color: color-mix(in srgb, var(--moss-300) 55%, transparent);
+  background: color-mix(in srgb, var(--moss-300) 10%, transparent); }
+.adv-auc__n { font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 11px;
+  letter-spacing: 0.24em; line-height: 1.45; text-transform: uppercase; color: var(--plum-300); }
+.adv-auc__bars { display: grid; gap: 4px; }
+.adv-auc__bid, .adv-auc__qual { display: block; height: 6px; }
+.adv-auc__bid { background: var(--plum-300); width: calc(var(--bid) * 100%); }
+.adv-auc__qual { background: var(--moss-300); height: 4px; width: calc(var(--qual) * 100%); }
+.adv-auc__pos { font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 13px;
+  letter-spacing: 0.012em; line-height: 1.62; color: var(--ivory); text-align: right; }
+.adv-auc__r--win .adv-auc__pos { color: var(--moss-300); }
+.adv-auc__read { display: grid; gap: 12px; align-content: center; }
+.adv-auc__key { display: flex; gap: 16px; }
+.adv-auc__k { display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 11px;
+  letter-spacing: 0.24em; line-height: 1.45; text-transform: uppercase; color: var(--plum-100); }
+.adv-auc__k::before { content: ""; width: 12px; height: 4px; }
+.adv-auc__k--bid::before { background: var(--plum-300); }
+.adv-auc__k--qual::before { background: var(--moss-300); }
+.adv-auc__say { margin: 0; font-size: 15px; line-height: 1.55; color: var(--plum-100); }
+.adv-auc__say b { font-weight: 600; color: var(--ivory); }
+
+/* ── the negative-keyword strip ─────────────────────────────────────────
+   The sibling page's marquee carries the questions a buyer asks a machine.
+   This one carries the other side of the same coin: the searches an account
+   pays for and should not. The rule through each one is the negative
+   keyword doing its job. */
+/* Nothing. .qmq is used exactly as /seo-ai-search uses it — same mono, same
+   13px, same colours, same acid slashes, same 36s clock. The strikethrough,
+   the recoloured spans, the slower clock and the caption block underneath
+   were all this page's inventions and all of them are gone (founder, 17 Sep
+   2026: 统一设计，统一字体). The only difference between the two strips is
+   what they say. */
+
+/* ── 01 · the channel switcher ──────────────────────────────────────────
+   Radio inputs drive it, so it works with no JavaScript and survives a
+   print or an engine render. The panels are siblings of the inputs, which
+   is the only reason :checked ~ can reach them. */
+.adv-ch { position: relative; margin-top: 48px; }
+.adv-ch__in { position: absolute; top: 0; left: 0; width: 1px; height: 1px;
+  opacity: 0; pointer-events: none; }
+
+.adv-ch__rail { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.adv-ch__rail::after { content: ""; position: absolute; left: 0; top: 0; height: 2px;
+  width: 25%; background: var(--plum-700);
+  transition: translate 420ms var(--ease); }
+#ch-youtube:checked  ~ .adv-ch__rail::after { translate: 100% 0; }
+#ch-linkedin:checked ~ .adv-ch__rail::after { translate: 200% 0; }
+#ch-meta:checked     ~ .adv-ch__rail::after { translate: 300% 0; }
+.adv-ch__tab { display: flex; align-items: baseline; gap: 12px; cursor: pointer;
+  padding: 16px 16px 16px 0;
+  border-top: 2px solid var(--champ-700);
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546;
+  font-weight: 600; font-size: 19px; line-height: 1.3; letter-spacing: -0.006em;
+  color: var(--graph-400);
+  transition: color 260ms var(--ease), border-color 260ms var(--ease); }
+.adv-ch__tab:hover { color: var(--plum-700); }
+.adv-ch__ix { font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 11px;
+  letter-spacing: 0.24em; line-height: 1.45; text-transform: uppercase; color: var(--graph-400); }
+
+#ch-google:checked  ~ .adv-ch__rail [for="ch-google"],
+#ch-youtube:checked ~ .adv-ch__rail [for="ch-youtube"],
+#ch-linkedin:checked ~ .adv-ch__rail [for="ch-linkedin"],
+#ch-meta:checked    ~ .adv-ch__rail [for="ch-meta"] { color: var(--plum-700); }
+#ch-google:checked  ~ .adv-ch__rail [for="ch-google"] .adv-ch__ix,
+#ch-youtube:checked ~ .adv-ch__rail [for="ch-youtube"] .adv-ch__ix,
+#ch-linkedin:checked ~ .adv-ch__rail [for="ch-linkedin"] .adv-ch__ix,
+#ch-meta:checked    ~ .adv-ch__rail [for="ch-meta"] .adv-ch__ix { color: var(--plum); }
+
+/* the focus ring has to land on the label, because the input it belongs to
+   is the one pixel holding the state */
+#ch-google:focus-visible  ~ .adv-ch__rail [for="ch-google"],
+#ch-youtube:focus-visible ~ .adv-ch__rail [for="ch-youtube"],
+#ch-linkedin:focus-visible ~ .adv-ch__rail [for="ch-linkedin"],
+#ch-meta:focus-visible    ~ .adv-ch__rail [for="ch-meta"] {
+  outline: 2px solid var(--plum-700); outline-offset: 4px; }
+
+.adv-ch__stage { position: relative; }
+.adv-ch__p { display: none; }
+#ch-google:checked  ~ .adv-ch__stage #p-google,
+#ch-youtube:checked ~ .adv-ch__stage #p-youtube,
+#ch-linkedin:checked ~ .adv-ch__stage #p-linkedin,
+#ch-meta:checked    ~ .adv-ch__stage #p-meta {
+  display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); }
+
+.adv-ch__p { background: var(--white); border: 1px solid var(--champ-700);
+  border-top: 0; overflow: hidden; }
+.adv-ch__head { padding: 32px; display: grid; gap: 16px; align-content: center;
+  justify-items: start; background: var(--ivory); }
+.adv-ch__ico { display: grid; place-items: center; width: 48px; height: 48px;
+  border-radius: 50%; background: var(--plum-ink); color: var(--moss-300); }
+.adv-ch__ico svg { width: 24px; height: 24px; }
+.adv-ch__p h3 { margin: 0; font-family: var(--sans); font-variation-settings: normal;
+  font-size-adjust: 0.546; font-weight: 600; font-size: 28px; line-height: 1.2;
+  letter-spacing: -0.01em; text-transform: none; color: var(--plum-700); }
+.adv-ch__kick { margin: 4px 0 0; font-family: var(--mono); font-size-adjust: 0.516;
+  font-weight: 400; font-size: 11px; letter-spacing: 0.24em; line-height: 1.45;
+  text-transform: uppercase; color: var(--graph-400); }
+/* the one thing that channel is for, in the note role the sibling uses for
+   exactly this kind of supporting statement */
+.adv-ch__one { margin: 24px 0 0; padding-top: 24px; max-width: 32ch;
+  background: linear-gradient(var(--champ-700), var(--champ-700)) left top / 100% 1px no-repeat;
+  font-size: 17px; line-height: 1.55; color: var(--graph); }
+
+.adv-ch__dl { margin: 0; padding: 32px; display: grid;
+  grid-template-columns: max-content minmax(0, 1fr); }
+.adv-ch__dl dt, .adv-ch__dl dd { margin: 0; padding: 16px 0;
+  background: linear-gradient(var(--champ-700), var(--champ-700)) left top / 100% 1px no-repeat; }
+.adv-ch__dl > dt:first-of-type, .adv-ch__dl > dt:first-of-type + dd { background-image: none; padding-top: 0; }
+.adv-ch__dl dt { padding-right: 32px;
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 11px;
+  letter-spacing: 0.24em; line-height: 1.45; text-transform: uppercase; color: var(--graph-400); }
+.adv-ch__dl dd { font-size: 17px; line-height: 1.45; color: var(--graph-900); }
+.adv-ch__dl dt.adv-ch__wrong { color: var(--plum); }
+.adv-ch__dl dd.adv-ch__wrong { color: var(--plum-700); }
+
+.adv-ch__foot { margin: 24px 0 0; max-width: 72ch; font-size: 15px; line-height: 1.45;
+  color: var(--graph-400); }
+.adv-ch__foot b { font-weight: 600; color: var(--graph-700); }
+
+@media (max-width: 960px) {
+  .adv-ch__rail { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  #ch-google:checked  ~ .adv-ch__stage #p-google,
+  #ch-youtube:checked ~ .adv-ch__stage #p-youtube,
+  #ch-linkedin:checked ~ .adv-ch__stage #p-linkedin,
+  #ch-meta:checked    ~ .adv-ch__stage #p-meta { grid-template-columns: 1fr; }
+  .adv-auc { border-radius: 0; padding: 24px; }
+  .adv-ch__head, .adv-ch__dl { padding: 24px; }
+}
+@media (max-width: 560px) {
+  .adv-ch__dl { grid-template-columns: 1fr; }
+  .adv-ch__dl dt { padding-right: 0; padding-bottom: 4px; }
+  .adv-ch__dl dd { padding-top: 0; background-image: none; }
+  .adv-ch__tab { font-size: 17px; }
+}
+
+/* ── the statement band: whose money is whose ───────────────────────────── */
+.adv-stmt { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 48px; align-items: center; }
+.adv-stmt__pre { margin: 0; font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
+  font-size: 11px; letter-spacing: 0.24em; line-height: 1.45; text-transform: uppercase;
+  color: var(--moss-300); }
+.adv-stmt__p { margin: 16px 0 0; font-family: var(--sans); font-variation-settings: normal;
+  font-size-adjust: 0.546; font-weight: 600; font-size: 56px; line-height: 1.14;
+  letter-spacing: -0.014em; color: var(--ivory); }
+.adv-stmt__sub { margin: 24px 0 0; max-width: 52ch; font-size: 17px; line-height: 1.55;
+  color: var(--moss-100); }
+
+.adv-flow { margin: 0; display: grid; gap: 32px; }
+.adv-flow__row { display: grid; grid-template-columns: max-content minmax(0, 1fr) max-content;
+  align-items: center; gap: 16px; }
+.adv-flow__row--fee { grid-template-columns: max-content minmax(0, 1fr) max-content; }
+.adv-flow__row--fee .adv-flow__line { grid-column: 2; }
+.adv-flow__row--fee .adv-flow__n { grid-column: 3; }
+.adv-flow__n { display: inline-block; padding: 12px 16px;
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546;
+  font-weight: 600; font-size: 15px; line-height: 1.24; letter-spacing: -0.006em;
+  text-transform: uppercase; }
+.adv-flow__n--you { background: var(--ivory); color: var(--plum-ink); }
+.adv-flow__n--plat { border: 1px solid color-mix(in srgb, var(--ivory) 34%, transparent); color: var(--ivory); }
+.adv-flow__n--us { background: var(--moss-300); color: var(--plum-ink); }
+.adv-flow__line { position: relative; height: 1px;
+  background: color-mix(in srgb, var(--ivory) 40%, transparent); }
+.adv-flow__line::after { content: ""; position: absolute; top: 50%; left: 0;
+  width: 6px; height: 6px; border-radius: 50%; translate: 0 -50%; background: var(--moss-300); }
+.adv-flow__lab { position: absolute; left: 0; bottom: 8px; white-space: nowrap;
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 11px;
+  letter-spacing: 0.24em; line-height: 1.45; text-transform: uppercase; color: var(--moss-300); }
+
+@media (max-width: 860px) {
+  .adv-stmt { grid-template-columns: 1fr; gap: 32px; }
+  .adv-stmt__p { font-size: 40px; }
+  .adv-flow__row, .adv-flow__row--fee { grid-template-columns: 1fr; gap: 12px; }
+  .adv-flow__row--fee .adv-flow__line, .adv-flow__row--fee .adv-flow__n { grid-column: 1; }
+  .adv-flow__line { height: 24px; width: 1px; margin-left: 24px; }
+  .adv-flow__lab { position: static; display: block; padding-left: 16px; }
+  .adv-flow__n { justify-self: start; }
+}
+
+/* ── 04 · the report's sign-off, without a photograph ────────────────────
+   The sibling page signs its report with the founder's portrait. Founder,
+   17 Sep 2026: no founder image and no human image on this page. The seal is
+   the aperture at the same 64px the portrait held, so the row's rhythm is
+   unchanged and nothing had to be re-measured. */
+.adv-rep__seal { flex: none; display: grid; place-items: center; width: 64px; height: 64px;
+  border-radius: 50%; background: var(--plum-ink); color: var(--ivory); }
+.adv-rep__seal svg { width: 40px; height: 40px; }
+
+/* ── 05 · the content engine ────────────────────────────────────────────
+   One input, four outputs. The fan is four strokes on the house angle; the
+   quantities beside each output are the ones the quotation builder
+   publishes, so a reader can hold us to them. */
+.adv-eng { margin: 48px 0 0; display: grid;
+  grid-template-columns: minmax(0, 4fr) 96px minmax(0, 8fr); align-items: stretch; gap: 24px; }
+.adv-eng__in { padding: 32px; background: var(--plum-ink); color: var(--ivory);
+  border-radius: 0 64px 0 0; display: grid; align-content: center; gap: 12px; }
+.adv-eng__ix { margin: 0; font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
+  font-size: 11px; letter-spacing: 0.24em; line-height: 1.45; text-transform: uppercase;
+  color: var(--plum-300); }
+.adv-eng__cnt { margin: 16px 0 0; padding-top: 16px;
+  background: linear-gradient(color-mix(in srgb, var(--plum-300) 30%, transparent),
+    color-mix(in srgb, var(--plum-300) 30%, transparent)) left top / 100% 1px no-repeat;
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 15px;
+  letter-spacing: 0.24em; line-height: 1.55; color: var(--plum-100); }
+.adv-eng__cnt b { font-weight: 400; color: var(--moss-300); }
+.adv-eng__lab { margin: 0; font-family: var(--sans); font-variation-settings: normal;
+  font-size-adjust: 0.546; font-weight: 600; font-size: 19px; line-height: 1.3;
+  letter-spacing: -0.006em; color: var(--moss-300); }
+.adv-eng__note { margin: 0; font-size: 15px; line-height: 1.55; color: var(--plum-100); }
+.adv-eng__fan { position: relative; height: 128px; }
+.adv-eng__fan i { position: absolute; left: 0; top: 50%; width: 96px; height: 1px;
+  background: var(--champ-700); transform-origin: left center; }
+.adv-eng__fan i::after { content: ""; position: absolute; top: 50%; left: 0;
+  width: 6px; height: 6px; border-radius: 50%; translate: 0 -50%; background: var(--plum-300); }
+.adv-eng__fan i:nth-child(1) { rotate: -32deg; }
+.adv-eng__fan i:nth-child(2) { rotate: -11deg; }
+.adv-eng__fan i:nth-child(3) { rotate: 11deg; }
+.adv-eng__fan i:nth-child(4) { rotate: 32deg; }
+.adv-eng__out { list-style: none; margin: 0; padding: 0; display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.adv-eng__o { padding: 32px; background: var(--ivory); border: 1px solid var(--champ-700);
+  transition: border-color 260ms var(--ease), transform 260ms var(--ease); }
+.adv-eng__o:hover { border-color: var(--plum); transform: translateY(-4px); }
+.adv-eng__q { display: inline-block; margin-bottom: 12px;
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 11px;
+  letter-spacing: 0.24em; line-height: 1.45; text-transform: uppercase; color: var(--plum-700); }
+.adv-eng__o h3 { margin: 0; font-family: var(--sans); font-variation-settings: normal;
+  font-size-adjust: 0.546; font-weight: 600; font-size: 19px; line-height: 1.3;
+  letter-spacing: -0.006em; color: var(--graph-900); }
+.adv-eng__o p { margin: 8px 0 0; font-size: 15px; line-height: 1.45; color: var(--graph); }
+.adv-eng__foot { margin: 32px 0 0; max-width: 72ch; font-size: 15px; line-height: 1.45;
+  color: var(--graph-400); }
+@media (max-width: 960px) {
+  .adv-eng { grid-template-columns: 1fr; gap: 24px; }
+  .adv-eng__fan { display: none; }
+  .adv-eng__in { border-radius: 0; }
+}
+@media (max-width: 560px) { .adv-eng__out { grid-template-columns: 1fr; } }
+
+/* ── 07 · the five refusals ─────────────────────────────────────────────
+   On ink. The numeral carries the house slash struck through it, which is
+   the only decoration the band needs: the mark says "not" before the
+   heading does. */
+.adv-lim { list-style: none; margin: 48px 0 0; padding: 0; display: grid; }
+.adv-lim__it { display: grid; grid-template-columns: 64px minmax(0, 5fr) minmax(0, 6fr);
+  gap: 32px; padding: 32px 0;
+  border-top: 1px solid color-mix(in srgb, var(--plum-300) 26%, transparent);
+  transition: background-color 260ms var(--ease); }
+.adv-lim__it:hover { background: color-mix(in srgb, var(--plum-700) 22%, transparent); }
+.adv-lim__no { position: relative; display: inline-block;
+  justify-self: start; align-self: start;
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 15px;
+  letter-spacing: 0.24em; line-height: 1.55; color: var(--plum-300); }
+.adv-lim__no::after { content: ""; position: absolute; left: 0; right: -4px; top: 50%;
+  translate: 0 -50%; height: 1px; background: var(--moss-300); transform: skewX(var(--slash-skew)) scaleX(0);
+  transform-origin: left; }
+.adv-lim__it h3 { margin: 0; font-family: var(--sans); font-variation-settings: normal;
+  font-size-adjust: 0.546; font-weight: 600; font-size: 19px; line-height: 1.3;
+  letter-spacing: -0.006em; color: var(--moss-300); }
+.adv-lim__it p { margin: 0; font-size: 15px; line-height: 1.55; color: var(--plum-100); }
+@media (max-width: 860px) {
+  .adv-lim__it { grid-template-columns: 32px minmax(0, 1fr); gap: 16px; }
+  .adv-lim__it p { grid-column: 2; }
+}
+
+/* ══════════════════ CHOREOGRAPHY ══════════════════
+   Founder point 5: animation design is part of the brief. The vocabulary is
+   the site's own — rise-in, the clip wipes, the reveal delay hook --rvd —
+   plus four moves this page needed and did not have:
+
+     adv-bar     a bid bar growing to its own ratio
+     adv-swap    the auction resolving: the big bidder drops one place
+     adv-pos     the positions arriving only after the order settles
+     adv-send    money travelling down a line, once every few seconds
+
+   Every block is inside prefers-reduced-motion: no-preference, so a visitor
+   who asks for less gets the finished state and no movement. Anything that
+   hides a child for its entrance is gated on :not(.in) — an ungated
+   opacity: 0 on .rv children has already shipped a band that animated in and
+   then vanished. */
+@media (prefers-reduced-motion: no-preference) {
+
+  /* the stage assembles on load, like the sibling page's */
+  html.js .hero--adv .adv-port { animation: res-wave-r 0.9s var(--ease) 0.3s both; }
+
+  /* the caret blinks while the query sits there */
+  html.js .adv-auc__cur { animation: adv-cur 1.1s steps(1, end) infinite; }
+  @keyframes adv-cur { 0%, 55% { opacity: 1; } 55.01%, 100% { opacity: 0; } }
+
+  /* the bars grow to the ratio their own row declares */
+  html.js .adv-auc__bid  { animation: adv-bar 0.8s var(--ease) both; }
+  html.js .adv-auc__qual { animation: adv-bar 0.8s var(--ease) both; }
+  html.js .adv-auc__r:nth-child(1) .adv-auc__bid  { animation-delay: 1.0s; }
+  html.js .adv-auc__r:nth-child(1) .adv-auc__qual { animation-delay: 1.1s; }
+  html.js .adv-auc__r:nth-child(2) .adv-auc__bid  { animation-delay: 1.2s; }
+  html.js .adv-auc__r:nth-child(2) .adv-auc__qual { animation-delay: 1.3s; }
+  html.js .adv-auc__r:nth-child(3) .adv-auc__bid  { animation-delay: 1.4s; }
+  html.js .adv-auc__r:nth-child(3) .adv-auc__qual { animation-delay: 1.5s; }
+  html.js .adv-auc__r:nth-child(4) .adv-auc__bid  { animation-delay: 1.6s; }
+  html.js .adv-auc__r:nth-child(4) .adv-auc__qual { animation-delay: 1.7s; }
+  @keyframes adv-bar { from { width: 0; } }
+
+  /* then the order resolves, and keeps resolving: an 11s loop, most of it
+     spent at rest in the settled order, so the stage is alive without ever
+     being busy. --to is the number of row heights the row travels. */
+  html.js .adv-auc__r { animation: adv-swap 11s var(--ease) 2.2s infinite; }
+  @keyframes adv-swap {
+    0%, 6%     { translate: 0 calc(var(--from) * var(--rowh)); }
+    16%, 88%   { translate: 0 0; }
+    98%, 100%  { translate: 0 calc(var(--from) * var(--rowh)); }
+  }
+  html.js .adv-auc__pos { opacity: 0; animation: adv-pos 11s var(--ease) 2.2s infinite; }
+  @keyframes adv-pos {
+    0%, 18%    { opacity: 0; }
+    26%, 86%   { opacity: 1; }
+    94%, 100%  { opacity: 0; }
+  }
+  /* the winning row's outline arrives with its position */
+  html.js .adv-auc__r--win { animation: adv-swap 11s var(--ease) 2.2s infinite,
+                                        adv-win 11s var(--ease) 2.2s infinite; }
+  /* before JS arms it the winning row is already marked, which is correct:
+     the markup carries the resolved auction. */
+  @keyframes adv-win {
+    0%, 18%   { border-color: transparent; background-color: transparent; }
+    26%, 86%  { border-color: color-mix(in srgb, var(--moss-300) 55%, transparent);
+                background-color: color-mix(in srgb, var(--moss-300) 10%, transparent); }
+    94%, 100% { border-color: transparent; background-color: transparent; }
+  }
+
+  /* 01 · the switcher. The rail reads left to right on reveal; the panel
+     wipes up from its own bottom edge whenever the checked panel changes,
+     because the animation re-runs each time display goes from none to
+     grid. */
+  html.js .adv-ch.rv { opacity: 1; transform: none; }
+  html.js .adv-ch.rv:not(.in) .adv-ch__tab { opacity: 0; }
+  html.js .adv-ch.rv.in .adv-ch__tab { animation: rise-in 0.5s var(--ease) both; }
+  html.js .adv-ch.rv.in .adv-ch__tab:nth-child(2) { animation-delay: 0.08s; }
+  html.js .adv-ch.rv.in .adv-ch__tab:nth-child(3) { animation-delay: 0.16s; }
+  html.js .adv-ch.rv.in .adv-ch__tab:nth-child(4) { animation-delay: 0.24s; }
+  html.js .adv-ch__p { animation: adv-panel 0.5s var(--ease) both; }
+  @keyframes adv-panel {
+    from { clip-path: inset(0 0 100% 0); translate: 0 8px; }
+    to   { clip-path: inset(0 0 0 0);    translate: 0 0; }
+  }
+  /* the rows inside a panel arrive after the panel itself */
+  html.js .adv-ch__dl > * { animation: rise-in 0.4s var(--ease) both; }
+  html.js .adv-ch__dl > :nth-child(1), html.js .adv-ch__dl > :nth-child(2) { animation-delay: 0.30s; }
+  html.js .adv-ch__dl > :nth-child(3), html.js .adv-ch__dl > :nth-child(4) { animation-delay: 0.38s; }
+  html.js .adv-ch__dl > :nth-child(5), html.js .adv-ch__dl > :nth-child(6) { animation-delay: 0.46s; }
+  html.js .adv-ch__dl > :nth-child(7), html.js .adv-ch__dl > :nth-child(8) { animation-delay: 0.54s; }
+  html.js .adv-ch__dl > :nth-child(9), html.js .adv-ch__dl > :nth-child(10) { animation-delay: 0.62s; }
+
+  /* the money moves. One dot down each line, offset, so the two payments
+     read as two separate things leaving at different times. */
+  html.js .adv-flow__line--spend::after { animation: adv-send 3.2s var(--ease) infinite; }
+  html.js .adv-flow__line--fee::after   { animation: adv-send 3.2s var(--ease) 1.6s infinite; }
+  @keyframes adv-send {
+    0%        { left: 0; opacity: 0; }
+    10%       { opacity: 1; }
+    82%       { opacity: 1; }
+    100%      { left: 100%; opacity: 0; }
+  }
+
+  /* 05 · the fan draws, then the four outputs land along it */
+  html.js .adv-eng.rv:not(.in) .adv-eng__fan i { transform: scaleX(0); }
+  html.js .adv-eng.rv.in .adv-eng__fan i { animation: adv-fan 0.5s var(--ease) both; }
+  html.js .adv-eng.rv.in .adv-eng__fan i:nth-child(1) { animation-delay: 0.20s; }
+  html.js .adv-eng.rv.in .adv-eng__fan i:nth-child(2) { animation-delay: 0.30s; }
+  html.js .adv-eng.rv.in .adv-eng__fan i:nth-child(3) { animation-delay: 0.40s; }
+  html.js .adv-eng.rv.in .adv-eng__fan i:nth-child(4) { animation-delay: 0.50s; }
+  @keyframes adv-fan { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  html.js .adv-eng.rv:not(.in) .adv-eng__o { opacity: 0; }
+  html.js .adv-eng.rv.in .adv-eng__o { animation: rise-in 0.55s var(--ease) both; }
+  html.js .adv-eng.rv.in .adv-eng__o:nth-child(1) { animation-delay: 0.36s; }
+  html.js .adv-eng.rv.in .adv-eng__o:nth-child(2) { animation-delay: 0.46s; }
+  html.js .adv-eng.rv.in .adv-eng__o:nth-child(3) { animation-delay: 0.56s; }
+  html.js .adv-eng.rv.in .adv-eng__o:nth-child(4) { animation-delay: 0.66s; }
+
+  /* 07 · the refusals. Each row rises, and its numeral is struck through on
+     the house angle as it lands — the mark says "not" before the heading
+     has been read. */
+  html.js .adv-lim.rv { opacity: 1; transform: none; }
+  html.js .adv-lim.rv:not(.in) .adv-lim__it { opacity: 0; }
+  html.js .adv-lim.rv.in .adv-lim__it { animation: rise-in 0.5s var(--ease) both; }
+  html.js .adv-lim.rv.in .adv-lim__it:nth-child(2) { animation-delay: 0.10s; }
+  html.js .adv-lim.rv.in .adv-lim__it:nth-child(3) { animation-delay: 0.20s; }
+  html.js .adv-lim.rv.in .adv-lim__it:nth-child(4) { animation-delay: 0.30s; }
+  html.js .adv-lim.rv.in .adv-lim__it:nth-child(5) { animation-delay: 0.40s; }
+  html.js .adv-lim.rv.in .adv-lim__no::after { animation: adv-strike 0.45s var(--ease) both; }
+  html.js .adv-lim.rv.in .adv-lim__it:nth-child(1) .adv-lim__no::after { animation-delay: 0.36s; }
+  html.js .adv-lim.rv.in .adv-lim__it:nth-child(2) .adv-lim__no::after { animation-delay: 0.46s; }
+  html.js .adv-lim.rv.in .adv-lim__it:nth-child(3) .adv-lim__no::after { animation-delay: 0.56s; }
+  html.js .adv-lim.rv.in .adv-lim__it:nth-child(4) .adv-lim__no::after { animation-delay: 0.66s; }
+  html.js .adv-lim.rv.in .adv-lim__it:nth-child(5) .adv-lim__no::after { animation-delay: 0.76s; }
+  @keyframes adv-strike { to { transform: skewX(var(--slash-skew)) scaleX(1); } }
+
+  /* 05 · a dot leaves the filming block along each stroke */
+  html.js .adv-eng__fan i::after { animation: adv-emit 3.6s var(--ease) infinite; }
+  html.js .adv-eng__fan i:nth-child(1)::after { animation-delay: 0.0s; }
+  html.js .adv-eng__fan i:nth-child(2)::after { animation-delay: 0.3s; }
+  html.js .adv-eng__fan i:nth-child(3)::after { animation-delay: 0.6s; }
+  html.js .adv-eng__fan i:nth-child(4)::after { animation-delay: 0.9s; }
+  @keyframes adv-emit {
+    0%   { left: 0; opacity: 0; }
+    12%  { opacity: 1; }
+    78%  { opacity: 1; }
+    100% { left: 100%; opacity: 0; }
+  }
+
+  /* 06 · the statement lands a line at a time, then the four plates */
+  html.js .adv-fun.rv { opacity: 1; transform: none; }
+  html.js .adv-fun.rv:not(.in) .adv-fun__say > span,
+  html.js .adv-fun.rv:not(.in) .adv-fun__s { opacity: 0; }
+  html.js .adv-fun.rv.in .adv-fun__say > span { animation: rise-in 0.6s var(--ease) both; }
+  html.js .adv-fun.rv.in .adv-fun__say > span:nth-child(2) { animation-delay: 0.14s; }
+  html.js .adv-fun.rv.in .adv-fun__s { animation: rise-in 0.55s var(--ease) both; }
+  html.js .adv-fun.rv.in .adv-fun__s:nth-child(1) { animation-delay: 0.34s; }
+  html.js .adv-fun.rv.in .adv-fun__s:nth-child(2) { animation-delay: 0.44s; }
+  html.js .adv-fun.rv.in .adv-fun__s:nth-child(3) { animation-delay: 0.54s; }
+  html.js .adv-fun.rv.in .adv-fun__s:nth-child(4) { animation-delay: 0.64s; }
+
+  /* HERO · the board assembles. The plate wipes in from the right on the
+     site's own res-wave-r, then the fortnight FILLS: every cell that has
+     something in it arrives in reading order, left to right, channel by
+     channel. Forty cells at 22ms is under a second, which is the difference
+     between a board that lands and a board that crawls. */
+  html.js .hero--adv .adv-port { animation: res-wave-r 0.9s var(--ease) 0.3s both; }
+  html.js .adv-board__row li { opacity: 0; animation: adv-cell 0.42s var(--ease) both; }
+  @keyframes adv-cell { from { opacity: 0; scale: 0.7; } to { opacity: 1; scale: 1; } }
+  html.js .adv-board__grid > .adv-board__row:nth-of-type(1) li { animation-delay: calc(0.90s + var(--i, 0) * 22ms); }
+  html.js .adv-board__grid > .adv-board__row:nth-of-type(2) li { animation-delay: calc(1.12s + var(--i, 0) * 22ms); }
+  html.js .adv-board__grid > .adv-board__row:nth-of-type(3) li { animation-delay: calc(1.34s + var(--i, 0) * 22ms); }
+  html.js .adv-board__grid > .adv-board__row:nth-of-type(4) li { animation-delay: calc(1.56s + var(--i, 0) * 22ms); }
+  html.js .adv-board__row li:nth-child(1)  { --i: 0; }
+  html.js .adv-board__row li:nth-child(2)  { --i: 1; }
+  html.js .adv-board__row li:nth-child(3)  { --i: 2; }
+  html.js .adv-board__row li:nth-child(4)  { --i: 3; }
+  html.js .adv-board__row li:nth-child(5)  { --i: 4; }
+  html.js .adv-board__row li:nth-child(6)  { --i: 5; }
+  html.js .adv-board__row li:nth-child(7)  { --i: 6; }
+  html.js .adv-board__row li:nth-child(8)  { --i: 7; }
+  html.js .adv-board__row li:nth-child(9)  { --i: 8; }
+  html.js .adv-board__row li:nth-child(10) { --i: 9; }
+
+  /* the week line travels the fortnight and starts again — the one thing on
+     the board that is always moving, because time is */
+  html.js .adv-board__now { animation: adv-week 14s linear 2.2s infinite; }
+  @keyframes adv-week {
+    0%   { left: 6%;  opacity: 0; }
+    6%   { opacity: 1; }
+    88%  { opacity: 1; }
+    100% { left: 100%; opacity: 0; }
+  }
+
+  /* the items sitting with you keep asking. A beat, not a blink: 4.4s apart
+     and it stops entirely for anyone who asked for less motion. */
+  html.js .adv-board__row li.is-ok { animation: adv-cell 0.42s var(--ease) both,
+                                                adv-await 4.4s var(--ease) 2.4s infinite; }
+  @keyframes adv-await {
+    0%, 78%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--moss-300) 60%, transparent); }
+    88%           { box-shadow: 0 0 0 5px color-mix(in srgb, var(--moss-300) 0%, transparent); }
+  }
+
+  /* 06 · the four plates each draw their own rule as they land, so the row
+     reads left to right instead of four things appearing at once */
+  html.js .adv-fun.rv:not(.in) .adv-fun__w { opacity: 0; }
+  html.js .adv-fun.rv.in .adv-fun__w { animation: adv-rule 0.5s var(--ease) both; }
+  html.js .adv-fun.rv.in .adv-fun__s:nth-child(1) .adv-fun__w { animation-delay: 0.62s; }
+  html.js .adv-fun.rv.in .adv-fun__s:nth-child(2) .adv-fun__w { animation-delay: 0.72s; }
+  html.js .adv-fun.rv.in .adv-fun__s:nth-child(3) .adv-fun__w { animation-delay: 0.82s; }
+  html.js .adv-fun.rv.in .adv-fun__s:nth-child(4) .adv-fun__w { animation-delay: 0.92s; }
+  @keyframes adv-rule {
+    from { opacity: 0; background-size: 0% 1px; }
+    to   { opacity: 1; background-size: 100% 1px; }
+  }
+
+  /* 02 · the six service cards take the acid edge in sequence. The card is
+     the sibling page's component and is untouched; only this page's own
+     wrapper carries the move, so the two pages cannot drift apart. */
+  html.js .adv-svcs.rv:not(.in) .sai-svc__c { opacity: 0; }
+  html.js .adv-svcs.rv.in .sai-svc__c { animation: rise-in 0.5s var(--ease) both; }
+  html.js .adv-svcs.rv.in .sai-svc__c:nth-child(2) { animation-delay: 0.08s; }
+  html.js .adv-svcs.rv.in .sai-svc__c:nth-child(3) { animation-delay: 0.16s; }
+  html.js .adv-svcs.rv.in .sai-svc__c:nth-child(4) { animation-delay: 0.24s; }
+  html.js .adv-svcs.rv.in .sai-svc__c:nth-child(5) { animation-delay: 0.32s; }
+  html.js .adv-svcs.rv.in .sai-svc__c:nth-child(6) { animation-delay: 0.40s; }
+
+}
+
+/* no-motion: every finished state, no movement */
+@media (prefers-reduced-motion: reduce) {
+  .adv-lim__no::after { transform: skewX(var(--slash-skew)) scaleX(1); }
+  .adv-board__row li { opacity: 1; }
+  .adv-board__now { left: 50%; }
+}
+
+
+/* ── 06 · the four numbers ──────────────────────────────────────────────
+   Equal plates, not a funnel. A narrowing shape is a claim about rates and
+   there is no account behind this page to make one with. The band says whose
+   number each stage is, which is the argument. The last plate wears the acid
+   because it is the one that pays for the month. */
+.adv-fun { display: grid; gap: 48px; }
+.adv-fun__say { margin: 0; display: grid;
+  font-family: var(--sans); font-variation-settings: normal; font-size-adjust: 0.546;
+  font-weight: 600; font-size: clamp(40px, 10.8vw, 96px); line-height: 1.3;
+  letter-spacing: -0.018em; text-transform: uppercase; color: var(--plum-ink); }
+.adv-fun__say > span { display: block; }
+.adv-fun__say--pay { color: var(--plum); }
+.adv-fun__rail { list-style: none; margin: 0; padding: 0; display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+.adv-fun__s { padding: 32px; background: var(--white); border: 1px solid var(--champ-700);
+  display: grid; align-content: start; gap: 16px;
+  transition: border-color 260ms var(--ease), transform 260ms var(--ease); }
+.adv-fun__s:hover { transform: translateY(-4px); border-color: var(--plum); }
+.adv-fun__s--ours { border-color: color-mix(in srgb, var(--plum) 40%, transparent); }
+.adv-fun__s--pay { background: var(--plum-ink); border-color: var(--plum-ink); }
+.adv-fun__ix { margin: 0; font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
+  font-size: 15px; letter-spacing: 0.24em; line-height: 1.55; color: var(--graph-400); }
+.adv-fun__s--pay .adv-fun__ix { color: var(--plum-300); }
+.adv-fun__s h3 { margin: 0; font-family: var(--sans); font-variation-settings: normal;
+  font-size-adjust: 0.546; font-weight: 600; font-size: 19px; line-height: 1.3;
+  letter-spacing: -0.006em; color: var(--plum-700); }
+.adv-fun__s--pay h3 { color: var(--moss-300); }
+.adv-fun__d { margin: 0; font-size: 15px; line-height: 1.45; color: var(--graph); }
+.adv-fun__s--pay .adv-fun__d { color: var(--plum-100); }
+.adv-fun__w { margin: 0; padding-top: 12px;
+  background: linear-gradient(var(--champ-700), var(--champ-700)) left top / 100% 1px no-repeat;
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 11px;
+  letter-spacing: 0.24em; line-height: 1.45; text-transform: uppercase; color: var(--graph-400); }
+.adv-fun__s--ours .adv-fun__w { color: var(--plum-700); }
+.adv-fun__s--pay .adv-fun__w { color: var(--moss-300);
+  background-image: linear-gradient(color-mix(in srgb, var(--plum-300) 34%, transparent),
+    color-mix(in srgb, var(--plum-300) 34%, transparent)); }
+.adv-fun__foot { margin: 0; max-width: 62ch; font-size: 17px; line-height: 1.55; color: var(--graph); }
+@media (max-width: 960px) { .adv-fun__rail { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .adv-fun__rail { grid-template-columns: 1fr; } }
+
+
+/* ── the five-step walk: its own breathing room ──────────────────────────
+   Measured, both pages: every section header sits 47-49px above its content,
+   and this one sat at 1px because .tl carries no top margin and .sai-sh's
+   note has none either. Scoped to this page's own wrapper rather than to
+   .tl, so the sibling is untouched until the founder rules on it. */
+.adv-tl { margin-top: 48px; }
+
+/* ── the money path fills its column ────────────────────────────────────
+   The statement column runs to the band's full height and the diagram sat
+   centred in a column twice its size. The two payments now spread, and the
+   nodes take the padding a node at this scale needs. */
+.adv-flow { gap: 64px; }
+.adv-flow .adv-flow__n { padding: 16px 24px; }

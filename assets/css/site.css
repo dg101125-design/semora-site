@@ -8922,15 +8922,25 @@ html.js .sai-faq.rv.in .sai-faq__it:nth-child(7), html.js .sai-board__list.rv.in
 /* ── the spec table, on the plate ─────────────────────────────────────── */
 .adv-spec { display: none; }
 .adv-spec__dl { margin: 0; display: grid; grid-template-columns: max-content minmax(0, 1fr); }
-.adv-spec__dl dt, .adv-spec__dl dd { margin: 0; padding: 24px 0;
+.adv-spec__dl dt, .adv-spec__dl dd { margin: 0; padding: 16px 0;
   background: linear-gradient(color-mix(in srgb, var(--plum-300) 22%, transparent),
     color-mix(in srgb, var(--plum-300) 22%, transparent)) left top / 100% 1px no-repeat; }
 .adv-spec__dl > dt:first-of-type, .adv-spec__dl > dt:first-of-type + dd {
   background-image: none; padding-top: 0; }
-.adv-spec__dl dt { padding-right: 32px;
+/* the label is 11px and the value 17px, so their first lines never shared a
+   cap height. 4px of translate puts them on one — a nudge, not padding,
+   because the cells have to stay the same height or the hairlines break. */
+.adv-spec__dl dt { padding-right: 32px; translate: 0 4px;
   font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 11px;
   letter-spacing: 0.24em; line-height: 1.45; text-transform: uppercase; color: var(--plum-300); }
-.adv-spec__dl dd { font-size: 17px; line-height: 1.45; color: var(--ivory); }
+.adv-spec__dl dd { max-width: 38ch; font-size: 17px; line-height: 1.45; color: var(--ivory); }
+/* a format list is a set of names, not a sentence: each one is unbreakable
+   and carries its own separator, so a line can end on a separator but a
+   product name can never be cut in half */
+.adv-spec__fmt { display: flex; flex-wrap: wrap; column-gap: 8px; row-gap: 4px; }
+.adv-spec__fmt span { white-space: nowrap; }
+.adv-spec__fmt span:not(:last-child)::after { content: " \00B7";
+  color: color-mix(in srgb, var(--plum-300) 80%, transparent); }
 .adv-spec__dl dt.adv-spec__no { color: var(--moss-300); }
 .adv-spec__dl dd.adv-spec__no { color: var(--moss-300); }
 

@@ -718,13 +718,13 @@ Google Ads YouTube LinkedIn Meta
 
 The only one of the four where the person has already told you what they want.
 
-What decides the orderYour bid, the quality of the ad and its landing page. The top bidder does not always win. FormatsSearch · Performance Max · Shopping · Display · Demand Gen Measured onConversions in your own account, reconciled against your CRM. Wrong whenNobody is searching for what you sell yet. You have about five seconds before a viewer can skip you, and the skip is free to them.
+The auctionYour bid, the quality of the ad and its landing page. The top bidder does not always win. FormatsSearchPerformance MaxShoppingDisplayDemand Gen Measured onConversions in your own account, reconciled against your CRM. Wrong whenNobody is searching for what you sell yet. You have about five seconds before a viewer can skip you, and the skip is free to them.
 
-What decides the orderThe same Google Ads auction, with the creative doing more of the work. FormatsSkippable in-stream · non-skippable · bumper · in-feed · Shorts Measured onWhat happens in search and on your site afterwards. Wrong whenThere is no film worth watching. The only one of the four you can aim at a job title.
+The auctionThe same Google Ads auction, with the creative doing more of the work. FormatsSkippable in-streamnon-skippablebumperin-feedShorts Measured onWhat happens in search and on your site afterwards. Wrong whenThere is no film worth watching. The only one of the four you can aim at a job title.
 
-What decides the orderAn auction against everyone else who wants that job title, which is why the click costs what it does. FormatsSponsored Content · Message Ads · Text Ads · Dynamic Ads · Lead Gen Forms Measured onThe Insight Tag, plus pipeline against the accounts you named. Wrong whenYour buyer decides outside work. Sold on who a person is rather than on what they have just typed.
+The auctionAn auction against everyone else who wants that job title, which is why the click costs what it does. FormatsSponsored ContentMessage AdsText AdsDynamic AdsLead Gen Forms Measured onThe Insight Tag, plus pipeline against the accounts you named. Wrong whenYour buyer decides outside work. Sold on who a person is rather than on what they have just typed.
 
-What decides the orderYour bid and Meta’s estimate of how likely that person is to act. FormatsAdvantage+ · sales, leads and awareness · feed, Reels and Stories Measured onThe Pixel and the Conversions API together. Wrong whenThe offer needs a conversation first.
+The auctionYour bid and Meta’s estimate of how likely that person is to act. FormatsAdvantage+sales, leads and awarenessfeed, Reels and Stories Measured onThe Pixel and the Conversions API together. Wrong whenThe offer needs a conversation first.
 
 Every campaign runs in accounts you own. They are opened in your name and stay with you, so ending the engagement costs you no history and no rebuild.
 

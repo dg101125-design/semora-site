@@ -9430,3 +9430,89 @@ html.js .sai-faq.rv.in .sai-faq__it:nth-child(7), html.js .sai-board__list.rv.in
    nodes take the padding a node at this scale needs. */
 .adv-flow { gap: 64px; }
 .adv-flow .adv-flow__n { padding: 16px 24px; }
+
+
+/* ══ 02 · SIX SERVICES, ONE REPORT ═══════════════════════════════════════
+   Founder, 17 Sep 2026: redesign this section and do not reuse the AI search
+   page's design. The card grid is gone. The headline is the device: six
+   streams converge into one document, and the document is the only light
+   object on the ink band because it is the thing the six of them make.
+
+   The connectors live in a stretched viewBox with non-scaling strokes, so
+   the curves follow the lanes at any width while staying a hairline. The
+   lanes are equal-height rows, which is what lets six evenly spaced curve
+   origins meet six lanes without measuring anything at runtime. */
+.adv-six { margin-top: 48px; display: grid;
+  grid-template-columns: minmax(0, 7fr) 96px minmax(0, 5fr);
+  align-items: stretch; }
+
+.adv-six__lanes { list-style: none; margin: 0; padding: 0; display: grid;
+  grid-template-rows: repeat(6, minmax(0, 1fr)); }
+.adv-six__lane { display: grid; align-content: center;
+  grid-template-columns: 40px minmax(0, 1fr) max-content;
+  column-gap: 24px; row-gap: 4px; padding: 24px 24px 24px 0;
+  scroll-margin-top: 96px;
+  background: linear-gradient(color-mix(in srgb, var(--plum-300) 22%, transparent),
+    color-mix(in srgb, var(--plum-300) 22%, transparent)) left top / 100% 1px no-repeat;
+  transition: background-color 280ms var(--ease); }
+.adv-six__lane:first-child { background-image: none; }
+.adv-six__lane:hover, .adv-six__lane:target {
+  background-color: color-mix(in srgb, var(--plum-700) 30%, transparent); }
+.f-plum .adv-six__ix { grid-row: 1 / span 2; align-self: center; margin: 0;
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 15px;
+  letter-spacing: 0.24em; line-height: 1.55; color: var(--plum-300); }
+.f-plum .adv-six__nm { margin: 0; font-family: var(--sans); font-variation-settings: normal;
+  font-size-adjust: 0.546; font-weight: 600; font-size: 19px; line-height: 1.3;
+  letter-spacing: -0.006em; text-transform: none; color: var(--moss-300); }
+/* the published quantity, set as a chip so the eye can run down the column
+   of them without reading the sentences */
+.f-plum .adv-six__qty { grid-column: 3; grid-row: 1; margin: 0; align-self: center;
+  padding: 4px 12px; white-space: nowrap;
+  border: 1px solid color-mix(in srgb, var(--plum-300) 34%, transparent);
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 11px;
+  letter-spacing: 0.24em; line-height: 1.45; text-transform: uppercase; color: var(--plum-100); }
+.f-plum .adv-six__say { grid-column: 2 / span 2; margin: 0; max-width: 62ch;
+  font-size: 15px; line-height: 1.55; color: var(--plum-100); }
+
+/* ── the join ──────────────────────────────────────────────────────────── */
+.adv-six__join { display: block; width: 100%; height: 100%; overflow: visible; }
+.adv-six__p { fill: none; stroke: color-mix(in srgb, var(--plum-300) 46%, transparent);
+  stroke-width: 1; transition: stroke 280ms var(--ease); }
+.adv-six__d { fill: var(--moss-300); }
+/* hovering a lane lights the stream it feeds */
+.adv-six:has(.adv-six__lane:nth-child(1):hover) .adv-six__p--1,
+.adv-six:has(.adv-six__lane:nth-child(2):hover) .adv-six__p--2,
+.adv-six:has(.adv-six__lane:nth-child(3):hover) .adv-six__p--3,
+.adv-six:has(.adv-six__lane:nth-child(4):hover) .adv-six__p--4,
+.adv-six:has(.adv-six__lane:nth-child(5):hover) .adv-six__p--5,
+.adv-six:has(.adv-six__lane:nth-child(6):hover) .adv-six__p--6 {
+  stroke: var(--moss-300); stroke-width: 2; }
+
+/* ── the report ────────────────────────────────────────────────────────── */
+.adv-six__rep { margin: 0; align-self: center; padding: 32px;
+  background: var(--ivory); color: var(--graph);
+  border-radius: 0 48px 0 0; }
+.f-plum .adv-six__rep__cap { margin: 0 0 16px; padding-bottom: 16px;
+  background: linear-gradient(var(--champ-700), var(--champ-700)) left bottom / 100% 1px no-repeat;
+  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 11px;
+  letter-spacing: 0.24em; line-height: 1.45; text-transform: uppercase; color: var(--plum-700); }
+.f-plum .adv-six__rep__first { margin: 0; font-family: var(--sans); font-variation-settings: normal;
+  font-size-adjust: 0.546; font-weight: 600; font-size: 25px; line-height: 1.2;
+  letter-spacing: -0.006em; color: var(--plum-700); }
+.f-plum .adv-six__rep__body { margin: 16px 0 0; font-size: 15px; line-height: 1.55; color: var(--graph); }
+.f-plum .adv-six__rep__foot { margin: 24px 0 0; padding-top: 16px;
+  background: linear-gradient(var(--champ-700), var(--champ-700)) left top / 100% 1px no-repeat;
+  font-size: 13px; line-height: 1.45; color: var(--graph-400); }
+
+@media (max-width: 1000px) {
+  .adv-six { grid-template-columns: 1fr; }
+  .adv-six__join { display: none; }
+  .adv-six__lanes { grid-template-rows: none; }
+  .adv-six__rep { margin-top: 32px; border-radius: 0; }
+  .adv-six__lane { padding-right: 0; }
+}
+@media (max-width: 620px) {
+  .adv-six__lane { grid-template-columns: 32px minmax(0, 1fr); column-gap: 16px; }
+  .f-plum .adv-six__qty { grid-column: 2; grid-row: 2; justify-self: start; }
+  .f-plum .adv-six__say { grid-column: 2; grid-row: 3; }
+}

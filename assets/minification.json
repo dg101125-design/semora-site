@@ -14,10 +14,10 @@
     {
       "source": "assets/css/site.css",
       "output": "assets/css/site.min.css",
-      "source_sha256": "0e5c3d6d1b7ee16fe6c161a77709c6f60c1c1ccb2d650b1bd455c39971a2b305",
-      "output_sha256": "368b7f4604e4280a254e1ce7f44c88c41ae7f5383defc61d4b2b9332734e026e",
-      "source_bytes": 537814,
-      "output_bytes": 273108
+      "source_sha256": "47336e818c13742977986827caaf3e2504c08d6835a292dc4fdd5fa74a7d1a62",
+      "output_sha256": "91455eae8b98f07277faacecdc5d5c7deffed5e5202f3ec2db560fe4e8f77b18",
+      "source_bytes": 539679,
+      "output_bytes": 274260
     },
     {
       "source": "assets/js/quote.js",
@@ -46,10 +46,10 @@
     {
       "source": "assets/js/site.js",
       "output": "assets/js/site.min.js",
-      "source_sha256": "597a3e28043d4beacda1fbab58233fd705b3405ad6cb22bdd162b3c1e6f92d2e",
-      "output_sha256": "9f3b0f91a22a26503ec92bf20d6e24a6045ddd106fe55df323110b5d302506f4",
-      "source_bytes": 16955,
-      "output_bytes": 7156
+      "source_sha256": "d1438f4bc3915807c9bd576624e1c7af7491fe339ca6f48137a6435407e058a5",
+      "output_sha256": "1b0affa22f6d6b6a46124bab9eb78fd7139a02e391c38327ad177ed0b362ede0",
+      "source_bytes": 16980,
+      "output_bytes": 7181
     }
   ]
 }

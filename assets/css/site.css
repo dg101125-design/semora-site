@@ -9535,7 +9535,7 @@ html.js .sai-faq.rv.in .sai-faq__it:nth-child(7), html.js .sai-board__list.rv.in
 .adv-work__panel { margin: 0; overflow: hidden; border: 1px solid var(--champ-700);
   border-radius: 0 64px 0 0; }
 .adv-work__panel img { display: block; width: 100%; height: auto; }
-.adv-work__lab { margin: 0 0 16px; font-family: var(--mono); font-size-adjust: 0.516;
+.adv-work__lab { margin: 32px 0 16px; font-family: var(--mono); font-size-adjust: 0.516;
   font-weight: 400; font-size: 11px; letter-spacing: 0.24em; line-height: 1.45;
   text-transform: uppercase; color: var(--plum-700); }
 .adv-work__list { list-style: none; margin: 0; padding: 0; }
@@ -9544,7 +9544,7 @@ html.js .sai-faq.rv.in .sai-faq__it:nth-child(7), html.js .sai-board__list.rv.in
 .adv-work__list li::before { content: ""; position: absolute; left: 0; top: 0.62em;
   width: 12px; height: 2px; background: var(--moss-700); }
 /* the part that makes it a SEMORA case study rather than a portfolio slide */
-.adv-work__note { margin: 32px 0 0; padding-top: 24px; max-width: 46ch;
+.adv-work__note { margin: 0; padding-top: 24px; max-width: 46ch;
   background: linear-gradient(var(--champ-700), var(--champ-700)) left top / 100% 1px no-repeat;
   font-size: 15px; line-height: 1.55; color: var(--graph); }
 .adv-work__note b { font-weight: 600; color: var(--plum-700); }
@@ -9552,4 +9552,32 @@ html.js .sai-faq.rv.in .sai-faq__it:nth-child(7), html.js .sai-board__list.rv.in
 @media (max-width: 900px) {
   .adv-work { grid-template-columns: 1fr; gap: 32px; }
   .adv-work__panel { border-radius: 0; }
+}
+
+
+/* ── the case-study figures ──────────────────────────────────────────────
+   Founder, 17 Sep 2026: the case study is a dynamic display, not a static
+   one. Each figure counts to its value as the block enters and a rule draws
+   under it in proportion to the others, so the three read against each other
+   rather than as three separate numbers. The markup carries the true figure,
+   so nothing that cannot run the script ever sees a wrong one. */
+.adv-fig { list-style: none; margin: 0 0 32px; padding: 0; display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px 16px; }
+.adv-fig__it { display: grid; align-content: start; gap: 8px; }
+.adv-fig__n { margin: 0; font-family: var(--sans); font-variation-settings: normal;
+  font-size-adjust: 0.546; font-weight: 400; font-size: clamp(22px, 2.4vw, 34px);
+  line-height: 0.98; letter-spacing: -0.014em; color: var(--plum-700);
+  font-variant-numeric: tabular-nums; }
+.adv-fig__l { margin: 0; font-size: 13px; line-height: 1.45; color: var(--graph-400); }
+.adv-fig__it::after { content: ""; display: block; height: 2px;
+  background: var(--moss-700); transform: scaleX(var(--w, 1)); transform-origin: left; }
+@media (max-width: 520px) { .adv-fig { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+@media (prefers-reduced-motion: no-preference) {
+  html.js .adv-work.rv:not(.in) .adv-fig__it::after { transform: scaleX(0); }
+  html.js .adv-work.rv.in .adv-fig__it::after {
+    animation: adv-figbar 0.8s var(--ease) both; }
+  html.js .adv-work.rv.in .adv-fig__it:nth-child(2)::after { animation-delay: 0.12s; }
+  html.js .adv-work.rv.in .adv-fig__it:nth-child(3)::after { animation-delay: 0.24s; }
+  @keyframes adv-figbar { from { transform: scaleX(0); } to { transform: scaleX(var(--w, 1)); } }
 }

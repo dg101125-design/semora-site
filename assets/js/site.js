@@ -220,7 +220,7 @@
    as small as the effect allows. Delays match the stat-land stagger. */
 (function () {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  var ns = document.querySelectorAll(".res .stat__n[data-count]");
+  var ns = document.querySelectorAll(".res .stat__n[data-count], .adv-fig__n[data-count]");
   if (!ns.length || !("IntersectionObserver" in window)) return;
   function run(el) {
     var target = parseFloat(el.getAttribute("data-count"));

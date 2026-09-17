@@ -9521,3 +9521,33 @@ html.js .sai-faq.rv.in .sai-faq__it:nth-child(7), html.js .sai-board__list.rv.in
   .f-plum .adv-six__qty { grid-column: 2; grid-row: 2; justify-self: start; }
   .f-plum .adv-six__say { grid-column: 2; grid-row: 3; }
 }
+
+
+/* ══ 04 · ONE WE MADE — the case study ═══════════════════════════════════
+   The client's artwork on the client's own ground, and the words beside it.
+   Their red lives inside their panel and is pulled into no SEMORA element,
+   which is the rule the footer's platform colours already follow. */
+.adv-work { margin-top: 48px; display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: 48px; align-items: center; }
+.adv-work__panel { margin: 0; overflow: hidden; border: 1px solid var(--champ-700);
+  border-radius: 0 64px 0 0; }
+.adv-work__panel img { display: block; width: 100%; height: auto; }
+.adv-work__lab { margin: 0 0 16px; font-family: var(--mono); font-size-adjust: 0.516;
+  font-weight: 400; font-size: 11px; letter-spacing: 0.24em; line-height: 1.45;
+  text-transform: uppercase; color: var(--plum-700); }
+.adv-work__list { list-style: none; margin: 0; padding: 0; }
+.adv-work__list li { position: relative; padding-left: 24px; margin-top: 12px;
+  font-size: 17px; line-height: 1.45; color: var(--graph-900); }
+.adv-work__list li::before { content: ""; position: absolute; left: 0; top: 0.62em;
+  width: 12px; height: 2px; background: var(--moss-700); }
+/* the part that makes it a SEMORA case study rather than a portfolio slide */
+.adv-work__note { margin: 32px 0 0; padding-top: 24px; max-width: 46ch;
+  background: linear-gradient(var(--champ-700), var(--champ-700)) left top / 100% 1px no-repeat;
+  font-size: 15px; line-height: 1.55; color: var(--graph); }
+.adv-work__note b { font-weight: 600; color: var(--plum-700); }
+.adv-work__say .alink { margin-top: 24px; display: inline-block; padding-block: 12px; }
+@media (max-width: 900px) {
+  .adv-work { grid-template-columns: 1fr; gap: 32px; }
+  .adv-work__panel { border-radius: 0; }
+}

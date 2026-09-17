@@ -436,6 +436,8 @@ Audit, keyword and question map, fixes, on-page, content
 
 A report whose first line is enquiries or pipeline
 
+Rankings underneath, as the reason why
+
 02
 
 ### AI search visibility

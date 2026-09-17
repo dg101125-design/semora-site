@@ -9520,7 +9520,11 @@ html.js .sai-faq.rv.in .sai-faq__it:nth-child(7), html.js .sai-board__list.rv.in
 }
 @media (max-width: 620px) {
   .adv-six__lane { grid-template-columns: 32px minmax(0, 1fr); column-gap: 16px; }
-  .f-plum .adv-six__qty { grid-column: 2; grid-row: 2; justify-self: start; }
+  /* the chip wraps here. nowrap is right on a wide lane and wrong at 390px,
+     where the longest one measures 393px and took the whole document 3px
+     sideways with it — a HIGH the desktop probe could never see. */
+  .f-plum .adv-six__qty { grid-column: 2; grid-row: 2; justify-self: start;
+    white-space: normal; max-width: 100%; }
   .f-plum .adv-six__say { grid-column: 2; grid-row: 3; }
 }
 

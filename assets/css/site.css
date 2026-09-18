@@ -1160,8 +1160,9 @@ html.lr .site-head__word::before {
    Their rules are deleted rather than left dead. Two open items die with them:
    the accidental 15px on those links, which nobody had chosen and the 12 Sep
    brief had put to the founder, and one of the twenty-three 13px declarations
-   that decision #45's sweep was going to have to visit. `.mega-scoped` stays —
-   it is still used on the rows inside `.mega__col`. */
+   that decision #45's sweep was going to have to visit. `.mega-scoped` went
+   the same way on 18 Sep 2026, with the dot, on the founder's order not to
+   use `scoped` in the navigator. */
 /* 15→12px and the padding with it. The masthead CTA was 239.4×51.8 — a quarter
    of the row, and standing 51.8px against the logo seal's 52px, so the two
    heaviest objects in the bar were the same size and argued with each other
@@ -1502,12 +1503,11 @@ html.lr .site-head__word::before {
    that at a glance. The published-price claim moved to the footer line, where
    it reads as a commitment rather than as clutter. */
 .mega__col a {
-  /* flex-start, not center: a wrapped two-line name would otherwise float its
-     dot to the middle of the block, where it marks neither line. The dot is
-     nudged down to sit on the optical centre of the FIRST line instead. */
-  display: flex; align-items: flex-start; gap: 0.7em;
+  /* flex-start is what a wrapped two-line name wants; it was set for the dot
+     that used to sit beside it and it is still correct without one. */
+  display: flex; align-items: flex-start;
   padding: 0.4em 0.5em;
-  margin-left: -0.55em;
+  margin-left: -0.5em;
   font-family: var(--sans) !important; font-size-adjust: 0.546;
   font-size: 0.82rem !important;
   letter-spacing: 0.004em !important; text-transform: none !important;
@@ -1531,28 +1531,10 @@ html.lr .site-head__word::before {
 .mega__col a:focus-visible {
   color: var(--plum) !important; background: var(--champ-300);
 }
-/* Founder, 19 Aug 2026: the eighteen line icons become one repeated dot.
-   Eighteen different pictograms at 16px asked the eye to identify a picture
-   before it could read the word beside it — and at that size several of them
-   were not identifiable anyway, so the cost was paid for nothing. A single
-   dot is a bullet: it marks the line, holds the indent, and gets out of the
-   way. It is also the one element of the aperture that never moves.
-   Kept in moss rather than acid: 5.44:1 on ivory, where acid is not. */
-.mega__col a .mega-dot {
-  /* Specificity, deliberately: `.mega__col a span` sets flex:1 1 auto for the
-     label, and the dot is a span too. At the lower specificity the dot grew to
-     fill the row and rendered as a 40px dash. */
-  flex: 0 0 auto;
-  width: 5px; height: 5px; border-radius: 50%;
-  background: var(--moss-700);
-  /* centre the dot on the first line, whatever the name wraps to */
-  margin-top: calc((1.55em - 5px) / 2);
-  transition: background 140ms var(--ease), transform 140ms var(--ease);
-}
-.mega__col a:hover .mega-dot,
-.mega__col a:focus-visible .mega-dot {
-  background: var(--plum); transform: scale(1.4);
-}
+/* The dot went on 18 Sep 2026 (founder: "remove all the little dots"). It had
+   held the indent as well as marking the line, so the row's own negative
+   margin goes with it — left behind, it pulled every name 0.55em left of the
+   column's label. The names now hang on the label's own left edge. */
 .mega__col a span { flex: 1 1 auto; }
 @media (prefers-reduced-motion: reduce) {
   .mega, .mega-caret { transition: none; }
@@ -6938,7 +6920,7 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
    Colour only. Same face, same size, same weight as the row it sits in,
    because the typography parity rule does not admit a new voice for a
    two-word marker. --graph-400 on ivory measures 4.95:1. */
-.mega__col a .mega-scoped { color: var(--graph-400); white-space: nowrap; }
+
 
 /* ============================================================== CONTACT ===
    Rebuilt 12 Sep 2026 from the founder's supplied template. The template was a
@@ -8717,6 +8699,13 @@ html.js .sai-faq.rv.in .sai-faq__it:nth-child(7), html.js .sai-board__list.rv.in
    exactly. `translate`, not `transform`, so it composes with the entrance.
    A photograph can be CROPPED by the slash where a panel of words could not,
    so the figure now takes the reference's own 60%. */
+/* Founder, 18 Sep: "图片往left 移到7厘米" — the image 7cm to the left.
+   Taken literally as `right: 7cm` it did two things: the words landed 200px
+   INSIDE the photograph, and 265px of dead plum opened on the right where the
+   reference bleeds off the page. So the left edge moves the full 7cm and the
+   figure GROWS to keep bleeding right — `calc(53% + 7cm)` is the instruction
+   said exactly once. The type then crosses the image, which is what the scrim
+   below is for. */
 .hero--adv .adv-port { position: absolute; z-index: 1; margin: 0; right: 0;
   top: 50%; translate: 0 -50%;
   /* 60% is the reference's own width, and at 1440 this renders 864x482 —
@@ -8729,15 +8718,30 @@ html.js .sai-faq.rv.in .sai-faq__it:nth-child(7), html.js .sai-board__list.rv.in
      figure does not: past ~1700 the figure walks left into a column that has
      stopped moving, and uncapped it left 14px at 1920 with the rail 4px off
      the image. */
-  width: 53%; max-width: 900px; max-height: calc(100% - 96px); }
+  width: calc(53% + 7cm); max-width: calc(900px + 7cm);
+  max-height: calc(100% - 96px); }
 .adv-port picture { display: block; width: 100%; height: 100%; }
 .adv-port img { display: block; width: 100%; height: 100%; object-fit: cover;
   object-position: 52% 46%;
   /* 0.92, not the sibling's 0.85: this frame is graded on export already, and
      0.85 on top crushed the midtones the whole change exists for. */
   filter: brightness(0.92); }
-/* the light pass — a single band on the 70° axis, not a glow */
-.adv-port::after { content: ""; position: absolute; inset: -20% -40%;
+/* The scrim. With the figure 7cm further left the statement crosses it, so
+   the left of the image is carried back to the hero's own ground and the type
+   sits on plum, not on paper. It is a directional wipe on the 70° axis — the
+   same axis as the slash and the light pass — and it reaches full transparency
+   at 66%, so two thirds of the photograph is untouched. Not a vignette, not a
+   glow: it has a direction and it ends. */
+.adv-port::before { content: ""; position: absolute; inset: 0; z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(100deg,
+    var(--plum-ink) 0 24%,
+    color-mix(in srgb, var(--plum-ink) 78%, transparent) 38%,
+    color-mix(in srgb, var(--plum-ink) 30%, transparent) 52%,
+    transparent 66%); }
+/* the light pass — a single band on the 70° axis, not a glow. Under the
+   scrim (z 1 against its 2), so the scrim still darkens it. */
+.adv-port::after { content: ""; position: absolute; inset: -20% -40%; z-index: 1;
   pointer-events: none; translate: -70% 0;
   background: linear-gradient(110deg, transparent 42%,
     color-mix(in srgb, var(--ivory) 14%, transparent) 50%, transparent 58%); }
@@ -8766,6 +8770,8 @@ html.js .sai-faq.rv.in .sai-faq__it:nth-child(7), html.js .sai-board__list.rv.in
   .hero--adv .adv-port { position: relative; z-index: auto; inset: auto;
     translate: none; width: auto; max-width: none; max-height: none;
     margin: 32px calc(-1 * var(--gutter)) 0 0; }
+  /* stacked, no words cross the image, so the scrim would only mute it */
+  .adv-port::before { display: none; }
 }
 @media (max-width: 760px) {
   .adv-say__h { font-size: clamp(28px, 8vw, 40px); }

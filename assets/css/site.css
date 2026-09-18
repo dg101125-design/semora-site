@@ -8714,12 +8714,12 @@ html.js .sai-faq.rv.in .sai-faq__it:nth-child(7), html.js .sai-board__list.rv.in
      the arrow sat 13px off the photograph and was the tightest thing in the
      hero at every width. Measured clearance now runs 59-521px from 901 to
      2560, against the reference's own 90px at 1440.
-     The px cap is because `.wrap` stops growing at 1280 while a percentage
-     figure does not: past ~1700 the figure walks left into a column that has
-     stopped moving, and uncapped it left 14px at 1920 with the rail 4px off
-     the image. */
-  width: calc(53% + 7cm); max-width: calc(900px + 7cm);
-  max-height: calc(100% - 96px); }
+     It is deliberately UNCAPPED. A px cap was here while the words had to
+     stay clear of the photograph; once the scrim took that job the cap only
+     did harm — `.wrap` stops growing at 1280 and a capped figure stops too,
+     so past ~1700 the picture detached from the text and left a band of dead
+     plum down the left of a 2095px screen (founder: "左右布局不合理"). */
+  width: calc(53% + 7cm); max-height: calc(100% - 96px); }
 .adv-port picture { display: block; width: 100%; height: 100%; }
 .adv-port img { display: block; width: 100%; height: 100%; object-fit: cover;
   object-position: 52% 46%;
@@ -8734,11 +8734,17 @@ html.js .sai-faq.rv.in .sai-faq__it:nth-child(7), html.js .sai-board__list.rv.in
    glow: it has a direction and it ends. */
 .adv-port::before { content: ""; position: absolute; inset: 0; z-index: 2;
   pointer-events: none;
+  /* px stops, not percentages. The text's overlap with the picture is very
+     nearly CONSTANT — textRight = vw/2 − 45 and imageLeft = 0.47·vw − 265, so
+     the overlap is 0.03·vw + 220: 263px at 1440, 283px at 2095, 297px at
+     2560. A percentage scrim therefore grew with the picture and turned into
+     a dark wedge across a third of it on a wide screen; in px it stays the
+     size of the job it is doing, and the photograph keeps the rest. */
   background: linear-gradient(100deg,
-    var(--plum-ink) 0 24%,
-    color-mix(in srgb, var(--plum-ink) 78%, transparent) 38%,
-    color-mix(in srgb, var(--plum-ink) 30%, transparent) 52%,
-    transparent 66%); }
+    var(--plum-ink) 0 300px,
+    color-mix(in srgb, var(--plum-ink) 64%, transparent) 420px,
+    color-mix(in srgb, var(--plum-ink) 24%, transparent) 510px,
+    transparent 620px); }
 /* the light pass — a single band on the 70° axis, not a glow. Under the
    scrim (z 1 against its 2), so the scrim still darkens it. */
 .adv-port::after { content: ""; position: absolute; inset: -20% -40%; z-index: 1;
@@ -9571,6 +9577,26 @@ html.js .sai-faq.rv.in .sai-faq__it:nth-child(7), html.js .sai-board__list.rv.in
   background: linear-gradient(110deg, transparent 42%,
     color-mix(in srgb, var(--plum-ink) 9%, transparent) 50%, transparent 58%);
   translate: -70% 0; }
+/* Each case study now carries its OWN name, because the section holds two
+   (founder, 18 Sep: "加一个 Case Study"). The section head can no longer be
+   one client's name, so the client moves down beside its own figures. */
+.adv-work__eyebrow { margin: 0 0 8px; font-family: var(--mono); font-size-adjust: 0.516;
+  font-weight: 400; font-size: 11px; letter-spacing: 0.24em; line-height: 1.45;
+  text-transform: uppercase; color: var(--moss-700); }
+.adv-work__name { margin: 0; font-size: 34px; font-weight: 600; line-height: 1.14;
+  letter-spacing: -0.006em; text-transform: uppercase; color: var(--plum-ink); }
+.adv-work__sector { margin: 12px 0 32px; max-width: 42ch;
+  font-size: 17px; line-height: 1.62; color: var(--graph); }
+/* the second block mirrors the first, so the pair reads as a rhythm instead
+   of two slides in a stack. Only the ORDER changes — the columns keep their
+   7fr/5fr weighting, so the picture stays the larger of the two either way. */
+.adv-work--flip { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+.adv-work--flip .adv-work__panel { order: 2; border-radius: 64px 0 0 0; }
+.adv-work--flip .adv-work__say { order: 1; }
+.adv-work + .adv-work { margin-top: 96px; }
+.adv-work__foot { margin-top: 64px; padding-top: 32px;
+  background: linear-gradient(var(--champ-700), var(--champ-700)) left top / 100% 1px no-repeat; }
+.adv-work__foot .adv-work__note { padding-top: 0; background: none; }
 .adv-work__lab { margin: 32px 0 16px; font-family: var(--mono); font-size-adjust: 0.516;
   font-weight: 400; font-size: 11px; letter-spacing: 0.24em; line-height: 1.45;
   text-transform: uppercase; color: var(--plum-700); }
@@ -9584,10 +9610,21 @@ html.js .sai-faq.rv.in .sai-faq__it:nth-child(7), html.js .sai-board__list.rv.in
   background: linear-gradient(var(--champ-700), var(--champ-700)) left top / 100% 1px no-repeat;
   font-size: 15px; line-height: 1.55; color: var(--graph); }
 .adv-work__note b { font-weight: 600; color: var(--plum-700); }
-.adv-work__say .alink { margin-top: 24px; display: inline-block; padding-block: 12px; }
+/* The tap target. This used to read `.adv-work__say .alink`, and moving the
+   link into the section's foot silently took its padding away with it —
+   audit_layout caught it at 22.8px on a phone, under the 44px minimum. Both
+   places are named now, so moving it again cannot repeat this. */
+.adv-work__say .alink { margin-top: 24px; }
+.adv-work__say .alink, .adv-work__foot .alink { display: inline-block; padding-block: 12px; }
 @media (max-width: 900px) {
-  .adv-work { grid-template-columns: 1fr; gap: 32px; }
+  .adv-work, .adv-work--flip { grid-template-columns: 1fr; gap: 32px; }
   .adv-work__panel { border-radius: 0; }
+  /* stacked, the mirror would put the words above the picture on one block
+     and below it on the other; the picture leads on both */
+  .adv-work--flip .adv-work__panel { order: 0; }
+  .adv-work--flip .adv-work__say { order: 1; }
+  .adv-work + .adv-work { margin-top: 64px; }
+  .adv-work__name { font-size: 28px; }
 }
 
 

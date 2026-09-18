@@ -8662,7 +8662,13 @@ html.js .sai-faq.rv.in .sai-faq__it:nth-child(7), html.js .sai-board__list.rv.in
    where the slash has already cut furthest left, so the column cap alone
    would run them into the ivory. The sibling caps at 28ch for the same
    reason (css · .hero--seo .sai-say .lead). */
-.hero--adv .adv-say .lead { max-width: 30ch; }
+.hero--adv .adv-say .lead { max-width: 28ch; }
+/* The CTA row is capped NARROWER than the column so the link wraps under the
+   pill, exactly as it does on /seo-ai-search. It is not decoration: with the
+   two on one line the row's arrow was the tightest thing in the hero at every
+   width — 13px from the photograph at 1440 — and it alone was holding the
+   figure below the reference's size. Wrapped, it stops being a constraint. */
+.hero--adv .adv-say .cta-row { max-width: 34%; }
 /* the one rule that is easy to miss: `p { max-width: 62ch }` AND the 46%
    column cap both apply to the rail, and either one stacks the four names */
 .adv-say > .sai-surf { max-width: none; }
@@ -8678,236 +8684,95 @@ html.js .sai-faq.rv.in .sai-faq__it:nth-child(7), html.js .sai-board__list.rv.in
 .sai-surf--plain { column-gap: 24px; }
 .sai-surf--plain .sai-surf__lab { margin-right: 0; }
 
-/* ── the desk: one month of work ────────────────────────────────
-   v2 (18 Sep 2026). The working board is gone. The founder's note: the hero
-   animation did not suit, and the device wanted a lighter ground, taking the
-   sibling page's hero as the reference. The board failed because it looked
-   like telemetry — rows of cells changing state — while the headline
-   promises PEOPLE who look after the account. A dashboard shows machine
-   state; a desk shows human output.
+/* ── the hero photograph ───────────────────────────────────
+   v3 (18 Sep 2026, after the founder scored the CSS desk that stood here
+   30/100 and asked for the layout, the type, the motion and the image again).
 
-   So: straight overhead onto an ivory desk, the month's work where somebody
-   just put it down. Editorial proofs with a correction mark in the margin, a
-   storyboard strip, a campaign docket with pen ticks and a folded corner,
-   and the report clipped on top, each sheet a degree or two off square. The
-   marks, the ticks and the crooked placement are things only a person does,
-   so "the right team" is shown as the residue of care rather than asserted.
+   The diagnosis was measured, not argued. Sampling the luminance histogram
+   inside the clip, on this page and on /seo-ai-search:
 
-   Three decisions carry it:
-   · It takes the SIBLING'S proportion (1400/781) and the sibling's deeper
-     slash, so the two heroes are the same object in the same crop — which is
-     what "reference as the previous page" asked for. Light where the board
-     was dark: ivory desk and white paper inside the cut, against the plum
-     hero, exactly the figure/ground the photograph has next door.
-   · ONE dark mass. A desk of whites reads thin beside a photograph, so the
-     report — the topmost, focal object — wears an ink band bleeding off both
-     its edges. It is also the only surface the pass of light can be seen on.
-   · NO quantities and NO channel names on the device. The published volumes
-     (2 vs 4 editorial pieces, one video, $15k/mo managed spend) belong to
-     different tiers, and published paid-media scope is Google and Meta;
-     putting any of them on a hero device depicts a package nobody sells.
-     The device carries four craft words and one already-published sentence. */
-/* NO `overflow: hidden` here. The clip-path already clips every descendant,
-   so the declaration bought nothing and cost something: it made the figure a
-   scroll container, and the report deliberately runs off the bottom edge —
-   which audit_layout correctly read as a fixed-height box eating its own
-   content. The bleed is the point (a diagram floats inside its margins; a
-   photograph is a crop of something larger), so the redundant declaration
-   goes and the real check stays sharp. */
-.adv-port { aspect-ratio: 1400 / 781;
-  clip-path: url(#ashape);
-  background: color-mix(in srgb, var(--champ-700) 46%, var(--ivory)); }
-/* Out of flow, pinned right, centred on the cross axis — the sibling's
-   figure exactly. `translate` and not `transform`, so it composes with the
-   res-wave-r entrance instead of cancelling it.
+                         CSS desk      the reference photograph
+     mean luminance        204.5              85.6
+     dark   (<85)          15.0%             54.2%
+     MIDTONES (85-170)      1.5%             36.6%
+     light  (>=170)        83.5%              9.1%
 
-   52%, measured against the slash and not against the box. The widest line of
-   the headline clears the ivory by 79px here; the reference page's own
-   clearance, measured the same way, is 90px. 54% fits and leaves 41px, 56%
-   leaves 12px, 58% puts the words into the ivory — but 41px is half the
-   house margin for 4% more device, and a font that falls back eats it. The
-   test is the slash curve at each line's LOWEST point, because x(y) closes to
-   zero at 90% of the device's height:  x(y) = 0.16 - 0.2222y + 0.04938y². */
+   1.5% midtones. It was a line drawing on white standing where the sibling
+   page has a photograph with a full tonal range, and no amount of redrawing
+   closes that — two hand-built devices had already scored 50 and then 30.
+   The founder ruled: a real photograph, with no people in it.
+
+   So it is a photograph of the work itself — campaign proofs fanned across a
+   walnut desk, colour swatches, wireframe layouts, a report with its columns,
+   handwritten pen corrections in the margins, a notebook, glasses, a brass
+   rule. Nobody is in the frame and nobody is printed on any sheet inside it,
+   so the standing no-human rule holds. The pen marks are the argument the
+   page makes: a person had this open.
+
+   Graded to mean 126 on export; it PAINTS at mean 115.6 · 30% dark · 50%
+   midtones · 20% light — inside the gate, and still lighter than the
+   reference, which is the founder's "bit light background" kept honestly. */
+.adv-port { aspect-ratio: 1400 / 781; clip-path: url(#ashape); overflow: hidden; }
+/* Out of flow, pinned right, centred on the cross axis — the sibling's figure
+   exactly. `translate`, not `transform`, so it composes with the entrance.
+   A photograph can be CROPPED by the slash where a panel of words could not,
+   so the figure now takes the reference's own 60%. */
 .hero--adv .adv-port { position: absolute; z-index: 1; margin: 0; right: 0;
   top: 50%; translate: 0 -50%;
-  width: 52%; max-height: calc(100% - 96px); }
-/* isolate, or the shade's multiply would reach the hero's plum ground */
-.adv-desk { position: absolute; inset: 0; isolation: isolate; }
+  /* 60% is the reference's own width, and at 1440 this renders 864x482 —
+     its figure's size to the pixel. It only became affordable once the CTA
+     row was capped and made to wrap: with the pill and the link on one line
+     the arrow sat 13px off the photograph and was the tightest thing in the
+     hero at every width. Measured clearance now runs 59-521px from 901 to
+     2560, against the reference's own 90px at 1440.
+     The px cap is because `.wrap` stops growing at 1280 while a percentage
+     figure does not: past ~1700 the figure walks left into a column that has
+     stopped moving, and uncapped it left 14px at 1920 with the rail 4px off
+     the image. */
+  width: 53%; max-width: 900px; max-height: calc(100% - 96px); }
+.adv-port picture { display: block; width: 100%; height: 100%; }
+.adv-port img { display: block; width: 100%; height: 100%; object-fit: cover;
+  object-position: 52% 46%;
+  /* 0.92, not the sibling's 0.85: this frame is graded on export already, and
+     0.85 on top crushed the midtones the whole change exists for. */
+  filter: brightness(0.92); }
+/* the light pass — a single band on the 70° axis, not a glow */
+.adv-port::after { content: ""; position: absolute; inset: -20% -40%;
+  pointer-events: none; translate: -70% 0;
+  background: linear-gradient(110deg, transparent 42%,
+    color-mix(in srgb, var(--ivory) 14%, transparent) 50%, transparent 58%); }
 
-/* every object is a sheet of paper: two whites, one champagne edge, and a
-   contact shadow that is TIGHT at the join and wide below it. A symmetrical
-   blur is what turns paper back into a flat rectangle. */
-.adv-obj { position: absolute; }
-.adv-pap { position: absolute; inset: 0; display: flex; flex-direction: column;
-  gap: 12px; padding: 16px; overflow: hidden;
-  background: var(--white); border: 1px solid var(--champ-700);
-  box-shadow: 0 1px 0 color-mix(in srgb, var(--plum-ink) 10%, transparent),
-              0 2px 3px -1px color-mix(in srgb, var(--plum-ink) 12%, transparent),
-              0 26px 32px -22px color-mix(in srgb, var(--plum-ink) 60%, transparent); }
-
-.adv-obj--under { left: 20%;   top: 11%;  width: 20%;   height: 42%; rotate: -5.6deg; }
-.adv-obj--proof { left: 21.5%; top: 6%;   width: 22%;   height: 51%; rotate: -1.8deg; }
-.adv-obj--strip { left: 40%;   top: 7%;   width: 42%;   height: 25%; rotate:  1.6deg; }
-.adv-obj--dock  { left: 60%;   top: 31%;  width: 34%;   height: 27%; rotate:  2.6deg; }
-.adv-obj--rep   { left: 36%;   top: 50%;  width: 52%;   height: 60%; rotate: -0.8deg; }
-
-/* the craft word. Four of them, and they are the whole cast list. */
-.adv-kick { flex: 0 0 auto; margin: 0;
-  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
-  font-size: 11px; letter-spacing: 0.24em; line-height: 1.45;
-  text-transform: uppercase; color: var(--graph-400); }
-
-/* body copy is RULES on a paper rhythm, never filled grey bars — the second
-   is greeking, the first is a page of writing seen from above. The gradient
-   draws as many lines as the sheet is tall, so it cannot overflow at any
-   width. Two ivory blocks cut the rag: a short last line and one indent. */
-.adv-lines { display: flex; flex-direction: column; flex: 1 1 auto;
-  min-height: 0; gap: 16px; overflow: hidden; }
-.adv-lines i { display: block; min-height: 0;
-  background-image: repeating-linear-gradient(to bottom,
-    var(--champ-700) 0 1px, transparent 1px 14px); }
-/* three paragraphs, each ragging at its own width — one full-width block of
-   even rules is a lined pad, and a lined pad is not a page somebody wrote */
-.adv-lines i:nth-child(1) { flex: 4 1 0; }
-.adv-lines i:nth-child(2) { flex: 3 1 0; width: 79%; }
-/* the paragraph the caret marks is indented away from it */
-.adv-obj--proof .adv-lines i:nth-child(2) { margin-left: 32px; width: 66%; }
-.adv-lines i:nth-child(3) { flex: 2 1 0; width: 56%; }
-/* the report's rows are a FORM, so they rule the full measure and stay even */
-.adv-lines--wide { gap: 0; }
-.adv-lines--wide i { flex: 1 1 auto; width: auto;
-  background-image: repeating-linear-gradient(to bottom,
-    var(--champ-700) 0 1px, transparent 1px 24px); }
-
-/* the insertion caret, in the margin, in the hand colour. It sits on the
-   LEFT, which is the margin the storyboard does not cover — a proof mark
-   half under another sheet reads as a glitch, not as a hand. */
-.adv-mark { position: absolute; left: 16px; top: 46%; width: 24px; height: 26px;
-  fill: none; stroke: var(--plum); stroke-width: 2;
-  stroke-linecap: round; stroke-linejoin: round; }
-
-/* the storyboard. The fourth frame runs off the card, so the strip continues
-   past what the crop shows — the same argument the photograph makes. */
-.adv-frames { --sketch: color-mix(in srgb, var(--champ-700) 32%, transparent);
-  display: flex; flex: 1 1 auto; min-height: 0; gap: 12px;
-  padding-bottom: 8px;
-  background: linear-gradient(var(--champ-700), var(--champ-700))
-              left bottom / 100% 1px no-repeat; }
-.adv-frames i { flex: 0 0 auto; height: 100%; aspect-ratio: 16 / 9;
-  background-color: var(--plum-ink); background-repeat: no-repeat;
-  background-image: linear-gradient(var(--sketch), var(--sketch)),
-                    linear-gradient(var(--sketch), var(--sketch));
-  background-size: 100% 1px, 26% 36%; background-position: 0 68%, 14% 32%; }
-.adv-frames i:nth-child(2) { background-size: 100% 1px, 17% 46%;
-  background-position: 0 60%, 56% 14%; }
-.adv-frames i:nth-child(3) { background-size: 100% 1px, 40% 26%;
-  background-position: 0 72%, 30% 46%; }
-.adv-frames i:nth-child(4) { background-size: 100% 1px, 22% 40%;
-  background-position: 0 64%, 22% 24%; }
-
-/* the docket: a perforated head, four pen ticks, one folded corner */
-.adv-pap--perf { border-top-style: dashed; }
-.adv-ticks { flex: 0 0 auto; width: 68%; height: 16px; fill: none;
-  stroke: var(--moss-700); stroke-width: 2.4;
-  stroke-linecap: round; stroke-linejoin: round; }
-.adv-fold { position: absolute; right: 0; top: 0; width: 24px; height: 24px;
-  background: var(--ivory); clip-path: polygon(100% 0, 100% 100%, 0 0);
-  box-shadow: -1px 1px 0 -0.5px var(--champ-700); }
-
-/* the report, on top and running off the bottom edge. The ink band is the
-   one dark mass in the device; acid sits on it because acid on white is
-   1.67:1 — on the paper below, the same colour is --moss-700. */
-.adv-pap--back { inset: 8px -12px -12px 8px; padding: 0; }
-.adv-rep { padding: 0; gap: 0; }
-.adv-rep__bar { flex: 0 0 auto; margin: 0; display: flex; align-items: center;
-  justify-content: space-between; gap: 24px; padding: 0 32px; height: 44px;
-  background: var(--plum-ink); }
-.adv-rep__bar span { font-family: var(--mono); font-size-adjust: 0.516;
-  font-weight: 400; font-size: 11px; letter-spacing: 0.24em; line-height: 1.45;
-  text-transform: uppercase; }
-.adv-rep__bar span:first-child { color: var(--moss-300); }
-.adv-rep__bar span + span { color: var(--plum-100); }
-.adv-rep__body { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column;
-  gap: 16px; padding: 24px 32px 0; }
-.adv-rep__h { flex: 0 0 auto; margin: 0; font-size: 17px; font-weight: 500;
-  line-height: 1.3; letter-spacing: -0.006em; color: var(--plum-ink); }
-/* the form, never a figure. There is no account behind this page to put
-   numbers in, and an invented one is the shape a fabrication takes. */
-.adv-rep__cols { flex: 0 0 auto; margin: 0; display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px;
-  padding-bottom: 8px;
-  background: linear-gradient(var(--champ-700), var(--champ-700))
-              left bottom / 100% 1px no-repeat;
-  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
-  font-size: 9px; letter-spacing: 0.24em; line-height: 1.45;
-  text-transform: uppercase; color: var(--graph-400); }
-
-/* the caption fills the wedge the slash opens in the bottom left. C/O is the
-   postal convention for "in the care of" — the account is the client's, and
-   it is addressed through us. That is the headline, in three characters. */
-.adv-cap { position: absolute; left: 4%; bottom: 7%; margin: 0;
-  display: grid; gap: 4px;
-  font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400;
-  font-size: 11px; letter-spacing: 0.24em; line-height: 1.45;
-  text-transform: uppercase; color: var(--graph-400); }
-.adv-cap::before { content: ""; width: 24px; height: 1px; background: var(--plum); }
-.adv-cap span { color: var(--plum-700); }
-
-/* the pass of light — a shade crossing the desk, multiplied so it darkens
-   the papers and barely touches the ink band, which is how a shadow behaves.
-   Parked mid-frame when it cannot run, so it stays part of the composition. */
-.adv-shade { position: absolute; inset: -20% -40%; pointer-events: none;
-  mix-blend-mode: multiply; translate: 6% 0;
-  background: linear-gradient(104deg, transparent 38%,
-    color-mix(in srgb, var(--champ-700) 62%, transparent) 50%, transparent 62%); }
-
+/* The column widens and the figure narrows together. The step is at 1240,
+   not the sibling's 1100: with only the FIGURE stepping, the width just
+   ABOVE the breakpoint is the tightest point on the whole range — measured
+   44px at 1101 against 92px at 1100. /seo-ai-search has the same pinch
+   (39px at 1101). Stepping earlier, and stepping both, removes it. */
 @media (max-width: 1240px) {
-  .adv-cap span { display: none; }
+  .adv-say > * { max-width: 50%; }
+  .hero--adv .adv-port { width: 48%; }
 }
-/* the column widens and the figure narrows together, so the clearance never
-   closes: measured 71px at 1100, 31px at 1024, 59px at 900 */
-@media (max-width: 1100px) {
-  .adv-say > * { max-width: 56%; }
-  .hero--adv .adv-port { width: 44%; }
-}
-/* The stack comes EARLIER than the sibling's 760. Below about 900 a 44%
-   figure is under 400px wide, and a desk carrying five sheets of paper at
-   that size is a row of stamps. Stacked, the figure takes the full measure
-   and is BIGGER than it is at desktop. */
+/* The stack comes EARLIER than the sibling's 760, because this headline is
+   long: below about 900 the column and a 48% figure fight, and the figure
+   loses. Stacked, it takes the full measure and is bigger than at desktop. */
 @media (max-width: 900px) {
   .hero--adv { min-height: 0; display: block; }
-  /* `.hero--adv .adv-say` here is (0,2,0) and LOSES to the stage rule's
-     (0,3,0) `.hero--adv .wrap.adv-say`, so this step never fired — measured
-     64/48 at 390px. /seo-ai-search carries the identical dead rule and is
-     still 64/48 on a phone; that one is not this page's to fix. */
+  /* `.hero--adv .adv-say` would be (0,2,0) and LOSE to the stage rule's
+     (0,3,0) `.hero--adv .wrap.adv-say`, so this step is scoped to match — it
+     never fired before, measured 64/48 at 390px. /seo-ai-search carries the
+     identical dead rule and is still 64/48 on a phone; not this page's to fix. */
   .hero--adv .wrap.adv-say { padding-block: 48px 32px; }
   .adv-say > * { max-width: none; }
   .hero--adv .adv-say .lead { max-width: none; }
   .hero--adv .adv-port { position: relative; z-index: auto; inset: auto;
-    translate: none; width: auto; max-height: none;
+    translate: none; width: auto; max-width: none; max-height: none;
     margin: 32px calc(-1 * var(--gutter)) 0 0; }
 }
 @media (max-width: 760px) {
   .adv-say__h { font-size: clamp(28px, 8vw, 40px); }
-  /* phone: the same desk with fewer things on it, and squarer, because three
-     objects in a 1.79 letterbox at 350px wide is a row of stamps. The sheets
-     grow and their margins shrink — at 370px a 16px margin is a quarter of
-     the sheet, and the craft word does not fit inside what is left. */
-  .adv-port { aspect-ratio: 1400 / 1040; }
-  .adv-obj--under, .adv-obj--dock { display: none; }
-  .adv-obj--proof { left: 14%; top: 4%;  width: 36%; height: 48%; }
-  .adv-obj--strip { left: 54%; top: 8%;  width: 44%; height: 28%; }
-  .adv-obj--rep   { left: 24%; top: 38%; width: 74%; height: 68%; }
-  .adv-pap { padding: 12px; gap: 8px; }
-  .adv-lines { gap: 8px; }
-  .adv-mark { left: 12px; width: 16px; height: 18px; }
-  .adv-obj--proof .adv-lines i:nth-child(2) { margin-left: 24px; }
-  .adv-rep__bar { padding: 0 16px; height: 40px; }
-  .adv-rep__body { padding: 16px 16px 0; gap: 12px; }
-  /* the wedge the caption lives in is 90px wide at this size and the report
-     crosses it, so the line goes rather than sits behind a sheet. The `C/O`
-     on the report's own band carries the convention on its own. */
-  .adv-cap { display: none; }
+  /* squarer on a phone: a 1.79 letterbox at 350px wide is a postage stamp,
+     and the crop holds the fan of proofs rather than the empty desk */
+  .adv-port { aspect-ratio: 1400 / 1000; }
+  .adv-port img { object-position: 56% 46%; }
 }
 
 /* ── the auction, now inside the Google Ads panel ───────────────────────
@@ -9474,42 +9339,28 @@ html.js .sai-faq.rv.in .sai-faq__it:nth-child(7), html.js .sai-board__list.rv.in
   html.js .adv-fun.rv.in .adv-fun__s:nth-child(3) { animation-delay: 0.54s; }
   html.js .adv-fun.rv.in .adv-fun__s:nth-child(4) { animation-delay: 0.64s; }
 
-  /* HERO · the desk. The plate wipes in on the site's own res-wave-r, then
-     the month LANDS in the order it happened — proofs, storyboard, docket,
-     report last — each sheet dropping the last few pixels onto the desk. The
-     hand marks draw afterwards, because a mark is made after the thing it is
-     made on. Everything here is opacity and translate, so it composites. */
+  /* HERO · the photograph settles, then never stops moving — the sibling's
+     own treatment: a 1.6s push-in on load, then a 20s drift back and forth
+     under the clip, so the two heroes breathe on one clock, and a light band
+     crossing every 7s. All of it is scale/translate on the IMG, which
+     composites, and none of it touches the figure's own `translate: 0 -50%`. */
   html.js .hero--adv .adv-port { animation: res-wave-r 0.9s var(--ease) 0.3s both; }
-  html.js .adv-obj { animation: adv-land 0.46s cubic-bezier(.16,.84,.44,1) both; }
-  @keyframes adv-land { from { opacity: 0; translate: 0 18px; } to { opacity: 1; translate: 0 0; } }
-  html.js .adv-obj--under { animation-delay: 0.86s; }
-  html.js .adv-obj--proof { animation-delay: 0.94s; }
-  html.js .adv-obj--strip { animation-delay: 1.04s; }
-  html.js .adv-obj--dock  { animation-delay: 1.14s; }
-  html.js .adv-obj--rep   { animation-delay: 1.26s; }
-
-  /* the marks draw themselves. pathLength="100" so one dash value serves
-     every path regardless of its real length. */
-  html.js .adv-mark path, html.js .adv-ticks path {
-    stroke-dasharray: 100; animation: adv-draw 0.5s var(--ease) both; }
-  @keyframes adv-draw { from { stroke-dashoffset: 100; } to { stroke-dashoffset: 0; } }
-  html.js .adv-mark path:nth-child(1) { animation-delay: 1.50s; }
-  html.js .adv-mark path:nth-child(2) { animation-delay: 1.58s; }
-  html.js .adv-mark path:nth-child(3) { animation-delay: 1.66s; }
-  html.js .adv-ticks path:nth-child(1) { animation-delay: 1.62s; }
-  html.js .adv-ticks path:nth-child(2) { animation-delay: 1.74s; }
-  html.js .adv-ticks path:nth-child(3) { animation-delay: 1.86s; }
-  html.js .adv-ticks path:nth-child(4) { animation-delay: 1.98s; }
-
-  /* at rest, two motions on one clock and nothing changes state. The shade
-     crosses the desk on the sibling hero's own 20s, so the two heroes
-     breathe together; the proof's corner lifts and settles against it, which
-     is the only way a flat page says the paper is not stuck down. */
-  html.js .adv-shade { animation: adv-shade 20s linear 2.2s infinite backwards; }
-  @keyframes adv-shade { from { translate: -60% 0; } to { translate: 60% 0; } }
-  html.js .adv-obj--proof .adv-pap { transform-origin: 0 100%;
-    animation: adv-corner 10s ease-in-out 2.4s infinite; }
-  @keyframes adv-corner { 0%, 100% { rotate: 0deg; } 50% { rotate: 0.8deg; } }
+  /* NOT `adv-settle`: that name is already taken further down this file by
+     the ZEVUNIQ panel's image, whose keyframes are declared LATER and so win
+     for every user of the name. Reusing it made this photograph animate from
+     `opacity: 0` on a rule that does not carry a backwards fill — a flash on
+     load that audit_motion sees as a healthy animation, because the name is
+     alive either way. Keyframe names are one flat global namespace. */
+  html.js .adv-port img { scale: 1.08;
+    animation: adv-hero-settle 1.6s var(--ease) 0.3s forwards,
+               adv-hero-drift 20s ease-in-out 1.9s infinite alternate; }
+  @keyframes adv-hero-settle { to { scale: 1; } }
+  @keyframes adv-hero-drift { 0%   { scale: 1; translate: 0 0; }
+                              100% { scale: 1.09; translate: -2.4% 1.4%; } }
+  html.js .adv-port::after { animation: adv-hero-sweep 7s var(--ease) 2.4s infinite; }
+  @keyframes adv-hero-sweep { 0%, 100% { translate: -70% 0; }
+                              18%      { translate: 70% 0; }
+                              18.01%   { translate: -70% 0; } }
 
   /* 06 · the four plates each draw their own rule as they land, so the row
      reads left to right instead of four things appearing at once */
@@ -9540,8 +9391,7 @@ html.js .sai-faq.rv.in .sai-faq__it:nth-child(7), html.js .sai-board__list.rv.in
 /* no-motion: every finished state, no movement */
 @media (prefers-reduced-motion: reduce) {
   .adv-lim__no::after { transform: skewX(var(--slash-skew)) scaleX(1); }
-  .adv-obj { opacity: 1; translate: none; }
-  .adv-mark path, .adv-ticks path { stroke-dashoffset: 0; }
+  .adv-port img { scale: 1; translate: none; }
 }
 
 

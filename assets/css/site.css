@@ -8643,15 +8643,29 @@ html.js .sai-faq.rv.in .sai-faq__it:nth-child(7), html.js .sai-board__list.rv.in
   min-height: clamp(600px, 84vh, 800px); display: grid; align-items: center; }
 .hero--adv .wrap { padding-bottom: 0; }
 .hero--adv .wrap.adv-say { position: relative; z-index: 3; width: 100%; padding-block: 64px 48px; }
-/* the headline takes the measure; nothing else in the hero does */
-.adv-say__h { font-size: 56px; max-width: 24ch; }
-.adv-say__row { margin-top: 48px; display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 48px; align-items: start; }
-.adv-say__l { min-width: 0; }
-.hero--adv .adv-say__l .lead { max-width: 40ch; margin-top: 0; }
-.hero--adv .adv-say__l .cta-row { margin-top: 32px; align-items: center; }
-/* the rail closes the left column level with the board */
-.hero--adv .adv-say__l .sai-surf { margin-top: 48px; }
+/* THE TEMPLATE (founder, 18 Sep: "use the ai search hero template").
+   /seo-ai-search's hero, rule for rule: ONE cap on every direct child makes
+   the narrow statement column, the figure leaves flow and pins to the right
+   edge, and the rail alone takes the full measure underneath. The two-column
+   row that used to hold the device is gone — it put the figure BELOW the
+   headline, which left the top right of the stage empty and made the device
+   an afterthought instead of the other half of the composition.
+
+   The one number that is not the sibling's is the column: 46%, not 34%.
+   Measured, not chosen — this headline is 2.5× the sibling's length, and at
+   56px "to look after your social media account." needs 46% of the wrap to
+   land in FIVE lines, which is the sibling's own line count. At 34% it runs
+   to seven and the statement reads as a wall. */
+.adv-say > * { max-width: 46%; }
+.adv-say__h { font-size: 56px; }
+/* capped NARROWER than the column on purpose: the lead's lower lines sit
+   where the slash has already cut furthest left, so the column cap alone
+   would run them into the ivory. The sibling caps at 28ch for the same
+   reason (css · .hero--seo .sai-say .lead). */
+.hero--adv .adv-say .lead { max-width: 30ch; }
+/* the one rule that is easy to miss: `p { max-width: 62ch }` AND the 46%
+   column cap both apply to the rail, and either one stacks the four names */
+.adv-say > .sai-surf { max-width: none; }
 /* the CTA is an object, not a line of text: label and disc on one row */
 .hero--adv .cta-row .btn.sai-cta { display: inline-flex; width: auto;
   align-items: center; justify-content: center; gap: 12px; padding-right: 8px;
@@ -8700,11 +8714,23 @@ html.js .sai-faq.rv.in .sai-faq__it:nth-child(7), html.js .sai-board__list.rv.in
    content. The bleed is the point (a diagram floats inside its margins; a
    photograph is a crop of something larger), so the redundant declaration
    goes and the real check stays sharp. */
-.adv-port { position: relative;
-  margin: 0 calc(-1 * ((100vw - min(100vw, var(--maxw))) / 2 + var(--gutter)) - 48px) 0 48px;
-  aspect-ratio: 1400 / 781;
+.adv-port { aspect-ratio: 1400 / 781;
   clip-path: url(#ashape);
   background: color-mix(in srgb, var(--champ-700) 46%, var(--ivory)); }
+/* Out of flow, pinned right, centred on the cross axis — the sibling's
+   figure exactly. `translate` and not `transform`, so it composes with the
+   res-wave-r entrance instead of cancelling it.
+
+   52%, measured against the slash and not against the box. The widest line of
+   the headline clears the ivory by 79px here; the reference page's own
+   clearance, measured the same way, is 90px. 54% fits and leaves 41px, 56%
+   leaves 12px, 58% puts the words into the ivory — but 41px is half the
+   house margin for 4% more device, and a font that falls back eats it. The
+   test is the slash curve at each line's LOWEST point, because x(y) closes to
+   zero at 90% of the device's height:  x(y) = 0.16 - 0.2222y + 0.04938y². */
+.hero--adv .adv-port { position: absolute; z-index: 1; margin: 0; right: 0;
+  top: 50%; translate: 0 -50%;
+  width: 52%; max-height: calc(100% - 96px); }
 /* isolate, or the shade's multiply would reach the hero's plum ground */
 .adv-desk { position: absolute; inset: 0; isolation: isolate; }
 
@@ -8838,20 +8864,36 @@ html.js .sai-faq.rv.in .sai-faq__it:nth-child(7), html.js .sai-board__list.rv.in
 @media (max-width: 1240px) {
   .adv-cap span { display: none; }
 }
+/* the column widens and the figure narrows together, so the clearance never
+   closes: measured 71px at 1100, 31px at 1024, 59px at 900 */
 @media (max-width: 1100px) {
-  .adv-say__row { grid-template-columns: minmax(0, 1fr); gap: 32px; }
-  .hero--adv .adv-say__l .lead { max-width: none; }
+  .adv-say > * { max-width: 56%; }
+  .hero--adv .adv-port { width: 44%; }
+}
+/* The stack comes EARLIER than the sibling's 760. Below about 900 a 44%
+   figure is under 400px wide, and a desk carrying five sheets of paper at
+   that size is a row of stamps. Stacked, the figure takes the full measure
+   and is BIGGER than it is at desktop. */
+@media (max-width: 900px) {
+  .hero--adv { min-height: 0; display: block; }
+  /* `.hero--adv .adv-say` here is (0,2,0) and LOSES to the stage rule's
+     (0,3,0) `.hero--adv .wrap.adv-say`, so this step never fired — measured
+     64/48 at 390px. /seo-ai-search carries the identical dead rule and is
+     still 64/48 on a phone; that one is not this page's to fix. */
+  .hero--adv .wrap.adv-say { padding-block: 48px 32px; }
+  .adv-say > * { max-width: none; }
+  .hero--adv .adv-say .lead { max-width: none; }
+  .hero--adv .adv-port { position: relative; z-index: auto; inset: auto;
+    translate: none; width: auto; max-height: none;
+    margin: 32px calc(-1 * var(--gutter)) 0 0; }
 }
 @media (max-width: 760px) {
-  .hero--adv { min-height: 0; display: block; }
-  .hero--adv .adv-say { padding-block: 48px 32px; }
-  .adv-say__h { font-size: clamp(28px, 8vw, 40px); max-width: none; }
-  .adv-say__row { margin-top: 32px; }
+  .adv-say__h { font-size: clamp(28px, 8vw, 40px); }
   /* phone: the same desk with fewer things on it, and squarer, because three
      objects in a 1.79 letterbox at 350px wide is a row of stamps. The sheets
      grow and their margins shrink — at 370px a 16px margin is a quarter of
      the sheet, and the craft word does not fit inside what is left. */
-  .adv-port { margin: 0 calc(-1 * var(--gutter)) 0 0; aspect-ratio: 1400 / 1040; }
+  .adv-port { aspect-ratio: 1400 / 1040; }
   .adv-obj--under, .adv-obj--dock { display: none; }
   .adv-obj--proof { left: 14%; top: 4%;  width: 36%; height: 48%; }
   .adv-obj--strip { left: 54%; top: 8%;  width: 44%; height: 28%; }
@@ -9258,9 +9300,6 @@ html.js .sai-faq.rv.in .sai-faq__it:nth-child(7), html.js .sai-board__list.rv.in
    opacity: 0 on .rv children has already shipped a band that animated in and
    then vanished. */
 @media (prefers-reduced-motion: no-preference) {
-
-  /* the stage assembles on load, like the sibling page's */
-  html.js .hero--adv .adv-port { animation: res-wave-r 0.9s var(--ease) 0.3s both; }
 
   /* the caret blinks while the query sits there */
   html.js .adv-auc__cur { animation: adv-cur 1.1s steps(1, end) infinite; }

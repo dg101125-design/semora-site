@@ -2,7 +2,7 @@
 
 > SEMORA STUDIO is a leading specialist growth company and marketing agency for commercial industry professionals, owner-led businesses, and healthcare and allied-health practices. We combine positioning, digital marketing, AI visibility and conversion systems into clearly defined products with transparent pricing and measurable performance.
 
-Last updated: 18 September 2026. Summary version: https://www.semora.com.au/llms.txt
+Last updated: 22 September 2026. Summary version: https://www.semora.com.au/llms.txt
 
 SEMORA STUDIO PTY LTD, ABN 77 701 244 635. Central House Toorak, Level 3, 489 Toorak Road, Toorak VIC 3142, Melbourne, Australia. team@semora.com.au · (03) 9071 0855. All prices in Australian dollars, excluding GST.
 
@@ -14,7 +14,7 @@ Summary: We bring you the right clients. Melbourne specialist growth company and
 
 ## We bring you the right clients
 
-Strategy, AI-assisted research, brand craft and personal IP direction. Marketing built into how the business runs, not bolted on the side.
+Strategy, AI-assisted research, brand craft and personal IP direction. Marketing built into how the business already runs.
 
 Free visibility report Build your package →
 
@@ -40,7 +40,7 @@ What we do
 
 ### We build brands & scale revenue
 
-Digital marketing for specialist practices: the position, the search system and the enquiry that follows, built to be checked. Every price published.
+Digital marketing for specialist practices: the position, the search system and the enquiry that follows, built to be checked. Prices published.
 
 Build your package
 
@@ -68,7 +68,7 @@ Free visibility report →
 
 One shared condition: your buyers commit only when they can see real clients and real numbers. Stories do not close them.
 
-Nobody competing on lowest price. Narrowness is what lets us know your buyer better than you do. Outside these three we take a practice only when its buyers must see real outcomes first. The same rule sits on contact.
+Nobody competing on lowest price. Working in three fields is what lets us learn a buyer properly. Outside them we take a practice only when its buyers must see real outcomes first. The same rule sits on contact.
 
 01 Commercial property The agencies and advisors commercial property runs on.
 
@@ -112,11 +112,11 @@ Wellness practices
 
 ### The Flagship Packages
 
-The hard part of any retainer is knowing what it actually bought. So we split ours in two. One is a subscription: we watch your market, read what is moving in it, and make the calls on what you should do next, month by month. Then a team builds them.
+The hard part of any retainer is knowing what it bought, so we split ours in two. One is a subscription: we watch your market and make the calls on what to do next, month by month. Then a team builds them.
 
 Start with the subscription. Bring the build in once you know what needs building. Paying people to wait is how retainers earn their reputation.
 
-Neither is a fifth product. They wrap the four below, and the monthly work, into one arrangement. Each part keeps its own published price. See the four products, or price a composition →
+Neither is a fifth product. Each wraps the four below, and the monthly work, into one arrangement at its own published price. See the four products, or price a composition →
 
 01 Subscription · monthly
 
@@ -152,7 +152,7 @@ What the best strategy is for your business, and why, argued in writing. The imp
 
 ### Data research
 
-Our own research base, built for your industry: 41 firms scored in August 2026, every figure dated and checkable. We find the data your decisions need.
+Our own research base, built for your industry: 41 firms scored in August 2026, each figure dated and checkable.
 
 03
 
@@ -206,7 +206,7 @@ We review the results with our clients every month, keeping the strategy efficie
 
 ### How SEMORA helps our clients grow their business
 
-Specialist expertise, then measurable outcomes. We put our clients’ results and repeatability before expansion. Every figure on this board publishes measured, or not at all. Ask, and we will walk you through any of them. See the four products → See more cases →
+Specialist expertise, then measurable outcomes. We put our clients’ results and repeatability before expansion. We publish a figure on this board once it is measured. Ask, and we will walk you through any of them. See the four products → See more cases →
 
 ### Axis Platform
 
@@ -298,7 +298,7 @@ Google & Meta ads, managed · To $15k/mo of your spend, billed direct
 
 ### How we help
 
-A channel on its own cannot carry a practice. Search and AI answers, email, ads, the enquiry that follows: all of it runs as one system or none of it does, each channel feeding the next, because a lead found by search and lost by the follow-up was never really found at all. So we build the lot. The position, the website, the proposals, the CRM, the monthly engine, connected, measured against one number you choose. Where a channel leaks, we score it, rank the fix and report the movement in revenue. Not impressions.
+A channel on its own cannot carry a practice. Search and AI answers, email, ads and the enquiry that follows work as one system, each feeding the next, because a lead found by search and lost at the follow-up was not really found. So we build the lot: position, website, proposals, CRM and the monthly engine, measured against one number you choose. Where a channel leaks we score it, rank the fix and report the movement in revenue.
 
 Free visibility report Build your package →
 
@@ -312,7 +312,7 @@ The instrument
 
 ## Score your practice
 
-The eleven surfaces a buyer of expert advice actually checks, in the order they check them — this page is the whole instrument, free and ungated. Score each 0–4: two minutes, scored in your browser, nothing sent anywhere. Your three weakest surfaces, named.
+The eleven surfaces a buyer of expert advice actually checks, in the order they check them — this page is the whole instrument, free and ungated. Score each 0–4: two minutes, scored in your browser, and it stays in your browser. Your three weakest surfaces, named.
 
 ### What are the eleven surfaces, and how do you score each one?
 
@@ -356,7 +356,7 @@ who is the best buyers agent in melbourne/ physio near me open saturday/ how do 
 
 Google’s list still matters, and SEO is how you get on it. GEO, generative engine optimisation, means being a source an AI trusts enough to name.
 
-Semora builds for both. The list and the answer both get measured against the number you agreed to move, and the figures go in your report. Moved or not.
+SEMORA STUDIO builds for both. The list and the answer both get measured against the number you agreed to move, and the figures go in your report. Moved or not.
 
 Get your free visibility report → Check out an SEO analysis →
 
@@ -372,13 +372,13 @@ Winning authoritative references
 
 UserConversational, question-based prompts ResultDirectly generated, referenced answer ActionReceive, understand summary, and make decisions FocusStructured data, content entities, and validation SuccessBeing used as a trusted reference
 
-The evolution of search: traditional vs. AI & GEO. From ranking on lists to building trust for answers.
+Two doors, one buyer. The second is decided by evidence a machine can cite.
 
 5
 
 ### AI search connections
 
-We check all five surfaces against the same buyer questions, so an AI can work out who your clients are and what you provide them.
+We check five surfaces against the same buyer questions, so an AI can work out who your clients are and what you do for them.
 
 G
 
@@ -424,7 +424,7 @@ The most important thing is to let AI read and understand your business.
 
 ### Six services, one system
 
-Each is sold on its own and runs on the same method. The names are the names in the menu, so what you clicked is what you find.
+Each is sold on its own and runs on the same method. The names match the menu, so what you clicked is what you find.
 
 01
 
@@ -500,9 +500,9 @@ The row closes when the number moves
 
 03 / How it runs
 
-### How Semora runs our SEO system
+### How the SEO system runs
 
-We start editing your website and move to the next steps.
+Five steps, worked in this order.
 
 01
 
@@ -536,9 +536,9 @@ Evergreen converts. Editorial earns citations. No bought links.
 
 04 / How the work is done
 
-### The Semora SEO system. We show you how it is measured.
+### We show you the working.
 
-An agency will show you the result and keep the working. Here is the working: what runs every month, what each step has to produce before it counts as done, and whose name is on the report by the time it reaches you. It is not a secret.
+An agency will show you the result and keep the working. Here is ours: what runs each month, what each step must produce before it counts as done, and whose name is on the report when it reaches you.
 
 Monthly operating report How it is produced
 
@@ -562,7 +562,7 @@ Closes on a fix ledger, sorted, with an owner per row.
 
 ### Fix in order
 
-Indexability first, because a page a machine cannot reach earns nothing downstream. Your developer can ship the work, or we can.
+Indexability first: later work only pays on a page a machine can reach. Your developer can ship it, or we can.
 
 Closes on the re-measurement of that row, dated.
 
@@ -598,7 +598,7 @@ Search MEASURED Answered Search on one side, the answer on the other, and one th
 
 ### Eight engagements, on the record
 
-Four carry published figures. Four are in delivery. A figure there publishes measured, or not at all, and the record behind any of them is yours on request.
+Four carry published figures. Four are in delivery. We publish a figure once it is measured, and the record behind it is yours on request.
 
 See the client projects
 
@@ -636,11 +636,11 @@ Sixteen questions your buyer would ask, put to ChatGPT and Perplexity in clean s
 
 ### Do you need access to our Search Console?
 
-Yes, before anything starts. Without it an audit is a guess dressed as a diagnosis: we can see what your site is, but not what it earns. Analytics and the business profile follow the same rule.
+Yes, before anything starts. Without it we can see what your site is, but not what it earns. Analytics and the business profile follow the same rule.
 
 ### What does the first month look like?
 
-Access first: Search Console, analytics, the business profile, and whoever holds the site, all in your name before anything else happens, because an audit without them is a guess dressed as a diagnosis. Then the baseline, written down. Then the four-part audit of platform, speed, indexation and architecture, which produces the fix ledger, sorted by what each fault costs you and closed row by row on re-measurement. Each row has a date. The keyword-to-page map and the question-to-page map come out of the same month. The first report follows the baseline, so the number on its first line has a starting figure beside it and a date under it.
+Access first: Search Console, analytics, the business profile and whoever holds the site, in your own name. Then the baseline, written down and dated. Then the four-part audit of platform, speed, indexation and architecture, which produces the fix ledger. The keyword map and the question map come out of the same month.
 
 ### Do you work with our own developer?
 
@@ -718,7 +718,7 @@ The auctionYour bid and Meta’s estimate of how likely that person is to act. F
 
 Every campaign runs in accounts you own. They are opened in your name and stay with you, so ending the engagement costs you no history and no rebuild.
 
-We never hold your media budget
+We do not hold your media budget
 
 Your spend goes straight to the platform.
 
@@ -888,11 +888,11 @@ Yes. Accounts are opened in your business name and we work inside them with acce
 
 ### How much should we spend?
 
-Enough to buy a readable month. A budget that produces two or three conversions gives nobody a signal to act on, which means the first month is spent learning rather than earning. We set the figure against the value of one client to you, and we write down what it has to return before it starts.
+Enough to buy a readable month. A budget producing two or three conversions gives nobody a signal to act on, so the first month is spent learning rather than earning. We set the figure against the value of one client to you, and write down what it has to return before it starts.
 
 ### Why does LinkedIn cost more than Google?
 
-Because you are bidding for a named job title rather than for a search, and everyone else who wants that title is in the same auction. LinkedIn publishes no rate card, so the real cost of a click is discovered in your first month rather than quoted in a proposal. It earns its price when one client is worth a great deal and the buying committee is several people.
+Because you are bidding for a named job title rather than a search, and everyone else who wants that title is in the same auction. LinkedIn publishes no rate card, so the real cost of a click is discovered in your first month. It earns its price when one client is worth a great deal and several people sign off the purchase.
 
 ### Can Google spend more than our daily budget?
 
@@ -924,7 +924,7 @@ Specimen · every figure invented
 
 ## The monthly report, opened
 
-This is the shape of the report a client receives, filled with invented figures so you can read the structure without reading anyone’s business, and the failures sit beside the wins for a reason that has more to do with arithmetic than with honesty: by month three somebody has to decide where the next month’s hours go, and a page carrying only good news gives them nothing to decide with. So the weak layers are named. So is the work that has not started, and the items sitting with the client rather than with us.
+This is the shape of the report a client receives, filled with invented figures so you can read the structure without reading anyone’s business. The failures sit beside the wins for a practical reason: by month three somebody decides where the next month’s hours go, and a page of only good news gives them little to work with. So the weak layers are named, with the work not yet started and the items sitting with the client.
 
 Reporting period: month three of an engagement · Prepared by SEMORA STUDIO · Reviewed by a second reader, independent of delivery
 
@@ -1002,7 +1002,7 @@ A published boundary statement
 
 It breached the writing standard. Rewritten, redeployed, confirmed live the same day.
 
-Both were fixed before the report was issued. A month with nothing stopped usually means nobody looked.
+Both were fixed before the report was issued. A month with an empty register usually means nobody looked.
 
 05 / Next
 
@@ -1020,7 +1020,7 @@ Publish the method page and the decision guidesThe pages answer engines quote mo
 
 Us to draft, you to approve
 
-Draft the external citation target listThe list costs nothing. Only sending it earns a citation, and that is your call.
+Draft the external citation target listDrafting the list is free. Sending it is what earns a citation, and that is your call.
 
 Us to draft
 
@@ -1062,7 +1062,7 @@ The instrument
 
 ### The eleven surfaces, and the question each one answers
 
-Somebody who has a problem they have not told anyone about yet checks these, roughly in this order, before they ever speak to you, and by the time the phone rings most of the checking is already done. You do not see any of it. Each is scored 0–4 with the evidence recorded beside it. Score yourself first, free →
+Somebody with a problem they have not told anyone about checks these, roughly in this order, before they speak to you. By the time the phone rings most of the checking is done, and you do not see any of it. Each is scored 0–4 against the evidence. Score yourself first, free →
 
 # · Surface · What the buyer is asking ·
 
@@ -1092,9 +1092,9 @@ The order of work
 
 ### How long does the Proof Check take, and what do you have to do?
 
-Two weeks, and two and a half hours of your time. You give us two things: the 90-minute working session, and your last five proposals. The 60-minute findings session closes it. Nothing else waits on your team.
+Two weeks, and two and a half hours of your time. You give us two things: the 90-minute working session, and your last five proposals. The 60-minute findings session closes it. That is the whole ask of your team.
 
-Then, in order. We score the eleven surfaces against evidence, and we set your baseline: win rate on qualified enquiries, average fee, founder-hours per win. Then your proposals. Your last five, read against the ones that won. Then the three competitors you name, scored on the same instrument, and if that list is the wrong one, if the firm actually taking your work is not on it, we say so and we say why. Last comes the part you actually wanted: the three surfaces to fix, ranked, with the reason each one sits where it does.
+Then, in order. We score the eleven surfaces against evidence and set your baseline: win rate on qualified enquiries, average fee, founder-hours per win. Then your last five proposals, read against the ones that won. Then the three competitors you name, on the same instrument, and if the firm actually taking your work is missing from that list we say so. Last, the three surfaces to fix, ranked.
 
 It ends with a 60-minute findings session, recorded, and a written report. The recording and the report are yours.
 
@@ -1102,17 +1102,17 @@ Why it is paid
 
 ### Why does SEMORA STUDIO charge for an audit when others give one away?
 
-Because a free audit is a sales call in a costume, and specialists can tell. Charging makes it an engagement rather than a pitch, and an engagement is the version whose findings you can actually use, because nothing is held back for a proposal at the end. That is the trade. It also filters for people who are actually going to act on them.
+Because a free audit is a sales call in a costume, and specialists can tell. Charging makes it an engagement, which is the version whose findings you can use, because we hold none of it back for a proposal at the end. It also filters for people who will act on them.
 
 You keep the report whether or not you hire us.
 
-The $1,000 is credited in full against any engagement you start within 90 days. Hire us and the audit costs nothing. Walk away and you still hold a scored baseline, and a ranked list of what to fix in what order, which is more than you had on the Monday morning you first picked up the phone to us. That is the deal.
+The $1,000 is credited in full against any engagement you start within 90 days, so hiring us makes it free. Walk away and you still hold a scored baseline and a ranked list of what to fix, in order. That is the deal.
 
 What it is not
 
 ### What is the Proof Check not?
 
-Not a strategy, and not a proposal. It measures where you stand. It does not decide your position, write your messaging or build anything, and if you want the audit to hand you a strategy at the end you will be disappointed. That is deliberate. That work is Commercial Growth Signal and Growth Foundation Build, priced separately and published in the same detail.
+It measures where you stand. It does not decide your position, write your messaging or build anything, so an audit that hands you a strategy at the end is not what this is. That work is Commercial Growth Signal and Growth Foundation Build, priced separately and published in the same detail.
 
 It is also optional. You can start at Commercial Growth Signal instead and we set the baseline there in week one. The rule underneath all of it is no work without a baseline, because otherwise nobody can say at 120 days whether anything moved. That rule does not bend.
 
@@ -1166,7 +1166,7 @@ Why it is priced like this
 
 ### Why does Commercial Growth Signal cost $3,000?
 
-Because a position is fee infrastructure, and the $3,000 is measured against what an undefended position costs you in a year. Open last year's client list. Beside each name, write the fee you first quoted and the fee you actually took to win the work. Add up the gap. That is what one undefended year costs you, and the same gap opens again this year, and the year after that, because nothing about the conversation that produced those discounts has changed since the last time you had it. Nobody enjoys that sum. For most practices it is a multiple of this fee. Run it in your own books before you talk to us.
+Because a position is fee infrastructure, and the $3,000 is measured against what an undefended one costs you in a year. Open last year's client list. Beside each name write the fee you quoted and the fee you took. Add up the gap. That is one undefended year, and it opens again next year while the conversation behind those discounts stays the same. For most practices the sum is a multiple of this fee.
 
 Six objections come up on a first call, and you answer them a different way each time, because nobody ever wrote down the best version. That is the leak. The position, the fee logic and the objection playbook exist to end that discount. Check the arithmetic against your own books. That is the only claim we make for it.
 
@@ -1212,13 +1212,13 @@ Custom Function Website Build — 10 pages · Custom design and function. Fast, 
 
 Proposal & Presentation System · 3 sector proposal templates, master deck with 10 layouts — editable · 2 weeks · $5,000 ·
 
-Take one component or the set, and each one stands on its own price. Commercial Growth Signal first is a recommendation, not a requirement. Without a position we are choosing colours and headlines against nothing. Already have a position? Bring it and we build straight from it. Build the exact quote →
+Take one component or the set, each at its own price. Commercial Growth Signal first is a recommendation, not a requirement. Without a position, colours and headlines have nothing to answer to. Already have one? Bring it and we build straight from it. Build the exact quote →
 
 The handover clause
 
 ### What do you own at the end of Growth Foundation Build?
 
-All of it, as a clause rather than a courtesy. Every source file, token and the governance model transfer at completion, by contract. Fonts are SIL OFL — no seat licences. No asset held hostage to a retainer. In our August 2026 review of 41 Melbourne and Australian firms we did not find another publishing all four commitments together — comparison criteria and review date available on request.
+A clause rather than a courtesy. Source files, tokens and the governance model transfer at completion, by contract. Fonts are SIL OFL, so no seat licences follow you. In our August 2026 review of 41 Melbourne and Australian firms we did not find another publishing all four commitments together — comparison criteria and review date available on request.
 
 Start with the audit Next: Managed Growth Pod →
 
@@ -1416,15 +1416,15 @@ Proactive improvements — no request needed
 
 Start here →
 
-The review and the report are separate commitments. The table above carries both. Every tier meets on a published cadence, and the written report against the number is quarterly at Directed and monthly from Shared. A monthly score rides free with any à-la-carte monthly service, on any tier.
+The review and the report are separate commitments, and the table above carries both. Each tier meets on a published cadence; the written report against the number is quarterly at Directed and monthly from Shared. A monthly score rides free with any à-la-carte monthly service.
 
-Quantities are published on purpose. A retainer that says “content as needed” can mean four pieces or none, and by month three nobody in the room can remember what was agreed, so we write the number down and you hold us to it. Fourteen means fourteen. 6-month minimum, then monthly, 60 days' notice. Systems built under Managed Growth Pod are owned by you, like everything else we build. Review and testimonial automation is excluded for regulated health services. AHPRA prohibits it, and knowing that before you ask is part of the service.
+Quantities are published on purpose. A retainer that says “content as needed” can mean four pieces or one, and by month three nobody remembers what was agreed. So we write the number down and you hold us to it. Fourteen means fourteen. 6-month minimum, then monthly, 60 days' notice. Systems built under Managed Growth Pod are owned by you. Review and testimonial automation is excluded for regulated health services, because AHPRA prohibits it.
 
 The comparison
 
 ### How does Managed Growth Pod compare with hiring a marketing manager?
 
-Managed Growth Pod is priced against a hire, not against an agency. Shared comes to $88,800 a year, under a Marketing Specialist on $80k–$95k plus super. Held comes to $162,000, under a Head of Marketing on $172,500 plus super. Both salary figures are from SEEK's published Melbourne marketing salary data, 2026. What a salary also buys is somebody in the building, which a retainer does not, so the fair comparison is the list above against one person's week.
+Managed Growth Pod is priced against a hire. Shared comes to $88,800 a year, under a Marketing Specialist on $80k–$95k plus super. Held comes to $162,000, under a Head of Marketing on $172,500 plus super. Both salary figures are from SEEK's published Melbourne marketing salary data, 2026. A salary also buys somebody in the building, which a retainer does not, so compare the list above against one person's week.
 
 Build your package Start with the audit →
 
@@ -1444,7 +1444,7 @@ About
 
 ## What is SEMORA STUDIO?
 
-SEMORA STUDIO is a leading specialist growth company and marketing agency for commercial industry professionals, owner-led businesses, and healthcare and allied-health practices. We combine positioning, digital marketing, AI visibility and conversion systems into clearly defined products with transparent pricing and measurable performance.
+SEMORA STUDIO is a leading Melbourne marketing agency for commercial industry professionals, owner-led businesses and healthcare practices. Positioning, search, AI visibility and conversion systems are sold as named products, each with a published price and a number it is measured against.
 
 01 / Who we work with
 
@@ -1454,11 +1454,11 @@ Three fields, one condition. Commercial industry professionals — commercial pr
 
 Owner-led businesses. Firms with a name on the door and a founder still in the room. The kind whose buyers read everything before they call. Not a startup before its first revenue, and not anyone whose pitch is the cheapest price in the market.
 
-Healthcare and allied health practices. Clinics with more than one practitioner, and the wellness practices beside them. Health advertising is regulated in Australia. So every clinical claim we write is checked against the National Law and against current Ahpra guidance, we write down what backs it, and it does not go live until you have read it and said yes. That is slower. We keep that record so you can produce it. It is not legal advice, and we will tell you when to get some.
+Healthcare and allied health practices. Clinics with more than one practitioner, and the wellness practices beside them. Health advertising is regulated in Australia, so each clinical claim is checked against the National Law and current Ahpra guidance, written up with what backs it, and held until you have read it and said yes. That is slower, and you keep the record to produce on request. It is not legal advice, and we say when to get some.
 
-The shared condition: your buyers must need to see real clients and real outcomes before they commit. That rules out plenty of good businesses, and we would rather say so on the first call than three months into a retainer you are already paying for. So here it is. If a good story on its own wins your market, we are the wrong firm.
+The shared condition: your buyers must need to see real clients and real outcomes before they commit. That rules out plenty of good businesses, and we would rather say so on the first call than three months into a retainer you are already paying for. If a good story on its own wins your market, we are the wrong firm.
 
-Who we are not for: startups pre-revenue, and anyone competing on lowest price. Narrowness is what lets us know your buyer better than you do. Outside the three fields we take a practice only when the shared condition above holds: its buyers must need to see real clients and real outcomes before they commit.
+Who we are not for: startups pre-revenue, and anyone competing on lowest price. Working in three fields is what lets us learn a buyer properly. Outside them we take a practice only when the shared condition above holds.
 
 02 / What we publish that others do not
 
@@ -1468,7 +1468,7 @@ Across 41 Melbourne and Australian firms scored in August 2026, we found none pu
 
 C1 / Prices
 
-### Every price and delivery time is published
+### Prices and delivery times, published
 
 No quote-on-request · the same numbers for every client · see them all →
 
@@ -1480,7 +1480,7 @@ Set at kickoff from your baseline · reviewed at 120 days · the enforceable cla
 
 C3 / Ownership
 
-### You own everything, by contract
+### You own what we build, by contract
 
 Source files, design tokens, templates, governance — at completion
 
@@ -1494,11 +1494,11 @@ The eleven surfaces, free and ungated — score yourself → before you speak to
 
 ### Is SEMORA STUDIO a new company?
 
-Yes — new, and we say so. SEMORA STUDIO works from Central House Toorak, Level 3, 489 Toorak Road, Toorak VIC 3142, Melbourne, with Australian practices. The company began operating in 2026. There is no decade of case studies here and we will not pretend there is. What we publish instead is the thinking, the prices and our own score, zeros included.
+Yes — new, and we say so. SEMORA STUDIO works from Central House Toorak, Level 3, 489 Toorak Road, Toorak VIC 3142, Melbourne, with Australian practices, and began operating in 2026. There is no decade of case studies here. What we publish instead is the thinking, the prices and our own score, zeros included.
 
-How the work gets done: the people listed on the team page, with the work split by function. Research and production are AI-assisted, and we say so rather than let you picture a floor of staff who are not there. Nothing leaves until a person has read it and signed it off.
+How the work gets done: the people listed on the team page, with the work split by function. Research and production are AI-assisted, and we say so rather than let you picture a floor of staff who are not there. A person reads the work and signs it before it goes anywhere.
 
-How we handle claims: named, dated, sourced and caveated. A client quote is published with their name on it and their written yes, or labelled as a sample until a real one replaces it. A claim without a source, a date or a starting number does not ship. Our board is the exception. The cards print the change without the period behind it, so ask and we will take you through any of them.
+How we handle claims: named, dated, sourced and caveated. A client quote carries their name and their written yes, or is labelled a sample until a real one replaces it. A claim without a source, a date or a starting number does not ship. The board is the exception: its cards print the change without the period behind it, so ask and we will take you through any.
 
 Legal entitySEMORA STUDIO PTY LTD · ABN 77 701 244 635 AddressCentral House Toorak, Level 3, 489 Toorak Road, Toorak VIC 3142 Began operating2026 · new, and we say so The teamNamed, one discipline each · listed, by function → Published resultsFour client results, on the homepage · the first measured 90-day result publishes 8 November 2026 Our own score24 / 44 at launch · zeros included →
 
@@ -1520,7 +1520,7 @@ Research and production are AI-assisted, and we say so.
 
 # Clients Onboard — SEMORA STUDIO Melbourne
 URL: https://www.semora.com.au/quote
-Summary: The SEMORA Operating System: six phases run every client engagement, from governance and access to the 120-day decision. Every price published, one page over.
+Summary: The SEMORA Operating System: six phases run each client engagement, from governance and access to the 120-day decision. Prices are published, one page over.
 
 Clients onboard
 
@@ -1718,7 +1718,7 @@ You can pick the products and services you need, and we will prepare the rest of
 
 01Start — the diagnostic
 
-Proof Check · Optional. Every channel scored 0–4 with evidence, your baseline measured, the three highest-value fixes ranked. $1,0002 weeks The Proof Check is the groundwork before any long-term marketing. We go through your website and how it works, whether it is ready for SEO and AI search, and how you sit against your competitors and your industry. Then we score it. What comes back is a scan of where you stand today and what to improve next, with the evidence behind every number. Two weeks, one baseline. If you stay for the long run, this is the map we plan the work against.
+Proof Check · Optional. Every channel scored 0–4 with evidence, your baseline measured, the three highest-value fixes ranked. $1,0002 weeks The groundwork before any long-term marketing. We read your website, check whether it is ready for SEO and AI search, score you against your competitors, and hand back where you stand today with the evidence behind each number. Two weeks, one baseline.
 
 02Strategy — Commercial Growth Signal
 
@@ -1732,7 +1732,7 @@ Brand Identity and Brand Book · Logo system, type, colour, usage rules — the 
 
 Each service runs month after month. Six-month minimum, then monthly. Reporting and your monthly score are included with any selection — $0.
 
-SEO & GEO System · Rankings, Google Business Profile and the map pack — maintained and reported monthly. $2,000/ month Google & Meta Ads, Managed · Campaigns built, run and optimised weekly, to $15k/mo of spend. The spend itself is billed to you direct — we never touch it. $1,500/ month AI Search Visibility · Improving your eligibility, relevance and likelihood of being accurately surfaced and cited in ChatGPT, Google AI features and Perplexity — measured against a tracked set of buyer questions, and reported. No platform sells guaranteed placement, so we do not promise one. $1,400/ month Editorial Content & Case Studies · Two pieces a month — researched, written, published and distributed. $2,600/ month Practitioner Video · One scripted, edited video a month, cut for three platforms. You talk; we do the rest. $3,500/ month LinkedIn & Key-Account Outreach · Your named target accounts warmed and worked, under your name. $1,000/ month Email Nurture & CRM · Sequences, recalls and follow-up — written, sent and maintained for you. $1,500/ month Reviews & Reputation · Reviews grown on a documented path. For regulated health services we use an AHPRA-aware workflow and you approve every clinical statement — testimonial advertising is excluded, because the National Law prohibits it. $1,000/ month Run everything and Managed Growth Pod / Held caps the month. $13,500/ month cap
+SEO & GEO System · Rankings, Google Business Profile and the map pack — maintained and reported monthly. $2,000/ month Google & Meta Ads, Managed · Campaigns built, run and optimised weekly, to $15k/mo of spend. The spend itself is billed to you direct, and it does not pass through us. $1,500/ month AI Search Visibility · Improving your eligibility, relevance and likelihood of being accurately surfaced and cited in ChatGPT, Google AI features and Perplexity — measured against a tracked set of buyer questions, and reported. No platform sells guaranteed placement, so we do not promise one. $1,400/ month Editorial Content & Case Studies · Two pieces a month — researched, written, published and distributed. $2,600/ month Practitioner Video · One scripted, edited video a month, cut for three platforms. You talk; we do the rest. $3,500/ month LinkedIn & Key-Account Outreach · Your named target accounts warmed and worked, under your name. $1,000/ month Email Nurture & CRM · Sequences, recalls and follow-up — written, sent and maintained for you. $1,500/ month Reviews & Reputation · Reviews grown on a documented path. For regulated health services we use an AHPRA-aware workflow and you approve every clinical statement — testimonial advertising is excluded, because the National Law prohibits it. $1,000/ month Take the full set and Managed Growth Pod / Held caps the month. $13,500/ month cap
 
 05Add-ons
 
@@ -1742,7 +1742,7 @@ Email QuoteEmail Quote Pay NowPay Now
 
 We will help you choose the right service for your business marketing.
 
-Every priced line here is the published price, and it is the same number for every client, on this page and in the engagement agreement. The rows marked client budget are yours. We never trim them and we never count them as our fee. Scope is written into the agreement before anything starts.
+Every priced line here is the published price, and it is the same number for every client, on this page and in the engagement agreement. The rows marked client budget are yours. We do not trim them or count them as our fee. Scope is written into the agreement before anything starts.
 
 Your quote /
 
@@ -1884,7 +1884,7 @@ Method
 
 ## Accountable to one number. In writing
 
-A named metric in the contract, everything handed over at completion — and our own instrument applied to us, in public.
+A named metric in the contract, the work handed over at completion, and our own instrument applied to us in public.
 
 ### How does SEMORA STUDIO work?
 
@@ -1898,13 +1898,13 @@ One metric from your audit baseline — win rate, fee integrity, or founder depe
 
 ### What do you own at the end of an engagement?
 
-Everything SEMORA STUDIO built for you. Source files, tokens, templates and the written governance model transfer at completion, by contract. SIL OFL fonts — no seat licences. Nothing held hostage to a retainer.
+What we built for you. Source files, tokens, templates and the written governance model transfer at completion, by contract. Fonts are SIL OFL, so there are no seat licences to inherit. Stopping the retainer does not cost you any of it.
 
 03
 
 ### Why hire a marketing agency that has no track record yet?
 
-SEMORA STUDIO is new, and says so, unprompted. What substitutes for tenure: named people, this published method, published prices, and source files that transfer by contract — if we vanished tomorrow, you keep everything.
+SEMORA STUDIO is new, and says so, unprompted. What substitutes for tenure: named people, this published method, published prices, and source files that transfer by contract. If we vanished tomorrow, you keep what we built.
 
 04 / SEMORA STUDIO vs a traditional marketing agency
 
@@ -1966,7 +1966,7 @@ Who does the work
 
 Varies significantly by size and specialisation
 
-A named team, listed on the team page. Research and production are AI-assisted, and we say so. Nothing ships until a person has signed it off
+A named team, listed on the team page. Research and production are AI-assisted, and we say so. A person signs off each deliverable before it ships
 
 Measurement
 
@@ -1980,13 +1980,13 @@ An established firm may hold years of references and measured cases
 
 New. Began 2026. Four client results published, and no verified client reviews yet — we ask for those at the 120-day review. The AXIS measured result publishes 8 November 2026
 
-Which should you choose? If you have people who can execute but no direction, a consultant may be enough. If your strategy is settled and you only lack production capacity, a specialist agency will do. We are built for the case in between — no senior marketer in-house, and not enough capacity to run it either. See the four products →
+If you have people who can execute but no direction, a consultant may be enough. If your strategy is settled and you only lack production capacity, a specialist agency will do. We are built for the case in between: no senior marketer in-house, and not enough capacity to run it either. See the four products →
 
 05 / Our own score
 
 ### How does SEMORA STUDIO score on its own instrument?
 
-24 of a possible 44, at launch in August 2026, zeros included. It is the same eleven-surface instrument we score clients on and the same one published free at score your practice — eleven surfaces, each scored 0–4, so 44 is the ceiling. The zeros are the honest cost of being new, and the plan for removing them is beside each one. Re-scored quarterly.
+24 of a possible 44, at launch in August 2026, zeros included. It is the eleven-surface instrument we score clients on, published free at score your practice: each surface scores 0–4, so 44 is the ceiling. The zeros are the honest cost of being new, and the plan for removing them sits beside each one. Re-scored quarterly.
 
 24 / 44
 
@@ -2006,7 +2006,7 @@ Launch self-score · August 2026 · re-scored quarterly
 
 07 Peer proof 0 / 4 0 at launch; four clients now named on the homepage — re-scored at the quarterly review
 
-08 Fee explanation 4 / 4 Every price published, reasoned, cited
+08 Fee explanation 4 / 4 Prices published, reasoned, cited
 
 09 What happens after 4 / 4 Handover and governance are contract terms
 
@@ -2020,7 +2020,7 @@ The standard we hold
 
 ### Sourced. Dated. Baselined. Attributable
 
-Every claim passes all four tests before it ships, and every case study names what else changed in the period. The caveat is what separates evidence from advertising. On the board the card carries the change and we carry the rest. Ask for any of it.
+A claim passes all four tests before it ships, and each case study names what else changed in the period. The caveat is what separates evidence from advertising. On the board the card carries the change and we carry the rest. Ask for any of it.
 
 See how onboarding runs Start with the audit →
 
@@ -2084,7 +2084,7 @@ Free AI visibility report
 
 Nine short questions, then we email you the report.
 
-Free, and nothing is sold to you here.
+Free, and there is no pitch attached.
 
 A named person picks it up within one business day.
 
@@ -2150,7 +2150,7 @@ Seven of the eight on our contact page. Your name, your practice, your email, yo
 
 Our server is stricter about three of them and lets the rest through empty: your name, your email, and your message.
 
-The page adds one line you did not type. It holds the site that sent you and the page you landed on, so that when you arrive from a search engine or from a link inside an assistant like ChatGPT, we can tell which channels bring us work instead of guessing at it. It is a hostname and a path. Two short strings. Some hostnames do identify a company, so that line is not always anonymous, and we would rather say so than pretend otherwise.
+The page adds one line you did not type: the site that sent you and the page you landed on. It tells us which channels bring work, including arrivals from a search engine or from a link inside an assistant like ChatGPT. It is a hostname and a path. Some hostnames do identify a company, so that line is not anonymous in every case, and we would rather say so.
 
 02 / Where the enquiry goes
 
@@ -2176,7 +2176,7 @@ Card payments run on a page Stripe hosts. Your card number goes to them. What co
 
 Our own code sets none, so you will not meet a banner here.
 
-Our host runs two small scripts. Between them they record the page, the site that referred you, your country and city, your device, browser and operating system, your network speed and how quickly the page loaded. That is a long list. The traffic one works without cookies by turning each request into a hash so it can count a returning visitor within the same day without storing who that visitor is. Counted, not named. It is a fuller account than most sites print. We would rather give you it than call the whole thing anonymous and leave you to find out.
+Our host runs two small scripts. Between them they record the page, the site that referred you, your country and city, your device, browser and operating system, your network speed and the load time. That is a long list. The traffic one works without cookies: it hashes each request, so it can count a returning visitor within the same day without storing who they are. Counted, not named.
 
 05 / Who else handles it
 

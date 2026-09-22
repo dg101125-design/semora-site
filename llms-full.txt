@@ -1198,21 +1198,21 @@ Scope / component prices
 
 Component · What is inside · Delivery · Price + GST ·
 
-Brand Identity and Brand Book · Identity system, colour + type libraries, 30-mark icon set, stationery, Foundation + Applications book — editable source · 3 weeks · $5,500 ·
+Brand Identity and Brand Book · Identity system, colour + type libraries, 30-mark icon set, stationery, Foundation + Applications book — source files you can edit · 3 weeks · $5,500 ·
 
 Website Design — 8 pages · Your work, proof and contact path — designed, written, built and live · 4–6 weeks · $3,500 ·
 
-Custom Function Website Build — 10 pages · Custom design and function. Fast, indexable, readable by AI search. Extra pages $500 each · 4–5 weeks · $15,000 ·
+Custom Function Website Build — 10 pages · Custom design and function. Fast, easy to index, easy for AI search to read. Extra pages $500 each · 4–5 weeks · $15,000 ·
 
 Proposal & Presentation System · 3 sector proposal templates, master deck with 10 layouts — editable · 2 weeks · $5,000 ·
 
-Each component is priced on its own. Commercial Growth Signal first is a recommendation, not a requirement. Without a position, colours and headlines have nothing to answer to. If you already have one, we build straight from it. Build the exact quote →
+Each component is priced on its own. We suggest Commercial Growth Signal first, but it is not required. Without a position, colours and headlines have nothing to answer to. If you already have one, we build straight from it. Build the exact quote →
 
 The handover clause
 
 ### What do you own at the end of Growth Foundation Build?
 
-Source files, tokens and the governance model transfer at completion, by contract. Fonts are SIL OFL, so no seat licences follow you. In our August 2026 review of 41 Melbourne and Australian firms we did not find another publishing all four commitments together — comparison criteria and review date available on request.
+Source files, tokens and the governance model transfer at completion, by contract. Fonts are SIL OFL, so no seat licences follow you. In our August 2026 review of 41 Melbourne and Australian firms we did not find another publishing all four commitments together. Ask us for the comparison criteria and review date.
 
 Start with the audit Next: Managed Growth Pod →
 
@@ -1236,15 +1236,15 @@ Retained, and priced on your time. The tier sets who carries the month, and how 
 
 $3,000+per month · 6-month minimum · + GST
 
-Tiers differ by responsibility, not just deliverables
+Tiers differ by who owns the work, not just the list
 
 ### What is the difference between the three Managed Growth Pod tiers?
 
 · Directed — $3,000/mo · Shared — $7,400/mo · Held — $13,500/mo ·
 
-Primary focus · Direction you execute · Managed growth with you · The engine without you ·
+Main focus · Direction you act on · Managed growth with you · The engine without you ·
 
-Who implements · Your team, briefed by us · We build, you approve · We hold it ·
+Who builds it · Your team, briefed by us · We build, you approve · We hold it ·
 
 Your time · ~3 hrs / week · ~1 hr / week · ~45 min / week ·
 
@@ -1254,7 +1254,7 @@ Written report · Quarterly · Monthly · Monthly + quarterly review ·
 
 Response · 2 business days · 1 business day · Same business day ·
 
-Substitutes for · One retained client a year · Under a Marketing Specialist · Under a Head of Marketing ·
+Stands in for · One retained client a year · Under a Marketing Specialist · Under a Head of Marketing ·
 
 What gets built each month
 
@@ -1262,11 +1262,11 @@ What gets built each month
 
 Directed
 
-### We direct. You execute
+### We direct. You build
 
 $3,000per month · + GST · ~3 hrs of you / week
 
-Strategy & accountability
+Strategy & who answers for it
 
 Monthly strategy session, 60 min
 
@@ -1274,7 +1274,7 @@ Quarterly review against the number
 
 Response inside 2 business days
 
-Decisions stay with you — we recommend
+The call stays with you — we advise
 
 Marketing & sales
 
@@ -1286,7 +1286,7 @@ Campaign specs — your team builds
 
 Enquiry-response templates & standard
 
-Search & visibility — specified
+Search & visibility — set out
 
 SEO, local search & Google Business Profile — audited, fix-list you implement
 
@@ -1294,7 +1294,7 @@ AI search visibility — baseline measured, reviewed quarterly
 
 Paid media — targeting & budget plan; you or your agency run it
 
-Systems — specified, you run
+Systems — set out, you run
 
 CRM pipeline stages & follow-up standards
 
@@ -1310,7 +1310,7 @@ Recommended start
 
 $7,400per month · + GST · Shared · ~1 hr of you / week
 
-Strategy & accountability
+Strategy & who answers for it
 
 Fortnightly strategy session, 60 min
 
@@ -1318,7 +1318,7 @@ Monthly report against the number
 
 Response inside 1 business day
 
-Decisions shared — we propose, you approve
+The call is shared — we propose, you approve
 
 Marketing & sales — we produce
 
@@ -1332,9 +1332,9 @@ Follow-up sequences run for you
 
 2 hrs website updates
 
-Search & visibility — maintained
+Search & visibility — kept up
 
-SEO, local search & Google Business Profile — maintained monthly
+SEO, local search & Google Business Profile — kept up monthly
 
 AI search visibility — tracked and improved
 
@@ -1362,7 +1362,7 @@ Held
 
 $13,500per month · + GST · ~45 min of you / week
 
-Strategy & accountability
+Strategy & who answers for it
 
 Weekly strategy session, 45 min
 
@@ -1370,7 +1370,7 @@ Monthly report + quarterly leadership review
 
 Same-business-day response, unlimited
 
-Decisions held by us, on the record — you keep the veto
+We make the call, on the record — you keep the veto
 
 Marketing & sales — run for you
 
@@ -1388,7 +1388,7 @@ Enquiry handling to the same-day standard
 
 Search & visibility — run for you
 
-SEO, local search & Google Business Profile — maintained monthly
+SEO, local search & Google Business Profile — kept up monthly
 
 AI search visibility — tracked, cited-by reported
 
@@ -1396,7 +1396,7 @@ LinkedIn & key-account outreach, under your name
 
 Google & Meta ads managed — to $15k/mo of your spend, billed to you direct
 
-Systems — owned by you, maintained by us
+Systems — owned by you, kept running by us
 
 CRM, pipeline & follow-up automation
 
@@ -1406,19 +1406,19 @@ Review requests — where sector rules allow
 
 KPI & pipeline dashboards
 
-Proactive improvements — no request needed
+We improve it — no request needed
 
 Start here →
 
-The review and the report are separate commitments. A monthly score rides free with any à-la-carte monthly service.
+The review and the report are two promises, not one. A monthly score rides free with any à-la-carte monthly service.
 
 Quantities are published so you can hold us to them. 6-month minimum, then monthly, 60 days' notice. Systems built under Managed Growth Pod are owned by you. Review and testimonial automation is excluded for regulated health services, because AHPRA prohibits it.
 
-The comparison
+Side by side
 
 ### How does Managed Growth Pod compare with hiring a marketing manager?
 
-Shared comes to $88,800 a year, under a Marketing Specialist on $80k–$95k plus super. Held comes to $162,000, under a Head of Marketing on $172,500 plus super. Both salary figures are from SEEK's published Melbourne marketing salary data, 2026. A salary also buys somebody in the building, which a retainer does not.
+Shared comes to $88,800 a year, under a Marketing Specialist on $80k–$95k plus super. Held comes to $162,000, under a Head of Marketing on $172,500 plus super. Both salary figures are from SEEK's published Melbourne marketing salary data, 2026. A salary also buys someone in the building, which a retainer does not.
 
 Build your package Start with the audit →
 
@@ -1444,13 +1444,13 @@ SEMORA STUDIO is a leading Melbourne marketing agency for commercial industry pr
 
 ### Who does SEMORA STUDIO work with?
 
-Three fields, one condition. Commercial industry professionals — commercial property and the advice around it: agents, asset and property owners, project management, developers and specialist consultants.
+Three fields, one condition. Commercial industry professionals — commercial property and the advice around it. That means agents, asset and property owners, project management, developers and specialist consultants.
 
 Owner-led businesses. Firms with a founder still in the room, whose buyers read everything before they call.
 
 Healthcare and allied health practices. Multi-practitioner clinics and the wellness practices beside them. Health advertising is regulated in Australia, so each clinical claim is checked against the National Law and current Ahpra guidance, written up with what backs it, and held until you approve it. That is slower, and you keep the record to produce on request. It is not legal advice, and we say when to get some.
 
-The shared condition: your buyers must need to see real clients and real outcomes before they commit. That rules out plenty of good businesses, and we would rather say so on the first call than three months into a retainer you are already paying for. If a good story on its own wins your market, we are the wrong firm.
+The shared condition: your buyers must need to see real clients and real outcomes before they commit. That rules out plenty of good businesses. We would rather say so on the first call than three months into a retainer you are already paying for. If a good story on its own wins your market, we are the wrong firm.
 
 Who we are not for: startups pre-revenue, and anyone competing on lowest price. Outside those three fields we take a practice only when the shared condition holds.
 
@@ -1458,7 +1458,7 @@ Who we are not for: startups pre-revenue, and anyone competing on lowest price. 
 
 ### Four commitments, in writing
 
-Across 41 Melbourne and Australian firms scored in August 2026, we found none publishing all four.
+We scored 41 Melbourne and Australian firms in August 2026. None published all four.
 
 C1 / Prices
 
@@ -1488,11 +1488,11 @@ The eleven surfaces, free and ungated — score yourself → before you speak to
 
 ### Is SEMORA STUDIO a new company?
 
-Yes — new, and we say so. SEMORA STUDIO works from Central House Toorak, Level 3, 489 Toorak Road, Toorak VIC 3142, Melbourne, with Australian practices, and began operating in 2026. There is no decade of case studies here. We publish the thinking, the prices and our own score, zeros included.
+Yes — new, and we say so. SEMORA STUDIO works from Central House Toorak, Level 3, 489 Toorak Road, Toorak VIC 3142, Melbourne, with Australian practices. It began operating in 2026. There is no decade of case studies here. We publish the thinking, the prices and our own score, zeros included.
 
 How the work gets done: the people listed on the team page. Research and production are AI-assisted, and we say so rather than let you picture staff who are not there. A person reads the work and signs it before it goes anywhere.
 
-How we handle claims: named, dated, sourced and caveated. A client quote carries their name and their written yes, or is labelled a sample until a real one replaces it. A claim without a source, a date or a starting number does not ship. The board is the exception: its cards print the change without the period behind it; ask and we will take you through any.
+How we handle claims: named, dated, sourced and caveated. A client quote carries their name and their written yes, or is labelled a sample until a real one replaces it. A claim without a source, a date or a starting number does not ship. The board is the exception: its cards print the change without the period behind it. Ask and we will take you through any.
 
 Legal entitySEMORA STUDIO PTY LTD · ABN 77 701 244 635 AddressCentral House Toorak, Level 3, 489 Toorak Road, Toorak VIC 3142 Began operating2026 The teamNamed, one discipline each · listed, by function → Published resultsFour client results, on the homepage · the first measured 90-day result publishes 8 November 2026 Our own score24 / 44 at launch · zeros included →
 
@@ -1500,7 +1500,7 @@ Start
 
 ### Two ways in
 
-Price it yourself. Each service is listed with its fee and how long it takes. Or have the gap measured first with the Proof Check: $1,000 + GST, optional, credited in full within 90 days.
+Price it yourself. Each service is listed with its fee and how long it takes. Or have the gap measured first with the Proof Check. It is $1,000 + GST, optional, credited in full within 90 days.
 
 Build your package Tell us what you need built →
 
@@ -1712,25 +1712,25 @@ Pick the products and services you need, and we prepare the rest of the informat
 
 01Start — the diagnostic
 
-Proof Check · Optional. Every channel scored 0–4 with evidence, your baseline measured, the three highest-value fixes ranked. $1,0002 weeks The groundwork before any long-term marketing. We read your website, check whether it is ready for SEO and AI search, score you against your competitors, and hand back where you stand today with the evidence behind each number.
+Proof Check · Optional. Every channel scored 0–4 with evidence, your baseline measured, the three fixes worth most, ranked. $1,0002 weeks The groundwork before any long-term marketing. We read your website, check whether it is ready for SEO and AI search, score you against your competitors, and hand back where you stand today with the evidence behind each number.
 
 02Strategy — Commercial Growth Signal
 
-Commercial Growth Signal — Core Scope · Position, message architecture, fee logic and the objection playbook — decided, written down and handed over as one engagement. $3,0004 weeks Written Personas · Two buyer personas, written from your client base. $1,8001 week Competitive Map · Where you sit, who you beat, and where not to compete. $1,0002 weeks Paid Ads, Search and AI Visibility · Custom — set a monthly figure; commonly $3,000 a month. $ / mo CRM, Analytics and Enquiry Routing · Client budget — response templates, pipeline stages and follow-up, run and refined. $ / mo Content Creative and Management · Client budget — content produced and managed against the calendar. $ / mo Measurement Reliability and the Commercial Roadmap · The numbers checked and the roadmap kept current — included with the monthly engine. Free/ mo
+Commercial Growth Signal — Core Scope · Position, message architecture, fee logic and the objection playbook — decided, written down and handed over as one engagement. $3,0004 weeks Written Personas · Two buyer personas, written from your client base. $1,8001 week Competitive Map · Where you sit, who you beat, and where not to compete. $1,0002 weeks Paid Ads, Search and AI Visibility · Custom — set a monthly figure; often $3,000 a month. $ / mo CRM, Analytics and Enquiry Routing · Client budget — response templates, pipeline stages and follow-up, run and refined. $ / mo Content Creative and Management · Client budget — content made and managed against the calendar. $ / mo Measurement Reliability and the Commercial Roadmap · The numbers checked and the roadmap kept current — part of the monthly engine. Free/ mo
 
 03Brand & Build — Growth Foundation Build
 
-Brand Identity and Brand Book · Logo system, type, colour, usage rules — the source files yours by contract. $5,5003 weeks Website Design — 8 pages · Your work, your proof and your contact path — designed, written, built and launched. $3,5004–6 weeks Custom Function Website Build — 10 pages · Custom design and function. Fast, indexable, readable by AI search. $15,0004–5 weeks Proposal & Presentation System · Proposal, capability statement and pitch templates, in your brand, ready to send. $5,0002 weeks Additional Website Pages · Each page beyond the included count, designed and written to the same standard. $500per page These pieces build as one system, Growth Foundation Build. one team · 8–10 weeks
+Brand Identity and Brand Book · Logo system, type, colour, usage rules — the source files yours by contract. $5,5003 weeks Website Design — 8 pages · Your work, your proof and your contact path — designed, written, built and launched. $3,5004–6 weeks Custom Function Website Build — 10 pages · Custom design and function. Fast, indexable, readable by AI search. $15,0004–5 weeks Proposal & Presentation System · Proposal, capability statement and pitch templates, in your brand, ready to send. $5,0002 weeks Additional Website Pages · Each page beyond the count above, designed and written to the same standard. $500per page These pieces build as one system, Growth Foundation Build. one team · 8–10 weeks
 
 04Growth, Monthly — Managed Growth Pod
 
-Six-month minimum, then monthly. Reporting and your monthly score are included with any selection — $0.
+Six-month minimum, then monthly. Reporting and your monthly score come with anything you pick — $0.
 
-SEO & GEO System · Rankings, Google Business Profile and the map pack — maintained and reported monthly. $2,000/ month Google & Meta Ads, Managed · Campaigns built, run and optimised weekly, to $15k/mo of spend. You pay the platforms direct, so the spend does not pass through us. $1,500/ month AI Search Visibility · Improving your eligibility, relevance and likelihood of being accurately surfaced and cited in ChatGPT, Google AI features and Perplexity — measured against a tracked set of buyer questions, and reported. No platform sells guaranteed placement, so we do not promise one. $1,400/ month Editorial Content & Case Studies · Two pieces a month — researched, written, published and distributed. $2,600/ month Practitioner Video · One scripted, edited video a month, cut for three platforms. You talk; we do the rest. $3,500/ month LinkedIn & Key-Account Outreach · Your named target accounts warmed, under your name. $1,000/ month Email Nurture & CRM · Sequences, recalls and follow-up — written, sent and maintained. $1,500/ month Reviews & Reputation · Reviews grown on a documented path. For regulated health services we use an AHPRA-aware workflow and you approve every clinical statement — testimonial advertising is excluded, because the National Law prohibits it. $1,000/ month Take the full set and Managed Growth Pod / Held caps the month. $13,500/ month cap
+SEO & GEO System · Rankings, Google Business Profile and the map pack — kept up and reported monthly. $2,000/ month Google & Meta Ads, Managed · Campaigns built, run and optimised weekly, to $15k/mo of spend. You pay the platforms direct, so the spend does not pass through us. $1,500/ month AI Search Visibility · Making you more eligible, relevant and likely to be surfaced and cited correctly in ChatGPT, Google AI features and Perplexity. We measure that against a tracked set of buyer questions, and report it. No platform sells guaranteed placement, so we do not promise one. $1,400/ month Editorial Content & Case Studies · Two pieces a month — researched, written, published and distributed. $2,600/ month Practitioner Video · One scripted, edited video a month, cut for three platforms. You talk; we do the rest. $3,500/ month LinkedIn & Key-Account Outreach · Your named target accounts warmed, under your name. $1,000/ month Email Nurture & CRM · Sequences, recalls and follow-up — written, sent and kept up. $1,500/ month Reviews & Reputation · Reviews grown on a documented path. For regulated health services we use an AHPRA-aware workflow and you approve every clinical statement — testimonial advertising is excluded, because the National Law prohibits it. $1,000/ month Take the full set and Managed Growth Pod / Held caps the month. $13,500/ month cap
 
 05Add-ons
 
-Case Studies · Named client, real numbers, dated and caveated. $1,800each Campaign Sprint · One campaign: offer, assets and landing page, built and launched. $7,5004 weeks Vertical Sales Edition · Your materials re-cut for a second industry — its language, its proof, its pages. $6,5003 weeks Pitch & Tender Support · Per submission — structure, story, design and a rehearsal. $1,9001 week / bid Art-Direction Day · Photography and film directed to the brand, on set with you. $2,2001 day Strategy Session · One problem, straight answers. $60090 min
+Case Studies · Named client, real numbers, dated and caveated. $1,800each Campaign Sprint · One campaign: offer, assets and landing page, built and launched. $7,5004 weeks Vertical Sales Edition · Your materials re-cut for a second industry — its language, its proof, its pages. $6,5003 weeks Pitch & Tender Support · Per submission — structure, story, design and a rehearsal. $1,9001 week / bid Art-Direction Day · Photo and film, directed to the brand, on set with you. $2,2001 day Strategy Session · One problem, straight answers. $60090 min
 
 Email QuoteEmail Quote Pay NowPay Now
 
@@ -1878,7 +1878,7 @@ Method
 
 ## Accountable to one number. In writing
 
-A named metric in the contract, the work handed over at completion, and our own instrument applied to us in public.
+A named metric in the contract, the work handed over at the end, and our own instrument used on us in public.
 
 ### How does SEMORA STUDIO work?
 
@@ -1898,15 +1898,15 @@ Source files, tokens, templates and the written governance model transfer at com
 
 ### Why hire a marketing agency that has no track record yet?
 
-SEMORA STUDIO is new, and says so, unprompted. What substitutes for tenure: named people, this published method, published prices, and source files that transfer by contract. If we vanished tomorrow, you keep what we built.
+SEMORA STUDIO is new, and says so up front. What stands in for tenure: named people, this published method, published prices, and source files that transfer by contract. If we vanished tomorrow, you keep what we built.
 
 04 / SEMORA STUDIO vs a traditional marketing agency
 
 ### We are a marketing agency. A narrow one
 
-Plenty of agencies are excellent, and many are strategic and integrated. We are not claiming the category is broken.
+Plenty of agencies are very good, and many are strategic and joined up. We are not saying the field is broken.
 
-The difference is shape. Narrower in who we serve. Broader in what we connect. Every price and every delivery time is already published on this site.
+The difference is shape. Narrower in who we serve. Broader in what we connect. Every price and every delivery time is published on this site.
 
 Area
 
@@ -1980,7 +1980,7 @@ If you have people who can execute but no direction, a consultant may be enough.
 
 ### How does SEMORA STUDIO score on its own instrument?
 
-24 of a possible 44, at launch in August 2026, zeros included. It is the eleven-surface instrument we score clients on, published free at score your practice: each surface scores 0–4. The zeros are the honest cost of being new, and the plan for removing them sits beside each one. Re-scored quarterly.
+24 out of 44, at launch in August 2026, zeros and all. It is the eleven-surface instrument we score clients on, published free at score your practice: each surface scores 0–4. The zeros are the honest cost of being new, and the plan to clear each one sits beside it. Re-scored every quarter.
 
 24 / 44
 
@@ -2014,7 +2014,7 @@ The standard we hold
 
 ### Sourced. Dated. Baselined. Attributable
 
-A claim passes all four tests before it ships, and each case study names what else changed in the period. The published card carries the change; we hold the rest. Ask for any of it.
+A claim passes all four tests before it ships, and each case study names what else changed in that time. The published card carries the change; we hold the rest. Ask for any of it.
 
 See how onboarding runs Start with the audit →
 

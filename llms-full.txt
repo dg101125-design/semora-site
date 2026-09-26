@@ -2,7 +2,7 @@
 
 > SEMORA STUDIO is a leading specialist growth company and marketing agency for commercial industry professionals, owner-led businesses, and healthcare and allied-health practices. We combine positioning, digital marketing, AI visibility and conversion systems into clearly defined products with transparent pricing and measurable performance.
 
-Last updated: 25 September 2026. Summary version: https://www.semora.com.au/llms.txt
+Last updated: 26 September 2026. Summary version: https://www.semora.com.au/llms.txt
 
 SEMORA STUDIO PTY LTD, ABN 77 701 244 635. Central House Toorak, Level 3, 489 Toorak Road, Toorak VIC 3142, Melbourne, Australia. team@semora.com.au · (03) 9071 0855. All prices in Australian dollars, excluding GST.
 
@@ -364,13 +364,13 @@ Traditional SEO
 
 The race for the top spot
 
-UserShort, keyword-driven queries ResultAn ordered list of websites ActionBrowse list, click, and evaluate pages FocusContent targeting and link profile SuccessSecuring positions on Page One
+User · Short, keyword-driven queries Result · An ordered list of websites Action · Browse list, click, and evaluate pages Focus · Content targeting and link profile Success · Securing positions on Page One
 
 AI Search & GEO
 
 Winning authoritative references
 
-UserConversational, question-based prompts ResultDirectly generated, referenced answer ActionReceive, understand summary, and make decisions FocusStructured data, content entities, and validation SuccessBeing used as a trusted reference
+User · Conversational, question-based prompts Result · Directly generated, referenced answer Action · Receive, understand summary, and make decisions Focus · Structured data, content entities, and validation Success · Being used as a trusted reference
 
 Two doors, one buyer. The second is decided by evidence a machine can cite.
 
@@ -704,13 +704,13 @@ Google Ads YouTube LinkedIn Meta
 
 The only one where the person has already told you what they want.
 
-The auctionYour bid, the quality of the ad and its landing page. The top bidder does not always win. FormatsSearchPerformance MaxShoppingDisplayDemand Gen Measured onConversions in your own account, reconciled against your CRM. Wrong whenNobody is searching for what you sell yet. You have about five seconds before a viewer can skip you, and skipping costs them nothing.
+The auction · Your bid, the quality of the ad and its landing page. The top bidder does not always win. FormatsSearchPerformance MaxShoppingDisplayDemand Gen Measured on · Conversions in your own account, reconciled against your CRM. Wrong whenNobody is searching for what you sell yet. You have about five seconds before a viewer can skip you, and skipping costs them nothing.
 
-The auctionThe same Google Ads auction, with the creative doing more of the work. FormatsSkippable in-streamnon-skippablebumperin-feedShorts Measured onWhat happens in search and on your site afterwards. Wrong whenThere is no film worth watching. The only one you can aim at a job title.
+The auction · The same Google Ads auction, with the creative doing more of the work. FormatsSkippable in-streamnon-skippablebumperin-feedShorts Measured on · What happens in search and on your site afterwards. Wrong whenThere is no film worth watching. The only one you can aim at a job title.
 
-The auctionAn auction against everyone else who wants that job title. LinkedIn publishes no rate card, so a click’s cost is discovered in the first month. FormatsSponsored ContentMessage AdsText AdsDynamic AdsLead Gen Forms Measured onThe Insight Tag, plus pipeline against the accounts you named. Wrong whenYour buyer decides outside work. Sold on who a person is rather than on what they have just typed.
+The auction · An auction against everyone else who wants that job title. LinkedIn publishes no rate card, so a click’s cost is discovered in the first month. FormatsSponsored ContentMessage AdsText AdsDynamic AdsLead Gen Forms Measured on · The Insight Tag, plus pipeline against the accounts you named. Wrong whenYour buyer decides outside work. Sold on who a person is rather than on what they have just typed.
 
-The auctionYour bid and Meta’s estimate of how likely that person is to act. FormatsAdvantage+sales, leads and awarenessfeed, Reels and Stories Measured onThe Pixel and the Conversions API together. Wrong whenThe offer needs a conversation first.
+The auction · Your bid and Meta’s estimate of how likely that person is to act. FormatsAdvantage+sales, leads and awarenessfeed, Reels and Stories Measured on · The Pixel and the Conversions API together. Wrong whenThe offer needs a conversation first.
 
 Every campaign runs in accounts you own. They are opened in your name and stay with you, so ending the engagement costs you no history and no rebuild.
 
@@ -916,13 +916,17 @@ Start with the Proof Check Talk to us
 URL: https://www.semora.com.au/seo-report-example
 Summary: A worked specimen of the monthly SEO report: seven layers scored, two numbers rather than one, the register, and what the second reader stopped. Every figure invented.
 
-Specimen · every figure invented
+Specimen · figures invented
 
-## The monthly report, opened
+## SEO analysis report
 
-This is the shape of the report a client receives, filled with invented figures so you can read the structure without reading anyone’s business. Failures sit beside wins because by month three somebody decides where the next month’s hours go, and only good news gives them little to work with. The weak layers are named, with the work not yet started and the items sitting with the client.
+What a client receives each month, shown with invented figures.
 
-Reporting period: month three of an engagement · Prepared by SEMORA STUDIO · Reviewed by a second reader, independent of delivery
+Period · Month three
+
+Prepared by · SEMORA STUDIO
+
+Checked by · A second reader
 
 01 / The judgement
 
@@ -1494,7 +1498,7 @@ How the work gets done: the people listed on the team page. Research and product
 
 How we handle claims: named, dated, sourced and caveated. A client quote carries their name and their written yes, or is labelled a sample until a real one replaces it. A claim without a source, a date or a starting number does not ship. The board is the exception: its cards print the change without the period behind it. Ask and we will take you through any.
 
-Legal entitySEMORA STUDIO PTY LTD · ABN 77 701 244 635 AddressCentral House Toorak, Level 3, 489 Toorak Road, Toorak VIC 3142 Began operating2026 The teamNamed, one discipline each · listed, by function → Published resultsFour client results, on the homepage · the first measured 90-day result publishes 8 November 2026 Our own score24 / 44 at launch · zeros included →
+Legal entity · SEMORA STUDIO PTY LTD · ABN 77 701 244 635 Address · Central House Toorak, Level 3, 489 Toorak Road, Toorak VIC 3142 Began operating · 2026 The team · Named, one discipline each · listed, by function → Published results · Four client results, on the homepage · the first measured 90-day result publishes 8 November 2026 Our own score · 24 / 44 at launch · zeros included →
 
 Start
 

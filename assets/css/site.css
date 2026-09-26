@@ -7810,6 +7810,15 @@ h1:has(.hl--sub) .hl--sub { text-transform: none; }
   border-top: 1px solid color-mix(in srgb, var(--plum-300) 34%, transparent);
   font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 11px;
   letter-spacing: 0.24em; text-transform: uppercase; line-height: 1.62; color: var(--plum-300); }
+/* B: the report's own header block */
+.rpt-hdr { margin: 32px 0 0; padding-top: 24px; display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; max-width: 62ch;
+  border-top: 1px solid color-mix(in srgb, var(--plum-300) 34%, transparent); }
+.rpt-hdr div { margin: 0; }
+.rpt-hdr dt { font-family: var(--mono); font-size-adjust: 0.516; font-weight: 400; font-size: 11px;
+  letter-spacing: 0.24em; text-transform: uppercase; line-height: 1.62; color: var(--plum-300); }
+.rpt-hdr dd { margin: 4px 0 0; font-size: 17px; line-height: 1.45; color: var(--champ); }
+@media (max-width: 640px) { .rpt-hdr { grid-template-columns: 1fr; gap: 16px; } }
 
 .rpt-bars { margin-top: 48px; display: grid; gap: 16px; }
 .rpt-bar { display: grid; grid-template-columns: minmax(0, 16em) minmax(0, 1fr) 3em;

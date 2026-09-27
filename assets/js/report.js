@@ -7,16 +7,14 @@
  * answer engines nothing to read (founder confirmed the static layer, 13 Sep
  * 2026). This file only shows one fieldset at a time.
  *
- * WHAT IT MUST NOT DO. site.js already owns submission for #contact-form and
- * registers its listener first (it is loaded before this file). So nothing
- * here listens for submit: the hidden `prompt` field is rewritten on every
- * change instead, and whatever FormData reads at submit time is already
- * current. Order-independent by construction.
+ * site.js owns submission. This enhancement supplies a synchronous validation
+ * hook to that owner so all steps are checked before sending; it does not add
+ * another asynchronous submit handler. Selection alone never advances.
  *
  * `prompt` is REQUIRED by api/enquiry.mjs and is rendered as the message block
- * of the notification email, pre-wrap. The qualification answers are composed
- * into it one per line. Without JS the <noscript> textarea carries the same
- * field name instead — which is why the hidden input below starts nameless.
+ * of the notification email, pre-wrap. It has a named default in the markup
+ * so the form still works if this enhancement does not load. Qualification
+ * answers are sent in their own fields.
  */
 (function () {
   var root = document.querySelector(".fnl");
@@ -28,6 +26,7 @@
   var ladder = root.querySelector(".fnl__steps");
   var count = root.querySelector(".fnl__count");
   var hidden = root.querySelector("#fnl-prompt");   /* named in the markup now */
+  var form = root.querySelector("#contact-form");
 
   root.classList.add("js-fnl");
   var at = 0;
@@ -99,9 +98,8 @@
     if (window.pageYOffset > top) window.scrollTo(0, top);
   }
 
-  /* A set that carries radios needs one chosen before it will advance. The
-   * browser cannot enforce `required` on a hidden fieldset, so it is done here
-   * and the native attribute is left off rather than fighting validation. */
+  /* A radio step needs a choice; native requirements are restored for the
+   * active step and all steps are checked again before final submission. */
   /* People type their own domain, not a URL. `www.axisplatform.au` is exactly
    * what a buyer writes, and `type=url` rejects it for having no scheme — so
    * the first screen refused the first thing anyone would enter. Prepend the
@@ -176,6 +174,28 @@
   }
 
   /* ------------------------------------------------------------ navigation */
+  // Called by the existing submission owner after enhancement has loaded.
+  // Check hidden steps with their real constraints, then focus the first error.
+  if (form) form.semoraValidate = function () {
+    for (var i = 0; i < sets.length; i++) {
+      var ok = answered(sets[i]);
+      var invalid = null;
+      [].slice.call(sets[i].querySelectorAll("[data-req], [data-type]")).forEach(function (el) {
+        if (el.hasAttribute("data-req")) el.required = true;
+        if (el.hasAttribute("data-type")) el.type = el.getAttribute("data-type");
+        if (!el.checkValidity()) { ok = false; if (!invalid) invalid = el; }
+      });
+      syncValidation();
+      if (!ok) {
+        show(i);
+        if (invalid) { invalid.focus(); invalid.reportValidity(); }
+        else nudge(sets[i]);
+        return false;
+      }
+    }
+    return true;
+  };
+
   root.addEventListener("click", function (ev) {
     var next = ev.target.closest("[data-next]");
     if (next) {
@@ -189,17 +209,13 @@
 
   });
 
-  /* choosing an option moves on by itself — the reference's one good habit */
+  /* A choice stays on its step until the person activates Continue. */
   root.addEventListener("blur", function (ev) {
     if (ev.target && ev.target.hasAttribute && ev.target.hasAttribute("data-site")) normaliseUrl(ev.target);
   }, true);
 
   root.addEventListener("change", function (ev) {
-    if (ev.target.type !== "radio") { compose(); return; }
     compose();
-    var set = ev.target.closest(".fnl__set");
-    if (!set || set !== sets[at]) return;
-    if (at < sets.length - 1) setTimeout(function () { show(at + 1); }, 260);
   });
 
   /* Bound to the funnel, NOT the document. On `document` this swallowed Enter
@@ -215,6 +231,7 @@
 
     if (ev.key === "Enter") {
       if (native) return;                    /* let the control do its job */
+      if (at === sets.length - 1) return;    /* native final submission */
       if (typing && t.type !== "url" && t.type !== "text") return;
       ev.preventDefault();
       if (answered(sets[at])) show(at + 1); else nudge(sets[at]);

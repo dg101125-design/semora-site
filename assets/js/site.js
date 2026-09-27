@@ -93,6 +93,8 @@
 
   form.addEventListener("submit", function (ev) {
     ev.preventDefault();
+    if (btn.disabled) return;
+    if (form.semoraValidate && !form.semoraValidate()) return;
     if (!form.reportValidity()) return;
     btn.disabled = true;
     say("sending", "Sending…");
@@ -123,7 +125,20 @@
 
     post(1)
       .then(function (data) {
-        if (!data || data.success !== true) throw new Error("rejected");
+        if (!data || data.success !== true) {
+          btn.disabled = false;
+          say("error", data && data.message || "That didn’t send. Please email team@semora.com.au directly.");
+          if (data && data.field_errors) {
+            Object.keys(data.field_errors).some(function (name) {
+              var field = form.elements.namedItem(name);
+              if (!field || !field.focus || field.type === "hidden") return false;
+              say("error", data.field_errors[name]);
+              field.focus();
+              return true;
+            });
+          }
+          return;
+        }
         var done = document.createElement("div");
         done.className = "form-done";
         done.setAttribute("role", "status");

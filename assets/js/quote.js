@@ -40,6 +40,8 @@
   var payable = [];            /* the current one-off selection, labels + qty */
   var oneOffNow = 0;
   var monthlyNow = 0;          /* monthly total, for the print sheet */
+  var paymentState = "editing";
+  var lockedInputs = null;
   var cappedNow = false;       /* whether the Held cap trimmed the fixed menu */
 
   function fmt(n) { return "$" + n.toLocaleString("en-AU"); }
@@ -95,15 +97,15 @@
     if (!raw) return;
     var state;
     try { state = JSON.parse(raw); } catch (e) { return; }
-    if (!state || typeof state !== "object") return;
-    var c = state.c && typeof state.c === "object" ? state.c : {};
-    var n = state.n && typeof state.n === "object" ? state.n : {};
+    if (!state || typeof state !== "object" || Array.isArray(state)) return;
+    var c = state.c && typeof state.c === "object" && !Array.isArray(state.c) ? state.c : {};
+    var n = state.n && typeof state.n === "object" && !Array.isArray(state.n) ? state.n : {};
     var has = function (o, k) { return Object.prototype.hasOwnProperty.call(o, k); };
     qtys.forEach(function (el) {
       var k = keyOf(el);
       if (!k || !has(n, k)) return;
-      var v = parseInt(n[k], 10);
-      if (!(v > 0)) return;
+      var v = n[k];
+      if (!Number.isSafeInteger(v) || !(v > 0)) return;
       /* the markup's own max stays the law on the way back in, exactly as
          it is for typed input */
       var mx = parseInt(el.max, 10) || 99;
@@ -112,14 +114,7 @@
     boxes.forEach(function (el) {
       var k = keyOf(el);
       if (!k) return;
-      if (el.dataset.bx) {
-        /* a budget row is selected iff its own figure came back */
-        var lab = el.closest("label");
-        var amt = lab && lab.querySelector("input[data-cmo]");
-        el.checked = !!(amt && (parseInt(amt.value, 10) || 0) > 0);
-        return;
-      }
-      el.checked = has(c, k);
+      el.checked = has(c, k) && c[k] === 1;
     });
   }
 
@@ -131,7 +126,9 @@
        account connected it is still not rendered at all, because a dead
        pay button is worse than none. */
     var live = payEnabled;
-    var ready = live && oneOffNow > 0;
+    var ready = live && oneOffNow > 0 && paymentState === "editing";
+    boxes.forEach(function (el) { el.disabled = paymentState !== "editing"; });
+    qtys.forEach(function (el) { el.disabled = paymentState !== "editing"; });
     var gst = oneOffNow ? Math.round(oneOffNow * 0.1) : 0;
     var inc = oneOffNow + gst;
     [payBtn, payBtn2].forEach(function (b) {
@@ -142,7 +139,10 @@
          card before they leave our page */
       /* a disabled control that repeats its own name teaches nothing; this
          one names the missing step (founder UX round, 11 Sep 2026) */
-      setLabel(b, ready ? "Pay Now — " + fmt(inc) : "Select an item to pay");
+      var stateLabel = {paid:"Payment received", uncertain:"Checkout not confirmed",
+        expired:"Checkout expired", open:"Checkout open", verifying:"Checking checkout"};
+      setLabel(b, paymentState !== "editing" ? stateLabel[paymentState] || "Checkout in progress" :
+        ready ? "Pay Now — " + fmt(inc) : "Select an item to pay");
     });
     if (payNote) {
       payNote.hidden = !ready;
@@ -162,6 +162,9 @@
   }
 
   function build() {
+    if (paymentState !== "editing" && lockedInputs) {
+      lockedInputs.forEach(function (row) { row.el.checked = row.checked; row.el.value = row.value; });
+    }
     /* every change path funnels through build(), so this is the one place
        the saved selection can never fall out of step with the page */
     saveState();
@@ -247,6 +250,7 @@
       oneOffNow = 0;        /* Codex r1: the pay button went stale when the
                                selection emptied — this branch returns early */
       monthlyNow = 0;
+      cappedNow = false;
       payVisibility();
       return;
     }
@@ -377,99 +381,240 @@
     window.print();
   });
 
-  /* ── payment (founder order, 4 Sep 2026) ─────────────────────────────
-     The button exists only when /api/checkout says a payment account is
-     connected AND the selection holds one-off items. The charge itself is
-     rebuilt server-side from the generated price table — what is sent
-     here is only WHICH items, never what they cost. */
-  if (payBtn || payBtn2) {
-    fetch("/api/checkout", { method: "GET" })
-      .then(function (r) { return r.json(); })
-      .then(function (cfg) { payEnabled = !!(cfg && cfg.enabled); payVisibility(); })
-      .catch(function () { payEnabled = false; });
-    /* both pay buttons run one starter; failure restores BOTH labels
-       through payVisibility() rather than hard-coding "Pay Now", which
-       would drop the amount the label now carries */
-    function startCheckout(btn) {
-      if (!payable.length) return;
-      [payBtn, payBtn2].forEach(function (b) { if (b) b.disabled = true; });
-      setLabel(btn, "Opening secure payment…");
-      function failed(msg) {
-        payVisibility();
-        if (payNote) {
-          payNote.hidden = false;
-          payNote.textContent = msg;
-        }
-      }
-      fetch("/api/checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ lines: payable })
-      }).then(function (r) { return r.json(); }).then(function (out) {
-        if (out && out.url) { window.location.href = out.url; return; }
-        failed((out && out.error) ||
-          "Payment could not start. Email the quote instead — same numbers.");
-      }).catch(function () {
-        failed("Payment could not start. Email the quote instead — same numbers.");
-      });
+  /* One controller owns all payment locks. The cart and the signed attempt
+     are separate; no network ambiguity creates a replacement attempt. */
+  var ATTEMPT_KEY = "semora.checkout.v1";
+  var attempt = null;
+  var busy = false;
+  var status = document.getElementById("qb-paystatus");
+  var receiptEl = document.getElementById("qb-receipt");
+  var actionsEl = document.getElementById("qb-checkout-actions");
+  var retryBtn = document.getElementById("qb-retry");
+  var resumeBtn = document.getElementById("qb-resume");
+  var editBtn = document.getElementById("qb-edit");
+  var newBtn = document.getElementById("qb-new");
+  var NEUTRAL = "We could not confirm this checkout. If you have paid, email team@semora.com.au with your Stripe receipt.";
+  var returnQuery = new URLSearchParams(window.location.search);
+
+  function captureInputs() {
+    lockedInputs = [];
+    boxes.forEach(function (el) { lockedInputs.push({ el: el, checked: el.checked, value: el.value }); });
+    qtys.forEach(function (el) { lockedInputs.push({ el: el, checked: el.checked, value: el.value }); });
+  }
+  function persistAttempt() {
+    var encoded = JSON.stringify(attempt);
+    try {
+      window.sessionStorage.setItem(ATTEMPT_KEY, encoded);
+      return window.sessionStorage.getItem(ATTEMPT_KEY) === encoded;
+    } catch (e) { return false; }
+  }
+  function renderPayment(message) {
+    payVisibility();
+    var available = [
+      [retryBtn, !busy && paymentState === "uncertain" && !!(attempt && attempt.token) &&
+        (!!attempt.session_id || Date.now() < attempt.create_before * 1000)],
+      [resumeBtn, !busy && paymentState === "open"],
+      [editBtn, !busy && (paymentState === "open" || paymentState === "expired")],
+      [newBtn, !busy && paymentState === "paid"]
+    ];
+    available.forEach(function (pair) {
+      if (pair[0]) { pair[0].hidden = !pair[1]; pair[0].disabled = !pair[1]; }
+    });
+    if (actionsEl) actionsEl.hidden = !available.some(function (pair) { return pair[1]; });
+    if (status && message) {
+      status.hidden = false;
+      status.className = "qb-paystatus" + (paymentState === "paid" ? " qb-paystatus--ok" : "");
+      status.textContent = message;
     }
-    [payBtn, payBtn2].forEach(function (b) {
-      if (b) b.addEventListener("click", function () { startCheckout(b); });
+  }
+  function transition(state, message) {
+    paymentState = state;
+    renderPayment(message);
+  }
+  async function api(data) {
+    var controller = new AbortController();
+    var timer = setTimeout(function () { controller.abort(); }, 15000);
+    try {
+      var response = await fetch("/api/checkout", { method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data), signal: controller.signal });
+      var out = await response.json();
+      if (!response.ok) throw new Error(out && out.error || NEUTRAL);
+      return out;
+    } finally { clearTimeout(timer); }
+  }
+  function validURL(value) {
+    try { var url = new URL(value); return url.protocol === "https:" && url.hostname === "checkout.stripe.com" && !url.username && !url.password; }
+    catch (e) { return false; }
+  }
+  function cleanPaidCart(receipt) {
+    // Exact purchased rows only; monthly choices and unrelated quantities survive.
+    receipt.items.forEach(function (item) {
+      boxes.forEach(function (el) {
+        if (!el.dataset.mo && !el.dataset.bx && el.dataset.label === item.label) el.checked = false;
+      });
+      qtys.forEach(function (el) {
+        if (!el.dataset.cmo && el.dataset.label === item.label && Number(el.value) === item.qty) el.value = "0";
+      });
+    });
+    captureInputs();
+    build();
+  }
+  function showResult(out) {
+    if (out.session_id && /^cs_[A-Za-z0-9_]+$/.test(out.session_id)) attempt.session_id = out.session_id;
+    // Persist before navigation. If this fails, stay here with the attempt in memory.
+    if (!persistAttempt()) {
+      transition("uncertain", "This browser could not retain the checkout. " + NEUTRAL);
+      return;
+    }
+    if (out.state === "paid" && out.paid === true && out.attempt_id === attempt.id &&
+        out.receipt && Array.isArray(out.receipt.items) && Number.isSafeInteger(out.receipt.total)) {
+      attempt.paid = true;
+      attempt.receipt = out.receipt;
+      paymentState = "paid";
+      cleanPaidCart(out.receipt);
+      persistAttempt();
+      if (receiptEl) {
+        receiptEl.hidden = false;
+        receiptEl.textContent = out.receipt.items.map(function (item) {
+          return item.label + (item.qty > 1 ? " × " + item.qty : "") + " — " + fmt(item.amount / 100);
+        }).join("\n") + "\nGST (10%) — " + fmt(out.receipt.gst / 100) +
+          "\nTotal paid (AUD) — " + fmt(out.receipt.total / 100);
+      }
+      transition("paid", "Payment received for this quote. Paid items have been removed from your selection. Monthly items start by contract.");
+    } else if (out.state === "open" && validURL(out.url)) {
+      attempt.url = out.url;
+      transition("open", "This checkout is still open. Resume payment, or edit your selection after closing it.");
+    } else if (out.state === "expired") {
+      transition("expired", "This checkout has expired. Select Edit selection to prepare a new quote.");
+    } else {
+      transition("uncertain", NEUTRAL);
+    }
+  }
+  async function verifyAttempt(action) {
+    transition("verifying", action === "abandon" ? "Closing this checkout before editing…" : "Checking this checkout…");
+    var out = await api({ action: action || "verify", attempt_token: attempt.token, session_id: attempt.session_id });
+    showResult(out);
+    return out;
+  }
+  async function createAttempt(navigate) {
+    transition("creating", "Opening secure payment…");
+    var out = await api({ action: "create", attempt_token: attempt.token });
+    showResult(out);
+    if (paymentState === "open") {
+      // Idempotent creation can replay an old response. Retrieve live state first.
+      await verifyAttempt("verify");
+      if (navigate && paymentState === "open") window.location.href = attempt.url;
+    }
+  }
+  async function operation(fn) {
+    if (busy) return;
+    busy = true;
+    renderPayment();
+    try { await fn(); }
+    catch (e) { transition("uncertain", e.message || NEUTRAL); }
+    finally { busy = false; renderPayment(); }
+  }
+  async function startCheckout() {
+    if (busy || paymentState !== "editing" || !payEnabled || !payable.length) return;
+    captureInputs();
+    var frozenLines = payable.map(function (line) { return Object.assign({}, line); });
+    attempt = { version: 1, preparing: true };
+    if (!persistAttempt()) {
+      attempt = null;
+      transition("editing", "This browser cannot save a checkout safely. Your quote is still editable; email the quote instead.");
+      return;
+    }
+    await operation(async function () {
+      transition("preparing", "Preparing your quote…");
+      var prepared;
+      try { prepared = await api({ action: "prepare", lines: frozenLines }); }
+      catch (e) {
+        // Prepare has no provider side effect, so a lost prepare is safe to discard.
+        attempt = null;
+        persistAttempt();
+        transition("editing", "Payment could not be prepared. Your selection is retained; try again or email the quote.");
+        return;
+      }
+      if (!prepared.attempt_token || !prepared.attempt || !prepared.attempt.id) throw new Error(NEUTRAL);
+      attempt = { version: 1, token: prepared.attempt_token, id: prepared.attempt.id,
+        create_before: prepared.attempt.create_before, lines: frozenLines };
+      if (!persistAttempt()) {
+        attempt = null;
+        transition("editing", "This browser cannot retain a checkout safely. Email the quote instead.");
+        return;
+      }
+      await createAttempt(true);
     });
   }
+  function resetAttempt() {
+    // Only reached after a provider-confirmed expiry or payment, never uncertainty.
+    attempt = null;
+    if (!persistAttempt()) { transition("uncertain", NEUTRAL); return; }
+    if (window.history && window.history.replaceState) window.history.replaceState(null, "", window.location.pathname);
+    lockedInputs = null;
+    paymentState = "editing";
+    if (receiptEl) receiptEl.hidden = true;
+    build();
+    renderPayment("Your selection is ready to edit. A new payment will use a new checkout.");
+  }
+  [payBtn, payBtn2].forEach(function (button) { if (button) button.addEventListener("click", startCheckout); });
+  if (retryBtn) retryBtn.addEventListener("click", function () {
+    operation(async function () {
+      if (!attempt || !attempt.token) return;
+      if (attempt.session_id) await verifyAttempt("verify");
+      else await createAttempt(false);
+    });
+  });
+  if (resumeBtn) resumeBtn.addEventListener("click", function () {
+    if (paymentState !== "open") return;
+    operation(async function () {
+      await verifyAttempt("verify");
+      if (paymentState === "open") window.location.href = attempt.url;
+    });
+  });
+  if (editBtn) editBtn.addEventListener("click", function () {
+    if (paymentState !== "open" && paymentState !== "expired") return;
+    operation(async function () {
+      if (paymentState === "open") await verifyAttempt("abandon");
+      if (paymentState === "expired") resetAttempt();
+    });
+  });
+  if (newBtn) newBtn.addEventListener("click", function () { if (!busy && paymentState === "paid") resetAttempt(); });
 
-  /* the selection comes back BEFORE the return-leg banner is written, so
-     the banner can say what is actually on the page rather than what the
-     page hoped (audit B1) */
   restoreState();
   build();
-
-  /* the return leg: Stripe sends the buyer back with ?payment=…&session_id=….
-     "Payment received" prints ONLY after the server has asked Stripe and
-     Stripe said paid — a typed URL gets the neutral line (Codex r1: the
-     banner was forgeable). */
-  var status = document.getElementById("qb-paystatus");
-  if (status) {
-    var q = new URLSearchParams(window.location.search);
-    var pv = q.get("payment");
-    var sid = q.get("session_id") || "";
-    if (pv === "success" && sid) {
-      status.hidden = false;
-      status.className = "qb-paystatus";
-      status.textContent = "Checking the payment…";
-      fetch("/api/checkout?session_id=" + encodeURIComponent(sid))
-        .then(function (r) { return r.json(); })
-        .then(function (v) {
-          if (v && v.paid) {
-            status.className = "qb-paystatus qb-paystatus--ok";
-            /* The "within one business day" promise is OUT until runbook
-               item 7 names who answers it (Codex r3). Restore this line the
-               day the founder names the owner — it is one string. */
-            status.textContent = "Payment received. We will email you to " +
-              "start delivery.";
-          } else {
-            status.textContent = "We could not confirm a payment for this " +
-              "visit. If you believe you paid, email team@semora.com.au " +
-              "with your Stripe receipt and we will confirm it.";
-          }
-        })
-        .catch(function () {
-          status.textContent = "We could not confirm a payment for this " +
-            "visit. If you believe you paid, email team@semora.com.au " +
-            "with your Stripe receipt and we will confirm it.";
-        });
-    } else if (pv === "cancelled") {
-      status.hidden = false;
-      status.className = "qb-paystatus";
-      /* the second sentence is a statement about THIS page, so it is read
-         off this page — storage can be switched off, and a banner that
-         promises a selection that is not there is the defect this fix
-         exists to remove */
-      status.textContent = "Payment was cancelled. " +
-        (oneOffNow || monthlyNow
-          ? "Your selection is still here."
-          : "Your selection was not carried back — build it again below and " +
-            "the numbers are the same.");
-    }
+  var corrupt = false;
+  var saved = null;
+  try { saved = window.sessionStorage.getItem(ATTEMPT_KEY); } catch (e) { /* ordinary quoting still works */ }
+  try {
+    if (saved) attempt = JSON.parse(saved);
+    if (attempt && (attempt.version !== 1 || typeof attempt !== "object" || Array.isArray(attempt))) corrupt = true;
+    if (attempt && !attempt.preparing && (typeof attempt.token !== "string" || attempt.token.length > 48000 ||
+        typeof attempt.id !== "string" || !Number.isSafeInteger(attempt.create_before))) corrupt = true;
+  } catch (e) { corrupt = true; }
+  var returned = returnQuery.has("payment") || returnQuery.has("session_id") || returnQuery.has("attempt_id");
+  if (corrupt || (returned && (!attempt || returnQuery.get("attempt_id") !== attempt.id)) ||
+      (returned && returnQuery.has("session_id") && attempt && attempt.session_id && returnQuery.get("session_id") !== attempt.session_id)) {
+    attempt = null;
+    captureInputs();
+    transition("uncertain", NEUTRAL);
+  } else if (attempt && attempt.token) {
+    captureInputs();
+    var returnedSession = returnQuery.get("session_id");
+    if (returnedSession && /^cs_[A-Za-z0-9_]+$/.test(returnedSession)) attempt.session_id = returnedSession;
+    transition("uncertain", attempt.session_id || Date.now() < attempt.create_before * 1000 ?
+      "Your saved checkout is retained. Retry this checkout to recover its current state." : NEUTRAL);
+    if (attempt.session_id) operation(function () { return verifyAttempt("verify"); });
+  } else if (returned) {
+    captureInputs();
+    transition("uncertain", NEUTRAL);
+  } else {
+    // No Stripe call can occur until the signed token is saved.
+    attempt = null;
   }
+  if (payBtn || payBtn2) fetch("/api/checkout", { method: "GET" })
+    .then(function (r) { return r.json(); })
+    .then(function (cfg) { payEnabled = !!(cfg && cfg.enabled); renderPayment(); })
+    .catch(function () { payEnabled = false; renderPayment(); });
 })();

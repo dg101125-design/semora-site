@@ -2,7 +2,7 @@
 
 > SEMORA STUDIO is a leading specialist growth company and marketing agency for commercial industry professionals, owner-led businesses, and healthcare and allied-health practices. We combine positioning, digital marketing, AI visibility and conversion systems into clearly defined products with transparent pricing and measurable performance.
 
-Last updated: 25 September 2026. Summary version: https://www.semora.com.au/llms.txt
+Last updated: 27 September 2026. Summary version: https://www.semora.com.au/llms.txt
 
 SEMORA STUDIO PTY LTD, ABN 77 701 244 635. Central House Toorak, Level 3, 489 Toorak Road, Toorak VIC 3142, Melbourne, Australia. team@semora.com.au · (03) 9071 0855. All prices in Australian dollars, excluding GST.
 
@@ -70,7 +70,9 @@ One shared condition: your buyers commit only when they can see real clients and
 
 Nobody competing on lowest price. Working in three fields lets us learn a buyer properly. Outside them we take a practice only when its buyers must see real outcomes first. The same rule sits on contact.
 
-01 Commercial property The agencies and advisors commercial property runs on.
+01 Commercial property
+
+The agencies and advisors commercial property runs on.
 
 Agents
 
@@ -84,7 +86,9 @@ Specialist consultants
 
 Related advisory
 
-02 Owner-led firms Professional and specialist firms where the founder still signs the work.
+02 Owner-led firms
+
+Professional and specialist firms where the founder still signs the work.
 
 Boutique financial firms
 
@@ -96,7 +100,9 @@ Technology
 
 Specialist consultancies
 
-03 Health & wellness Multi-practitioner clinics and the businesses that keep people well.
+03 Health & wellness
+
+Multi-practitioner clinics and the businesses that keep people well.
 
 Clinics
 
@@ -118,7 +124,9 @@ Start with the subscription. Bring the build in once you know what needs buildin
 
 Neither is a fifth product: each wraps the four below, and the monthly work, into one arrangement at its own published price. See the four products, or price a composition →
 
-01 Subscription · monthly
+01
+
+Subscription · monthly
 
 ### SEMORA Core Subscription
 
@@ -126,7 +134,11 @@ The signals that matter, watched in one place. Once a month we sit down and tell
 
 AI visibility tracking Search and competitor monitoring Content gap analysis CRM and revenue attribution Platform access Alerts when something moves The monthly judgment session
 
-Talk to Us → 02 Execution · separate SOW
+Talk to Us →
+
+02
+
+Execution · separate SOW
 
 ### SEMORA Execution Services
 
@@ -192,7 +204,7 @@ Start where your gap is. Each step stands on its own.
 
 01 Proof Check Diagnostic · baseline · the ranked fix list Your marketing scored, and the three fixes worth making first. Eleven surfaces scored, with evidence Baseline: win rate, fee, founder-hours Three competitors, same instrument The three surfaces to fix, ranked, and why One-off $1,000 2 weeks · optional · credited in full · + GST → 02 Commercial Growth Signal The qualification and strategy product Positioning, strategy and the commercial roadmap — decided. Positioning and Strategy Customer, Brand and Position Research Website and Conversion Path Paid Ads, Search and AI Visibility CRM, Analytics and Enquiry Routing Content Creative and Management Measurement Reliability and the Commercial Roadmap From $3,000 4 weeks · core scope + optional modules · + GST → 03 Growth Foundation Build For foundations not yet ready for performance The complete journey between enquiry and revenue, built. Positioning and messaging Website or landing-page architecture Sales pipeline and campaign assets Content and search structure Property and professional services, especially Custom 8–10 weeks · every part priced · + GST → 04 Managed Growth Pod One coordinated team · one growth plan One commercial growth plan across the monthly channels. Paid acquisition SEO and GEO Content and conversion CRM and lifecycle Commercial reporting Programmatic search and enterprise pods From $3,000 per month · 6-month minimum · + GST →
 
-More signal.Less noise.
+More signal. Less noise.
 
 06 / The outcome
 
@@ -218,7 +230,7 @@ Commercial intelligence
 
 +770% Increase in impressions
 
-SEOGEOBrand
+SEO GEO Brand
 
 ### Your CFO Partner
 
@@ -230,7 +242,7 @@ Financial
 
 +510% Increase in conversion rate
 
-SEOCROPaid
+SEO CRO Paid
 
 ### PROQM
 
@@ -240,7 +252,7 @@ Independent QS control
 
 +123% Organic traffic growth
 
-SEODigital strategy
+SEO Digital strategy
 
 ### South Melbourne Rehabilitation Centre
 
@@ -252,7 +264,7 @@ Healthcare practice
 
 +35,000 Increase in impressions
 
-SEOGEOCRO
+SEO GEO CRO
 
 ### Melbourne Dance & Arts Centre
 
@@ -260,7 +272,7 @@ Performing arts centre
 
 In delivery: the brand and position work, and managed Google Ads. The measured figures publish when they are sourced.
 
-BrandPositionPaid
+Brand Position Paid
 
 ### SAAZAA
 
@@ -268,7 +280,7 @@ Specialty coffee
 
 In delivery: SEO and GEO search, managed Google Ads, and the brand package. The first measured numbers publish at the 120-day review.
 
-SEOGEOPaidBrand
+SEO GEO Paid Brand
 
 ### JE Real Estate
 
@@ -276,7 +288,7 @@ Commercial real estate
 
 Search and the brand system. The measured figures are not published yet.
 
-SEOBrand
+SEO Brand
 
 ### AXIOM
 
@@ -284,7 +296,7 @@ Commercial property
 
 Brand design, project position and pre-marketing for a commercial development.
 
-BrandPositionPre-marketing
+Brand Position Pre-marketing
 
 08 / How we help
 
@@ -342,11 +354,11 @@ Search & AI Visibility
 
 ## Let AI read your business. It matters now.
 
-Your buyer’s first question now goes to a machine. If it cannot read your business, it cannot name you in the answer. We make sure it can, and we measure whether it does.
+Buyers can use AI assistants to compare providers. We check how your business appears in those answers.
 
 Free visibility report → Score yourself first →
 
-Measured on GoogleAI OverviewsChatGPTPerplexityCopilot
+Measured on Google · AI Overviews · ChatGPT · Perplexity · Copilot
 
 who is the best buyers agent in melbourne/ physio near me open saturday/ how do i show up in chatgpt answers/ commercial property advisory melbourne/ seo agency that reports revenue not rankings/ who is the best buyers agent in melbourne/ physio near me open saturday/ how do i show up in chatgpt answers/ commercial property advisory melbourne/ seo agency that reports revenue not rankings/
 
@@ -364,13 +376,13 @@ Traditional SEO
 
 The race for the top spot
 
-UserShort, keyword-driven queries ResultAn ordered list of websites ActionBrowse list, click, and evaluate pages FocusContent targeting and link profile SuccessSecuring positions on Page One
+User · Short, keyword-driven queries Result · An ordered list of websites Action · Browse list, click, and evaluate pages Focus · Content targeting and link profile Success · Securing positions on Page One
 
 AI Search & GEO
 
 Winning authoritative references
 
-UserConversational, question-based prompts ResultDirectly generated, referenced answer ActionReceive, understand summary, and make decisions FocusStructured data, content entities, and validation SuccessBeing used as a trusted reference
+User · Conversational, question-based prompts Result · Directly generated, referenced answer Action · Receive, understand summary, and make decisions Focus · Structured data, content entities, and validation Success · Being used as a trusted reference
 
 Two doors, one buyer. The second is decided by evidence a machine can cite.
 
@@ -586,9 +598,13 @@ Team Lead & Founder. The method is his, and he reads the report before you do.
 
 Meet the team →
 
-Check out an SEO analysis → Seven layers scored, the register, and what the second reader stopped. Specimen figures, no client data.
+Check out an SEO analysis →
 
-Search MEASURED Answered One thing settles both sides: a number with a date beside it.
+Seven layers scored, the register, and what the second reader stopped. Specimen figures, no client data.
+
+Search MEASURED Answered
+
+One thing settles both sides: a number with a date beside it.
 
 05 / The board
 
@@ -672,7 +688,7 @@ Google Ads, YouTube, LinkedIn and Meta, run by people whose names you know, in a
 
 Price this yourself → Start with the Proof Check →
 
-Built for Google AdsYouTubeLinkedInMeta
+Built for Google Ads YouTube LinkedIn Meta
 
 commercial fitout melbourne/ who manages social media for small business/ google ads agency near me/ b2b lead generation linkedin/ video production melbourne cost/ how much should i spend on facebook ads/ commercial fitout melbourne/ who manages social media for small business/ google ads agency near me/ b2b lead generation linkedin/ video production melbourne cost/ how much should i spend on facebook ads/
 
@@ -704,13 +720,19 @@ Google Ads YouTube LinkedIn Meta
 
 The only one where the person has already told you what they want.
 
-The auctionYour bid, the quality of the ad and its landing page. The top bidder does not always win. FormatsSearchPerformance MaxShoppingDisplayDemand Gen Measured onConversions in your own account, reconciled against your CRM. Wrong whenNobody is searching for what you sell yet. You have about five seconds before a viewer can skip you, and skipping costs them nothing.
+The auction · Your bid, the quality of the ad and its landing page. The top bidder does not always win. Formats · Search Performance Max Shopping Display Demand Gen Measured on · Conversions in your own account, reconciled against your CRM. Wrong when · Nobody is searching for what you sell yet.
 
-The auctionThe same Google Ads auction, with the creative doing more of the work. FormatsSkippable in-streamnon-skippablebumperin-feedShorts Measured onWhat happens in search and on your site afterwards. Wrong whenThere is no film worth watching. The only one you can aim at a job title.
+You have about five seconds before a viewer can skip you, and skipping costs them nothing.
 
-The auctionAn auction against everyone else who wants that job title. LinkedIn publishes no rate card, so a click’s cost is discovered in the first month. FormatsSponsored ContentMessage AdsText AdsDynamic AdsLead Gen Forms Measured onThe Insight Tag, plus pipeline against the accounts you named. Wrong whenYour buyer decides outside work. Sold on who a person is rather than on what they have just typed.
+The auction · The same Google Ads auction, with the creative doing more of the work. Formats · Skippable in-stream non-skippable bumper in-feed Shorts Measured on · What happens in search and on your site afterwards. Wrong when · There is no film worth watching.
 
-The auctionYour bid and Meta’s estimate of how likely that person is to act. FormatsAdvantage+sales, leads and awarenessfeed, Reels and Stories Measured onThe Pixel and the Conversions API together. Wrong whenThe offer needs a conversation first.
+The only one you can aim at a job title.
+
+The auction · An auction against everyone else who wants that job title. LinkedIn publishes no rate card, so a click’s cost is discovered in the first month. Formats · Sponsored Content Message Ads Text Ads Dynamic Ads Lead Gen Forms Measured on · The Insight Tag, plus pipeline against the accounts you named. Wrong when · Your buyer decides outside work.
+
+Sold on who a person is rather than on what they have just typed.
+
+The auction · Your bid and Meta’s estimate of how likely that person is to act. Formats · Advantage+ sales, leads and awareness feed, Reels and Stories Measured on · The Pixel and the Conversions API together. Wrong when · The offer needs a conversation first.
 
 Every campaign runs in accounts you own. They are opened in your name and stay with you, so ending the engagement costs you no history and no rebuild.
 
@@ -916,13 +938,17 @@ Start with the Proof Check Talk to us
 URL: https://www.semora.com.au/seo-report-example
 Summary: A worked specimen of the monthly SEO report: seven layers scored, two numbers rather than one, the register, and what the second reader stopped. Every figure invented.
 
-Specimen · every figure invented
+Specimen · figures invented
 
-## The monthly report, opened
+## SEO analysis report
 
-This is the shape of the report a client receives, filled with invented figures so you can read the structure without reading anyone’s business. Failures sit beside wins because by month three somebody decides where the next month’s hours go, and only good news gives them little to work with. The weak layers are named, with the work not yet started and the items sitting with the client.
+What a client on monthly reporting receives, shown with invented figures.
 
-Reporting period: month three of an engagement · Prepared by SEMORA STUDIO · Reviewed by a second reader, independent of delivery
+Period · Month three
+
+Prepared by · SEMORA STUDIO
+
+Checked by · A second reader
 
 01 / The judgement
 
@@ -930,19 +956,19 @@ Reporting period: month three of an engagement · Prepared by SEMORA STUDIO · R
 
 Each layer scores on what can be shown. A layer scores low when the evidence is missing, even where the work is done.
 
-Technical foundation92
+Technical foundation 92
 
-Keyword system85
+Keyword system 85
 
-Content system65
+Content system 65
 
-Conversion tracking60
+Conversion tracking 60
 
-Crawling and indexing55
+Crawling and indexing 55
 
-Entity recognition45
+Entity recognition 45
 
-External authority25
+External authority 25
 
 The weakest layer is the one an answer engine reads first. Naming it in month three, in writing, is how it gets fixed by month six. Leaving it out costs a quarter.
 
@@ -968,21 +994,53 @@ Why the second number sits lower: the citation work has not started, profile ver
 
 Each row closes on evidence a second reader can re-run. Items waiting on you are marked.
 
-ClosedIndexing statusConsole export reconciled against the sitemap; the arithmetic checks out.
+Closed
 
-ClosedCore Web VitalsHome page lifted from red to green; largest paint cut by two thirds.
+Indexing status
 
-ClosedKeyword-to-page mapOne owner page per term, primary and supporting named per cluster.
+Console export reconciled against the sitemap; the arithmetic checks out.
 
-PartialBuyer question listMapped from research. Real enquiry wording fills in as enquiries arrive.
+Closed
 
-Your actionBusiness profile verificationOnly the owner can complete it.
+Core Web Vitals
 
-BlockedEntity cross-checkWaiting on the item above. The site side is done.
+Home page lifted from red to green; largest paint cut by two thirds.
 
-OpenExternal citation programmeThe target list can be drafted here. Sending it is yours to authorise.
+Closed
 
-OpenFirst visibility benchmarkRuns on the locked protocol, with sessions captured by hand.
+Keyword-to-page map
+
+One owner page per term, primary and supporting named per cluster.
+
+Partial
+
+Buyer question list
+
+Mapped from research. Real enquiry wording fills in as enquiries arrive.
+
+Your action
+
+Business profile verification
+
+Only the owner can complete it.
+
+Blocked
+
+Entity cross-check
+
+Waiting on the item above. The site side is done.
+
+Open
+
+External citation programme
+
+The target list can be drafted here. Sending it is yours to authorise.
+
+Open
+
+First visibility benchmark
+
+Runs on the locked protocol, with sessions captured by hand.
 
 04 / The check
 
@@ -1004,19 +1062,27 @@ Both were fixed before the report was issued.
 
 ### Ordered by what moves most
 
-Verify the business profileUnlocks the entity cross-check and gives the brand terms somewhere to resolve to.
+Verify the business profile
+
+Unlocks the entity cross-check and gives the brand terms somewhere to resolve to.
 
 You · 20 minutes
 
-Take the first visibility benchmarkTurns “no number” into a baseline to hold next month against.
+Take the first visibility benchmark
+
+Turns “no number” into a baseline to hold next month against.
 
 Us, with your sign-off
 
-Publish the method page and the decision guidesAnswer engines most often quote the pages explaining how a decision is made.
+Publish the method page and the decision guides
+
+Answer engines most often quote the pages explaining how a decision is made.
 
 Us to draft, you to approve
 
-Draft the external citation target listDrafting the list is free. Sending it is what earns a citation, and that is your call.
+Draft the external citation target list
+
+Drafting the list is free. Sending it is what earns a citation, and that is your call.
 
 Us to draft
 
@@ -1036,7 +1102,7 @@ Product 01 / The diagnostic
 
 You pay for this one, and we recommend starting here. Two sessions of your time, and a written report you own. Skip it, and we set your baseline inside Commercial Growth Signal.
 
-$1,0002 weeks · optional · credited in full · + GST
+$1,000 2 weeks · optional · credited in full · + GST
 
 Scope / what you receive
 
@@ -1096,7 +1162,7 @@ Why it is paid
 
 ### Why does SEMORA STUDIO charge for an audit when others give one away?
 
-Because a free audit is a sales call, and specialists can tell. Charging makes it an engagement whose findings you can use, because we hold none of it back for a proposal at the end. It also filters for people who will act on the findings.
+The Proof Check is a paid engagement with a defined scope. Its page sets out the work and the fee.
 
 You keep the report whether or not you hire us.
 
@@ -1130,7 +1196,7 @@ Product 02 / The position
 
 What you stand for, who it is for, and why it is worth your fee. Two half-days and two reviews of your time. Best entered from the audit; otherwise we set the baseline in week one.
 
-from $3,0004 weeks · core scope + optional modules · + GST
+from $3,000 4 weeks · core scope + optional modules · + GST
 
 Scope / what you receive
 
@@ -1190,7 +1256,7 @@ Product 03 / The system
 
 Buyers judge you on your brand, website, proposals and CRM. We build them and hand them over. One 45-minute review a week. Take one component or all four.
 
-Custom8–10 weeks · every part priced · + GST
+Custom 8–10 weeks · every part priced · + GST
 
 Scope / component prices
 
@@ -1234,7 +1300,7 @@ Product 04 / The engine
 
 Retained, and priced on your time. The tier sets who carries the month, and how much of your week comes back.
 
-$3,000+per month · 6-month minimum · + GST
+$3,000+ per month · 6-month minimum · + GST
 
 Tiers differ by who owns the work, not just the list
 
@@ -1264,7 +1330,7 @@ Directed
 
 ### We direct. You build
 
-$3,000per month · + GST · ~3 hrs of you / week
+$3,000 per month · + GST · ~3 hrs of you / week
 
 Strategy & who answers for it
 
@@ -1308,7 +1374,7 @@ Recommended start
 
 ### We produce. You approve
 
-$7,400per month · + GST · Shared · ~1 hr of you / week
+$7,400 per month · + GST · Shared · ~1 hr of you / week
 
 Strategy & who answers for it
 
@@ -1360,7 +1426,7 @@ Held
 
 ### We hold the engine
 
-$13,500per month · + GST · ~45 min of you / week
+$13,500 per month · + GST · ~45 min of you / week
 
 Strategy & who answers for it
 
@@ -1494,7 +1560,7 @@ How the work gets done: the people listed on the team page. Research and product
 
 How we handle claims: named, dated, sourced and caveated. A client quote carries their name and their written yes, or is labelled a sample until a real one replaces it. A claim without a source, a date or a starting number does not ship. The board is the exception: its cards print the change without the period behind it. Ask and we will take you through any.
 
-Legal entitySEMORA STUDIO PTY LTD · ABN 77 701 244 635 AddressCentral House Toorak, Level 3, 489 Toorak Road, Toorak VIC 3142 Began operating2026 The teamNamed, one discipline each · listed, by function → Published resultsFour client results, on the homepage · the first measured 90-day result publishes 8 November 2026 Our own score24 / 44 at launch · zeros included →
+Legal entity · SEMORA STUDIO PTY LTD · ABN 77 701 244 635 Address · Central House Toorak, Level 3, 489 Toorak Road, Toorak VIC 3142 Began operating · 2026 The team · Named, one discipline each · listed, by function → Published results · Four client results, on the homepage · the first measured 90-day result publishes 8 November 2026 Our own score · 24 / 44 at launch · zeros included →
 
 Start
 
@@ -1702,7 +1768,7 @@ The quotation system
 
 ## Build up what you need. We quote the package for you
 
-We match the service to our clients’ demand. We focus on results, not on the numbers.
+Choose the work you need. Agree how its results will be measured.
 
 Build your package How onboarding runs →
 
@@ -1710,33 +1776,41 @@ Build your package How onboarding runs →
 
 Pick the products and services you need, and we prepare the rest of the information package. The quote takes one business day.
 
-01Start — the diagnostic
+01 Start — the diagnostic
 
-Proof Check · Optional. Every channel scored 0–4 with evidence, your baseline measured, the three fixes worth most, ranked. $1,0002 weeks The groundwork before any long-term marketing. We read your website, check whether it is ready for SEO and AI search, score you against your competitors, and hand back where you stand today with the evidence behind each number.
+Proof Check · Optional. Every channel scored 0–4 with evidence, your baseline measured, the three fixes worth most, ranked. $1,000 · 2 weeks
 
-02Strategy — Commercial Growth Signal
+The groundwork before any long-term marketing. We read your website, check whether it is ready for SEO and AI search, score you against your competitors, and hand back where you stand today with the evidence behind each number.
 
-Commercial Growth Signal — Core Scope · Position, message architecture, fee logic and the objection playbook — decided, written down and handed over as one engagement. $3,0004 weeks Written Personas · Two buyer personas, written from your client base. $1,8001 week Competitive Map · Where you sit, who you beat, and where not to compete. $1,0002 weeks Paid Ads, Search and AI Visibility · Custom — set a monthly figure; often $3,000 a month. $ / mo CRM, Analytics and Enquiry Routing · Client budget — response templates, pipeline stages and follow-up, run and refined. $ / mo Content Creative and Management · Client budget — content made and managed against the calendar. $ / mo Measurement Reliability and the Commercial Roadmap · The numbers checked and the roadmap kept current — part of the monthly engine. Free/ mo
+02 Strategy — Commercial Growth Signal
 
-03Brand & Build — Growth Foundation Build
+Commercial Growth Signal — Core Scope · Position, message architecture, fee logic and the objection playbook — decided, written down and handed over as one engagement. $3,000 · 4 weeks Written Personas · Two buyer personas, written from your client base. $1,800 · 1 week Competitive Map · Where you sit, who you beat, and where not to compete. $1,000 · 2 weeks Paid Ads, Search and AI Visibility · Custom — set a monthly figure; often $3,000 a month. $ · / mo CRM, Analytics and Enquiry Routing · Client budget — response templates, pipeline stages and follow-up, run and refined. $ · / mo Content Creative and Management · Client budget — content made and managed against the calendar. $ · / mo Measurement Reliability and the Commercial Roadmap · The numbers checked and the roadmap kept current — part of the monthly engine. Free · / mo
 
-Brand Identity and Brand Book · Logo system, type, colour, usage rules — the source files yours by contract. $5,5003 weeks Website Design — 8 pages · Your work, your proof and your contact path — designed, written, built and launched. $3,5004–6 weeks Custom Function Website Build — 10 pages · Custom design and function. Fast, indexable, readable by AI search. $15,0004–5 weeks Proposal & Presentation System · Proposal, capability statement and pitch templates, in your brand, ready to send. $5,0002 weeks Additional Website Pages · Each page beyond the count above, designed and written to the same standard. $500per page These pieces build as one system, Growth Foundation Build. one team · 8–10 weeks
+03 Brand & Build — Growth Foundation Build
 
-04Growth, Monthly — Managed Growth Pod
+Brand Identity and Brand Book · Logo system, type, colour, usage rules — the source files yours by contract. $5,500 · 3 weeks Website Design — 8 pages · Your work, your proof and your contact path — designed, written, built and launched. $3,500 · 4–6 weeks Custom Function Website Build — 10 pages · Custom design and function. Fast, indexable, readable by AI search. $15,000 · 4–5 weeks Proposal & Presentation System · Proposal, capability statement and pitch templates, in your brand, ready to send. $5,000 · 2 weeks Additional Website Pages · Each page beyond the count above, designed and written to the same standard. $500 · per page
+
+These pieces build as one system, Growth Foundation Build. one team · 8–10 weeks
+
+04 Growth, Monthly — Managed Growth Pod
 
 Six-month minimum, then monthly. Reporting and your monthly score come with anything you pick — $0.
 
-SEO & GEO System · Rankings, Google Business Profile and the map pack — kept up and reported monthly. $2,000/ month Google & Meta Ads, Managed · Campaigns built, run and optimised weekly, to $15k/mo of spend. You pay the platforms direct, so the spend does not pass through us. $1,500/ month AI Search Visibility · Making you more eligible, relevant and likely to be surfaced and cited correctly in ChatGPT, Google AI features and Perplexity. We measure that against a tracked set of buyer questions, and report it. No platform sells guaranteed placement, so we do not promise one. $1,400/ month Editorial Content & Case Studies · Two pieces a month — researched, written, published and distributed. $2,600/ month Practitioner Video · One scripted, edited video a month, cut for three platforms. You talk; we do the rest. $3,500/ month LinkedIn & Key-Account Outreach · Your named target accounts warmed, under your name. $1,000/ month Email Nurture & CRM · Sequences, recalls and follow-up — written, sent and kept up. $1,500/ month Reviews & Reputation · Reviews grown on a documented path. For regulated health services we use an AHPRA-aware workflow and you approve every clinical statement — testimonial advertising is excluded, because the National Law prohibits it. $1,000/ month Take the full set and Managed Growth Pod / Held caps the month. $13,500/ month cap
+SEO & GEO System · Rankings, Google Business Profile and the map pack — kept up and reported monthly. $2,000 · / month Google & Meta Ads, Managed · Campaigns built, run and optimised weekly, to $15k/mo of spend. You pay the platforms direct, so the spend does not pass through us. $1,500 · / month AI Search Visibility · Making you more eligible, relevant and likely to be surfaced and cited correctly in ChatGPT, Google AI features and Perplexity. We measure that against a tracked set of buyer questions, and report it. No platform sells guaranteed placement, so we do not promise one. $1,400 · / month Editorial Content & Case Studies · Two pieces a month — researched, written, published and distributed. $2,600 · / month Practitioner Video · One scripted, edited video a month, cut for three platforms. You talk; we do the rest. $3,500 · / month LinkedIn & Key-Account Outreach · Your named target accounts warmed, under your name. $1,000 · / month Email Nurture & CRM · Sequences, recalls and follow-up — written, sent and kept up. $1,500 · / month Reviews & Reputation · Reviews grown on a documented path. For regulated health services we use an AHPRA-aware workflow and you approve every clinical statement — testimonial advertising is excluded, because the National Law prohibits it. $1,000 · / month
 
-05Add-ons
+Take the full set and Managed Growth Pod / Held caps the month. $13,500 · / month cap
 
-Case Studies · Named client, real numbers, dated and caveated. $1,800each Campaign Sprint · One campaign: offer, assets and landing page, built and launched. $7,5004 weeks Vertical Sales Edition · Your materials re-cut for a second industry — its language, its proof, its pages. $6,5003 weeks Pitch & Tender Support · Per submission — structure, story, design and a rehearsal. $1,9001 week / bid Art-Direction Day · Photo and film, directed to the brand, on set with you. $2,2001 day Strategy Session · One problem, straight answers. $60090 min
+05 Add-ons
 
-Email QuoteEmail Quote Pay NowPay Now
+Case Studies · Named client, real numbers, dated and caveated. $1,800 · each Campaign Sprint · One campaign: offer, assets and landing page, built and launched. $7,500 · 4 weeks Vertical Sales Edition · Your materials re-cut for a second industry — its language, its proof, its pages. $6,500 · 3 weeks Pitch & Tender Support · Per submission — structure, story, design and a rehearsal. $1,900 · 1 week / bid Art-Direction Day · Photo and film, directed to the brand, on set with you. $2,200 · 1 day Strategy Session · One problem, straight answers. $600 · 90 min
+
+Email Quote Email Quote Pay Now Pay Now
 
 We will help you choose the right service.
 
 Every priced line here is the published price, the same number for every client, on this page and in the engagement agreement. The rows marked client budget are yours: we do not trim them or count them as our fee. Scope is written into the agreement before anything starts.
+
+Retry this checkout Resume checkout Edit selection Start another quote
 
 Your quote /
 
@@ -1754,9 +1828,9 @@ Date
 
 Ref
 
-ServicePrice
+Service Price
 
-Email QuoteEmail Quote Print / Save PDFPrint / Save PDF Pay NowPay Now
+Email Quote Email Quote Print / Save PDF Print / Save PDF Pay Now Pay Now
 
 Card payment covers the one-off items, + 10% GST, through Stripe. Monthly items start by contract.
 
@@ -1794,7 +1868,7 @@ Commercial intelligence
 
 +770% Increase in impressions
 
-SEOGEOBrand
+SEO GEO Brand
 
 ### Your CFO Partner
 
@@ -1806,7 +1880,7 @@ Financial
 
 +510% Increase in conversion rate
 
-SEOCROPaid
+SEO CRO Paid
 
 ### PROQM
 
@@ -1816,7 +1890,7 @@ Independent QS control
 
 +123% Organic traffic growth
 
-SEODigital strategy
+SEO Digital strategy
 
 ### South Melbourne Rehabilitation Centre
 
@@ -1828,7 +1902,7 @@ Healthcare practice
 
 +35,000 Increase in impressions
 
-SEOGEOCRO
+SEO GEO CRO
 
 ### Melbourne Dance & Arts Centre
 
@@ -1836,7 +1910,7 @@ Performing arts centre
 
 In delivery: the brand and position work, and managed Google Ads. The measured figures publish when they are sourced.
 
-BrandPositionPaid
+Brand Position Paid
 
 ### SAAZAA
 
@@ -1844,7 +1918,7 @@ Specialty coffee
 
 In delivery: SEO and GEO search, managed Google Ads, and the brand package. The first measured numbers publish at the 120-day review.
 
-SEOGEOPaidBrand
+SEO GEO Paid Brand
 
 ### JE Real Estate
 
@@ -1852,7 +1926,7 @@ Commercial real estate
 
 Search and the brand system. The measured figures are not published yet.
 
-SEOBrand
+SEO Brand
 
 ### AXIOM
 
@@ -1860,7 +1934,7 @@ Commercial property
 
 Brand design, project position and pre-marketing for a commercial development.
 
-BrandPositionPre-marketing
+Brand Position Pre-marketing
 
 Ask us for the record behind any figure here: start figure, finish figure, the dates it covers, and the way we measured it.
 

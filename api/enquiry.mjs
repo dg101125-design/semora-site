@@ -18,6 +18,7 @@
  * project. It is never committed.
  */
 import { autoReplyHtml, escapeHtml, frame } from "./_templates.mjs";
+import { isRecord, validateFields, MAX_BODY_BYTES } from "./_enquiry-contract.mjs";
 
 /* Vercel's body parser is turned off so this function always owns the request
  * stream. It has to be, because leaving it on loses enquiries.
@@ -39,7 +40,7 @@ const FROM = "SEMORA STUDIO <team@semora.com.au>";
 const RESEND = "https://api.resend.com/emails";
 
 /* "website" is posted by the FREE AI VISIBILITY REPORT form — it is the URL
- * the 24-hour report is ABOUT. Dropping it (as this list once did) meant the
+ * the requested report is ABOUT. Dropping it (as this list once did) meant the
  * notification arrived without the one datum the promise depends on. */
 /* "found" is measure 7 of 8 — how the enquirer found us, asked on both
  * forms since 9 Sep 2026. It cannot be backfilled, so a name missing from
@@ -49,8 +50,7 @@ const RESEND = "https://api.resend.com/emails";
  * were silently dropped here because the list did not name them, so a visitor
  * with JavaScript off arrived unqualified. Founder confirmed adding them,
  * 14 Sep 2026. Order matters only for readability. */
-const FIELDS = ["name", "practice", "email", "phone", "website", "vertical", "want", "found", "prompt", "source",
-                "q_problem", "q_decision", "q_budget", "q_timing", "q_access", "q_guarantee"];
+// Recognised fields and their limits live in _enquiry-contract.mjs.
 
 /* Read the enquiry out of the request whatever shape it arrives in.
  *
@@ -74,14 +74,25 @@ async function rawBody(req) {
   // With bodyParser off this is the normal path; the req.body branches remain
   // so the handler still works if the config export is ever not honoured.
   const body = req.body;
-  if (Buffer.isBuffer(body)) return body.toString("utf8");
-  if (typeof body === "string") return body;
+  if (Buffer.isBuffer(body) || typeof body === "string") {
+    if (Buffer.byteLength(body) > MAX_BODY_BYTES) throw Object.assign(new Error('body_limit'), {status:413});
+    return Buffer.isBuffer(body) ? body.toString("utf8") : body;
+  }
+  let bytes = 0;
   try {
     const chunks = [];
-    for await (const chunk of req) chunks.push(chunk);
+    for await (const chunk of req) {
+      const buffer = Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk);
+      bytes += buffer.length;
+      if (bytes > MAX_BODY_BYTES) throw Object.assign(new Error('body_limit'), {status:413});
+      chunks.push(buffer);
+    }
     return Buffer.concat(chunks).toString("utf8");
-  } catch {
-    return "";
+  } catch (error) {
+    if (error.status === 413) throw error;
+    // An interrupted stream is not a completed, empty body. Do not turn a
+    // partial parse into the platform's automatic empty-body retry case.
+    throw Object.assign(new Error('body_interrupted'), {status:400});
   }
 }
 
@@ -100,24 +111,30 @@ async function rawBody(req) {
  * single-element array would silently stringify fine, so the bug would only
  * appear once someone ticked two boxes. */
 function add(out, key, value) {
-  out[key] = key in out ? `${out[key]}, ${value}` : value;
+  out[key] = Object.hasOwn(out, key) ? `${out[key]}, ${value}` : value;
 }
 
 async function readFields(req) {
+  if (Number(req.headers['content-length']) > MAX_BODY_BYTES) throw Object.assign(new Error('body_limit'), {status:413});
   const body = req.body;
-  if (body && typeof body === "object" && !Buffer.isBuffer(body)
-      && Object.keys(body).length) return body;
+  if (body !== undefined && !Buffer.isBuffer(body) && typeof body !== "string") {
+    if (!isRecord(body)) return { invalid: true };
+    if (Object.keys(body).length) {
+      if (Buffer.byteLength(JSON.stringify(body)) > MAX_BODY_BYTES) throw Object.assign(new Error('body_limit'), {status:413});
+      return { fields: body };
+    }
+  }
 
   const raw = await rawBody(req);
-  if (!raw) return {};
+  if (!raw) return { fields: {}, missingBytes: true };
 
   const type = String(req.headers["content-type"] || "");
 
   if (type.includes("multipart/form-data")) {
     const boundary = /boundary=(?:"([^"]+)"|([^;]+))/.exec(type);
-    if (!boundary) return {};
+    if (!boundary) return { invalid: true };
     const marker = "--" + (boundary[1] || boundary[2]).trim();
-    const out = {};
+    const out = Object.create(null);
     for (const part of raw.split(marker)) {
       const split = part.indexOf("\r\n\r\n");
       if (split === -1) continue;
@@ -125,16 +142,19 @@ async function readFields(req) {
       if (!name) continue;
       add(out, name[1], part.slice(split + 4).replace(/\r\n$/, ""));
     }
-    return out;
+    return { fields: out };
   }
 
   if (type.includes("application/json")) {
-    try { return JSON.parse(raw); } catch { return {}; }
+    try {
+      const fields = JSON.parse(raw);
+      return isRecord(fields) ? { fields } : { invalid: true };
+    } catch { return { invalid: true }; }
   }
 
-  const out = {};
+  const out = Object.create(null);
   for (const [k, v] of new URLSearchParams(raw)) add(out, k, v);
-  return out;
+  return { fields: out };
 }
 
 function send(payload) {
@@ -146,6 +166,14 @@ function send(payload) {
     },
     body: JSON.stringify(payload),
   });
+}
+
+function deliveryLog(event, response) {
+  const record = {event};
+  if (Number.isInteger(response?.status)) record.status = response.status;
+  const requestId = response?.headers?.get?.('x-request-id') || response?.headers?.get?.('request-id');
+  if (typeof requestId === 'string' && /^[A-Za-z0-9_-]{1,128}$/.test(requestId)) record.request_id = requestId;
+  console.error(JSON.stringify(record));
 }
 
 /* The answer engines, by the host they send people from (90-day plan 2.7).
@@ -270,13 +298,22 @@ export default async function handler(req, res) {
     res.setHeader("Allow", "POST");
     return res.status(405).json({ success: false, message: "Use POST." });
   }
-  const body = await readFields(req);
+  let parsed;
+  try { parsed = await readFields(req); }
+  catch (error) {
+    return res.status(error.status === 413 ? 413 : 400).json({ success:false,
+      message:error.status === 413 ? "This enquiry is too large. Please shorten it and try again." : "The enquiry was incomplete. Please try sending it again." });
+  }
+  if (parsed.invalid) return res.status(400).json({ success: false, message: "Please send a valid enquiry form." });
+  const body = parsed.fields;
 
   // Honeypot. Bots tick it; a person never sees it.
   if (body.botcheck) return res.status(200).json({ success: true });
 
-  const d = {};
-  for (const f of FIELDS) d[f] = String(body[f] ?? "").trim().slice(0, 4000);
+  const { fields: d, errors } = validateFields(body);
+  if (Object.keys(errors).length) {
+    return res.status(400).json({ success: false, message: "Please check the highlighted field. Maximum 4,000 characters per field.", field_errors: errors });
+  }
 
   /* Tell a lost body apart from an empty form, and never blame the visitor for
    * ours.
@@ -298,7 +335,7 @@ export default async function handler(req, res) {
    * would have been told to go back and fill in fields it had already filled
    * in. */
   const declared = Number(req.headers["content-length"] || 0);
-  if (!Object.keys(body).length && declared > 100) {
+  if (parsed.missingBytes && declared > 100) {
     console.error("Body arrived but parsed to nothing — content-length", declared,
                   "type", req.headers["content-type"]);
     res.setHeader("Retry-After", "1");
@@ -338,8 +375,7 @@ export default async function handler(req, res) {
     });
 
     if (!notify.ok) {
-      const detail = await notify.text();
-      console.error("Resend rejected the notification:", notify.status, detail);
+      deliveryLog('notification_rejected', notify);
       return res.status(502).json({ success: false, message: "That didn’t send." });
     }
 
@@ -347,20 +383,21 @@ export default async function handler(req, res) {
     // still had their enquiry delivered, and telling them it failed would be
     // false.
     try {
-      await send({
+      const reply = await send({
         from: FROM,
         to: [d.email],
         reply_to: TO,
         subject: "Thank you — that’s with us",
         html: autoReplyHtml(d),
       });
+      if (!reply.ok) deliveryLog('auto_reply_rejected', reply);
     } catch (e) {
-      console.error("Auto-reply failed (enquiry still delivered):", e);
+      deliveryLog('auto_reply_network_error');
     }
 
     return res.status(200).json({ success: true });
   } catch (e) {
-    console.error("Enquiry handler threw:", e);
+    deliveryLog('notification_network_error');
     return res.status(500).json({ success: false, message: "That didn’t send." });
   }
 }

@@ -14,26 +14,26 @@
     {
       "source": "assets/css/site.css",
       "output": "assets/css/site.min.css",
-      "source_sha256": "e0df9ecaeab96413deb8f77cc6b672f15c936af00f5824cdf84ca5fb4169de07",
-      "output_sha256": "bcc4beb96ca730ee3ece433dcc498757a22d3f7aabeb890b97565d41682bf239",
-      "source_bytes": 547336,
-      "output_bytes": 273507
+      "source_sha256": "2dac61557c3c9d7a1136623eb3e304d4d9b38cd42b90139369adca3a597ce1d5",
+      "output_sha256": "7bb564b24b18796a58a63cbc087fb291e24beb1f8b007990b7fbdd03fea6e3aa",
+      "source_bytes": 548035,
+      "output_bytes": 274082
     },
     {
       "source": "assets/js/quote.js",
       "output": "assets/js/quote.min.js",
-      "source_sha256": "72fee6837ed6cd38dddd1959c38a181b1c2a9d4c43b0f8531228730aede3b4a3",
-      "output_sha256": "df2852c3b626ee4d6873bda1db424808b77977ab1213b35a2a6a16bdb514c1d0",
-      "source_bytes": 21508,
-      "output_bytes": 10866
+      "source_sha256": "7aa208ba24b4e0df89fce46d712c23869a7ec255e8b40187df79ebd84a163b25",
+      "output_sha256": "c2a5ddfd293904136e609946995c714f6565cdf35542f35165718fa31c09c1b5",
+      "source_bytes": 28808,
+      "output_bytes": 17795
     },
     {
       "source": "assets/js/report.js",
       "output": "assets/js/report.min.js",
-      "source_sha256": "9eb982c00215a878cb06276dd473c361121dace2c46bf2e8aa86962fb81693c6",
-      "output_sha256": "4045fcdc417ca6b566252a58b0af62a2dd545e894b7eb58ef877f4a66b8f2ceb",
-      "source_bytes": 10360,
-      "output_bytes": 4432
+      "source_sha256": "6af82bae869a10383e8894c0d88bb3e60d9e59e4820182423b59742f4393a4c6",
+      "output_sha256": "6186e7c38babec0ce6a2297c74cb0651ffecb0ba4fbe1666ce6ebb5d0ceab8dd",
+      "source_bytes": 10857,
+      "output_bytes": 4840
     },
     {
       "source": "assets/js/score.js",
@@ -46,10 +46,10 @@
     {
       "source": "assets/js/site.js",
       "output": "assets/js/site.min.js",
-      "source_sha256": "d1438f4bc3915807c9bd576624e1c7af7491fe339ca6f48137a6435407e058a5",
-      "output_sha256": "1b0affa22f6d6b6a46124bab9eb78fd7139a02e391c38327ad177ed0b362ede0",
-      "source_bytes": 16980,
-      "output_bytes": 7181
+      "source_sha256": "4180bd3e3639023fca6037418b54781d4814bf9bf3118875e76c7c8456642dbf",
+      "output_sha256": "e94da8dbbdc2763049388959be0df4e79fb11e59ab326f1ac92232f140e1f51e",
+      "source_bytes": 17605,
+      "output_bytes": 7598
     }
   ]
 }
